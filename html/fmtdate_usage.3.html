@@ -1,138 +1,151 @@
-<html> 
-<head> 
-<title> </title>
-<style> 
-px {font-family: "Lucida Console", Monaco, monospace}
-p { font-size:100%; line-height:1.1em; }
-body {xfont-style: sans-serif}
-body {
-color:#333; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:1em; line-height:1.3em; }
-a:visited { color:#666; }
-h1,h2,h3,h4,h5,h6 { color:#333; font-family:georgia, verdana, sans-serif; }
-h1 { font-size:150%; page-break-before:auto;background-color: #aaaaff}
-h2 { font-size:143%;color:teal; }
-h3 { font-size:134%;color:blue; }
-h4 { font-size:120%;color:gray; }
-img { max-width: 55em}
-p{ padding: 0;margin:0; }
-p{ padding-right:1.4em; }
-p{ padding-bottom:1em; }
-p{ padding-top:1em; }
-p{ whitespace: pre-wrap; }
-h5,h6 { font-size:100% }
-a.nav,a:link.nav, a:visited.nav { background-color:#FFF; color:#000; }
-XXtable { border:double #000; border-collapse:collapse; }
-XXtable { border-collapse:collapse; }
-XXtd { border:thin solid #888; }
-XXtd { border:none; }
-li { margin-bottom:0.5em; }
-blockquote { display:block; font-size:100%; line-height:1.1em; margin:0 0 1.5em; padding:0 2.5em; }
-pre { background-color:#DDD; font-size:100%; overflow:auto; padding:1em; }
-a,li span { color:#000; }
-a:hover, a.nav:hover, a:hover math { background-color:#000; color:#FFF; }
-#Container { margin:0 10px; text-align:center; background-color: #BBB}
-#Content { border-top:none; margin:auto; padding:0.3em; text-align:left; width:100%; max-width:55em; background:#FFF}
-span.webName { font-size:.5em; }
-textarea#content { font-size: 1em; line-height: 1.125; }
-h1#pageName { line-height:1em; margin:0.2em 0 0.2em 0; padding:0; }
-.property { color:#666; font-size:100%; }
-a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
-.byline { color:#666; font-size:1.0em; font-style:italic; margin-bottom:1em; padding-top:1px; } 
-</style> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content="HTML Tidy for Cygwin (vers 25 March 2009), see www.w3.org" />
+
+  <title></title>
+  <style type="text/css">
+/*<![CDATA[*/
+
+  px {font-family: "Lucida Console", Monaco, monospace}
+  p { font-size:100%; line-height:1.1em; }
+  body {xfont-style: sans-serif}
+  body {
+  color:#333; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:1em; line-height:1.3em; }
+  a:visited { color:#666; }
+  h1,h2,h3,h4,h5,h6 { color:#333; font-family:georgia, verdana, sans-serif; }
+  h1 { font-size:150%; page-break-before:auto;background-color: #aaaaff}
+  h2 { font-size:143%;color:teal; }
+  h3 { font-size:134%;color:blue; }
+  h4 { font-size:120%;color:gray; }
+  img { max-width: 55em}
+  p{ padding: 0;margin:0; }
+  p{ padding-right:1.4em; }
+  p{ padding-bottom:1em; }
+  p{ padding-top:1em; }
+  p{ whitespace: pre-wrap; }
+  h5,h6 { font-size:100% }
+  a.nav,a:link.nav, a:visited.nav { background-color:#FFF; color:#000; }
+  XXtable { border:double #000; border-collapse:collapse; }
+  XXtable { border-collapse:collapse; }
+  XXtd { border:thin solid #888; }
+  XXtd { border:none; }
+  li { margin-bottom:0.5em; }
+  blockquote { display:block; font-size:100%; line-height:1.1em; margin:0 0 1.5em; padding:0 2.5em; }
+  pre { background-color:#DDD; font-size:100%; overflow:auto; padding:1em; }
+  a,li span { color:#000; }
+  a:hover, a.nav:hover, a:hover math { background-color:#000; color:#FFF; }
+  #Container { margin:0 10px; text-align:center; background-color: #BBB}
+  #Content { border-top:none; margin:auto; padding:0.3em; text-align:left; width:100%; max-width:55em; background:#FFF}
+  span.webName { font-size:.5em; }
+  textarea#content { font-size: 1em; line-height: 1.125; }
+  h1#pageName { line-height:1em; margin:0.2em 0 0.2em 0; padding:0; }
+  .property { color:#666; font-size:100%; }
+  a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
+  .byline { color:#666; font-size:1.0em; font-style:italic; margin-bottom:1em; padding-top:1px; } 
+  /*]]>*/
+  </style>
+  <style type="text/css">
+/*<![CDATA[*/
+  body {
+  background-color: #F0F0F0;
+  color: #000000;
+  }
+  :link { color: #0000FF }
+  :visited { color: #C000C0 }
+  :active { color: #FF0000 }
+  td.c26 {font-style: italic}
+  div.c25 {text-align: center}
+  /*]]>*/
+  </style>
 </head>
-<BODY bgcolor=#F0F0F0 text=#000000 link=#0000ff vlink=#C000C0 alink=#ff0000><A NAME=top></A>
-<div id="Container">
-<div id="Content">
-<CENTER>
-<H1><HR><I>Manual Reference Pages &nbsp;-&nbsp;</I><NOBR>fmtdate_usage (3)</NOBR><HR></H1>
-</CENTER>
-<A name=0>
 
-     <H3>NAME</H3>
+<body>
+  <a name="top" id="top"></a>
 
-</A>
-<BLOCKQUOTE>
-<B>fmtdate_usage(3f) </B>- [M_time] display macros recognized by <B>fmtdate</B>(3f) and <B>now</B>(3f)
-<B>(LICENSE:PD)
-</B><B>
-</B></BLOCKQUOTE>
-<A name=contents></A><H3>CONTENTS</H3></A>
-<BLOCKQUOTE>
-<A HREF=#1>Synopsis</A><BR>
-<A HREF=#2>Description</A><BR>
-<A HREF=#3>Options</A><BR>
-<A HREF=#4>Example</A><BR>
-<A HREF=#5>Author</A><BR>
-<A HREF=#6>License</A><BR>
-</BLOCKQUOTE>
-<A name=7>
+  <div id="Container">
+    <div id="Content">
+      <div class="c25">
+        <hr />
 
-     <H3>SYNOPSIS</H3>
+        <h1><i>Manual Reference Pages -</i> fmtdate_usage (3)</h1>
+        <hr />
+      </div><a name="0"></a>
 
-</A>
-<BLOCKQUOTE>
-<PRE>
-subroutine <B>fmtdate_usage</B>(<I>indent</I>)
-<P>
-    integer,intent(in),optional      :: indent
-<P>
-</PRE>
-</BLOCKQUOTE>
-<A name=2>
+      <h3><a name="0">NAME</a></h3>
 
-     <H3>DESCRIPTION</H3>
+      <blockquote>
+        <b>fmtdate_usage(3f)</b> - [M_time] display macros recognized by <b>fmtdate</b>(3f) and <b>now</b>(3f) <b>(LICENSE:PD)</b>
+      </blockquote><a name="contents" id="contents"></a>
 
-</A>
-<BLOCKQUOTE>
-<P>
-The <B>fmtdate_usage</B>(3f) subroutine displays the formatting options
-available for use in procedures such as <B>fmtdate</B>(3f) and <B>now</B>(3f).
-It is typically used to produce up-to-date help text in commands
-that use the <B>M_time</B>(3fm) module, so that the formatting information
-only needs maintained in one place (this routine) and is easily
-displayed so users can quickly obtain a description of the formatting
-macros.
-</BLOCKQUOTE>
-<A name=3>
+      <h3>CONTENTS</h3>
 
-     <H3>OPTIONS</H3>
+      <blockquote>
+        <a href="#1">Synopsis</a><br />
+        <a href="#2">Description</a><br />
+        <a href="#3">Options</a><br />
+        <a href="#4">Example</a><br />
+        <a href="#5">Author</a><br />
+        <a href="#6">License</a><br />
+      </blockquote><a name="7"></a>
 
-</A>
-<BLOCKQUOTE>
-<TABLE cellpadding=3>
-<TR valign=top><TD width=6% nowrap>
-<B></B><I>indent</I> </TD><TD valign=bottom>
-how many spaces to prefix the output with, so that
-calling programs can position the output. Default
-for this optional parameter is three (3).
-</TD></TR>
-<TR></TR></TABLE></BLOCKQUOTE>
-<A name=4>
+      <h3><a name="7">SYNOPSIS</a></h3>
 
-     <H3>EXAMPLE</H3>
+      <blockquote>
+        <pre>
+subroutine <b>fmtdate_usage</b>(<i>indent</i>)
+<br />    integer,intent(in),optional      :: indent
+<br />
+</pre>
+      </blockquote><a name="2"></a>
 
-</A>
-<BLOCKQUOTE>
-Sample Program:
-<P>
-<PRE>
+      <h3><a name="2">DESCRIPTION</a></h3>
+
+      <blockquote>
+        <p>The <b>fmtdate_usage</b>(3f) subroutine displays the formatting options available for use in procedures such as <b>fmtdate</b>(3f) and
+        <b>now</b>(3f). It is typically used to produce up-to-date help text in commands that use the <b>M_time</b>(3fm) module, so that the formatting
+        information only needs maintained in one place (this routine) and is easily displayed so users can quickly obtain a description of the formatting
+        macros.</p>
+      </blockquote><a name="3"></a>
+
+      <h3><a name="3">OPTIONS</a></h3>
+
+      <blockquote>
+        <table cellpadding="3">
+          <tr valign="top">
+            <td class="c26" width="6%" nowrap="nowrap">indent</td>
+
+            <td valign="bottom">how many spaces to prefix the output with, so that calling programs can position the output. Default for this optional
+            parameter is three (3).</td>
+          </tr>
+
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </blockquote><a name="4"></a>
+
+      <h3><a name="4">EXAMPLE</a></h3>
+
+      <blockquote>
+        Sample Program:
+        <pre>
     program demo_fmtdate_usage
     use M_time, only : fmtdate_usage
     implicit none
        call fmtdate_usage() ! see all formatting options
     end program demo_fmtdate_usage
-<P>
-</PRE>
-results (actually call the routine to ensure this is up to date):
-<P>
-<PRE>
+<br />
+</pre>results (actually call the routine to ensure this is up to date):
+        <pre>
     Description                                        Example
-<P>
-    Base time array:
+<br />    Base time array:
     (1) %Y -- year, yyyy                                2016
     (2) %M -- month of year, 01 to 12                   07
     (3) %D -- day of month, 01 to 31                    29
-        %d -- day of month, with suffix (1st, 2nd,&#46;&#46;&#46;)  29th
+        %d -- day of month, with suffix (1st, 2nd,...)  29th
     (4) %Z -- minutes from UTC                          -0240
         %z -- -+hh:mm from UTC                          -04:00
         %T -- -+hhmm  from UTC                          -0400
@@ -174,15 +187,11 @@ results (actually call the routine to ensure this is up to date):
         %S -- seconds since last use of this format     .0000000000000000
         %k -- time in seconds from SYSTEM_CLOCK(3f)     723258.812
         %K -- time in clicks from SYSTEM_CLOCK(3f)      723258812
-<P>
-</PRE>
-If no percent (%) is found in the format one of several
-alternate substitutions occurs.
-<P>
-If the format is composed entirely of one of the following
-keywords the following substitutions occur:
-<P>
-<PRE>
+<br />
+</pre>If no percent (%) is found in the format one of several alternate substitutions occurs.
+
+        <p>If the format is composed entirely of one of the following keywords the following substitutions occur:</p>
+        <pre>
      "iso-8601",
      "iso"        ==&gt; %Y-%M-%DT%h:%m:%s%z
      "iso-8601W",
@@ -201,12 +210,9 @@ keywords the following substitutions occur:
      "easter"     ==&gt; FOR THE YEAR OF THE CURRENT DATE:
                       Easter day: the %d day of %L in the year of our Lord %Y
      "all"        ==&gt; A SAMPLE OF DATE FORMATS
-<P>
-</PRE>
-otherwise the following words are replaced with the most
-common macros:
-<P>
-<PRE>
+<br />
+</pre>otherwise the following words are replaced with the most common macros:
+        <pre>
       year     %Y  2016
       month    %M  07
       day      %D  29
@@ -217,35 +223,13 @@ common macros:
       julian   %j  2457599
       ordinal  %O  211
       weekday  %u  5
-<P>
-</PRE>
-if none of these keywords are found then every letter that
-is a macro is assumed to have an implied percent in front
-of it. For example:
-<P>
-<PRE>
+<br />
+</pre>if none of these keywords are found then every letter that is a macro is assumed to have an implied percent in front of it. For example:
+        <pre>
       YMDhms ==&gt; %Y%M%D%h%m%s ==&gt; 20160729105408
-</PRE>
-</BLOCKQUOTE>
-<A name=5>
-
-     <H3>AUTHOR</H3>
-
-</A>
-<BLOCKQUOTE>
-John S. Urban, 2015-10-24
-</BLOCKQUOTE>
-<A name=6>
-
-     <H3>LICENSE</H3>
-
-</A>
-<BLOCKQUOTE>
-Public Domain
-</BLOCKQUOTE>
-<P><HR>
-<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>fmtdate_usage (3)</TD> <TD align=right width=33%><I>December 13, 2019</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from ce6828ec-cc59-423a-ad08-e82b50cc100d using man macros.</FONT>
-</div>
-</div>
+</pre>
+      </blockquote><a name="5"></a>
+    </div>
+  </div>
 </body>
-</HTML>
+</html>
