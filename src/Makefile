@@ -35,6 +35,8 @@ all: $(PROG) $(CPROG)
 $(PROG): $(OBJS)
 
 	-$(F90) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS)||echo "ouch: $@.f90 "
+	# run it
+	./$@
 
 clean:
 	rm -f $(PROG) $(CPROG) $(OBJS) *.mod
