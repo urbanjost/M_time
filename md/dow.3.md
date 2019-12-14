@@ -1,69 +1,133 @@
-### NAME
-
-**dow(3f)** \- [M_time] given a date-time array DAT return the day of the week **(LICENSE:PD)**
-
-### SYNOPSIS
-
->     subroutine **dow**(_values_, _weekday_, _day_, _ierr_)
->         integer,intent(in) :: values(8)
->         integer,intent(out),optional :: weekday
->         character(len=*),intent(out),optional :: day
->         integer,intent(out),optional :: ierr
-
-### DESCRIPTION
-
-Given a date array DAT return the _day_ of the week as a number and a name,
-Mon=1.
-
-### OPTIONS
-
-> values
-
-> "DAT" array (an integer array of the same format as the array returned by
-the intrinsic **DATE_AND_TIME**(3f)) describing the date to be used to
-calculate the _day_ of the week.
-
-### RETURNS
-
-> weekday
-
-> The numeric _day_ of the week, starting with Monday=1. Optional.
-
-> day
-
-> The name of the _day_ of the week. Optional.
-
-> ierr
-
-> Error code
-
-     *  [ 0] correct
-     *  [-1] invalid input date
-     *  [-2] neither _day_ nor _weekday_ return _values_ were requested.
-
-If the error code is not returned and an error occurs, the program is
-stopped.
-
-### EXAMPLE
-
-Sample program:
-
->         program demo_dow
->         use M_time, only : dow
->         implicit none
->         integer          :: dat(8)     ! input date array
->         integer          :: weekday
->         character(len=9) :: day
->         integer          :: ierr
->           call date_and_time(values=dat)
->           call dow(dat, weekday, day, ierr)
->           write(*,'(a,i0)')'weekday=',weekday
->           write(*,'(a,a)')'day=',trim(day)
->           write(*,'(a,i0)')'ierr=',ierr
->         end program demo_dow
-
-results:
-
->         weekday=1
->         day=Monday
->         ierr=0
+<?
+<body>
+  <a name="top" id="top"></a>
+  <div id="Container">
+    <div id="Content">
+      <div class="c18">
+        <hr />
+        <h1><i>Manual Reference Pages -</i> dow (3)</h1>
+        <hr />
+      </div><a name="0"></a>
+      <h3><a name="0">NAME</a></h3>
+      <blockquote>
+        <b>dow(3f)</b> - [M_time] given a date-time array DAT return the day of the week <b>(LICENSE:PD)</b>
+      </blockquote><a name="contents" id="contents"></a>
+      <h3>CONTENTS</h3>
+      <blockquote>
+        <a href="#1">Synopsis</a><br />
+        <a href="#2">Description</a><br />
+        <a href="#3">Options</a><br />
+        <a href="#4">Returns</a><br />
+        <a href="#5">Example</a><br />
+        <a href="#6">Author</a><br />
+        <a href="#7">License</a><br />
+      </blockquote><a name="8"></a>
+      <h3><a name="8">SYNOPSIS</a></h3>
+      <blockquote>
+        <pre>
+subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
+<br />    integer,intent(in) :: values(8)
+    integer,intent(out),optional :: weekday
+    character(len=*),intent(out),optional :: day
+    integer,intent(out),optional :: ierr
+<br />
+</pre>
+      </blockquote><a name="2"></a>
+      <h3><a name="2">DESCRIPTION</a></h3>
+      <blockquote>
+        Given a date array DAT return the <i>day</i> of the week as a number and a name, Mon=1.
+      </blockquote><a name="3"></a>
+      <h3><a name="3">OPTIONS</a></h3>
+      <blockquote>
+        <table cellpadding="3">
+          <tr valign="top">
+            <td class="c19" width="6%" nowrap="nowrap">values</td>
+            <td valign="bottom">"DAT" array (an integer array of the same format as the array returned by the intrinsic <b>DATE_AND_TIME</b>(3f)) describing
+            the date to be used to calculate the <i>day</i> of the week.</td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </blockquote><a name="4"></a>
+      <h3><a name="4">RETURNS</a></h3>
+      <blockquote>
+        <table cellpadding="3">
+          <tr valign="top">
+            <td class="c19" colspan="2">weekday</td>
+          </tr>
+          <tr valign="top">
+            <td width="6%"></td>
+            <td>The numeric <i>day</i> of the week, starting with Monday=1. Optional.</td>
+          </tr>
+          <tr valign="top">
+            <td class="c19" width="6%" nowrap="nowrap">day</td>
+            <td valign="bottom">The name of the <i>day</i> of the week. Optional.</td>
+          </tr>
+          <tr valign="top">
+            <td class="c19" width="6%" nowrap="nowrap">ierr</td>
+            <td valign="bottom">
+              Error code
+              <table width="100%" cellpadding="3">
+                <!-- tsb: Error code
+ -->
+                <tr>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+                <tr valign="top">
+                  <td width="3%">o</td>
+                  <td>[ 0] correct</td>
+                </tr>
+                <tr valign="top">
+                  <td width="3%">o</td>
+                  <td>[-1] invalid input date</td>
+                </tr>
+                <tr valign="top">
+                  <td width="3%">o</td>
+                  <td>[-2] neither <i>day</i> nor <i>weekday</i> return <i>values</i> were requested.</td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+              </table>If the error code is not returned and an error occurs, the program is stopped.
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+          </tr>
+        </table>
+      </blockquote><a name="5"></a>
+      <h3><a name="5">EXAMPLE</a></h3>
+      <blockquote>
+        Sample program:
+        <pre>
+    program demo_dow
+    use M_time, only : dow
+    implicit none
+    integer          :: dat(8)     ! input date array
+    integer          :: weekday
+    character(len=9) :: day
+    integer          :: ierr
+<br />      call date_and_time(values=dat)
+      call dow(dat, weekday, day, ierr)
+      write(*,'(a,i0)')'weekday=',weekday
+      write(*,'(a,a)')'day=',trim(day)
+      write(*,'(a,i0)')'ierr=',ierr
+<br />
+</pre>
+        <blockquote>
+          end program demo_dow
+        </blockquote>
+        <p>results:</p>
+        <pre>
+    weekday=1
+    day=Monday
+    ierr=0
+</pre>
+      </blockquote><a name="6"></a>
+    </div>
+  </div>
+</body>
