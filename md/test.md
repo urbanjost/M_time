@@ -1,3 +1,4 @@
+<?
 <html>
 <head>
   <meta name="generator" content="HTML Tidy for Cygwin (vers 25 March 2009), see www.w3.org" />
@@ -229,3 +230,4 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
   </div>
 </body>
 </html>
+?>

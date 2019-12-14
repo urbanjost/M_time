@@ -17,21 +17,16 @@ number of seconds since 00:00 on January 1st, 1970, UTC.
 ### OPTIONS
 
 > julian
-
 > Julian Date (days)
-
 > dat
 
 Integer array holding a "DAT" array, similar in structure to the array
 returned by the intrinsic **DATE_AND_TIME**(3f).
 
 > ier
-
 > 0 for successful execution
 
-dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-
->  
+> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
 
 ### RETURNS
 
@@ -41,7 +36,6 @@ The "Unix Epoch" time, or the number of seconds since 00:00:00 on January
 1st, 1970, UTC.
 
 > ierr
-
 > Error code. If 0 no error occurred.
 
 ### EXAMPLE

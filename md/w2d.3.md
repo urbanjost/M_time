@@ -143,39 +143,23 @@ than the number of days in the year, to the following year.
 
 ### ISO_NAME
 
-> Week date representations are in the format YYYYWww-D.
+Week date representations are in the format YYYYWww-D.
 
-> o
+  * [YYYY] indicates the ISO week-numbering year which is slightly different
+    from the traditional Gregorian calendar year.
 
-> [YYYY] indicates the ISO week-numbering year which is slightly different
-from the traditional Gregorian calendar year.
+  * [Www] is the week number prefixed by the letter W, from W01 through W53.
 
->
-
-> o
-
-> [Www] is the week number prefixed by the letter W, from W01 through W53.
-
->
-
-> o
-
-> [D] is the weekday number, from 1 through 7, beginning with Monday and
-ending with Sunday.
+  * [D] is the weekday number, from 1 through 7, beginning with Monday and
+    ending with Sunday.
 
 For example, the Gregorian date 31 December 2006 corresponds to the Sunday of
 the 52nd week of 2006, and is written
 
- >     
- >     
  >         2006-W52-7 (extended form)
  >         or
  >         2006W527 (compact form).
- >       
- >     
- >     
 
 ### REFERENCE
 
-> From Wikipedia, the free encyclopedia 2016-08-08
-
+From Wikipedia, the free encyclopedia 2016-08-08

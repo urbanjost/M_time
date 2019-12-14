@@ -22,11 +22,7 @@ see the allowable macros call or see the **fmtdate_usage**(3f) routine.
 > date in a "DAT" array, which is the same format as the values returned by
 the intrinsic **DATE_AND_TIME**(3f).
 
->
-
 > dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-
->
 
 > format
 
@@ -43,56 +39,26 @@ of the formatting macros supported see **fmtdate_usage**(3f).
 
 ### EXAMPLE
 
-> Sample program:
+Sample program:
 
->  
->  
 >         program demo_fmtdate
-
 >         use M_time, only : fmtdate
-
 >         implicit none
-
 >         integer :: dat(8)
-
 >            call date_and_time(values=dat)
-
 >            write(*,*)fmtdate(dat,"current date: %w, %l %d, %Y %H:%m:%s %N")
-
 >            call showme()
-
 >         contains
-
 >         subroutine showme()
-
 >            use M_time, only : fmtdate_usage
-
 >            call fmtdate_usage() ! see all formatting options
-
 >         end subroutine showme
-
 >         end program demo_fmtdate
 
->  
->  
->  
->
+results:
 
-> results:
-
->  
->  
 >           The current date is Sun, Jul 17th, 2016 01:21:35 PM
-
 >            ::
-
 >            :: An up-to-date description of all the
-
 >            :: formatting options will appear here
-
 >            ::
-
->  
->  
->  
-

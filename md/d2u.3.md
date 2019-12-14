@@ -10,7 +10,7 @@
 
 ### DESCRIPTION
 
-> Converts a DAT date-time array to a Unix Epoch Time value. Typically
+Converts a DAT date-time array to a Unix Epoch Time value. Typically
 mathematical operations such as sums, sorting and comparison are performed
 with simple UET numeric values, and then they are converted back.
 
@@ -22,60 +22,30 @@ with simple UET numeric values, and then they are converted back.
 returned by the intrinsic **DATE_AND_TIME**(3f). If not present the current
 time is used
 
->  
->  
->
-dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-
->  
->  
->  
+> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
 
 ### RETURNS
 
 > unixtime
-
->
 
 > The "Unix Epoch" time, or the number of seconds since 00:00:00 on January
 1st, 1970, UTC.
 
 ### EXAMPLE
 
-> Sample program:
+Sample program:
 
->  
->  
 >         program demo_d2u
-
 >         use M_time, only : d2u
-
 >         implicit none
-
 >         integer           :: dat(8)
-
 >            call date_and_time(values=dat)
-
 >            write(*,'(" Today is:",*(i0:,":"))')dat
-
 >            write(*,*)'Unix Epoch time is ',d2u(dat)
-
 >         end program demo_d2u
 
->  
->  
->  
->
+results:
 
-> results:
-
->  
->  
 >         Today is:2016:7:19:-240:2:0:48:561
-
 >         Unix Epoch time is    1468908048.5610321
-
->  
-
-### AUTHOR
 

@@ -12,7 +12,7 @@
 
 ### DESCRIPTION
 
-> Given a date array DAT return the _day_ of the week as a number and a name,
+Given a date array DAT return the _day_ of the week as a number and a name,
 Mon=1.
 
 ### OPTIONS
@@ -27,94 +27,43 @@ calculate the _day_ of the week.
 
 > weekday
 
->
-
 > The numeric _day_ of the week, starting with Monday=1. Optional.
-
->
 
 > day
 
 > The name of the _day_ of the week. Optional.
 
->
-
 > ierr
 
 > Error code
 
->
+     *  [ 0] correct
+     *  [-1] invalid input date
+     *  [-2] neither _day_ nor _weekday_ return _values_ were requested.
 
-> o
-
-> [ 0] correct
-
->
-
-> o
-
-> [-1] invalid input date
-
->
-
-> o
-
-> [-2] neither _day_ nor _weekday_ return _values_ were requested.
-
->
-
-> If the error code is not returned and an error occurs, the program is
+If the error code is not returned and an error occurs, the program is
 stopped.
 
 ### EXAMPLE
 
-> Sample program:
+Sample program:
 
->  
->  
 >         program demo_dow
-
 >         use M_time, only : dow
-
 >         implicit none
-
 >         integer          :: dat(8)     ! input date array
-
 >         integer          :: weekday
-
 >         character(len=9) :: day
-
 >         integer          :: ierr
-
->  
 >           call date_and_time(values=dat)
-
 >           call dow(dat, weekday, day, ierr)
-
 >           write(*,'(a,i0)')'weekday=',weekday
-
 >           write(*,'(a,a)')'day=',trim(day)
-
 >           write(*,'(a,i0)')'ierr=',ierr
+>         end program demo_dow
 
->  
->  
->  
->
+results:
 
->> end program demo_dow
-
->
-
-> results:
-
->  
->  
 >         weekday=1
-
 >         day=Monday
-
 >         ierr=0
-
->  
-

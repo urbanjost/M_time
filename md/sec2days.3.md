@@ -27,8 +27,6 @@ Given a number of seconds convert it to a string of the form
 
 > seconds
 
->
-
 number of seconds to convert to string of form dd-hh:mm:ss. May be of type
 INTEGER, REAL, **REAL**(KIND=REALTIME), or CHARACTER.
 

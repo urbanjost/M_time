@@ -18,8 +18,6 @@
 returned by the intrinsic **DATE_AND_TIME**(3f). If not present, use current
 time.
 
->
-
 > _dat_=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
 
 ### RETURNS
@@ -32,40 +30,18 @@ time.
 
 > Sample program:
 
->  
->  
 >         program demo_d2j
-
 >         use M_time, only : d2j
-
 >         implicit none
-
 >         integer :: dat(8)
-
 >            call date_and_time(values=dat)
-
 >            write(*,'(" Today is:",*(i0:,":"))')dat
-
 >            write(*,*)'Julian Date is ',d2j(dat)
-
 >         end program demo_d2j
 
->  
->  
->  
->
+results:
 
-> results:
-
->  
->  
 >         Today is:2016:7:19:-240:2:11:50:885
-
 >         Julian Date is    2457588.7582278359
 
->  
->  
->  
-
-### AUTHOR
 
