@@ -46,8 +46,8 @@ function <b>d2u</b>(<i>dat</i>) esult (<i>unixtime</i>)
 <br />
 </pre>
           </tr>
-      </table>
-      <a name="4">6</a>
+        </table>
+                   <a name="4">6</a>
       <h3><a name="4">RETURNS</a></h3>
         <table cellpadding="3">
           <tr valign="top">
