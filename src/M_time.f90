@@ -707,19 +707,19 @@ end function d2o
 !!
 !!   sample program
 !!
-!!    program demo_ordinal_seconds
-!!    use M_time, only : ordinal_seconds
-!!    implicit none
-!!    character(len=1) :: paws
-!!    integer          :: ios
-!!    integer          :: istart, iend
-!!    istart=ordinal_seconds()
-!!    write(*,'(a)',advance='no')'now pause. Enter return to continue ...'
-!!    read(*,'(a)',iostat=ios) paws
-!!    iend=ordinal_seconds()
-!!    write(*,*)'that took ',iend-istart,'seconds'
-!!    write(*,*)istart,iend
-!!    end program demo_ordinal_seconds
+!!     program demo_ordinal_seconds
+!!     use M_time, only : ordinal_seconds
+!!     implicit none
+!!     character(len=1) :: paws
+!!     integer          :: ios
+!!     integer          :: istart, iend
+!!     istart=ordinal_seconds()
+!!     write(*,'(a)',advance='no')'now pause. Enter return to continue ...'
+!!     read(*,'(a)',iostat=ios) paws
+!!     iend=ordinal_seconds()
+!!     write(*,*)'that took ',iend-istart,'seconds'
+!!     write(*,*)istart,iend
+!!     end program demo_ordinal_seconds
 !!##AUTHOR
 !!    John S. Urban, 2015
 !!##LICENSE
@@ -769,24 +769,24 @@ end function ordinal_seconds
 !!
 !!   Sample program:
 !!
-!!    program demo_datesub
-!!    use M_time, only : ordinal_to_date
-!!    implicit none
-!!    INTEGER            :: yyyy, ddd, mm, dd
-!!    integer            :: dat(8)
-!!    integer            :: ios
-!!
-!!      INFINITE: do
-!!         write(*,'(a)',advance='no')'Enter year YYYY and ordinal day of year DD '
-!!         read(*,*,iostat=ios)yyyy,ddd
-!!         if(ios.ne.0)exit INFINITE
-!!         ! recover month and day from year and day number.
-!!         call ordinal_to_date(yyyy, ddd, dat)
-!!         mm=dat(2)
-!!         dd=dat(3)
-!!       enddo INFINITE
-!!
-!!    end program demo_datesub
+!!     program demo_datesub
+!!     use M_time, only : ordinal_to_date
+!!     implicit none
+!!     INTEGER            :: yyyy, ddd, mm, dd
+!!     integer            :: dat(8)
+!!     integer            :: ios
+!! 
+!!       INFINITE: do
+!!          write(*,'(a)',advance='no')'Enter year YYYY and ordinal day of year DD '
+!!          read(*,*,iostat=ios)yyyy,ddd
+!!          if(ios.ne.0)exit INFINITE
+!!          ! recover month and day from year and day number.
+!!          call ordinal_to_date(yyyy, ddd, dat)
+!!          mm=dat(2)
+!!          dd=dat(3)
+!!        enddo INFINITE
+!! 
+!!     end program demo_datesub
 !===================================================================================================================================
 subroutine ordinal_to_date(yyyy,ddd,dat)
 !!use M_time, only : d2j,j2d, realtime
@@ -2609,25 +2609,25 @@ end subroutine w2d
 !!
 !!    Sample program:
 !!
-!!     program demo_box_month
-!!     use M_time, only : box_month
-!!     implicit none
-!!     integer           :: dat(8)
-!!     character(len=21) :: calendar(8)
-!!        call date_and_time(values=dat)
-!!        call box_month(dat,calendar)
-!!        write(*,'(a)')calendar
-!!     end program demo_box_month
+!!      program demo_box_month
+!!      use M_time, only : box_month
+!!      implicit none
+!!      integer           :: dat(8)
+!!      character(len=21) :: calendar(8)
+!!         call date_and_time(values=dat)
+!!         call box_month(dat,calendar)
+!!         write(*,'(a)')calendar
+!!      end program demo_box_month
 !!
 !!    results:
 !!
-!!      >     July 2016
-!!      >Mo Tu We Th Fr Sa Su
-!!      >             1  2  3
-!!      > 4  5  6  7  8  9 10
-!!      >11 12 13 14 15 16 17
-!!      >18 19 20 21 22 23 24
-!!      >25 26 27 28 29 30 31
+!!       >     July 2016
+!!       >Mo Tu We Th Fr Sa Su
+!!       >             1  2  3
+!!       > 4  5  6  7  8  9 10
+!!       >11 12 13 14 15 16 17
+!!       >18 19 20 21 22 23 24
+!!       >25 26 27 28 29 30 31
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
@@ -3417,21 +3417,21 @@ end function days2sec
 !!
 !!   Sample:
 !!
-!!    program demo_phase_of_moon
-!!    use M_time, only : now
-!!    use M_time, only : phase_of_moon
-!!    use M_time, only : moon_fullness
-!!    implicit none
-!!    integer             :: dat(8)
-!!       ! generate DAT array
-!!       call date_and_time(values=dat)
-!!       ! show DAT array
-!!       write(*,'(" Today is:",*(i0:,":"))')dat
-!!       ! the %p and %P fields are supported by fmtdate(3f)
-!!       write(*,*)now('The phase of the moon is %p, with a fullness of %P')
-!!       write(*,'(1x,*(a))',advance='no')'The phase of the moon is ',trim( phase_of_moon(dat)),','
-!!       write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
-!!    end program demo_phase_of_moon
+!!     program demo_phase_of_moon
+!!     use M_time, only : now
+!!     use M_time, only : phase_of_moon
+!!     use M_time, only : moon_fullness
+!!     implicit none
+!!     integer             :: dat(8)
+!!        ! generate DAT array
+!!        call date_and_time(values=dat)
+!!        ! show DAT array
+!!        write(*,'(" Today is:",*(i0:,":"))')dat
+!!        ! the %p and %P fields are supported by fmtdate(3f)
+!!        write(*,*)now('The phase of the moon is %p, with a fullness of %P')
+!!        write(*,'(1x,*(a))',advance='no')'The phase of the moon is ',trim( phase_of_moon(dat)),','
+!!        write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
+!!     end program demo_phase_of_moon
 !!
 !!   Sample output:
 !!
@@ -3506,21 +3506,21 @@ end function phase_of_moon
 !!
 !!   Sample:
 !!
-!!    program demo_moon_fullness
-!!    use M_time, only : now
-!!    use M_time, only : phase_of_moon
-!!    use M_time, only : moon_fullness
-!!    implicit none
-!!    integer             :: dat(8)
-!!       ! generate DAT array
-!!       call date_and_time(values=dat)
-!!       ! show DAT array
-!!       write(*,'(" Today is:",*(i0:,":"))')dat
-!!       ! the %p and %P fields are supported by fmtdate(3f)
-!!       write(*,*)now('The phase of the moon is %p, with a fullness of %P')
-!!       write(*,'(1x,*(a))',advance='no')'The phase of the moon is ',trim( phase_of_moon(dat)),','
-!!       write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
-!!    end program demo_moon_fullness
+!!     program demo_moon_fullness
+!!     use M_time, only : now
+!!     use M_time, only : phase_of_moon
+!!     use M_time, only : moon_fullness
+!!     implicit none
+!!     integer             :: dat(8)
+!!        ! generate DAT array
+!!        call date_and_time(values=dat)
+!!        ! show DAT array
+!!        write(*,'(" Today is:",*(i0:,":"))')dat
+!!        ! the %p and %P fields are supported by fmtdate(3f)
+!!        write(*,*)now('The phase of the moon is %p, with a fullness of %P')
+!!        write(*,'(1x,*(a))',advance='no')'The phase of the moon is ',trim( phase_of_moon(dat)),','
+!!        write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
+!!     end program demo_moon_fullness
 !!
 !!   Sample output:
 !!
@@ -3606,21 +3606,21 @@ end function moon_fullness
 !!
 !!   Sample program:
 !!
-!!    program demo_easter
-!!    use M_time, only : easter, fmtdate
-!!    implicit none
-!!    integer :: year
-!!    integer :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
-!!      call date_and_time(values=dat)  ! get current year
-!!      year=dat(1)
-!!      call easter(year, dat)
-!!      write(*,*)fmtdate(dat,&
-!!      "Easter day: the %d day of %L in the year of our Lord %Y")
-!!    end program demo_easter
+!!     program demo_easter
+!!     use M_time, only : easter, fmtdate
+!!     implicit none
+!!     integer :: year
+!!     integer :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
+!!       call date_and_time(values=dat)  ! get current year
+!!       year=dat(1)
+!!       call easter(year, dat)
+!!       write(*,*)fmtdate(dat,&
+!!       "Easter day: the %d day of %L in the year of our Lord %Y")
+!!     end program demo_easter
 !!
 !!   Sample output:
 !!
-!!    Easter day: the 16th day of April in the year of our Lord 2017
+!!     Easter day: the 16th day of April in the year of our Lord 2017
 !===================================================================================================================================
 !>
 !!
@@ -3695,30 +3695,30 @@ end subroutine Easter
 !!
 !!   Sample Program:
 !!
-!!    program demo_substitute
-!!    use M_time, only : substitute
-!!    implicit none
-!!    ! must be long enough to hold changed line
-!!    character(len=80) :: targetline
+!!     program demo_substitute
+!!     use M_time, only : substitute
+!!     implicit none
+!!     ! must be long enough to hold changed line
+!!     character(len=80) :: targetline
 !!
-!!    targetline='this is the input string'
-!!    write(*,*)'ORIGINAL    : '//trim(targetline)
+!!     targetline='this is the input string'
+!!     write(*,*)'ORIGINAL    : '//trim(targetline)
+!! 
+!!     ! changes the input to 'THis is THe input string'
+!!     call substitute(targetline,'th','TH')
+!!     write(*,*)'th => TH    : '//trim(targetline)
+!!  
+!!     ! a null old substring means "at beginning of line"
+!!     ! changes the input to 'BEFORE:this is the input string'
+!!     call substitute(targetline,'','BEFORE:')
+!!     write(*,*)'"" => BEFORE: '//trim(targetline)
 !!
-!!    ! changes the input to 'THis is THe input string'
-!!    call substitute(targetline,'th','TH')
-!!    write(*,*)'th => TH    : '//trim(targetline)
+!!     ! a null new string deletes occurrences of the old substring
+!!     ! changes the input to 'ths s the nput strng'
+!!     call substitute(targetline,'i','')
+!!     write(*,*)'i => ""     : '//trim(targetline)
 !!
-!!    ! a null old substring means "at beginning of line"
-!!    ! changes the input to 'BEFORE:this is the input string'
-!!    call substitute(targetline,'','BEFORE:')
-!!    write(*,*)'"" => BEFORE: '//trim(targetline)
-!!
-!!    ! a null new string deletes occurrences of the old substring
-!!    ! changes the input to 'ths s the nput strng'
-!!    call substitute(targetline,'i','')
-!!    write(*,*)'i => ""     : '//trim(targetline)
-!!
-!!    end program demo_substitute
+!!     end program demo_substitute
 !!
 !!   Expected output
 !!
@@ -3992,14 +3992,14 @@ end function upper
 !!
 !!    Sample program:
 !!
-!!       program demo_lower
-!!       use M_time, only: lower
-!!       implicit none
-!!       character(len=:),allocatable  :: s
-!!          s=' ABCDEFG abcdefg '
-!!          write(*,*) 'mixed-case input string is ....',s
-!!          write(*,*) 'lower-case output string is ...',lower(s)
-!!       end program demo_lower
+!!     program demo_lower
+!!     use M_time, only: lower
+!!     implicit none
+!!     character(len=:),allocatable  :: s
+!!        s=' ABCDEFG abcdefg '
+!!        write(*,*) 'mixed-case input string is ....',s
+!!        write(*,*) 'lower-case output string is ...',lower(s)
+!!     end program demo_lower
 !!
 !!    Expected output
 !!
@@ -4080,28 +4080,28 @@ end subroutine stderr
 !!
 !!   Sample Program:
 !!
-!!    program demo_adjustc
-!!    use M_strings, only : adjustc
-!!    !  using length of the input string
-!!       write(*,'(a)')       '================================'
-!!       write(*,'(a)')adjustc('centered string                 ')
-!!       write(*,'(a)')adjustc('                 centered string')
-!!       write(*,'(a)')adjustc('  centered string               ')
-!!    !  using explicit output string length
-!!       write(*,'(a)')repeat('=',50)
-!!       write(*,'(a)')adjustc('this is a centered string',50)
-!!       write(*,'(a)')repeat('=',50)
-!!    end program demo_adjustc
+!!     program demo_adjustc
+!!     use M_strings, only : adjustc
+!!     !  using length of the input string
+!!        write(*,'(a)')       '================================'
+!!        write(*,'(a)')adjustc('centered string                 ')
+!!        write(*,'(a)')adjustc('                 centered string')
+!!        write(*,'(a)')adjustc('  centered string               ')
+!!     !  using explicit output string length
+!!        write(*,'(a)')repeat('=',50)
+!!        write(*,'(a)')adjustc('this is a centered string',50)
+!!        write(*,'(a)')repeat('=',50)
+!!     end program demo_adjustc
 !!
-!!   Expected output
+!!   Expected output:
 !!
-!!    ================================
+!!    \================================
 !!            centered string
 !!            centered string
 !!            centered string
-!!    ==================================================
+!!    \==================================================
 !!                this is a centered string
-!!    ==================================================
+!!    \==================================================
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
@@ -4176,7 +4176,7 @@ end function adjustc
 !!
 !!   Sample Program:
 !!
-!!    program demo_compact
+!!     program demo_compact
 !!     use M_strings, only : compact
 !!     implicit none
 !!     ! produces 'This is a test               '
@@ -4190,7 +4190,7 @@ end function adjustc
 !!     write(*,*)compact('A  AA    A   AAAAA',char='A')
 !!     ! produces (original A characters are left as-is) 'AAAAAAAAAAAA'
 !!     ! not 'A'
-!!    end program demo_compact
+!!     end program demo_compact
 !!
 !!    Expected output
 !!
@@ -4289,7 +4289,7 @@ end function compact
 !!
 !!   Sample Program:
 !!
-!!    program demo_s2v
+!!     program demo_s2v
 !!
 !!     use M_strings, only: s2v, int, real, dble
 !!     implicit none
@@ -4449,36 +4449,36 @@ end function s2v
 !!
 !!  Sample program:
 !!
-!!    program demo_split
-!!    use M_strings, only: split
-!!    character(len=*),parameter     :: &
-!!    & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
-!!    character(len=:),allocatable :: array(:) ! output array of tokens
-!!       write(*,*)'INPUT LINE:['//LINE//']'
-!!       write(*,'(80("="))')
-!!       write(*,*)'typical call:'
-!!       CALL split(line,array)
-!!       write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!       write(*,*)'SIZE:',SIZE(array)
-!!       write(*,'(80("-"))')
-!!       write(*,*)'custom list of delimiters (colon and vertical line):'
-!!       CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
-!!       write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!       write(*,*)'SIZE:',SIZE(array)
-!!       write(*,'(80("-"))')
-!!       write(*,*)&
-!!     &'custom list of delimiters, reverse array order and count null fields:'
-!!       CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
-!!       write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!       write(*,*)'SIZE:',SIZE(array)
-!!       write(*,'(80("-"))')
-!!       write(*,*)'INPUT LINE:['//LINE//']'
-!!       write(*,*)&
-!!       &'default delimiters and reverse array order and return null fields:'
-!!       CALL split(line,array,delimiters='',order='reverse',nulls='return')
-!!       write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!       write(*,*)'SIZE:',SIZE(array)
-!!    end program demo_split
+!!     program demo_split
+!!     use M_strings, only: split
+!!     character(len=*),parameter     :: &
+!!     & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
+!!     character(len=:),allocatable :: array(:) ! output array of tokens
+!!        write(*,*)'INPUT LINE:['//LINE//']'
+!!        write(*,'(80("="))')
+!!        write(*,*)'typical call:'
+!!        CALL split(line,array)
+!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!        write(*,*)'SIZE:',SIZE(array)
+!!        write(*,'(80("-"))')
+!!        write(*,*)'custom list of delimiters (colon and vertical line):'
+!!        CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
+!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!        write(*,*)'SIZE:',SIZE(array)
+!!        write(*,'(80("-"))')
+!!        write(*,*)&
+!!      &'custom list of delimiters, reverse array order and count null fields:'
+!!        CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
+!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!        write(*,*)'SIZE:',SIZE(array)
+!!        write(*,'(80("-"))')
+!!        write(*,*)'INPUT LINE:['//LINE//']'
+!!        write(*,*)&
+!!        &'default delimiters and reverse array order and return null fields:'
+!!        CALL split(line,array,delimiters='',order='reverse',nulls='return')
+!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!        write(*,*)'SIZE:',SIZE(array)
+!!     end program demo_split
 !!
 !!   Output
 !!
@@ -4864,7 +4864,7 @@ end subroutine string_to_values
 !!
 !!   Sample Program:
 !!
-!!    program demo_transliterate
+!!     program demo_transliterate
 !!
 !!     use M_strings, only : transliterate
 !!     implicit none
@@ -4882,7 +4882,7 @@ end subroutine string_to_values
 !!     ! delete all miniscule letters
 !!     write(*,*) TRANSLITERATE(STRING,'abcdefghijklmnopqrstuvwxyz','')
 !!
-!!    end program demo_transliterate
+!!     end program demo_transliterate
 !!
 !!    Expected output
 !!
@@ -4970,14 +4970,14 @@ END FUNCTION transliterate
 !!
 !!   Sample Program:
 !!
-!!    program demo_v2s
-!!    use M_strings, only: v2s
-!!    write(*,*) 'The value of 3.0/4.0 is ['//v2s(3.0/4.0)//']'
-!!    write(*,*) 'The value of 1234    is ['//v2s(1234)//']'
-!!    write(*,*) 'The value of 0d0     is ['//v2s(0d0)//']'
-!!    write(*,*) 'The value of .false. is ['//v2s(.false.)//']'
-!!    write(*,*) 'The value of .true. is  ['//v2s(.true.)//']'
-!!    end program demo_v2s
+!!     program demo_v2s
+!!     use M_strings, only: v2s
+!!     write(*,*) 'The value of 3.0/4.0 is ['//v2s(3.0/4.0)//']'
+!!     write(*,*) 'The value of 1234    is ['//v2s(1234)//']'
+!!     write(*,*) 'The value of 0d0     is ['//v2s(0d0)//']'
+!!     write(*,*) 'The value of .false. is ['//v2s(.false.)//']'
+!!     write(*,*) 'The value of .true. is  ['//v2s(.true.)//']'
+!!     end program demo_v2s
 !!
 !!   Expected output
 !!
@@ -5626,13 +5626,13 @@ end subroutine trimzeros
 !!
 !!   Sample Program:
 !!
-!!    program demo_string_to_value
+!!     program demo_string_to_value
 !!     use M_strings, only: string_to_value
 !!     character(len=80) :: string
 !!        string=' -40.5e-2 '
 !!        call string_to_value(string,value,ierr)
 !!        write(*,*) 'value of string ['//trim(string)//'] is ',value
-!!    end program demo_string_to_value
+!!     end program demo_string_to_value
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
@@ -5800,32 +5800,32 @@ end subroutine a2d
 !!
 !!   Sample program:
 !!
-!!    program demo_decodebase
-!!    use M_strings, only : codebase, decodebase
-!!    implicit none
-!!    integer           :: ba,bd
-!!    character(len=40) :: x,y
-!!    integer           :: r
-!!
-!!    print *,' BASE CONVERSION'
-!!    write(*,'("Start   Base (2 to 36): ")',advance='no'); read *, bd
-!!    write(*,'("Arrival Base (2 to 36): ")',advance='no'); read *, ba
-!!    INFINITE: do
-!!       print *,''
-!!       write(*,'("Enter number in start base: ")',advance='no'); read *, x
-!!       if(x.eq.'0') exit INFINITE
-!!       if(decodebase(x,bd,r)) then
-!!          if(codebase(r,ba,y)) then
-!!            write(*,'("In base ",I2,": ",A20)')  ba, y
-!!          else
-!!            print *,'Error in coding number.'
-!!          endif
-!!       else
-!!          print *,'Error in decoding number.'
-!!       endif
-!!    enddo INFINITE
-!!
-!!    end program demo_decodebase
+!!     program demo_decodebase
+!!     use M_strings, only : codebase, decodebase
+!!     implicit none
+!!     integer           :: ba,bd
+!!     character(len=40) :: x,y
+!!     integer           :: r
+!! 
+!!     print *,' BASE CONVERSION'
+!!     write(*,'("Start   Base (2 to 36): ")',advance='no'); read *, bd
+!!     write(*,'("Arrival Base (2 to 36): ")',advance='no'); read *, ba
+!!     INFINITE: do
+!!        print *,''
+!!        write(*,'("Enter number in start base: ")',advance='no'); read *, x
+!!        if(x.eq.'0') exit INFINITE
+!!        if(decodebase(x,bd,r)) then
+!!           if(codebase(r,ba,y)) then
+!!             write(*,'("In base ",I2,": ",A20)')  ba, y
+!!           else
+!!             print *,'Error in coding number.'
+!!           endif
+!!        else
+!!           print *,'Error in decoding number.'
+!!        endif
+!!     enddo INFINITE
+!! 
+!!     end program demo_decodebase
 !!
 !!##AUTHOR
 !!    John S. Urban
