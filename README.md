@@ -5,7 +5,8 @@ the GPF (General Purpose Fortran) package that has been extracted for
 those just interested in a library of time-related functions. In the
 GPF package this library is intertwined with several other large modules.
 
-    cd src
+    git clone https://github.com/urbanjost/M_time.git
+    cd M_time/src
     # change Makefile if not using gfortran(1) 
     make
 
@@ -54,6 +55,24 @@ the easy incorporation of timing information into program messages. In
 addition to conventional Civilian Calendar dates, the module supports the
 ISO-8601 standard methods of displaying dates.
 
+
+  |                             UNIX EPOCH                                  |
+  |------------------------------------------ | -------- | -----------------|
+  |Procedure                                  | OOPS     | Description      |
+  |------------------------------------------ | -------- | -----------------|
+  |                                           |          | Convert date     |
+  |date_to_unix(dat,UNIXTIME,IERR)            |%epoch()  | array to Unix    |
+  |                                           |          | Time             |
+  |------------------------------------------ | -------- | -----------------|
+  |unix_to_date(unixtime,DAT,IERR)            |          | Convert Unix Time|
+  |                                           |          | to date array    |
+  |------------------------------------------ | -------- | -----------------|
+  |                                           |          | Convert date     |
+  |d2u(dat) result (UNIXTIME)                 |          | array to Unix    |
+  |                                           |          | Time             |
+  |------------------------------------------ | -------- | -----------------|
+  |u2d(unixtime) result (DAT)                 |          | Convert Unix Time|
+                                             |          | to date array     | 
 
 ## DEFINITIONS
 
