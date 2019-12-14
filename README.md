@@ -55,24 +55,64 @@ the easy incorporation of timing information into program messages. In
 addition to conventional Civilian Calendar dates, the module supports the
 ISO-8601 standard methods of displaying dates.
 
+The available procedures are:
 
-  |                             UNIX EPOCH                                  |
-  |------------------------------------------ | -------- | -----------------|
-  |Procedure                                  | OOPS     | Description      |
-  |------------------------------------------ | -------- | -----------------|
-  |                                           |          | Convert date     |
-  |date_to_unix(dat,UNIXTIME,IERR)            |%epoch()  | array to Unix    |
-  |                                           |          | Time             |
-  |------------------------------------------ | -------- | -----------------|
-  |unix_to_date(unixtime,DAT,IERR)            |          | Convert Unix Time|
-  |                                           |          | to date array    |
-  |------------------------------------------ | -------- | -----------------|
-  |                                           |          | Convert date     |
-  |d2u(dat) result (UNIXTIME)                 |          | array to Unix    |
-  |                                           |          | Time             |
-  |------------------------------------------ | -------- | -----------------|
-  |u2d(unixtime) result (DAT)                 |          | Convert Unix Time|
-                                             |          | to date array     | 
+<table BORDER="1">
+
+<tr><th colspan="3">UNIX EPOCH                </th></tr>
+<tr><td><a href="date_to_unix.3.html"> date_to_unix(dat,UNIXTIME,IERR)    </a></td><td>%epoch()  </td><td> Convert date array to Unix Time</td></tr>
+<tr><td><a href="unix_to_date.3.html"> unix_to_date(unixtime,DAT,IERR)    </a></td><td>&nbsp;   </td><td> Convert Unix Time to date array</td></tr>
+<tr><td><a href="d2u.3.html"> d2u(dat) result (UNIXTIME)  </a></td><td>&nbsp;     </td><td> Convert date array to Unix Time</td></tr>
+<tr><td><a href="u2d.3.html"> u2d(unixtime) result (DAT)  </a></td><td>&nbsp;     </td><td> Convert Unix Time to date array</td></tr>
+
+<tr><th colspan="3">JULIAN                    </th></tr>
+<tr><td><a href="julian_to_date.3.html"> julian_to_date(julian,DAT,IERR)      </a></td><td>&nbsp;   </td><td> Convert Julian Date to date array</td></tr>
+<tr><td><a href="date_to_julian.3.html"> date_to_julian(dat,JULIAN,IERR)      </a></td><td>%julian() </td><td> Converts date array to Julian Date </td></tr>
+<tr><td><a href="d2j.3.html"> d2j(dat) result (JULIAN)    </a></td><td>&nbsp;    </td><td> Convert date array to Julian Date</td></tr>
+<tr><td><a href="j2d.3.html"> j2d(julian) result (DAT)    </a></td><td>&nbsp;    </td><td> Convert Julian Date to date array</td></tr>
+
+<tr><th colspan="3">DAY OF WEEK               </th></tr>
+<tr><td><a href="dow.3.html"> dow(dat,[WEEKDAY],[DAY],IERR)  </a></td><td>%weekday() </td><td> Convert date array to day of the week as number(Mon=1) and name</td></tr>
+
+<tr><th colspan="3">WEEK OF YEAR              </th></tr>
+<tr><td><a href="d2w.3.html"> d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) </a></td><td>&nbsp;  </td><td> calculate iso-8601 Week-numbering year date yyyy-Www-d</td></tr>
+<tr><td><a href="w2d.3.html"> w2d(iso_year,iso_week,iso_weekday,DAT) </a></td><td>&nbsp;  </td><td> calculate date given iso-8601 Week date yyyy-Www-d</td></tr>
+
+<tr><th colspan="3">ORDINAL DAY               </th></tr>
+<tr><td><a href="d2o.3.html"> d2o(dat) result(ORDINAL)                  </a></td><td>%ordinal() </td><td> given date array return ordinal day of year, Jan 1st=1</td></tr>
+<tr><td><a href="o2d.3.html"> o2d(ordinal,[year]) result(DAT)                </a></td><td> </td><td> given ordinal day of year return date array, Jan 1st=1</td></tr>
+<tr><td><a href="ordinal_to_date.3.html"> ordinal_to_date(ordinal,year,DAT)  </a></td><td> </td><td> given ordinal day of year return date array, Jan 1st=1</td></tr>
+<tr><td><a href="ordinal_seconds.3.html"> ordinal_seconds()  </a></td><td> </td><td> return seconds since beginning of year</td></tr>
+
+<tr><th colspan="3">PRINTING DATES            </th></tr>
+<tr><td><a href="fmtdate.3.html"> fmtdate(dat,format)  result (TIMESTR) </a></d><td>%format([STRING]) </td><td> Convert date array to string using format</td></tr>
+<tr><td><a href="fmtdate_usage.3.html"> fmtdate_usage(indent)           </a></td><td>&nbsp;            </td><td> display macros recognized by fmtdate(3f)</td></tr>
+<tr><td><a href="now.3.html"> now(format)        result (NOW)           </a></td><td>&nbsp;            </td><td> return string representing current time given format</td></tr>
+<tr><td><a href="box_month.3.html"> box_month(dat,CALEN)                </a></td><td>&nbsp;            </td><td> print specified month into character array</td></tr>
+
+<tr><th colspan="3">MONTH NAME                    </th></tr>
+<tr><td><a href="mo2v.3.html"> mo2v(month_name)   result (MONTH_NUMBER) </a></td><td>&nbsp;      </td><td> given month name return month number</td></tr>
+<tr><td><a href="v2mo.3.html"> v2mo(month_number) result (MONTH_NAME)   </a></td><td>&nbsp;      </td><td> given month number return month name</td></tr>
+<tr><td><a href="mo2d.3.html"> mo2d(month_name)   result (DAT)          </a></td><td>&nbsp;      </td><td> return date array for
+first day of given month name in specified year</td></tr>
+
+<tr><th colspan="3">ASTROLOGICAL                        </th></tr>
+<tr><td><a href="easter.3.html"> easter(year,dat) </a></td><td>&nbsp; </td><td> calculate month and day Easter falls on for given year </td></tr>
+<!--
+<tr><td><a href="ephemeris.3.html"> ephemeris(dat,planet,DEC_D,DEC,M,DEC_C,ASCENT_H,ASCENT_M) </a></td><td>&nbsp; </td><td> ephemeris position of planets for adjusting an equatorial telescope </td></tr>
+-->
+
+<tr><td><a href="moon_fullness.3.html"> moon_fullness(DAT) result(FULLNESS)</a></td><td>&nbsp; </td><td> percentage of moon phase from new to full </td></tr>
+<tr><td><a href="phase_of_moon.3.html"> phase_of_moon(DAT) result(PHASE)</a></td><td>&nbsp; </td><td> return name for phase of moon for given date </td></tr>
+
+<tr><th colspan="3">DURATION                  </th></tr>
+<tr><td><a href="sec2days.3.html">  sec2days(seconds)  result(dhms)     </a></td><td>&nbsp;       </td><td> converts seconds to string D-HH:MM:SS</td></tr>
+<tr><td><a href="days2sec.3.html"> days2sec(string)   result(seconds)   </a></td><td>&nbsp;       </td><td> converts string D-HH:MM:SS to seconds</td></tr>
+
+<tr><th colspan="3">READING DATES             </th></tr>
+<tr><td><a href="guessdate.3.html">    guessdate(anot,dat)                </a></td><td>&nbsp;       </td><td> Converts a date string to a date array, in various formats</td></tr>
+
+</table>
 
 ## DEFINITIONS
 
