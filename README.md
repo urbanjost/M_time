@@ -56,7 +56,6 @@ addition to conventional Civilian Calendar dates, the module supports the
 ISO-8601 standard methods of displaying dates.
 
 The available procedures are:
-
 <table BORDER="1">
 
 <tr><th colspan="3">UNIX EPOCH                </th></tr>
