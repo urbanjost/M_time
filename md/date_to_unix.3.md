@@ -31,21 +31,19 @@ subroutine <b>date_to_unix</b>(dat,unixtime,ierr)
           <tr valign="top">
             <td class="c14" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
-            <b>DATE_AND_TIME</b>(3f).</td>
+            <b>DATE_AND_TIME</b>(3f):
+        <pre> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds] </pre>
+	    </td>
           </tr>
-        </table><!-- .nf -->
-        <pre>
-          dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-</pre>
+        </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c14" colspan="2">unixtime</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c14" colspan="1" width="6%" >unixtime</td>
             <td>The "Unix Epoch" time, or the number of seconds since 00:00:00 on January 1st, 1970, UTC.</td>
           </tr>
           <tr valign="top">
@@ -53,6 +51,7 @@ subroutine <b>date_to_unix</b>(dat,unixtime,ierr)
             <td valign="bottom">Error code. If 0 no error occurred.</td>
           </tr>
         </table>
+
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>
       <blockquote>
