@@ -89,7 +89,8 @@ subroutine <b>d2w</b>(dat,iso_year,iso_week,iso_weekday,iso_name)
        write(*,'(a,i0)')'ISO-8601 year    ',iso_year
        write(*,'(a,i0)')'ISO-8601 week    ',iso_week
        write(*,'(a,i0)')'ISO-8601 weekday ',iso_weekday
-</pre>end program demo_d2w
+    end program demo_d2w
+</pre>
         <p>results:</p>
         <pre>
     ISO-8601 Week:   2016-W29-1
