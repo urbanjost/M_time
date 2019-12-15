@@ -7,7 +7,9 @@
 
      INFINITE: do
         write(*,'(a)',advance='no')'Enter year YYYY and ordinal day of year DD (or q to quit)'
-        read(*,*,iostat=ios)yyyy,ddd
+        !read(*,*,iostat=ios)yyyy,ddd
+	yyyy=2001
+	ddd=100
         if(ios.ne.0)exit INFINITE
         ! recover month and day from year and day number.
         call ordinal_to_date(yyyy, ddd, dat)
