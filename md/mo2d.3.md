@@ -48,9 +48,6 @@ function <b>mo2d</b>(<i>month_name</i>) result (<i>dat</i>)
             <td class="c35" width="6%" nowrap="nowrap">year</td>
             <td valign="bottom">Optional year. Defaults to current year</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -59,9 +56,6 @@ function <b>mo2d</b>(<i>month_name</i>) result (<i>dat</i>)
           <tr valign="top">
             <td class="c34" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">An integer array that has the same structure as the array returned by the Fortran intrinsic <b>DATE_AND_TIME</b>(3f).</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

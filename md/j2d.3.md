@@ -41,9 +41,6 @@ function <b>j2d</b>(<i>julian</i>) result (<i>dat</i>)
             <td valign="bottom">A Julian Ephemeris Date (JED) is the number of days since noon (not midnight) on January 1st, 4713 BC. If not present, use
             current time.</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -53,9 +50,6 @@ function <b>j2d</b>(<i>julian</i>) result (<i>dat</i>)
             <td class="c30" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
             <b>DATE_AND_TIME</b>(3f).</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table><!-- .nf -->
         <pre>

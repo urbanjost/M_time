@@ -36,16 +36,15 @@ subroutine <b>ordinal_to_date</b>(<i>yyyy</i>, <i>ddd</i>, <i>dat</i>)
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
         <table cellpadding="3">
+
           <tr valign="top">
             <td class="c47" width="6%" nowrap="nowrap">yyyy</td>
             <td valign="bottom">known year</td>
           </tr>
+
           <tr valign="top">
             <td class="c47" width="6%" nowrap="nowrap">ddd</td>
             <td valign="bottom">known ordinal day of the year</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="4"></a>
@@ -55,9 +54,6 @@ subroutine <b>ordinal_to_date</b>(<i>yyyy</i>, <i>ddd</i>, <i>dat</i>)
           <tr valign="top">
             <td class="c47" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">DAT array describing the date</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

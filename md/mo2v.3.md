@@ -45,9 +45,6 @@ function <b>mo2v</b>(<i>month_name</i>) <b>result</b>(<i>imonth</i>)
             <td>name or abbreviation of month. Case is ignored Once enough characters are found to uniquely identify a month the rest of the name is
             ignored.</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -56,9 +53,6 @@ function <b>mo2v</b>(<i>month_name</i>) <b>result</b>(<i>imonth</i>)
           <tr valign="top">
             <td class="c37" width="6%" nowrap="nowrap">imonth</td>
             <td valign="bottom">month number returned. If the name is not recognized a <b>-1</b> is returned.</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

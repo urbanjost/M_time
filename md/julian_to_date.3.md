@@ -50,9 +50,6 @@ subroutine <b>julian_to_date</b>(julian,dat,ierr)
             <td class="c32" width="6%" nowrap="nowrap">ier</td>
             <td valign="bottom">0 for successful execution</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table><!-- .nf -->
         <pre>
               dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
@@ -71,9 +68,6 @@ subroutine <b>julian_to_date</b>(julian,dat,ierr)
           <tr valign="top">
             <td class="c32" width="6%" nowrap="nowrap">ierr</td>
             <td valign="bottom">Error code. If 0 no error occurred.</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

@@ -83,9 +83,6 @@ subroutine <b>d2w</b>(dat,iso_year,iso_week,iso_weekday,iso_name)
             <td width="6%"></td>
             <td>ISO-8601 Week string for the data in the form "yyyy-Www-d".</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>

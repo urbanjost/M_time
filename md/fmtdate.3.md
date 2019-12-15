@@ -50,9 +50,6 @@ function <b>fmtdate</b>(values,format) RESULT (<i>timestr</i>)
             <td valign="bottom">string describing how to format the "DAT" array. For a complete description of the formatting macros supported see
             <b>fmtdate_usage</b>(3f).</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -64,9 +61,6 @@ function <b>fmtdate</b>(values,format) RESULT (<i>timestr</i>)
           <tr valign="top">
             <td width="6%"></td>
             <td>formatted output string representing date</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

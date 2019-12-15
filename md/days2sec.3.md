@@ -120,9 +120,6 @@ function <b>days2sec</b>(<i>str</i>) <b>result</b>(<i>time</i>)
             <td class="c17" width="6%" nowrap="nowrap">time</td>
             <td valign="bottom">the number of seconds represented by the input string</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>

@@ -42,9 +42,6 @@ subroutine <b>date_to_julian</b>(dat,juliandate,ierr)
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
             <b>DATE_AND_TIME</b>(3f).</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table><!-- .nf -->
         <pre>
           dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
@@ -63,9 +60,6 @@ subroutine <b>date_to_julian</b>(dat,juliandate,ierr)
           <tr valign="top">
             <td class="c12" width="6%" nowrap="nowrap">ierr</td>
             <td valign="bottom">Error code. If 0 no error occurred.</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

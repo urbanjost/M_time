@@ -48,9 +48,6 @@ function <b>o2d</b>(ordinal,[year]) result (<i>dat</i>)
             <td class="c43" width="6%" nowrap="nowrap">year</td>
             <td valign="bottom">An optional year for the ordinal day. If not present the current year is assumed.</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -60,9 +57,6 @@ function <b>o2d</b>(ordinal,[year]) result (<i>dat</i>)
             <td class="c44" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic <b>DATE_AND_TIME</b>(3f).
             The timezone value is from the current time on the current platform.</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table><!-- .nf -->
         <pre>

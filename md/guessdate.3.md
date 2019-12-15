@@ -49,9 +49,6 @@ subroutine <b>guessdate</b>(anot,dat)
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
             <b>DATE_AND_TIME</b>(3f).</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table><!-- .nf -->
         <pre>
           dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]

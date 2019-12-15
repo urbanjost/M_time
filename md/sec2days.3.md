@@ -80,9 +80,6 @@ function <b>sec2days</b>(seconds,crop) <b>result</b>(<i>dhms</i>)
             <td class="c50" width="6%" nowrap="nowrap">dmhs</td>
             <td valign="bottom">the returned string of form [d:h:]m:s</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>

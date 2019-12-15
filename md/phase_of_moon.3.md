@@ -76,9 +76,6 @@ function <b>phase_of_moon</b>(<i>datin</i>)
               <td width="3%">o</td>
               <td>waning crescent</td>
             </tr>
-            <tr>
-              <td></td>
-            </tr>
           </table>
         </blockquote>
         <p>To calculate the phase of the moon simply divide the days since the last new moon by eight and select the appropriate phase.</p>

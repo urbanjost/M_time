@@ -73,9 +73,6 @@ subroutine <b>easter</b>(year,dat)
             <td class="c21" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Date array for noon on Easter for the specified year</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>

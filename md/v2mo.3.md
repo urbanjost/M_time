@@ -40,9 +40,6 @@ function <b>v2mo</b>(<i>imonth</i>) <b>result</b>(<i>month_name</i>)
             <td class="c56" width="6%" nowrap="nowrap">imonth</td>
             <td valign="bottom">Common month number (1-12). If out of the allowable range the month name returned will be 'UNKNOWN'.</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -54,9 +51,6 @@ function <b>v2mo</b>(<i>imonth</i>) <b>result</b>(<i>month_name</i>)
           <tr valign="top">
             <td width="6%"></td>
             <td>A string representing a month name or the word 'UNKNOWN'</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

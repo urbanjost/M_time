@@ -43,9 +43,7 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
             <td valign="bottom">"DAT" array (an integer array of the same format as the array returned by the intrinsic <b>DATE_AND_TIME</b>(3f)) describing
             the date to be used to calculate the <i>day</i> of the week.</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
+      
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -92,9 +90,6 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
                 </tr>
               </table>If the error code is not returned and an error occurs, the program is stopped.
             </td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

@@ -43,9 +43,6 @@ function <b>u2d</b>(<i>unixtime</i>) result (<i>dat</i>)
             <td width="6%"></td>
             <td>The "Unix Epoch" time, or the number of seconds since 00:00:00 on January 1st, 1970, UTC. If not present, use current time.</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
@@ -55,9 +52,6 @@ function <b>u2d</b>(<i>unixtime</i>) result (<i>dat</i>)
             <td class="c52" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
             <b>DATE_AND_TIME</b>(3f).</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table><!-- .nf -->
         <pre>

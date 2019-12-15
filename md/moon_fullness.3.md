@@ -42,9 +42,6 @@ function <b>moon_fullness</b>(<i>datin</i>)
             <td class="c39" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">DAT Date array describing input date</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RESULTS</a></h3>
@@ -56,9 +53,6 @@ function <b>moon_fullness</b>(<i>datin</i>)
           <tr valign="top">
             <td width="6%"></td>
             <td>0 is a new or dark moon, 100 is a full moon, + for waxing and - for waning.</td>
-          </tr>
-          <tr>
-            <td></td>
           </tr>
         </table>
       </blockquote><a name="5"></a>

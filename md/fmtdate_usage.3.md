@@ -42,9 +42,6 @@ subroutine <b>fmtdate_usage</b>(<i>indent</i>)
             <td valign="bottom">how many spaces to prefix the output with, so that calling programs can position the output. Default for this optional
             parameter is three (3).</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">EXAMPLE</a></h3>
