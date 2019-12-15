@@ -26,6 +26,7 @@ subroutine <b>julian_to_date</b>(julian,dat,ierr)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
             <td class="c32" width="6%" nowrap="nowrap">julian</td>
@@ -33,35 +34,37 @@ subroutine <b>julian_to_date</b>(julian,dat,ierr)
           </tr>
           <tr valign="top">
             <td class="c32" width="6%" nowrap="nowrap">dat</td>
-            <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
-            <b>DATE_AND_TIME</b>(3f).</td>
+            <td valign="bottom">Integer array holding a "DAT" array,
+                similar in structure to the array returned by the intrinsic
+                <b>DATE_AND_TIME</b>(3f):
+                <pre> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds] </pre>
+	    </td>
           </tr>
+
           <tr valign="top">
             <td class="c32" width="6%" nowrap="nowrap">ier</td>
             <td valign="bottom">0 for successful execution</td>
           </tr>
-        </table><!-- .nf -->
-        <pre>
-              dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-</pre>
+        </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c32" colspan="2">unixtime</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c32" colspan="1" width="6%" >unixtime</td>
             <td>The "Unix Epoch" time, or the number of seconds since 00:00:00 on January 1st, 1970, UTC.</td>
           </tr>
+
           <tr valign="top">
             <td class="c32" width="6%" nowrap="nowrap">ierr</td>
             <td valign="bottom">Error code. If 0 no error occurred.</td>
           </tr>
+
         </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>
+
       <blockquote>
         Sample program:
         <pre>

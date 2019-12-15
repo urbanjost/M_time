@@ -26,12 +26,10 @@ function <b>o2d</b>(ordinal,[year]) result (<i>dat</i>)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c43" colspan="2">ordinal</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c43" colspan="1" width="%6">ordinal</td>
             <td>The day of the year for the given year, where Jan 1st=1.</td>
           </tr>
           <tr valign="top">
@@ -39,20 +37,21 @@ function <b>o2d</b>(ordinal,[year]) result (<i>dat</i>)
             <td valign="bottom">An optional year for the ordinal day. If not present the current year is assumed.</td>
           </tr>
         </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>
         <table cellpadding="3">
           <tr valign="top">
             <td class="c44" width="6%" nowrap="nowrap">dat</td>
-            <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic <b>DATE_AND_TIME</b>(3f).
-            The timezone value is from the current time on the current platform.</td>
+            <td valign="bottom">Integer array holding a "DAT" array,
+                similar in structure to the array returned by the intrinsic
+                <b>DATE_AND_TIME</b>(3f):
+                <pre> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds] </pre>
+                The timezone value is from the current time on the current platform.
+            </td>
           </tr>
-        </table><!-- .nf -->
-        <pre>
-           dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-<br />
-</pre>
+        </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>
       <blockquote>

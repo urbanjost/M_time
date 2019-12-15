@@ -26,33 +26,22 @@ subroutine <b>w2d</b>(iso_year,iso_week,iso_weekday,dat)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c58" colspan="2">iso_year</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c58" colspan="1" width="%6">iso_year</td>
             <td>ISO-8601 year number for the given date</td>
           </tr>
           <tr valign="top">
-            <td class="c58" colspan="2">iso_week</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c58" colspan="1" width="%6">iso_week</td>
             <td>ISO-8601 week number for the given date</td>
           </tr>
           <tr valign="top">
-            <td class="c58" colspan="2">iso_weekday</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c58" colspan="1" width="%6">iso_weekday</td>
             <td>ISO-8601 weekday number for the given date</td>
           </tr>
           <tr valign="top">
-            <td class="c58" colspan="2">iso_name</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c58" colspan="1" width="%6">iso_name</td>
             <td>ISO-8601 Week string for the data in the form "yyyy-Www-d".</td>
           </tr>
         </table>

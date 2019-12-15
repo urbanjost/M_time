@@ -25,12 +25,6 @@ function <b>days2sec</b>(<i>str</i>) <b>result</b>(<i>time</i>)
         <table cellpadding="3">
           <!-- tsb: Given a string representing a duration of the form
  -->
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
           <tr valign="top">
             <td class="c16" colspan="2">[-][[[dd-]hh:]mm:]ss</td>
           </tr>

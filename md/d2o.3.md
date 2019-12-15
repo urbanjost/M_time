@@ -30,10 +30,9 @@ function <b>d2o</b>(<i>dat</i>) result (<i>ordinal</i>)
           <tr valign="top">
             <td class="c6" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
-            <b>DATE_AND_TIME</b>(3f).</td>
-        <blockquote>
-          dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-</blockquote>
+            <b>DATE_AND_TIME</b>(3f):
+            <pre> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds] </pre>
+	    </td>
           </tr>
         </table>
       <a name="4"></a>

@@ -30,15 +30,15 @@ function <b>d2u</b>(<i>dat</i>) esult (<i>unixtime</i>)
         <table cellpadding="3">
           <tr valign="top">
             <td class="c8" width="6%" nowrap="nowrap">dat</td>
-            <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic <b>DATE_AND_TIME</b>(3f).
-            If not present the current time is used</td>
-        <pre>
-          dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-<br />
-</pre>
+            <td valign="bottom">Integer array holding a "DAT" array,
+            similar in structure to the array returned by the intrinsic
+            <b>DATE_AND_TIME</b>(3f):
+            <pre> dat=[yekr,month,day,timezone,hour,minutes,seconds,milliseconds] </pre>
+            If not present the current time is used.
+	    </td>
           </tr>
       </table>
-      <a name="4">6</a>
+      <a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
         <table cellpadding="3">
           <tr valign="top">

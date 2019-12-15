@@ -22,9 +22,6 @@ function <b>ordinal_seconds</b>()
       <blockquote>
         Return number of seconds since beginning of current year.
         <p>Before using this routine consider the consequences if the application is running at the moment a new year begins.</p>
-        <blockquote>
-          <p>2 147 483 647 / 31 536 000 ==&gt; 68.09625973490613901572 years</p>
-        </blockquote>
       </blockquote><a name="3"></a>
       <h3><a name="3">EXAMPLE</a></h3>
       <blockquote>

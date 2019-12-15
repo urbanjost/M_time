@@ -39,13 +39,11 @@ function <b>j2d</b>(<i>julian</i>) result (<i>dat</i>)
           <tr valign="top">
             <td class="c30" width="6%" nowrap="nowrap">dat</td>
             <td valign="bottom">Integer array holding a "DAT" array, similar in structure to the array returned by the intrinsic
-            <b>DATE_AND_TIME</b>(3f).</td>
+            <b>DATE_AND_TIME</b>(3f):
+        <pre> dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds] </pre>
+	    </td>
           </tr>
-        </table><!-- .nf -->
-        <pre>
-          dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-<br />
-</pre>
+        </table>
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>
       <blockquote>

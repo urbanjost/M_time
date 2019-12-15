@@ -27,29 +27,34 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
             <td class="c19" width="6%" nowrap="nowrap">values</td>
-            <td valign="bottom">"DAT" array (an integer array of the same format as the array returned by the intrinsic <b>DATE_AND_TIME</b>(3f)) describing
-            the date to be used to calculate the <i>day</i> of the week.</td>
+            <td valign="bottom">"DAT" array (an integer array of
+               the same format as the array returned by the intrinsic
+               <b>DATE_AND_TIME</b>(3f)) describing
+               the date to be used to calculate the <i>day</i> of the week.
+	    </td>
           </tr>
       
         </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c19" colspan="2">weekday</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c19" colspan="1" width="6%" >weekday</td>
             <td>The numeric <i>day</i> of the week, starting with Monday=1. Optional.</td>
           </tr>
+
           <tr valign="top">
             <td class="c19" width="6%" nowrap="nowrap">day</td>
             <td valign="bottom">The name of the <i>day</i> of the week. Optional.</td>
           </tr>
+
           <tr valign="top">
             <td class="c19" width="6%" nowrap="nowrap">ierr</td>
             <td valign="bottom">
@@ -57,28 +62,20 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
               <table width="100%" cellpadding="3">
                 <!-- tsb: Error code
  -->
-                <tr>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
+                <tr valign="top">
+                  <td width="3%">0</td>
+                  <td> correct</td>
                 </tr>
                 <tr valign="top">
-                  <td width="3%">o</td>
-                  <td>[ 0] correct</td>
+                  <td width="3%">-1</td>
+                  <td>invalid input date</td>
                 </tr>
                 <tr valign="top">
-                  <td width="3%">o</td>
-                  <td>[-1] invalid input date</td>
+                  <td width="3%">-2</td>
+                  <td>neither <i>day</i> nor <i>weekday</i> return <i>values</i> were requested.</td>
                 </tr>
-                <tr valign="top">
-                  <td width="3%">o</td>
-                  <td>[-2] neither <i>day</i> nor <i>weekday</i> return <i>values</i> were requested.</td>
-                </tr>
-                <tr>
-                  <td></td>
-                </tr>
-              </table>If the error code is not returned and an error occurs, the program is stopped.
+              </table>
+	      If the error code is not returned and an error occurs, the program is stopped.
             </td>
           </tr>
         </table>

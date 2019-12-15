@@ -27,6 +27,7 @@ function <b>fmtdate</b>(values,format) RESULT (<i>timestr</i>)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
             <td class="c23" width="6%" nowrap="nowrap">values</td>
@@ -41,19 +42,20 @@ function <b>fmtdate</b>(values,format) RESULT (<i>timestr</i>)
             <b>fmtdate_usage</b>(3f).</td>
           </tr>
         </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c24" colspan="2">timestr</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c24" colspan="1" width="6%" >timestr</td>
             <td>formatted output string representing date</td>
           </tr>
         </table>
-      </blockquote><a name="5"></a>
+      </blockquote>
+
+      <a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>
       <blockquote>
         Sample program:
