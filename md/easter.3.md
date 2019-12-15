@@ -4,22 +4,12 @@
   <div id="Container">
     <div id="Content">
       <div class="c20">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> easter (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>easter(3f)</b> - [M_time] calculate date for Easter given a year <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Results</a><br />
-        <a href="#5">Example</a><br />
-      </blockquote><a name="6"></a>
+      <a name="6"></a>
       <h3><a name="6">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

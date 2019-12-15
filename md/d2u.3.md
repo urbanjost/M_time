@@ -4,22 +4,13 @@
   <div id="Container">
     <div id="Content">
       <div class="c7">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> d2u (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>d2u(3f)</b> - [M_time] given DAT date-time array returns Unix Epoch Time (UET starts at 0000 on 1 Jan. 1970, UTC) <b>(LICENSE:PD)</b>
-      </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Returns</a><br />
-        <a href="#5">Example</a><br />
-      </blockquote><a name="8"></a>
+      </blockquote>
+      <a name="contents" id="contents"></a>
+      <a name="8"></a>
       <h3><a name="8">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

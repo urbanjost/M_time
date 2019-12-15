@@ -4,20 +4,13 @@
   <div id="Container">
     <div id="Content">
       <div class="c48">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> phase_of_moon (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>phase_of_moon(3f)</b> - [M_time] return name for phase of moon for given date <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Examples</a><br />
-      </blockquote><a name="6"></a>
+
+      <a name="6"></a>
       <h3><a name="6">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

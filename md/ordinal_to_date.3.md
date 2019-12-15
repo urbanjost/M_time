@@ -4,22 +4,12 @@
   <div id="Container">
     <div id="Content">
       <div class="c46">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> ordinal_to_date (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>ordinal_to_date(3f)</b> - [M_time] when given a valid year and day of the year returns the DAT array for the date <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Returns</a><br />
-        <a href="#5">Example</a><br />
-      </blockquote><a name="6"></a>
+      <a name="6"></a>
       <h3><a name="6">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

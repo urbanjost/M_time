@@ -4,22 +4,12 @@
   <div id="Container">
     <div id="Content">
       <div class="c38">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> moon_fullness (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>moon_fullness(3f)</b> - [M_time] return percentage of moon phase from new to full <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Results</a><br />
-        <a href="#5">Examples</a><br />
-      </blockquote><a name="8"></a>
+      <a name="8"></a>
       <h3><a name="8">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

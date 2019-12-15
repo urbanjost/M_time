@@ -4,22 +4,12 @@
   <div id="Container">
     <div id="Content">
       <div class="c40">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> now (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>now(3f)</b> - [M_time] return string representing current time given format <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Returns</a><br />
-        <a href="#5">Example</a><br />
-      </blockquote><a name="8"></a>
+      <a name="8"></a>
       <h3><a name="8">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

@@ -4,27 +4,12 @@
   <div id="Container">
     <div id="Content">
       <div class="c9">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> d2w (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>d2w(3f)</b> - [M_time] calculate iso-8601 Week-numbering year date yyyy-Www-d given DAT date-time array <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Returns</a><br />
-        <a href="#5">Example</a><br />
-        <a href="#6">Definition</a><br />
-        <a href="#7">Calculation</a><br />
-        <a href="#8">Method</a><br />
-        <a href="#9">Iso_name</a><br />
-        <a href="#10">Reference</a><br />
-      </blockquote><a name="13"></a>
+      <a name="13"></a>
       <h3><a name="13">SYNOPSIS</a></h3>
       <blockquote>
         <pre>

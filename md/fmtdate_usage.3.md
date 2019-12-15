@@ -4,21 +4,12 @@
   <div id="Container">
     <div id="Content">
       <div class="c25">
-        <hr />
-        <h1><i>Manual Reference Pages -</i> fmtdate_usage (3)</h1>
-        <hr />
       </div><a name="0"></a>
       <h3><a name="0">NAME</a></h3>
       <blockquote>
         <b>fmtdate_usage(3f)</b> - [M_time] display macros recognized by <b>fmtdate</b>(3f) and <b>now</b>(3f) <b>(LICENSE:PD)</b>
       </blockquote><a name="contents" id="contents"></a>
-      <h3>CONTENTS</h3>
-      <blockquote>
-        <a href="#1">Synopsis</a><br />
-        <a href="#2">Description</a><br />
-        <a href="#3">Options</a><br />
-        <a href="#4">Example</a><br />
-      </blockquote><a name="7"></a>
+      <a name="7"></a>
       <h3><a name="7">SYNOPSIS</a></h3>
       <blockquote>
         <pre>
