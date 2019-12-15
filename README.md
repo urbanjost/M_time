@@ -11,7 +11,7 @@ GPF package this library is intertwined with several other large modules.
     make
 
 This will compile the M_time module and build all the example programs from
-the man(1) pages in the PROGRAMS/ sub-directory.
+the document pages in the PROGRAMS/ sub-directory.
 
 ## NAME
 
