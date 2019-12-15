@@ -26,12 +26,10 @@ function <b>mo2d</b>(<i>month_name</i>) result (<i>dat</i>)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c34" colspan="2">month_name</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c34" colspan="1" width="%6">month_name</td>
             <td>A string representing a Common Calendar month name.</td>
           </tr>
           <tr valign="top">
@@ -39,6 +37,7 @@ function <b>mo2d</b>(<i>month_name</i>) result (<i>dat</i>)
             <td valign="bottom">Optional year. Defaults to current year</td>
           </tr>
         </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>

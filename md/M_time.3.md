@@ -1,8 +1,5 @@
 <?
 <body>
-  <div id="Container">
-    <div id="Content">
-      <div class="c51"></div><a name="0"></a> 
       <!-- =========================================================================================================================== -->
       <dl>
         <dt>NAME</dt>
@@ -219,93 +216,93 @@
           So the fmtdate(3f) routine lets us print a DAT array in a variety of familiar styles.</p>
           <p>The fmtdate(3f) and now(3f) procedures let you display a Gregorian date using either keywords for standard formats or using macros in a
           user-specified formatting string. A formatting string may contain the following macros:</p>
-          <pre>
-   Description                                        Example
-    Base time array:
-     (1) %Y -- year, yyyy                                2016
-     (2) %M -- month of year, 01 to 12                   07
-     (3) %D -- day of month, 01 to 31                    27
-         %d -- day of month, with suffix (1st, 2nd,...)  27th
-     (4) %Z -- minutes from UTC                          -0240
-         %z -- -+hh:mm from UTC                          -04:00
-         %T -- -+hhmm  from UTC                          -0400
-     (5) %h -- hours, 00 to 23                           21
-         %H -- hour (1 to 12, or twelve-hour clock)      09
-         %N -- midnight&lt; AM &lt;=noon; noon&lt;= PM &lt;midnight  PM
-     (6) %m -- minutes, 00 to 59                         24
-     (7) %s -- sec, 00 to 59                             22
-     (8) %x -- milliseconds 000 to 999                   512
-    Conversions:
-         %E -- Unix Epoch time                           1469669062.5129952
-         %e -- integer value of Unix Epoch time          1469669063
-         %J -- Julian  date                              2457597.559
-         %j -- integer value of Julian Date(Julian Day)  2457597
-         %O -- Ordinal day (day of year)                 209
-         %o -- whole days since Unix Epoch date          17009
-         %U -- day of week, 1..7 Sunday=1                4
-         %u -- day of week, 1..7 Monday=1                3
-         %i -- ISO week of year 1..53                    30
-         %I -- iso-8601 week-numbering date(yyyy-Www-d)  2016-W30-3
-     Names:
-         %l -- abbreviated month name                    Jul
-         %L -- full month name                           July
-         %w -- first three characters of weekday         Wed
-         %W -- weekday name                              Wednesday
-         %p -- phase of moon                             New
-         %P -- percent of way from new to full moon      -1%
-     Literals:
-         %% -- a literal %                               %
-         %t -- tab character
-         %b -- blank character
-         %B -- exclamation(bang) character
-         %n -- new line (system dependent)
-         %q -- single quote (apostrophe)
-         %Q -- double quote
-     Program timing:
-         %c -- CPU_TIME(3f) output                       .78125000000000000E-001
-         %C -- number of times this routine is used      1
-         %S -- seconds since last use of this format     .0000000000000000
-         %k -- time in seconds from SYSTEM_CLOCK(3f)     588272.750
-         %K -- time in clicks from SYSTEM_CLOCK(3f)      588272750
-   If no percent (%) is found in the format one of several
-   alternate substitutions occurs.
-   If the format is composed entirely of one of the following
-   keywords the following substitution occurs:
-     "iso-8601",
-     "iso"        ==&gt; %Y-%M-%DT%h:%m:%s%z  ! Example: 2017-08-26T18:56:33,510912700-04:00
-     "iso-8601W",
-     "isoweek"    ==&gt; %I
-     "sql"        ==&gt; "%Y-%M-%D %h:%m:%s.%x"
-     "sqlday"     ==&gt; "%Y-%M-%D"
-     "sqltime"    ==&gt; "%h:%m:%s.%x"
-     "rfc-2822"   ==&gt; %w, %D %l %Y %h:%m:%s %T  !  Example: Mon, 14 Aug 2006 02:34:56 -0600
-     "rfc-3339"   ==&gt; %Y-%M-%DT%h:%m:%s%z  !  Example: 2006-08-14 02:34:56-06:00
-     "date"       ==&gt; %w %l %D %h:%m:%s UTC%z %Y
-     "short"      ==&gt; %w, %l %d, %Y %H:%m:%s %N UTC%z
-     "long"," "   ==&gt; %W, %L %d, %Y %H:%m:%s %N UTC%z
-     "suffix"     ==&gt; %Y%D%M%h%m%s
-     "formal"     ==&gt; The %d of %L %Y
-     "lord"       ==&gt; the %d day of %L in the year of our Lord %Y
-     "easter"     ==&gt; FOR THE YEAR OF THE CURRENT DATE:
-                         Easter day: the %d day of %L in the year of our Lord %Y
-     "all"        ==&gt; A SAMPLE OF DATE FORMATS
-   otherwise the following words are replaced with the most
-   common macros:
-      STRING   MACRO  EXAMPLE
-      year     %Y     2016
-      month    %M     07
-      day      %D     27
-      hour     %h     21
-      minute   %m     24
-      second   %s     22
-      epoch    %e     1469669063
-      julian   %j     2457597
-      ordinal  %O     209
-      weekday  %u     3
-   if none of these keywords are found then every letter that
-   is a macro is assumed to have an implied percent in front
-   of it. For example:
-      YMDhms ==&gt; %Y%M%D%h%m%s ==&gt; 20160727212422
+<pre>
+Description                                        Example
+ Base time array:
+  (1) %Y -- year, yyyy                                2016
+  (2) %M -- month of year, 01 to 12                   07
+  (3) %D -- day of month, 01 to 31                    27
+      %d -- day of month, with suffix (1st, 2nd,...)  27th
+  (4) %Z -- minutes from UTC                          -0240
+      %z -- -+hh:mm from UTC                          -04:00
+      %T -- -+hhmm  from UTC                          -0400
+  (5) %h -- hours, 00 to 23                           21
+      %H -- hour (1 to 12, or twelve-hour clock)      09
+      %N -- midnight&lt; AM &lt;=noon; noon&lt;= PM &lt;midnight  PM
+  (6) %m -- minutes, 00 to 59                         24
+  (7) %s -- sec, 00 to 59                             22
+  (8) %x -- milliseconds 000 to 999                   512
+ Conversions:
+      %E -- Unix Epoch time                           1469669062.5129952
+      %e -- integer value of Unix Epoch time          1469669063
+      %J -- Julian  date                              2457597.559
+      %j -- integer value of Julian Date(Julian Day)  2457597
+      %O -- Ordinal day (day of year)                 209
+      %o -- whole days since Unix Epoch date          17009
+      %U -- day of week, 1..7 Sunday=1                4
+      %u -- day of week, 1..7 Monday=1                3
+      %i -- ISO week of year 1..53                    30
+      %I -- iso-8601 week-numbering date(yyyy-Www-d)  2016-W30-3
+  Names:
+      %l -- abbreviated month name                    Jul
+      %L -- full month name                           July
+      %w -- first three characters of weekday         Wed
+      %W -- weekday name                              Wednesday
+      %p -- phase of moon                             New
+      %P -- percent of way from new to full moon      -1%
+  Literals:
+      %% -- a literal %                               %
+      %t -- tab character
+      %b -- blank character
+      %B -- exclamation(bang) character
+      %n -- new line (system dependent)
+      %q -- single quote (apostrophe)
+      %Q -- double quote
+  Program timing:
+      %c -- CPU_TIME(3f) output                       .78125000000000000E-001
+      %C -- number of times this routine is used      1
+      %S -- seconds since last use of this format     .0000000000000000
+      %k -- time in seconds from SYSTEM_CLOCK(3f)     588272.750
+      %K -- time in clicks from SYSTEM_CLOCK(3f)      588272750
+If no percent (%) is found in the format one of several
+alternate substitutions occurs.
+If the format is composed entirely of one of the following
+keywords the following substitution occurs:
+  "iso-8601",
+  "iso"        ==&gt; %Y-%M-%DT%h:%m:%s%z  ! Example: 2017-08-26T18:56:33,510912700-04:00
+  "iso-8601W",
+  "isoweek"    ==&gt; %I
+  "sql"        ==&gt; "%Y-%M-%D %h:%m:%s.%x"
+  "sqlday"     ==&gt; "%Y-%M-%D"
+  "sqltime"    ==&gt; "%h:%m:%s.%x"
+  "rfc-2822"   ==&gt; %w, %D %l %Y %h:%m:%s %T  !  Example: Mon, 14 Aug 2006 02:34:56 -0600
+  "rfc-3339"   ==&gt; %Y-%M-%DT%h:%m:%s%z  !  Example: 2006-08-14 02:34:56-06:00
+  "date"       ==&gt; %w %l %D %h:%m:%s UTC%z %Y
+  "short"      ==&gt; %w, %l %d, %Y %H:%m:%s %N UTC%z
+  "long"," "   ==&gt; %W, %L %d, %Y %H:%m:%s %N UTC%z
+  "suffix"     ==&gt; %Y%D%M%h%m%s
+  "formal"     ==&gt; The %d of %L %Y
+  "lord"       ==&gt; the %d day of %L in the year of our Lord %Y
+  "easter"     ==&gt; FOR THE YEAR OF THE CURRENT DATE:
+                      Easter day: the %d day of %L in the year of our Lord %Y
+  "all"        ==&gt; A SAMPLE OF DATE FORMATS
+otherwise the following words are replaced with the most
+common macros:
+   STRING   MACRO  EXAMPLE
+   year     %Y     2016
+   month    %M     07
+   day      %D     27
+   hour     %h     21
+   minute   %m     24
+   second   %s     22
+   epoch    %e     1469669063
+   julian   %j     2457597
+   ordinal  %O     209
+   weekday  %u     3
+if none of these keywords are found then every letter that
+is a macro is assumed to have an implied percent in front
+of it. For example:
+   YMDhms ==&gt; %Y%M%D%h%m%s ==&gt; 20160727212422
 </pre>
         </dd>
         <dt>OOPS INTERFACE</dt>
@@ -520,7 +517,7 @@ end program demo_M_time
            2015-W53-2
 </pre>
           <p>The example from the object-oriented calls looks like this ...</p>
-          <pre>
+<pre>
  Various initialization styles
  DEFAULT CONSTRUCTOR %FORMAT()               1970-01-01T00:00:00.000+0000
  DEFAULT CONSTRUCTOR %FORMAT("")             1970-01-01T00:00:00.000+0000
@@ -635,6 +632,4 @@ DAT=2016,6,14,-240,22,22,31,253
           date-time procedures.</p>
         </dd>
       </dl>
-    </div>
-  </div>
 </body>

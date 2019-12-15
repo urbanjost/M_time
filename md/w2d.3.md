@@ -45,9 +45,11 @@ subroutine <b>w2d</b>(iso_year,iso_week,iso_weekday,dat)
             <td>ISO-8601 Week string for the data in the form "yyyy-Www-d".</td>
           </tr>
         </table>
+
       </blockquote><a name="4"></a>
       <h3><a name="4">RETURNS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
             <td class="c58" width="6%" nowrap="nowrap">dat</td>
@@ -55,6 +57,7 @@ subroutine <b>w2d</b>(iso_year,iso_week,iso_weekday,dat)
             the date to be used, which is the basic time description used by the other <b>M_time</b>(3fm) module procedures.</td>
           </tr>
         </table>
+
       </blockquote><a name="5"></a>
       <h3><a name="5">EXAMPLE</a></h3>
       <blockquote>
@@ -151,29 +154,21 @@ subroutine <b>w2d</b>(iso_year,iso_week,iso_weekday,dat)
       <h3><a name="8">ISO_NAME</a></h3>
       <blockquote>
         Week date representations are in the format YYYYWww-D.
+
         <table cellpadding="3">
           <!-- tsb: Week date representations are in the format YYYYWww-D.
  -->
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
+          <tr valign="top">
+            <td width="3%">YYY</td>
+            <td> indicates the ISO week-numbering year which is slightly different from the traditional Gregorian calendar year.</td>
           </tr>
           <tr valign="top">
-            <td width="3%">o</td>
-            <td>[YYYY] indicates the ISO week-numbering year which is slightly different from the traditional Gregorian calendar year.</td>
+            <td width="3%">Www</td>
+            <td>is the week number prefixed by the letter W, from W01 through W53.</td>
           </tr>
           <tr valign="top">
-            <td width="3%">o</td>
-            <td>[Www] is the week number prefixed by the letter W, from W01 through W53.</td>
-          </tr>
-          <tr valign="top">
-            <td width="3%">o</td>
-            <td>[D] is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.</td>
-          </tr>
-          <tr>
-            <td></td>
+            <td width="3%">D</td>
+            <td> is the weekday number, from 1 through 7, beginning with Monday and ending with Sunday.</td>
           </tr>
         </table>
       </blockquote>

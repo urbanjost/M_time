@@ -38,28 +38,28 @@ function <b>sec2days</b>(seconds,crop) <b>result</b>(<i>dhms</i>)
       <blockquote>
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c50" colspan="2">seconds</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
+            <td class="c50" colspan="1" width="%6">seconds</td>
             <td>
-              number of seconds to convert to string of form dd-hh:mm:ss. May be of type INTEGER, REAL, <b>REAL</b>(KIND=REALTIME), or CHARACTER.
-              <p>CHARACTER strings may be of the form NNdNNhNNmNNs. Case,spaces and underscores are ignored. Allowed aliases for d,h,m, and s units are</p>
+              number of seconds to convert to string of form
+              dd-hh:mm:ss. May be of type INTEGER, REAL,
+              <b>REAL</b>(KIND=REALTIME), or CHARACTER.
+              <p>CHARACTER strings may be of the form
+              NNdNNhNNmNNs. Case,spaces and underscores are
+              ignored. Allowed aliases for d,h,m, and s units are</p>
               <pre>
                   d -  days,day
                   m -  minutes,minute,min
                   h -  hours,hour,hrs,hr
                   s -  seconds,second,sec
-<br />
-</pre>The numeric values may represent floating point numbers.
+              </pre>
+	      The numeric values may represent floating point numbers.
             </td>
           </tr>
           <tr valign="top">
             <td class="c50" width="6%" nowrap="nowrap">crop</td>
-            <td valign="bottom">if .true., remove leading zero day values or day and hour values. Optional, defaults to .false. .</td>
-          </tr>
-          <tr>
-            <td></td>
+            <td valign="bottom">if .true., remove leading zero day values
+                or day and hour values. Optional, defaults to .false. .
+	    </td>
           </tr>
         </table>
       </blockquote><a name="4"></a>

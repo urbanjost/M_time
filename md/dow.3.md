@@ -83,7 +83,7 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
       <h3><a name="5">EXAMPLE</a></h3>
       <blockquote>
         Sample program:
-        <pre>
+<pre>
     program demo_dow
     use M_time, only : dow
     implicit none
@@ -91,18 +91,15 @@ subroutine <b>dow</b>(<i>values</i>, <i>weekday</i>, <i>day</i>, <i>ierr</i>)
     integer          :: weekday
     character(len=9) :: day
     integer          :: ierr
-<br />      call date_and_time(values=dat)
+      call date_and_time(values=dat)
       call dow(dat, weekday, day, ierr)
       write(*,'(a,i0)')'weekday=',weekday
       write(*,'(a,a)')'day=',trim(day)
       write(*,'(a,i0)')'ierr=',ierr
-<br />
+    end program demo_dow
 </pre>
-        <blockquote>
-          end program demo_dow
-        </blockquote>
         <p>results:</p>
-        <pre>
+<pre>
     weekday=1
     day=Monday
     ierr=0

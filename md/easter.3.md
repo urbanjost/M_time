@@ -51,9 +51,6 @@ subroutine <b>easter</b>(year,dat)
             <td class="c21" width="6%" nowrap="nowrap">year</td>
             <td valign="bottom">Year for which to calculate day that Easter falls on</td>
           </tr>
-          <tr>
-            <td></td>
-          </tr>
         </table>
       </blockquote><a name="4"></a>
       <h3><a name="4">RESULTS</a></h3>

@@ -26,14 +26,15 @@ function <b>mo2v</b>(<i>month_name</i>) <b>result</b>(<i>imonth</i>)
       </blockquote><a name="3"></a>
       <h3><a name="3">OPTIONS</a></h3>
       <blockquote>
+
         <table cellpadding="3">
           <tr valign="top">
-            <td class="c37" colspan="2">month_name</td>
-          </tr>
-          <tr valign="top">
-            <td width="6%"></td>
-            <td>name or abbreviation of month. Case is ignored Once enough characters are found to uniquely identify a month the rest of the name is
-            ignored.</td>
+            <td class="c37" colspan="1" width="%6">month_name</td>
+            <td>name or abbreviation of month. Case is ignored Once
+                enough characters are found to uniquely identify a month
+                the rest of the name is
+                ignored.
+	    </td>
           </tr>
         </table>
       </blockquote><a name="4"></a>

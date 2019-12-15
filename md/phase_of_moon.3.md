@@ -28,48 +28,16 @@ function <b>phase_of_moon</b>(<i>datin</i>)
         (January 6, 2000, 18:14 UTC). Then it is easy to count the number of days since the last new moon. This is an approximate calculation.</p>
         <p>There are eight generally recognized phases of the moon in common use</p>
         <blockquote>
-          <table cellpadding="3">
-            <!-- tsb: There are eight generally recognized phases of the moon in common use
- -->
-            <tr>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>new or dark</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>waxing crescent</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>first quarter</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>waxing gibbous</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>full</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>waning gibbous</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>laster quarter</td>
-            </tr>
-            <tr valign="top">
-              <td width="3%">o</td>
-              <td>waning crescent</td>
-            </tr>
-          </table>
+          <ul>
+              <li>new or dark</li>
+              <li>waxing crescent</li>
+              <li>first quarter</li>
+              <li>waxing gibbous</li>
+              <li>full</li>
+              <li>waning gibbous</li>
+              <li>laster quarter</li>
+              <li>waning crescent</li>
+          </ul>
         </blockquote>
         <p>To calculate the phase of the moon simply divide the days since the last new moon by eight and select the appropriate phase.</p>
         <p>Note that technically the four states (new, first quarter, full, third quarter) are events not phases. That is to say, the moon is technically

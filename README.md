@@ -55,7 +55,10 @@ the easy incorporation of timing information into program messages. In
 addition to conventional Civilian Calendar dates, the module supports the
 ISO-8601 standard methods of displaying dates.
 
-The available procedures are:
+In addition to the
+<a href="md/M_time.3.md">M_time overview</a> there is a usage description
+for each procedure:
+
 <table BORDER="1">
 
 <tr><th colspan="3">UNIX EPOCH                </th></tr>
