@@ -42,7 +42,6 @@ of output formats:
 
     Easter day: the 12th day of April in the year of our Lord 2020
 
-
 The example program "now" easily lets you try out various options. With no options it
 displays allowed formats. For example:
 
@@ -51,10 +50,10 @@ displays allowed formats. For example:
       ./now 'The year is %Y and the month is %M (%L) %h:%m:%s'
       ./now formal
 
-      20200105
-      2458854 1578240100 005
-      The year is 2020 and the month is 01 (January) 11:01:39
-      The 5th of January 2020
+       20200105
+       2458854 1578240100 005
+       The year is 2020 and the month is 01 (January) 11:01:39
+       The 5th of January 2020
 
 ## NAME
 
