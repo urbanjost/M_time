@@ -13,6 +13,49 @@ GPF package this library is intertwined with several other large modules.
 This will compile the M_time module and build all the example programs from
 the document pages in the PROGRAMS/ sub-directory.
 
+The small example programs demonstrate how easily you can generate a variety
+of output formats:
+
+    Sun, Jan 5th, 2020 10:48:33 AM UTC-05:00
+   
+    Sunday, January 5th, 2020 10:48:53 AM UTC-05:00
+   
+        January 2020     
+    Mo Tu We Th Fr Sa Su 
+           1  2  3  4  5 
+     6  7  8  9 10 11 12 
+    13 14 15 16 17 18 19 
+    20 21 22 23 24 25 26 
+    27 28 29 30 31       
+                        
+    Julian Date is 2458854.1545532290     
+   
+    Unix Epoch time is 1578238955.5700049     
+   
+    ISO-8601 Week: 2020-W01-7
+   
+    Day of year is: 5
+   
+    for year 2020 days in year is: 366
+   
+    weekday=7 day=Sunday
+   
+    Easter day: the 12th day of April in the year of our Lord 2020
+
+
+The example program "now" easily lets you try out various options. With no options it
+displays allowed formats. For example:
+
+   ./now year month day
+   ./now 'julian epoch ordinal'
+   ./now 'The year is %Y and the month is %M (%L) %h:%m:%s'
+   ./now formal
+   
+   20200105
+   2458854 1578240100 005
+   The year is 2020 and the month is 01 (January) 11:01:39
+   The 5th of January 2020
+
 ## NAME
 
    M_time - Fortran module for manipulating and presenting time and date values 
