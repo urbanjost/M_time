@@ -1,4 +1,4 @@
-           program demo_box_month
+program demo_box_month
            use M_time, only : box_month
            implicit none
            integer           :: dat(8)

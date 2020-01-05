@@ -1,0 +1,10 @@
+mainpage.txt
+/**
+     @mainpage M_time Fortran Library
+
+     @section Introduction
+      Date and time procedures that expand upon the Fortran DATE_AND_TIME(3f)
+      intrinsic.
+
+     @image html html/images/swirl.gif
+*/
