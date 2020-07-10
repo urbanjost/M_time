@@ -116,7 +116,7 @@ including just reading further down ...
 + [manpage index](https://urbanjost.github.io/M_time/index.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html).
-+ [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html/).
++ [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
 
 _and there are manpages_ in the distribution in man/.
 
