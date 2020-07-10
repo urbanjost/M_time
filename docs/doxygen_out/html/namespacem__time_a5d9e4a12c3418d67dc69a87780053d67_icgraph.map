@@ -1,0 +1,7 @@
+<map id="m_time::trimzeros" name="m_time::trimzeros">
+<area shape="rect" id="node2" href="$namespacem__time.html#a0dac2380784afe63e06862095d589c22" title="NAMEvalue_to_string(3f) &#45; [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)..." alt="" coords="196,81,376,108"/>
+<area shape="rect" id="node3" href="$namespacem__time.html#a0b88094db657df167f8e57aa4362259e" title="NAMEv2s(3f) &#45; [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD) ..." alt="" coords="424,5,527,32"/>
+<area shape="rect" id="node4" href="$namespacem__time.html#a6fdd4bf34977b7a390ce93c75c2cc6d8" title="m_time::r2s" alt="" coords="425,56,525,83"/>
+<area shape="rect" id="node5" href="$namespacem__time.html#a7ae85160c5039dad604fd05efad2445f" title="m_time::i2s" alt="" coords="426,107,525,133"/>
+<area shape="rect" id="node6" href="$namespacem__time.html#a03e90459e69ffa353d1a6ce5765836fd" title="m_time::l2s" alt="" coords="426,157,525,184"/>
+</map>

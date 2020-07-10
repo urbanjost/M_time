@@ -178,8 +178,8 @@ end interface date_time
 !!     integer,intent(out)              :: ierr
 !!
 !!##DESCRIPTION
-!!    Converts a DAT date-time array to a Unix Epoch Time (UET) value.
-!!    UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
+!!   Converts a DAT date-time array to a Unix Epoch Time (UET) value.
+!!   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
 !!
 !!##OPTIONS
 !!    dat   Integer array holding a "DAT" array, similar in structure
@@ -234,8 +234,8 @@ subroutine date_to_julian(dat,julian,ierr)
 ! * Julian Date starts at noon; while Civil Calendar date starts at midnight
 !-----------------------------------------------------------------------------------------------------------------------------------
 
-character(len=*),parameter::ident_1="&
-&@(#)M_time::date_to_julian(3f): Converts proleptic Gregorian DAT date-time array to Julian Date"
+!character(len=*),parameter::ident_1="&
+!&@(#)M_time::date_to_julian(3f): Converts proleptic Gregorian DAT date-time array to Julian Date"
 
 integer,intent(in)               :: dat(8)   ! array like returned by DATE_AND_TIME(3f)
 real(kind=realtime),intent(out)  :: julian   ! Julian Date (non-negative, but may be non-integer)
@@ -295,8 +295,8 @@ end subroutine date_to_julian
 !!     integer,intent(out)            :: ierr
 !!
 !!##DESCRIPTION
-!!    Converts a Unix Epoch Time (UET) value to a DAT date-time array.
-!!    UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
+!!   Converts a Unix Epoch Time (UET) value to a DAT date-time array.
+!!   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
 !!
 !!##OPTIONS
 !!     julian   Julian Date (days)
@@ -346,7 +346,7 @@ end subroutine date_to_julian
 !===================================================================================================================================
 subroutine julian_to_date(julian,dat,ierr)
 
-character(len=*),parameter::ident_2="@(#)M_time::julian_to_date(3f): Converts Julian Date to DAT date-time array"
+!character(len=*),parameter::ident_2="@(#)M_time::julian_to_date(3f): Converts Julian Date to DAT date-time array"
 
 real(kind=realtime),intent(in)   :: julian            ! Julian Date (non-negative)
 integer,intent(out)              :: dat(8)
@@ -436,7 +436,7 @@ end subroutine julian_to_date
 !!
 !!##DESCRIPTION
 !!
-!!    Converts a DAT date-time array to a UET (Unix Epoch Time).
+!!   Converts a DAT date-time array to a UET (Unix Epoch Time).
 !!
 !!##OPTIONS
 !!    dat   Integer array holding a "DAT" array, similar in structure
@@ -477,7 +477,7 @@ end subroutine julian_to_date
 !===================================================================================================================================
 subroutine date_to_unix(dat,unixtime,ierr)
 
-character(len=*),parameter::ident_3="@(#)M_time::date_to_unix(3f): Convert DAT date-time array to Unix Epoch Time"
+!character(len=*),parameter::ident_3="@(#)M_time::date_to_unix(3f): Convert DAT date-time array to Unix Epoch Time"
 
 integer,intent(in)              :: dat(8)       ! date time array similar to that returned by DATE_AND_TIME
 real(kind=realtime),intent(out) :: unixtime     ! Unix time (seconds)
@@ -513,7 +513,7 @@ end subroutine date_to_unix
 !!     integer,intent(out)            :: ierr     ! 0 for successful execution
 !!
 !!##DESCRIPTION
-!!     Converts a Unix Epoch Time (UET) to a DAT date-time array.
+!!   Converts a Unix Epoch Time (UET) to a DAT date-time array.
 !!
 !!##OPTIONS
 !!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
@@ -560,7 +560,7 @@ end subroutine date_to_unix
 !===================================================================================================================================
 subroutine unix_to_date(unixtime,dat,ierr)
 
-character(len=*),parameter::ident_4="@(#)M_time::unix_to_date(3f): Converts Unix Time to DAT date-time array"
+!character(len=*),parameter::ident_4="@(#)M_time::unix_to_date(3f): Converts Unix Time to DAT date-time array"
 
 class(*),intent(in)              :: unixtime                            ! Unix time (seconds)
 integer,intent(out)              :: dat(8)                              ! date and time array
@@ -602,8 +602,8 @@ end subroutine unix_to_date
 !!     integer                     :: ordinal  ! the returned day of the year
 !!
 !!##DESCRIPTION
-!!     Given a date in the form of a "DAT" array return the Ordinal Day,
-!!     (ie. "the day of the year").
+!!   Given a date in the form of a "DAT" array return the Ordinal Day,
+!!   (ie. "the day of the year").
 !!
 !!##OPTIONS
 !!     dat  Integer array holding a "DAT" array, similar in structure
@@ -661,7 +661,7 @@ end subroutine unix_to_date
 !===================================================================================================================================
 function d2o(dat) result (ordinal)
 
-character(len=*),parameter::ident_5="@(#)M_time::d2o(3f): Converts DAT date-time array to Ordinal day"
+!character(len=*),parameter::ident_5="@(#)M_time::d2o(3f): Converts DAT date-time array to Ordinal day"
 
 ! JSU 2015-12-13
 integer,intent(in),optional :: dat(8)                 ! date time array similar to that returned by DATE_AND_TIME
@@ -697,15 +697,15 @@ end function d2o
 !!
 !!     integer :: ordinal_seconds
 !!##DESCRIPTION
-!!    Return number of seconds since beginning of current year.
+!!   Return number of seconds since beginning of current year.
 !!
-!!    Before using this routine consider the consequences if the application
-!!    is running at the moment a new year begins.
+!!   Before using this routine consider the consequences if the application
+!!   is running at the moment a new year begins.
 !!
 !!        2 147 483 647 / 31 536 000 ==> 68.09625973490613901572 years
 !!##EXAMPLE
 !!
-!!   sample program
+!!    Sample program
 !!
 !!     program demo_ordinal_seconds
 !!     use M_time, only : ordinal_seconds
@@ -727,7 +727,7 @@ end function d2o
 !===================================================================================================================================
 integer function ordinal_seconds()
 
-character(len=*),parameter::ident_6="@(#)M_time::ordinal_seconds(3f): seconds since beginning of year"
+!character(len=*),parameter::ident_6="@(#)M_time::ordinal_seconds(3f): seconds since beginning of year"
 
 integer                     :: vtime(8)
 integer                     :: year, month, day, hour, minutes, seconds, timezone, milliseconds
@@ -759,7 +759,7 @@ end function ordinal_seconds
 !!       integer, intent(in)   :: ddd
 !!       integer, intent(out)  :: dat
 !!##DESCRIPTION
-!!     When given a valid year, YYYY, and day of the year, DDD, returns the date as a DAT date array
+!!   When given a valid year, YYYY, and day of the year, DDD, returns the date as a DAT date array
 !!##OPTIONS
 !!       yyyy  known year
 !!       ddd   known ordinal day of the year
@@ -767,7 +767,7 @@ end function ordinal_seconds
 !!       dat   DAT array describing the date
 !!##EXAMPLE
 !!
-!!   Sample program:
+!!    Sample program:
 !!
 !!     program demo_datesub
 !!     use M_time, only : ordinal_to_date
@@ -791,8 +791,8 @@ end function ordinal_seconds
 subroutine ordinal_to_date(yyyy,ddd,dat)
 !!use M_time, only : d2j,j2d, realtime
 
-character(len=*),parameter::ident_7="&
-&@(#)M_time::ordinal_to_date(3f): given a valid year and day of the year returns the DAT array for the date"
+!character(len=*),parameter::ident_7="&
+!&@(#)M_time::ordinal_to_date(3f): given a valid year and day of the year returns the DAT array for the date"
 
 integer :: yyyy
 integer :: ddd
@@ -818,8 +818,8 @@ end subroutine ordinal_to_date
 !!     integer            :: dat(8)   ! date time array
 !!
 !!##DESCRIPTION
-!!     Given an Ordinal day of the year return a date in the form of a
-!!     "DAT" array.
+!!   Given an Ordinal day of the year return a date in the form of a
+!!   "DAT" array.
 !!
 !!##OPTIONS
 !!     ordinal  The day of the year for the given year, where Jan 1st=1.
@@ -863,7 +863,7 @@ end subroutine ordinal_to_date
 !===================================================================================================================================
 function o2d(ordinal,year) result (dat)
 
-character(len=*),parameter::ident_8="@(#)M_time::o2d(3f): Converts ordinal day to DAT date-time array"
+!character(len=*),parameter::ident_8="@(#)M_time::o2d(3f): Converts ordinal day to DAT date-time array"
 
 integer                    :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
 integer,intent(in)         :: ordinal                 ! the returned number of days
@@ -900,8 +900,8 @@ end function o2d
 !!     character(len=:),allocatable :: month_name  ! month name
 !!
 !!##DESCRIPTION
-!!    Given a Common Calendar month number, return the name of the month
-!!    as a string.
+!!   Given a Common Calendar month number, return the name of the month
+!!   as a string.
 !!
 !!##OPTIONS
 !!    imonth      Common month number (1-12). If out of the allowable range
@@ -944,7 +944,7 @@ end function o2d
 !===================================================================================================================================
 function v2mo(imonth) result(month_name)
 
-character(len=*),parameter::ident_9="@(#)M_time::v2mo(3f): returns the month name of a Common month number"
+!character(len=*),parameter::ident_9="@(#)M_time::v2mo(3f): returns the month name of a Common month number"
 
 ! JSU 2015-12-13
 character(len=:),allocatable :: month_name                                        ! string containing month name or abbreviation.
@@ -975,9 +975,9 @@ end function v2mo
 !!        integer                     :: dat(8)
 !!
 !!##DESCRIPTION
-!!    Given a Common Calendar month name, return the date as a "DAT" array
-!!    for the 1st day of the month. An optional year may be specified. The
-!!    year defaults to the current year.
+!!   Given a Common Calendar month name, return the date as a "DAT" array
+!!   for the 1st day of the month. An optional year may be specified. The
+!!   year defaults to the current year.
 !!
 !!##OPTIONS
 !!    month_name  A string representing a Common Calendar month name.
@@ -1007,8 +1007,8 @@ end function v2mo
 !===================================================================================================================================
 function mo2d(month_name,year) result (dat)
 
-character(len=*),parameter::ident_10="&
-&@(#)M_time::mo2d(3f): month name to DAT date-time array for 1st of that month in specified year"
+!character(len=*),parameter::ident_10="&
+!&@(#)M_time::mo2d(3f): month name to DAT date-time array for 1st of that month in specified year"
 
 character(len=*),intent(in) :: month_name
 integer,intent(in),optional :: year
@@ -1044,10 +1044,10 @@ end function mo2d
 !!      integer                    :: imonth     ! month number
 !!
 !!##DESCRIPTION
-!!       Given a string representing the name or abbreviation of a Gregorian
-!!       Calendar month return a number representing the position of the
-!!       month in the calendar starting with 1 for January and ending with
-!!       12 for December.
+!!   Given a string representing the name or abbreviation of a Gregorian
+!!   Calendar month return a number representing the position of the
+!!   month in the calendar starting with 1 for January and ending with
+!!   12 for December.
 !!
 !!##OPTIONS
 !!    month_name  name or abbreviation of month. Case is ignored
@@ -1085,7 +1085,7 @@ end function mo2d
 !===================================================================================================================================
 function mo2v(month_name) result(imonth)
 
-character(len=*),parameter::ident_11="@(#)M_time::mo2v(3f): given month name return month number (1-12) of that month"
+!character(len=*),parameter::ident_11="@(#)M_time::mo2v(3f): given month name return month number (1-12) of that month"
 
 ! JSU 2015-12-13
 character(len=*),intent(in):: month_name   ! string containing month name or abbreviation.
@@ -1132,9 +1132,9 @@ end function mo2v
 !!     character(len=:),allocatable    :: timestr ! formatted date
 !!
 !!##DESCRIPTION
-!!     The now(3f) function is a call to the fmtdate(3f) function using the
-!!     current date and time. That is, it is a convenient way to print the
-!!     current date and time.
+!!   The now(3f) function is a call to the fmtdate(3f) function using the
+!!   current date and time. That is, it is a convenient way to print the
+!!   current date and time.
 !!
 !!##OPTIONS
 !!     format      string describing how to format the current date and time.
@@ -1174,7 +1174,7 @@ end function mo2v
 !===================================================================================================================================
 function now(format)
 
-character(len=*),parameter::ident_12="@(#)M_time::now(3f): return string representing current time given format"
+!character(len=*),parameter::ident_12="@(#)M_time::now(3f): return string representing current time given format"
 
 ! JSU 2015-10-24
 character(len=*),intent(in),optional :: format
@@ -1205,10 +1205,10 @@ end function now
 !!     character(len=:),allocatable         :: timestr
 !!
 !!##DESCRIPTION
-!!     The fmtdate(3f) procedure lets you reformat a DAT array in
-!!     many common formats using a special string containing macro names
-!!     beginning with '%'. To see the allowable macros call or see the
-!!     fmtdate_usage(3f) routine.
+!!   The fmtdate(3f) procedure lets you reformat a DAT array in
+!!   many common formats using a special string containing macro names
+!!   beginning with '%'. To see the allowable macros call or see the
+!!   fmtdate_usage(3f) routine.
 !!
 !!##OPTIONS
 !!     values   date in a "DAT" array, which is the same format as
@@ -1255,7 +1255,7 @@ end function now
 !===================================================================================================================================
 function fmtdate(values,format) RESULT (timestr)
 
-character(len=*),parameter::ident_13="@(#)M_time::fmtdate(3f): given DAT date-time array return date as string using format"
+!character(len=*),parameter::ident_13="@(#)M_time::fmtdate(3f): given DAT date-time array return date as string using format"
 
 ! JSU 2015-10-24
 integer,dimension(8),intent(in)      :: values    ! numeric time values as DATE_AND_TIME(3f) intrinsic returns
@@ -1518,13 +1518,13 @@ end function fmtdate
 !!
 !!##DESCRIPTION
 !!
-!!     The fmtdate_usage(3f) subroutine displays the formatting options
-!!     available for use in procedures such as fmtdate(3f) and now(3f).
-!!     It is typically used to produce up-to-date help text in commands
-!!     that use the M_time(3fm) module, so that the formatting information
-!!     only needs maintained in one place (this routine) and is easily
-!!     displayed so users can quickly obtain a description of the formatting
-!!     macros.
+!!   The fmtdate_usage(3f) subroutine displays the formatting options
+!!   available for use in procedures such as fmtdate(3f) and now(3f).
+!!   It is typically used to produce up-to-date help text in commands
+!!   that use the M_time(3fm) module, so that the formatting information
+!!   only needs maintained in one place (this routine) and is easily
+!!   displayed so users can quickly obtain a description of the formatting
+!!   macros.
 !!
 !!##OPTIONS
 !!     indent      how many spaces to prefix the output with, so that
@@ -1643,7 +1643,7 @@ end function fmtdate
 !===================================================================================================================================
 subroutine fmtdate_usage(indent)
 
-character(len=*),parameter::ident_14="@(#)M_time::fmtdate_usage(3f): display macros recognized by fmtdate(3f)"
+!character(len=*),parameter::ident_14="@(#)M_time::fmtdate_usage(3f): display macros recognized by fmtdate(3f)"
 
 integer,intent(in),optional    :: indent
 character(len=128),allocatable :: usage(:)
@@ -1780,19 +1780,19 @@ end subroutine fmtdate_usage
 !!
 !!##DESCRIPTION
 !!
-!!    Read in strings and except for looking for month names remove
-!!    non-numeric characters and try to convert a string assumed to represent
-!!    a date to a date-time array.
+!!   Read in strings and except for looking for month names remove
+!!   non-numeric characters and try to convert a string assumed to represent
+!!   a date to a date-time array.
 !!
-!!    Years should always be expressed as four-digit numbers, and except for
-!!    the special format yyyy-mm-dd the day should come after the year. Named
-!!    months are preferred. If ambiguous the order is assumed to be day -
-!!    month - year. Times are assumed to be of the form HH:MM:SS
+!!   Years should always be expressed as four-digit numbers, and except for
+!!   the special format yyyy-mm-dd the day should come after the year. Named
+!!   months are preferred. If ambiguous the order is assumed to be day -
+!!   month - year. Times are assumed to be of the form HH:MM:SS
 !!
-!!    It is planned that this routine will be superseded. As an alternative,
-!!    a C routine exists in the standard C libraries that allows for
-!!    expansive features when reading dates that can be called via the
-!!    ISO_C_BINDING interface.
+!!   It is planned that this routine will be superseded. As an alternative,
+!!   a C routine exists in the standard C libraries that allows for
+!!   expansive features when reading dates that can be called via the
+!!   ISO_C_BINDING interface.
 !!
 !!##OPTIONS
 !!    anot  A string assumed to represent a date including a year, month and day.
@@ -1852,7 +1852,7 @@ end subroutine fmtdate_usage
 !===================================================================================================================================
 subroutine guessdate(datestring,dat,ier)
 
-character(len=*),parameter::ident_15="@(#)M_time::guessdate(3f): Guess format of a date string to create a DAT date-time array"
+!character(len=*),parameter::ident_15="@(#)M_time::guessdate(3f): Guess format of a date string to create a DAT date-time array"
 
 ! partially based on a concept from JRH 1991-03-19
 ! JSU, 20160729
@@ -2136,8 +2136,8 @@ end subroutine guessdate
 !!     integer,intent(out),optional :: ierr
 !!
 !!##DESCRIPTION
-!!     Given a date array DAT
-!!     return the day of the week as a number and a name, Mon=1.
+!!   Given a date array DAT
+!!   return the day of the week as a number and a name, Mon=1.
 !!
 !!##OPTIONS
 !!    values   "DAT" array (an integer array of the same format as
@@ -2191,7 +2191,7 @@ end subroutine guessdate
 !===================================================================================================================================
 subroutine dow(values, weekday, day, ierr)
 
-character(len=*),parameter::ident_16="@(#)M_time::dow(3f): Given DAT date-time array return the day of the week"
+!character(len=*),parameter::ident_16="@(#)M_time::dow(3f): Given DAT date-time array return the day of the week"
 
 integer,intent(in)                    :: values(8) ! date and time array used to get time zone
 integer,intent(out),optional          :: weekday   ! The day of the week, 1 = Monday, 7 = Sunday
@@ -2259,9 +2259,9 @@ end subroutine dow
 !!     character(len=10),intent(out)   :: iso_name
 !!
 !!##DESCRIPTION
-!!     Given a "DAT" array defining a date and time, return the ISO-8601
-!!     Week in two formats -- as three integer values defining the ISO year,
-!!     week of year and weekday; and as a string of the form "yyyy-Www-d".
+!!   Given a "DAT" array defining a date and time, return the ISO-8601
+!!   Week in two formats -- as three integer values defining the ISO year,
+!!   week of year and weekday; and as a string of the form "yyyy-Www-d".
 !!
 !!##OPTIONS
 !!    dat          "DAT" array (an integer array of the same format as
@@ -2353,7 +2353,7 @@ end subroutine dow
 !===================================================================================================================================
 subroutine d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
 
-character(len=*),parameter::ident_17="@(#)M_time::d2w(3f): DAT date-time array to iso-8601 Week-numbering year date yyyy-Www-d"
+!character(len=*),parameter::ident_17="@(#)M_time::d2w(3f): DAT date-time array to iso-8601 Week-numbering year date yyyy-Www-d"
 
 integer,intent(in)              :: dat(8)     ! input date array
 integer,intent(out)             :: iso_year, iso_week, iso_weekday
@@ -2410,9 +2410,9 @@ end subroutine d2w
 !!     integer,intent(out)     :: dat(8)     ! output date array
 !!
 !!##DESCRIPTION
-!!    Given an ISO-8601 week return a "DAT" array defining a date and time,
-!!    The ISO-8601 is supplied as three integer values defining the ISO
-!!    year, week of year and weekday.
+!!   Given an ISO-8601 week return a "DAT" array defining a date and time,
+!!   The ISO-8601 is supplied as three integer values defining the ISO
+!!   year, week of year and weekday.
 !!
 !!##OPTIONS
 !!    iso_year     ISO-8601 year number for the given date
@@ -2561,8 +2561,8 @@ end subroutine d2w
 !-----------------------------------------------------------------------------------------------------------------------------------
 subroutine w2d(iso_year,iso_week,iso_weekday,dat)
 
-character(len=*),parameter::ident_18="&
-&@(#)M_time::w2d(3f): convert iso-8601 Week-numbering year date yyyy-Www-d to DAT date-time array"
+!character(len=*),parameter::ident_18="&
+!&@(#)M_time::w2d(3f): convert iso-8601 Week-numbering year date yyyy-Www-d to DAT date-time array"
 
 integer,intent(in)              :: iso_year, iso_week, iso_weekday
 integer,intent(out)             :: dat(8)     ! output date array
@@ -2591,8 +2591,8 @@ end subroutine w2d
 !!     character(len=21)     :: calen(8)
 !!
 !!##DESCRIPTION
-!!    box_month(3f) uses a year and month from a date array to populate
-!!    a small character array with a calendar representing the month.
+!!   box_month(3f) uses a year and month from a date array to populate
+!!   a small character array with a calendar representing the month.
 !!
 !!##OPTIONS
 !!    dat  "DAT" array (an integer array of the same format as
@@ -2607,7 +2607,7 @@ end subroutine w2d
 !!
 !!##EXAMPLE
 !!
-!!    Sample program:
+!!    Sample program:XXX
 !!
 !!      program demo_box_month
 !!      use M_time, only : box_month
@@ -2636,7 +2636,7 @@ end subroutine w2d
 !===================================================================================================================================
 subroutine box_month(dat,calen)
 
-character(len=*),parameter::ident_19="@(#)M_time::box_month(3f): generate month specified by DAT date-time array in character array"
+!character(len=*),parameter::ident_19="@(#)M_time::box_month(3f): return month specified by DAT date-time array in character array"
 
 integer,parameter             :: wklen=3*7
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2687,6 +2687,7 @@ end subroutine box_month
 !!     real(kind=realtime) :: julian
 !!
 !!##DESCRIPTION
+!!   given DAT date-time array returns Julian Date
 !!
 !!##OPTIONS
 !!    dat       Integer array holding a "DAT" array, similar in structure
@@ -2722,7 +2723,7 @@ end subroutine box_month
 !===================================================================================================================================
 function d2j(dat) result (julian)
 
-character(len=*),parameter::ident_20="@(#)M_time::d2j(3f): Given DAT date-time array returns Julian Date"
+!character(len=*),parameter::ident_20="@(#)M_time::d2j(3f): Given DAT date-time array returns Julian Date"
 
 integer,intent(in),optional :: dat(8)
 real(kind=realtime)         :: julian
@@ -2754,7 +2755,7 @@ end function d2j
 !!
 !!##DESCRIPTION
 !!
-!!     Converts a Julian Ephemeris Date to a DAT date-time array.
+!!   Converts a Julian Ephemeris Date to a DAT date-time array.
 !!
 !!##OPTIONS
 !!    julian    A Julian Ephemeris Date (JED) is the number of days since
@@ -2796,7 +2797,7 @@ end function d2j
 !===================================================================================================================================
 function j2d(julian) result (dat)
 
-character(len=*),parameter::ident_21="@(#)M_time::j2d(3f): Given Julian Date returns DAT date-time array"
+!character(len=*),parameter::ident_21="@(#)M_time::j2d(3f): Given Julian Date returns DAT date-time array"
 
 real(kind=realtime),intent(in)   :: julian
 integer                          :: dat(8)
@@ -2819,10 +2820,10 @@ end function j2d
 !!       real(kind=realtime)         :: unixtime
 !!
 !!##DESCRIPTION
-!!    Converts a DAT date-time array to a Unix Epoch Time value. Typically
-!!    mathematical operations such as sums, sorting and comparison are
-!!    performed with simple UET numeric values, and then they are converted
-!!    back.
+!!   Converts a DAT date-time array to a Unix Epoch Time value. Typically
+!!   mathematical operations such as sums, sorting and comparison are
+!!   performed with simple UET numeric values, and then they are converted
+!!   back.
 !!
 !!##OPTIONS
 !!    dat   Integer array holding a "DAT" array, similar in structure
@@ -2859,7 +2860,7 @@ end function j2d
 !===================================================================================================================================
 function d2u(dat) result (unixtime)
 
-character(len=*),parameter::ident_22="@(#)M_time::d2u(3f): Given DAT date-time array returns Unix Epoch time"
+!character(len=*),parameter::ident_22="@(#)M_time::d2u(3f): Given DAT date-time array returns Unix Epoch time"
 
 real(kind=realtime)           :: unixtime
 integer,intent(in),optional   :: dat(8)
@@ -2892,6 +2893,7 @@ end function d2u
 !!     integer                           :: dat(8)
 !!
 !!##DESCRIPTION
+!!   Given Unix Epoch Time returns DAT date-time array
 !!
 !!##OPTIONS
 !!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
@@ -2932,7 +2934,7 @@ end function d2u
 !===================================================================================================================================
 function u2d(unixtime) result (dat)
 
-character(len=*),parameter::ident_23="@(#)M_time::u2d(3f): Given Unix Epoch Time returns DAT date-time array"
+!character(len=*),parameter::ident_23="@(#)M_time::u2d(3f): Given Unix Epoch Time returns DAT date-time array"
 
 class(*),intent(in),optional   :: unixtime
 integer                        :: dat(8)
@@ -2987,7 +2989,7 @@ end function get_timezone
 !!     character(len=:),allocatable   :: dhms
 !!
 !!##DESCRIPTION
-!!    Given a number of seconds convert it to a string of the form
+!!   Given a number of seconds convert it to a string of the form
 !!
 !!       dd-hh:mm:ss
 !!
@@ -3041,8 +3043,8 @@ end function get_timezone
 function sec2days(seconds,crop) result(dhms)
 use, intrinsic :: iso_fortran_env, only : int64
 
-character(len=*),parameter::ident_24="&
-&@(#)M_time::sec2days(3f): converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH:MM:SS"
+!character(len=*),parameter::ident_24="&
+!&@(#)M_time::sec2days(3f): converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH:MM:SS"
 
 ! on this platform, (select_int_kind(i),i=1,100) returns
 ! 1:2=1 ,3:4=2 ,5:9=4 ,10:18= 8 ,19:38=16 ,39:=-1
@@ -3180,14 +3182,14 @@ end function sec2days
 !!     real(kind=realtime)               :: time
 !!
 !!##DESCRIPTION
-!!      Given a string representing a duration of the form
-!!      "[-][[[dd-]hh:]mm:]ss"  or NNdNNhNNmNNsNNw
-!!      return a value representing seconds
+!!   Given a string representing a duration of the form
+!!   "[-][[[dd-]hh:]mm:]ss"  or NNdNNhNNmNNsNNw
+!!   return a value representing seconds
 !!
-!!      If "dd-" is present, units for the numbers are assumed to
-!!      proceed from day to hour to minute to second. But if no
-!!      day is present, the units are assumed to proceed from second
-!!      to minutes to hour from left to right. That is ...
+!!   If "dd-" is present, units for the numbers are assumed to
+!!   proceed from day to hour to minute to second. But if no
+!!   day is present, the units are assumed to proceed from second
+!!   to minutes to hour from left to right. That is ...
 !!
 !!         [-]dd-hh:mm:ss
 !!         [-]dd-hh:mm
@@ -3269,8 +3271,8 @@ end function sec2days
 function days2sec(str) result(time)
 implicit none
 
-character(len=*),parameter::ident_25="&
-&@(#)M_time::days2sec(3f): convert string [[-]dd-]hh:mm:ss.nn to seconds or string IId JJh KKm LLs to seconds"
+!character(len=*),parameter::ident_25="&
+!&@(#)M_time::days2sec(3f): convert string [[-]dd-]hh:mm:ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
 character(len=*),intent(in)       :: str
 real(kind=realtime)               :: time
@@ -3385,17 +3387,17 @@ end function days2sec
 !!    character(len=:),allocatable  :: phase_of_moon
 !!
 !!##DESCRIPTION
-!!  Phases Of The Moon
+!!   Phases Of The Moon
 !!
-!!  This procedure is used to support the %p field descriptor for the
-!!  fmtdate(3f) routine.
+!!   This procedure is used to support the %p field descriptor for the
+!!   fmtdate(3f) routine.
 !!
-!!  The moon circles the earth every 29.530588853 days on average, so pick a
-!!  starting point and count. A new moon occurred at Julian date 2451550.1
-!!  (January 6, 2000, 18:14 UTC). Then it is easy to count the number of
-!!  days since the last new moon. This is an approximate calculation.
+!!   The moon circles the earth every 29.530588853 days on average, so pick a
+!!   starting point and count. A new moon occurred at Julian date 2451550.1
+!!   (January 6, 2000, 18:14 UTC). Then it is easy to count the number of
+!!   days since the last new moon. This is an approximate calculation.
 !!
-!!  There are eight generally recognized phases of the moon in common use
+!!   There are eight generally recognized phases of the moon in common use
 !!
 !!    o new or dark
 !!    o waxing crescent
@@ -3415,7 +3417,7 @@ end function days2sec
 !!
 !!##EXAMPLES
 !!
-!!   Sample:
+!!    Sample:
 !!
 !!     program demo_phase_of_moon
 !!     use M_time, only : now
@@ -3433,7 +3435,7 @@ end function days2sec
 !!        write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
 !!     end program demo_phase_of_moon
 !!
-!!   Sample output:
+!!    Sample output:
 !!
 !!     Today is:2018:11:3:-240:20:18:44:245
 !!     The phase of the moon is Waning crescent, with a fullness of -30%
@@ -3447,7 +3449,7 @@ end function days2sec
 function phase_of_moon(datin)
 implicit none
 
-character(len=*),parameter::ident_26="@(#)M_time::phase_of_moon(3f): return name for phase of moon for given date"
+!character(len=*),parameter::ident_26="@(#)M_time::phase_of_moon(3f): return name for phase of moon for given date"
 
 integer,intent(in)            :: datin(8)
 character(len=:),allocatable  :: phase_of_moon
@@ -3485,13 +3487,13 @@ end function phase_of_moon
 !!
 !!##DESCRIPTION
 !!
-!!  This procedure is used to support the %P field descriptor for the
-!!  fmtdate(3f) routine.
+!!   This procedure is used to support the %P field descriptor for the
+!!   fmtdate(3f) routine.
 !!
-!!  The moon circles the earth every 29.530588853 days on average, so pick
-!!  a starting point and count. A new moon occurred at January 6, 2000,
-!!  18:14 UTC. Then it is easy to count the number of days since the last
-!!  new moon. This is an approximate calculation.
+!!   The moon circles the earth every 29.530588853 days on average, so pick
+!!   a starting point and count. A new moon occurred at January 6, 2000,
+!!   18:14 UTC. Then it is easy to count the number of days since the last
+!!   new moon. This is an approximate calculation.
 !!
 !!##OPTIONS
 !!
@@ -3504,7 +3506,7 @@ end function phase_of_moon
 !!
 !!##EXAMPLES
 !!
-!!   Sample:
+!!    Sample:
 !!
 !!     program demo_moon_fullness
 !!     use M_time, only : now
@@ -3522,7 +3524,7 @@ end function phase_of_moon
 !!        write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
 !!     end program demo_moon_fullness
 !!
-!!   Sample output:
+!!    Sample output:
 !!
 !!     Today is:2018:11:3:-240:20:18:44:245
 !!     The phase of the moon is Waning crescent, with a fullness of -30%
@@ -3535,7 +3537,7 @@ end function phase_of_moon
 function moon_fullness(datin)
 implicit none
 
-character(len=*),parameter::ident_27="@(#)M_time::moon_fullness(3f): return percentage of moon phase from new to full"
+!character(len=*),parameter::ident_27="@(#)M_time::moon_fullness(3f): return percentage of moon phase from new to full"
 
 integer,intent(in)            :: datin(8)
 integer                       :: moon_fullness
@@ -3570,29 +3572,29 @@ end function moon_fullness
 !!     integer, intent(out)  :: dat
 !!
 !!##DESCRIPTION
-!!     The Date of Easter (Sunday)
+!!   The Date of Easter (Sunday)
 !!
-!!     The algorithm is due to J.-M. Oudin (1940) and is reprinted in the Explanatory
-!!     Supplement to the Astronomical Almanac, ed. P. K. Seidelmann (1992).
-!!     See Chapter 12, "Calendars", by L. E. Doggett.
+!!   The algorithm is due to J.-M. Oudin (1940) and is reprinted in the Explanatory
+!!   Supplement to the Astronomical Almanac, ed. P. K. Seidelmann (1992).
+!!   See Chapter 12, "Calendars", by L. E. Doggett.
 !!
-!!     The following are dates of Easter from 1980 to 2024:
+!!   The following are dates of Easter from 1980 to 2024:
 !!
-!!        1980  April  6        1995  April 16        2010  April  4
-!!        1981  April 19        1996  April  7        2011  April 24
-!!        1982  April 11        1997  March 30        2012  April  8
-!!        1983  April  3        1998  April 12        2013  March 31
-!!        1984  April 22        1999  April  4        2014  April 20
-!!        1985  April  7        2000  April 23        2015  April  5
-!!        1986  March 30        2001  April 15        2016  March 27
-!!        1987  April 19        2002  March 31        2017  April 16
-!!        1988  April  3        2003  April 20        2018  April  1
-!!        1989  March 26        2004  April 11        2019  April 21
-!!        1990  April 15        2005  March 27        2020  April 12
-!!        1991  March 31        2006  April 16        2021  April  4
-!!        1992  April 19        2007  April  8        2022  April 17
-!!        1993  April 11        2008  March 23        2023  April  9
-!!        1994  April  3        2009  April 12        2024  March 31
+!!       1980  April  6        1995  April 16        2010  April  4
+!!       1981  April 19        1996  April  7        2011  April 24
+!!       1982  April 11        1997  March 30        2012  April  8
+!!       1983  April  3        1998  April 12        2013  March 31
+!!       1984  April 22        1999  April  4        2014  April 20
+!!       1985  April  7        2000  April 23        2015  April  5
+!!       1986  March 30        2001  April 15        2016  March 27
+!!       1987  April 19        2002  March 31        2017  April 16
+!!       1988  April  3        2003  April 20        2018  April  1
+!!       1989  March 26        2004  April 11        2019  April 21
+!!       1990  April 15        2005  March 27        2020  April 12
+!!       1991  March 31        2006  April 16        2021  April  4
+!!       1992  April 19        2007  April  8        2022  April 17
+!!       1993  April 11        2008  March 23        2023  April  9
+!!       1994  April  3        2009  April 12        2024  March 31
 !!
 !!     N.B. The date of Easter for the Eastern Orthodox Church may be different.
 !!
@@ -3604,7 +3606,7 @@ end function moon_fullness
 !!##EXAMPLE
 !!
 !!
-!!   Sample program:
+!!    Sample program:
 !!
 !!     program demo_easter
 !!     use M_time, only : easter, fmtdate
@@ -3618,7 +3620,7 @@ end function moon_fullness
 !!       "Easter day: the %d day of %L in the year of our Lord %Y")
 !!     end program demo_easter
 !!
-!!   Sample output:
+!!    Sample output:
 !!
 !!     Easter day: the 16th day of April in the year of our Lord 2017
 !===================================================================================================================================
@@ -3634,7 +3636,7 @@ end function moon_fullness
 SUBROUTINE Easter(year, dat)
 implicit none
 
-character(len=*),parameter::ident_28="@(#)M_time::easter(3f): calculate date for Easter given a year"
+!character(len=*),parameter::ident_28="@(#)M_time::easter(3f): calculate date for Easter given a year"
 
 integer,intent(in)    :: year
 integer,intent(out)   :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
@@ -3677,7 +3679,7 @@ end subroutine Easter
 !!     integer,intent(in),optional   :: start
 !!     integer,intent(in),optional   :: end
 !!##DESCRIPTION
-!!    Globally substitute one substring for another in string.
+!!   Globally substitute one substring for another in string.
 !!
 !!##OPTIONS
 !!     TARGETLINE  input line to be changed. Must be long enough to
@@ -3693,7 +3695,7 @@ end subroutine Easter
 !!
 !!##EXAMPLES
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_substitute
 !!     use M_time, only : substitute
@@ -3720,7 +3722,7 @@ end subroutine Easter
 !!
 !!     end program demo_substitute
 !!
-!!   Expected output
+!!    Expected output
 !!
 !!     ORIGINAL    : this is the input string
 !!     th => TH    : THis is THe input string
@@ -3733,7 +3735,7 @@ end subroutine Easter
 !===================================================================================================================================
 subroutine substitute(targetline,old,new,ierr,start,end)
 
-character(len=*),parameter::ident_11="@(#)M_strings::substitute(3f): Globally substitute one substring for another in string"
+!character(len=*),parameter::ident_11="@(#)M_strings::substitute(3f): Globally substitute one substring for another in string"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*)               :: targetline         ! input line to be changed
@@ -3868,10 +3870,10 @@ end subroutine substitute
 !!     integer,optional,intent(in) :: begin,end
 !!     character(len(str))         :: string  ! output string
 !!##DESCRIPTION
-!!      upper(string) returns a copy of the input string with all characters
-!!      converted in the optionally specified range to uppercase, assuming
-!!      ASCII character sets are being used. If no range is specified the
-!!      entire string is converted to uppercase.
+!!   upper(string) returns a copy of the input string with all characters
+!!   converted in the optionally specified range to uppercase, assuming
+!!   ASCII character sets are being used. If no range is specified the
+!!   entire string is converted to uppercase.
 !!
 !!##OPTIONS
 !!    str    string to convert to uppercase
@@ -3883,14 +3885,14 @@ end subroutine substitute
 !!            over optionally specified range.
 !!
 !!##TRIVIA
-!!    The terms "uppercase" and "lowercase" date back to the early days of
-!!    the mechanical printing press. Individual metal alloy casts of each
-!!    needed letter, or punctuation symbol, were meticulously added to a
-!!    press block, by hand, before rolling out copies of a page. These
-!!    metal casts were stored and organized in wooden cases. The more
-!!    often needed miniscule letters were placed closer to hand, in the
-!!    lower cases of the work bench. The less often needed, capitalized,
-!!    majuscule letters, ended up in the harder to reach upper cases.
+!!   The terms "uppercase" and "lowercase" date back to the early days of
+!!   the mechanical printing press. Individual metal alloy casts of each
+!!   needed letter, or punctuation symbol, were meticulously added to a
+!!   press block, by hand, before rolling out copies of a page. These
+!!   metal casts were stored and organized in wooden cases. The more
+!!   often needed miniscule letters were placed closer to hand, in the
+!!   lower cases of the work bench. The less often needed, capitalized,
+!!   majuscule letters, ended up in the harder to reach upper cases.
 !!
 !!##EXAMPLE
 !!
@@ -3921,7 +3923,7 @@ end subroutine substitute
 !===================================================================================================================================
 elemental pure function upper(str,begin,end) result (string)
 
-character(len=*),parameter::ident_21="@(#)M_strings::upper(3f): Changes a string to uppercase"
+!character(len=*),parameter::ident_21="@(#)M_strings::upper(3f): Changes a string to uppercase"
 
 character(*), intent(In)      :: str                 ! inpout string to convert to all uppercase
 integer, intent(in), optional :: begin,end
@@ -3964,10 +3966,10 @@ end function upper
 !!     integer,optional         :: begin, end
 !!     character(len(str))      :: string  ! output string
 !!##DESCRIPTION
-!!      lower(string) returns a copy of the input string with all characters
-!!      converted to miniscule over the specified range, assuming ASCII
-!!      character sets are being used. If no range is specified the entire
-!!      string is converted to miniscule.
+!!   lower(string) returns a copy of the input string with all characters
+!!   converted to miniscule over the specified range, assuming ASCII
+!!   character sets are being used. If no range is specified the entire
+!!   string is converted to miniscule.
 !!
 !!##OPTIONS
 !!    str    string to convert to miniscule
@@ -4012,7 +4014,7 @@ end function upper
 !===================================================================================================================================
 elemental pure function lower(str,begin,end) result (string)
 
-character(len=*),parameter::ident_22="@(#)M_strings::lower(3f): Changes a string to lowercase over specified range"
+!character(len=*),parameter::ident_22="@(#)M_strings::lower(3f): Changes a string to lowercase over specified range"
 
 character(*), intent(In)     :: str
 character(len(str))          :: string
@@ -4067,9 +4069,9 @@ end subroutine stderr
 !!    integer,intent(in),optional  :: length
 !!    character(len=:),allocatable :: adjustc
 !!##DESCRIPTION
-!!     Centers input text in a string of the length specified. Returns a
-!!     string of length LENGTH if LENGTH is present. Otherwise returns a
-!!     string of the length of the input string.
+!!   Centers input text in a string of the length specified. Returns a
+!!   string of length LENGTH if LENGTH is present. Otherwise returns a
+!!   string of the length of the input string.
 !!##OPTIONS
 !!     string  input string to trim and center
 !!     length  line length to center text in, optional.
@@ -4078,7 +4080,7 @@ end subroutine stderr
 !!
 !!##EXAMPLES
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_adjustc
 !!     use M_strings, only : adjustc
@@ -4093,15 +4095,15 @@ end subroutine stderr
 !!        write(*,'(a)')repeat('=',50)
 !!     end program demo_adjustc
 !!
-!!   Expected output:
+!!    Expected output:
 !!
-!!    \================================
-!!            centered string
-!!            centered string
-!!            centered string
-!!    \==================================================
-!!                this is a centered string
-!!    \==================================================
+!!     \================================
+!!             centered string
+!!             centered string
+!!             centered string
+!!     \==================================================
+!!                 this is a centered string
+!!     \==================================================
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
@@ -4109,7 +4111,7 @@ end subroutine stderr
 !===================================================================================================================================
 pure function adjustc(string,length)
 
-character(len=*),parameter::ident_32="@(#)M_strings::adjustc(3f): center text"
+!character(len=*),parameter::ident_32="@(#)M_strings::adjustc(3f): center text"
 
 !>
 !! PROCEDURE   adjustc(3f)
@@ -4158,9 +4160,9 @@ end function adjustc
 !!     character(len=*),intent(in),optional :: CHAR
 !!     character(len=len(str))              :: OUTSTR
 !!##DESCRIPTION
-!!    COMPACT(3f) converts multiple spaces, tabs and control characters
-!!    (called "whitespace") to a single character or nothing. Leading
-!!    whitespace is removed.
+!!   COMPACT(3f) converts multiple spaces, tabs and control characters
+!!   (called "whitespace") to a single character or nothing. Leading
+!!   whitespace is removed.
 !!
 !!##OPTIONS
 !!    STR     input string to reduce or remove whitespace from
@@ -4174,7 +4176,7 @@ end function adjustc
 !!
 !!##EXAMPLES
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_compact
 !!     use M_strings, only : compact
@@ -4206,7 +4208,7 @@ end function adjustc
 !elemental pure function compact(str,char) result (outstr)
 function compact(str,char) result (outstr)
 
-character(len=*),parameter::ident_38="@(#)M_strings::compact(3f): Converts white-space to single spaces"
+!character(len=*),parameter::ident_38="@(#)M_strings::compact(3f): Converts white-space to single spaces"
 
 character(len=*),intent(in)          :: str
 character(len=*),intent(in),optional :: char
@@ -4270,10 +4272,10 @@ end function compact
 !!     integer,intent(out),optional :: ierr
 !!     class(*),intent(in),optional :: onerr
 !!##DESCRIPTION
-!!       This function converts a string to a DOUBLEPRECISION numeric value.
+!!   This function converts a string to a DOUBLEPRECISION numeric value.
 !!
-!!       The intrinsics INT(3f), REAL(3f), and DBLE(3f) are also extended to take
-!!       CHARACTER variables. The KIND= keyword is not supported on the extensions.
+!!   The intrinsics INT(3f), REAL(3f), and DBLE(3f) are also extended to take
+!!   CHARACTER variables. The KIND= keyword is not supported on the extensions.
 !!##OPTIONS
 !!
 !!     string   holds string assumed to represent a numeric value
@@ -4287,7 +4289,7 @@ end function compact
 !!
 !!##EXAMPLE
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_s2v
 !!
@@ -4369,8 +4371,7 @@ end function compact
 doubleprecision function s2v(chars,ierr,onerr)
 !  1989 John S. Urban
 
-character(len=*),parameter::ident_43="@(#)M_strings::s2v(3f): returns doubleprecision number from string"
-
+!character(len=*),parameter::ident_43="@(#)M_strings::s2v(3f): returns doubleprecision number from string"
 
 character(len=*),intent(in)  :: chars
 integer,optional             :: ierr
@@ -4412,8 +4413,8 @@ end function s2v
 !!     character(len=*),optional,intent(in)     :: order
 !!     character(len=*),optional,intent(in)     :: nulls
 !!##DESCRIPTION
-!!     SPLIT(3f) parses a string using specified delimiter characters and
-!!     store tokens into an allocatable array
+!!   SPLIT(3f) parses a string using specified delimiter characters and
+!!   store tokens into an allocatable array
 !!
 !!##OPTIONS
 !!
@@ -4449,89 +4450,89 @@ end function s2v
 !!
 !!  Sample program:
 !!
-!!     program demo_split
-!!     use M_strings, only: split
-!!     character(len=*),parameter     :: &
-!!     & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
-!!     character(len=:),allocatable :: array(:) ! output array of tokens
-!!        write(*,*)'INPUT LINE:['//LINE//']'
-!!        write(*,'(80("="))')
-!!        write(*,*)'typical call:'
-!!        CALL split(line,array)
-!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!        write(*,*)'SIZE:',SIZE(array)
-!!        write(*,'(80("-"))')
-!!        write(*,*)'custom list of delimiters (colon and vertical line):'
-!!        CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
-!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!        write(*,*)'SIZE:',SIZE(array)
-!!        write(*,'(80("-"))')
-!!        write(*,*)&
-!!      &'custom list of delimiters, reverse array order and count null fields:'
-!!        CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
-!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!        write(*,*)'SIZE:',SIZE(array)
-!!        write(*,'(80("-"))')
-!!        write(*,*)'INPUT LINE:['//LINE//']'
-!!        write(*,*)&
-!!        &'default delimiters and reverse array order and return null fields:'
-!!        CALL split(line,array,delimiters='',order='reverse',nulls='return')
-!!        write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!        write(*,*)'SIZE:',SIZE(array)
-!!     end program demo_split
+!!       program demo_split
+!!       use M_strings, only: split
+!!       character(len=*),parameter     :: &
+!!       & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
+!!       character(len=:),allocatable :: array(:) ! output array of tokens
+!!          write(*,*)'INPUT LINE:['//LINE//']'
+!!          write(*,'(80("="))')
+!!          write(*,*)'typical call:'
+!!          CALL split(line,array)
+!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!          write(*,*)'SIZE:',SIZE(array)
+!!          write(*,'(80("-"))')
+!!          write(*,*)'custom list of delimiters (colon and vertical line):'
+!!          CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
+!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!          write(*,*)'SIZE:',SIZE(array)
+!!          write(*,'(80("-"))')
+!!          write(*,*)&
+!!          &'custom list of delimiters, reverse array order and count null fields:'
+!!          CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
+!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!          write(*,*)'SIZE:',SIZE(array)
+!!          write(*,'(80("-"))')
+!!          write(*,*)'INPUT LINE:['//LINE//']'
+!!          write(*,*)&
+!!          &'default delimiters and reverse array order and return null fields:'
+!!          CALL split(line,array,delimiters='',order='reverse',nulls='return')
+!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
+!!          write(*,*)'SIZE:',SIZE(array)
+!!      end program demo_split
 !!
 !!   Output
 !!
-!!    > INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
-!!    > ===========================================================================
-!!    >  typical call:
-!!    > 1 ==> aBcdef
-!!    > 2 ==> ghijklmnop
-!!    > 3 ==> qrstuvwxyz
-!!    > 4 ==> 1:|:2
-!!    > 5 ==> 333|333
-!!    > 6 ==> a
-!!    > 7 ==> B
-!!    > 8 ==> cc
-!!    >  SIZE:           8
-!!    > --------------------------------------------------------------------------
-!!    >  custom list of delimiters (colon and vertical line):
-!!    > 1 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
-!!    > 2 ==> 2     333
-!!    > 3 ==> 333 a B cc
-!!    >  SIZE:           3
-!!    > --------------------------------------------------------------------------
-!!    >  custom list of delimiters, reverse array order and return null fields:
-!!    > 1 ==> 333 a B cc
-!!    > 2 ==> 2     333
-!!    > 3 ==>
-!!    > 4 ==>
-!!    > 5 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
-!!    >  SIZE:           5
-!!    > --------------------------------------------------------------------------
-!!    >  INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
-!!    >  default delimiters and reverse array order and count null fields:
-!!    > 1 ==>
-!!    > 2 ==>
-!!    > 3 ==>
-!!    > 4 ==> cc
-!!    > 5 ==> B
-!!    > 6 ==> a
-!!    > 7 ==> 333|333
-!!    > 8 ==>
-!!    > 9 ==>
-!!    > 10 ==>
-!!    > 11 ==>
-!!    > 12 ==> 1:|:2
-!!    > 13 ==>
-!!    > 14 ==> qrstuvwxyz
-!!    > 15 ==> ghijklmnop
-!!    > 16 ==>
-!!    > 17 ==>
-!!    > 18 ==> aBcdef
-!!    > 19 ==>
-!!    > 20 ==>
-!!    >  SIZE:          20
+!!        > INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
+!!        > ===========================================================================
+!!        >  typical call:
+!!        > 1 ==> aBcdef
+!!        > 2 ==> ghijklmnop
+!!        > 3 ==> qrstuvwxyz
+!!        > 4 ==> 1:|:2
+!!        > 5 ==> 333|333
+!!        > 6 ==> a
+!!        > 7 ==> B
+!!        > 8 ==> cc
+!!        >  SIZE:           8
+!!        > --------------------------------------------------------------------------
+!!        >  custom list of delimiters (colon and vertical line):
+!!        > 1 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
+!!        > 2 ==> 2     333
+!!        > 3 ==> 333 a B cc
+!!        >  SIZE:           3
+!!        > --------------------------------------------------------------------------
+!!        >  custom list of delimiters, reverse array order and return null fields:
+!!        > 1 ==> 333 a B cc
+!!        > 2 ==> 2     333
+!!        > 3 ==>
+!!        > 4 ==>
+!!        > 5 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
+!!        >  SIZE:           5
+!!        > --------------------------------------------------------------------------
+!!        >  INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
+!!        >  default delimiters and reverse array order and count null fields:
+!!        > 1 ==>
+!!        > 2 ==>
+!!        > 3 ==>
+!!        > 4 ==> cc
+!!        > 5 ==> B
+!!        > 6 ==> a
+!!        > 7 ==> 333|333
+!!        > 8 ==>
+!!        > 9 ==>
+!!        > 10 ==>
+!!        > 11 ==>
+!!        > 12 ==> 1:|:2
+!!        > 13 ==>
+!!        > 14 ==> qrstuvwxyz
+!!        > 15 ==> ghijklmnop
+!!        > 16 ==>
+!!        > 17 ==>
+!!        > 18 ==> aBcdef
+!!        > 19 ==>
+!!        > 20 ==>
+!!        >  SIZE:          20
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
@@ -4540,8 +4541,8 @@ end function s2v
 subroutine split(input_line,array,delimiters,order,nulls)
 !-----------------------------------------------------------------------------------------------------------------------------------
 
-character(len=*),parameter::ident_7="&
-&@(#)M_strings::split(3f): parse string on delimiter characters and store tokens into an allocatable array"
+!character(len=*),parameter::ident_7="&
+!&@(#)M_strings::split(3f): parse string on delimiter characters and store tokens into an allocatable array"
 
 !  John S. Urban
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -4678,8 +4679,8 @@ integer                       :: imax                   ! length of longest toke
 !!        character(len=*) :: delims
 !!        integer          :: ierr
 !!##DESCRIPTION
-!!    This routine can take a string representing a series of numbers and
-!!    convert it to a numeric array and return how many numbers were found.
+!!   This routine can take a string representing a series of numbers and
+!!   convert it to a numeric array and return how many numbers were found.
 !!
 !!##OPTIONS
 !!
@@ -4699,39 +4700,39 @@ integer                       :: imax                   ! length of longest toke
 !!
 !!##EXAMPLE
 !!
-!!    Sample Program:
+!!  Sample Program:
 !!
-!!      program demo_string_to_values
-!!       use M_strings, only : string_to_values
-!!       character(len=80)  :: s=' 10 20e3;3.45 -400.3e-2;1234; 5678 '
-!!       integer,parameter  :: isz=10
-!!       real               :: array(isz)
+!!       program demo_string_to_values
+!!        use M_strings, only : string_to_values
+!!        character(len=80)  :: s=' 10 20e3;3.45 -400.3e-2;1234; 5678 '
+!!        integer,parameter  :: isz=10
+!!        real               :: array(isz)
 !!
-!!       call string_to_values(s,10,array,inums,' ;',ierr)
-!!       call reportit()
+!!        call string_to_values(s,10,array,inums,' ;',ierr)
+!!        call reportit()
 !!
-!!       call string_to_values('10;2.3;3.1416',isz,array,inums,' ;',ierr)
-!!       call reportit()
+!!        call string_to_values('10;2.3;3.1416',isz,array,inums,' ;',ierr)
+!!        call reportit()
 !!
-!!       contains
-!!          subroutine reportit()
-!!             write(*,*)'string_to_values:'
-!!             write(*,*)'input string.............',trim(s)
-!!             write(*,*)'number of values found...',inums
-!!             write(*,*)'values...................',(array(ii),ii=1,inums)
-!!          end subroutine reportit
-!!      end program demo_string_to_values
+!!        contains
+!!           subroutine reportit()
+!!              write(*,*)'string_to_values:'
+!!              write(*,*)'input string.............',trim(s)
+!!              write(*,*)'number of values found...',inums
+!!              write(*,*)'values...................',(array(ii),ii=1,inums)
+!!           end subroutine reportit
+!!       end program demo_string_to_values
 !!
 !!    Expected output
 !!
-!!     string_to_values:
-!!     input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
-!!     number of values found...           6
-!!     values...................   10.0000000  20000.0000  3.45000005  -4.00299978  1234.00000  5678.00000
-!!     string_to_values:
-!!     input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
-!!     number of values found...           3
-!!     values...................   10.0000000  2.29999995  3.14159989
+!!        string_to_values:
+!!        input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
+!!        number of values found...           6
+!!        values...................   10.0000000  20000.0000  3.45000005  -4.00299978  1234.00000  5678.00000
+!!        string_to_values:
+!!        input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
+!!        number of values found...           3
+!!        values...................   10.0000000  2.29999995  3.14159989
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
@@ -4749,7 +4750,7 @@ implicit none
 !   Quits if encounters any errors in read.
 !----------------------------------------------------------------------------------------------------------------------------------
 
-character(len=*),parameter::ident_54="@(#)M_strings::string_to_values(3f): reads an array of numbers from a numeric string"
+!character(len=*),parameter::ident_54="@(#)M_strings::string_to_values(3f): reads an array of numbers from a numeric string"
 
 character(len=*),intent(in)  :: line          ! input string
 integer,intent(in)           :: iread         ! maximum number of values to try to read into values
@@ -4843,7 +4844,7 @@ end subroutine string_to_values
 !!     character(len=*),intent(in)  :: new_set
 !!     character(len=len(instr))    :: outstr
 !!##DESCRIPTION
-!!    Translate, squeeze, and/or delete characters from the input string.
+!!   Translate, squeeze, and/or delete characters from the input string.
 !!
 !!##OPTIONS
 !!    instr    input string to change
@@ -4862,7 +4863,7 @@ end subroutine string_to_values
 !!
 !!##EXAMPLES
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_transliterate
 !!
@@ -4898,7 +4899,7 @@ end subroutine string_to_values
 !===================================================================================================================================
 PURE FUNCTION transliterate(instr,old_set,new_set) RESULT(outstr)
 
-character(len=*),parameter::ident_16="@(#)M_strings::transliterate(3f): replace characters from old set with new set"
+!character(len=*),parameter::ident_16="@(#)M_strings::transliterate(3f): replace characters from old set with new set"
 
 !-----------------------------------------------------------------------------------------------------------------------------------
 CHARACTER(LEN=*),INTENT(IN)  :: instr                             ! input string to change
@@ -4952,11 +4953,11 @@ END FUNCTION transliterate
 !!
 !!##DESCRIPTION
 !!
-!!    v2s(3f) returns a representation of a numeric value as a
-!!    string when given a numeric value of type REAL, DOUBLEPRECISION,
-!!    INTEGER or LOGICAL. It creates the strings using internal WRITE()
-!!    statements. Trailing zeros are removed from non-zero values, and the
-!!    string is left-justified.
+!!   v2s(3f) returns a representation of a numeric value as a
+!!   string when given a numeric value of type REAL, DOUBLEPRECISION,
+!!   INTEGER or LOGICAL. It creates the strings using internal WRITE()
+!!   statements. Trailing zeros are removed from non-zero values, and the
+!!   string is left-justified.
 !!
 !!##OPTIONS
 !!    VALUE   input value to be converted to a string
@@ -4968,7 +4969,7 @@ END FUNCTION transliterate
 !!
 !!##EXAMPLE
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_v2s
 !!     use M_strings, only: v2s
@@ -4979,7 +4980,7 @@ END FUNCTION transliterate
 !!     write(*,*) 'The value of .true. is  ['//v2s(.true.)//']'
 !!     end program demo_v2s
 !!
-!!   Expected output
+!!    Expected output
 !!
 !!     The value of 3.0/4.0 is [0.75]
 !!     The value of 1234    is [1234]
@@ -4994,7 +4995,7 @@ END FUNCTION transliterate
 !===================================================================================================================================
 function d2s(dvalue,fmt) result(outstr)
 
-character(len=*),parameter::ident_45="@(#)M_strings::d2s(3fp): private function returns string given doubleprecision value"
+!character(len=*),parameter::ident_45="@(#)M_strings::d2s(3fp): private function returns string given doubleprecision value"
 
 doubleprecision,intent(in)   :: dvalue                         ! input value to convert to a string
 character(len=*),intent(in),optional :: fmt
@@ -5010,7 +5011,7 @@ end function d2s
 !===================================================================================================================================
 function r2s(rvalue,fmt) result(outstr)
 
-character(len=*),parameter::ident_46="@(#)M_strings::r2s(3fp): private function returns string given real value"
+!character(len=*),parameter::ident_46="@(#)M_strings::r2s(3fp): private function returns string given real value"
 
 real,intent(in)              :: rvalue                         ! input value to convert to a string
 character(len=*),intent(in),optional :: fmt
@@ -5026,7 +5027,7 @@ end function r2s
 !===================================================================================================================================
 function i2s(ivalue,fmt) result(outstr)
 
-character(len=*),parameter::ident_47="@(#)M_strings::i2s(3fp): private function returns string given integer value"
+!character(len=*),parameter::ident_47="@(#)M_strings::i2s(3fp): private function returns string given integer value"
 
 integer,intent(in)           :: ivalue                         ! input value to convert to a string
 character(len=*),intent(in),optional :: fmt
@@ -5042,7 +5043,7 @@ end function i2s
 !===================================================================================================================================
 function l2s(lvalue,fmt) result(outstr)
 
-character(len=*),parameter::ident_48="@(#)M_strings::l2s(3fp): private function returns string given logical value"
+!character(len=*),parameter::ident_48="@(#)M_strings::l2s(3fp): private function returns string given logical value"
 
 logical,intent(in)           :: lvalue                         ! input value to convert to a string
 character(len=*),intent(in),optional :: fmt
@@ -5082,11 +5083,11 @@ end function l2s
 !!     logical,intent(in)                       :: trimz
 !!##DESCRIPTION
 !!
-!!    value_to_string(3f) returns a numeric representation of a numeric
-!!    value in a string given a numeric value of type REAL, DOUBLEPRECISION,
-!!    INTEGER or LOGICAL. It creates the string using internal writes. It
-!!    then removes trailing zeros from non-zero values, and left-justifies
-!!    the string.
+!!   value_to_string(3f) returns a numeric representation of a numeric
+!!   value in a string given a numeric value of type REAL, DOUBLEPRECISION,
+!!   INTEGER or LOGICAL. It creates the string using internal writes. It
+!!   then removes trailing zeros from non-zero values, and left-justifies
+!!   the string.
 !!
 !!##OPTIONS
 !!       VALUE   input value to be converted to a string
@@ -5143,7 +5144,7 @@ end function l2s
 !===================================================================================================================================
 subroutine value_to_string(gval,chars,length,err,fmt,trimz)
 
-character(len=*),parameter::ident_40="@(#)M_strings::value_to_string(3fp): subroutine returns a string from a value"
+!character(len=*),parameter::ident_40="@(#)M_strings::value_to_string(3fp): subroutine returns a string from a value"
 
 class(*),intent(in)                      :: gval
 character(len=*),intent(out)             :: chars
@@ -5236,7 +5237,9 @@ end subroutine value_to_string
 ! this function is used internally in the module, but is also declared to be a constructor for creating TYPE(DATE_TYPE) structures
 !
 function construct_from_dat(dat)
-character(len=*),parameter::ident_35="@(#)M_time::construct_from_dat(3f): construct TYPE(DATE_TIME) with DAT date-time array"
+
+!character(len=*),parameter::ident_35="@(#)M_time::construct_from_dat(3f): construct TYPE(DATE_TIME) with DAT date-time array"
+
 integer,intent(in)          :: dat(:)                       ! (maybe partial) date time array
 integer                     :: datlocal(8)                  ! date time array similar to that returned by DATE_AND_TIME
 type(date_time)             :: construct_from_dat
@@ -5256,16 +5259,20 @@ type(date_time)             :: construct_from_dat
 end function construct_from_dat
 !===================================================================================================================================
 function construct_from_jed(jed)
-character(len=*),parameter::ident_36="&
-&@(#)M_time::construct_from_jed(3f): construct TYPE(DATE_TIME) with REAL Julian JED date-time value"
+
+!character(len=*),parameter::ident_36="&
+!&@(#)M_time::construct_from_jed(3f): construct TYPE(DATE_TIME) with REAL Julian JED date-time value"
+
 real(kind=realtime),intent(in)   :: jed
 type(date_time)                 :: construct_from_jed
    construct_from_jed=construct_from_dat(j2d(jed))
 end function construct_from_jed
 !===================================================================================================================================
 function construct_from_uet(uet)
-character(len=*),parameter::ident_37="&
-&@(#)M_time::construct_from_uet(3f): construct TYPE(DATE_TIME) with INTEGER Unix UET date-time value"
+
+!character(len=*),parameter::ident_37="&
+!&@(#)M_time::construct_from_uet(3f): construct TYPE(DATE_TIME) with INTEGER Unix UET date-time value"
+
 integer,intent(in)   :: uet
 type(date_time)                 :: construct_from_uet
    construct_from_uet=construct_from_dat(u2d(real(uet,kind=realtime)))
@@ -5277,7 +5284,9 @@ end function construct_from_uet
 ! These functions are privately used to define the methods that TYPE(DATE_TIME) will support
 !===================================================================================================================================
 function dt2d(self) result (dat)
-character(len=*),parameter::ident_38="@(#)M_time::dt2d(3f): convert derived type date_time to DAT date-time array"
+
+!character(len=*),parameter::ident_38="@(#)M_time::dt2d(3f): convert derived type date_time to DAT date-time array"
+
 class(date_time),intent(in) :: self
 integer                     :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
    dat=[self%year, self%month, self%day, self%tz, self%hour, self%minute, self%second, self%millisecond]
@@ -5286,14 +5295,18 @@ end function dt2d
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 function epoch(self) result (epoch_seconds)
-character(len=*),parameter::ident_39="@(#)M_time::epoch(3f): convert derived type date_time to unix epoch seconds"
+
+!character(len=*),parameter::ident_39="@(#)M_time::epoch(3f): convert derived type date_time to unix epoch seconds"
+
 class(date_time),intent(in) :: self
 real(kind=realtime)         :: epoch_seconds
    epoch_seconds=d2u(dt2d(self))
 end function epoch
 !===================================================================================================================================
 function format(self,fmt) result (string)
-character(len=*),parameter::ident_40="@(#)M_time::format(3f): convert derived type date_time to formatted string"
+
+!character(len=*),parameter::ident_40="@(#)M_time::format(3f): convert derived type date_time to formatted string"
+
 class(date_time),intent(in)           :: self
 character(len=*),intent(in),optional  :: fmt
 character(len=:),allocatable          :: fmtlocal
@@ -5326,21 +5339,27 @@ character(len=*),parameter            :: mdy_fmt='%M/%D/%Y %h:%m:%s.%x%z'
 end function format
 !===================================================================================================================================
 function julian_oop(self) result (julian_days)
-character(len=*),parameter::ident_41="@(#)M_time::julian_oop(3f): convert derived type date_time to julian date"
+
+!character(len=*),parameter::ident_41="@(#)M_time::julian_oop(3f): convert derived type date_time to julian date"
+
 class(date_time),intent(in) :: self
 real(kind=realtime)         :: julian_days
     julian_days=d2j(dt2d(self))
 end function julian_oop
 !===================================================================================================================================
 function ordinal_oop(self) result (ordinal_days)
-character(len=*),parameter::ident_42="@(#)M_time::ordinal_oop(3f): convert derived type date_time to ordinal date"
+
+!character(len=*),parameter::ident_42="@(#)M_time::ordinal_oop(3f): convert derived type date_time to ordinal date"
+
 class(date_time),intent(in) :: self
 integer                     :: ordinal_days
     ordinal_days=d2o(dt2d(self))
 end function ordinal_oop
 !===================================================================================================================================
 function weekday_oop(self) result (iday)
-character(len=*),parameter::ident_43="@(#)M_time::weekday_oop(3f): convert derived type date_time to weekday (1=Monday,7=Sunday)"
+
+!character(len=*),parameter::ident_43="@(#)M_time::weekday_oop(3f): convert derived type date_time to weekday (1=Monday,7=Sunday)"
+
 class(date_time),intent(in)   :: self
 integer                       :: iday
 integer                       :: ierr      ! Error return,0=correct,-1=invalid Julian Date,-2=neither day nor weekday specified
@@ -5356,7 +5375,8 @@ function delta(self,year,month,day,tz,hour,minute,second,millisecond,week,durati
 ! or "a month from now". Once the arbitrary values are used to change the original date_time value convert it to
 ! Epoch time and back to make sure you get a valid date.
 !
-character(len=*),parameter::ident_44="@(#)M_time::delta(3f): add times to a type(date_time)"
+!character(len=*),parameter::ident_44="@(#)M_time::delta(3f): add times to a type(date_time)"
+
 class(date_time),intent(in)           :: self
 integer,intent(in),optional           :: year, month, day, tz, hour, minute, second, millisecond, week
 character(len=*),intent(in),optional  :: duration
@@ -5388,7 +5408,9 @@ subroutine init_dt(self,year,month,day,tz,hour,minute,second,millisecond,type,da
 ! If not, initialize to the current time or start of epoch depending on TYPE=["now"|"epoch"]
 ! Then, apply specific values, typically specified by keyword value
 !
-character(len=*),parameter::ident_45="@(#)M_time::init_dt(3f): initialize TYPE(DATE_TIME)"
+
+!character(len=*),parameter::ident_45="@(#)M_time::init_dt(3f): initialize TYPE(DATE_TIME)"
+
 class(date_time)                     :: self
 type(date_time)                      :: holddt
 integer,intent(in),optional          :: year, month, day, tz, hour, minute, second, millisecond
@@ -5449,7 +5471,9 @@ end subroutine init_dt
 ! FUNCTIONS FOR DEFINING OVERLOADED OPERATORS
 !===================================================================================================================================
 function plus_seconds(self,seconds) result (dattim)
-character(len=*),parameter::ident_46="@(#)M_time::plus_seconds(3f): add derived type date_time object and seconds"
+
+!character(len=*),parameter::ident_46="@(#)M_time::plus_seconds(3f): add derived type date_time object and seconds"
+
 class(date_time),intent(in)    :: self
 real(kind=realtime),intent(in) :: seconds
 type(date_time)                :: dattim
@@ -5460,7 +5484,9 @@ type(date_time)                :: dattim
 end function plus_seconds
 !===================================================================================================================================
 function minus_seconds(self,seconds) result (dattim)
-character(len=*),parameter::ident_47="@(#)M_time::minus_seconds(3f): subtract seconds from derived type date_time object"
+
+!character(len=*),parameter::ident_47="@(#)M_time::minus_seconds(3f): subtract seconds from derived type date_time object"
+
 class(date_time),intent(in)    :: self
 real(kind=realtime),intent(in) :: seconds
 type(date_time)                :: dattim
@@ -5468,7 +5494,9 @@ type(date_time)                :: dattim
 end function minus_seconds
 !===================================================================================================================================
 function minus_date_time(self,other) result (seconds)
-character(len=*),parameter::ident_48="@(#)M_time::minus_date_time(3f): add derived type date_time object and seconds"
+
+!character(len=*),parameter::ident_48="@(#)M_time::minus_date_time(3f): add derived type date_time object and seconds"
+
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
 real(kind=realtime)           :: seconds
@@ -5476,7 +5504,9 @@ real(kind=realtime)           :: seconds
 end function minus_date_time
 !===================================================================================================================================
 logical function eq(self,other)
-character(len=*),parameter::ident_49="@(#)M_time::eq(3f): compare derived type date_time objects (eq,lt,gt,le,ge,ne)"
+
+!character(len=*),parameter::ident_49="@(#)M_time::eq(3f): compare derived type date_time objects (eq,lt,gt,le,ge,ne)"
+
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
    eq= int(d2u(dt2d(self))) .eq. int(d2u(dt2d(other)))
@@ -5524,9 +5554,9 @@ end function ne
 !!
 !!     character(len=*)  :: str
 !!##DESCRIPTION
-!!    TRIMZEROS(3f) deletes trailing zeros from a string representing a
-!!    number. If the resulting string would end in a decimal point, one
-!!    trailing zero is added.
+!!   TRIMZEROS(3f) deletes trailing zeros from a string representing a
+!!   number. If the resulting string would end in a decimal point, one
+!!   trailing zero is added.
 !!##OPTIONS
 !!    str   input string will be assumed to be a numeric value and have trailing
 !!          zeros removed
@@ -5550,7 +5580,7 @@ end function ne
 !===================================================================================================================================
 subroutine trimzeros(string)
 
-character(len=*),parameter::ident_50="@(#)M_strings::trimzeros(3fp): Delete trailing zeros from numeric decimal string"
+!character(len=*),parameter::ident_50="@(#)M_strings::trimzeros(3fp): Delete trailing zeros from numeric decimal string"
 
 ! if zero needs added at end assumes input string has room
 character(len=*)             :: string
@@ -5606,17 +5636,17 @@ end subroutine trimzeros
 !!     integer|real|doubleprecision,intent(out) :: valu
 !!     integer,intent(out)                      :: ierr
 !!##DESCRIPTION
-!!       returns a numeric value from a numeric character string.
+!!   returns a numeric value from a numeric character string.
 !!
-!!       works with any g-format input, including integer, real, and
-!!       exponential. If the input string begins with "B", "Z", or "O"
-!!       and otherwise represents a positive whole number it is assumed to
-!!       be a binary, hexadecimal, or octal value. If the string contains
-!!       commas they are removed. If the string is of the form NN:MMM... or
-!!       NN#MMM then NN is assumed to be the base of the whole number.
+!!   works with any g-format input, including integer, real, and
+!!   exponential. If the input string begins with "B", "Z", or "O"
+!!   and otherwise represents a positive whole number it is assumed to
+!!   be a binary, hexadecimal, or octal value. If the string contains
+!!   commas they are removed. If the string is of the form NN:MMM... or
+!!   NN#MMM then NN is assumed to be the base of the whole number.
 !!
-!!       if an error occurs in the READ, IOSTAT is returned in IERR and
-!!       value is set to zero. if no error occurs, IERR=0.
+!!   if an error occurs in the READ, IOSTAT is returned in IERR and
+!!   value is set to zero. if no error occurs, IERR=0.
 !!##OPTIONS
 !!       CHARS  input string to read numeric value from
 !!##RETURNS
@@ -5624,7 +5654,7 @@ end subroutine trimzeros
 !!       IERR   error flag (0 == no error)
 !!##EXAMPLE
 !!
-!!   Sample Program:
+!!    Sample Program:
 !!
 !!     program demo_string_to_value
 !!     use M_strings, only: string_to_value
@@ -5640,7 +5670,7 @@ end subroutine trimzeros
 !===================================================================================================================================
 subroutine a2r(chars,valu,ierr)
 
-character(len=*),parameter::ident_40="@(#)M_strings::a2r(3fp): subroutine returns real value from string"
+!character(len=*),parameter::ident_40="@(#)M_strings::a2r(3fp): subroutine returns real value from string"
 
 character(len=*),intent(in) :: chars                      ! input string
 real,intent(out)            :: valu                       ! value read from input string
@@ -5662,7 +5692,7 @@ end subroutine a2r
 !----------------------------------------------------------------------------------------------------------------------------------
 subroutine a2i(chars,valu,ierr)
 
-character(len=*),parameter::ident_41="@(#)M_strings::a2i(3fp): subroutine returns integer value from string"
+!character(len=*),parameter::ident_41="@(#)M_strings::a2i(3fp): subroutine returns integer value from string"
 
 character(len=*),intent(in) :: chars                      ! input string
 integer,intent(out)         :: valu                       ! value read from input string
@@ -5684,7 +5714,7 @@ end subroutine a2i
 !----------------------------------------------------------------------------------------------------------------------------------
 subroutine a2d(chars,valu,ierr,onerr)
 
-character(len=*),parameter::ident_42="@(#)M_strings::a2d(3fp): subroutine returns double value from string"
+!character(len=*),parameter::ident_42="@(#)M_strings::a2d(3fp): subroutine returns double value from string"
 
 !     1989,2016 John S. Urban.
 !
@@ -5768,24 +5798,24 @@ end subroutine a2d
 !>
 !!##NAME
 !!
-!!    decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number
-!!    (LICENSE:PD)
+!!   decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number
+!!   (LICENSE:PD)
 !!
 !!##SYNOPSIS
 !!
-!!   logical function decodebase(string,basein,out10)
+!!    logical function decodebase(string,basein,out10)
 !!
-!!    character(len=*),intent(in)  :: string
-!!    integer,intent(in)           :: basein
-!!    integer,intent(out)          :: out10
+!!     character(len=*),intent(in)  :: string
+!!     integer,intent(in)           :: basein
+!!     integer,intent(out)          :: out10
 !!##DESCRIPTION
 !!
-!!    Convert a numeric string representing a whole number in base BASEIN
-!!    to base 10. The function returns FALSE if BASEIN is not in the range
-!!    [2..36] or if string STRING contains invalid characters in base BASEIN
-!!    or if result OUT10 is too big
+!!   Convert a numeric string representing a whole number in base BASEIN
+!!   to base 10. The function returns FALSE if BASEIN is not in the range
+!!   [2..36] or if string STRING contains invalid characters in base BASEIN
+!!   or if result OUT10 is too big
 !!
-!!    The letters A,B,...,Z represent 10,11,...,36 in the base > 10.
+!!   The letters A,B,...,Z represent 10,11,...,36 in the base > 10.
 !!
 !!##OPTIONS
 !!    string   input string. It represents a whole number in
@@ -5798,7 +5828,7 @@ end subroutine a2d
 !!
 !!##EXAMPLE
 !!
-!!   Sample program:
+!!    Sample program:
 !!
 !!     program demo_decodebase
 !!     use M_strings, only : codebase, decodebase
@@ -5842,7 +5872,7 @@ end subroutine a2d
 logical function decodebase(string,basein,out_baseten)
 implicit none
 
-character(len=*),parameter::ident_72="@(#)M_strings::decodebase(3f): convert whole number string in base [2-36] to base 10 number"
+!character(len=*),parameter::ident_72="@(#)M_strings::decodebase(3f): convert whole number string in base [2-36] to base 10 number"
 
 character(len=*),intent(in)  :: string
 integer,intent(in)           :: basein

@@ -1,0 +1,8 @@
+<map id="m_time::d2w" name="m_time::d2w">
+<area shape="rect" id="node2" href="$M__time_8f90.html#a4a68c5e906616f64da0c3d165fc41479" title="uncorrected_week_of_year" alt="" coords="160,81,357,108"/>
+<area shape="rect" id="node3" href="$namespacem__time.html#a727dd77bbd4a5d0e3947c5d303845947" title="NAMEd2o(3f) &#45; [M_time] converts DAT date&#45;time array to Ordinal day (LICENSE:PD) " alt="" coords="407,56,511,83"/>
+<area shape="rect" id="node7" href="$namespacem__time.html#adfda8a89820b8d0ad4581a14896e4ce5" title="NAMEdow(3f) &#45; [M_time] given a date&#45;time array DAT return the day of the week (LICENSE:PD) ..." alt="" coords="405,107,512,133"/>
+<area shape="rect" id="node4" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:PD) ..." alt="" coords="560,5,724,32"/>
+<area shape="rect" id="node6" href="$namespacem__time.html#ac729ead2b5aa4c756d52284cd7d22bf2" title="m_time::stderr" alt="" coords="583,56,701,83"/>
+<area shape="rect" id="node5" href="$namespacem__time.html#acfdc970b4154b0c15bd33727636e3992" title="NAMEdate_to_julian(3f) &#45; [M_time] converts DAT date&#45;time array to Julian Date (LICENSE:PD) ..." alt="" coords="772,56,944,83"/>
+</map>

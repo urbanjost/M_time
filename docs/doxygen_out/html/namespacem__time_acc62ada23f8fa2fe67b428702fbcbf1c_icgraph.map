@@ -1,0 +1,15 @@
+<map id="m_time::unix_to_date" name="m_time::unix_to_date">
+<area shape="rect" id="node2" href="$namespacem__time.html#a083bc231f8ba1879d7f86ab424e77d6c" title="NAMEu2d(3f) &#45; [M_time] given Unix Epoch Time returns DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="217,224,321,251"/>
+<area shape="rect" id="node3" href="$namespacem__time.html#a55e2cb9efc9d4d209ae2864f073d4f19" title="NAMEo2d(3f) &#45; [M_time] converts Ordinal day to DAT date&#45;time array (LICENSE:PD) " alt="" coords="421,15,525,41"/>
+<area shape="rect" id="node5" href="$namespacem__time.html#a6f7d20403f29656febb82306aa064134" title="m_time::construct_from_dat" alt="" coords="369,224,576,251"/>
+<area shape="rect" id="node8" href="$namespacem__time.html#a7d903e5ff714106d933cee618e780a8b" title="m_time::construct_from_uet" alt="" coords="624,56,831,83"/>
+<area shape="rect" id="node9" href="$namespacem__time.html#aa623b1643e55ffbf97e4fbd1c7e8c379" title="m_time::delta" alt="" coords="671,107,784,133"/>
+<area shape="rect" id="node10" href="$namespacem__time.html#a72455f763954fae8ebc0f454033d82a8" title="m_time::init_dt" alt="" coords="667,275,788,301"/>
+<area shape="rect" id="node11" href="$namespacem__time.html#a76e79ee87552ce537cbb674a21b05b5c" title="m_time::plus_seconds" alt="" coords="644,325,811,352"/>
+<area shape="rect" id="node13" href="$namespacem__time.html#a0d241cbb8f2e30a64b53f4aae4100709" title="m_time::minus_seconds" alt="" coords="637,376,817,403"/>
+<area shape="rect" id="node4" href="$namespacem__time.html#ac0ec48db8d508bfa23fe4b20c9d1c5a3" title="NAMEw2d(3f) &#45; [M_time] calculate DAT date&#45;time array from iso&#45;8601 Week&#45;numbering year date yyyy&#45;Www&#45;..." alt="" coords="674,5,781,32"/>
+<area shape="rect" id="node6" href="$structm__time_1_1date__time.html#adc11c2984fd9dae163e44627a5e2a134" title="m_time::date_time::\loperator" alt="" coords="650,158,805,199"/>
+<area shape="rect" id="node7" href="$namespacem__time.html#ab7b679d14dabc2a9250f4ec218569f0c" title="m_time::construct_from_jed" alt="" coords="625,224,830,251"/>
+<area shape="rect" id="node12" href="$structm__time_1_1date__time.html#ad51508db1d161547062f40dcd91f4e4b" title="m_time::date_time::\loperator" alt="" coords="879,310,1033,351"/>
+<area shape="rect" id="node14" href="$structm__time_1_1date__time.html#affafbae65afa1e12c901241e641e4b1f" title="m_time::date_time::\loperator" alt="" coords="879,375,1033,417"/>
+</map>

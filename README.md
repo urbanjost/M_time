@@ -1,20 +1,69 @@
-# M_time.f90 and associated files
+### M_time.f90 and associated files
 
-This package is a self-contained version of the M_time library from
-the GPF (General Purpose Fortran) package that has been extracted for
-those just interested in a library of time-related functions. In the
-GPF package this library is intertwined with several other large modules.
+## NAME
+   M_time - Fortran module for manipulating and presenting time and date values
 
+## DESCRIPTION
+The M_time Fortran module
+
+  * provides for formatting dates in many styles
+  * facilitates simple computations using time and date values in the recent era.
+  * allow for macro-level timing of code.
+
+Both a procedural and OOP (Object Oriented Programming) interface are
+provided. Each routine is accompanied by a man(1) page which includes
+a sample program for that procedure. An HTML manual, the source and
+example programs are included in the package.
+
+The M_TIME(3f) module complements the DATE_AND_TIME(3f) procedure, which
+is the standard Fortran intrinsic subroutine that returns the current
+date and time in the Gregorian calendar. That is, the primary way this
+module represents dates is as an integer array with the same meaning
+for elements as defined by the DATE_AND_TIME(3f) routine. In addition
+it can calculate or read many other date representations such as ...
+
+  * Julian Dates
+  * Unix Epoch Dates
+  * High-level date formatting
+  * Ordinal days of the year
+  * days of the week
+  * ISO-8601 week numbers
+  * month and weekday names
+
+Julian and Unix Epoch Dates are particularly useful for manipulating dates in
+simple numeric expressions.
+
+The extensive formatting options include showing SYSTEM_CLOCK(3f) and
+CPU_USAGE(3f) information along with Gregorian date information, allowing for
+the easy incorporation of timing information into program messages. In
+addition to conventional Civilian Calendar dates, the module supports the
+ISO-8601 standard methods of displaying dates.
+
+## DOWNLOAD AND BUILD
     git clone https://github.com/urbanjost/M_time.git
     cd M_time/src
     # change Makefile if not using gfortran(1)
     make
+    make help
+    make run
+    make man
+
 
 This will compile the M_time module and build all the example programs from
 the document pages in the PROGRAMS/ sub-directory.
 
-The small example programs demonstrate how easily you can generate a variety
-of output formats:
+## SUPPORTS FPM
+Alternatively, download the github repository and build it with 
+fpm ([Fortran Package Manager]( https://github.com/fortran-lang/fpm))
+   fpm build
+   fpm test
+or just list it as a dependency in your fpm.toml project file.
+
+## SAMPLE PROGRAMS
+
+Each manpage contains a small sample program that has been extracted
+and placed in the PROGRAMS/ directory.  The small example programs
+demonstrate how easily you can generate a variety of output formats:
 
     Sun, Jan 5th, 2020 10:48:33 AM UTC-05:00
 
@@ -42,8 +91,8 @@ of output formats:
 
     Easter day: the 12th day of April in the year of our Lord 2020
 
-The example program "now" easily lets you try out various options. With no options it
-displays allowed formats. For example:
+In particular, the example program "now" easily lets you try out various
+options. With no options it displays allowed formats. For example:
 
       ./now year month day
       ./now 'julian epoch ordinal'
@@ -55,51 +104,15 @@ displays allowed formats. For example:
        The year is 2020 and the month is 01 (January) 11:01:39
        The 5th of January 2020
 
-## NAME
+## DOCUMENTATION
 
-   M_time - Fortran module for manipulating and presenting time and date values
-
-## DESCRIPTION
-
-### The M_time Fortran module
-
-  * provides for formatting dates in many styles
-  * facilitates simple computations using time and date values in the recent era.
-  * allow for macro-level timing of code.
-
-Both a procedural and OOP (Object Oriented Programming) interface are
-provided. Each routine is accompanied by a man(1) page which includes
-a sample program for that procedure. An HTML manual, the source and
-example programs are included in the package.
++ [manpage index](https://urbanjost.github.io/M_time/index.html)
++ [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
++ [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html).
++ [doxygen(1) output](https://urbanjost.github.io/Mtime/doxygen_out/index.html/).
 
 
-The M_TIME(3f) module complements the DATE_AND_TIME(3f) procedure, which
-is the standard Fortran intrinsic subroutine that returns the current
-date and time in the Gregorian calendar. That is, the primary way this
-module represents dates is as an integer array with the same meaning
-for elements as defined by the DATE_AND_TIME(3f) routine. In addition
-it can calculate or read many other date representations such as ...
-
-  * Julian Dates
-  * Unix Epoch Dates
-  * High-level date formatting
-  * Ordinal days of the year
-  * days of the week
-  * ISO-8601 week numbers
-  * month and weekday names
-
-Julian and Unix Epoch Dates are particularly useful for manipulating dates in
-simple numeric expressions.
-
-The extensive formatting options include showing SYSTEM_CLOCK(3f) and
-CPU_USAGE(3f) information along with Gregorian date information, allowing for
-the easy incorporation of timing information into program messages. In
-addition to conventional Civilian Calendar dates, the module supports the
-ISO-8601 standard methods of displaying dates.
-
-In addition to the
-<a href="md/M_time.3.md">M_time overview</a> there is a usage description
-for each procedure:
+Usage for each procedure:
 
 <table BORDER="1">
 
