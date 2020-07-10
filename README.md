@@ -40,23 +40,27 @@ addition to conventional Civilian Calendar dates, the module supports the
 ISO-8601 standard methods of displaying dates.
 
 ## DOWNLOAD AND BUILD
-    git clone https://github.com/urbanjost/M_time.git
-    cd M_time/src
-    # change Makefile if not using gfortran(1)
-    make
-    make help
-    make run
-    make man
+Just download the github repository, enter the src/ directory and run make:
 
+     git clone https://github.com/urbanjost/M_time.git
+     cd M_time/src
+     # change Makefile if not using gfortran(1)
+     make
+     # optionally
+     make test # run the unit tests
+     make run  # run all the demo programs from the manpages
+     make help # see other developer options
 
-This will compile the M_time module and build all the example programs from
-the document pages in the PROGRAMS/ sub-directory.
+This will compile the M_time module and optionally build all the example programs from
+the document pages in the PROGRAMS/ sub-directory and run the unit tests.
 
 ## SUPPORTS FPM
 Alternatively, download the github repository and build it with 
-fpm ([Fortran Package Manager]( https://github.com/fortran-lang/fpm))
-   fpm build
-   fpm test
+fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
+
+    fpm build
+    fpm test
+
 or just list it as a dependency in your fpm.toml project file.
 
 ## SAMPLE PROGRAMS
@@ -105,11 +109,14 @@ options. With no options it displays allowed formats. For example:
        The 5th of January 2020
 
 ## DOCUMENTATION
+Having been experimenting with doxygen(1), txt2man(1) and github markdown
+there are currently several different ways to view the documentation 
+including just reading further down ...
 
 + [manpage index](https://urbanjost.github.io/M_time/index.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html).
-+ [doxygen(1) output](https://urbanjost.github.io/Mtime/doxygen_out/index.html/).
++ [doxygen(1) output](https://urbanjost.github.io/Mtime/doxygen_out/html/index.html/).
 
 
 Usage for each procedure:
