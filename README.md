@@ -1,4 +1,5 @@
 ### M_time.f90 and associated files
+![pocketwatch](images/M_time.3m_time.gif)
 
 ## NAME
    M_time - Fortran module for manipulating and presenting time and date values
