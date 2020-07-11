@@ -5,7 +5,7 @@
    M_time - Fortran module for manipulating and presenting time and date values
 
 ## DESCRIPTION
-The M_time Fortran module
+The M_time Fortran module ( A fortran-lang.org [package](https://fortran-lang.org/packages/) )
 
   * provides for formatting dates in many styles
   * facilitates simple computations using time and date values in the recent era.
@@ -120,6 +120,13 @@ including just reading further down ...
 + [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
 
 _and there are manpages_ in the distribution in man/.
+
+# RESPONSES
+
+Discussion is welcome here as well as at
+ - [Fortran Discourse](https://fortran-lang.discourse.group)
+ - [Fortran Wiki](http://fortranwiki.org)
+ - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
 
 Usage for each procedure:
 
