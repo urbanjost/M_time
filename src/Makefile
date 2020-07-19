@@ -33,7 +33,7 @@ PROGFILES = \
    ../PROGRAMS/demo_w2d/w2d.f90 \
    $(NULL)
 
-TESTFILES = ../test/test_suite.f90
+TESTFILES = ../test/test_suite_M_time.f90
 TEST = ${TESTFILES:.f90=}
 
 CPROGFILES = 
