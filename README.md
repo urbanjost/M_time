@@ -55,14 +55,22 @@ Just download the github repository, enter the src/ directory and run make:
 This will compile the M_time module and optionally build all the example programs from
 the document pages in the PROGRAMS/ sub-directory and run the unit tests.
 
-## SUPPORTS FPM
+## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
+
 Alternatively, download the github repository and build it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 
-    fpm build
-    fpm test
+```bash
+     git clone https://github.com/urbanjost/M_time.git
+     cd M_time
+     fpm build
+     fpm test
+```
 
 or just list it as a dependency in your fpm.toml project file.
+
+     [dependencies]
+     M_time        = { git = "https://github.com/urbanjost/M_time.git" }
 
 ## SAMPLE PROGRAMS
 
