@@ -4,6 +4,7 @@ license = "Public Domain"
 author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John Urban"
+description = "date and time conversion formatting and computation "
 
 [[test]]
 name="runTests"
@@ -149,4 +150,3 @@ main="v2mo.f90"
 name="w2d"
 source-dir="PROGRAMS/demo_w2d"
 main="w2d.f90"
-
