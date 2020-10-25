@@ -1,85 +1,76 @@
 \hypertarget{namespacem__time}{}\section{m\+\_\+time Module Reference}
 \label{namespacem__time}\index{m\+\_\+time@{m\+\_\+time}}
-\subsection*{Data Types}
-\begin{DoxyCompactItemize}
-\item 
-interface \mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}
-\item 
-interface \mbox{\hyperlink{interfacem__time_1_1string__to__value}{string\+\_\+to\+\_\+value}}
-\item 
-interface \mbox{\hyperlink{interfacem__time_1_1v2s}{v2s}}
-\end{DoxyCompactItemize}
 \subsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
 subroutine, public \mbox{\hyperlink{namespacem__time_acfdc970b4154b0c15bd33727636e3992}{date\+\_\+to\+\_\+julian}} (dat, julian, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts D\+AT date-\/time array to Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_abb44cf18cd0a3e420c20469efb056203}{julian\+\_\+to\+\_\+date}} (julian, dat, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aed245c691853279ebf0ce899dec9caa9}{date\+\_\+to\+\_\+unix}} (dat, unixtime, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-date\+\_\+to\+\_\+unix(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Unix Epoch Time (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+date\+\_\+to\+\_\+unix(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} converts D\+AT date-\/time array to Unix Epoch Time (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_acc62ada23f8fa2fe67b428702fbcbf1c}{unix\+\_\+to\+\_\+date}} (unixtime, dat, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-unix\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts Unix Epoch Time to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+unix\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} converts Unix Epoch Time to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_a727dd77bbd4a5d0e3947c5d303845947}{d2o}} (dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2o(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Ordinal day (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2o(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} converts D\+AT date-\/time array to Ordinal day (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_ab8960d2aa60e134bcf77247d8b257963}{ordinal\+\_\+seconds}} ()
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-ordinal\+\_\+seconds(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} seconds since beginning of year (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+ordinal\+\_\+seconds(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} seconds since beginning of year (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aa4dca4409bf20a011bb04988c1335d63}{ordinal\+\_\+to\+\_\+date}} (yyyy, ddd, dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-ordinal\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} when given a valid year and day of the year returns the D\+AT array for the date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+ordinal\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} when given a valid year and day of the year returns the D\+AT array for the date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a55e2cb9efc9d4d209ae2864f073d4f19}{o2d}} (ordinal, year)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-o2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts Ordinal day to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+o2d(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} converts Ordinal day to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6f28cf00e4998bb50bb503f5e4bd3f77}{v2mo}} (imonth)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-v2mo(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} returns the month name of a Common month number (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+v2mo(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} returns the month name of a Common month number (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a8188c7ed4e592c4f2388d28c75486726}{mo2d}} (month\+\_\+name, year)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-mo2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given month name return D\+AT date-\/time array for beginning of that month in specified year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+mo2d(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} given month name return D\+AT date-\/time array for beginning of that month in specified year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_ad7bf0886754757e8961e562f06cf3bb7}{mo2v}} (month\+\_\+name)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-mo2v(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given month name return month number (1-\/12) of that month (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6b5e87be0e510ff268c1ecfbf67a3bdb}{now}} (\mbox{\hyperlink{namespacem__time_a8d843c997d304f40fd5aed820c5a7473}{format}})
+mo2v(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} given month name return month number (1-\/12) of that month (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6b5e87be0e510ff268c1ecfbf67a3bdb}{now}} (format)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-now(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return string representing current time given format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a2cb84c9b8af4f395b76aed76e1431328}{fmtdate}} (values, \mbox{\hyperlink{namespacem__time_a8d843c997d304f40fd5aed820c5a7473}{format}})
+now(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} return string representing current time given format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a2cb84c9b8af4f395b76aed76e1431328}{fmtdate}} (values, format)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-fmtdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array return date as string using specified format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+fmtdate(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} given D\+AT date-\/time array return date as string using specified format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_a914927f70fb9495af1be2e484b967111}{fmtdate\+\_\+usage}} (indent)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} display macros recognized by fmtdate(3f) and now(3f) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} display macros recognized by fmtdate(3f) and now(3f) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aa5198c7aa4f3d8411c8ce93046ce3794}{guessdate}} (datestring, dat, ier)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-guessdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} reads in a date, in various formats (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+guessdate(3f) -\/ \mbox{[}M\+\_\+time\+:R\+E\+A\+D\+I\+N\+G\+\_\+\+D\+A\+T\+ES\mbox{]} reads in a date, in various formats (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_adfda8a89820b8d0ad4581a14896e4ce5}{dow}} (values, weekday, day, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-dow(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given a date-\/time array D\+AT return the day of the week (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+dow(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+Y\+\_\+\+O\+F\+\_\+\+W\+E\+EK\mbox{]} given a date-\/time array D\+AT return the day of the week (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_ad4ff99ad6f6d5282c4b65ad636a2a627}{d2w}} (dat, iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday, iso\+\_\+name)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2w(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate iso-\/8601 Week-\/numbering year date yyyy-\/\+Www-\/d given D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2w(3f) -\/ \mbox{[}M\+\_\+time\+:W\+E\+E\+K\+\_\+\+O\+F\+\_\+\+Y\+E\+AR\mbox{]} calculate iso-\/8601 Week-\/numbering year date yyyy-\/\+Www-\/d given D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_ac0ec48db8d508bfa23fe4b20c9d1c5a3}{w2d}} (iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday, dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
@@ -87,151 +78,53 @@ w2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate D\+AT date-\/time array from i
 subroutine, public \mbox{\hyperlink{namespacem__time_a0fe7540912df30d3578f3c469413aea8}{box\+\_\+month}} (dat, calen)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-box\+\_\+month(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} create specified month in a character array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+box\+\_\+month(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} create specified month in a character array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, public \mbox{\hyperlink{namespacem__time_a3fccc53c2650104eff084c7998d18f54}{d2j}} (dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2j(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2j(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} given D\+AT date-\/time array returns Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c}{j2d}} (julian)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-j2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given a J\+ED (Julian Ephemeris Date) returns a date-\/time array D\+AT. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+j2d(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} given a J\+ED (Julian Ephemeris Date) returns a date-\/time array D\+AT. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, public \mbox{\hyperlink{namespacem__time_a1506e2889a156387df4481ed0534be81}{d2u}} (dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2u(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Unix Epoch Time (U\+ET starts at 0000 on 1 Jan. 1970, U\+TC) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2u(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} given D\+AT date-\/time array returns Unix Epoch Time (U\+ET starts at 0000 on 1 Jan. 1970, U\+TC) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a083bc231f8ba1879d7f86ab424e77d6c}{u2d}} (unixtime)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-u2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given Unix Epoch Time returns D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+u2d(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} given Unix Epoch Time returns D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function \mbox{\hyperlink{namespacem__time_a7903410a1d28bcdf3d33ab0c2d74b124}{get\+\_\+timezone}} ()
 \item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a7788285d79b8d58323b05e9a30a2d992}{sec2days}} (seconds, crop)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-sec2days(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert seconds to string of form dd-\/hh\+:mm\+:ss (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+sec2days(3f) -\/ \mbox{[}M\+\_\+time\+:D\+U\+R\+A\+T\+I\+ON\mbox{]} convert seconds to string of form dd-\/hh\+:mm\+:ss (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, public \mbox{\hyperlink{namespacem__time_a99393c7906f1989f90ece03969224938}{days2sec}} (str)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-days2sec(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert string of form \mbox{[}\mbox{[}-\/\mbox{]}dd-\/\mbox{]}hh\+:mm\+:ss.\+nn to seconds (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+days2sec(3f) -\/ \mbox{[}M\+\_\+time\+:D\+U\+R\+A\+T\+I\+ON\mbox{]} convert string of form \mbox{[}\mbox{[}-\/\mbox{]}dd-\/\mbox{]}hh\+:mm\+:ss.\+nn to seconds (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_ab8a976e2f113cc38b6df80974cee55dc}{phase\+\_\+of\+\_\+moon}} (datin)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-phase\+\_\+of\+\_\+moon(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return name for phase of moon for given date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+phase\+\_\+of\+\_\+moon(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} return name for phase of moon for given date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_a702b39998a769b8f60070c0bec975ee2}{moon\+\_\+fullness}} (datin)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-moon\+\_\+fullness(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return percentage of moon phase from new to full (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+moon\+\_\+fullness(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} return percentage of moon phase from new to full (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_a5ccb70e20160fcf26bb403dbff1f138a}{easter}} (year, dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-easter(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate date for Easter given a year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_a3c8fc82ff0a77573d0f907d4d44dd9bd}{substitute}} (targetline, old, new, ierr, start, end)
+easter(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} calculate date for Easter given a year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_a7c5d028ae1e1e01162ffc7bb55dcbbb1}{system\+\_\+sleep}} (seconds)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-substitute(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} subroutine globally substitutes one substring for another in string (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-elemental pure character(len(str)) function, private \mbox{\hyperlink{namespacem__time_af7c0157f921a2716ede225374095c6f2}{upper}} (str, begin, end)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-upper(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to uppercase (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-elemental pure character(len(str)) function, private \mbox{\hyperlink{namespacem__time_a96597ff2f2eab2ede14e3a63bd49254a}{lower}} (str, begin, end)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-lower(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to lowercase over specified range (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespacem__time_ac729ead2b5aa4c756d52284cd7d22bf2}{stderr}} (string)
+system\+\_\+sleep(3f) -\/ \mbox{[}M\+\_\+time\+:C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE\mbox{]} call C sleep(3c) or usleep(3c) procedure (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+subroutine, private \mbox{\hyperlink{namespacem__time_af558bfc1fd5b13a6b879b3969866956f}{call\+\_\+sleep}} (wait\+\_\+seconds)
 \item 
-pure character(len=\+:) function, allocatable, private \mbox{\hyperlink{namespacem__time_a9b165bc2207c694474bff6c7f56dfb09}{adjustc}} (string, length)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-adjustc(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} center text (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=len(str)) function, private \mbox{\hyperlink{namespacem__time_a7dd8bfae3ed8ba85bf4de75bf120fe89}{compact}} (str, char)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-compact(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} converts contiguous whitespace to a single character (or nothing) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-doubleprecision function, private \mbox{\hyperlink{namespacem__time_a30c2f29f22d676ade9dff5ad6c35aae5}{s2v}} (chars, ierr, onerr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-s2v(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} function returns doubleprecision numeric value from a string (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_a16627f5dab7e40434531eed45cb3ea26}{split}} (input\+\_\+line, array, delimiters, order, nulls)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-split(3f) -\/ \mbox{[}M\+\_\+strings\+:T\+O\+K\+E\+NS\mbox{]} parse string into an array using specified delimiters (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_aa6ebf9f13e386a27257b5d207fcd3eec}{string\+\_\+to\+\_\+values}} (line, iread, values, inums, delims, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-string\+\_\+to\+\_\+values(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} read a string representing numbers into a numeric array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-pure character(len=len(instr)) function, private \mbox{\hyperlink{namespacem__time_a6e202d6d900515a44ab8a7cbb886a68e}{transliterate}} (instr, old\+\_\+set, new\+\_\+set)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-transliterate(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} replace characters from old set with new set (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a0b88094db657df167f8e57aa4362259e}{d2s}} (dvalue, fmt)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a6fdd4bf34977b7a390ce93c75c2cc6d8}{r2s}} (rvalue, fmt)
-\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a7ae85160c5039dad604fd05efad2445f}{i2s}} (ivalue, fmt)
-\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a03e90459e69ffa353d1a6ce5765836fd}{l2s}} (lvalue, fmt)
-\item 
-subroutine \mbox{\hyperlink{namespacem__time_a0dac2380784afe63e06862095d589c22}{value\+\_\+to\+\_\+string}} (gval, chars, length, err, fmt, trimz)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function \mbox{\hyperlink{namespacem__time_a6f7d20403f29656febb82306aa064134}{construct\+\_\+from\+\_\+dat}} (dat)
-\item 
-type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function \mbox{\hyperlink{namespacem__time_ab7b679d14dabc2a9250f4ec218569f0c}{construct\+\_\+from\+\_\+jed}} (jed)
-\item 
-type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function \mbox{\hyperlink{namespacem__time_a7d903e5ff714106d933cee618e780a8b}{construct\+\_\+from\+\_\+uet}} (uet)
-\item 
-integer function, dimension(8), private \mbox{\hyperlink{namespacem__time_aa281690d7f68f14842b00d238702e774}{dt2d}} (self)
-\item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, private \mbox{\hyperlink{namespacem__time_a64abb0c3f90cb0ae1358ef55ce03c175}{epoch}} (self)
-\item 
-character(len=\+:) function, allocatable, private \mbox{\hyperlink{namespacem__time_a8d843c997d304f40fd5aed820c5a7473}{format}} (self, fmt)
-\item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, private \mbox{\hyperlink{namespacem__time_aff0a1b524b578e85efe20b87fbe9db61}{julian\+\_\+oop}} (self)
-\item 
-integer function, private \mbox{\hyperlink{namespacem__time_a7fb507bb72a1872ec2a86fb7f3a50d75}{ordinal\+\_\+oop}} (self)
-\item 
-integer function, private \mbox{\hyperlink{namespacem__time_ac43e082c8ffd7687c4fc91beddc15720}{weekday\+\_\+oop}} (self)
-\item 
-type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function, private \mbox{\hyperlink{namespacem__time_aa623b1643e55ffbf97e4fbd1c7e8c379}{delta}} (self, year, month, day, tz, hour, minute, second, millisecond, week, duration)
-\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_a72455f763954fae8ebc0f454033d82a8}{init\+\_\+dt}} (self, year, month, day, tz, hour, minute, second, millisecond, type, dat)
-\item 
-type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function \mbox{\hyperlink{namespacem__time_a76e79ee87552ce537cbb674a21b05b5c}{plus\+\_\+seconds}} (self, seconds)
-\item 
-type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function \mbox{\hyperlink{namespacem__time_a0d241cbb8f2e30a64b53f4aae4100709}{minus\+\_\+seconds}} (self, seconds)
-\item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function \mbox{\hyperlink{namespacem__time_ae81a89463c40f33a14b1b2d49f797643}{minus\+\_\+date\+\_\+time}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a7d365fb381fa8f5f79a4263c9f678b98}{eq}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a2cc7f6c40c8ef5aeef08cd51912987d7}{lt}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a62a48ba3b42ccf837b48584293231021}{gt}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a498bb2830d153743d9624e65e92d4f6c}{le}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_aae8c0dfd78a61889a0d6444448ac0bb9}{ge}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_ac0e0df383f424680ce59f5540e02348b}{ne}} (self, other)
-\item 
-subroutine \mbox{\hyperlink{namespacem__time_a5d9e4a12c3418d67dc69a87780053d67}{trimzeros}} (string)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-trimzeros(3fp) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} Delete trailing zeros from numeric decimal string (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespacem__time_a85f3492133b49248e415771ff4da0b95}{a2r}} (chars, valu, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-string\+\_\+to\+\_\+value(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} subroutine returns numeric value from string (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespacem__time_a200e48a4e0096b4343b0b72c95becd3d}{a2i}} (chars, valu, ierr)
-\item 
-subroutine \mbox{\hyperlink{namespacem__time_a9d508147e28034267073619ba8a0e910}{a2d}} (chars, valu, ierr, onerr)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a8dacab5686d74326cc68aa91b6f16c2d}{decodebase}} (string, basein, out\+\_\+baseten)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}\end{DoxyCompactList}\end{DoxyCompactItemize}
+subroutine, private \mbox{\hyperlink{namespacem__time_ae63783f7479d2f5093c8031d38ce4304}{call\+\_\+usleep}} (wait\+\_\+seconds)
+\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -250,173 +143,6 @@ real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{r
 
 
 \subsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespacem__time_a9d508147e28034267073619ba8a0e910}\label{namespacem__time_a9d508147e28034267073619ba8a0e910}} 
-\index{m\+\_\+time@{m\+\_\+time}!a2d@{a2d}}
-\index{a2d@{a2d}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{a2d()}{a2d()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+::a2d (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{doubleprecision, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr,  }\item[{class($\ast$), intent(in), optional}]{onerr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References decodebase(), stderr(), and substitute().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a9d508147e28034267073619ba8a0e910_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a9d508147e28034267073619ba8a0e910_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a200e48a4e0096b4343b0b72c95becd3d}\label{namespacem__time_a200e48a4e0096b4343b0b72c95becd3d}} 
-\index{m\+\_\+time@{m\+\_\+time}!a2i@{a2i}}
-\index{a2i@{a2i}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{a2i()}{a2i()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+::a2i (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{integer, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References a2d(), and stderr().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a200e48a4e0096b4343b0b72c95becd3d_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a85f3492133b49248e415771ff4da0b95}\label{namespacem__time_a85f3492133b49248e415771ff4da0b95}} 
-\index{m\+\_\+time@{m\+\_\+time}!a2r@{a2r}}
-\index{a2r@{a2r}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{a2r()}{a2r()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+::a2r (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{real, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-string\+\_\+to\+\_\+value(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} subroutine returns numeric value from string (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}subroutine string_to_value(chars,valu,ierr)
-
- character(len=*),intent(in)              :: chars   ! input string
- integer|real|doubleprecision,intent(out) :: valu
- integer,intent(out)                      :: ierr
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-returns a numeric value from a numeric character string.
-
-works with any g-\/format input, including integer, real, and exponential. If the input string begins with \char`\"{}\+B\char`\"{}, \char`\"{}\+Z\char`\"{}, or \char`\"{}\+O\char`\"{} and otherwise represents a positive whole number it is assumed to be a binary, hexadecimal, or octal value. If the string contains commas they are removed. If the string is of the form NN\+:M\+MM... or N\+N\+::\+M\+MM then NN is assumed to be the base of the whole number.
-
-if an error occurs in the R\+E\+AD, I\+O\+S\+T\+AT is returned in I\+E\+RR and value is set to zero. if no error occurs, I\+E\+RR=0. \subsubsection*{O\+P\+T\+I\+O\+NS}
-
-C\+H\+A\+RS input string to read numeric value from \subsubsection*{R\+E\+T\+U\+R\+NS}
-
-V\+A\+LU numeric value returned. May be I\+N\+T\+E\+G\+ER, R\+E\+AL, or D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON. I\+E\+RR error flag (0 == no error) \subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_string_to_value
- use M_strings, only: string_to_value
- character(len=80) :: string
-    string=' -40.5e-2 '
-    call string_to_value(string,value,ierr)
-    write(*,*) 'value of string ['//trim(string)//'] is ',value
- end program demo_string_to_value
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References a2d(), and stderr().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a85f3492133b49248e415771ff4da0b95_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a9b165bc2207c694474bff6c7f56dfb09}\label{namespacem__time_a9b165bc2207c694474bff6c7f56dfb09}} 
-\index{m\+\_\+time@{m\+\_\+time}!adjustc@{adjustc}}
-\index{adjustc@{adjustc}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{adjustc()}{adjustc()}}
-{\footnotesize\ttfamily pure character(len=\+:) function, allocatable, private m\+\_\+time\+::adjustc (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{string,  }\item[{integer, intent(in), optional}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-adjustc(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} center text (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-pure function adjustc(string\mbox{[},length\mbox{]})
-
-character(len=$\ast$),intent(in) \+:\+: string integer,intent(in),optional \+:\+: length character(len=\+:),allocatable \+:\+: adjustc \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-Centers input text in a string of the length specified. Returns a string of length L\+E\+N\+G\+TH if L\+E\+N\+G\+TH is present. Otherwise returns a string of the length of the input string. \subsubsection*{O\+P\+T\+I\+O\+NS}
-
-string input string to trim and center length line length to center text in, optional. \subsubsection*{R\+E\+T\+U\+R\+NS}
-
-adjustc centered output string
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_adjustc
- use M_strings, only : adjustc
- !  using length of the input string
-    write(*,'(a)')       '================================'
-    write(*,'(a)')adjustc('centered string                 ')
-    write(*,'(a)')adjustc('                 centered string')
-    write(*,'(a)')adjustc('  centered string               ')
- !  using explicit output string length
-    write(*,'(a)')repeat('=',50)
-    write(*,'(a)')adjustc('this is a centered string',50)
-    write(*,'(a)')repeat('=',50)
- end program demo_adjustc
-
-Expected output:
-
- \================================
-         centered string
-         centered string
-         centered string
- \==================================================
-             this is a centered string
- \==================================================
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em string} & P\+R\+O\+C\+E\+D\+U\+RE adjustc(3f) D\+E\+S\+C\+R\+I\+P\+T\+I\+ON center text using implicit or explicit length \subsubsection*{V\+E\+R\+S\+I\+ON 2.\+0, 20160711}\\
-\hline
-\end{DoxyParams}
-A\+U\+T\+H\+OR John S. Urban Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=326pt]{namespacem__time_a9b165bc2207c694474bff6c7f56dfb09_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a0fe7540912df30d3578f3c469413aea8}\label{namespacem__time_a0fe7540912df30d3578f3c469413aea8}} 
 \index{m\+\_\+time@{m\+\_\+time}!box\+\_\+month@{box\+\_\+month}}
 \index{box\+\_\+month@{box\+\_\+month}!m\+\_\+time@{m\+\_\+time}}
@@ -427,7 +153,7 @@ A\+U\+T\+H\+OR John S. Urban Here is the caller graph for this function\+:\nopag
 
 \subsubsection*{N\+A\+ME}
 
-box\+\_\+month(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} create specified month in a character array (L\+I\+C\+E\+N\+SE\+:PD) 
+box\+\_\+month(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} create specified month in a character array (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -444,35 +170,36 @@ box\+\_\+month(3f) uses a year and month from a date array to populate a small c
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat \char`\"{}\+D\+A\+T\char`\"{} array (an integer array of the same format as the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)) describing the date to be used to specify what calendar month to produce.
-
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]} \subsubsection*{R\+E\+T\+U\+R\+NS}
+dat \char`\"{}\+D\+A\+T\char`\"{} array (an integer array of the same format as the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)) describing the date to be used to specify what calendar month to produce. \begin{DoxyVerb}   dat=[ year,month,day,timezone,hour,&
+    & minutes,seconds,milliseconds]
+\end{DoxyVerb}
+ \subsubsection*{R\+E\+T\+U\+R\+NS}
 
 calen returned character array holding a display of the specified month
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
-\begin{DoxyVerb}Sample program:XXX
+\begin{DoxyVerb}Sample program:
 
-  program demo_box_month
-  use M_time, only : box_month
-  implicit none
-  integer           :: dat(8)
-  character(len=21) :: calendar(8)
-     call date_and_time(values=dat)
-     call box_month(dat,calendar)
-     write(*,'(a)')calendar
-  end program demo_box_month
+ program demo_box_month
+ use M_time, only : box_month
+ implicit none
+ integer           :: dat(8)
+ character(len=21) :: calendar(8)
+    call date_and_time(values=dat)
+    call box_month(dat,calendar)
+    write(*,'(a)')calendar
+ end program demo_box_month
 
 results:
 
-   >     July 2016
-   >Mo Tu We Th Fr Sa Su
-   >             1  2  3
-   > 4  5  6  7  8  9 10
-   >11 12 13 14 15 16 17
-   >18 19 20 21 22 23 24
-   >25 26 27 28 29 30 31
+  >     July 2016
+  >Mo Tu We Th Fr Sa Su
+  >             1  2  3
+  > 4  5  6  7  8  9 10
+  >11 12 13 14 15 16 17
+  >18 19 20 21 22 23 24
+  >25 26 27 28 29 30 31
 \end{DoxyVerb}
 
 
@@ -482,7 +209,7 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References adjustc(), date\+\_\+to\+\_\+julian(), dow(), julian\+\_\+to\+\_\+date(), and v2mo().
+References m\+\_\+time\+\_\+duplicate\+::adjustc(), date\+\_\+to\+\_\+julian(), dow(), julian\+\_\+to\+\_\+date(), and v2mo().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -491,130 +218,30 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a0fe7540912df30d3578f3c469413aea8_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a7dd8bfae3ed8ba85bf4de75bf120fe89}\label{namespacem__time_a7dd8bfae3ed8ba85bf4de75bf120fe89}} 
-\index{m\+\_\+time@{m\+\_\+time}!compact@{compact}}
-\index{compact@{compact}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{compact()}{compact()}}
-{\footnotesize\ttfamily character(len=len(str)) function, private m\+\_\+time\+::compact (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{str,  }\item[{character(len=$\ast$), intent(in), optional}]{char }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{namespacem__time_af558bfc1fd5b13a6b879b3969866956f}\label{namespacem__time_af558bfc1fd5b13a6b879b3969866956f}} 
+\index{m\+\_\+time@{m\+\_\+time}!call\+\_\+sleep@{call\+\_\+sleep}}
+\index{call\+\_\+sleep@{call\+\_\+sleep}!m\+\_\+time@{m\+\_\+time}}
+\subsubsection{\texorpdfstring{call\+\_\+sleep()}{call\_sleep()}}
+{\footnotesize\ttfamily subroutine, private m\+\_\+time\+::call\+\_\+sleep (\begin{DoxyParamCaption}\item[{integer(kind=c\+\_\+int), intent(in)}]{wait\+\_\+seconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
-\subsubsection*{N\+A\+ME}
-
-compact(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} converts contiguous whitespace to a single character (or nothing) (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}function compact(STR,CHAR) result (OUTSTR)
-
- character(len=*),intent(in)          :: STR
- character(len=*),intent(in),optional :: CHAR
- character(len=len(str))              :: OUTSTR
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-C\+O\+M\+P\+A\+C\+T(3f) converts multiple spaces, tabs and control characters (called \char`\"{}whitespace\char`\"{}) to a single character or nothing. Leading whitespace is removed.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-S\+TR input string to reduce or remove whitespace from C\+H\+AR By default the character that replaces adjacent whitespace is a space. If the optional C\+H\+AR parameter is supplied it will be used to replace the whitespace. If a null character is supplied for C\+H\+AR whitespace is removed. \subsubsection*{R\+E\+T\+U\+R\+NS}
-
-O\+U\+T\+S\+TR string of same length as input string but with all contiguous whitespace reduced to a single space and leading whitespace removed
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_compact
- use M_strings, only : compact
- implicit none
- ! produces 'This is a test               '
- write(*,*)compact('  This     is      a     test  ')
- ! produces 'Thisisatest                  '
- write(*,*)compact('  This     is      a     test  ',char='')
- ! produces 'This:is:a:test               '
- write(*,*)compact('  This     is      a     test  ',char=':')
- ! note CHAR is used to replace the whitespace, but if CHAR is
- ! in the original string it is just copied
- write(*,*)compact('A  AA    A   AAAAA',char='A')
- ! produces (original A characters are left as-is) 'AAAAAAAAAAAA'
- ! not 'A'
- end program demo_compact
-
-Expected output
-
- >This is a test
- >Thisisatest
- >This:is:a:test
- >AAAAAAAAAAAA
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a7dd8bfae3ed8ba85bf4de75bf120fe89_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a6f7d20403f29656febb82306aa064134}\label{namespacem__time_a6f7d20403f29656febb82306aa064134}} 
-\index{m\+\_\+time@{m\+\_\+time}!construct\+\_\+from\+\_\+dat@{construct\+\_\+from\+\_\+dat}}
-\index{construct\+\_\+from\+\_\+dat@{construct\+\_\+from\+\_\+dat}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{construct\+\_\+from\+\_\+dat()}{construct\_from\_dat()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function m\+\_\+time\+::construct\+\_\+from\+\_\+dat (\begin{DoxyParamCaption}\item[{integer, dimension(\+:), intent(in)}]{dat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References u2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a6f7d20403f29656febb82306aa064134_cgraph}
-\end{center}
-\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacem__time_a6f7d20403f29656febb82306aa064134_icgraph}
+\includegraphics[width=350pt]{namespacem__time_af558bfc1fd5b13a6b879b3969866956f_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_ab7b679d14dabc2a9250f4ec218569f0c}\label{namespacem__time_ab7b679d14dabc2a9250f4ec218569f0c}} 
-\index{m\+\_\+time@{m\+\_\+time}!construct\+\_\+from\+\_\+jed@{construct\+\_\+from\+\_\+jed}}
-\index{construct\+\_\+from\+\_\+jed@{construct\+\_\+from\+\_\+jed}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{construct\+\_\+from\+\_\+jed()}{construct\_from\_jed()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function m\+\_\+time\+::construct\+\_\+from\+\_\+jed (\begin{DoxyParamCaption}\item[{real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), intent(in)}]{jed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{namespacem__time_ae63783f7479d2f5093c8031d38ce4304}\label{namespacem__time_ae63783f7479d2f5093c8031d38ce4304}} 
+\index{m\+\_\+time@{m\+\_\+time}!call\+\_\+usleep@{call\+\_\+usleep}}
+\index{call\+\_\+usleep@{call\+\_\+usleep}!m\+\_\+time@{m\+\_\+time}}
+\subsubsection{\texorpdfstring{call\+\_\+usleep()}{call\_usleep()}}
+{\footnotesize\ttfamily subroutine, private m\+\_\+time\+::call\+\_\+usleep (\begin{DoxyParamCaption}\item[{integer(kind=c\+\_\+int), intent(in)}]{wait\+\_\+seconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
-References construct\+\_\+from\+\_\+dat(), and j2d().
-
-Here is the call graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacem__time_ab7b679d14dabc2a9250f4ec218569f0c_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a7d903e5ff714106d933cee618e780a8b}\label{namespacem__time_a7d903e5ff714106d933cee618e780a8b}} 
-\index{m\+\_\+time@{m\+\_\+time}!construct\+\_\+from\+\_\+uet@{construct\+\_\+from\+\_\+uet}}
-\index{construct\+\_\+from\+\_\+uet@{construct\+\_\+from\+\_\+uet}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{construct\+\_\+from\+\_\+uet()}{construct\_from\_uet()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function m\+\_\+time\+::construct\+\_\+from\+\_\+uet (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{uet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References construct\+\_\+from\+\_\+dat(), and u2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a7d903e5ff714106d933cee618e780a8b_cgraph}
+\includegraphics[width=350pt]{namespacem__time_ae63783f7479d2f5093c8031d38ce4304_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time_a3fccc53c2650104eff084c7998d18f54}\label{namespacem__time_a3fccc53c2650104eff084c7998d18f54}} 
@@ -627,7 +254,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-d2j(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Julian Date (L\+I\+C\+E\+N\+SE\+:PD) 
+d2j(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} given D\+AT date-\/time array returns Julian Date (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -640,13 +267,15 @@ d2j(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Ju
 
 \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
 
-given D\+AT date-\/time array returns Julian Date
+Given D\+AT date-\/time array returns Julian Date
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f). If not present, use current time.
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]} \subsubsection*{R\+E\+T\+U\+R\+NS}
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
+
+If not present, use current time. \subsubsection*{R\+E\+T\+U\+R\+NS}
 
 julian The Julian Date.
 
@@ -702,14 +331,14 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-d2o(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Ordinal day (L\+I\+C\+E\+N\+SE\+:PD) 
+d2o(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} converts D\+AT date-\/time array to Ordinal day (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
 \begin{DoxyVerb}function d2o(dat) result (ordinal)
 
- integer,intent(in),optional :: dat(8)   ! date time array
- integer                     :: ordinal  ! the returned day of the year
+ integer,intent(in),optional :: dat(8)
+ integer                     :: ordinal
 \end{DoxyVerb}
 
 
@@ -719,9 +348,10 @@ Given a date in the form of a \char`\"{}\+D\+A\+T\char`\"{} array return the Ord
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
-
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]} \subsubsection*{R\+E\+T\+U\+R\+NS}
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+: \begin{DoxyVerb}dat=[ year,month,day,timezone,hour,&
+ & minutes,seconds,milliseconds]
+\end{DoxyVerb}
+ \subsubsection*{R\+E\+T\+U\+R\+NS}
 
 ordinal The day of the year calculated for the given input date, where Jan 1st=1.
 
@@ -737,7 +367,7 @@ ordinal The day of the year calculated for the given input date, where Jan 1st=1
     write(*,'(" Today is:",*(i0:,":"))')dat
     write(*,*)'Day of year is:',d2o(dat)
 
-    ! year, month, day, timezone, hour, minute, seconds, milliseconds
+    ! year,month,day,timezone,hour,minute,seconds,milliseconds
     dat=[2020,12,31,-240,12,0,0,0]
     write(*,*)dat(1),' Days in year is:',d2o(dat)
 
@@ -773,7 +403,7 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References date\+\_\+to\+\_\+unix(), secday, and stderr().
+References date\+\_\+to\+\_\+unix(), secday, and m\+\_\+time\+\_\+duplicate\+::stderr().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -789,78 +419,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a727dd77bbd4a5d0e3947c5d303845947_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a0b88094db657df167f8e57aa4362259e}\label{namespacem__time_a0b88094db657df167f8e57aa4362259e}} 
-\index{m\+\_\+time@{m\+\_\+time}!d2s@{d2s}}
-\index{d2s@{d2s}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{d2s()}{d2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+::d2s (\begin{DoxyParamCaption}\item[{doubleprecision, intent(in)}]{dvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}   function v2s(value) result(outstr)
-
-    integer|real|doubleprecision|logical,intent(in ) :: value
-    character(len=:),allocatable :: outstr
-    character(len=*),optional,intent(in) :: fmt
-\end{DoxyVerb}
-
-
-\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the strings using internal W\+R\+I\+T\+E() statements. Trailing zeros are removed from non-\/zero values, and the string is left-\/justified.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-V\+A\+L\+UE input value to be converted to a string F\+MT format can be explicitly given, but is limited to generating a string of eighty or less characters.
-
-\subsubsection*{R\+E\+T\+U\+R\+NS}
-
-O\+U\+T\+S\+TR returned string representing input value,
-
-\subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_v2s
- use M_strings, only: v2s
- write(*,*) 'The value of 3.0/4.0 is ['//v2s(3.0/4.0)//']'
- write(*,*) 'The value of 1234    is ['//v2s(1234)//']'
- write(*,*) 'The value of 0d0     is ['//v2s(0d0)//']'
- write(*,*) 'The value of .false. is ['//v2s(.false.)//']'
- write(*,*) 'The value of .true. is  ['//v2s(.true.)//']'
- end program demo_v2s
-
-Expected output
-
- The value of 3.0/4.0 is [0.75]
- The value of 1234    is [1234]
- The value of 0d0     is [0]
- The value of .false. is [F]
- The value of .true. is  [T]
-\end{DoxyVerb}
-
-
-\subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References value\+\_\+to\+\_\+string().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a0b88094db657df167f8e57aa4362259e_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a1506e2889a156387df4481ed0534be81}\label{namespacem__time_a1506e2889a156387df4481ed0534be81}} 
 \index{m\+\_\+time@{m\+\_\+time}!d2u@{d2u}}
 \index{d2u@{d2u}!m\+\_\+time@{m\+\_\+time}}
@@ -871,7 +429,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-d2u(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Unix Epoch Time (U\+ET starts at 0000 on 1 Jan. 1970, U\+TC) (L\+I\+C\+E\+N\+SE\+:PD) 
+d2u(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} given D\+AT date-\/time array returns Unix Epoch Time (U\+ET starts at 0000 on 1 Jan. 1970, U\+TC) (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -888,9 +446,12 @@ Converts a D\+AT date-\/time array to a Unix Epoch Time value. Typically mathema
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f). If not present the current time is used
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+: \begin{DoxyVerb}   dat=[ year,month,day,timezone,hour,&
+    & minutes,seconds,milliseconds]
+\end{DoxyVerb}
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
+
+If not present the current time is used
 
 \subsubsection*{R\+E\+T\+U\+R\+NS}
 
@@ -946,7 +507,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-d2w(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate iso-\/8601 Week-\/numbering year date yyyy-\/\+Www-\/d given D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
+d2w(3f) -\/ \mbox{[}M\+\_\+time\+:W\+E\+E\+K\+\_\+\+O\+F\+\_\+\+Y\+E\+AR\mbox{]} calculate iso-\/8601 Week-\/numbering year date yyyy-\/\+Www-\/d given D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -978,7 +539,6 @@ iso\+\_\+year I\+S\+O-\/8601 year number for the given date iso\+\_\+week I\+S\+
  integer           :: dat(8)     ! input date array
  integer           :: iso_year, iso_week, iso_weekday
  character(len=10) :: iso_name
-
     call date_and_time(values=dat)
     call d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
     write(*,'("ISO-8601 Week:   ",a)')iso_name
@@ -1060,7 +620,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Julian Date (L\+I\+C\+E\+N\+SE\+:PD) 
+date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts D\+AT date-\/time array to Julian Date (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1078,9 +638,11 @@ Converts a D\+AT date-\/time array to a Unix Epoch Time (U\+ET) value. U\+ET is 
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]} \subsubsection*{R\+E\+T\+U\+R\+NS}
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
+
+\subsubsection*{R\+E\+T\+U\+R\+NS}
 
 juliandate A Julian Ephemeris Date (J\+ED) is the number of days since noon (not midnight) on January 1st, 4713 BC. ierr Error code. If 0 no error occurred.
 
@@ -1140,7 +702,7 @@ R\+E\+F\+E\+R\+E\+N\+CE\+: From Wikipedia, the free encyclopedia 2015-\/12-\/19 
 
 \subsubsection*{N\+A\+ME}
 
-date\+\_\+to\+\_\+unix(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Unix Epoch Time (L\+I\+C\+E\+N\+SE\+:PD) 
+date\+\_\+to\+\_\+unix(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} converts D\+AT date-\/time array to Unix Epoch Time (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1158,34 +720,35 @@ Converts a D\+AT date-\/time array to a U\+ET (Unix Epoch Time).
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
-
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]} \subsubsection*{R\+E\+T\+U\+R\+NS}
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+: \begin{DoxyVerb}dat=[ year,month,day,timezone,hour,&
+ & minutes,seconds,milliseconds]
+\end{DoxyVerb}
+ \subsubsection*{R\+E\+T\+U\+R\+NS}
 
 unixtime The \char`\"{}\+Unix Epoch\char`\"{} time, or the number of seconds since 00\+:00\+:00 on January 1st, 1970, U\+TC. ierr Error code. If 0 no error occurred.
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
-\begin{DoxyVerb}Sample program:
+\begin{DoxyVerb} Sample program:
 
- program demo_date_to_unix
- use M_time, only : date_to_unix, realtime
- implicit none
- integer             :: dat(8)
- real(kind=realtime) :: unixtime
- integer             :: ierr
-    call date_and_time(values=dat)
-    write(*,'(" Today is:",*(i0:,":"))')dat
-    call date_to_unix(dat,unixtime,ierr)
-    write(*,*)'Unix Epoch time is ',unixtime
-    write(*,*)'ierr is ',ierr
- end program demo_date_to_unix
+  program demo_date_to_unix
+  use M_time, only : date_to_unix, realtime
+  implicit none
+  integer             :: dat(8)
+  real(kind=realtime) :: unixtime
+  integer             :: ierr
+     call date_and_time(values=dat)
+     write(*,'(" Today is:",*(i0:,":"))')dat
+     call date_to_unix(dat,unixtime,ierr)
+     write(*,*)'Unix Epoch time is ',unixtime
+     write(*,*)'ierr is ',ierr
+  end program demo_date_to_unix
 
-results:
+ results:
 
- Today is:2016:7:18:-240:23:44:20:434
- Unix Epoch time is    1468899860.4340105
- ierr is            0
+  Today is:2016:7:18:-240:23:44:20:434
+  Unix Epoch time is    1468899860.4340105
+  ierr is            0
 \end{DoxyVerb}
  \subsubsection*{A\+U\+T\+H\+OR}
 
@@ -1219,7 +782,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-days2sec(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert string of form \mbox{[}\mbox{[}-\/\mbox{]}dd-\/\mbox{]}hh\+:mm\+:ss.\+nn to seconds (L\+I\+C\+E\+N\+SE\+:PD) 
+days2sec(3f) -\/ \mbox{[}M\+\_\+time\+:D\+U\+R\+A\+T\+I\+ON\mbox{]} convert string of form \mbox{[}\mbox{[}-\/\mbox{]}dd-\/\mbox{]}hh\+:mm\+:ss.\+nn to seconds (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1232,36 +795,33 @@ days2sec(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert string of form \mbox{[}\mbo
 
 \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
 
-Given a string representing a duration of the form \char`\"{}\mbox{[}-\/\mbox{]}\mbox{[}\mbox{[}\mbox{[}dd-\/\mbox{]}hh\+:\mbox{]}mm\+:\mbox{]}ss\char`\"{} or N\+Nd\+N\+Nh\+N\+Nm\+N\+Ns\+N\+Nw return a value representing seconds
+Given a string representing a duration of the form \char`\"{}\mbox{[}-\/\mbox{]}\mbox{[}\mbox{[}\mbox{[}dd-\/\mbox{]}hh\+:\mbox{]}mm\+:\mbox{]}ss\char`\"{} or \mbox{[}N\+Nd\mbox{]}\mbox{[}N\+Nh\mbox{]}\mbox{[}N\+Nm\mbox{[}\mbox{]}N\+Ns\mbox{]}\mbox{[}N\+Nw\mbox{]} return a value representing seconds
 
-If \char`\"{}dd-\/\char`\"{} is present, units for the numbers are assumed to proceed from day to hour to minute to second. But if no day is present, the units are assumed to proceed from second to minutes to hour from left to right. That is ... \begin{DoxyVerb}  [-]dd-hh:mm:ss
-  [-]dd-hh:mm
-  [-]dd-hh
+If \char`\"{}dd-\/\char`\"{} is present, units for the numbers are assumed to proceed from day to hour to minute to second. But if no day is present, the units are assumed to proceed from second to minutes to hour from left to right. That is ...
 
-  hh:mm:ss
-  mm:ss
-  ss
+\mbox{[}-\/\mbox{]}dd-\/hh\+:mm\+:ss \mbox{[}-\/\mbox{]}dd-\/hh\+:mm \mbox{[}-\/\mbox{]}dd-\/hh
 
-   Where dd is days, hh hours, mm minutes and ss seconds.
+hh\+:mm\+:ss mm\+:ss ss
 
-   A decimal fraction is supported on the seconds (Actually,
-   any of the numeric values may represent positive floating
-   point numbers). Spaces are ignored.
+Where dd is days, hh hours, mm minutes and ss seconds.
 
- NNdNNhNNmNNs
-   Simple numeric values may also be used with unit suffixes; where
-   s,m,h, or d represents seconds, minutes, hours or days and w
-   represents a week. Allowed aliases for w,d,h,m, and s units are
+A decimal fraction is supported on the seconds (Actually, any of the numeric values may represent positive floating point numbers). Spaces are ignored.
 
-                    d -  days,day
-                    m -  minutes,minute,min,mins
-                    h -  hours,hour,hr,hrs
-                    s -  seconds,second,sec,secs
-                    w -  week, weeks, wk, wks
+\begin{DoxyVerb}  Simple numeric values may also be used with unit suffixes; where
+  s,m,h, or d represents seconds, minutes, hours or days and w
+  represents a week. Allowed aliases for w,d,h,m, and s units are
 
-   The numeric values may represent floating point numbers.
+    [NNd][NNh][NNm][NNs][NNw]
 
-   Spaces, commas and case are ignored.
+      d -  days,day
+      m -  minutes,minute,min,mins
+      h -  hours,hour,hr,hrs
+      s -  seconds,second,sec,secs
+      w -  week, weeks, wk, wks
+
+  The numeric values may represent floating point numbers.
+
+  Spaces, commas and case are ignored.
 \end{DoxyVerb}
 
 
@@ -1296,18 +856,18 @@ time the number of seconds represented by the input string
 
 Results:
 
- 129860.00000000000
- one second    1.0000000000000000
- one minute    60.000000000000000
- one hour    3600.0000000000000
- one day    86400.000000000000
- T
- T
- T
- T
- T
- T
- T
+ > 129860.00000000000
+ > one second    1.0000000000000000
+ > one minute    60.000000000000000
+ > one hour    3600.0000000000000
+ > one day    86400.000000000000
+ > T
+ > T
+ > T
+ > T
+ > T
+ > T
+ > T
 \end{DoxyVerb}
 
 
@@ -1317,128 +877,13 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References compact(), lower(), s2v(), split(), substitute(), and transliterate().
+References m\+\_\+time\+\_\+duplicate\+::compact(), m\+\_\+time\+\_\+duplicate\+::lower(), m\+\_\+time\+\_\+duplicate\+::s2v(), m\+\_\+time\+\_\+duplicate\+::split(), m\+\_\+time\+\_\+duplicate\+::substitute(), and m\+\_\+time\+\_\+duplicate\+::transliterate().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time_a99393c7906f1989f90ece03969224938_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=307pt]{namespacem__time_a99393c7906f1989f90ece03969224938_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a8dacab5686d74326cc68aa91b6f16c2d}\label{namespacem__time_a8dacab5686d74326cc68aa91b6f16c2d}} 
-\index{m\+\_\+time@{m\+\_\+time}!decodebase@{decodebase}}
-\index{decodebase@{decodebase}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{decodebase()}{decodebase()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::decodebase (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{string,  }\item[{integer, intent(in)}]{basein,  }\item[{integer, intent(out)}]{out\+\_\+baseten }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-decodebase(3f) -\/ \mbox{[}M\+\_\+strings\+:B\+A\+SE\mbox{]} convert whole number string in base \mbox{[}2-\/36\mbox{]} to base 10 number (L\+I\+C\+E\+N\+SE\+:PD)
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}logical function decodebase(string,basein,out10)
-
- character(len=*),intent(in)  :: string
- integer,intent(in)           :: basein
- integer,intent(out)          :: out10
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-Convert a numeric string representing a whole number in base B\+A\+S\+E\+IN to base 10. The function returns F\+A\+L\+SE if B\+A\+S\+E\+IN is not in the range \mbox{[}2..36\mbox{]} or if string S\+T\+R\+I\+NG contains invalid characters in base B\+A\+S\+E\+IN or if result O\+U\+T10 is too big
-
-The letters A,B,...,Z represent 10,11,...,36 in the base $>$ 10.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-string input string. It represents a whole number in the base specified by B\+A\+S\+E\+IN unless B\+A\+S\+E\+IN is set to zero. When B\+A\+S\+E\+IN is zero S\+T\+R\+I\+NG is assumed to be of the form B\+A\+S\+E\+::\+V\+A\+L\+UE where B\+A\+SE represents the function normally provided by B\+A\+S\+E\+IN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10
-
-\subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample program:
-
- program demo_decodebase
- use M_strings, only : codebase, decodebase
- implicit none
- integer           :: ba,bd
- character(len=40) :: x,y
- integer           :: r
-
- print *,' BASE CONVERSION'
- write(*,'("Start   Base (2 to 36): ")',advance='no'); read *, bd
- write(*,'("Arrival Base (2 to 36): ")',advance='no'); read *, ba
- INFINITE: do
-    print *,''
-    write(*,'("Enter number in start base: ")',advance='no'); read *, x
-    if(x.eq.'0') exit INFINITE
-    if(decodebase(x,bd,r)) then
-       if(codebase(r,ba,y)) then
-         write(*,'("In base ",I2,": ",A20)')  ba, y
-       else
-         print *,'Error in coding number.'
-       endif
-    else
-       print *,'Error in decoding number.'
-    endif
- enddo INFINITE
-
- end program demo_decodebase
-\end{DoxyVerb}
-
-
-\subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban
-
-Ref.\+: "Math matiques en Turbo-\/\+Pascal by M. Ducamp and A. Reverchon (2), Eyrolles, Paris, 1988".
-
-based on a F90 Version By J-\/P Moreau (www.\+jpmoreau.\+fr)
-
-\subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References upper().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=323pt]{namespacem__time_a8dacab5686d74326cc68aa91b6f16c2d_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a8dacab5686d74326cc68aa91b6f16c2d_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_aa623b1643e55ffbf97e4fbd1c7e8c379}\label{namespacem__time_aa623b1643e55ffbf97e4fbd1c7e8c379}} 
-\index{m\+\_\+time@{m\+\_\+time}!delta@{delta}}
-\index{delta@{delta}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{delta()}{delta()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function, private m\+\_\+time\+::delta (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{integer, intent(in), optional}]{year,  }\item[{integer, intent(in), optional}]{month,  }\item[{integer, intent(in), optional}]{day,  }\item[{integer, intent(in), optional}]{tz,  }\item[{integer, intent(in), optional}]{hour,  }\item[{integer, intent(in), optional}]{minute,  }\item[{integer, intent(in), optional}]{second,  }\item[{integer, intent(in), optional}]{millisecond,  }\item[{integer, intent(in), optional}]{week,  }\item[{character(len=$\ast$), intent(in), optional}]{duration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References construct\+\_\+from\+\_\+dat(), d2u(), days2sec(), dt2d(), and u2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_aa623b1643e55ffbf97e4fbd1c7e8c379_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time_adfda8a89820b8d0ad4581a14896e4ce5}\label{namespacem__time_adfda8a89820b8d0ad4581a14896e4ce5}} 
@@ -1451,7 +896,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-dow(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given a date-\/time array D\+AT return the day of the week (L\+I\+C\+E\+N\+SE\+:PD) 
+dow(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+Y\+\_\+\+O\+F\+\_\+\+W\+E\+EK\mbox{]} given a date-\/time array D\+AT return the day of the week (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1474,8 +919,8 @@ values \char`\"{}\+D\+A\+T\char`\"{} array (an integer array of the same format 
 
 weekday The numeric day of the week, starting with Monday=1. Optional. day The name of the day of the week. Optional. ierr Error code \begin{DoxyVerb}     o [ 0] correct
      o [-1] invalid input date
-     o [-2] neither day nor weekday return values were
-            requested.
+     o [-2] neither day nor weekday
+       return values were requested.
 
      If the error code is not returned and an error occurs,
      the program is stopped.
@@ -1493,13 +938,11 @@ weekday The numeric day of the week, starting with Monday=1. Optional. day The n
  integer          :: weekday
  character(len=9) :: day
  integer          :: ierr
-
    call date_and_time(values=dat)
    call dow(dat, weekday, day, ierr)
    write(*,'(a,i0)')'weekday=',weekday
    write(*,'(a,a)')'day=',trim(day)
    write(*,'(a,i0)')'ierr=',ierr
-
  end program demo_dow
 
 results:
@@ -1530,19 +973,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_adfda8a89820b8d0ad4581a14896e4ce5_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_aa281690d7f68f14842b00d238702e774}\label{namespacem__time_aa281690d7f68f14842b00d238702e774}} 
-\index{m\+\_\+time@{m\+\_\+time}!dt2d@{dt2d}}
-\index{dt2d@{dt2d}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{dt2d()}{dt2d()}}
-{\footnotesize\ttfamily integer function, dimension(8), private m\+\_\+time\+::dt2d (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_aa281690d7f68f14842b00d238702e774_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a5ccb70e20160fcf26bb403dbff1f138a}\label{namespacem__time_a5ccb70e20160fcf26bb403dbff1f138a}} 
 \index{m\+\_\+time@{m\+\_\+time}!easter@{easter}}
 \index{easter@{easter}!m\+\_\+time@{m\+\_\+time}}
@@ -1553,7 +983,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-easter(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate date for Easter given a year (L\+I\+C\+E\+N\+SE\+:PD) 
+easter(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} calculate date for Easter given a year (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1567,25 +997,11 @@ The Date of Easter (Sunday)
 
 The algorithm is due to J.-\/M. Oudin (1940) and is reprinted in the Explanatory Supplement to the Astronomical Almanac, ed. P. K. Seidelmann (1992). See Chapter 12, \char`\"{}\+Calendars\char`\"{}, by L. E. Doggett.
 
-The following are dates of Easter from 1980 to 2024\+: \begin{DoxyVerb}1980  April  6        1995  April 16        2010  April  4
-1981  April 19        1996  April  7        2011  April 24
-1982  April 11        1997  March 30        2012  April  8
-1983  April  3        1998  April 12        2013  March 31
-1984  April 22        1999  April  4        2014  April 20
-1985  April  7        2000  April 23        2015  April  5
-1986  March 30        2001  April 15        2016  March 27
-1987  April 19        2002  March 31        2017  April 16
-1988  April  3        2003  April 20        2018  April  1
-1989  March 26        2004  April 11        2019  April 21
-1990  April 15        2005  March 27        2020  April 12
-1991  March 31        2006  April 16        2021  April  4
-1992  April 19        2007  April  8        2022  April 17
-1993  April 11        2008  March 23        2023  April  9
-1994  April  3        2009  April 12        2024  March 31
-\end{DoxyVerb}
- \begin{DoxyVerb} N.B. The date of Easter for the Eastern Orthodox Church may be different.
-\end{DoxyVerb}
+The following are dates of Easter from 1980 to 2024\+:
 
+1980 April 6 1995 April 16 2010 April 4 1981 April 19 1996 April 7 2011 April 24 1982 April 11 1997 March 30 2012 April 8 1983 April 3 1998 April 12 2013 March 31 1984 April 22 1999 April 4 2014 April 20 1985 April 7 2000 April 23 2015 April 5 1986 March 30 2001 April 15 2016 March 27 1987 April 19 2002 March 31 2017 April 16 1988 April 3 2003 April 20 2018 April 1 1989 March 26 2004 April 11 2019 April 21 1990 April 15 2005 March 27 2020 April 12 1991 March 31 2006 April 16 2021 April 4 1992 April 19 2007 April 8 2022 April 17 1993 April 11 2008 March 23 2023 April 9 1994 April 3 2009 April 12 2024 March 31
+
+N.\+B. The date of Easter for the Eastern Orthodox Church may be different.
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
@@ -1611,7 +1027,8 @@ dat Date array for noon on Easter for the specified year
 
 Sample output:
 
- Easter day: the 16th day of April in the year of our Lord 2017 \end{DoxyVerb}
+ Easter day: the 16th day of April in the year of our Lord 2017
+\end{DoxyVerb}
 
 
 U.\+S. Naval Observatory Astronomical Applications Department
@@ -1621,47 +1038,6 @@ This code assembled by Alan Miller Reference web site\+: \href{http://aa.usno.na
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time_a5ccb70e20160fcf26bb403dbff1f138a_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a64abb0c3f90cb0ae1358ef55ce03c175}\label{namespacem__time_a64abb0c3f90cb0ae1358ef55ce03c175}} 
-\index{m\+\_\+time@{m\+\_\+time}!epoch@{epoch}}
-\index{epoch@{epoch}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{epoch()}{epoch()}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, private m\+\_\+time\+::epoch (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a64abb0c3f90cb0ae1358ef55ce03c175_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a7d365fb381fa8f5f79a4263c9f678b98}\label{namespacem__time_a7d365fb381fa8f5f79a4263c9f678b98}} 
-\index{m\+\_\+time@{m\+\_\+time}!eq@{eq}}
-\index{eq@{eq}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{eq()}{eq()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::eq (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a7d365fb381fa8f5f79a4263c9f678b98_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=304pt]{namespacem__time_a7d365fb381fa8f5f79a4263c9f678b98_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time_a2cb84c9b8af4f395b76aed76e1431328}\label{namespacem__time_a2cb84c9b8af4f395b76aed76e1431328}} 
@@ -1674,7 +1050,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-fmtdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array return date as string using specified format (L\+I\+C\+E\+N\+SE\+:PD) 
+fmtdate(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} given D\+AT date-\/time array return date as string using specified format (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1692,9 +1068,9 @@ The fmtdate(3f) procedure lets you reformat a D\+AT array in many common formats
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-values date in a \char`\"{}\+D\+A\+T\char`\"{} array, which is the same format as the values returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+values date in a \char`\"{}\+D\+A\+T\char`\"{} array, which is the same format as the values returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
 
 format string describing how to format the \char`\"{}\+D\+A\+T\char`\"{} array. For a complete description of the formatting macros supported see fmtdate\+\_\+usage(3f). \subsubsection*{R\+E\+T\+U\+R\+NS}
 
@@ -1734,7 +1110,7 @@ John S. Urban, 2015-\/12-\/19 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References d2o(), d2w(), date\+\_\+to\+\_\+julian(), date\+\_\+to\+\_\+unix(), dow(), easter(), format(), moon\+\_\+fullness(), phase\+\_\+of\+\_\+moon(), substitute(), and v2mo().
+References d2o(), d2w(), date\+\_\+to\+\_\+julian(), date\+\_\+to\+\_\+unix(), dow(), easter(), moon\+\_\+fullness(), phase\+\_\+of\+\_\+moon(), m\+\_\+time\+\_\+duplicate\+::substitute(), and v2mo().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -1760,7 +1136,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} display macros recognized by fmtdate(3f) and now(3f) (L\+I\+C\+E\+N\+SE\+:PD) 
+fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} display macros recognized by fmtdate(3f) and now(3f) (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -1772,7 +1148,15 @@ fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} display macros recognized
 
 \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
 
-The fmtdate\+\_\+usage(3f) subroutine displays the formatting options available for use in procedures such as fmtdate(3f) and now(3f). It is typically used to produce up-\/to-\/date help text in commands that use the M\+\_\+time(3fm) module, so that the formatting information only needs maintained in one place (this routine) and is easily displayed so users can quickly obtain a description of the formatting macros.
+\begin{DoxyVerb}The fmtdate_usage(3f) subroutine displays the formatting options
+available for use in procedures such as fmtdate(3f) and now(3f).
+It is typically used to produce up-to-date help text in commands
+that use the M_time(3fm) module, so that the formatting information
+only needs maintained in one place (this routine) and is easily
+displayed so users can quickly obtain a description of the formatting
+macros.
+\end{DoxyVerb}
+
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
@@ -1833,11 +1217,11 @@ results (actually call the routine to ensure this is up to date):
      %q -- single quote (apostrophe)
      %Q -- double quote
   Program timing:
-     %c -- CPU_TIME(3f) output                       .21875000000000000
-     %C -- number of times this routine is used      1
-     %S -- seconds since last use of this format     .0000000000000000
-     %k -- time in seconds from SYSTEM_CLOCK(3f)     723258.812
-     %K -- time in clicks from SYSTEM_CLOCK(3f)      723258812
+     %c -- CPU_TIME(3f) output                     .21875000000000000
+     %C -- number of times this routine is used    1
+     %S -- seconds since last use of this format   .0000000000000000
+     %k -- time in seconds from SYSTEM_CLOCK(3f)   723258.812
+     %K -- time in clicks from SYSTEM_CLOCK(3f)    723258812
 
 If no percent (%) is found in the format one of several
 alternate substitutions occurs.
@@ -1867,16 +1251,32 @@ keywords the following substitutions occur:
 otherwise the following words are replaced with the most
 common macros:
 
+numeric values:
+
    year     %Y  2016
    month    %M  07
    day      %D  29
    hour     %h  10
    minute   %m  54
    second   %s  08
+   timezone %T  0400
+
    epoch    %e  1469804049
    julian   %j  2457599
    ordinal  %O  211
    weekday  %u  5
+
+string versions:
+
+   MONTH    %L  July
+   Month    %l  Jul
+   WEEKDAY  %W  Thursday
+   Weekday  %w  Thu
+   DAY      %d  7th
+   TIMEZONE %z  -04:00
+   Timezone %Z  -240
+   GOOD     %N  AM
+   HOUR     %H  10
 
 if none of these keywords are found then every letter that
 is a macro is assumed to have an implied percent in front
@@ -1899,54 +1299,6 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a914927f70fb9495af1be2e484b967111_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a8d843c997d304f40fd5aed820c5a7473}\label{namespacem__time_a8d843c997d304f40fd5aed820c5a7473}} 
-\index{m\+\_\+time@{m\+\_\+time}!format@{format}}
-\index{format@{format}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{format()}{format()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable, private m\+\_\+time\+::format (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References dt2d(), fmtdate(), and upper().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a8d843c997d304f40fd5aed820c5a7473_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a8d843c997d304f40fd5aed820c5a7473_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_aae8c0dfd78a61889a0d6444448ac0bb9}\label{namespacem__time_aae8c0dfd78a61889a0d6444448ac0bb9}} 
-\index{m\+\_\+time@{m\+\_\+time}!ge@{ge}}
-\index{ge@{ge}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{ge()}{ge()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::ge (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_aae8c0dfd78a61889a0d6444448ac0bb9_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=304pt]{namespacem__time_aae8c0dfd78a61889a0d6444448ac0bb9_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a7903410a1d28bcdf3d33ab0c2d74b124}\label{namespacem__time_a7903410a1d28bcdf3d33ab0c2d74b124}} 
 \index{m\+\_\+time@{m\+\_\+time}!get\+\_\+timezone@{get\+\_\+timezone}}
 \index{get\+\_\+timezone@{get\+\_\+timezone}!m\+\_\+time@{m\+\_\+time}}
@@ -1960,30 +1312,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a7903410a1d28bcdf3d33ab0c2d74b124_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a62a48ba3b42ccf837b48584293231021}\label{namespacem__time_a62a48ba3b42ccf837b48584293231021}} 
-\index{m\+\_\+time@{m\+\_\+time}!gt@{gt}}
-\index{gt@{gt}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{gt()}{gt()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::gt (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a62a48ba3b42ccf837b48584293231021_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=302pt]{namespacem__time_a62a48ba3b42ccf837b48584293231021_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_aa5198c7aa4f3d8411c8ce93046ce3794}\label{namespacem__time_aa5198c7aa4f3d8411c8ce93046ce3794}} 
 \index{m\+\_\+time@{m\+\_\+time}!guessdate@{guessdate}}
 \index{guessdate@{guessdate}!m\+\_\+time@{m\+\_\+time}}
@@ -1994,7 +1322,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-guessdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} reads in a date, in various formats (L\+I\+C\+E\+N\+SE\+:PD) 
+guessdate(3f) -\/ \mbox{[}M\+\_\+time\+:R\+E\+A\+D\+I\+N\+G\+\_\+\+D\+A\+T\+ES\mbox{]} reads in a date, in various formats (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2007,19 +1335,30 @@ guessdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} reads in a date, in various format
 
 \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
 
-Read in strings and except for looking for month names remove non-\/numeric characters and try to convert a string assumed to represent a date to a date-\/time array.
+\begin{DoxyVerb}Read in strings and except for looking for month names remove
+non-numeric characters and try to convert a string assumed to represent
+a date to a date-time array.
 
-Years should always be expressed as four-\/digit numbers, and except for the special format yyyy-\/mm-\/dd the day should come after the year. Named months are preferred. If ambiguous the order is assumed to be day -\/ month -\/ year. Times are assumed to be of the form H\+H\+:\+MM\+:SS
+Years should always be expressed as four-digit numbers, and except for
+the special format yyyy-mm-dd the day should come after the year. Named
+months are preferred. If ambiguous the order is assumed to be day -
+month - year. Times are assumed to be of the form HH:MM:SS
 
-It is planned that this routine will be superseded. As an alternative, a C routine exists in the standard C libraries that allows for expansive features when reading dates that can be called via the I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface.
+It is planned that this routine will be superseded. As an alternative,
+a C routine exists in the standard C libraries that allows for
+expansive features when reading dates that can be called via the
+ISO_C_BINDING interface.
+\end{DoxyVerb}
+
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
 anot A string assumed to represent a date including a year, month and day.
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+: \begin{DoxyVerb}   dat=[ year,month,day,timezone,hour,&
+    & minutes,seconds,milliseconds]
+\end{DoxyVerb}
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
@@ -2052,19 +1391,19 @@ results:
  ---------------------------------------------------------------------
  TRYING January 9th, 2001
  DAT ARRAY         2001  1  9   -240    0   0   0    0
- FOR January 9th, 2001    GOT Tuesday, January 9th, 2001 12:00:00 AM
+ FOR January 9th, 2001  GOT Tuesday, January 9th, 2001 12:00:00 AM
  ---------------------------------------------------------------------
  TRYING  Tue Jul 19 2016
  DAT ARRAY         2016  7  19  -240    0   0   0    0
- FOR  Tue Jul 19 2016     GOT Tuesday, July 19th, 2016 12:00:00 AM
+ FOR  Tue Jul 19 2016   GOT Tuesday, July 19th, 2016 12:00:00 AM
  ---------------------------------------------------------------------
  TRYING  21/12/2016
  DAT ARRAY         2016  12 21  -240    0   0   0    0
- FOR  21/12/2016          GOT Wednesday, December 21st, 2016 12:00:00 AM
+ FOR  21/12/2016        GOT Wednesday, December 21st, 2016 12:00:00 AM
  ---------------------------------------------------------------------
  TRYING  4th of Jul 2004
  DAT ARRAY         2004  7  4   -240    0   0   0    0
- FOR  4th of Jul 2004     GOT Sunday, July 4th, 2004 12:00:00 AM
+ FOR  4th of Jul 2004   GOT Sunday, July 4th, 2004 12:00:00 AM
 \end{DoxyVerb}
 
 
@@ -2072,47 +1411,13 @@ results:
 
 Public Domain 
 
-References s2v(), split(), string\+\_\+to\+\_\+values(), substitute(), and upper().
+References m\+\_\+time\+\_\+duplicate\+::s2v(), m\+\_\+time\+\_\+duplicate\+::split(), m\+\_\+time\+\_\+duplicate\+::string\+\_\+to\+\_\+values(), m\+\_\+time\+\_\+duplicate\+::substitute(), and m\+\_\+time\+\_\+duplicate\+::upper().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time_aa5198c7aa4f3d8411c8ce93046ce3794_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a7ae85160c5039dad604fd05efad2445f}\label{namespacem__time_a7ae85160c5039dad604fd05efad2445f}} 
-\index{m\+\_\+time@{m\+\_\+time}!i2s@{i2s}}
-\index{i2s@{i2s}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{i2s()}{i2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+::i2s (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ivalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References value\+\_\+to\+\_\+string().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a7ae85160c5039dad604fd05efad2445f_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a72455f763954fae8ebc0f454033d82a8}\label{namespacem__time_a72455f763954fae8ebc0f454033d82a8}} 
-\index{m\+\_\+time@{m\+\_\+time}!init\+\_\+dt@{init\+\_\+dt}}
-\index{init\+\_\+dt@{init\+\_\+dt}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{init\+\_\+dt()}{init\_dt()}}
-{\footnotesize\ttfamily subroutine, private m\+\_\+time\+::init\+\_\+dt (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}})}]{self,  }\item[{integer, intent(in), optional}]{year,  }\item[{integer, intent(in), optional}]{month,  }\item[{integer, intent(in), optional}]{day,  }\item[{integer, intent(in), optional}]{tz,  }\item[{integer, intent(in), optional}]{hour,  }\item[{integer, intent(in), optional}]{minute,  }\item[{integer, intent(in), optional}]{second,  }\item[{integer, intent(in), optional}]{millisecond,  }\item[{character(len=$\ast$), intent(in), optional}]{type,  }\item[{integer, dimension(8), intent(in), optional}]{dat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References construct\+\_\+from\+\_\+dat(), d2u(), dt2d(), and u2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a72455f763954fae8ebc0f454033d82a8_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c}\label{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c}} 
@@ -2125,7 +1430,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-j2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given a J\+ED (Julian Ephemeris Date) returns a date-\/time array D\+AT. (L\+I\+C\+E\+N\+SE\+:PD) 
+j2d(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} given a J\+ED (Julian Ephemeris Date) returns a date-\/time array D\+AT. (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2146,9 +1451,10 @@ julian A Julian Ephemeris Date (J\+ED) is the number of days since noon (not mid
 
 \subsubsection*{R\+E\+T\+U\+R\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+: \begin{DoxyVerb}   dat=[ year,month,day,timezone,hour,&
+    & minutes,seconds,milliseconds]
+\end{DoxyVerb}
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
@@ -2192,24 +1498,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=345pt]{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_aff0a1b524b578e85efe20b87fbe9db61}\label{namespacem__time_aff0a1b524b578e85efe20b87fbe9db61}} 
-\index{m\+\_\+time@{m\+\_\+time}!julian\+\_\+oop@{julian\+\_\+oop}}
-\index{julian\+\_\+oop@{julian\+\_\+oop}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{julian\+\_\+oop()}{julian\_oop()}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function, private m\+\_\+time\+::julian\+\_\+oop (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2j(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_aff0a1b524b578e85efe20b87fbe9db61_cgraph}
+\includegraphics[width=327pt]{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time_abb44cf18cd0a3e420c20469efb056203}\label{namespacem__time_abb44cf18cd0a3e420c20469efb056203}} 
@@ -2222,7 +1511,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) 
+julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2240,40 +1529,42 @@ Converts a Unix Epoch Time (U\+ET) value to a D\+AT date-\/time array. U\+ET is 
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-julian Julian Date (days) dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f). ier 0 for successful execution \begin{DoxyVerb}      dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]
-\end{DoxyVerb}
- \subsubsection*{R\+E\+T\+U\+R\+NS}
+julian Julian Date (days) dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
+
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
+
+\subsubsection*{R\+E\+T\+U\+R\+NS}
 
 unixtime The \char`\"{}\+Unix Epoch\char`\"{} time, or the number of seconds since 00\+:00\+:00 on January 1st, 1970, U\+TC. ierr Error code. If 0 no error occurred.
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
-\begin{DoxyVerb}Sample program:
+\begin{DoxyVerb} Sample program:
 
- program demo_julian_to_date
- use M_time, only : julian_to_date, fmtdate, realtime
- implicit none
- real(kind=realtime)     :: juliandate
- integer                 :: dat(8)
- integer                 :: ierr
-    ! set sample Julian Date
-    juliandate=2457589.129d0
-    ! create DAT array for this date
-    call julian_to_date(juliandate,dat,ierr)
-    write(*,*)'Sample Date=',fmtdate(dat)
-    ! go back one day
-    call julian_to_date(juliandate-1.0d0,dat,ierr)
-    write(*,*)'Day Before =',fmtdate(dat)
-    ! go forward one day
-    call julian_to_date(juliandate+1.0d0,dat,ierr)
-    write(*,*)'Day After  =',fmtdate(dat)
- end program demo_julian_to_date
+  program demo_julian_to_date
+  use M_time, only : julian_to_date, fmtdate, realtime
+  implicit none
+  real(kind=realtime)     :: juliandate
+  integer                 :: dat(8)
+  integer                 :: ierr
+     ! set sample Julian Date
+     juliandate=2457589.129d0
+     ! create DAT array for this date
+     call julian_to_date(juliandate,dat,ierr)
+     write(*,*)'Sample Date=',fmtdate(dat)
+     ! go back one day
+     call julian_to_date(juliandate-1.0d0,dat,ierr)
+     write(*,*)'Day Before =',fmtdate(dat)
+     ! go forward one day
+     call julian_to_date(juliandate+1.0d0,dat,ierr)
+     write(*,*)'Day After  =',fmtdate(dat)
+  end program demo_julian_to_date
 
-results:
+ Results:
 
- Sample Date=Tuesday, July 19th, 2016 11:05:45 AM UTC-04:00
- Day Before =Monday, July 18th, 2016 11:05:45 AM UTC-04:00
- Day After  =Wednesday, July 20th, 2016 11:05:45 AM UTC-04:00
+  Sample Date=Tuesday, July 19th, 2016 11:05:45 AM UTC-04:00
+  Day Before =Monday, July 18th, 2016 11:05:45 AM UTC-04:00
+  Day After  =Wednesday, July 20th, 2016 11:05:45 AM UTC-04:00
 \end{DoxyVerb}
 
 
@@ -2299,184 +1590,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_abb44cf18cd0a3e420c20469efb056203_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a03e90459e69ffa353d1a6ce5765836fd}\label{namespacem__time_a03e90459e69ffa353d1a6ce5765836fd}} 
-\index{m\+\_\+time@{m\+\_\+time}!l2s@{l2s}}
-\index{l2s@{l2s}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{l2s()}{l2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+::l2s (\begin{DoxyParamCaption}\item[{logical, intent(in)}]{lvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References value\+\_\+to\+\_\+string().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a03e90459e69ffa353d1a6ce5765836fd_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a498bb2830d153743d9624e65e92d4f6c}\label{namespacem__time_a498bb2830d153743d9624e65e92d4f6c}} 
-\index{m\+\_\+time@{m\+\_\+time}!le@{le}}
-\index{le@{le}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{le()}{le()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::le (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a498bb2830d153743d9624e65e92d4f6c_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=301pt]{namespacem__time_a498bb2830d153743d9624e65e92d4f6c_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a96597ff2f2eab2ede14e3a63bd49254a}\label{namespacem__time_a96597ff2f2eab2ede14e3a63bd49254a}} 
-\index{m\+\_\+time@{m\+\_\+time}!lower@{lower}}
-\index{lower@{lower}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{lower()}{lower()}}
-{\footnotesize\ttfamily elemental pure character(len(str)) function, private m\+\_\+time\+::lower (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{str,  }\item[{integer, intent(in), optional}]{begin,  }\item[{integer, intent(in), optional}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-lower(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to lowercase over specified range (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}elemental pure function lower(str,begin,end) result (string)
-
- character(*), intent(in) :: str
- integer,optional         :: begin, end
- character(len(str))      :: string  ! output string
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-lower(string) returns a copy of the input string with all characters converted to miniscule over the specified range, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to miniscule.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-str string to convert to miniscule begin optional starting position in \char`\"{}str\char`\"{} to begin converting to miniscule end optional ending position in \char`\"{}str\char`\"{} to stop converting to miniscule
-
-\subsubsection*{R\+E\+S\+U\+L\+TS}
-
-lower copy of the input string with all characters converted to miniscule over optionally specified range.
-
-\subsubsection*{T\+R\+I\+V\+IA}
-
-The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.
-
-\subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample program:
-
- program demo_lower
- use M_time, only: lower
- implicit none
- character(len=:),allocatable  :: s
-    s=' ABCDEFG abcdefg '
-    write(*,*) 'mixed-case input string is ....',s
-    write(*,*) 'lower-case output string is ...',lower(s)
- end program demo_lower
-
-Expected output
-
-   mixed-case input string is .... ABCDEFG abcdefg
-   lower-case output string is ... abcdefg abcdefg
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a96597ff2f2eab2ede14e3a63bd49254a_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a2cc7f6c40c8ef5aeef08cd51912987d7}\label{namespacem__time_a2cc7f6c40c8ef5aeef08cd51912987d7}} 
-\index{m\+\_\+time@{m\+\_\+time}!lt@{lt}}
-\index{lt@{lt}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{lt()}{lt()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::lt (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a2cc7f6c40c8ef5aeef08cd51912987d7_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=299pt]{namespacem__time_a2cc7f6c40c8ef5aeef08cd51912987d7_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_ae81a89463c40f33a14b1b2d49f797643}\label{namespacem__time_ae81a89463c40f33a14b1b2d49f797643}} 
-\index{m\+\_\+time@{m\+\_\+time}!minus\+\_\+date\+\_\+time@{minus\+\_\+date\+\_\+time}}
-\index{minus\+\_\+date\+\_\+time@{minus\+\_\+date\+\_\+time}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{minus\+\_\+date\+\_\+time()}{minus\_date\_time()}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}) function m\+\_\+time\+::minus\+\_\+date\+\_\+time (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_ae81a89463c40f33a14b1b2d49f797643_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_ae81a89463c40f33a14b1b2d49f797643_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a0d241cbb8f2e30a64b53f4aae4100709}\label{namespacem__time_a0d241cbb8f2e30a64b53f4aae4100709}} 
-\index{m\+\_\+time@{m\+\_\+time}!minus\+\_\+seconds@{minus\+\_\+seconds}}
-\index{minus\+\_\+seconds@{minus\+\_\+seconds}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{minus\+\_\+seconds()}{minus\_seconds()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function m\+\_\+time\+::minus\+\_\+seconds (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), intent(in)}]{seconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References construct\+\_\+from\+\_\+dat(), d2u(), dt2d(), and u2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a0d241cbb8f2e30a64b53f4aae4100709_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a0d241cbb8f2e30a64b53f4aae4100709_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a8188c7ed4e592c4f2388d28c75486726}\label{namespacem__time_a8188c7ed4e592c4f2388d28c75486726}} 
 \index{m\+\_\+time@{m\+\_\+time}!mo2d@{mo2d}}
 \index{mo2d@{mo2d}!m\+\_\+time@{m\+\_\+time}}
@@ -2487,13 +1600,14 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-mo2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given month name return D\+AT date-\/time array for beginning of that month in specified year (L\+I\+C\+E\+N\+SE\+:PD) 
+mo2d(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} given month name return D\+AT date-\/time array for beginning of that month in specified year (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
-\begin{DoxyVerb}   function mo2d(month_name) result (dat)
+\begin{DoxyVerb}   function mo2d(month_name,year) result (dat)
 
     character(len=*),intent(in) :: month_name
+    integer,intent(in),optional :: year
     integer                     :: dat(8)
 \end{DoxyVerb}
 
@@ -2506,7 +1620,9 @@ Given a Common Calendar month name, return the date as a \char`\"{}\+D\+A\+T\cha
 
 month\+\_\+name A string representing a Common Calendar month name. year Optional year. Defaults to current year \subsubsection*{R\+E\+T\+U\+R\+NS}
 
-dat An integer array that has the same structure as the array returned by the Fortran intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+dat An integer array that has the same structure as the array returned by the Fortran intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
+
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
@@ -2530,7 +1646,7 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References mo2v(), and stderr().
+References mo2v(), and m\+\_\+time\+\_\+duplicate\+::stderr().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -2549,7 +1665,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-mo2v(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given month name return month number (1-\/12) of that month (L\+I\+C\+E\+N\+SE\+:PD) 
+mo2v(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} given month name return month number (1-\/12) of that month (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2599,13 +1715,13 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References upper().
+References m\+\_\+time\+\_\+duplicate\+::upper().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=292pt]{namespacem__time_ad7bf0886754757e8961e562f06cf3bb7_cgraph}
+\includegraphics[width=342pt]{namespacem__time_ad7bf0886754757e8961e562f06cf3bb7_cgraph}
 \end{center}
 \end{figure}
 Here is the caller graph for this function\+:\nopagebreak
@@ -2625,7 +1741,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-moon\+\_\+fullness(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return percentage of moon phase from new to full (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+moon\+\_\+fullness(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} return percentage of moon phase from new to full (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
 function moon\+\_\+fullness(datin)
 
@@ -2639,7 +1755,7 @@ The moon circles the earth every 29.\+530588853 days on average, so pick a start
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-dat D\+AT Date array describing input date
+datin D\+AT Date array describing input date
 
 \subsubsection*{R\+E\+S\+U\+L\+TS}
 
@@ -2660,16 +1776,19 @@ moon\+\_\+fullness 0 is a new or dark moon, 100 is a full moon, + for waxing and
     ! show DAT array
     write(*,'(" Today is:",*(i0:,":"))')dat
     ! the %p and %P fields are supported by fmtdate(3f)
-    write(*,*)now('The phase of the moon is %p, with a fullness of %P')
-    write(*,'(1x,*(a))',advance='no')'The phase of the moon is ',trim( phase_of_moon(dat)),','
-    write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
+    write(*,*)&
+    &now('The phase of the moon is %p, with a fullness of %P')
+    write(*,'(1x,*(a))',advance='no')&
+    &'The phase of the moon is ',trim( phase_of_moon(dat)),','
+    write(*,'(1x,a,i0,a)')&
+    &'with a fullness of ', moon_fullness(dat),'%'
  end program demo_moon_fullness
 
 Sample output:
 
- Today is:2018:11:3:-240:20:18:44:245
- The phase of the moon is Waning crescent, with a fullness of -30%
- The phase of the moon is Waning crescent, with a fullness of -30%
+  Today is:2018:11:3:-240:20:18:44:245
+  The phase of the moon is Waning crescent, with a fullness of -30%
+  The phase of the moon is Waning crescent, with a fullness of -30%
 \end{DoxyVerb}
  \subsubsection*{A\+U\+T\+H\+OR}
 
@@ -2693,30 +1812,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a702b39998a769b8f60070c0bec975ee2_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_ac0e0df383f424680ce59f5540e02348b}\label{namespacem__time_ac0e0df383f424680ce59f5540e02348b}} 
-\index{m\+\_\+time@{m\+\_\+time}!ne@{ne}}
-\index{ne@{ne}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{ne()}{ne()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+::ne (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2u(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_ac0e0df383f424680ce59f5540e02348b_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=304pt]{namespacem__time_ac0e0df383f424680ce59f5540e02348b_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a6b5e87be0e510ff268c1ecfbf67a3bdb}\label{namespacem__time_a6b5e87be0e510ff268c1ecfbf67a3bdb}} 
 \index{m\+\_\+time@{m\+\_\+time}!now@{now}}
 \index{now@{now}!m\+\_\+time@{m\+\_\+time}}
@@ -2727,7 +1822,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-now(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return string representing current time given format (L\+I\+C\+E\+N\+SE\+:PD) 
+now(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} return string representing current time given format (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2761,8 +1856,7 @@ timestr formatted output string representing date
  subroutine showme() ! see all formatting options
  use M_time, only : fmtdate_usage
     call fmtdate_usage() ! see all formatting options
- end subroutine showme
-
+ end subroutine
  end program demo_now
 
 results:
@@ -2780,7 +1874,7 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References fmtdate(), and format().
+References fmtdate().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -2806,7 +1900,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-o2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts Ordinal day to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
+o2d(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} converts Ordinal day to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2830,9 +1924,11 @@ year An optional year for the ordinal day. If not present the current year is as
 
 \subsubsection*{R\+E\+T\+U\+R\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f). The timezone value is from the current time on the current platform.
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
+
+The timezone value is from the current time on the current platform.
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
@@ -2843,19 +1939,26 @@ dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
  implicit none
  integer :: year
     do year=2004,2008
-       write(*,*)'100th day of ',year,' is ',fmtdate(o2d(100,year))
+       write(*,*)&
+       & '100th day of ',year,' is ',fmtdate(o2d(100,year))
     enddo
     write(*,*)'100th day of this year is ',fmtdate(o2d(100))
  end program demo_o2d
 
 results:
 
- 100th day of 2004 is Friday, April 9th, 2004 00:00:00 PM UTC-02:40
- 100th day of 2005 is Sunday, April 10th, 2005 00:00:00 PM UTC-02:40
- 100th day of 2006 is Monday, April 10th, 2006 00:00:00 PM UTC-02:40
- 100th day of 2007 is Tuesday, April 10th, 2007 00:00:00 PM UTC-02:40
- 100th day of 2008 is Wednesday, April 9th, 2008 00:00:00 PM UTC-02:40
- 100th day of this year is Saturday, April 9th, 2016 00:00:00 PM UTC-02:40
+ 100th day of 2004 is Friday, April 9th, 2004 ...
+ 00:00:00 PM UTC-02:40
+ 100th day of 2005 is Sunday, April 10th, 2005 ...
+ 00:00:00 PM UTC-02:40
+ 100th day of 2006 is Monday, April 10th, 2006 ...
+ 00:00:00 PM UTC-02:40
+ 100th day of 2007 is Tuesday, April 10th, 2007 ...
+ 00:00:00 PM UTC-02:40
+ 100th day of 2008 is Wednesday, April 9th, 2008 ...
+ 00:00:00 PM UTC-02:40
+ 100th day of this year is Saturday, April 9th, 2016 ...
+ 00:00:00 PM UTC-02:40
 \end{DoxyVerb}
  \subsubsection*{A\+U\+T\+H\+OR}
 
@@ -2863,7 +1966,7 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References date\+\_\+to\+\_\+unix(), get\+\_\+timezone(), stderr(), and u2d().
+References date\+\_\+to\+\_\+unix(), get\+\_\+timezone(), m\+\_\+time\+\_\+duplicate\+::stderr(), and u2d().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -2879,23 +1982,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=274pt]{namespacem__time_a55e2cb9efc9d4d209ae2864f073d4f19_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a7fb507bb72a1872ec2a86fb7f3a50d75}\label{namespacem__time_a7fb507bb72a1872ec2a86fb7f3a50d75}} 
-\index{m\+\_\+time@{m\+\_\+time}!ordinal\+\_\+oop@{ordinal\+\_\+oop}}
-\index{ordinal\+\_\+oop@{ordinal\+\_\+oop}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{ordinal\+\_\+oop()}{ordinal\_oop()}}
-{\footnotesize\ttfamily integer function, private m\+\_\+time\+::ordinal\+\_\+oop (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References d2o(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a7fb507bb72a1872ec2a86fb7f3a50d75_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_ab8960d2aa60e134bcf77247d8b257963}\label{namespacem__time_ab8960d2aa60e134bcf77247d8b257963}} 
 \index{m\+\_\+time@{m\+\_\+time}!ordinal\+\_\+seconds@{ordinal\+\_\+seconds}}
 \index{ordinal\+\_\+seconds@{ordinal\+\_\+seconds}!m\+\_\+time@{m\+\_\+time}}
@@ -2906,7 +1992,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-ordinal\+\_\+seconds(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} seconds since beginning of year (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+ordinal\+\_\+seconds(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} seconds since beginning of year (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
 function \mbox{\hyperlink{namespacem__time_ab8960d2aa60e134bcf77247d8b257963}{ordinal\+\_\+seconds()}}
 
@@ -2914,11 +2000,11 @@ integer \+:\+: ordinal\+\_\+seconds \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+O
 
 Return number of seconds since beginning of current year.
 
-Before using this routine consider the consequences if the application is running at the moment a new year begins. \begin{DoxyVerb} 2 147 483 647 / 31 536 000 ==> 68.09625973490613901572 years
-\end{DoxyVerb}
- \subsubsection*{E\+X\+A\+M\+P\+LE}
+Before using this routine consider the consequences if the application is running at the moment a new year begins.
 
-\begin{DoxyVerb}Sample program
+\subsubsection*{E\+X\+A\+M\+P\+LE}
+
+\begin{DoxyVerb}sample program
 
  program demo_ordinal_seconds
  use M_time, only : ordinal_seconds
@@ -2959,7 +2045,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-ordinal\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} when given a valid year and day of the year returns the D\+AT array for the date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+ordinal\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} when given a valid year and day of the year returns the D\+AT array for the date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
 subroutine ordinal\+\_\+to\+\_\+date(yyyy, ddd, dat)
 
@@ -2973,24 +2059,25 @@ dat D\+AT array describing the date \subsubsection*{E\+X\+A\+M\+P\+LE}
 
 \begin{DoxyVerb}Sample program:
 
- program demo_datesub
+ program demo_ordinal_to_date
  use M_time, only : ordinal_to_date
  implicit none
  INTEGER            :: yyyy, ddd, mm, dd
  integer            :: dat(8)
  integer            :: ios
-
    INFINITE: do
-      write(*,'(a)',advance='no')'Enter year YYYY and ordinal day of year DD '
+      write(*,'(a)',advance='no')&
+      & 'Enter year YYYY and ordinal day of year DD '
       read(*,*,iostat=ios)yyyy,ddd
       if(ios.ne.0)exit INFINITE
       ! recover month and day from year and day number.
       call ordinal_to_date(yyyy, ddd, dat)
       mm=dat(2)
       dd=dat(3)
+      write(*,*)'For Year ',yyyy,' and Ordinal day ',ddd, &
+      &         ' Month is ',mm,' and Day of Month is',dd
     enddo INFINITE
-
- end program demo_datesub \end{DoxyVerb}
+ end program demo_ordinal_to_date \end{DoxyVerb}
  
 
 References d2j(), and j2d().
@@ -3012,7 +2099,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-phase\+\_\+of\+\_\+moon(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return name for phase of moon for given date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+phase\+\_\+of\+\_\+moon(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} return name for phase of moon for given date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
 function phase\+\_\+of\+\_\+moon(datin)
 
@@ -3036,31 +2123,13 @@ Note that technically the four states (new, first quarter, full, third quarter) 
 
 \subsubsection*{E\+X\+A\+M\+P\+L\+ES}
 
-\begin{DoxyVerb}Sample:
+Sample\+:
 
- program demo_phase_of_moon
- use M_time, only : now
- use M_time, only : phase_of_moon
- use M_time, only : moon_fullness
- implicit none
- integer             :: dat(8)
-    ! generate DAT array
-    call date_and_time(values=dat)
-    ! show DAT array
-    write(*,'(" Today is:",*(i0:,":"))')dat
-    ! the %p and %P fields are supported by fmtdate(3f)
-    write(*,*)now('The phase of the moon is %p, with a fullness of %P')
-    write(*,'(1x,*(a))',advance='no')'The phase of the moon is ',trim( phase_of_moon(dat)),','
-    write(*,'(1x,a,i0,a)')'with a fullness of ', moon_fullness(dat),'%'
- end program demo_phase_of_moon
+program demo\+\_\+phase\+\_\+of\+\_\+moon use M\+\_\+time, only \+: now use M\+\_\+time, only \+: phase\+\_\+of\+\_\+moon use M\+\_\+time, only \+: moon\+\_\+fullness implicit none integer \+:\+: dat(8) ! generate D\+AT array call date\+\_\+and\+\_\+time(values=dat) ! show D\+AT array write($\ast$,\textquotesingle{}(\char`\"{} Today is\+:\char`\"{},$\ast$(i0\+:,\char`\"{}\+:\char`\"{}))\textquotesingle{})dat ! the p and P fields are supported by fmtdate(3f) write($\ast$,$\ast$)\& \& now(\textquotesingle{}The phase of the moon is p, with a fullness of P\textquotesingle{}) write($\ast$,\textquotesingle{}(1x,$\ast$(a))\textquotesingle{},advance=\textquotesingle{}no\textquotesingle{})\& \& \textquotesingle{}The phase of the moon is \textquotesingle{},trim( phase\+\_\+of\+\_\+moon(dat)),\textquotesingle{},\textquotesingle{} write($\ast$,\textquotesingle{}(1x,a,i0,a)\textquotesingle{})\textquotesingle{}with a fullness of \textquotesingle{},moon\+\_\+fullness(dat),\textquotesingle{}\textquotesingle{} end program demo\+\_\+phase\+\_\+of\+\_\+moon
 
-Sample output:
+Sample output\+:
 
- Today is:2018:11:3:-240:20:18:44:245
- The phase of the moon is Waning crescent, with a fullness of -30%
- The phase of the moon is Waning crescent, with a fullness of -30%
-\end{DoxyVerb}
-
+Today is\+:2018\+:11\+:3\+:-\/240\+:20\+:18\+:44\+:245 The phase of the moon is Waning crescent, with a fullness of -\/30\% The phase of the moon is Waning crescent, with a fullness of -\/30\%
 
 \subsubsection*{A\+U\+T\+H\+OR}
 
@@ -3084,182 +2153,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_ab8a976e2f113cc38b6df80974cee55dc_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a76e79ee87552ce537cbb674a21b05b5c}\label{namespacem__time_a76e79ee87552ce537cbb674a21b05b5c}} 
-\index{m\+\_\+time@{m\+\_\+time}!plus\+\_\+seconds@{plus\+\_\+seconds}}
-\index{plus\+\_\+seconds@{plus\+\_\+seconds}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{plus\+\_\+seconds()}{plus\_seconds()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}) function m\+\_\+time\+::plus\+\_\+seconds (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self,  }\item[{real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), intent(in)}]{seconds }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References construct\+\_\+from\+\_\+dat(), d2u(), dt2d(), and u2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a76e79ee87552ce537cbb674a21b05b5c_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a76e79ee87552ce537cbb674a21b05b5c_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a6fdd4bf34977b7a390ce93c75c2cc6d8}\label{namespacem__time_a6fdd4bf34977b7a390ce93c75c2cc6d8}} 
-\index{m\+\_\+time@{m\+\_\+time}!r2s@{r2s}}
-\index{r2s@{r2s}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{r2s()}{r2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+::r2s (\begin{DoxyParamCaption}\item[{real, intent(in)}]{rvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References value\+\_\+to\+\_\+string().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a6fdd4bf34977b7a390ce93c75c2cc6d8_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a30c2f29f22d676ade9dff5ad6c35aae5}\label{namespacem__time_a30c2f29f22d676ade9dff5ad6c35aae5}} 
-\index{m\+\_\+time@{m\+\_\+time}!s2v@{s2v}}
-\index{s2v@{s2v}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{s2v()}{s2v()}}
-{\footnotesize\ttfamily doubleprecision function, private m\+\_\+time\+::s2v (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{integer, optional}]{ierr,  }\item[{class($\ast$), intent(in), optional}]{onerr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-s2v(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} function returns doubleprecision numeric value from a string (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}function s2v(string[,ierr][,onerr])
-
- character(len=*)             :: string
- doubleprecision              :: s2v
- integer,intent(out),optional :: ierr
- class(*),intent(in),optional :: onerr
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-This function converts a string to a D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON numeric value.
-
-The intrinsics I\+N\+T(3f), R\+E\+A\+L(3f), and D\+B\+L\+E(3f) are also extended to take C\+H\+A\+R\+A\+C\+T\+ER variables. The K\+I\+ND= keyword is not supported on the extensions. \subsubsection*{O\+P\+T\+I\+O\+NS}
-
-\begin{DoxyVerb} string   holds string assumed to represent a numeric value
- ierr     If an error occurs the program is stopped if the optional
-          parameter IERR is not present. If IERR returns a non-zero
-          value an error occurred.
- onerr    The value to return on error. A value of zero (NaN) is
-          returned on error by default.
-\end{DoxyVerb}
- \subsubsection*{R\+E\+T\+U\+R\+NS}
-
-s2v
-
-\subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_s2v
-
- use M_strings, only: s2v, int, real, dble
- implicit none
- character(len=8)              :: s=' 10.345 '
- integer                       :: i
- character(len=14),allocatable :: strings(:)
- doubleprecision               :: dv
- integer                       :: errnum
-
- ! different strings representing INTEGER, REAL, and DOUBLEPRECISION
- strings=[&
- &' 10.345       ',&
- &'+10           ',&
- &'    -3        ',&
- &'    -4.94e-2  ',&
- &'0.1           ',&
- &'12345.678910d0',&
- &'              ',& ! Note: will return zero without an error message
- &'1 2 1 2 1 . 0 ',& ! Note: spaces will be ignored
- &'WHAT?         ']  ! Note: error messages will appear, zero returned
-
- ! a numeric value is returned, so it can be used in numeric expression
- write(*,*) '1/2 value of string is ',s2v(s)/2.0d0
- write(*,*)
- write(*,*)' STRING            VALUE                    ERROR_NUMBER'
- do i=1,size(strings)
-    ! Note: not a good idea to use s2v(3f) in a WRITE(3f) statement,
-    ! as it does I/O when errors occur, so called on a separate line
-    dv=s2v(strings(i),errnum)
-    write(*,*) strings(i)//'=',dv,errnum
- enddo
- write(*,*)"Extended intrinsics"
- write(*,*)'given inputs:',s,strings(:8)
- write(*,*)'INT(3f):',int(s),int(strings(:8))
- write(*,*)'REAL(3f):',real(s),real(strings(:8))
- write(*,*)'DBLE(3f):',dble(s),dble(strings(:8))
- write(*,*)"That's all folks!"
-
- end program demo_s2v
-
-Expected output
-
- >1/2 value of string is    5.1725000000000003
- >
- > STRING            VALUE                    ERROR_NUMBER
- > 10.345       =   10.345000000000001                0
- >+10           =   10.000000000000000                0
- >    -3        =  -3.0000000000000000                0
- >    -4.94e-2  =  -4.9399999999999999E-002           0
- >0.1           =  0.10000000000000001                0
- >12345.678910d0=   12345.678910000001                0
- >              =   0.0000000000000000                0
- >1 2 1 2 1 . 0 =   12121.000000000000                0
- >*a2d* - cannot produce number from string [WHAT?]
- >*a2d* - [Bad value during floating point read]
- >WHAT?         =   0.0000000000000000             5010
- >Extended intrinsics
- >given inputs: 10.345 10.345 +10 -3 -4.94e-2 0.1 12345.678910d0 1 2 1 2 1 . 0
- >INT(3f): 10 10 10 -3 0 0 12345 0 12121
- >REAL(3f): 10.3450003 10.3450003 10.0000000 -3.00000000 -4.94000018E-02
- >          0.100000001 12345.6787 0.00000000 12121.0000
- >DBLE(3f): 10.345000000000001 10.345000000000001 10.000000000000000
- >          -3.0000000000000000 -4.9399999999999999E-002 0.10000000000000001
- >          12345.678910000001 0.0000000000000000 12121.000000000000
- >That's all folks!
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain \subsubsection*{P\+R\+O\+C\+E\+D\+U\+RE\+:}
-
-D\+E\+S\+C\+R\+I\+P\+T\+I\+ON\+: s2v(3f)\+: function returns doubleprecision number from string;zero if error occurs \subsubsection*{V\+E\+R\+S\+I\+ON\+: 2.\+0, 20160704}
-
-A\+U\+T\+H\+OR\+: John S. Urban 
-
-References a2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a30c2f29f22d676ade9dff5ad6c35aae5_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a30c2f29f22d676ade9dff5ad6c35aae5_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a7788285d79b8d58323b05e9a30a2d992}\label{namespacem__time_a7788285d79b8d58323b05e9a30a2d992}} 
 \index{m\+\_\+time@{m\+\_\+time}!sec2days@{sec2days}}
 \index{sec2days@{sec2days}!m\+\_\+time@{m\+\_\+time}}
@@ -3270,7 +2163,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-sec2days(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert seconds to string of form dd-\/hh\+:mm\+:ss (L\+I\+C\+E\+N\+SE\+:PD) 
+sec2days(3f) -\/ \mbox{[}M\+\_\+time\+:D\+U\+R\+A\+T\+I\+ON\mbox{]} convert seconds to string of form dd-\/hh\+:mm\+:ss (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -3291,9 +2184,9 @@ sec2days(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert seconds to string of form d
 
 \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
 
-Given a number of seconds convert it to a string of the form \begin{DoxyVerb}dd-hh:mm:ss
-\end{DoxyVerb}
+Given a number of seconds convert it to a string of the form
 
+dd-\/hh\+:mm\+:ss
 
 where dd is days, hh hours, mm minutes and ss seconds.
 
@@ -3301,7 +2194,7 @@ where dd is days, hh hours, mm minutes and ss seconds.
 
 seconds number of seconds to convert to string of form dd-\/hh\+:mm\+:ss. May be of type I\+N\+T\+E\+G\+ER, R\+E\+AL, R\+E\+AL(K\+I\+ND=R\+E\+A\+L\+T\+I\+ME), or C\+H\+A\+R\+A\+C\+T\+ER.
 
-C\+H\+A\+R\+A\+C\+T\+ER strings may be of the form N\+Nd\+N\+Nh\+N\+Nm\+N\+Ns. Case,spaces and underscores are ignored. Allowed aliases for d,h,m, and s units are \begin{DoxyVerb}d -  days,day
+C\+H\+A\+R\+A\+C\+T\+ER strings may be of the form \mbox{[}N\+Nd\mbox{]}\mbox{[}N\+Nh\mbox{]}\mbox{[}N\+Nm\mbox{]}\mbox{[}N\+Ns\mbox{]}\mbox{[}N\+Nw\mbox{]}. Case,spaces and underscores are ignored. Allowed aliases for d,h,m, and s units are \begin{DoxyVerb}d -  days,day
 m -  minutes,minute,min
 h -  hours,hour,hrs,hr
 s -  seconds,second,sec
@@ -3342,7 +2235,7 @@ John S. Urban, 2015 \subsubsection*{L\+I\+C\+E\+N\+SE}
 
 Public Domain 
 
-References compact(), lower(), s2v(), split(), substitute(), and transliterate().
+References m\+\_\+time\+\_\+duplicate\+::compact(), m\+\_\+time\+\_\+duplicate\+::lower(), m\+\_\+time\+\_\+duplicate\+::s2v(), m\+\_\+time\+\_\+duplicate\+::split(), m\+\_\+time\+\_\+duplicate\+::substitute(), and m\+\_\+time\+\_\+duplicate\+::transliterate().
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -3351,502 +2244,76 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a7788285d79b8d58323b05e9a30a2d992_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a16627f5dab7e40434531eed45cb3ea26}\label{namespacem__time_a16627f5dab7e40434531eed45cb3ea26}} 
-\index{m\+\_\+time@{m\+\_\+time}!split@{split}}
-\index{split@{split}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{split()}{split()}}
-{\footnotesize\ttfamily subroutine, private m\+\_\+time\+::split (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{input\+\_\+line,  }\item[{character(len=\+:), dimension(\+:), intent(out), allocatable}]{array,  }\item[{character(len=$\ast$), intent(in), optional}]{delimiters,  }\item[{character(len=$\ast$), intent(in), optional}]{order,  }\item[{character(len=$\ast$), intent(in), optional}]{nulls }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{namespacem__time_a7c5d028ae1e1e01162ffc7bb55dcbbb1}\label{namespacem__time_a7c5d028ae1e1e01162ffc7bb55dcbbb1}} 
+\index{m\+\_\+time@{m\+\_\+time}!system\+\_\+sleep@{system\+\_\+sleep}}
+\index{system\+\_\+sleep@{system\+\_\+sleep}!m\+\_\+time@{m\+\_\+time}}
+\subsubsection{\texorpdfstring{system\+\_\+sleep()}{system\_sleep()}}
+{\footnotesize\ttfamily subroutine, public m\+\_\+time\+::system\+\_\+sleep (\begin{DoxyParamCaption}\item[{class($\ast$), intent(in)}]{seconds }\end{DoxyParamCaption})}
 
 
 
 \subsubsection*{N\+A\+ME}
 
-split(3f) -\/ \mbox{[}M\+\_\+strings\+:T\+O\+K\+E\+NS\mbox{]} parse string into an array using specified delimiters (L\+I\+C\+E\+N\+SE\+:PD) 
+system\+\_\+sleep(3f) -\/ \mbox{[}M\+\_\+time\+:C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE\mbox{]} call C sleep(3c) or usleep(3c) procedure (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
+subroutine system\+\_\+sleep(wait\+\_\+seconds)
 
-\begin{DoxyVerb}subroutine split(input_line,array,delimiters,order,nulls)
+integer,intent(in) \+:\+: wait\+\_\+seconds or real,intent(in) \+:\+: wait\+\_\+seconds
 
- character(len=*),intent(in)              :: input_line
- character(len=:),allocatable,intent(out) :: array(:)
- character(len=*),optional,intent(in)     :: delimiters
- character(len=*),optional,intent(in)     :: order
- character(len=*),optional,intent(in)     :: nulls
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
+\subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
 
-S\+P\+L\+I\+T(3f) parses a string using specified delimiter characters and store tokens into an allocatable array
+The system\+\_\+sleep(3f) routine uses the intrinsic I\+S\+O\+\_\+\+C\+\_\+\+B\+I\+N\+D\+I\+NG interface to call the C sleep(3c) procedure or usleep(3c) routine.
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-\begin{DoxyVerb}INPUT_LINE  Input string to tokenize
-
-ARRAY       Output array of tokens
-
-DELIMITERS  List of delimiter characters.
-            The default delimiters are the "whitespace" characters
-            (space, tab,new line, vertical tab, formfeed, carriage
-            return, and null). You may specify an alternate set of
-            delimiter characters.
-
-            Multi-character delimiters are not supported (Each
-            character in the DELIMITERS list is considered to be
-            a delimiter).
-
-            Quoting of delimiter characters is not supported.
-
-ORDER SEQUENTIAL|REVERSE|RIGHT  Order of output array.
-            By default ARRAY contains the tokens having parsed
-            the INPUT_LINE from left to right. If ORDER='RIGHT'
-            or ORDER='REVERSE' the parsing goes from right to left.
-
-NULLS IGNORE|RETURN|IGNOREEND  Treatment of null fields.
-            By default adjacent delimiters in the input string
-            do not create an empty string in the output array. if
-            NULLS='return' adjacent delimiters create an empty element
-            in the output ARRAY. If NULLS='ignoreend' then only
-            trailing delimiters at the right of the string are ignored.
-\end{DoxyVerb}
-
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
-Sample program\+: \begin{DoxyVerb} program demo_split
- use M_strings, only: split
- character(len=*),parameter     :: &
- & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
- character(len=:),allocatable :: array(:) ! output array of tokens
-    write(*,*)'INPUT LINE:['//LINE//']'
-    write(*,'(80("="))')
-    write(*,*)'typical call:'
-    CALL split(line,array)
-    write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-    write(*,'(80("-"))')
-    write(*,*)'custom list of delimiters (colon and vertical line):'
-    CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
-    write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-    write(*,'(80("-"))')
-    write(*,*)&
-    &'custom list of delimiters, reverse array order and count null fields:'
-    CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
-    write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-    write(*,'(80("-"))')
-    write(*,*)'INPUT LINE:['//LINE//']'
-    write(*,*)&
-    &'default delimiters and reverse array order and return null fields:'
-    CALL split(line,array,delimiters='',order='reverse',nulls='return')
-    write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-end program demo_split
-\end{DoxyVerb}
-
-
-Output \begin{DoxyVerb} > INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
- > ===========================================================================
- >  typical call:
- > 1 ==> aBcdef
- > 2 ==> ghijklmnop
- > 3 ==> qrstuvwxyz
- > 4 ==> 1:|:2
- > 5 ==> 333|333
- > 6 ==> a
- > 7 ==> B
- > 8 ==> cc
- >  SIZE:           8
- > --------------------------------------------------------------------------
- >  custom list of delimiters (colon and vertical line):
- > 1 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
- > 2 ==> 2     333
- > 3 ==> 333 a B cc
- >  SIZE:           3
- > --------------------------------------------------------------------------
- >  custom list of delimiters, reverse array order and return null fields:
- > 1 ==> 333 a B cc
- > 2 ==> 2     333
- > 3 ==>
- > 4 ==>
- > 5 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
- >  SIZE:           5
- > --------------------------------------------------------------------------
- >  INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
- >  default delimiters and reverse array order and count null fields:
- > 1 ==>
- > 2 ==>
- > 3 ==>
- > 4 ==> cc
- > 5 ==> B
- > 6 ==> a
- > 7 ==> 333|333
- > 8 ==>
- > 9 ==>
- > 10 ==>
- > 11 ==>
- > 12 ==> 1:|:2
- > 13 ==>
- > 14 ==> qrstuvwxyz
- > 15 ==> ghijklmnop
- > 16 ==>
- > 17 ==>
- > 18 ==> aBcdef
- > 19 ==>
- > 20 ==>
- >  SIZE:          20
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References lower().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=284pt]{namespacem__time_a16627f5dab7e40434531eed45cb3ea26_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a16627f5dab7e40434531eed45cb3ea26_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_ac729ead2b5aa4c756d52284cd7d22bf2}\label{namespacem__time_ac729ead2b5aa4c756d52284cd7d22bf2}} 
-\index{m\+\_\+time@{m\+\_\+time}!stderr@{stderr}}
-\index{stderr@{stderr}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{stderr()}{stderr()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+::stderr (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_ac729ead2b5aa4c756d52284cd7d22bf2_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_aa6ebf9f13e386a27257b5d207fcd3eec}\label{namespacem__time_aa6ebf9f13e386a27257b5d207fcd3eec}} 
-\index{m\+\_\+time@{m\+\_\+time}!string\+\_\+to\+\_\+values@{string\+\_\+to\+\_\+values}}
-\index{string\+\_\+to\+\_\+values@{string\+\_\+to\+\_\+values}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{string\+\_\+to\+\_\+values()}{string\_to\_values()}}
-{\footnotesize\ttfamily subroutine, private m\+\_\+time\+::string\+\_\+to\+\_\+values (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{line,  }\item[{integer, intent(in)}]{iread,  }\item[{real, dimension(iread), intent(inout)}]{values,  }\item[{integer, intent(out)}]{inums,  }\item[{character(len=$\ast$), intent(in)}]{delims,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-string\+\_\+to\+\_\+values(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} read a string representing numbers into a numeric array (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}   subroutine string_to_values(line,iread,values,inums,delims,ierr)
-
-    character(len=*) :: line
-    integer          :: iread
-    real             :: values(*)
-    integer          :: inums
-    character(len=*) :: delims
-    integer          :: ierr
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-This routine can take a string representing a series of numbers and convert it to a numeric array and return how many numbers were found.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-\begin{DoxyVerb}   LINE     Input string containing numbers
-   IREAD    maximum number of values to try to read from input string
-\end{DoxyVerb}
-
-
-\subsubsection*{R\+E\+S\+U\+L\+TS}
-
-\begin{DoxyVerb}   VALUES   real array to be filled with numbers
-   INUMS    number of values successfully read (before error occurs
-            if one does)
-   DELIMS   delimiter character(s), usually a space. must not be a
-            null string. If more than one character, a space must
-            not be the last character or it will be ignored.
-   IERR     error flag (0=no error, else column number string starts
-            at that error occurred on).
-\end{DoxyVerb}
-
+wait\+\_\+seconds integer,real or doubleprecision number of seconds for process to sleep.
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
-Sample Program\+: \begin{DoxyVerb} program demo_string_to_values
-  use M_strings, only : string_to_values
-  character(len=80)  :: s=' 10 20e3;3.45 -400.3e-2;1234; 5678 '
-  integer,parameter  :: isz=10
-  real               :: array(isz)
-
-  call string_to_values(s,10,array,inums,' ;',ierr)
-  call reportit()
-
-  call string_to_values('10;2.3;3.1416',isz,array,inums,' ;',ierr)
-  call reportit()
-
-  contains
-     subroutine reportit()
-        write(*,*)'string_to_values:'
-        write(*,*)'input string.............',trim(s)
-        write(*,*)'number of values found...',inums
-        write(*,*)'values...................',(array(ii),ii=1,inums)
-     end subroutine reportit
- end program demo_string_to_values
-\end{DoxyVerb}
-
-
-Expected output \begin{DoxyVerb}string_to_values:
-input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
-number of values found...           6
-values...................   10.0000000  20000.0000  3.45000005  -4.00299978  1234.00000  5678.00000
-string_to_values:
-input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
-number of values found...           3
-values...................   10.0000000  2.29999995  3.14159989
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References stderr().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=345pt]{namespacem__time_aa6ebf9f13e386a27257b5d207fcd3eec_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_aa6ebf9f13e386a27257b5d207fcd3eec_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a3c8fc82ff0a77573d0f907d4d44dd9bd}\label{namespacem__time_a3c8fc82ff0a77573d0f907d4d44dd9bd}} 
-\index{m\+\_\+time@{m\+\_\+time}!substitute@{substitute}}
-\index{substitute@{substitute}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{substitute()}{substitute()}}
-{\footnotesize\ttfamily subroutine, private m\+\_\+time\+::substitute (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{targetline,  }\item[{character(len=$\ast$), intent(in)}]{old,  }\item[{character(len=$\ast$), intent(in)}]{new,  }\item[{integer, intent(out), optional}]{ierr,  }\item[{integer, intent(in), optional}]{start,  }\item[{integer, intent(in), optional}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-substitute(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} subroutine globally substitutes one substring for another in string (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}subroutine substitute(targetline,old,new,ierr,start,end)
-
- character(len=*)              :: targetline
- character(len=*),intent(in)   :: old
- character(len=*),intent(in)   :: new
- integer,intent(out),optional  :: ierr
- integer,intent(in),optional   :: start
- integer,intent(in),optional   :: end
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-Globally substitute one substring for another in string.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-T\+A\+R\+G\+E\+T\+L\+I\+NE input line to be changed. Must be long enough to hold altered output. O\+LD substring to find and replace N\+EW replacement for O\+LD substring I\+E\+RR error code. If I\+ER = -\/1 bad directive, $>$= 0 then count of changes made. S\+T\+A\+RT sets the left margin to be scanned for O\+LD in T\+A\+R\+G\+E\+T\+L\+I\+NE. E\+ND sets the right margin to be scanned for O\+LD in T\+A\+R\+G\+E\+T\+L\+I\+NE.
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_substitute
- use M_time, only : substitute
- implicit none
- ! must be long enough to hold changed line
- character(len=80) :: targetline
-
- targetline='this is the input string'
- write(*,*)'ORIGINAL    : '//trim(targetline)
-
- ! changes the input to 'THis is THe input string'
- call substitute(targetline,'th','TH')
- write(*,*)'th => TH    : '//trim(targetline)
-
- ! a null old substring means "at beginning of line"
- ! changes the input to 'BEFORE:this is the input string'
- call substitute(targetline,'','BEFORE:')
- write(*,*)'"" => BEFORE: '//trim(targetline)
-
- ! a null new string deletes occurrences of the old substring
- ! changes the input to 'ths s the nput strng'
- call substitute(targetline,'i','')
- write(*,*)'i => ""     : '//trim(targetline)
-
- end program demo_substitute
-
-Expected output
-
- ORIGINAL    : this is the input string
- th => TH    : THis is THe input string
- "" => BEFORE: BEFORE:THis is THe input string
- i => ""     : BEFORE:THs s THe nput strng
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References stderr().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=314pt]{namespacem__time_a3c8fc82ff0a77573d0f907d4d44dd9bd_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a3c8fc82ff0a77573d0f907d4d44dd9bd_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a6e202d6d900515a44ab8a7cbb886a68e}\label{namespacem__time_a6e202d6d900515a44ab8a7cbb886a68e}} 
-\index{m\+\_\+time@{m\+\_\+time}!transliterate@{transliterate}}
-\index{transliterate@{transliterate}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{transliterate()}{transliterate()}}
-{\footnotesize\ttfamily pure character(len=len(instr)) function, private m\+\_\+time\+::transliterate (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{instr,  }\item[{character(len=$\ast$), intent(in)}]{old\+\_\+set,  }\item[{character(len=$\ast$), intent(in)}]{new\+\_\+set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-transliterate(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} replace characters from old set with new set (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}pure function transliterate(instr,old_set,new_set) result(outstr)
-
- character(len=*),intent(in)  :: instr
- character(len=*),intent(in)  :: old_set
- character(len=*),intent(in)  :: new_set
- character(len=len(instr))    :: outstr
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-Translate, squeeze, and/or delete characters from the input string.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-instr input string to change old\+\_\+set list of letters to change in I\+N\+S\+TR if found \begin{DoxyVerb}     Each character in the input string that matches a character in
-     the old set is replaced.
-\end{DoxyVerb}
- new\+\_\+set list of letters to replace letters in O\+L\+D\+\_\+\+S\+ET with. \begin{DoxyVerb}     If the new_set is the empty set the matched characters are deleted.
-
-     If the new_set is shorter than the old set the last character in the
-     new set is used to replace the remaining characters in the new set.
-\end{DoxyVerb}
- \subsubsection*{R\+E\+T\+U\+R\+NS}
-
-outstr instr with substitutions applied
-
-\subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
-\begin{DoxyVerb}Sample Program:
-
- program demo_transliterate
-
- use M_strings, only : transliterate
- implicit none
- character(len=80)   :: STRING
-
- STRING='aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ'
- write(*,'(a)') STRING
-
- ! convert a string to uppercase:
- write(*,*) TRANSLITERATE(STRING,'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-
- ! change all miniscule letters to a colon (":"):
- write(*,*) TRANSLITERATE(STRING,'abcdefghijklmnopqrstuvwxyz',':')
-
- ! delete all miniscule letters
- write(*,*) TRANSLITERATE(STRING,'abcdefghijklmnopqrstuvwxyz','')
-
- end program demo_transliterate
-
-Expected output
-
- > aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ
- > AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ
- > :A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:Q:R:S:T:U:V:W:X:Y:Z
- > ABCDEFGHIJKLMNOPQRSTUVWXYZ
-\end{DoxyVerb}
-
-
-\subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a6e202d6d900515a44ab8a7cbb886a68e_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_a5d9e4a12c3418d67dc69a87780053d67}\label{namespacem__time_a5d9e4a12c3418d67dc69a87780053d67}} 
-\index{m\+\_\+time@{m\+\_\+time}!trimzeros@{trimzeros}}
-\index{trimzeros@{trimzeros}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{trimzeros()}{trimzeros()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+::trimzeros (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-trimzeros(3fp) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} Delete trailing zeros from numeric decimal string (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-subroutine trimzeros(str)
-
-character(len=$\ast$) \+:\+: str \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-T\+R\+I\+M\+Z\+E\+R\+O\+S(3f) deletes trailing zeros from a string representing a number. If the resulting string would end in a decimal point, one trailing zero is added. \subsubsection*{O\+P\+T\+I\+O\+NS}
-
-str input string will be assumed to be a numeric value and have trailing zeros removed \subsubsection*{E\+X\+A\+M\+P\+L\+ES}
-
 \begin{DoxyVerb}Sample program:
 
-   program demo_trimzeros
-   use M_strings, only : trimzeros
-   character(len=:),allocatable :: string
-      write(*,*)trimzeros('123.450000000000')
-      write(*,*)trimzeros('12345')
-      write(*,*)trimzeros('12345.')
-      write(*,*)trimzeros('12345.00e3')
-   end program demo_trimzeros
+ program demo_system_sleep
+ use M_time, only : system_sleep, now
+ implicit none
+ integer :: i
+    !
+    write(*,'(a)')"Time before integer call is: ",now()
+    call system_sleep(4)
+    write(*,'(a)')"Time after  integer call is: ",now()
+    !
+    write(*,'(a)')"Time before real call is: ",now()
+    call system_sleep(4.0)
+    write(*,'(a)')"Time after  real call is: ",now()
+    !
+    write(*,'(a)')"Time before loop is: ",now()
+    do i=1,1000
+       call system_sleep(4.0/1000.0)
+    enddo
+    write(*,'(a)')"Time after loop  is: ",now()
+    !
+ end program demo_system_sleep
 \end{DoxyVerb}
 
 
+results
+
+Time before integer call is\+: Sunday, July 17th, 2016 2\+:29\+:45 AM U\+T\+C-\/0240 Time after integer call is\+: Sunday, July 17th, 2016 2\+:29\+:49 AM U\+T\+C-\/0240 Time before real call is\+: Sunday, July 17th, 2016 2\+:29\+:49 AM U\+T\+C-\/0240 Time after real call is\+: Sunday, July 17th, 2016 2\+:29\+:53 AM U\+T\+C-\/0240 Time before loop is\+: Sunday, July 17th, 2016 2\+:29\+:53 AM U\+T\+C-\/0240 Time after loop is\+: Sunday, July 17th, 2016 2\+:30\+:09 AM U\+T\+C-\/0240
+
 \subsubsection*{A\+U\+T\+H\+OR}
 
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
+John S. Urban, 2015
 
-Public Domain Here is the caller graph for this function\+:\nopagebreak
+\subsubsection*{L\+I\+C\+E\+N\+SE}
+
+Public Domain 
+
+References call\+\_\+sleep(), and call\+\_\+usleep().
+
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacem__time_a5d9e4a12c3418d67dc69a87780053d67_icgraph}
+\includegraphics[width=350pt]{namespacem__time_a7c5d028ae1e1e01162ffc7bb55dcbbb1_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time_a083bc231f8ba1879d7f86ab424e77d6c}\label{namespacem__time_a083bc231f8ba1879d7f86ab424e77d6c}} 
@@ -3859,7 +2326,7 @@ Public Domain Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-u2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given Unix Epoch Time returns D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
+u2d(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} given Unix Epoch Time returns D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -3884,9 +2351,9 @@ unixtime The \char`\"{}\+Unix Epoch\char`\"{} time, or the number of seconds sin
 
 \subsubsection*{R\+E\+T\+U\+R\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
@@ -3897,11 +2364,15 @@ dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
  implicit none
  real(kind=realtime) :: today
  integer :: dat(8)
-    call date_and_time(values=dat) ! get the date using intrinsic
-    today=d2u(dat)                 ! convert today to Julian Date
+    ! get the date using intrinsic
+    call date_and_time(values=dat)
+    ! convert today to Julian Date
+    today=d2u(dat)
     write(*,*)'Today=',fmtdate(u2d(today))
-    write(*,*)'Yesterday=',fmtdate(u2d(today-86400.0d0)) ! subtract day
-    write(*,*)'Tomorrow=',fmtdate(u2d(today+86400.0d0))  ! add day
+    ! subtract day
+    write(*,*)'Yesterday=',fmtdate(u2d(today-86400.0d0))
+    ! add day
+    write(*,*)'Tomorrow=',fmtdate(u2d(today+86400.0d0))
  end program demo_u2d
 
 results:
@@ -3944,15 +2415,15 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-unix\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts Unix Epoch Time to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
+unix\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} converts Unix Epoch Time to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
 \begin{DoxyVerb}subroutine unix_to_date(unixtime,dat,ierr)
 
- real(kind=realtime),intent(in) :: unixtime ! Unix time (seconds)
- integer,intent(out)            :: dat(8)   ! date and time array
- integer,intent(out)            :: ierr     ! 0 for successful execution
+ real(kind=realtime),intent(in) :: unixtime
+ integer,intent(out)            :: dat(8)
+ integer,intent(out)            :: ierr
 \end{DoxyVerb}
 
 
@@ -3962,37 +2433,48 @@ Converts a Unix Epoch Time (U\+ET) to a D\+AT date-\/time array.
 
 \subsubsection*{O\+P\+T\+I\+O\+NS}
 
-unixtime The \char`\"{}\+Unix Epoch\char`\"{} time, or the number of seconds since 00\+:00\+:00 on January 1st, 1970, U\+TC; of type real(kind=realtime).
+\begin{DoxyVerb}unixtime  The "Unix Epoch" time, or the number of seconds since
+          00:00:00 on January 1st, 1970, UTC; of type
+          real(kind=realtime).
+\end{DoxyVerb}
+
 
 \subsubsection*{R\+E\+T\+U\+R\+NS}
 
-dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f).
+dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in structure to the array returned by the intrinsic D\+A\+T\+E\+\_\+\+A\+N\+D\+\_\+\+T\+I\+M\+E(3f)\+:
 
-dat=\mbox{[}year,month,day,timezone,hour,minutes,seconds,milliseconds\mbox{]}
+dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbox{]}
 
 ierr Error code. If 0 no error occurred.
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
-\begin{DoxyVerb}Sample program:
+\begin{DoxyVerb} Sample program:
 
- program demo_unix_to_date
- use M_time, only : unix_to_date, u2d, fmtdate, realtime
- implicit none
- real(kind=realtime)           :: unixtime
- real(kind=realtime),parameter :: DAY=86400.0d0 ! seconds in a day
- integer                       :: dat(8)
- integer                       :: ierr
-    unixtime=1468939038.4639933d0            ! sample Unix Epoch time
-    call unix_to_date(unixtime,dat,ierr)     ! create DAT array for today
-    write(*,*)'Sample Date=',fmtdate(dat)
-    call unix_to_date(unixtime-DAY,dat,ierr) ! go back one day
-    write(*,*)'Day Before =',fmtdate(dat)    ! subtract day and print
-    call unix_to_date(unixtime+DAY,dat,ierr) ! go forward one day
-    write(*,*)'Day After  =',fmtdate(dat)    ! add day print
- end program demo_unix_to_date
+  program demo_unix_to_date
+  use M_time, only : unix_to_date, u2d, fmtdate, realtime
+  implicit none
+  real(kind=realtime)           :: unixtime
+  ! seconds in a day
+  real(kind=realtime),parameter :: DAY=86400.0d0
+  integer                       :: dat(8)
+  integer                       :: ierr
+     ! sample Unix Epoch time
+     unixtime=1468939038.4639933d0
+     ! create DAT array for today
+     call unix_to_date(unixtime,dat,ierr)
+     write(*,*)'Sample Date=',fmtdate(dat)
+     ! go back one day
+     call unix_to_date(unixtime-DAY,dat,ierr)
+     ! subtract day and print
+     write(*,*)'Day Before =',fmtdate(dat)
+     ! go forward one day
+     call unix_to_date(unixtime+DAY,dat,ierr)
+     ! add day print
+     write(*,*)'Day After  =',fmtdate(dat)
+  end program demo_unix_to_date
 
-results:
+Results:
 
  Sample Date=Tuesday, July 19th, 2016 10:37:18 AM
  Day Before =Monday, July 18th, 2016 10:37:18 AM
@@ -4022,75 +2504,6 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_acc62ada23f8fa2fe67b428702fbcbf1c_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_af7c0157f921a2716ede225374095c6f2}\label{namespacem__time_af7c0157f921a2716ede225374095c6f2}} 
-\index{m\+\_\+time@{m\+\_\+time}!upper@{upper}}
-\index{upper@{upper}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{upper()}{upper()}}
-{\footnotesize\ttfamily elemental pure character(len(str)) function, private m\+\_\+time\+::upper (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{str,  }\item[{integer, intent(in), optional}]{begin,  }\item[{integer, intent(in), optional}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-upper(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to uppercase (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}elemental pure function upper(str,begin,end) result (string)
-
- character(*), intent(in)    :: str
- integer,optional,intent(in) :: begin,end
- character(len(str))         :: string  ! output string
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-upper(string) returns a copy of the input string with all characters converted in the optionally specified range to uppercase, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to uppercase.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-str string to convert to uppercase begin optional starting position in \char`\"{}str\char`\"{} to begin converting to uppercase end optional ending position in \char`\"{}str\char`\"{} to stop converting to uppercase
-
-\subsubsection*{R\+E\+S\+U\+L\+TS}
-
-upper copy of the input string with all characters converted to uppercase over optionally specified range.
-
-\subsubsection*{T\+R\+I\+V\+IA}
-
-The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.
-
-\subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample program:
-
- program demo_upper
- use M_time, only: upper
- implicit none
- character(len=:),allocatable  :: s
-    s=' ABCDEFG abcdefg '
-    write(*,*) 'mixed-case input string is ....',s
-    write(*,*) 'upper-case output string is ...',upper(s)
-    write(*,*) 'make first character uppercase  ... ',upper('this is a sentence.',1,1)
-    write(*,'(1x,a,*(a:,"+"))') 'upper(3f) is elemental ==>',upper(["abc","def","ghi"])
- end program demo_upper
-
-Expected output
-
- mixed-case input string is .... ABCDEFG abcdefg
- upper-case output string is ... ABCDEFG ABCDEFG
- make first character uppercase  ... This is a sentence.
- upper(3f) is elemental ==>ABC+DEF+GHI
-\end{DoxyVerb}
- \subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_af7c0157f921a2716ede225374095c6f2_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_a6f28cf00e4998bb50bb503f5e4bd3f77}\label{namespacem__time_a6f28cf00e4998bb50bb503f5e4bd3f77}} 
 \index{m\+\_\+time@{m\+\_\+time}!v2mo@{v2mo}}
 \index{v2mo@{v2mo}!m\+\_\+time@{m\+\_\+time}}
@@ -4101,7 +2514,7 @@ Public Domain Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-v2mo(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} returns the month name of a Common month number (L\+I\+C\+E\+N\+SE\+:PD) 
+v2mo(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} returns the month name of a Common month number (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -4162,104 +2575,6 @@ Public Domain Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time_a6f28cf00e4998bb50bb503f5e4bd3f77_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacem__time_a0dac2380784afe63e06862095d589c22}\label{namespacem__time_a0dac2380784afe63e06862095d589c22}} 
-\index{m\+\_\+time@{m\+\_\+time}!value\+\_\+to\+\_\+string@{value\+\_\+to\+\_\+string}}
-\index{value\+\_\+to\+\_\+string@{value\+\_\+to\+\_\+string}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{value\+\_\+to\+\_\+string()}{value\_to\_string()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+::value\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{class($\ast$), intent(in)}]{gval,  }\item[{character(len=$\ast$), intent(out)}]{chars,  }\item[{integer, intent(out), optional}]{length,  }\item[{integer, optional}]{err,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt,  }\item[{logical, intent(in), optional}]{trimz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-\subsubsection*{N\+A\+ME}
-
-value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD) 
-
-\subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
-
-\begin{DoxyVerb}subroutine value_to_string(value,chars[,ilen,ierr,fmt,trimz])
-
- character(len=*) :: chars  ! minimum of 23 characters required
- !--------
- ! VALUE may be any <em>one</em> of the following types:
- doubleprecision,intent(in)               :: value
- real,intent(in)                          :: value
- integer,intent(in)                       :: value
- logical,intent(in)                       :: value
- !--------
- character(len=*),intent(out)             :: chars
- integer,intent(out),optional             :: ilen
- integer,optional                         :: ierr
- character(len=*),intent(in),optional     :: fmt
- logical,intent(in)                       :: trimz
-\end{DoxyVerb}
- \subsubsection*{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}
-
-value\+\_\+to\+\_\+string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the string using internal writes. It then removes trailing zeros from non-\/zero values, and left-\/justifies the string.
-
-\subsubsection*{O\+P\+T\+I\+O\+NS}
-
-V\+A\+L\+UE input value to be converted to a string F\+MT You may specify a specific format that produces a string up to the length of C\+H\+A\+RS; optional. T\+R\+I\+MZ If a format is supplied the default is not to try to trim trailing zeros. Set T\+R\+I\+MZ to .true. to trim zeros from a string assumed to represent a simple numeric value.
-
-\subsubsection*{R\+E\+T\+U\+R\+NS}
-
-C\+H\+A\+RS returned string representing input value, must be at least 23 characters long; or what is required by optional F\+MT if longer. I\+L\+EN position of last non-\/blank character in returned string; optional. I\+E\+RR If not zero, error occurred; optional. \subsubsection*{E\+X\+A\+M\+P\+LE}
-
-\begin{DoxyVerb}Sample program:
-
-  program demo_value_to_string
-  use M_strings, only: value_to_string
-  implicit none
-  character(len=80) :: string
-  integer           :: ilen
-     call value_to_string(3.0/4.0,string,ilen)
-     write(*,*) 'The value is [',string(:ilen),']'
-
-     call value_to_string(3.0/4.0,string,ilen,fmt='')
-     write(*,*) 'The value is [',string(:ilen),']'
-
-     call value_to_string(3.0/4.0,string,ilen,fmt='("THE VALUE IS ",g0)')
-     write(*,*) 'The value is [',string(:ilen),']'
-
-     call value_to_string(1234,string,ilen)
-     write(*,*) 'The value is [',string(:ilen),']'
-
-     call value_to_string(1.0d0/3.0d0,string,ilen)
-     write(*,*) 'The value is [',string(:ilen),']'
-
-  end program demo_value_to_string
-
-Expected output
-
- The value is [0.75]
- The value is [      0.7500000000]
- The value is [THE VALUE IS .750000000]
- The value is [1234]
- The value is [0.33333333333333331]
-\end{DoxyVerb}
-
-
-\subsubsection*{A\+U\+T\+H\+OR}
-
-John S. Urban \subsubsection*{L\+I\+C\+E\+N\+SE}
-
-Public Domain 
-
-References stderr(), and trimzeros().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_a0dac2380784afe63e06862095d589c22_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=328pt]{namespacem__time_a0dac2380784afe63e06862095d589c22_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time_ac0ec48db8d508bfa23fe4b20c9d1c5a3}\label{namespacem__time_ac0ec48db8d508bfa23fe4b20c9d1c5a3}} 
 \index{m\+\_\+time@{m\+\_\+time}!w2d@{w2d}}
 \index{w2d@{w2d}!m\+\_\+time@{m\+\_\+time}}
@@ -4295,74 +2610,19 @@ dat \char`\"{}\+D\+A\+T\char`\"{} array (an integer array of the same format as 
 
 \subsubsection*{E\+X\+A\+M\+P\+LE}
 
-\begin{DoxyVerb}Sample program:
+Sample program\+:
 
- program demo_w2d
- use M_time, only : w2d, fmtdate
- implicit none
-    write(*,'(a)')'Given Monday 29 December 2008 is written "2009-W01-1"'
-    call printit(2009,1,1)
-    write(*,'(a)')'Given Sunday 3 January 2010 is written "2009-W53-7"'
-    call printit(2009,53,7)
-    write(*,'(a)')'Given the Gregorian date Sun 31 December 2006 is written 2006-W52-7'
-    call printit(2006,52,7)
-    write(*,'(a)')'Given 27 September 2008 is 2008-W39-6'
-    call printit(2008,39,6)
- contains
- subroutine printit(iso_year,iso_week,iso_weekday)
- integer  :: iso_year, iso_week, iso_weekday ! ISO-8601 Week:   2016-W29-1
- integer  :: dat(8)                          ! input date array
-    call w2d(iso_year,iso_week,iso_weekday,dat)
-    write(*,'(a,i0)')'GIVEN:           '
-    write(*,'(a,i0)')'ISO-8601 year    ',iso_year
-    write(*,'(a,i0)')'ISO-8601 week    ',iso_week
-    write(*,'(a,i0)')'ISO-8601 weekday ',iso_weekday
-    write(*,'(a,i0)')'RESULT:          '
-    write(*,'(a,*(i0:,","))')'   DAT array        ',dat
-    write(*,'(a,/,77("="))')'    '//fmtdate(dat,'long')
- end subroutine printit
- end program demo_w2d
+program demo\+\_\+w2d use M\+\_\+time, only \+: w2d, fmtdate implicit none write($\ast$,\textquotesingle{}(a)\textquotesingle{})\& \& \textquotesingle{}Given Monday 29 December 2008 is written \char`\"{}2009-\/\+W01-\/1\char`\"{}\textquotesingle{} call printit(2009,1,1) write($\ast$,\textquotesingle{}(a)\textquotesingle{})\& \& \textquotesingle{}Given Sunday 3 January 2010 is written \char`\"{}2009-\/\+W53-\/7\char`\"{}\textquotesingle{} call printit(2009,53,7) write($\ast$,\textquotesingle{}(a)\textquotesingle{})\& \& \textquotesingle{}Given the Gregorian date Sun 31 December 2006 \& \&is written 2006-\/\+W52-\/7\textquotesingle{} call printit(2006,52,7) write($\ast$,\textquotesingle{}(a)\textquotesingle{})\& \& \textquotesingle{}Given 27 September 2008 is 2008-\/\+W39-\/6\textquotesingle{} call printit(2008,39,6) contains subroutine printit(iso\+\_\+year,iso\+\_\+week,iso\+\_\+weekday) ! I\+S\+O-\/8601 Week\+: 2016-\/\+W29-\/1 integer \+:\+: iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday ! input date array integer \+:\+: dat(8) call w2d(iso\+\_\+year,iso\+\_\+week,iso\+\_\+weekday,dat) write($\ast$,\textquotesingle{}(a,i0)\textquotesingle{})\textquotesingle{}G\+I\+V\+EN\+: \textquotesingle{} write($\ast$,\textquotesingle{}(a,i0)\textquotesingle{})\textquotesingle{}I\+S\+O-\/8601 year \textquotesingle{},iso\+\_\+year write($\ast$,\textquotesingle{}(a,i0)\textquotesingle{})\textquotesingle{}I\+S\+O-\/8601 week \textquotesingle{},iso\+\_\+week write($\ast$,\textquotesingle{}(a,i0)\textquotesingle{})\textquotesingle{}I\+S\+O-\/8601 weekday \textquotesingle{},iso\+\_\+weekday write($\ast$,\textquotesingle{}(a,i0)\textquotesingle{})\textquotesingle{}R\+E\+S\+U\+LT\+: \textquotesingle{} write($\ast$,\textquotesingle{}(a,$\ast$(i0\+:,\char`\"{},\char`\"{}))\textquotesingle{})\textquotesingle{} D\+AT array \textquotesingle{},dat write($\ast$,\textquotesingle{}(a,/,67(\char`\"{}=\char`\"{}))\textquotesingle{})\textquotesingle{} \textquotesingle{}//fmtdate(dat,\textquotesingle{}long\textquotesingle{}) end subroutine printit end program demo\+\_\+w2d
 
-Results:
+Results\+:
 
- Given Monday 29 December 2008 is written "2009-W01-1"
- GIVEN:
- ISO-8601 year    2009
- ISO-8601 week    1
- ISO-8601 weekday 1
- RESULT:
-    DAT array        2008,12,29,-240,0,0,0,0
-     Monday, December 29th, 2008 12:00:00 AM UTC-04:00
- =============================================================================
- Given Sunday 3 January 2010 is written "2009-W53-7"
- GIVEN:
- ISO-8601 year    2009
- ISO-8601 week    53
- ISO-8601 weekday 7
- RESULT:
-    DAT array        2010,1,3,-240,0,0,0,0
-     Sunday, January 3rd, 2010 12:00:00 AM UTC-04:00
- =============================================================================
- Given the Gregorian date Sun 31 December 2006 is written 2006-W52-7
- GIVEN:
- ISO-8601 year    2006
- ISO-8601 week    52
- ISO-8601 weekday 7
- RESULT:
-    DAT array        2006,12,31,-240,0,0,0,0
-     Sunday, December 31st, 2006 12:00:00 AM UTC-04:00
- =============================================================================
- Given 27 September 2008 is 2008-W39-6
- GIVEN:
- ISO-8601 year    2008
- ISO-8601 week    39
- ISO-8601 weekday 6
- RESULT:
-    DAT array        2008,9,27,-240,0,0,0,0
-     Saturday, September 27th, 2008 12:00:00 AM UTC-04:00
- =============================================================================
-\end{DoxyVerb}
+Given Monday 29 December 2008 is written \char`\"{}2009-\/\+W01-\/1\char`\"{} G\+I\+V\+EN\+: I\+S\+O-\/8601 year 2009 I\+S\+O-\/8601 week 1 I\+S\+O-\/8601 weekday 1 R\+E\+S\+U\+LT\+: D\+AT array 2008,12,29,-\/240,0,0,0,0 \subsection*{Monday, December 29th, 2008 12\+:00\+:00 AM U\+T\+C-\/04\+:00 }
 
+Given Sunday 3 January 2010 is written \char`\"{}2009-\/\+W53-\/7\char`\"{} G\+I\+V\+EN\+: I\+S\+O-\/8601 year 2009 I\+S\+O-\/8601 week 53 I\+S\+O-\/8601 weekday 7 R\+E\+S\+U\+LT\+: D\+AT array 2010,1,3,-\/240,0,0,0,0 \subsection*{Sunday, January 3rd, 2010 12\+:00\+:00 AM U\+T\+C-\/04\+:00 }
+
+Given the Gregorian date Sun 31 December 2006 is written 2006-\/\+W52-\/7 G\+I\+V\+EN\+: I\+S\+O-\/8601 year 2006 I\+S\+O-\/8601 week 52 I\+S\+O-\/8601 weekday 7 R\+E\+S\+U\+LT\+: D\+AT array 2006,12,31,-\/240,0,0,0,0 \subsection*{Sunday, December 31st, 2006 12\+:00\+:00 AM U\+T\+C-\/04\+:00 }
+
+Given 27 September 2008 is 2008-\/\+W39-\/6 G\+I\+V\+EN\+: I\+S\+O-\/8601 year 2008 I\+S\+O-\/8601 week 39 I\+S\+O-\/8601 weekday 6 R\+E\+S\+U\+LT\+: D\+AT array 2008,9,27,-\/240,0,0,0,0 \subsection*{Saturday, September 27th, 2008 12\+:00\+:00 AM U\+T\+C-\/04\+:00 }
 
 \subsubsection*{D\+E\+F\+I\+N\+I\+T\+I\+ON}
 
@@ -4407,23 +2667,6 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time_ac0ec48db8d508bfa23fe4b20c9d1c5a3_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time_ac43e082c8ffd7687c4fc91beddc15720}\label{namespacem__time_ac43e082c8ffd7687c4fc91beddc15720}} 
-\index{m\+\_\+time@{m\+\_\+time}!weekday\+\_\+oop@{weekday\+\_\+oop}}
-\index{weekday\+\_\+oop@{weekday\+\_\+oop}!m\+\_\+time@{m\+\_\+time}}
-\subsubsection{\texorpdfstring{weekday\+\_\+oop()}{weekday\_oop()}}
-{\footnotesize\ttfamily integer function, private m\+\_\+time\+::weekday\+\_\+oop (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time_1_1date__time}{date\+\_\+time}}), intent(in)}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References dow(), and dt2d().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time_ac43e082c8ffd7687c4fc91beddc15720_cgraph}
 \end{center}
 \end{figure}
 

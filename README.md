@@ -53,13 +53,11 @@ Just download the github repository, enter the src/ directory and run make:
      make help # see other developer options
 
 This will compile the M_time module and optionally build all the example programs from
-the document pages in the PROGRAMS/ sub-directory and run the unit tests.
+the document pages in the test/demos/ sub-directory and run the unit tests.
 
 ## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
-
 Alternatively, download the github repository and build it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
-
 ```bash
      git clone https://github.com/urbanjost/M_time.git
      cd M_time
@@ -69,13 +67,15 @@ fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/
 
 or just list it as a dependency in your fpm.toml project file.
 
+```toml
      [dependencies]
      M_time        = { git = "https://github.com/urbanjost/M_time.git" }
+```
 
 ## SAMPLE PROGRAMS
 
 Each manpage contains a small sample program that has been extracted
-and placed in the PROGRAMS/ directory.  The small example programs
+and placed in the test/demos/ directory.  The small example programs
 demonstrate how easily you can generate a variety of output formats:
 
     Sun, Jan 5th, 2020 10:48:33 AM UTC-05:00
@@ -118,8 +118,7 @@ options. With no options it displays allowed formats. For example:
        The 5th of January 2020
 
 ## DOCUMENTATION
-Having been experimenting with doxygen(1), txt2man(1) and github markdown
-there are currently several different ways to view the documentation 
+there are several different ways to view the documentation 
 including just reading further down ...
 
 + [manpage index](https://urbanjost.github.io/M_time/index.html)
@@ -127,7 +126,10 @@ including just reading further down ...
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html).
 + [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
 
-_and there are manpages_ in the distribution in man/.
+_and there are manpages_ in the distribution in 
+[manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
+and
+[manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
 
 # RESPONSES
 
@@ -280,8 +282,6 @@ tested for manipulating dates I would suggest looking at the NASA
 SPICElib library.  If you care about Leap Seconds, Orbital Mechanics,
 GPS/Satellite communications, and Astronomy it is worth a look.
 
-
 The Fortran Wiki [ fortranwiki.org ](http://fortranwiki.org) contains
 information on other libraries and modules that provide date-time
 procedures.
-

@@ -1,16 +1,5 @@
 \hypertarget{M__time_8f90}{}\section{/home/urbanjs/venus/\+V600/github/\+M\+\_\+time/src/\+M\+\_\+time.f90 File Reference}
 \label{M__time_8f90}\index{/home/urbanjs/venus/\+V600/github/\+M\+\_\+time/src/\+M\+\_\+time.\+f90@{/home/urbanjs/venus/\+V600/github/\+M\+\_\+time/src/\+M\+\_\+time.\+f90}}
-\subsection*{Data Types}
-\begin{DoxyCompactItemize}
-\item 
-interface \mbox{\hyperlink{interfacem__time_1_1v2s}{m\+\_\+time\+::v2s}}
-\item 
-interface \mbox{\hyperlink{interfacem__time_1_1string__to__value}{m\+\_\+time\+::string\+\_\+to\+\_\+value}}
-\item 
-interface \mbox{\hyperlink{structm__time_1_1date__time}{m\+\_\+time\+::date\+\_\+time}}
-\item 
-interface \mbox{\hyperlink{structm__time_1_1date__time}{m\+\_\+time\+::date\+\_\+time}}
-\end{DoxyCompactItemize}
 \subsection*{Modules}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,71 +11,71 @@ module \mbox{\hyperlink{namespacem__time}{m\+\_\+time}}
 subroutine, public \mbox{\hyperlink{namespacem__time_acfdc970b4154b0c15bd33727636e3992}{m\+\_\+time\+::date\+\_\+to\+\_\+julian}} (dat, julian, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts D\+AT date-\/time array to Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_abb44cf18cd0a3e420c20469efb056203}{m\+\_\+time\+::julian\+\_\+to\+\_\+date}} (julian, dat, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aed245c691853279ebf0ce899dec9caa9}{m\+\_\+time\+::date\+\_\+to\+\_\+unix}} (dat, unixtime, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-date\+\_\+to\+\_\+unix(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Unix Epoch Time (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+date\+\_\+to\+\_\+unix(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} converts D\+AT date-\/time array to Unix Epoch Time (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_acc62ada23f8fa2fe67b428702fbcbf1c}{m\+\_\+time\+::unix\+\_\+to\+\_\+date}} (unixtime, dat, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-unix\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts Unix Epoch Time to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+unix\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} converts Unix Epoch Time to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_a727dd77bbd4a5d0e3947c5d303845947}{m\+\_\+time\+::d2o}} (dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2o(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts D\+AT date-\/time array to Ordinal day (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2o(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} converts D\+AT date-\/time array to Ordinal day (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_ab8960d2aa60e134bcf77247d8b257963}{m\+\_\+time\+::ordinal\+\_\+seconds}} ()
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-ordinal\+\_\+seconds(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} seconds since beginning of year (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+ordinal\+\_\+seconds(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} seconds since beginning of year (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aa4dca4409bf20a011bb04988c1335d63}{m\+\_\+time\+::ordinal\+\_\+to\+\_\+date}} (yyyy, ddd, dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-ordinal\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} when given a valid year and day of the year returns the D\+AT array for the date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+ordinal\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} when given a valid year and day of the year returns the D\+AT array for the date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a55e2cb9efc9d4d209ae2864f073d4f19}{m\+\_\+time\+::o2d}} (ordinal, year)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-o2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} converts Ordinal day to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+o2d(3f) -\/ \mbox{[}M\+\_\+time\+:O\+R\+D\+I\+N\+A\+L\+\_\+\+D\+AY\mbox{]} converts Ordinal day to D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6f28cf00e4998bb50bb503f5e4bd3f77}{m\+\_\+time\+::v2mo}} (imonth)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-v2mo(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} returns the month name of a Common month number (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+v2mo(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} returns the month name of a Common month number (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a8188c7ed4e592c4f2388d28c75486726}{m\+\_\+time\+::mo2d}} (month\+\_\+name, year)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-mo2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given month name return D\+AT date-\/time array for beginning of that month in specified year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+mo2d(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} given month name return D\+AT date-\/time array for beginning of that month in specified year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_ad7bf0886754757e8961e562f06cf3bb7}{m\+\_\+time\+::mo2v}} (month\+\_\+name)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-mo2v(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given month name return month number (1-\/12) of that month (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+mo2v(3f) -\/ \mbox{[}M\+\_\+time\+:M\+O\+N\+T\+H\+\_\+\+N\+A\+ME\mbox{]} given month name return month number (1-\/12) of that month (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6b5e87be0e510ff268c1ecfbf67a3bdb}{m\+\_\+time\+::now}} (format)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-now(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return string representing current time given format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+now(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} return string representing current time given format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a2cb84c9b8af4f395b76aed76e1431328}{m\+\_\+time\+::fmtdate}} (values, format)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-fmtdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array return date as string using specified format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+fmtdate(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} given D\+AT date-\/time array return date as string using specified format (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_a914927f70fb9495af1be2e484b967111}{m\+\_\+time\+::fmtdate\+\_\+usage}} (indent)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} display macros recognized by fmtdate(3f) and now(3f) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+fmtdate\+\_\+usage(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} display macros recognized by fmtdate(3f) and now(3f) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aa5198c7aa4f3d8411c8ce93046ce3794}{m\+\_\+time\+::guessdate}} (datestring, dat, ier)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-guessdate(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} reads in a date, in various formats (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+guessdate(3f) -\/ \mbox{[}M\+\_\+time\+:R\+E\+A\+D\+I\+N\+G\+\_\+\+D\+A\+T\+ES\mbox{]} reads in a date, in various formats (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_adfda8a89820b8d0ad4581a14896e4ce5}{m\+\_\+time\+::dow}} (values, weekday, day, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-dow(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given a date-\/time array D\+AT return the day of the week (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+dow(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+Y\+\_\+\+O\+F\+\_\+\+W\+E\+EK\mbox{]} given a date-\/time array D\+AT return the day of the week (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_ad4ff99ad6f6d5282c4b65ad636a2a627}{m\+\_\+time\+::d2w}} (dat, iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday, iso\+\_\+name)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2w(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate iso-\/8601 Week-\/numbering year date yyyy-\/\+Www-\/d given D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2w(3f) -\/ \mbox{[}M\+\_\+time\+:W\+E\+E\+K\+\_\+\+O\+F\+\_\+\+Y\+E\+AR\mbox{]} calculate iso-\/8601 Week-\/numbering year date yyyy-\/\+Www-\/d given D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function \mbox{\hyperlink{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}{uncorrected\+\_\+week\+\_\+of\+\_\+year}} (datin)
 \item 
 subroutine, public \mbox{\hyperlink{namespacem__time_ac0ec48db8d508bfa23fe4b20c9d1c5a3}{m\+\_\+time\+::w2d}} (iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday, dat)
@@ -96,151 +85,55 @@ w2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate D\+AT date-\/time array from i
 subroutine, public \mbox{\hyperlink{namespacem__time_a0fe7540912df30d3578f3c469413aea8}{m\+\_\+time\+::box\+\_\+month}} (dat, calen)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-box\+\_\+month(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} create specified month in a character array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+box\+\_\+month(3f) -\/ \mbox{[}M\+\_\+time\+:D\+A\+T\+E\+\_\+\+P\+R\+I\+N\+T\+I\+NG\mbox{]} create specified month in a character array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 real(kind=realtime) function, public \mbox{\hyperlink{namespacem__time_a3fccc53c2650104eff084c7998d18f54}{m\+\_\+time\+::d2j}} (dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2j(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2j(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} given D\+AT date-\/time array returns Julian Date (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c}{m\+\_\+time\+::j2d}} (julian)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-j2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given a J\+ED (Julian Ephemeris Date) returns a date-\/time array D\+AT. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+j2d(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} given a J\+ED (Julian Ephemeris Date) returns a date-\/time array D\+AT. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 real(kind=realtime) function, public \mbox{\hyperlink{namespacem__time_a1506e2889a156387df4481ed0534be81}{m\+\_\+time\+::d2u}} (dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-d2u(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given D\+AT date-\/time array returns Unix Epoch Time (U\+ET starts at 0000 on 1 Jan. 1970, U\+TC) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+d2u(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} given D\+AT date-\/time array returns Unix Epoch Time (U\+ET starts at 0000 on 1 Jan. 1970, U\+TC) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a083bc231f8ba1879d7f86ab424e77d6c}{m\+\_\+time\+::u2d}} (unixtime)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-u2d(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} given Unix Epoch Time returns D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+u2d(3f) -\/ \mbox{[}M\+\_\+time\+:U\+N\+I\+X\+\_\+\+E\+P\+O\+CH\mbox{]} given Unix Epoch Time returns D\+AT date-\/time array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 integer function \mbox{\hyperlink{namespacem__time_a7903410a1d28bcdf3d33ab0c2d74b124}{m\+\_\+time\+::get\+\_\+timezone}} ()
 \item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a7788285d79b8d58323b05e9a30a2d992}{m\+\_\+time\+::sec2days}} (seconds, crop)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-sec2days(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert seconds to string of form dd-\/hh\+:mm\+:ss (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+sec2days(3f) -\/ \mbox{[}M\+\_\+time\+:D\+U\+R\+A\+T\+I\+ON\mbox{]} convert seconds to string of form dd-\/hh\+:mm\+:ss (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 real(kind=realtime) function, public \mbox{\hyperlink{namespacem__time_a99393c7906f1989f90ece03969224938}{m\+\_\+time\+::days2sec}} (str)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-days2sec(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} convert string of form \mbox{[}\mbox{[}-\/\mbox{]}dd-\/\mbox{]}hh\+:mm\+:ss.\+nn to seconds (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+days2sec(3f) -\/ \mbox{[}M\+\_\+time\+:D\+U\+R\+A\+T\+I\+ON\mbox{]} convert string of form \mbox{[}\mbox{[}-\/\mbox{]}dd-\/\mbox{]}hh\+:mm\+:ss.\+nn to seconds (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_ab8a976e2f113cc38b6df80974cee55dc}{m\+\_\+time\+::phase\+\_\+of\+\_\+moon}} (datin)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-phase\+\_\+of\+\_\+moon(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return name for phase of moon for given date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+phase\+\_\+of\+\_\+moon(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} return name for phase of moon for given date (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 integer function, public \mbox{\hyperlink{namespacem__time_a702b39998a769b8f60070c0bec975ee2}{m\+\_\+time\+::moon\+\_\+fullness}} (datin)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-moon\+\_\+fullness(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} return percentage of moon phase from new to full (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+moon\+\_\+fullness(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} return percentage of moon phase from new to full (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_a5ccb70e20160fcf26bb403dbff1f138a}{m\+\_\+time\+::easter}} (year, dat)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-easter(3f) -\/ \mbox{[}M\+\_\+time\mbox{]} calculate date for Easter given a year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_a3c8fc82ff0a77573d0f907d4d44dd9bd}{m\+\_\+time\+::substitute}} (targetline, old, new, ierr, start, end)
+easter(3f) -\/ \mbox{[}M\+\_\+time\+:A\+S\+T\+R\+O\+L\+O\+G\+I\+C\+AL\mbox{]} calculate date for Easter given a year (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_a7c5d028ae1e1e01162ffc7bb55dcbbb1}{m\+\_\+time\+::system\+\_\+sleep}} (seconds)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-substitute(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} subroutine globally substitutes one substring for another in string (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-elemental pure character(len(str)) function, private \mbox{\hyperlink{namespacem__time_af7c0157f921a2716ede225374095c6f2}{m\+\_\+time\+::upper}} (str, begin, end)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-upper(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to uppercase (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-elemental pure character(len(str)) function, private \mbox{\hyperlink{namespacem__time_a96597ff2f2eab2ede14e3a63bd49254a}{m\+\_\+time\+::lower}} (str, begin, end)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-lower(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to lowercase over specified range (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespacem__time_ac729ead2b5aa4c756d52284cd7d22bf2}{m\+\_\+time\+::stderr}} (string)
+system\+\_\+sleep(3f) -\/ \mbox{[}M\+\_\+time\+:C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE\mbox{]} call C sleep(3c) or usleep(3c) procedure (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
+subroutine, private \mbox{\hyperlink{namespacem__time_af558bfc1fd5b13a6b879b3969866956f}{m\+\_\+time\+::call\+\_\+sleep}} (wait\+\_\+seconds)
 \item 
-pure character(len=\+:) function, allocatable, private \mbox{\hyperlink{namespacem__time_a9b165bc2207c694474bff6c7f56dfb09}{m\+\_\+time\+::adjustc}} (string, length)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-adjustc(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} center text (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=len(str)) function, private \mbox{\hyperlink{namespacem__time_a7dd8bfae3ed8ba85bf4de75bf120fe89}{m\+\_\+time\+::compact}} (str, char)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-compact(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} converts contiguous whitespace to a single character (or nothing) (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-doubleprecision function, private \mbox{\hyperlink{namespacem__time_a30c2f29f22d676ade9dff5ad6c35aae5}{m\+\_\+time\+::s2v}} (chars, ierr, onerr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-s2v(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} function returns doubleprecision numeric value from a string (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_a16627f5dab7e40434531eed45cb3ea26}{m\+\_\+time\+::split}} (input\+\_\+line, array, delimiters, order, nulls)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-split(3f) -\/ \mbox{[}M\+\_\+strings\+:T\+O\+K\+E\+NS\mbox{]} parse string into an array using specified delimiters (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_aa6ebf9f13e386a27257b5d207fcd3eec}{m\+\_\+time\+::string\+\_\+to\+\_\+values}} (line, iread, values, inums, delims, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-string\+\_\+to\+\_\+values(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} read a string representing numbers into a numeric array (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-pure character(len=len(instr)) function, private \mbox{\hyperlink{namespacem__time_a6e202d6d900515a44ab8a7cbb886a68e}{m\+\_\+time\+::transliterate}} (instr, old\+\_\+set, new\+\_\+set)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-transliterate(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} replace characters from old set with new set (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a0b88094db657df167f8e57aa4362259e}{m\+\_\+time\+::d2s}} (dvalue, fmt)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a6fdd4bf34977b7a390ce93c75c2cc6d8}{m\+\_\+time\+::r2s}} (rvalue, fmt)
+subroutine, private \mbox{\hyperlink{namespacem__time_ae63783f7479d2f5093c8031d38ce4304}{m\+\_\+time\+::call\+\_\+usleep}} (wait\+\_\+seconds)
 \item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a7ae85160c5039dad604fd05efad2445f}{m\+\_\+time\+::i2s}} (ivalue, fmt)
-\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time_a03e90459e69ffa353d1a6ce5765836fd}{m\+\_\+time\+::l2s}} (lvalue, fmt)
-\item 
-subroutine \mbox{\hyperlink{namespacem__time_a0dac2380784afe63e06862095d589c22}{m\+\_\+time\+::value\+\_\+to\+\_\+string}} (gval, chars, length, err, fmt, trimz)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time_a6f7d20403f29656febb82306aa064134}{m\+\_\+time\+::construct\+\_\+from\+\_\+dat}} (dat)
-\item 
-type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time_ab7b679d14dabc2a9250f4ec218569f0c}{m\+\_\+time\+::construct\+\_\+from\+\_\+jed}} (jed)
-\item 
-type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time_a7d903e5ff714106d933cee618e780a8b}{m\+\_\+time\+::construct\+\_\+from\+\_\+uet}} (uet)
-\item 
-integer function, dimension(8), private \mbox{\hyperlink{namespacem__time_aa281690d7f68f14842b00d238702e774}{m\+\_\+time\+::dt2d}} (self)
-\item 
-real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time_a64abb0c3f90cb0ae1358ef55ce03c175}{m\+\_\+time\+::epoch}} (self)
-\item 
-character(len=\+:) function, allocatable, private \mbox{\hyperlink{namespacem__time_a8d843c997d304f40fd5aed820c5a7473}{m\+\_\+time\+::format}} (self, fmt)
-\item 
-real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time_aff0a1b524b578e85efe20b87fbe9db61}{m\+\_\+time\+::julian\+\_\+oop}} (self)
-\item 
-integer function, private \mbox{\hyperlink{namespacem__time_a7fb507bb72a1872ec2a86fb7f3a50d75}{m\+\_\+time\+::ordinal\+\_\+oop}} (self)
-\item 
-integer function, private \mbox{\hyperlink{namespacem__time_ac43e082c8ffd7687c4fc91beddc15720}{m\+\_\+time\+::weekday\+\_\+oop}} (self)
-\item 
-type(date\+\_\+time) function, private \mbox{\hyperlink{namespacem__time_aa623b1643e55ffbf97e4fbd1c7e8c379}{m\+\_\+time\+::delta}} (self, year, month, day, tz, hour, minute, second, millisecond, week, duration)
-\item 
-subroutine, private \mbox{\hyperlink{namespacem__time_a72455f763954fae8ebc0f454033d82a8}{m\+\_\+time\+::init\+\_\+dt}} (self, year, month, day, tz, hour, minute, second, millisecond, type, dat)
-\item 
-type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time_a76e79ee87552ce537cbb674a21b05b5c}{m\+\_\+time\+::plus\+\_\+seconds}} (self, seconds)
-\item 
-type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time_a0d241cbb8f2e30a64b53f4aae4100709}{m\+\_\+time\+::minus\+\_\+seconds}} (self, seconds)
-\item 
-real(kind=realtime) function \mbox{\hyperlink{namespacem__time_ae81a89463c40f33a14b1b2d49f797643}{m\+\_\+time\+::minus\+\_\+date\+\_\+time}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a7d365fb381fa8f5f79a4263c9f678b98}{m\+\_\+time\+::eq}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a2cc7f6c40c8ef5aeef08cd51912987d7}{m\+\_\+time\+::lt}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a62a48ba3b42ccf837b48584293231021}{m\+\_\+time\+::gt}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a498bb2830d153743d9624e65e92d4f6c}{m\+\_\+time\+::le}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_aae8c0dfd78a61889a0d6444448ac0bb9}{m\+\_\+time\+::ge}} (self, other)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_ac0e0df383f424680ce59f5540e02348b}{m\+\_\+time\+::ne}} (self, other)
-\item 
-subroutine \mbox{\hyperlink{namespacem__time_a5d9e4a12c3418d67dc69a87780053d67}{m\+\_\+time\+::trimzeros}} (string)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-trimzeros(3fp) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} Delete trailing zeros from numeric decimal string (L\+I\+C\+E\+N\+SE\+:PD) \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}\end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespacem__time_a85f3492133b49248e415771ff4da0b95}{m\+\_\+time\+::a2r}} (chars, valu, ierr)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
-
-string\+\_\+to\+\_\+value(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} subroutine returns numeric value from string (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespacem__time_a200e48a4e0096b4343b0b72c95becd3d}{m\+\_\+time\+::a2i}} (chars, valu, ierr)
-\item 
-subroutine \mbox{\hyperlink{namespacem__time_a9d508147e28034267073619ba8a0e910}{m\+\_\+time\+::a2d}} (chars, valu, ierr, onerr)
-\item 
-logical function \mbox{\hyperlink{namespacem__time_a8dacab5686d74326cc68aa91b6f16c2d}{m\+\_\+time\+::decodebase}} (string, basein, out\+\_\+baseten)
-\begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}\end{DoxyCompactList}\end{DoxyCompactItemize}
+character(len=\+:) function, allocatable \mbox{\hyperlink{M__time_8f90_a09223e2da0c23850fad035407582fd68}{now\+\_\+ex}} (format)
+\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -259,6 +152,23 @@ real(kind=realtime), parameter, public \mbox{\hyperlink{namespacem__time_a3d5351
 
 
 \subsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{M__time_8f90_a09223e2da0c23850fad035407582fd68}\label{M__time_8f90_a09223e2da0c23850fad035407582fd68}} 
+\index{M\+\_\+time.\+f90@{M\+\_\+time.\+f90}!now\+\_\+ex@{now\+\_\+ex}}
+\index{now\+\_\+ex@{now\+\_\+ex}!M\+\_\+time.\+f90@{M\+\_\+time.\+f90}}
+\subsubsection{\texorpdfstring{now\+\_\+ex()}{now\_ex()}}
+{\footnotesize\ttfamily character(len=\+:) function, allocatable now\+\_\+ex (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in), optional}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+References m\+\_\+time\+::now().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{M__time_8f90_a09223e2da0c23850fad035407582fd68_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}\label{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}} 
 \index{M\+\_\+time.\+f90@{M\+\_\+time.\+f90}!uncorrected\+\_\+week\+\_\+of\+\_\+year@{uncorrected\+\_\+week\+\_\+of\+\_\+year}}
 \index{uncorrected\+\_\+week\+\_\+of\+\_\+year@{uncorrected\+\_\+week\+\_\+of\+\_\+year}!M\+\_\+time.\+f90@{M\+\_\+time.\+f90}}

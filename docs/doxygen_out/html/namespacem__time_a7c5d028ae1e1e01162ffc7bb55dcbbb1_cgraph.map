@@ -1,0 +1,4 @@
+<map id="m_time::system_sleep" name="m_time::system_sleep">
+<area shape="rect" id="node2" href="$namespacem__time.html#af558bfc1fd5b13a6b879b3969866956f" title="m_time::call_sleep" alt="" coords="228,5,373,32"/>
+<area shape="rect" id="node3" href="$namespacem__time.html#ae63783f7479d2f5093c8031d38ce4304" title="m_time::call_usleep" alt="" coords="224,56,377,83"/>
+</map>

@@ -1,11 +1,11 @@
 <map id="m_time::guessdate" name="m_time::guessdate">
-<area shape="rect" id="node2" href="$namespacem__time.html#a30c2f29f22d676ade9dff5ad6c35aae5" title="NAMEs2v(3f) &#45; [M_strings:NUMERIC] function returns doubleprecision numeric value from a string (LICEN..." alt="" coords="203,66,305,92"/>
-<area shape="rect" id="node5" href="$namespacem__time.html#af7c0157f921a2716ede225374095c6f2" title="NAMEupper(3f) &#45; [M_strings:CASE] changes a string to uppercase (LICENSE:PD) " alt="" coords="798,15,915,42"/>
-<area shape="rect" id="node7" href="$namespacem__time.html#a3c8fc82ff0a77573d0f907d4d44dd9bd" title="NAMEsubstitute(3f) &#45; [M_strings:EDITING] subroutine globally substitutes one substring for another in..." alt="" coords="597,142,743,168"/>
-<area shape="rect" id="node8" href="$namespacem__time.html#a16627f5dab7e40434531eed45cb3ea26" title="NAMEsplit(3f) &#45; [M_strings:TOKENS] parse string into an array using specified delimiters (LICENSE:PD)..." alt="" coords="200,167,308,194"/>
-<area shape="rect" id="node10" href="$namespacem__time.html#aa6ebf9f13e386a27257b5d207fcd3eec" title="NAMEstring_to_values(3f) &#45; [M_strings:NUMERIC] read a string representing numbers into a numeric arra..." alt="" coords="356,218,543,244"/>
-<area shape="rect" id="node3" href="$namespacem__time.html#a9d508147e28034267073619ba8a0e910" title="m_time::a2d" alt="" coords="397,66,501,92"/>
-<area shape="rect" id="node4" href="$namespacem__time.html#a8dacab5686d74326cc68aa91b6f16c2d" title="NAME" alt="" coords="591,40,749,67"/>
-<area shape="rect" id="node6" href="$namespacem__time.html#ac729ead2b5aa4c756d52284cd7d22bf2" title="m_time::stderr" alt="" coords="797,142,916,168"/>
-<area shape="rect" id="node9" href="$namespacem__time.html#a96597ff2f2eab2ede14e3a63bd49254a" title="NAMElower(3f) &#45; [M_strings:CASE] changes a string to lowercase over specified range (LICENSE:PD) ..." alt="" coords="391,167,507,194"/>
+<area shape="rect" id="node2" href="$namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title="NAMEs2v(3f) &#45; [M_strings:NUMERIC] function returns doubleprecision numeric value from a string (LICEN..." alt="" coords="202,122,373,149"/>
+<area shape="rect" id="node4" href="$namespacem__time__duplicate.html#abc203f3a6afc1edeecbcdc58b187a5d5" title="NAMEsubstitute(3f) &#45; [M_strings:EDITING] subroutine globally substitutes one substring for another in..." alt="" coords="661,71,873,98"/>
+<area shape="rect" id="node7" href="$namespacem__time__duplicate.html#aabdd1a3e01b26e896bd06aee488de7c6" title="NAMEupper(3f) &#45; [M_strings:CASE] changes a string to uppercase (LICENSE:PD) " alt="" coords="929,198,1113,225"/>
+<area shape="rect" id="node8" href="$namespacem__time__duplicate.html#a326e0d62d92969a231864997eea2ab98" title="NAMEsplit(3f) &#45; [M_strings:TOKENS] parse string into an array using specified delimiters (LICENSE:PD)..." alt="" coords="200,173,375,199"/>
+<area shape="rect" id="node10" href="$namespacem__time__duplicate.html#a1bfa9e4483f2452c89c0388971bb21bd" title="NAMEstring_to_values(3f) &#45; [M_strings:NUMERIC] read a string representing numbers into a numeric arra..." alt="" coords="423,5,607,47"/>
+<area shape="rect" id="node3" href="$namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title="m_time_duplicate::a2d" alt="" coords="429,122,600,149"/>
+<area shape="rect" id="node5" href="$namespacem__time__duplicate.html#aaf5c25d7bce4f2776df6c1e586b2e277" title="m_time_duplicate::stderr" alt="" coords="928,71,1113,98"/>
+<area shape="rect" id="node6" href="$namespacem__time__duplicate.html#a66a83a4b3d6324843c984658784b2c4e" title="NAME" alt="" coords="655,173,880,199"/>
+<area shape="rect" id="node9" href="$namespacem__time__duplicate.html#af8b4555e0c47e2ec327f0434d84b9c56" title="NAMElower(3f) &#45; [M_strings:CASE] changes a string to lowercase over specified range (LICENSE:PD) ..." alt="" coords="423,173,606,199"/>
 </map>

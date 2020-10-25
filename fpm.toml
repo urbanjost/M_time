@@ -8,145 +8,145 @@ description = "date and time conversion formatting and computation "
 
 [[test]]
 name="runTests"
-source-dir="test"
+source-dir="test/test_suite"
 main="test_suite_M_time.f90"
 
 [[executable]]
 name="box_month"
-source-dir="PROGRAMS/demo_box_month"
+source-dir="test/demos/demo_box_month"
 main="box_month.f90"
 
 [[executable]]
 name="d2j"
-source-dir="PROGRAMS/demo_d2j"
+source-dir="test/demos/demo_d2j"
 main="d2j.f90"
 
 [[executable]]
 name="d2o"
-source-dir="PROGRAMS/demo_d2o"
+source-dir="test/demos/demo_d2o"
 main="d2o.f90"
 
 [[executable]]
 name="d2u"
-source-dir="PROGRAMS/demo_d2u"
+source-dir="test/demos/demo_d2u"
 main="d2u.f90"
 
 [[executable]]
 name="d2w"
-source-dir="PROGRAMS/demo_d2w"
+source-dir="test/demos/demo_d2w"
 main="d2w.f90"
 
 [[executable]]
 name="date_to_julian"
-source-dir="PROGRAMS/demo_date_to_julian"
+source-dir="test/demos/demo_date_to_julian"
 main="date_to_julian.f90"
 
 [[executable]]
 name="date_to_unix"
-source-dir="PROGRAMS/demo_date_to_unix"
+source-dir="test/demos/demo_date_to_unix"
 main="date_to_unix.f90"
 
 [[executable]]
 name="days2sec"
-source-dir="PROGRAMS/demo_days2sec"
+source-dir="test/demos/demo_days2sec"
 main="days2sec.f90"
 
 [[executable]]
 name="dow"
-source-dir="PROGRAMS/demo_dow"
+source-dir="test/demos/demo_dow"
 main="dow.f90"
 
 [[executable]]
 name="easter"
-source-dir="PROGRAMS/demo_easter"
+source-dir="test/demos/demo_easter"
 main="easter.f90"
 
 [[executable]]
 name="fmtdate"
-source-dir="PROGRAMS/demo_fmtdate"
+source-dir="test/demos/demo_fmtdate"
 main="fmtdate.f90"
 
 [[executable]]
 name="fmtdate_usage"
-source-dir="PROGRAMS/demo_fmtdate_usage"
+source-dir="test/demos/demo_fmtdate_usage"
 main="fmtdate_usage.f90"
 
 [[executable]]
 name="guessdate"
-source-dir="PROGRAMS/demo_guessdate"
+source-dir="test/demos/demo_guessdate"
 main="guessdate.f90"
 
 [[executable]]
 name="j2d"
-source-dir="PROGRAMS/demo_j2d"
+source-dir="test/demos/demo_j2d"
 main="j2d.f90"
 
 [[executable]]
 name="julian_to_date"
-source-dir="PROGRAMS/demo_julian_to_date"
+source-dir="test/demos/demo_julian_to_date"
 main="julian_to_date.f90"
 
 [[executable]]
 name="mo2d"
-source-dir="PROGRAMS/demo_mo2d"
+source-dir="test/demos/demo_mo2d"
 main="mo2d.f90"
 
 [[executable]]
 name="mo2v"
-source-dir="PROGRAMS/demo_mo2v"
+source-dir="test/demos/demo_mo2v"
 main="mo2v.f90"
 
 [[executable]]
 name="moon_fullness"
-source-dir="PROGRAMS/demo_moon_fullness"
+source-dir="test/demos/demo_moon_fullness"
 main="moon_fullness.f90"
 
 [[executable]]
 name="now"
-source-dir="PROGRAMS/demo_now"
+source-dir="test/demos/demo_now"
 main="now.f90"
 
 [[executable]]
 name="o2d"
-source-dir="PROGRAMS/demo_o2d"
+source-dir="test/demos/demo_o2d"
 main="o2d.f90"
 
 [[executable]]
 name="ordinal_seconds"
-source-dir="PROGRAMS/demo_ordinal_seconds"
+source-dir="test/demos/demo_ordinal_seconds"
 main="ordinal_seconds.f90"
 
 [[executable]]
 name="ordinal_to_date"
-source-dir="PROGRAMS/demo_ordinal_to_date"
+source-dir="test/demos/demo_ordinal_to_date"
 main="ordinal_to_date.f90"
 
 [[executable]]
 name="phase_of_moon"
-source-dir="PROGRAMS/demo_phase_of_moon"
+source-dir="test/demos/demo_phase_of_moon"
 main="phase_of_moon.f90"
 
 [[executable]]
 name="sec2days"
-source-dir="PROGRAMS/demo_sec2days"
+source-dir="test/demos/demo_sec2days"
 main="sec2days.f90"
 
 [[executable]]
 name="u2d"
-source-dir="PROGRAMS/demo_u2d"
+source-dir="test/demos/demo_u2d"
 main="u2d.f90"
 
 [[executable]]
 name="unix_to_date"
-source-dir="PROGRAMS/demo_unix_to_date"
+source-dir="test/demos/demo_unix_to_date"
 main="unix_to_date.f90"
 
 [[executable]]
 name="v2mo"
-source-dir="PROGRAMS/demo_v2mo"
+source-dir="test/demos/demo_v2mo"
 main="v2mo.f90"
 
 [[executable]]
 name="w2d"
-source-dir="PROGRAMS/demo_w2d"
+source-dir="test/demos/demo_w2d"
 main="w2d.f90"

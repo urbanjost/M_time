@@ -3,37 +3,37 @@
 
 NULL=
 PROGFILES = \
-   ../PROGRAMS/demo_box_month//box_month.f90 \
-   ../PROGRAMS/demo_d2j/d2j.f90 \
-   ../PROGRAMS/demo_d2o/d2o.f90 \
-   ../PROGRAMS/demo_d2u/d2u.f90 \
-   ../PROGRAMS/demo_d2w/d2w.f90 \
-   ../PROGRAMS/demo_date_to_julian/date_to_julian.f90 \
-   ../PROGRAMS/demo_date_to_unix/date_to_unix.f90 \
-   ../PROGRAMS/demo_days2sec/days2sec.f90 \
-   ../PROGRAMS/demo_dow/dow.f90 \
-   ../PROGRAMS/demo_easter/easter.f90 \
-   ../PROGRAMS/demo_fmtdate/fmtdate.f90 \
-   ../PROGRAMS/demo_fmtdate_usage/fmtdate_usage.f90 \
-   ../PROGRAMS/demo_guessdate/guessdate.f90 \
-   ../PROGRAMS/demo_j2d/j2d.f90 \
-   ../PROGRAMS/demo_julian_to_date/julian_to_date.f90 \
-   ../PROGRAMS/demo_mo2d/mo2d.f90 \
-   ../PROGRAMS/demo_mo2v/mo2v.f90 \
-   ../PROGRAMS/demo_moon_fullness/moon_fullness.f90 \
-   ../PROGRAMS/demo_now/now.f90 \
-   ../PROGRAMS/demo_o2d/o2d.f90 \
-   ../PROGRAMS/demo_ordinal_seconds/ordinal_seconds.f90 \
-   ../PROGRAMS/demo_ordinal_to_date/ordinal_to_date.f90 \
-   ../PROGRAMS/demo_phase_of_moon/phase_of_moon.f90 \
-   ../PROGRAMS/demo_sec2days/sec2days.f90 \
-   ../PROGRAMS/demo_u2d/u2d.f90 \
-   ../PROGRAMS/demo_unix_to_date/unix_to_date.f90  \
-   ../PROGRAMS/demo_v2mo/v2mo.f90  \
-   ../PROGRAMS/demo_w2d/w2d.f90 \
+   ../test/demos/box_month//box_month.f90 \
+   ../test/demos/d2j/d2j.f90 \
+   ../test/demos/d2o/d2o.f90 \
+   ../test/demos/d2u/d2u.f90 \
+   ../test/demos/d2w/d2w.f90 \
+   ../test/demos/date_to_julian/date_to_julian.f90 \
+   ../test/demos/date_to_unix/date_to_unix.f90 \
+   ../test/demos/days2sec/days2sec.f90 \
+   ../test/demos/dow/dow.f90 \
+   ../test/demos/easter/easter.f90 \
+   ../test/demos/fmtdate/fmtdate.f90 \
+   ../test/demos/fmtdate_usage/fmtdate_usage.f90 \
+   ../test/demos/guessdate/guessdate.f90 \
+   ../test/demos/j2d/j2d.f90 \
+   ../test/demos/julian_to_date/julian_to_date.f90 \
+   ../test/demos/mo2d/mo2d.f90 \
+   ../test/demos/mo2v/mo2v.f90 \
+   ../test/demos/moon_fullness/moon_fullness.f90 \
+   ../test/demos/now/now.f90 \
+   ../test/demos/o2d/o2d.f90 \
+   ../test/demos/ordinal_seconds/ordinal_seconds.f90 \
+   ../test/demos/ordinal_to_date/ordinal_to_date.f90 \
+   ../test/demos/phase_of_moon/phase_of_moon.f90 \
+   ../test/demos/sec2days/sec2days.f90 \
+   ../test/demos/u2d/u2d.f90 \
+   ../test/demos/unix_to_date/unix_to_date.f90  \
+   ../test/demos/v2mo/v2mo.f90  \
+   ../test/demos/w2d/w2d.f90 \
    $(NULL)
 
-TESTFILES = ../test/test_suite_M_time.f90
+TESTFILES = ../test/test_suite/test_suite_M_time.f90
 TEST = ${TESTFILES:.f90=}
 
 CPROGFILES = 
@@ -42,9 +42,9 @@ PROG = ${PROGFILES:.f90=}
 
 CPROG = ${CPROGFILES:.c=}
 
-SRCS =  M_time.f90 
+SRCS =  M_time.f90 M_time_oop.f90 M_time_duplicate.f90
 
-OBJS =  M_time.o 
+OBJS =  M_time.o M_time_oop.o M_time_duplicate.o
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # platform-specific values you will probably change
 # 
@@ -62,7 +62,7 @@ all: $(PROG) $(CPROG)
 
 $(PROG): $(OBJS)
 
-	-$(F90) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS)||echo "ouch: $@.f90"
+	-$(F90) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS) # ||echo "ouch: $@.f90"
 
 .PHONY: help
 help:
@@ -109,4 +109,6 @@ man:
 	$(F90) $(F90FLAGS) -c $<
 
 #=================================================================================
-
+M_time_oop.o: M_time.o M_time_duplicate.o
+M_time.o: M_time_duplicate.o 
+#=================================================================================

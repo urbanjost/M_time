@@ -1,7 +1,0 @@
-<map id="m_time::date_time::operator" name="m_time::date_time::operator">
-<area shape="rect" id="node2" href="$namespacem__time.html#a498bb2830d153743d9624e65e92d4f6c" title="m_time::le" alt="" coords="208,31,300,57"/>
-<area shape="rect" id="node3" href="$namespacem__time.html#a1506e2889a156387df4481ed0534be81" title="NAMEd2u(3f) &#45; [M_time] given DAT date&#45;time array returns Unix Epoch Time (UET starts at 0000 on 1 Jan..." alt="" coords="351,5,455,32"/>
-<area shape="rect" id="node6" href="$namespacem__time.html#aa281690d7f68f14842b00d238702e774" title="m_time::dt2d" alt="" coords="348,56,457,83"/>
-<area shape="rect" id="node4" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:PD) ..." alt="" coords="505,5,669,32"/>
-<area shape="rect" id="node5" href="$namespacem__time.html#acfdc970b4154b0c15bd33727636e3992" title="NAMEdate_to_julian(3f) &#45; [M_time] converts DAT date&#45;time array to Julian Date (LICENSE:PD) ..." alt="" coords="717,5,889,32"/>
-</map>

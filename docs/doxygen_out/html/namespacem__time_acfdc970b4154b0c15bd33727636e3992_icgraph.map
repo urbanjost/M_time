@@ -1,49 +1,23 @@
 <map id="m_time::date_to_julian" name="m_time::date_to_julian">
-<area shape="rect" id="node2" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:PD) ..." alt="" coords="225,952,389,979"/>
-<area shape="rect" id="node5" href="$namespacem__time.html#a2cb84c9b8af4f395b76aed76e1431328" title="NAMEfmtdate(3f) &#45; [M_time] given DAT date&#45;time array return date as string using specified format (LI..." alt="" coords="1129,1282,1261,1308"/>
-<area shape="rect" id="node40" href="$namespacem__time.html#acc62ada23f8fa2fe67b428702fbcbf1c" title="NAMEunix_to_date(3f) &#45; [M_time] converts Unix Epoch Time to DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="225,674,389,700"/>
-<area shape="rect" id="node41" href="$namespacem__time.html#adfda8a89820b8d0ad4581a14896e4ce5" title="NAMEdow(3f) &#45; [M_time] given a date&#45;time array DAT return the day of the week (LICENSE:PD) ..." alt="" coords="437,1295,544,1322"/>
-<area shape="rect" id="node42" href="$namespacem__time.html#a0fe7540912df30d3578f3c469413aea8" title="NAMEbox_month(3f) &#45; [M_time] create specified month in a character array (LICENSE:PD) ..." alt="" coords="614,1408,767,1435"/>
-<area shape="rect" id="node44" href="$namespacem__time.html#a3fccc53c2650104eff084c7998d18f54" title="NAMEd2j(3f) &#45; [M_time] given DAT date&#45;time array returns Julian Date (LICENSE:PD) ..." alt="" coords="641,1206,741,1232"/>
-<area shape="rect" id="node3" href="$namespacem__time.html#a727dd77bbd4a5d0e3947c5d303845947" title="NAMEd2o(3f) &#45; [M_time] converts DAT date&#45;time array to Ordinal day (LICENSE:PD) " alt="" coords="439,952,543,979"/>
-<area shape="rect" id="node12" href="$namespacem__time.html#a55e2cb9efc9d4d209ae2864f073d4f19" title="NAMEo2d(3f) &#45; [M_time] converts Ordinal day to DAT date&#45;time array (LICENSE:PD) " alt="" coords="889,610,993,636"/>
-<area shape="rect" id="node14" href="$namespacem__time.html#a1506e2889a156387df4481ed0534be81" title="NAMEd2u(3f) &#45; [M_time] given DAT date&#45;time array returns Unix Epoch Time (UET starts at 0000 on 1 Jan..." alt="" coords="439,496,543,523"/>
-<area shape="rect" id="node4" href="$namespacem__time.html#ab8960d2aa60e134bcf77247d8b257963" title="NAMEordinal_seconds(3f) &#45; [M_time] seconds since beginning of year (LICENSE:PD) SYNOPSIS" alt="" coords="598,927,783,954"/>
-<area shape="rect" id="node9" href="$M__time_8f90.html#a4a68c5e906616f64da0c3d165fc41479" title="uncorrected_week_of_year" alt="" coords="592,1256,789,1283"/>
-<area shape="rect" id="node11" href="$namespacem__time.html#a7fb507bb72a1872ec2a86fb7f3a50d75" title="m_time::ordinal_oop" alt="" coords="613,876,769,903"/>
-<area shape="rect" id="node6" href="$namespacem__time.html#a6b5e87be0e510ff268c1ecfbf67a3bdb" title="NAMEnow(3f) &#45; [M_time] return string representing current time given format (LICENSE:PD) ..." alt="" coords="1549,1256,1656,1283"/>
-<area shape="rect" id="node8" href="$namespacem__time.html#a8d843c997d304f40fd5aed820c5a7473" title="m_time::format" alt="" coords="1362,1282,1486,1308"/>
-<area shape="rect" id="node7" href="$namespacem__time.html#a914927f70fb9495af1be2e484b967111" title="NAMEfmtdate_usage(3f) &#45; [M_time] display macros recognized by fmtdate(3f) and now(3f) (LICENSE:PD) ..." alt="" coords="1704,1256,1883,1283"/>
-<area shape="rect" id="node10" href="$namespacem__time.html#ad4ff99ad6f6d5282c4b65ad636a2a627" title="NAMEd2w(3f) &#45; [M_time] calculate iso&#45;8601 Week&#45;numbering year date yyyy&#45;Www&#45;d given DAT date&#45;time arr..." alt="" coords="887,1332,994,1359"/>
-<area shape="rect" id="node13" href="$namespacem__time.html#ac0ec48db8d508bfa23fe4b20c9d1c5a3" title="NAMEw2d(3f) &#45; [M_time] calculate DAT date&#45;time array from iso&#45;8601 Week&#45;numbering year date yyyy&#45;Www&#45;..." alt="" coords="1142,819,1249,846"/>
-<area shape="rect" id="node15" href="$namespacem__time.html#a083bc231f8ba1879d7f86ab424e77d6c" title="NAMEu2d(3f) &#45; [M_time] given Unix Epoch Time returns DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="639,218,743,244"/>
-<area shape="rect" id="node20" href="$namespacem__time.html#aa623b1643e55ffbf97e4fbd1c7e8c379" title="m_time::delta" alt="" coords="1139,218,1252,244"/>
-<area shape="rect" id="node21" href="$namespacem__time.html#a72455f763954fae8ebc0f454033d82a8" title="m_time::init_dt" alt="" coords="1135,15,1256,42"/>
-<area shape="rect" id="node22" href="$namespacem__time.html#a76e79ee87552ce537cbb674a21b05b5c" title="m_time::plus_seconds" alt="" coords="1112,66,1279,92"/>
-<area shape="rect" id="node24" href="$namespacem__time.html#a0d241cbb8f2e30a64b53f4aae4100709" title="m_time::minus_seconds" alt="" coords="1105,268,1285,295"/>
-<area shape="rect" id="node26" href="$namespacem__time.html#a64abb0c3f90cb0ae1358ef55ce03c175" title="m_time::epoch" alt="" coords="631,522,750,548"/>
-<area shape="rect" id="node27" href="$namespacem__time.html#ae81a89463c40f33a14b1b2d49f797643" title="m_time::minus_date_time" alt="" coords="844,487,1037,514"/>
-<area shape="rect" id="node28" href="$namespacem__time.html#a7d365fb381fa8f5f79a4263c9f678b98" title="m_time::eq" alt="" coords="643,572,739,599"/>
-<area shape="rect" id="node30" href="$namespacem__time.html#a2cc7f6c40c8ef5aeef08cd51912987d7" title="m_time::lt" alt="" coords="646,674,735,700"/>
-<area shape="rect" id="node32" href="$namespacem__time.html#a62a48ba3b42ccf837b48584293231021" title="m_time::gt" alt="" coords="644,724,737,751"/>
-<area shape="rect" id="node34" href="$namespacem__time.html#a498bb2830d153743d9624e65e92d4f6c" title="m_time::le" alt="" coords="645,775,737,802"/>
-<area shape="rect" id="node36" href="$namespacem__time.html#aae8c0dfd78a61889a0d6444448ac0bb9" title="m_time::ge" alt="" coords="643,826,739,852"/>
-<area shape="rect" id="node38" href="$namespacem__time.html#ac0e0df383f424680ce59f5540e02348b" title="m_time::ne" alt="" coords="643,420,739,447"/>
-<area shape="rect" id="node16" href="$namespacem__time.html#a6f7d20403f29656febb82306aa064134" title="m_time::construct_from_dat" alt="" coords="837,167,1044,194"/>
-<area shape="rect" id="node19" href="$namespacem__time.html#a7d903e5ff714106d933cee618e780a8b" title="m_time::construct_from_uet" alt="" coords="1092,116,1299,143"/>
-<area shape="rect" id="node17" href="$structm__time_1_1date__time.html#adc11c2984fd9dae163e44627a5e2a134" title="m_time::date_time::\loperator" alt="" coords="1118,400,1273,441"/>
-<area shape="rect" id="node18" href="$namespacem__time.html#ab7b679d14dabc2a9250f4ec218569f0c" title="m_time::construct_from_jed" alt="" coords="1093,167,1298,194"/>
-<area shape="rect" id="node23" href="$structm__time_1_1date__time.html#ad51508db1d161547062f40dcd91f4e4b" title="m_time::date_time::\loperator" alt="" coords="1347,58,1501,100"/>
-<area shape="rect" id="node25" href="$structm__time_1_1date__time.html#affafbae65afa1e12c901241e641e4b1f" title="m_time::date_time::\loperator" alt="" coords="1347,261,1501,302"/>
-<area shape="rect" id="node29" href="$structm__time_1_1date__time.html#a67028b37f0375d0209cb6379c59d99e5" title="m_time::date_time::\loperator" alt="" coords="863,544,1018,585"/>
-<area shape="rect" id="node31" href="$structm__time_1_1date__time.html#afd5a2b9837bc8d48eb244bd07c200c6a" title="m_time::date_time::\loperator" alt="" coords="863,661,1018,702"/>
-<area shape="rect" id="node33" href="$structm__time_1_1date__time.html#a1aa01f75ae1f67a4b3202febd56b462f" title="m_time::date_time::\loperator" alt="" coords="863,726,1018,768"/>
-<area shape="rect" id="node35" href="$structm__time_1_1date__time.html#add9b1c423294accdf967e22fa61a7796" title="m_time::date_time::\loperator" alt="" coords="863,792,1018,833"/>
-<area shape="rect" id="node37" href="$structm__time_1_1date__time.html#a3961b17820108c6eb0037d11a03cfcd2" title="m_time::date_time::\loperator" alt="" coords="863,857,1018,898"/>
-<area shape="rect" id="node39" href="$structm__time_1_1date__time.html#af93a94ed420ca7ba08cc63c36e88459c" title="m_time::date_time::\loperator" alt="" coords="863,421,1018,462"/>
-<area shape="rect" id="node43" href="$namespacem__time.html#ac43e082c8ffd7687c4fc91beddc15720" title="m_time::weekday_oop" alt="" coords="605,1358,776,1384"/>
-<area shape="rect" id="node45" href="$namespacem__time.html#aa4dca4409bf20a011bb04988c1335d63" title="NAMEordinal_to_date(3f) &#45; [M_time] when given a valid year and day of the year returns the DAT array ..." alt="" coords="850,1130,1031,1156"/>
-<area shape="rect" id="node46" href="$namespacem__time.html#ab8a976e2f113cc38b6df80974cee55dc" title="NAMEphase_of_moon(3f) &#45; [M_time] return name for phase of moon for given date (LICENSE:PD) SYNOPSIS..." alt="" coords="849,1231,1032,1258"/>
-<area shape="rect" id="node47" href="$namespacem__time.html#a702b39998a769b8f60070c0bec975ee2" title="NAMEmoon_fullness(3f) &#45; [M_time] return percentage of moon phase from new to full (LICENSE:PD) SYNOPS..." alt="" coords="853,1282,1028,1308"/>
-<area shape="rect" id="node48" href="$namespacem__time.html#aff0a1b524b578e85efe20b87fbe9db61" title="m_time::julian_oop" alt="" coords="867,1180,1014,1207"/>
+<area shape="rect" id="node2" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time:UNIX_EPOCH] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:P..." alt="" coords="225,563,389,589"/>
+<area shape="rect" id="node5" href="$namespacem__time.html#a2cb84c9b8af4f395b76aed76e1431328" title="NAMEfmtdate(3f) &#45; [M_time:DATE_PRINTING] given DAT date&#45;time array return date as string using specif..." alt="" coords="1068,259,1200,285"/>
+<area shape="rect" id="node15" href="$namespacem__time.html#acc62ada23f8fa2fe67b428702fbcbf1c" title="NAMEunix_to_date(3f) &#45; [M_time:UNIX_EPOCH] converts Unix Epoch Time to DAT date&#45;time array (LICENSE:P..." alt="" coords="225,664,389,691"/>
+<area shape="rect" id="node16" href="$namespacem__time.html#adfda8a89820b8d0ad4581a14896e4ce5" title="NAMEdow(3f) &#45; [M_time:DAY_OF_WEEK] given a date&#45;time array DAT return the day of the week (LICENSE:PD..." alt="" coords="437,461,544,488"/>
+<area shape="rect" id="node17" href="$namespacem__time.html#a0fe7540912df30d3578f3c469413aea8" title="NAMEbox_month(3f) &#45; [M_time:DATE_PRINTING] create specified month in a character array (LICENSE:PD) ..." alt="" coords="614,512,767,539"/>
+<area shape="rect" id="node18" href="$namespacem__time.html#a3fccc53c2650104eff084c7998d18f54" title="NAMEd2j(3f) &#45; [M_time:JULIAN] given DAT date&#45;time array returns Julian Date (LICENSE:PD) ..." alt="" coords="641,107,741,133"/>
+<area shape="rect" id="node3" href="$namespacem__time.html#a727dd77bbd4a5d0e3947c5d303845947" title="NAMEd2o(3f) &#45; [M_time:ORDINAL_DAY] converts DAT date&#45;time array to Ordinal day (LICENSE:PD) ..." alt="" coords="439,335,543,361"/>
+<area shape="rect" id="node11" href="$namespacem__time.html#a55e2cb9efc9d4d209ae2864f073d4f19" title="NAMEo2d(3f) &#45; [M_time:ORDINAL_DAY] converts Ordinal day to DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="877,613,981,640"/>
+<area shape="rect" id="node13" href="$namespacem__time.html#a1506e2889a156387df4481ed0534be81" title="NAMEd2u(3f) &#45; [M_time:UNIX_EPOCH] given DAT date&#45;time array returns Unix Epoch Time (UET starts at 00..." alt="" coords="439,664,543,691"/>
+<area shape="rect" id="node4" href="$namespacem__time.html#ab8960d2aa60e134bcf77247d8b257963" title="NAMEordinal_seconds(3f) &#45; [M_time:ORDINAL_DAY] seconds since beginning of year (LICENSE:PD) SYNOPSIS..." alt="" coords="598,309,783,336"/>
+<area shape="rect" id="node9" href="$M__time_8f90.html#a4a68c5e906616f64da0c3d165fc41479" title="uncorrected_week_of_year" alt="" coords="592,360,789,387"/>
+<area shape="rect" id="node6" href="$namespacem__time.html#a6b5e87be0e510ff268c1ecfbf67a3bdb" title="NAMEnow(3f) &#45; [M_time:DATE_PRINTING] return string representing current time given format (LICENSE:PD..." alt="" coords="1248,259,1355,285"/>
+<area shape="rect" id="node7" href="$namespacem__time.html#a914927f70fb9495af1be2e484b967111" title="NAMEfmtdate_usage(3f) &#45; [M_time:DATE_PRINTING] display macros recognized by fmtdate(3f) and now(3f) (..." alt="" coords="1403,233,1581,260"/>
+<area shape="rect" id="node8" href="$M__time_8f90.html#a09223e2da0c23850fad035407582fd68" title="now_ex" alt="" coords="1456,284,1528,311"/>
+<area shape="rect" id="node10" href="$namespacem__time.html#ad4ff99ad6f6d5282c4b65ad636a2a627" title="NAMEd2w(3f) &#45; [M_time:WEEK_OF_YEAR] calculate iso&#45;8601 Week&#45;numbering year date yyyy&#45;Www&#45;d given DAT ..." alt="" coords="875,335,982,361"/>
+<area shape="rect" id="node12" href="$namespacem__time.html#ac0ec48db8d508bfa23fe4b20c9d1c5a3" title="NAMEw2d(3f) &#45; [M_time] calculate DAT date&#45;time array from iso&#45;8601 Week&#45;numbering year date yyyy&#45;Www&#45;..." alt="" coords="1081,563,1187,589"/>
+<area shape="rect" id="node14" href="$namespacem__time.html#a083bc231f8ba1879d7f86ab424e77d6c" title="NAMEu2d(3f) &#45; [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="639,664,743,691"/>
+<area shape="rect" id="node19" href="$namespacem__time.html#aa4dca4409bf20a011bb04988c1335d63" title="NAMEordinal_to_date(3f) &#45; [M_time:ORDINAL_DAY] when given a valid year and day of the year returns th..." alt="" coords="838,157,1019,184"/>
+<area shape="rect" id="node20" href="$namespacem__time.html#ab8a976e2f113cc38b6df80974cee55dc" title="NAMEphase_of_moon(3f) &#45; [M_time:ASTROLOGICAL] return name for phase of moon for given date (LICENSE:P..." alt="" coords="837,5,1020,32"/>
+<area shape="rect" id="node21" href="$namespacem__time.html#a702b39998a769b8f60070c0bec975ee2" title="NAMEmoon_fullness(3f) &#45; [M_time:ASTROLOGICAL] return percentage of moon phase from new to full (LICEN..." alt="" coords="841,56,1016,83"/>
+<area shape="rect" id="node22" href="$namespacem__time__oop.html#a85c4d4edaa644bf22f68ffd724de036a" title="m_time_oop::julian_" alt="" coords="851,107,1006,133"/>
 </map>

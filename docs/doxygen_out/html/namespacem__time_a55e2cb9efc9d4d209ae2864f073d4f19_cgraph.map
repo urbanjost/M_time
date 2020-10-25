@@ -1,10 +1,10 @@
 <map id="m_time::o2d" name="m_time::o2d">
-<area shape="rect" id="node2" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:PD) ..." alt="" coords="540,5,704,32"/>
-<area shape="rect" id="node4" href="$namespacem__time.html#a7903410a1d28bcdf3d33ab0c2d74b124" title="m_time::get_timezone" alt="" coords="757,120,927,147"/>
-<area shape="rect" id="node5" href="$namespacem__time.html#ac729ead2b5aa4c756d52284cd7d22bf2" title="m_time::stderr" alt="" coords="157,107,276,133"/>
-<area shape="rect" id="node6" href="$namespacem__time.html#a083bc231f8ba1879d7f86ab424e77d6c" title="NAMEu2d(3f) &#45; [M_time] given Unix Epoch Time returns DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="165,56,269,83"/>
-<area shape="rect" id="node3" href="$namespacem__time.html#acfdc970b4154b0c15bd33727636e3992" title="NAMEdate_to_julian(3f) &#45; [M_time] converts DAT date&#45;time array to Julian Date (LICENSE:PD) ..." alt="" coords="756,44,928,71"/>
-<area shape="rect" id="node7" href="$namespacem__time.html#a1506e2889a156387df4481ed0534be81" title="NAMEd2u(3f) &#45; [M_time] given DAT date&#45;time array returns Unix Epoch Time (UET starts at 0000 on 1 Jan..." alt="" coords="354,56,458,83"/>
-<area shape="rect" id="node8" href="$namespacem__time.html#acc62ada23f8fa2fe67b428702fbcbf1c" title="NAMEunix_to_date(3f) &#45; [M_time] converts Unix Epoch Time to DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="324,107,488,133"/>
-<area shape="rect" id="node9" href="$namespacem__time.html#abb44cf18cd0a3e420c20469efb056203" title="NAMEjulian_to_date(3f) &#45; [M_time] converts a JED(Julian Ephemeris Date) to a DAT date&#45;time array..." alt="" coords="536,107,708,133"/>
+<area shape="rect" id="node2" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time:UNIX_EPOCH] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:P..." alt="" coords="607,5,771,32"/>
+<area shape="rect" id="node4" href="$namespacem__time.html#a7903410a1d28bcdf3d33ab0c2d74b124" title="m_time::get_timezone" alt="" coords="824,120,993,147"/>
+<area shape="rect" id="node5" href="$namespacem__time__duplicate.html#aaf5c25d7bce4f2776df6c1e586b2e277" title="m_time_duplicate::stderr" alt="" coords="157,107,343,133"/>
+<area shape="rect" id="node6" href="$namespacem__time.html#a083bc231f8ba1879d7f86ab424e77d6c" title="NAMEu2d(3f) &#45; [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT date&#45;time array (LICENSE:PD) ..." alt="" coords="198,56,302,83"/>
+<area shape="rect" id="node3" href="$namespacem__time.html#acfdc970b4154b0c15bd33727636e3992" title="NAMEdate_to_julian(3f) &#45; [M_time:JULIAN] converts DAT date&#45;time array to Julian Date (LICENSE:PD) ..." alt="" coords="823,44,995,71"/>
+<area shape="rect" id="node7" href="$namespacem__time.html#a1506e2889a156387df4481ed0534be81" title="NAMEd2u(3f) &#45; [M_time:UNIX_EPOCH] given DAT date&#45;time array returns Unix Epoch Time (UET starts at 00..." alt="" coords="421,56,525,83"/>
+<area shape="rect" id="node8" href="$namespacem__time.html#acc62ada23f8fa2fe67b428702fbcbf1c" title="NAMEunix_to_date(3f) &#45; [M_time:UNIX_EPOCH] converts Unix Epoch Time to DAT date&#45;time array (LICENSE:P..." alt="" coords="391,107,555,133"/>
+<area shape="rect" id="node9" href="$namespacem__time.html#abb44cf18cd0a3e420c20469efb056203" title="NAMEjulian_to_date(3f) &#45; [M_time:JULIAN] converts a JED(Julian Ephemeris Date) to a DAT date&#45;time arr..." alt="" coords="603,107,775,133"/>
 </map>
