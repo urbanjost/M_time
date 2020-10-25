@@ -1574,7 +1574,7 @@ end function fmtdate
 !!       ordinal  %O  211
 !!       weekday  %u  5
 !!
-!!    string versions:
+!!    string values:
 !!
 !!       MONTH    %L  July
 !!       Month    %l  Jul

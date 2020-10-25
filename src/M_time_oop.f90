@@ -317,9 +317,7 @@
 !!
 !!     end program demo_M_time_oop
 !!
-!!  Sample output:
-!!
-!!
+!! Sample output:
 !!
 !!  Various initialization styes
 !!   DEFAULT CONSTRUCTOR %FORMAT()               1970-01-01T00:00:00.000+00:00

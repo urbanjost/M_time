@@ -381,202 +381,79 @@ sample program
     end program demo_M_time_oop
 <P>
 </PRE>
+</BLOCKQUOTE>
 Sample output:
-</BLOCKQUOTE>
 <P>
+<PRE>
+ Various initialization styes
+  DEFAULT CONSTRUCTOR %FORMAT()               1970-01-01T00:00:00.000+00:00
+  DEFAULT CONSTRUCTOR %FORMAT("")             1970-01-01T00:00:00.000+00:00
+  DEFAULT CONSTRUCTOR %FORMAT(user-specified) 1970-01-01T00:00:00.000+00:00
+  DEFAULT CONSTRUCTOR %FORMAT("USA")          Thursday, January 1st, 1970 12:00:00 AM
+  DEFAULT CONSTRUCTOR SETTING VALUES          1492-10-12T00:00:00.000+00:00
+  DEFAULT CONSTRUCTOR WITH PARTIAL VALUES     2016-06-11T00:00:00.000+00:00
+  DEFAULT CONSTRUCTOR WITH VALUES BY NAME     2016-06-11T21:09:11.500-04:00
+  CONSTRUCTOR WITH A DAT ARRAY                1776-07-04T00:00:00.000+00:00
+  CONSTRUCTOR WITH A PARTIAL DAT ARRAY        1776-07-04T20:00:00.000-04:00
 <P>
+  Print members of type(DATE_TIME)
+  EVENT=2020,10,24,-240,21,49,54,105
+  %year        Year&#46;&#46;&#46;................ 2020
+  %month       Month&#46;&#46;&#46;............... 10
+  %day         Day&#46;&#46;&#46;................. 24
+  %tz          Timezone&#46;&#46;&#46;............ -240
+  %hour        Hour&#46;&#46;&#46;................ 21
+  %minute      Minute&#46;&#46;&#46;.............. 49
+  %second      Second&#46;&#46;&#46;.............. 54
+  %millisecond Millisecond&#46;&#46;&#46;......... 105
+  Print methods of type(DATE_TIME)
+  %ordinal     Ordinal day of year&#46;&#46;&#46;. 298
+  %weekday     Weekday&#46;&#46;&#46;............. 6
+  %epoch      Unix epoch time&#46;&#46;&#46;..... 1603590594.1049695
+  %julian     Julian date&#46;&#46;&#46;......... 2459147.5763206594
 <P>
-<BLOCKQUOTE>
-Various initialization styes
-<BLOCKQUOTE>
-<TABLE cellpadding=3><!-- tsb: Various initialization styes
- -->
-<TR></TR><TR></TR>
-<TR valign=top><TD colspan=2>
-<B>DEFAULT CONSTRUCTOR %FORMAT()</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-1970-01-01T00:00:00.000+00:00
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>DEFAULT CONSTRUCTOR %FORMAT(  )</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-1970-01-01T00:00:00.000+00:00
-DEFAULT CONSTRUCTOR %FORMAT(user-specified) 1970-01-01T00:00:00.000+00:00
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>DEFAULT CONSTRUCTOR %FORMAT( USA )</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Thursday, January 1st, 1970 12:00:00 AM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>DEFAULT CONSTRUCTOR SETTING VALUES</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-1492-10-12T00:00:00.000+00:00
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>DEFAULT CONSTRUCTOR WITH PARTIAL VALUES</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-2016-06-11T00:00:00.000+00:00
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>DEFAULT CONSTRUCTOR WITH VALUES BY NAME</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-2016-06-11T21:09:11.500-04:00
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>CONSTRUCTOR WITH A DAT ARRAY</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-1776-07-04T00:00:00.000+00:00
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>CONSTRUCTOR WITH A PARTIAL DAT ARRAY</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-1776-07-04T20:00:00.000-04:00
-</TD></TR>
-<TR><TD colspan=2>
-Print members of <B>type</B>(DATE_TIME)
-EVENT=2020,10,24,<B>-240</B>,21,49,54,105
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>%year</B> </TD><TD valign=bottom>
-Year&#46;&#46;&#46;................ 2020
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>%month</B> </TD><TD valign=bottom>
-Month&#46;&#46;&#46;............... 10
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>%day</B> </TD><TD valign=bottom>
-Day&#46;&#46;&#46;................. 24
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>%tz</B> </TD><TD valign=bottom>
-Timezone&#46;&#46;&#46;............ <B>-240</B>
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>%hour</B> </TD><TD valign=bottom>
-Hour&#46;&#46;&#46;................ 21
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>%minute</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Minute&#46;&#46;&#46;.............. 49
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>%second</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Second&#46;&#46;&#46;.............. 54
-%millisecond Millisecond&#46;&#46;&#46;......... 105
-Print methods of <B>type</B>(DATE_TIME)
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>%ordinal</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Ordinal day of year&#46;&#46;&#46;. 298
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>%weekday</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Weekday&#46;&#46;&#46;............. 6
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>%epoch</B> </TD><TD valign=bottom>
-Unix epoch time&#46;&#46;&#46;..... 1603590594.1049695
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>%julian</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Julian date&#46;&#46;&#46;......... 2459147.5763206594
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>Formatted Strings (%format( STRING )</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
--- see <B>fmtdate</B>(3f) for format descriptions
-Short month&#46;&#46;&#46;......... "Oct"
-Month&#46;&#46;&#46;............... "October"
-Short week&#46;&#46;&#46;.......... "Sat"
-Week &#46;&#46;&#46;............... "Saturday"
-Calendar Time &#46;&#46;&#46;...... "2020-10-24 21:49:54.105 <B>-04</B>:00"
-Calendar Time &#46;&#46;&#46;...... ""2020-10-24 21:49:54.105 <B>-0400</B>""
-Longer format&#46;&#46;&#46;....... "Saturday, October 24th, 2020 9:49:54 PM"
-</TD></TR>
-<TR><TD colspan=2>
-DAT=2020,10,24,<B>-240</B>,21,49,54,105
-TOMORROW="Sunday, October 25th, 2020 9:49:54 PM"
-YESTERDAY="Friday, October 23rd, 2020 9:49:54 PM"
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>DIFFERENCE (subtracting one </B><I>date_time</I> from another)= </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-<B>-86400.000000000000</B>
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>&gt;</B> </TD><TD valign=bottom>
-T F F T T F
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>&gt;</B> </TD><TD valign=bottom>
-F F T F T T
-</TD></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>&gt;</B> </TD><TD valign=bottom>
-F T F T F T
-</TD></TR>
-<TR><TD colspan=2>
-%DELTA tests starting with date 2020,10,24,<B>-240</B>,21,49,54,105
-Saturday, October 24th, 2020 9:49:54 PM
-Remember years and months are not constant units
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(YEAR=+1)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Sunday, October 24th, 2021 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(YEAR=</B><B>-1</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Thursday, October 24th, 2019 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(MONTH=+24)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Wednesday, October 26th, 2022 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(MONTH=</B><B>-24</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Wednesday, October 24th, 2018 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(WEEK=+1)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Saturday, October 31st, 2020 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(WEEK=</B><B>-1</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Saturday, October 17th, 2020 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(DAY=+1)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Sunday, October 25th, 2020 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(DAY=</B><B>-1</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Friday, October 23rd, 2020 9:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(HOUR=+4)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Sunday, October 25th, 2020 1:49:54 AM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(HOUR=</B><B>-4</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Saturday, October 24th, 2020 5:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(MINUTE=+180)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Sunday, October 25th, 2020 12:49:54 AM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(MINUTE=</B><B>-180</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Saturday, October 24th, 2020 6:49:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(SECOND=+1800)</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Saturday, October 24th, 2020 10:19:54 PM
-</TD></TR>
-<TR valign=top><TD colspan=2>
-<B>FOR %DELTA(SECOND=</B><B>-1800</B>) </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-Saturday, October 24th, 2020 9:19:54 PM
-FOR %DELTA(MILLISECOND=+10000) Saturday, October 24th, 2020 9:50:04 PM
-FOR %DELTA(MILLISECOND=<B>-10000</B>) Saturday, October 24th, 2020 9:49:44 PM
-FOR %DELTA(year=3,month=2,day=100,hour=200,week=<B>-1</B>,minute=300,
-second=1000,millisecond=100000) Thursday, April 4th, 2024 11:06:24 AM
-FOR %DELTA(DURATION=&#146;1-20:30:40.50&#146;) Monday, October 26th, 2020 6:20:34 PM
-</TD></TR>
-<TR></TR></TABLE></BLOCKQUOTE>
-</BLOCKQUOTE>
+  Formatted Strings (%format("STRING")  -- see fmtdate(3f) for format descriptions
+  Short month&#46;&#46;&#46;......... "Oct"
+  Month&#46;&#46;&#46;............... "October"
+  Short week&#46;&#46;&#46;.......... "Sat"
+  Week &#46;&#46;&#46;............... "Saturday"
+  Calendar Time &#46;&#46;&#46;...... "2020-10-24 21:49:54.105 -04:00"
+  Calendar Time &#46;&#46;&#46;...... ""2020-10-24 21:49:54.105 -0400""
+  Longer format&#46;&#46;&#46;....... "Saturday, October 24th, 2020 9:49:54 PM"
+<P>
+  DAT=2020,10,24,-240,21,49,54,105
+  TOMORROW="Sunday, October 25th, 2020 9:49:54 PM"
+  YESTERDAY="Friday, October 23rd, 2020 9:49:54 PM"
+  DIFFERENCE (subtracting one date_time from another)=  -86400.000000000000
+  &gt;  T F F T T F
+  &gt;  F F T F T T
+  &gt;  F T F T F T
+<P>
+  %DELTA tests starting with date 2020,10,24,-240,21,49,54,105
+                               Saturday, October 24th, 2020 9:49:54 PM
+  Remember years and months are not constant units
+  FOR %DELTA(YEAR=+1)            Sunday, October 24th, 2021 9:49:54 PM
+  FOR %DELTA(YEAR=-1)            Thursday, October 24th, 2019 9:49:54 PM
+  FOR %DELTA(MONTH=+24)          Wednesday, October 26th, 2022 9:49:54 PM
+  FOR %DELTA(MONTH=-24)          Wednesday, October 24th, 2018 9:49:54 PM
+  FOR %DELTA(WEEK=+1)            Saturday, October 31st, 2020 9:49:54 PM
+  FOR %DELTA(WEEK=-1)            Saturday, October 17th, 2020 9:49:54 PM
+  FOR %DELTA(DAY=+1)             Sunday, October 25th, 2020 9:49:54 PM
+  FOR %DELTA(DAY=-1)             Friday, October 23rd, 2020 9:49:54 PM
+  FOR %DELTA(HOUR=+4)            Sunday, October 25th, 2020 1:49:54 AM
+  FOR %DELTA(HOUR=-4)            Saturday, October 24th, 2020 5:49:54 PM
+  FOR %DELTA(MINUTE=+180)        Sunday, October 25th, 2020 12:49:54 AM
+  FOR %DELTA(MINUTE=-180)        Saturday, October 24th, 2020 6:49:54 PM
+  FOR %DELTA(SECOND=+1800)       Saturday, October 24th, 2020 10:19:54 PM
+  FOR %DELTA(SECOND=-1800)       Saturday, October 24th, 2020 9:19:54 PM
+  FOR %DELTA(MILLISECOND=+10000) Saturday, October 24th, 2020 9:50:04 PM
+  FOR %DELTA(MILLISECOND=-10000) Saturday, October 24th, 2020 9:49:44 PM
+  FOR %DELTA(year=3,month=2,day=100,hour=200,week=-1,minute=300,
+  second=1000,millisecond=100000) Thursday, April 4th, 2024 11:06:24 AM
+  FOR %DELTA(DURATION=&#146;1-20:30:40.50&#146;) Monday, October 26th, 2020 6:20:34 PM
+</PRE>
 <P><HR>
-<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>M_time_oop (3m_time)</TD> <TD align=right width=33%><I>October 24, 2020</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from 03af6c14-6985-49fb-81a4-8e5a2ae54f4d using man macros.</FONT>
+<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>M_time_oop (3m_time)</TD> <TD align=right width=33%><I>October 24, 2020</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from 295e5c07-e043-4482-b058-529fe65728aa using man macros.</FONT>
 <br><br><center><img src="images/M_time_oop.gif"></center>
 </div>
 </div>
