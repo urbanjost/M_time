@@ -2359,7 +2359,7 @@ end subroutine d2w
 !===================================================================================================================================
 !>
 !!##NAME
-!!    w2d(3f) - [M_time] calculate DAT date-time array from iso-8601
+!!    w2d(3f) - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601
 !!    Week-numbering year date yyyy-Www-d
 !!    (LICENSE:PD)
 !!
