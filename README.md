@@ -5,22 +5,12 @@
    M_time - Fortran module for manipulating and presenting time and date values
 
 ## DESCRIPTION
-The M_time Fortran module ( A fortran-lang.org [package](https://fortran-lang.org/packages/) )
 
-  * provides for formatting dates in many styles
-  * facilitates simple computations using time and date values in the recent era.
-  * allow for macro-level timing of code.
-
-Both a procedural and OOP (Object Oriented Programming) interface are
-provided. Each routine is accompanied by a man(1) page which includes
-a sample program for that procedure. An HTML manual, the source and
-example programs are included in the package.
-
-The M_TIME(3f) module complements the DATE_AND_TIME(3f) procedure, which
-is the standard Fortran intrinsic subroutine that returns the current
-date and time in the Gregorian calendar. That is, the primary way this
+The `M_time Fortran` module complements the `DATE_AND_TIME(3f)` procedure
+( it is the standard Fortran intrinsic subroutine that returns the current
+date and time in the Gregorian calendar). That is, the primary way this
 module represents dates is as an integer array with the same meaning
-for elements as defined by the DATE_AND_TIME(3f) routine. In addition
+for elements as defined by the `DATE_AND_TIME(3f)` routine. In addition
 it can calculate or read many other date representations such as ...
 
   * Julian Dates
@@ -31,17 +21,24 @@ it can calculate or read many other date representations such as ...
   * ISO-8601 week numbers
   * month and weekday names
 
-Julian and Unix Epoch Dates are particularly useful for manipulating dates in
-simple numeric expressions.
+__Julian__ and __Unix Epoch Dates__ are particularly useful for manipulating
+dates in simple numeric expressions.
 
-The extensive formatting options include showing SYSTEM_CLOCK(3f) and
-CPU_USAGE(3f) information along with Gregorian date information, allowing for
-the easy incorporation of timing information into program messages. In
-addition to conventional Civilian Calendar dates, the module supports the
-ISO-8601 standard methods of displaying dates.
+The extensive formatting options include showing `SYSTEM_CLOCK(3f)`
+and `CPU_USAGE(3f)` information along with Gregorian date information,
+allowing for the easy incorporation of timing information into program
+messages. In addition to conventional Civilian Calendar dates, the module
+supports the ISO-8601 standard.
+
+Both a procedural and OOP (Object Oriented Programming) interface are
+provided. Each routine is accompanied by a man(1) page which includes
+a sample program for that procedure. An HTML manual, the source and
+example programs are included in the package.
 
 ## DOWNLOAD AND BUILD
-Just download the github repository, enter the src/ directory and run make:
+
+To build the modules download the github repository, enter the src/
+directory and run make(1):
 
      git clone https://github.com/urbanjost/M_time.git
      cd M_time/src
@@ -63,7 +60,6 @@ fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/
      cd M_time
      fpm build
      fpm test
-```
 
 or just list it as a dependency in your fpm.toml project file.
 
@@ -118,27 +114,20 @@ options. With no options it displays allowed formats. For example:
        The 5th of January 2020
 
 ## DOCUMENTATION
-there are several different ways to view the documentation 
-including just reading further down ...
+In addtion to the USAGE section below the documentation includes a ...
 
 + [manpage index](https://urbanjost.github.io/M_time/man3.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) ` requires javascript`
 + [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
 
-_and there are manpages_ in the distribution in 
+Additionally there are manpages in the distribution in 
 [manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
 and
 [manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
 
-# RESPONSES
 
-Discussion is welcome here as well as at
- - [Fortran Discourse](https://fortran-lang.discourse.group)
- - [Fortran Wiki](http://fortranwiki.org)
- - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
-
-Usage for each procedure:
+## USAGE 
 
 <table BORDER="1">
 
@@ -285,3 +274,9 @@ GPS/Satellite communications, and Astronomy it is worth a look.
 The Fortran Wiki [ fortranwiki.org ](http://fortranwiki.org) contains
 information on other libraries and modules that provide date-time
 procedures.
+## RESPONSES
+
+Discussion is welcome here as well as at
+ - [Fortran Discourse](https://fortran-lang.discourse.group)
+ - [Fortran Wiki](http://fortranwiki.org)
+ - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)

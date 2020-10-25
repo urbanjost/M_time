@@ -15,6 +15,7 @@
 !>
 !!##NAME
 !!    M_time_oop(3fm) - [M_time::OBJECT_ORIENTED] OOP interface for M_time(3fm)
+!!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
 !!
