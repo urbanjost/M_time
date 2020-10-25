@@ -19,36 +19,36 @@
               write(*,*)
               write(*,'(a)')'Various initialization styes'
 
-              ! DEFINE TYPE(DATE_TIME) WITH CONSTRUCTOR
+              ! DEFINE type(date_time) WITH CONSTRUCTOR
               otherdate=date_time()
-              print *,'DEFAULT CONSTRUCTOR %FORMAT()               ',&
+              print *,'DEFAULT CONSTRUCTOR %format()               ',&
               & otherdate%format()
-              print *,'DEFAULT CONSTRUCTOR %FORMAT("")             ',&
+              print *,'DEFAULT CONSTRUCTOR %format("")             ',&
               & otherdate%format("")
-              print *,'DEFAULT CONSTRUCTOR %FORMAT(user-specified) ',&
+              print *,'DEFAULT CONSTRUCTOR %format(user-specified) ',&
               & otherdate%format(iso_fmt)
-              print *,'DEFAULT CONSTRUCTOR %FORMAT("USA")          ',&
+              print *,'DEFAULT CONSTRUCTOR %format("USA")          ',&
               & otherdate%format("USA")
 
               otherdate=date_time(1492,10,12,0,0,0,0,0)
-              print *,'DEFAULT CONSTRUCTOR SETTING VALUES          ',&
+              print *,'DEFAULT CONSTRUCTOR setting values          ',&
               & otherdate%format()
 
               otherdate=date_time(2016,6,11)
-              print *,'DEFAULT CONSTRUCTOR WITH PARTIAL VALUES     ',&
+              print *,'DEFAULT CONSTRUCTOR with partial values     ',&
               & otherdate%format()
 
               otherdate=date_time(year=2016,month=6,day=11,tz=-240,&
               & hour=21,minute=09,second=11,millisecond=500)
-              print *,'DEFAULT CONSTRUCTOR WITH VALUES BY NAME     ',&
+              print *,'DEFAULT CONSTRUCTOR with values by name     ',&
               & otherdate%format()
 
               otherdate=date_time([1776,7,4,0,0,0,0,0])
-              print *,'CONSTRUCTOR WITH A DAT ARRAY                ',&
+              print *,'CONSTRUCTOR with a dat array                ',&
               & otherdate%format()
 
               otherdate=date_time([1776,7,4])
-              print *,'CONSTRUCTOR WITH A PARTIAL DAT ARRAY        ',&
+              print *,'CONSTRUCTOR with a partial dat array        ',&
               & otherdate%format()
 
               ! the init() method supports several methods

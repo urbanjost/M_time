@@ -75,36 +75,36 @@
 !!        write(*,*)
 !!        write(*,'(a)')'Various initialization styes'
 !!
-!!        ! DEFINE TYPE(DATE_TIME) WITH CONSTRUCTOR
+!!        ! DEFINE type(date_time) WITH CONSTRUCTOR
 !!        otherdate=date_time()
-!!        print *,'DEFAULT CONSTRUCTOR %FORMAT()               ',&
+!!        print *,'DEFAULT CONSTRUCTOR %format()               ',&
 !!        & otherdate%format()
-!!        print *,'DEFAULT CONSTRUCTOR %FORMAT("")             ',&
+!!        print *,'DEFAULT CONSTRUCTOR %format("")             ',&
 !!        & otherdate%format("")
-!!        print *,'DEFAULT CONSTRUCTOR %FORMAT(user-specified) ',&
+!!        print *,'DEFAULT CONSTRUCTOR %format(user-specified) ',&
 !!        & otherdate%format(iso_fmt)
-!!        print *,'DEFAULT CONSTRUCTOR %FORMAT("USA")          ',&
+!!        print *,'DEFAULT CONSTRUCTOR %format("USA")          ',&
 !!        & otherdate%format("USA")
 !!
 !!        otherdate=date_time(1492,10,12,0,0,0,0,0)
-!!        print *,'DEFAULT CONSTRUCTOR SETTING VALUES          ',&
+!!        print *,'DEFAULT CONSTRUCTOR setting values          ',&
 !!        & otherdate%format()
 !!
 !!        otherdate=date_time(2016,6,11)
-!!        print *,'DEFAULT CONSTRUCTOR WITH PARTIAL VALUES     ',&
+!!        print *,'DEFAULT CONSTRUCTOR with partial values     ',&
 !!        & otherdate%format()
 !!
 !!        otherdate=date_time(year=2016,month=6,day=11,tz=-240,&
 !!        & hour=21,minute=09,second=11,millisecond=500)
-!!        print *,'DEFAULT CONSTRUCTOR WITH VALUES BY NAME     ',&
+!!        print *,'DEFAULT CONSTRUCTOR with values by name     ',&
 !!        & otherdate%format()
 !!
 !!        otherdate=date_time([1776,7,4,0,0,0,0,0])
-!!        print *,'CONSTRUCTOR WITH A DAT ARRAY                ',&
+!!        print *,'CONSTRUCTOR with a dat array                ',&
 !!        & otherdate%format()
 !!
 !!        otherdate=date_time([1776,7,4])
-!!        print *,'CONSTRUCTOR WITH A PARTIAL DAT ARRAY        ',&
+!!        print *,'CONSTRUCTOR with a partial dat array        ',&
 !!        & otherdate%format()
 !!
 !!        ! the init() method supports several methods
@@ -320,15 +320,15 @@
 !! Sample output:
 !!
 !!  Various initialization styes
-!!   DEFAULT CONSTRUCTOR %FORMAT()               1970-01-01T00:00:00.000+00:00
-!!   DEFAULT CONSTRUCTOR %FORMAT("")             1970-01-01T00:00:00.000+00:00
-!!   DEFAULT CONSTRUCTOR %FORMAT(user-specified) 1970-01-01T00:00:00.000+00:00
-!!   DEFAULT CONSTRUCTOR %FORMAT("USA")          Thursday, January 1st, 1970 12:00:00 AM
-!!   DEFAULT CONSTRUCTOR SETTING VALUES          1492-10-12T00:00:00.000+00:00
-!!   DEFAULT CONSTRUCTOR WITH PARTIAL VALUES     2016-06-11T00:00:00.000+00:00
-!!   DEFAULT CONSTRUCTOR WITH VALUES BY NAME     2016-06-11T21:09:11.500-04:00
-!!   CONSTRUCTOR WITH A DAT ARRAY                1776-07-04T00:00:00.000+00:00
-!!   CONSTRUCTOR WITH A PARTIAL DAT ARRAY        1776-07-04T20:00:00.000-04:00
+!!   DEFAULT CONSTRUCTOR %format()               1970-01-01T00:00:00.000+00:00
+!!   DEFAULT CONSTRUCTOR %format("")             1970-01-01T00:00:00.000+00:00
+!!   DEFAULT CONSTRUCTOR %format(user-specified) 1970-01-01T00:00:00.000+00:00
+!!   DEFAULT CONSTRUCTOR %format("USA")          Thursday, January 1st, 1970 12:00:00 AM
+!!   DEFAULT CONSTRUCTOR setting values          1492-10-12T00:00:00.000+00:00
+!!   DEFAULT CONSTRUCTOR with partial values     2016-06-11T00:00:00.000+00:00
+!!   DEFAULT CONSTRUCTOR with values by name     2016-06-11T21:09:11.500-04:00
+!!   CONSTRUCTOR with a dat array                1776-07-04T00:00:00.000+00:00
+!!   CONSTRUCTOR with a partial dat array        1776-07-04T20:00:00.000-04:00
 !!
 !!   Print members of type(DATE_TIME)
 !!   EVENT=2020,10,24,-240,21,49,54,105
