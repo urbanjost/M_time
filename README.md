@@ -121,7 +121,7 @@ options. With no options it displays allowed formats. For example:
 there are several different ways to view the documentation 
 including just reading further down ...
 
-+ [manpage index](https://urbanjost.github.io/M_time/index.html)
++ [manpage index](https://urbanjost.github.io/M_time/M_time.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html).
 + [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
