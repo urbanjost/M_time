@@ -1,10 +1,9 @@
 <map id="m_time::d2j" name="m_time::d2j">
 <area shape="rect" id="node2" href="$namespacem__time.html#aa4dca4409bf20a011bb04988c1335d63" title="NAMEordinal_to_date(3f) &#45; [M_time:ORDINAL_DAY] when given a valid year and day of the year returns th..." alt="" coords="154,5,335,32"/>
 <area shape="rect" id="node3" href="$namespacem__time.html#ab8a976e2f113cc38b6df80974cee55dc" title="NAMEphase_of_moon(3f) &#45; [M_time:ASTROLOGICAL] return name for phase of moon for given date (LICENSE:P..." alt="" coords="153,56,336,83"/>
-<area shape="rect" id="node8" href="$namespacem__time.html#a702b39998a769b8f60070c0bec975ee2" title="NAMEmoon_fullness(3f) &#45; [M_time:ASTROLOGICAL] return percentage of moon phase from new to full (LICEN..." alt="" coords="157,107,332,133"/>
-<area shape="rect" id="node9" href="$namespacem__time__oop.html#a85c4d4edaa644bf22f68ffd724de036a" title="m_time_oop::julian_" alt="" coords="167,157,322,184"/>
+<area shape="rect" id="node7" href="$namespacem__time.html#a702b39998a769b8f60070c0bec975ee2" title="NAMEmoon_fullness(3f) &#45; [M_time:ASTROLOGICAL] return percentage of moon phase from new to full (LICEN..." alt="" coords="157,107,332,133"/>
+<area shape="rect" id="node8" href="$namespacem__time__oop.html#a85c4d4edaa644bf22f68ffd724de036a" title="m_time_oop::julian_" alt="" coords="167,157,322,184"/>
 <area shape="rect" id="node4" href="$namespacem__time.html#a2cb84c9b8af4f395b76aed76e1431328" title="NAMEfmtdate(3f) &#45; [M_time:DATE_PRINTING] given DAT date&#45;time array return date as string using specif..." alt="" coords="384,81,516,108"/>
 <area shape="rect" id="node5" href="$namespacem__time.html#a6b5e87be0e510ff268c1ecfbf67a3bdb" title="NAMEnow(3f) &#45; [M_time:DATE_PRINTING] return string representing current time given format (LICENSE:PD..." alt="" coords="564,81,671,108"/>
-<area shape="rect" id="node6" href="$namespacem__time.html#a914927f70fb9495af1be2e484b967111" title="NAMEfmtdate_usage(3f) &#45; [M_time:DATE_PRINTING] display macros recognized by fmtdate(3f) and now(3f) (..." alt="" coords="719,56,897,83"/>
-<area shape="rect" id="node7" href="$M__time_8f90.html#a09223e2da0c23850fad035407582fd68" title="now_ex" alt="" coords="772,107,844,133"/>
+<area shape="rect" id="node6" href="$namespacem__time.html#a914927f70fb9495af1be2e484b967111" title="NAMEfmtdate_usage(3f) &#45; [M_time:DATE_PRINTING] display macros recognized by fmtdate(3f) and now(3f) (..." alt="" coords="719,81,897,108"/>
 </map>

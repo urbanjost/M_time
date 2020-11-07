@@ -192,8 +192,8 @@ end subroutine date_to_julian
 !===================================================================================================================================
 !>
 !!##NAME
-!!    julian_to_date(3f) - [M_time:JULIAN] converts a JED(Julian Ephemeris Date) to a
-!!    DAT date-time array.
+!!    julian_to_date(3f) - [M_time:JULIAN] converts a JED(Julian Ephemeris
+!!    Date) to a DAT date-time array.
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -411,7 +411,8 @@ end subroutine date_to_unix
 !===================================================================================================================================
 !>
 !!##NAME
-!!    unix_to_date(3f) - [M_time:UNIX_EPOCH] converts Unix Epoch Time to DAT date-time
+!!    unix_to_date(3f) - [M_time:UNIX_EPOCH] converts Unix Epoch Time to
+!!    DAT date-time
 !!    array
 !!    (LICENSE:PD)
 !!
@@ -667,9 +668,9 @@ end function ordinal_seconds
 !===================================================================================================================================
 !>
 !!##NAME
-!! ordinal_to_date(3f) - [M_time:ORDINAL_DAY] when given a valid year and day of the year
-!!                       returns the DAT array for the date
-!!                       (LICENSE:PD)
+!!    ordinal_to_date(3f) - [M_time:ORDINAL_DAY] when given a valid year and
+!!    day of the year returns the DAT array for the date
+!!    (LICENSE:PD)
 !!##SYNOPSIS
 !!
 !!      subroutine ordinal_to_date(yyyy, ddd, dat)
@@ -678,7 +679,8 @@ end function ordinal_seconds
 !!       integer, intent(in)   :: ddd
 !!       integer, intent(out)  :: dat
 !!##DESCRIPTION
-!!    When given a valid year, YYYY, and day of the year, DDD, returns the date as a DAT date array
+!!    When given a valid year, YYYY, and day of the year, DDD, returns the
+!!    date as a DAT date array
 !!##OPTIONS
 !!       yyyy  known year
 !!       ddd   known ordinal day of the year
@@ -752,7 +754,8 @@ end subroutine ordinal_to_date
 !!              dat=[ year,month,day,timezone,hour,&
 !!               & minutes,seconds,milliseconds]
 !!
-!!           The timezone value is from the current time on the current platform.
+!!           The timezone value is from the current time on the current
+!!           platform.
 !!
 !!##EXAMPLE
 !!
@@ -815,7 +818,8 @@ end function o2d
 !===================================================================================================================================
 !>
 !!##NAME
-!!    v2mo(3f) - [M_time:MONTH_NAME] returns the month name of a Common month number
+!!    v2mo(3f) - [M_time:MONTH_NAME] returns the month name of a Common
+!!    month number
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -843,9 +847,7 @@ end function o2d
 !!     use M_time, only : v2mo
 !!     implicit none
 !!     integer :: i
-!!        do i=1,13
-!!           write(*,*)v2mo(i)
-!!        enddo
+!!        write(*,*)(v2mo(i),i=1,13)
 !!     end program demo_v2mo
 !!
 !!    results:
@@ -889,8 +891,8 @@ end function v2mo
 !===================================================================================================================================
 !>
 !!##NAME
-!!    mo2d(3f) - [M_time:MONTH_NAME] given month name return DAT date-time array for
-!!    beginning of that month in specified year
+!!    mo2d(3f) - [M_time:MONTH_NAME] given month name return DAT date-time
+!!    array for beginning of that month in specified year
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -961,7 +963,8 @@ end function mo2d
 !===================================================================================================================================
 !>
 !!##NAME
-!!    mo2v(3f) - [M_time:MONTH_NAME] given month name return month number (1-12) of that month
+!!    mo2v(3f) - [M_time:MONTH_NAME] given month name return month number
+!!    (1-12) of that month
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -1048,7 +1051,8 @@ end function mo2v
 !===================================================================================================================================
 !>
 !!##NAME
-!!    now(3f) - [M_time:DATE_PRINTING] return string representing current time given format
+!!    now(3f) - [M_time:DATE_PRINTING] return string representing current
+!!    time given format
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -1118,8 +1122,8 @@ end function now
 !===================================================================================================================================
 !>
 !!##NAME
-!!    fmtdate(3f) - [M_time:DATE_PRINTING] given DAT date-time array return date as string
-!!    using specified format
+!!    fmtdate(3f) - [M_time:DATE_PRINTING] given DAT date-time array return
+!!    date as string using specified format
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -1445,8 +1449,8 @@ end function fmtdate
 !===================================================================================================================================
 !>
 !!##NAME
-!!    fmtdate_usage(3f) - [M_time:DATE_PRINTING] display macros recognized by fmtdate(3f)
-!!    and now(3f)
+!!    fmtdate_usage(3f) - [M_time:DATE_PRINTING] display macros recognized
+!!    by fmtdate(3f) and now(3f)
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -2208,8 +2212,8 @@ end subroutine dow
 !===================================================================================================================================
 !>
 !!##NAME
-!!    d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week-numbering year date yyyy-Www-d
-!!    given DAT date-time array
+!!    d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week-numbering
+!!    year date yyyy-Www-d given DAT date-time array
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -2546,7 +2550,8 @@ end subroutine w2d
 !===================================================================================================================================
 !>
 !!##NAME
-!!    box_month(3f) - [M_time:DATE_PRINTING] create specified month in a character array
+!!    box_month(3f) - [M_time:DATE_PRINTING] create specified month in a
+!!    character array
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -2776,8 +2781,8 @@ end function j2d
 !===================================================================================================================================
 !>
 !!##NAME
-!!    d2u(3f) - [M_time:UNIX_EPOCH] given DAT date-time array returns Unix Epoch Time
-!!    (UET starts at 0000 on 1 Jan. 1970, UTC)
+!!    d2u(3f) - [M_time:UNIX_EPOCH] given DAT date-time array returns Unix
+!!    Epoch Time (UET starts at 0000 on 1 Jan. 1970, UTC)
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -2847,7 +2852,8 @@ end function d2u
 !===================================================================================================================================
 !>
 !!##NAME
-!!    u2d(3f) - [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT date-time array
+!!    u2d(3f) - [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT
+!!    date-time array
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -2944,7 +2950,8 @@ end function get_timezone
 !===================================================================================================================================
 !>
 !!##NAME
-!!    sec2days(3f) - [M_time:DURATION] convert seconds to string of form dd-hh:mm:ss
+!!    sec2days(3f) - [M_time:DURATION] convert seconds to string of form
+!!    dd-hh:mm:ss
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -3143,7 +3150,8 @@ end function sec2days
 !===================================================================================================================================
 !>
 !!##NAME
-!!    days2sec(3f) - [M_time:DURATION] convert string of form [[-]dd-]hh:mm:ss.nn to seconds
+!!    days2sec(3f) - [M_time:DURATION] convert string of form
+!!    [[-]dd-]hh:mm:ss.nn to seconds
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -3658,7 +3666,8 @@ end subroutine Easter
 !===================================================================================================================================
 !>
 !!##NAME
-!!    system_sleep(3f) - [M_time:C_INTERFACE] call C sleep(3c) or usleep(3c) procedure
+!!    system_sleep(3f) - [M_time:C_INTERFACE] call C sleep(3c) or usleep(3c)
+!!    procedure
 !!    (LICENSE:PD)
 !!##SYNOPSIS
 !!
@@ -3784,3 +3793,8 @@ end subroutine call_usleep
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 end module M_time
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!

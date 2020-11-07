@@ -3,37 +3,37 @@
 
 NULL=
 PROGFILES = \
-   ../test/demos/box_month//box_month.f90 \
-   ../test/demos/d2j/d2j.f90 \
-   ../test/demos/d2o/d2o.f90 \
-   ../test/demos/d2u/d2u.f90 \
-   ../test/demos/d2w/d2w.f90 \
-   ../test/demos/date_to_julian/date_to_julian.f90 \
-   ../test/demos/date_to_unix/date_to_unix.f90 \
-   ../test/demos/days2sec/days2sec.f90 \
-   ../test/demos/dow/dow.f90 \
-   ../test/demos/easter/easter.f90 \
-   ../test/demos/fmtdate/fmtdate.f90 \
-   ../test/demos/fmtdate_usage/fmtdate_usage.f90 \
-   ../test/demos/guessdate/guessdate.f90 \
-   ../test/demos/j2d/j2d.f90 \
-   ../test/demos/julian_to_date/julian_to_date.f90 \
-   ../test/demos/mo2d/mo2d.f90 \
-   ../test/demos/mo2v/mo2v.f90 \
-   ../test/demos/moon_fullness/moon_fullness.f90 \
-   ../test/demos/now/now.f90 \
-   ../test/demos/o2d/o2d.f90 \
-   ../test/demos/ordinal_seconds/ordinal_seconds.f90 \
-   ../test/demos/ordinal_to_date/ordinal_to_date.f90 \
-   ../test/demos/phase_of_moon/phase_of_moon.f90 \
-   ../test/demos/sec2days/sec2days.f90 \
-   ../test/demos/u2d/u2d.f90 \
-   ../test/demos/unix_to_date/unix_to_date.f90  \
-   ../test/demos/v2mo/v2mo.f90  \
-   ../test/demos/w2d/w2d.f90 \
+   ../demo/box_month.f90 \
+   ../demo/d2j.f90 \
+   ../demo/d2o.f90 \
+   ../demo/d2u.f90 \
+   ../demo/d2w.f90 \
+   ../demo/date_to_julian.f90 \
+   ../demo/date_to_unix.f90 \
+   ../demo/days2sec.f90 \
+   ../demo/dow.f90 \
+   ../demo/easter.f90 \
+   ../demo/fmtdate.f90 \
+   ../demo/fmtdate_usage.f90 \
+   ../demo/guessdate.f90 \
+   ../demo/j2d.f90 \
+   ../demo/julian_to_date.f90 \
+   ../demo/mo2d.f90 \
+   ../demo/mo2v.f90 \
+   ../demo/moon_fullness.f90 \
+   ../demo/now.f90 \
+   ../demo/o2d.f90 \
+   ../demo/ordinal_seconds.f90 \
+   ../demo/ordinal_to_date.f90 \
+   ../demo/phase_of_moon.f90 \
+   ../demo/sec2days.f90 \
+   ../demo/u2d.f90 \
+   ../demo/unix_to_date.f90  \
+   ../demo/v2mo.f90  \
+   ../demo/w2d.f90 \
    $(NULL)
 
-TESTFILES = ../test/test_suite/test_suite_M_time.f90
+TESTFILES = ../test/test_suite_M_time.f90
 TEST = ${TESTFILES:.f90=}
 
 CPROGFILES = 
@@ -68,7 +68,7 @@ $(PROG): $(OBJS)
 help:
 	: make    '-- build M_time module'
 	: run     '-- run manpage demo programs and test program'
-	: test    '-- run test program'
+	: test    '-- run test program (requires additional modules)'
 	: man     '-- show all manpages as text'
 	: clean   '-- clean directory of object files and executables'
 	: doxygen '-- run doxygen(1) if you have it'

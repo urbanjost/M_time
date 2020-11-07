@@ -114,7 +114,7 @@ options. With no options it displays allowed formats. For example:
        The 5th of January 2020
 
 ## DOCUMENTATION
-In addtion to the USAGE section below the documentation includes a ...
+In addition to the USAGE section below the documentation includes a ...
 
 + [manpage index](https://urbanjost.github.io/M_time/man3.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
@@ -125,7 +125,6 @@ Additionally there are manpages in the distribution in
 [manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
 and
 [manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
-
 
 ## USAGE 
 

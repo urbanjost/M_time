@@ -2,7 +2,5 @@
            use M_time, only : v2mo
            implicit none
            integer :: i
-              do i=1,13
-                 write(*,*)v2mo(i)
-              enddo
+              write(*,*)(v2mo(i),i=1,13)
            end program demo_v2mo

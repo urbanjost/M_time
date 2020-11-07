@@ -1,10 +1,8 @@
-include "M_msg.inc"
-include "M_debug.inc"
 program runtest
 use M_msg
-use M_debug
-use M_debug, only : unit_check, unit_check_start, unit_check_good, unit_check_bad, unit_check_done
-use M_debug, only : unit_check_level
+use M_verify
+use M_verify, only : unit_check, unit_check_start, unit_check_good, unit_check_bad, unit_check_done
+use M_verify, only : unit_check_level
 use M_time
 implicit none
    unit_check_command=''
@@ -16,7 +14,7 @@ contains
 end program runtest
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_suite_M_time
-use M_debug, only : unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
+use M_verify, only : unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
 use,intrinsic :: iso_c_binding, only: c_int, c_char, c_null_char
 use M_time
 implicit none
@@ -773,7 +771,7 @@ end subroutine test_now_ex
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_d2w()
-use M_debug, only: unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
+use M_verify, only: unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
 implicit none
 
    call unit_check_start('d2w',msg='Examples of contemporary dates around New Year''s Day')

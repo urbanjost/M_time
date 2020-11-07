@@ -10,7 +10,7 @@ date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} co
 subroutine, public \mbox{\hyperlink{namespacem__time_abb44cf18cd0a3e420c20469efb056203}{julian\+\_\+to\+\_\+date}} (julian, dat, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+ED(Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aed245c691853279ebf0ce899dec9caa9}{date\+\_\+to\+\_\+unix}} (dat, unixtime, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
@@ -1511,7 +1511,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \subsubsection*{N\+A\+ME}
 
-julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) 
+julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+ED(Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) 
 
 \subsubsection*{S\+Y\+N\+O\+P\+S\+IS}
 
@@ -2543,9 +2543,7 @@ month\+\_\+name A string representing a month name or the word \textquotesingle{
  use M_time, only : v2mo
  implicit none
  integer :: i
-    do i=1,13
-       write(*,*)v2mo(i)
-    enddo
+    write(*,*)(v2mo(i),i=1,13)
  end program demo_v2mo
 
 results:

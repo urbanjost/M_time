@@ -15,7 +15,7 @@ date\+\_\+to\+\_\+julian(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} co
 subroutine, public \mbox{\hyperlink{namespacem__time_abb44cf18cd0a3e420c20469efb056203}{m\+\_\+time\+::julian\+\_\+to\+\_\+date}} (julian, dat, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
-julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+E\+D(\+Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
+julian\+\_\+to\+\_\+date(3f) -\/ \mbox{[}M\+\_\+time\+:J\+U\+L\+I\+AN\mbox{]} converts a J\+ED(Julian Ephemeris Date) to a D\+AT date-\/time array. (L\+I\+C\+E\+N\+SE\+:PD) \end{DoxyCompactList}\item 
 subroutine, public \mbox{\hyperlink{namespacem__time_aed245c691853279ebf0ce899dec9caa9}{m\+\_\+time\+::date\+\_\+to\+\_\+unix}} (dat, unixtime, ierr)
 \begin{DoxyCompactList}\small\item\em \subsubsection*{N\+A\+ME}
 
@@ -131,8 +131,6 @@ system\+\_\+sleep(3f) -\/ \mbox{[}M\+\_\+time\+:C\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE
 subroutine, private \mbox{\hyperlink{namespacem__time_af558bfc1fd5b13a6b879b3969866956f}{m\+\_\+time\+::call\+\_\+sleep}} (wait\+\_\+seconds)
 \item 
 subroutine, private \mbox{\hyperlink{namespacem__time_ae63783f7479d2f5093c8031d38ce4304}{m\+\_\+time\+::call\+\_\+usleep}} (wait\+\_\+seconds)
-\item 
-character(len=\+:) function, allocatable \mbox{\hyperlink{M__time_8f90_a09223e2da0c23850fad035407582fd68}{now\+\_\+ex}} (format)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -152,23 +150,6 @@ real(kind=realtime), parameter, public \mbox{\hyperlink{namespacem__time_a3d5351
 
 
 \subsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{M__time_8f90_a09223e2da0c23850fad035407582fd68}\label{M__time_8f90_a09223e2da0c23850fad035407582fd68}} 
-\index{M\+\_\+time.\+f90@{M\+\_\+time.\+f90}!now\+\_\+ex@{now\+\_\+ex}}
-\index{now\+\_\+ex@{now\+\_\+ex}!M\+\_\+time.\+f90@{M\+\_\+time.\+f90}}
-\subsubsection{\texorpdfstring{now\+\_\+ex()}{now\_ex()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable now\+\_\+ex (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in), optional}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-References m\+\_\+time\+::now().
-
-Here is the call graph for this function\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{M__time_8f90_a09223e2da0c23850fad035407582fd68_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}\label{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}} 
 \index{M\+\_\+time.\+f90@{M\+\_\+time.\+f90}!uncorrected\+\_\+week\+\_\+of\+\_\+year@{uncorrected\+\_\+week\+\_\+of\+\_\+year}}
 \index{uncorrected\+\_\+week\+\_\+of\+\_\+year@{uncorrected\+\_\+week\+\_\+of\+\_\+year}!M\+\_\+time.\+f90@{M\+\_\+time.\+f90}}
