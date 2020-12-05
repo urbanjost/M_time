@@ -1,4 +1,0 @@
-<map id="m_time::d2u" name="m_time::d2u">
-<area shape="rect" id="node2" href="$namespacem__time.html#aed245c691853279ebf0ce899dec9caa9" title="NAMEdate_to_unix(3f) &#45; [M_time:UNIX_EPOCH] converts DAT date&#45;time array to Unix Epoch Time (LICENSE:P..." alt="" coords="157,5,321,32"/>
-<area shape="rect" id="node3" href="$namespacem__time.html#acfdc970b4154b0c15bd33727636e3992" title="NAMEdate_to_julian(3f) &#45; [M_time:JULIAN] converts DAT date&#45;time array to Julian Date (LICENSE:PD) ..." alt="" coords="369,5,541,32"/>
-</map>

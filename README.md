@@ -132,7 +132,9 @@ In addition to the USAGE section below the documentation includes a ...
 + [manpage index](https://urbanjost.github.io/M_time/man3.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) ` requires javascript`
+<!--
 + [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
+-->
 
 Additionally there are manpages in the distribution in 
 [manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
