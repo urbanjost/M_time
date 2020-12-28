@@ -84,7 +84,7 @@ or just list it as a dependency in your fpm.toml project file.
 ## SAMPLE PROGRAMS
 
 Each manpage contains a small sample program that has been extracted
-and placed in the test/demos/ directory.  The small example programs
+and placed in the example/ directory.  The small example programs
 demonstrate how easily you can generate a variety of output formats:
 
     Sun, Jan 5th, 2020 10:48:33 AM UTC-05:00
