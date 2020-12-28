@@ -1,3 +1,18 @@
+program demo_days2sec
+use M_kracken95, only: kracken, sget, lget, rget
+use M_time,    only: days2sec
+use M_strings, only: v2s
+implicit none
+character(len=*),parameter   :: ident="@(#)days2sec(1): given string of form dd-hh:mm:ss convert to seconds"
+character(len=:),allocatable :: printline
+   call kracken('days2sec',' -oo -help .F. -version .F. -denominator 1')     ! parse command line
+   call help_usage(lget('days2sec_help'))                                    ! display help information and stop if true
+   call help_version(lget('days2sec_version'))                               ! display version information and stop if true
+   ! get value from command line with SGET, convert to seconds with DAYS2SEC, and make into a nicer value string with V2S
+   printline=v2s(days2sec(sget('days2sec_oo'))/rget('days2sec_denominator')) ! not in write statement so error message will print
+   write(*,'(a)')printline
+contains
+
 subroutine help_usage(l_help)
 implicit none
 ! @(#)help_usage(3f): prints help information
@@ -166,24 +181,11 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       Sun, Dec 27th, 2020 10:50:04 PM>',&
+'@(#)COMPILED:       Mon, Dec 28th, 2020 12:47:39 PM>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i),kind=kind(1))-1)),i=1,size(help_text))
    stop ! if -version was specified, stop
 endif
 end subroutine help_version
 !-----------------------------------------------------------------------------------------------------------------------------------
-program demo_days2sec
-use M_kracken95, only: kracken, sget, lget, rget
-use M_time,    only: days2sec
-use M_strings, only: v2s
-implicit none
-character(len=*),parameter   :: ident="@(#)days2sec(1): given string of form dd-hh:mm:ss convert to seconds"
-character(len=:),allocatable :: printline
-   call kracken('days2sec',' -oo -help .F. -version .F. -denominator 1')     ! parse command line
-   call help_usage(lget('days2sec_help'))                                    ! display help information and stop if true
-   call help_version(lget('days2sec_version'))                               ! display version information and stop if true
-   ! get value from command line with SGET, convert to seconds with DAYS2SEC, and make into a nicer value string with V2S
-   printline=v2s(days2sec(sget('days2sec_oo'))/rget('days2sec_denominator')) ! not in write statement so error message will print
-   write(*,'(a)')printline
 end program demo_days2sec

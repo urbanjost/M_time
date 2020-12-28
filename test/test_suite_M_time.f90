@@ -10,7 +10,6 @@ implicit none
    unit_check_level=0
    call test_suite_M_time()
 contains
-
 end program runtest
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_suite_M_time
@@ -240,8 +239,7 @@ end subroutine test_d2o
 subroutine test_ordinal_seconds()
 !!use M_time, only : ordinal_seconds
 implicit none
-integer  :: iday,iyear,omonth,oday,rday
-integer  :: i,dat(8)
+integer  :: rday
 
    call unit_check_start('ordinal_seconds')
    rday=ordinal_seconds()/(60*60*24)

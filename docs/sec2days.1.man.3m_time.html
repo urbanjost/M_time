@@ -45,7 +45,7 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <div id="Container">
 <div id="Content">
 <CENTER>
-<H1><HR><I>Manual Reference Pages &nbsp;-&nbsp;</I><NOBR>system_sleep (3m_time)</NOBR><HR></H1>
+<H1><HR><I>Manual Reference Pages &nbsp;-&nbsp;</I><NOBR>sec2days.1.man (3m_time)</NOBR><HR></H1>
 </CENTER>
 <A name=0>
 
@@ -53,9 +53,9 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 
 </A>
 <BLOCKQUOTE>
-<B>system_sleep</B>(3f) - [M_time:C_INTERFACE] call C <B>sleep</B>(3c) or <B>usleep</B>(3c)
-procedure
+<B>sec2days</B>(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss
 (LICENSE:PD)
+<P>
 </BLOCKQUOTE>
 <A name=contents></A><H3>CONTENTS</H3></A>
 <BLOCKQUOTE>
@@ -72,14 +72,7 @@ procedure
 
 </A>
 <BLOCKQUOTE>
-subroutine <B>system_sleep</B>(<I>wait_seconds</I>)
-<P>
-<PRE>
-      integer,intent(in)  :: wait_seconds
-         or
-      real,intent(in)  :: wait_seconds
-<P>
-</PRE>
+<B>sec2days</B> nnnn[.xxx] [ <B>-crop</B>]| <B>--version</B>| <B>--help</B>
 </BLOCKQUOTE>
 <A name=2>
 
@@ -87,9 +80,14 @@ subroutine <B>system_sleep</B>(<I>wait_seconds</I>)
 
 </A>
 <BLOCKQUOTE>
-The <B>system_sleep</B>(3f) routine uses the intrinsic ISO_C_BINDING
-interface to call the C <B>sleep</B>(3c) procedure or <B>usleep</B>(3c)
-routine.
+Given a numeric string representing seconds convert it to a string
+of the form
+<P>
+<PRE>
+      dd-hh:mm:ss
+<P>
+</PRE>
+where dd is days, hh hours, mm minutes and ss seconds.
 </BLOCKQUOTE>
 <A name=3>
 
@@ -99,9 +97,47 @@ routine.
 <BLOCKQUOTE>
 <TABLE cellpadding=3>
 <TR valign=top><TD colspan=2>
-<B></B><I>wait_seconds</I> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-integer,real or doubleprecision number of seconds for
-process to sleep.
+<B>nnnn[.xxx]</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+number of seconds to convert to string of form dd-hh:mm:ss.
+nnnn may be interspersed with unit codes d,h,m,s. Spaces,
+commas and case are ignored. Allowed aliases for the unit
+codes are
+<TABLE width=100% cellpadding=3><!-- tsb: number of seconds to convert to string of form dd-hh:mm:ss.
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>d</B> </TD><TD valign=bottom>
+days and day
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>h</B> </TD><TD valign=bottom>
+hours,hour,hrs, and hr
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>m</B> </TD><TD valign=bottom>
+minutes,minute and min
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B>s</B> </TD><TD valign=bottom>
+seconds,second and sec
+</TD></TR>
+<TR></TR></TABLE><!-- .TP -->
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B></B><B>-crop</B> </TD><TD valign=bottom>
+trim leading zero values from output
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B></B><B>-radix</B> </TD><TD valign=bottom>
+character used as decimal separator
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B></B><B>--help</B> </TD><TD valign=bottom>
+display this help and exit
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B></B><B>--version</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+output version information and exit
 </TD></TR>
 <TR></TR></TABLE></BLOCKQUOTE>
 <A name=4>
@@ -110,56 +146,27 @@ process to sleep.
 
 </A>
 <BLOCKQUOTE>
-Sample program:
+usage
 <P>
 <PRE>
-    program demo_system_sleep
-    use M_time, only : system_sleep, now
-    implicit none
-    integer :: i
-       !
-       write(*,&#146;(a)&#146;)"Time before integer call is: ",now()
-       call system_sleep(4)
-       write(*,&#146;(a)&#146;)"Time after  integer call is: ",now()
-       !
-       write(*,&#146;(a)&#146;)"Time before real call is: ",now()
-       call system_sleep(4.0)
-       write(*,&#146;(a)&#146;)"Time after  real call is: ",now()
-       !
-       write(*,&#146;(a)&#146;)"Time before loop is: ",now()
-       do i=1,1000
-          call system_sleep(4.0/1000.0)
-       enddo
-       write(*,&#146;(a)&#146;)"Time after loop  is: ",now()
-       !
-    end program demo_system_sleep
+   sec2days 129860
+   1-12:04:20
+   sec2days 1d2h3m4s
+   1-02:03:04
+   sec2days 1.0 days 2 hours 3 minutes 4 seconds
+   1-02:03:04
+   sec2days 1.5d
+   1-12:00:00
 <P>
 </PRE>
 </BLOCKQUOTE>
-results
-<P>
-<PRE>
-  Time before integer call is:
-  Sunday, July 17th, 2016 2:29:45 AM UTC-0240
-  Time after integer call is:
-  Sunday, July 17th, 2016 2:29:49 AM UTC-0240
-  Time before real call is:
-  Sunday, July 17th, 2016 2:29:49 AM UTC-0240
-  Time after  real call is:
-  Sunday, July 17th, 2016 2:29:53 AM UTC-0240
-  Time before loop is:
-  Sunday, July 17th, 2016 2:29:53 AM UTC-0240
-  Time after loop  is:
-  Sunday, July 17th, 2016 2:30:09 AM UTC-0240
-<P>
-</PRE>
 <A name=5>
 
      <H3>AUTHOR</H3>
 
 </A>
 <BLOCKQUOTE>
-John S. Urban, 2015
+John S. Urban
 </BLOCKQUOTE>
 <A name=6>
 
@@ -170,8 +177,8 @@ John S. Urban, 2015
 Public Domain
 </BLOCKQUOTE>
 <P><HR>
-<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>system_sleep (3m_time)</TD> <TD align=right width=33%><I>December 28, 2020</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from abd4b20b-209e-453a-a217-f37cc3a975ca using man macros.</FONT>
-<br><br><center><img src="images/system_sleep.gif"></center>
+<TABLE width=100%><TR> <TD width=33%><I></I></TD> <TD width=33% align=center>sec2days.1.man (3m_time)</TD> <TD align=right width=33%><I>December 28, 2020</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from 6b405e99-d448-4ebf-b28c-0e5af950b463 using man macros.</FONT>
+<br><br><center><img src="images/sec2days.1.gif"></center>
 </div>
 </div>
 </body>

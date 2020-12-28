@@ -1,3 +1,24 @@
+program demo_sec2days
+use M_kracken95, only : kracken, lget, sget, IPvalue
+use M_time,    only : sec2days, realtime
+use M_strings, only : substitute
+implicit none
+character(len=*),parameter     :: ident="@(#)sec2days(1f): convert seconds to string of form dd-hh:mm:ss"
+character(len=:),allocatable   :: strlocal
+character(len=:),allocatable   :: radix
+character(len=IPvalue)         :: line
+   call kracken('sec2days',' -oo -crop .F -radix . -help .F. -version .F.') ! parse command line
+   call help_usage(lget('sec2days_help'))                                   ! display help information and stop if true
+   call help_version(lget('sec2days_version'))                              ! display version information and stop if true
+   radix=trim(sget('sec2days_radix'))
+   line=sget('sec2days_oo')
+   if(radix.ne.'.')then
+      call substitute(line,'.',' ')
+      call substitute(line,radix,'.')
+   endif
+   strlocal=sec2days(trim(line),lget('sec2days_crop')) ! get command line option and convert to dd-hh:mm:ss string
+   write(*,'(a)')strlocal
+contains
 subroutine help_usage(l_help)
 implicit none
 ! @(#)help_usage(3f): prints help information
@@ -124,31 +145,11 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       Sun, Dec 27th, 2020 10:50:04 PM>',&
+'@(#)COMPILED:       Mon, Dec 28th, 2020 12:47:38 PM>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i),kind=kind(1))-1)),i=1,size(help_text))
    stop ! if -version was specified, stop
 endif
 end subroutine help_version
 !-----------------------------------------------------------------------------------------------------------------------------------
-program demo_sec2days
-use M_kracken95, only : kracken, lget, sget, IPvalue
-use M_time,    only : sec2days, realtime
-use M_strings, only : substitute
-implicit none
-character(len=*),parameter     :: ident="@(#)sec2days(1f): convert seconds to string of form dd-hh:mm:ss"
-character(len=:),allocatable   :: strlocal
-character(len=:),allocatable   :: radix
-character(len=IPvalue)         :: line
-   call kracken('sec2days',' -oo -crop .F -radix . -help .F. -version .F.') ! parse command line
-   call help_usage(lget('sec2days_help'))                                   ! display help information and stop if true
-   call help_version(lget('sec2days_version'))                              ! display version information and stop if true
-   radix=trim(sget('sec2days_radix'))
-   line=sget('sec2days_oo')
-   if(radix.ne.'.')then
-      call substitute(line,'.',' ')
-      call substitute(line,radix,'.')
-   endif
-   strlocal=sec2days(trim(line),lget('sec2days_crop')) ! get command line option and convert to dd-hh:mm:ss string
-   write(*,'(a)')strlocal
 end program demo_sec2days
