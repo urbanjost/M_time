@@ -16,7 +16,7 @@ M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 
 [[executable]]
 name="now"
-source-dir="app/NOW"
+source-dir="app/"
 main="now.f90"
 [executable.dependencies]
 M_kracken95  = { git = "https://github.com/urbanjost/M_kracken95.git" }
@@ -24,7 +24,7 @@ M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
 name="sec2days"
-source-dir="app/SEC2DAYS"
+source-dir="app/"
 main="sec2days.f90"
 [executable.dependencies]
 M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
@@ -32,7 +32,7 @@ M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
 name="days2sec"
-source-dir="app/DAYS2SEC"
+source-dir="app/"
 main="days2sec.f90"
 [executable.dependencies]
 M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
@@ -40,14 +40,14 @@ M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
 name="month"
-source-dir="app/MONTH"
+source-dir="app/"
 main="month.f90"
 [executable.dependencies]
 M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
 [[executable]]
 
 name="today"
-source-dir="app/TODAY"
+source-dir="app/"
 main="today.f90"
 [executable.dependencies]
 M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
