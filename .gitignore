@@ -3,3 +3,9 @@ FODDER
 src/source
 man
 docs/doxygen_out
+app/DAYS2SEC
+app/MONTH
+app/NOW
+app/scripts
+app/SEC2DAYS
+app/TODAY

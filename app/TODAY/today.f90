@@ -43,6 +43,36 @@ help_text=[ CHARACTER(LEN=128) :: &
 endif
 end subroutine help_usage
 !-----------------------------------------------------------------------------------------------------------------------------------
+!>
+!!##NAME
+!!        today(1f) - [TIME] output current time for uses such as file suffixes.
+!!        (LICENSE:PD)
+!!##SYNOPSIS
+!!
+!!        today format|--help|--version|--options
+!!##DESCRIPTION
+!!        Outputs the current date using the specified format. Typically used
+!!        to generate a string to be used in building filenames containing
+!!        date information.
+!!##OPTIONS
+!!        format     any allowable format for the fmtdate(3) routine. Enter
+!!                   "-" to get a list on stdout. defaults to "YMD".
+!!        --help     display this help and exit
+!!        --version  output version information and exit
+!!        --options  display allowed options for building a format
+!!##EXAMPLE
+!!
+!!        Sample commands:
+!!
+!!         cp myfile myfile.`today`
+!!         find . -ls > MANIFEST.`today epoch`
+!!         mkdir `today YMDhms`
+!!         today yearmonthdayhourminutesecond
+!!         today --options                       # show formatting options
+!!##AUTHOR
+!!    John S. Urban
+!!##LICENSE
+!!    Public Domain
 subroutine help_version(l_version)
 implicit none
 ! @(#)help_version(3f): prints version information
@@ -56,7 +86,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)DESCRIPTION:    output current time for uses such as file suffixes.>',&
 '@(#)VERSION:        1.0, 2009>',&
 '@(#)AUTHOR:         John S. Urban>',&
-'@(#)COMPILED:       Sun, Dec 27th, 2020 10:25:45 PM>',&
+'@(#)COMPILED:       Sun, Dec 27th, 2020 10:36:01 PM>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i),kind=kind(1))-1)),i=1,size(help_text))
    stop ! if -version was specified, stop
