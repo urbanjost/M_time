@@ -63,7 +63,7 @@ directory and run make(1):
      make help # see other developer options
 
 This will compile the M_time module and optionally build all the example programs from
-the document pages in the test/demos/ sub-directory and run the unit tests.
+the document pages in the example/ sub-directory and run the unit tests.
 
 ## SUPPORTS FPM (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 Alternatively, download the github repository and build it with 

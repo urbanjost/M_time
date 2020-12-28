@@ -2,5 +2,4 @@ build/*
 FODDER
 src/source
 man
-.tox
 docs/doxygen_out

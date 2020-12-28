@@ -7,155 +7,47 @@ maintainer = "urbanjost@comcast.net"
 copyright = "2020 John Urban"
 description = "date and time conversion formatting and computation "
 
-#####################
-# added till test.dependencies works
-[library]
-source-dir="src"
-[dev-dependencies]
-M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
-#####################
-
 [[test]]
 name="runTests"
 source-dir="test/"
 main="test_suite_M_time.f90"
-
-[[executable]]
-name="box_month"
-source-dir="demo"
-main="box_month.f90"
-
-[[executable]]
-name="d2j"
-source-dir="demo"
-main="d2j.f90"
-
-[[executable]]
-name="d2o"
-source-dir="demo"
-main="d2o.f90"
-
-[[executable]]
-name="d2u"
-source-dir="demo"
-main="d2u.f90"
-
-[[executable]]
-name="d2w"
-source-dir="demo"
-main="d2w.f90"
-
-[[executable]]
-name="date_to_julian"
-source-dir="demo"
-main="date_to_julian.f90"
-
-[[executable]]
-name="date_to_unix"
-source-dir="demo"
-main="date_to_unix.f90"
-
-[[executable]]
-name="days2sec"
-source-dir="demo"
-main="days2sec.f90"
-
-[[executable]]
-name="dow"
-source-dir="demo"
-main="dow.f90"
-
-[[executable]]
-name="easter"
-source-dir="demo"
-main="easter.f90"
-
-[[executable]]
-name="fmtdate"
-source-dir="demo"
-main="fmtdate.f90"
-
-[[executable]]
-name="fmtdate_usage"
-source-dir="demo"
-main="fmtdate_usage.f90"
-
-[[executable]]
-name="guessdate"
-source-dir="demo"
-main="guessdate.f90"
-
-[[executable]]
-name="j2d"
-source-dir="demo"
-main="j2d.f90"
-
-[[executable]]
-name="julian_to_date"
-source-dir="demo"
-main="julian_to_date.f90"
-
-[[executable]]
-name="mo2d"
-source-dir="demo"
-main="mo2d.f90"
-
-[[executable]]
-name="mo2v"
-source-dir="demo"
-main="mo2v.f90"
-
-[[executable]]
-name="moon_fullness"
-source-dir="demo"
-main="moon_fullness.f90"
+[test.dependencies]
+M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 
 [[executable]]
 name="now"
-source-dir="demo"
+source-dir="app/NOW"
 main="now.f90"
-
-[[executable]]
-name="o2d"
-source-dir="demo"
-main="o2d.f90"
-
-[[executable]]
-name="ordinal_seconds"
-source-dir="demo"
-main="ordinal_seconds.f90"
-
-[[executable]]
-name="ordinal_to_date"
-source-dir="demo"
-main="ordinal_to_date.f90"
-
-[[executable]]
-name="phase_of_moon"
-source-dir="demo"
-main="phase_of_moon.f90"
+[executable.dependencies]
+M_kracken95  = { git = "https://github.com/urbanjost/M_kracken95.git" }
+M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
 name="sec2days"
-source-dir="demo"
+source-dir="app/SEC2DAYS"
 main="sec2days.f90"
+[executable.dependencies]
+M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
-name="u2d"
-source-dir="demo"
-main="u2d.f90"
+name="days2sec"
+source-dir="app/DAYS2SEC"
+main="days2sec.f90"
+[executable.dependencies]
+M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
 
 [[executable]]
-name="unix_to_date"
-source-dir="demo"
-main="unix_to_date.f90"
-
+name="month"
+source-dir="app/MONTH"
+main="month.f90"
+[executable.dependencies]
+M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
 [[executable]]
-name="v2mo"
-source-dir="demo"
-main="v2mo.f90"
 
-[[executable]]
-name="w2d"
-source-dir="demo"
-main="w2d.f90"
+name="today"
+source-dir="app/TODAY"
+main="today.f90"
+[executable.dependencies]
+M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }

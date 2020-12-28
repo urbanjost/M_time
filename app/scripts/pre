@@ -1,0 +1,6 @@
+#!/bin/bash
+cd $(dirname $0)/..
+for NAME in MONTH/month.ff SEC2DAYS/sec2days.ff TODAY/today.ff DAYS2SEC/days2sec.FF NOW/now.ff
+do
+   ufpp TESTPRG90 -verbose --allow_links -system .true. -i $NAME -o $(dirname $NAME)/$(basename $(basename $NAME .FF) .ff ).f90
+done
