@@ -2944,6 +2944,10 @@ integer :: tz
 integer :: timezone(8)
    call date_and_time(values=timezone)
    tz=timezone(4)
+   if(tz.gt.0)then  ! gfortran bug on new-years
+      write(*,*)'<ERROR>*get_timezone*TZ=',tz
+      tz=mod(tz,1440)-1440
+   endif
 end function get_timezone
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
