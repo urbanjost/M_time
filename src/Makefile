@@ -94,6 +94,7 @@ help:
 	: man     '-- show all manpages as text'
 	: clean   '-- clean directory of object files and executables'
 	: doxygen '-- run doxygen(1) if you have it'
+	: ford    '-- run ford(1) if you have it'
 	: help    '-- display this text'
 
 .PHONY: run
@@ -111,6 +112,9 @@ test: $(OBJS)
 .PHONY: doxygen
 doxygen: 
 	doxygen dox.in
+.PHONY: ford
+ford: 
+	ford ford.md
 
 .PHONY: clean
 clean:

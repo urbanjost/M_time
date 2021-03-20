@@ -135,6 +135,7 @@ In addition to the USAGE section below the documentation includes a ...
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) ` requires javascript`
 <!--
 + [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
++ [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
 -->
 
 Additionally there are manpages in the distribution in 
