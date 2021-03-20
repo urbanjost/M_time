@@ -5,7 +5,10 @@ license = "Public Domain"
 author = "John S. Urban"
 maintainer = "urbanjost@comcast.net"
 copyright = "2020 John Urban"
-description = "date and time conversion formatting and computation "
+description = "date and time conversion, formatting and computation "
+categories = ["time"]
+keywords = ["fortran", "date", "time", "Julian", "Unix Epoch", "calendar" ]
+homepage = "https://github.com/urbanjost/M_time.git"
 
 [[test]]
 name="runTests"
