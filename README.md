@@ -272,8 +272,6 @@ that contains a current time zone, but does not specify how a current
 time zone can be explicitly set.  Since this library is intentionally
 designed to complement DATE_AND_TIME(3f) it adopts the same behavior.
 
-There is no warranty on this code, and it is certain to change.
-
 ## SEE ALSO
 
 The ISO-8601 standard is often used for business-related transactions.

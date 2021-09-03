@@ -3170,7 +3170,7 @@ end function sec2days
 !!##DESCRIPTION
 !!   Given a string representing a duration of the form
 !!   "[-][[[dd-]hh:]mm:]ss"  or [NNd][NNh][NNm[]NNs][NNw]
-!!   return a value representing seconds
+!!   return a value representing seconds.
 !!
 !!   If "dd-" is present, units for the numbers are assumed to
 !!   proceed from day to hour to minute to second. But if no
@@ -3392,7 +3392,7 @@ end function days2sec
 !!    o waxing gibbous
 !!    o full
 !!    o waning gibbous
-!!    o laster quarter
+!!    o last quarter
 !!    o waning crescent
 !!
 !!   To calculate the phase of the moon simply divide the days since the
