@@ -54,6 +54,7 @@ CFLAGS := -O
 FC := gfortran
 FFLAGS := -O
 LDFLAGS := 
+F90=gfortran
 # 
 # You can either ignore it, or disable the "may be used uninitialized"
 # warnings with -Wno-maybe-uninitialized or compile with optimizations

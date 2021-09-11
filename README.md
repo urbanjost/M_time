@@ -27,46 +27,41 @@ dates in simple numeric expressions.
 The extensive formatting options include showing `SYSTEM_CLOCK(3f)`
 and `CPU_USAGE(3f)` information along with Gregorian date information,
 allowing for the easy incorporation of timing information into program
-messages. In addition to conventional Civilian Calendar dates, the module
+messages.
+
+In addition to conventional Civilian Calendar dates, the module
 supports the ISO-8601 standard.
 
 Both a procedural and OOP (Object Oriented Programming) interface are
-provided. Each routine is accompanied by a man(1) page which includes
-a sample program for that procedure. An HTML manual, the source and
+provided. 
+
+Each routine is accompanied by a man(1) page which includes
+a sample program for that procedure. An HTML manual, the source, and
 example programs are included in the package.
 
-## DOWNLOAD AND BUILD
+### DOWNLOAD and BUILD using ![make(1)](docs/images/gnu.gif)
 
 To build the modules download the github repository, enter the src/
 directory and run make(1):
 
      git clone https://github.com/urbanjost/M_time.git
      cd M_time/src
-
+     
+     make clean
      # change Makefile if not using one of the listed compilers
-     
-     # for gfortran
-     make clean
-     make F90=gfortran gfortran
-     
-     # for ifort
-     make clean
-     make F90=ifort ifort
-
-     # for nvfortran
-     make clean
-     make F90=nvfortran nvfortran
+     # (ifort, nvfortran, or gfortran)
+     make $COMPILER_NAME
 
      # optionally
-     make test # run the unit tests
-     make run  # run all the demo programs from the manpages
      make help # see other developer options
+     make run  # run all the demo programs from the man-pages
 
 This will compile the M_time module and optionally build all the example programs from
-the document pages in the example/ sub-directory and run the unit tests.
+the document pages (in the example/ sub-directory) and run the unit tests.
 
-## SUPPORTS FPM ![fpm](docs/images/fpm_logo.gif)
+### DOWNLOAD and BUILD using ![fpm(1)](docs/images/fpm_logo.gif)
 #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
+
 Alternatively, download the github repository and build it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 ```bash
@@ -84,7 +79,7 @@ or just list it as a dependency in your fpm.toml project file.
 
 ## SAMPLE PROGRAMS
 
-Each manpage contains a small sample program that has been extracted
+Each man-page contains a small sample program that has been extracted
 and placed in the example/ directory.  The small example programs
 demonstrate how easily you can generate a variety of output formats:
 
@@ -130,7 +125,7 @@ options. With no options it displays allowed formats. For example:
 ## DOCUMENTATION
 In addition to the USAGE section below the documentation includes a ...
 
-+ [manpage index](https://urbanjost.github.io/M_time/man3.html)
++ [man-page index](https://urbanjost.github.io/M_time/man3.html)
 + [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) ` requires javascript`
 <!--
@@ -138,7 +133,8 @@ In addition to the USAGE section below the documentation includes a ...
 + [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
 -->
 
-Additionally there are manpages in the distribution in 
+Additionally there are ![man-pages(1)](docs/images/manpages.gif)
+
 [manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
 and
 [manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
