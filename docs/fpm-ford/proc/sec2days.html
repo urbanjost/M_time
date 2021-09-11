@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="interactive input editor">
+    
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>sec2days &ndash; M_time</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">M_time </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>sec2days
+      <small>Function</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 4.1% of total for procedures.">108 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+    
+     <li><a href='../module/m_time.html'>M_time</a></li>
+    
+  
+     <li class="active">sec2days</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-array~3">array</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-crop_local">crop_local</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-days~2">days</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-dtime">dtime</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-hours">hours</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-i~8">i</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-ilast~2">ilast</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-iprint">iprint</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-minutes~2">minutes</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-negative~2">negative</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-one_day">one_day</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-one_hour">one_hour</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-one_minute">one_minute</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-scratch">scratch</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-secsleft">secsleft</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-strlocal~2">strlocal</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-units_hl~2">units_hl</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/sec2days.html#src">sec2days</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public function sec2days(seconds, crop) result(dhms)
+    
+    
+   
+</h2>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html">iso_fortran_env</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      </ul>
+    </div>
+    
+
+
+    
+    <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>sec2days(3f) - [M_time:DURATION] convert seconds to string of form
+dd-hh:mm:ss
+(LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">sec2days(seconds,crop) result</span><span class="p">(</span>dhms<span class="p">)</span><span class="w"></span>
+
+<span class="w"> </span><span class="nb">real</span><span class="p">(</span><span class="n">kind</span><span class="p">=</span><span class="n">realtime</span><span class="p">),</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="nb">seconds</span><span class="w"></span>
+<span class="w">   </span><span class="n">or</span><span class="w"></span>
+<span class="w"> </span><span class="n">integer</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="p">::</span><span class="w"> </span><span class="nb">seconds</span><span class="w"></span>
+<span class="w">   </span><span class="n">or</span><span class="w"></span>
+<span class="w"> </span><span class="nb">real</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                </span><span class="p">::</span><span class="w"> </span><span class="nb">seconds</span><span class="w"></span>
+<span class="w">   </span><span class="n">or</span><span class="w"></span>
+<span class="w"> </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="p">=</span><span class="o">*</span><span class="p">)</span><span class="w">               </span><span class="p">::</span><span class="w"> </span><span class="nb">seconds</span><span class="w"></span>
+
+<span class="w"> </span><span class="nb">logical</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="n">optional</span><span class="w">    </span><span class="p">::</span><span class="w"> </span><span class="n">crop</span><span class="w"></span>
+<span class="w"> </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="p">=:),</span><span class="n">allocatable</span><span class="w">   </span><span class="p">::</span><span class="w"> </span><span class="n">dhms</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>Given a number of seconds convert it to a string of the form</p>
+<div class="codehilite"><pre><span></span><code>   dd-hh:mm:ss
+</code></pre></div>
+
+<p>where dd is days, hh hours, mm minutes and ss seconds.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">seconds</span><span class="w">    </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nf">convert</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="n">dd</span><span class="o">-</span><span class="nl">hh</span><span class="p">:</span><span class="nl">mm</span><span class="p">:</span><span class="n">ss</span><span class="p">.</span><span class="w"> </span><span class="n">May</span><span class="w"></span>
+<span class="w">           </span><span class="n">be</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="k">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="nc">REAL</span><span class="p">,</span><span class="w"> </span><span class="nc">REAL</span><span class="p">(</span><span class="n">KIND</span><span class="o">=</span><span class="n">REALTIME</span><span class="p">),</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">CHARACTER</span><span class="p">.</span><span class="w"></span>
+
+<span class="w">           </span><span class="k">CHARACTER</span><span class="w"> </span><span class="n">strings</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">form</span><span class="w"></span>
+<span class="w">           </span><span class="o">[</span><span class="n">NNd</span><span class="o">][</span><span class="n">NNh</span><span class="o">][</span><span class="n">NNm</span><span class="o">][</span><span class="n">NNs</span><span class="o">][</span><span class="n">NNw</span><span class="o">]</span><span class="p">.</span><span class="w"> </span><span class="k">Case</span><span class="p">,</span><span class="n">spaces</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">underscores</span><span class="w"> </span><span class="k">are</span><span class="w"></span>
+<span class="w">           </span><span class="n">ignored</span><span class="p">.</span><span class="w"> </span><span class="n">Allowed</span><span class="w"> </span><span class="n">aliases</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">units</span><span class="w"> </span><span class="k">are</span><span class="w"></span>
+
+<span class="w">               </span><span class="n">d</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="n">days</span><span class="p">,</span><span class="nf">day</span><span class="w"></span>
+<span class="w">               </span><span class="n">m</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="n">minutes</span><span class="p">,</span><span class="k">minute</span><span class="p">,</span><span class="nf">min</span><span class="w"></span>
+<span class="w">               </span><span class="n">h</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="n">hours</span><span class="p">,</span><span class="k">hour</span><span class="p">,</span><span class="n">hrs</span><span class="p">,</span><span class="n">hr</span><span class="w"></span>
+<span class="w">               </span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="n">seconds</span><span class="p">,</span><span class="k">second</span><span class="p">,</span><span class="n">sec</span><span class="w"></span>
+
+<span class="w">           </span><span class="n">The</span><span class="w"> </span><span class="nc">numeric</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">represent</span><span class="w"> </span><span class="n">floating</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">crop</span><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">.</span><span class="k">true</span><span class="p">.,</span><span class="w"> </span><span class="n">remove</span><span class="w"> </span><span class="k">leading</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="nf">day</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nf">day</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">hour</span><span class="w"> </span><span class="k">values</span><span class="p">.</span><span class="w"></span>
+<span class="w">           </span><span class="n">Optional</span><span class="p">,</span><span class="w"> </span><span class="n">defaults</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="p">.</span><span class="k">false</span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="returns">RETURNS</h2>
+<div class="codehilite"><pre><span></span><code>dmhs       the returned string of form [d:h:]m:s
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">Sample</span> <span class="nv">Program</span>:
+
+ <span class="nv">program</span> <span class="nv">demo_sec2days</span>
+ <span class="nv">use</span> <span class="nv">M_time</span>, <span class="nv">only</span> : <span class="nv">sec2days</span>
+ <span class="nv">implicit</span> <span class="nv">none</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="nv">sec2days</span><span class="ss">(</span><span class="mi">129860</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="nv">sec2days</span><span class="ss">(</span><span class="mi">80000</span>.<span class="mi">0</span><span class="nv">d0</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="nv">sec2days</span><span class="ss">(</span><span class="mi">80000</span>.<span class="mi">0</span>,<span class="nv">crop</span><span class="o">=</span>.<span class="nv">true</span>.<span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="nv">sec2days</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">1 day 2.0hr 100 min 300.0seconds</span><span class="s1">&#39;</span><span class="ss">)</span>
+ <span class="k">end</span> <span class="nv">program</span> <span class="nv">demo_sec2days</span>
+
+<span class="nv">results</span>:
+
+ <span class="mi">1</span><span class="o">-</span><span class="mi">12</span>:<span class="mi">04</span>:<span class="mi">20</span>
+ <span class="mi">0</span><span class="o">-</span><span class="mi">22</span>:<span class="mi">13</span>:<span class="mi">20</span>
+ <span class="mi">22</span>:<span class="mi">13</span>:<span class="mi">20</span>
+ <span class="mi">1</span><span class="o">-</span><span class="mi">03</span>:<span class="mi">45</span>:<span class="mi">00</span>
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban, 2015
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-seconds~2"></span>class(*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>seconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-crop"></span>logical,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>crop</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+    
+    
+    
+   <h3>Return Value <small><span class="anchor" id="variable-dhms"></span>character(len=:),
+  allocatable</small></h3>
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-array~3">array</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-crop_local">crop_local</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-days~2">days</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-dtime">dtime</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-hours">hours</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-i~8">i</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-ilast~2">ilast</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-iprint">iprint</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-minutes~2">minutes</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-negative~2">negative</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-one_day">one_day</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-one_hour">one_hour</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-one_minute">one_minute</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-scratch">scratch</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-secsleft">secsleft</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-strlocal~2">strlocal</a>
+      
+      <a class="list-group-item" href="../proc/sec2days.html#variable-units_hl~2">units_hl</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/sec2days.html#src">sec2days</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-array~3"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>array</strong>(:)</td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-crop_local"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>crop_local</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-days~2"></span>integer(kind=int64),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>days</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dtime"></span>doubleprecision,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>dtime</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-hours"></span>integer(kind=int64),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>hours</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-i~8"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>i</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ilast~2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>ilast</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-iprint"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>iprint</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-minutes~2"></span>integer(kind=int64),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>minutes</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-negative~2"></span>logical,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>negative</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-one_day"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>one_day</strong></td><td> =</td><td>86400</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-one_hour"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>one_hour</strong></td><td> =</td><td>3600</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-one_minute"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>one_minute</strong></td><td> =</td><td>60</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-scratch"></span>character(len=40),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>scratch</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-secsleft"></span>integer(kind=int64),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>secsleft</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-strlocal~2"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>strlocal</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-units_hl~2"></span>real(kind=realtime),</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>units_hl</strong>(4)</td><td> =</td><td>[86400.0d0, 3600.0d0, 60.0d0, 1.0d0]</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">function </span><span class="n">sec2days</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span><span class="n">crop</span><span class="p">)</span> <span class="k">result</span><span class="p">(</span><span class="n">dhms</span><span class="p">)</span>
+<span class="k">use</span><span class="p">,</span> <span class="k">intrinsic</span> <span class="kd">::</span> <span class="n">iso_fortran_env</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">int64</span>
+
+<span class="c">! ident_25=&quot;@(#)M_time::sec2days(3f): converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH:MM:SS&quot;</span>
+
+<span class="c">! on this platform, (select_int_kind(i),i=1,100) returns</span>
+<span class="c">! 1:2=1 ,3:4=2 ,5:9=4 ,10:18= 8 ,19:38=16 ,39:=-1</span>
+<span class="c">!integer,parameter        :: k(38)=[(selected_int_kind(i),i=1,38)]</span>
+<span class="kt">integer</span>                  <span class="kd">::</span> <span class="n">i</span>
+<span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>               <span class="kd">::</span> <span class="n">seconds</span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span>       <span class="kd">::</span> <span class="n">crop</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span>      <span class="kd">::</span> <span class="n">dhms</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span> <span class="k">parameter</span>    <span class="kd">::</span> <span class="n">units_hl</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="p">[</span> <span class="mi">8640</span><span class="mf">0.0d0</span><span class="p">,</span> <span class="mi">360</span><span class="mf">0.0d0</span><span class="p">,</span> <span class="mi">6</span><span class="mf">0.0d0</span><span class="p">,</span> <span class="mf">1.0d0</span> <span class="p">]</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">scratch</span>
+<span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span>               <span class="kd">::</span> <span class="n">days</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">secsleft</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>                 <span class="kd">::</span> <span class="n">one_day</span><span class="o">=</span><span class="mi">86400</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>                 <span class="kd">::</span> <span class="n">one_hour</span><span class="o">=</span><span class="mi">3600</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>                 <span class="kd">::</span> <span class="n">one_minute</span><span class="o">=</span><span class="mi">60</span>
+<span class="kt">logical</span>                           <span class="kd">::</span> <span class="n">crop_local</span>
+<span class="kt">integer</span>                           <span class="kd">::</span> <span class="n">iprint</span>
+<span class="kt">logical</span>                           <span class="kd">::</span> <span class="n">negative</span>
+<span class="kt">integer</span>                           <span class="kd">::</span> <span class="n">ilast</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span>      <span class="kd">::</span> <span class="n">strlocal</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span>      <span class="kd">::</span> <span class="k">array</span><span class="p">(:)</span>
+<span class="n">doubleprecision</span>                   <span class="kd">::</span> <span class="nb">dtime</span>
+
+   <span class="c">!  Convert input value to nearest integer</span>
+   <span class="c">!  Notice that the value SECONDS can be any of several types ( INTEGER,REAL,REAL(KIND=REALTIME))</span>
+   <span class="k">select type</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+   <span class="k">type is</span> <span class="p">(</span><span class="kt">integer</span><span class="p">);</span>               <span class="n">secsleft</span><span class="o">=</span><span class="n">seconds</span>
+   <span class="k">type is</span> <span class="p">(</span><span class="kt">real</span><span class="p">);</span>                  <span class="n">secsleft</span><span class="o">=</span><span class="nb">nint</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+   <span class="k">type is</span> <span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">));</span>   <span class="n">secsleft</span><span class="o">=</span><span class="nb">nint</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+   <span class="k">type is</span> <span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">))</span>
+
+      <span class="c">! note _ is removed from input strings to allow use of _ every three digits in a number as sometimes seen in Java, perl, ...</span>
+      <span class="n">strlocal</span><span class="o">=</span><span class="n">compact</span><span class="p">(</span><span class="n">lower</span><span class="p">(</span><span class="n">transliterate</span><span class="p">(</span><span class="n">seconds</span><span class="p">,</span><span class="s2">&quot; _&#39;,&quot;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)),</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;                &#39;</span>   <span class="c">! add whitespace to make room for spaces</span>
+
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;days&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>                      <span class="c">! from long names to short names substitute common aliases for units</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;hours&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;hrs&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;hr&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;minutes&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;minute&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;seconds&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;second&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;secs&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;sec&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;weeks&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;week&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;wks&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;wk&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="s1">&#39;s &#39;</span><span class="p">)</span>          <span class="c">! assuming only one suffix character and not too many to exceed length of strlocal</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;m &#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="s1">&#39;h &#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;d &#39;</span><span class="p">)</span>
+      <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;w &#39;</span><span class="p">)</span>
+
+      <span class="nb">dtime</span><span class="o">=</span><span class="mf">0.0d0</span>
+      <span class="k">call </span><span class="n">split</span><span class="p">(</span><span class="n">strlocal</span><span class="p">,</span><span class="k">array</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+      <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="k">array</span><span class="p">)</span>
+         <span class="n">ilast</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+         <span class="k">select case</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="n">ilast</span><span class="p">:</span><span class="n">ilast</span><span class="p">))</span>
+         <span class="k">case</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">);</span> <span class="nb">dtime</span><span class="o">=</span><span class="nb">dtime</span><span class="o">+</span><span class="n">s2v</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)(:</span><span class="n">ilast</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">units_hl</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">7</span>
+         <span class="k">case</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">);</span> <span class="nb">dtime</span><span class="o">=</span><span class="nb">dtime</span><span class="o">+</span><span class="n">s2v</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)(:</span><span class="n">ilast</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">units_hl</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+         <span class="k">case</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">);</span> <span class="nb">dtime</span><span class="o">=</span><span class="nb">dtime</span><span class="o">+</span><span class="n">s2v</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)(:</span><span class="n">ilast</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">units_hl</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+         <span class="k">case</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">);</span> <span class="nb">dtime</span><span class="o">=</span><span class="nb">dtime</span><span class="o">+</span><span class="n">s2v</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)(:</span><span class="n">ilast</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">units_hl</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+         <span class="k">case</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">);</span> <span class="nb">dtime</span><span class="o">=</span><span class="nb">dtime</span><span class="o">+</span><span class="n">s2v</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)(:</span><span class="n">ilast</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">units_hl</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+         <span class="k">case </span><span class="n">default</span>
+            <span class="nb">dtime</span><span class="o">=</span><span class="nb">dtime</span><span class="o">+</span><span class="n">s2v</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+         <span class="k">end select</span>
+<span class="k">      enddo</span>
+<span class="k">      </span><span class="n">secsleft</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">dtime</span><span class="p">,</span><span class="nb">kind</span><span class="o">=</span><span class="n">int64</span><span class="p">)</span>
+   <span class="k">end select</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">crop</span><span class="p">))</span><span class="k">then</span>    <span class="c">! whether to trim cases where(days=0) and (hours=0 when days=0) from output or always show dd-hh:mm:ss</span>
+      <span class="n">crop_local</span><span class="o">=</span><span class="n">crop</span>
+   <span class="k">else</span>
+<span class="k">      </span><span class="n">crop_local</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+   <span class="k">endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">secsleft</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">secsleft</span><span class="o">=-</span><span class="n">secsleft</span>
+      <span class="n">negative</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+   <span class="k">else</span>
+<span class="k">      </span><span class="n">negative</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+   <span class="k">endif</span>
+
+<span class="k">   </span><span class="n">iprint</span><span class="o">=</span><span class="mi">4</span>
+
+   <span class="n">days</span><span class="o">=</span><span class="n">secsleft</span><span class="o">/</span><span class="n">one_day</span>                  <span class="c">! get whole number of days</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">days</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="n">iprint</span><span class="o">=</span><span class="mi">3</span>
+   <span class="n">secsleft</span><span class="o">=</span><span class="n">secsleft</span><span class="o">-</span><span class="n">days</span><span class="o">*</span><span class="n">one_day</span>         <span class="c">! calculate remainder</span>
+
+   <span class="n">hours</span><span class="o">=</span><span class="n">secsleft</span><span class="o">/</span><span class="n">one_hour</span>                <span class="c">! get whole number of hours</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">days</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mf">0.</span><span class="nb">and</span><span class="p">.</span><span class="n">hours</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="n">iprint</span><span class="o">=</span><span class="mi">2</span>
+   <span class="n">secsleft</span><span class="o">=</span><span class="n">secsleft</span><span class="o">-</span><span class="n">hours</span><span class="o">*</span><span class="n">one_hour</span>
+
+   <span class="n">minutes</span><span class="o">=</span><span class="n">secsleft</span><span class="o">/</span><span class="n">one_minute</span>            <span class="c">! get whole number of minutes</span>
+   <span class="n">secsleft</span><span class="o">=</span><span class="n">secsleft</span><span class="o">-</span><span class="n">minutes</span><span class="o">*</span><span class="n">one_minute</span>
+
+   <span class="k">if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">crop_local</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">iprint</span><span class="o">=</span><span class="mi">4</span>
+   <span class="k">endif</span>
+
+<span class="k">   select case</span><span class="p">(</span><span class="n">iprint</span><span class="p">)</span>                    <span class="c">! select format if cropping is on and leading zero values are present</span>
+   <span class="k">case</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+      <span class="k">write</span><span class="p">(</span><span class="n">scratch</span><span class="p">,</span><span class="s1">&#39;(i2.2,&quot;:&quot;,i2.2)&#39;</span><span class="p">)</span><span class="n">minutes</span><span class="p">,</span><span class="n">secsleft</span>
+   <span class="k">case</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+      <span class="k">write</span><span class="p">(</span><span class="n">scratch</span><span class="p">,</span><span class="s1">&#39;(i2.2,&quot;:&quot;,i2.2,&quot;:&quot;,i2.2)&#39;</span><span class="p">)</span><span class="n">hours</span><span class="p">,</span><span class="n">minutes</span><span class="p">,</span><span class="n">secsleft</span>
+   <span class="k">case </span><span class="n">default</span>
+      <span class="k">write</span><span class="p">(</span><span class="n">scratch</span><span class="p">,</span><span class="s1">&#39;(i0,&quot;-&quot;,i2.2,&quot;:&quot;,i2.2,&quot;:&quot;,i2.2)&#39;</span><span class="p">)</span><span class="n">days</span><span class="p">,</span><span class="n">hours</span><span class="p">,</span><span class="n">minutes</span><span class="p">,</span><span class="n">secsleft</span>
+   <span class="k">end select</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">negative</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">dhms</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">scratch</span><span class="p">)</span>
+   <span class="k">else</span>
+<span class="k">      </span><span class="n">dhms</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">scratch</span><span class="p">)</span>
+   <span class="k">endif</span>
+
+<span class="k">end function </span><span class="n">sec2days</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2021-09-11 12:47  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

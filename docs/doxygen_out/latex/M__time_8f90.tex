@@ -1,0 +1,118 @@
+\hypertarget{M__time_8f90}{}\doxysection{/home/urbanjs/venus/\+V600/github/\+M\+\_\+time/src/\+M\+\_\+time.f90 File Reference}
+\label{M__time_8f90}\index{/home/urbanjs/venus/V600/github/M\_time/src/M\_time.f90@{/home/urbanjs/venus/V600/github/M\_time/src/M\_time.f90}}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacem__time}{m\+\_\+time}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_acfdc970b4154b0c15bd33727636e3992}{m\+\_\+time\+::date\+\_\+to\+\_\+julian}} (dat, julian, ierr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_abb44cf18cd0a3e420c20469efb056203}{m\+\_\+time\+::julian\+\_\+to\+\_\+date}} (julian, dat, ierr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_aed245c691853279ebf0ce899dec9caa9}{m\+\_\+time\+::date\+\_\+to\+\_\+unix}} (dat, unixtime, ierr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_acc62ada23f8fa2fe67b428702fbcbf1c}{m\+\_\+time\+::unix\+\_\+to\+\_\+date}} (unixtime, dat, ierr)
+\item 
+integer function, public \mbox{\hyperlink{namespacem__time_a727dd77bbd4a5d0e3947c5d303845947}{m\+\_\+time\+::d2o}} (dat)
+\item 
+integer function, public \mbox{\hyperlink{namespacem__time_ab8960d2aa60e134bcf77247d8b257963}{m\+\_\+time\+::ordinal\+\_\+seconds}} ()
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_aa4dca4409bf20a011bb04988c1335d63}{m\+\_\+time\+::ordinal\+\_\+to\+\_\+date}} (yyyy, ddd, dat)
+\item 
+integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a55e2cb9efc9d4d209ae2864f073d4f19}{m\+\_\+time\+::o2d}} (ordinal, year)
+\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6f28cf00e4998bb50bb503f5e4bd3f77}{m\+\_\+time\+::v2mo}} (imonth)
+\item 
+integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a8188c7ed4e592c4f2388d28c75486726}{m\+\_\+time\+::mo2d}} (month\+\_\+name, year)
+\item 
+integer function, public \mbox{\hyperlink{namespacem__time_ad7bf0886754757e8961e562f06cf3bb7}{m\+\_\+time\+::mo2v}} (month\+\_\+name)
+\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a6b5e87be0e510ff268c1ecfbf67a3bdb}{m\+\_\+time\+::now}} (format)
+\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a2cb84c9b8af4f395b76aed76e1431328}{m\+\_\+time\+::fmtdate}} (values, format)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_a914927f70fb9495af1be2e484b967111}{m\+\_\+time\+::fmtdate\+\_\+usage}} (indent)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_aa5198c7aa4f3d8411c8ce93046ce3794}{m\+\_\+time\+::guessdate}} (datestring, dat, ier)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_adfda8a89820b8d0ad4581a14896e4ce5}{m\+\_\+time\+::dow}} (values, weekday, day, ierr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_ad4ff99ad6f6d5282c4b65ad636a2a627}{m\+\_\+time\+::d2w}} (dat, iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday, iso\+\_\+name)
+\item 
+integer function \mbox{\hyperlink{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}{uncorrected\+\_\+week\+\_\+of\+\_\+year}} (datin)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_ac0ec48db8d508bfa23fe4b20c9d1c5a3}{m\+\_\+time\+::w2d}} (iso\+\_\+year, iso\+\_\+week, iso\+\_\+weekday, dat)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_a0fe7540912df30d3578f3c469413aea8}{m\+\_\+time\+::box\+\_\+month}} (dat, calen)
+\item 
+real(kind=realtime) function, public \mbox{\hyperlink{namespacem__time_a3fccc53c2650104eff084c7998d18f54}{m\+\_\+time\+::d2j}} (dat)
+\item 
+integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a3ad5cad6df02c53e0429c3602a072e3c}{m\+\_\+time\+::j2d}} (julian)
+\item 
+real(kind=realtime) function, public \mbox{\hyperlink{namespacem__time_a1506e2889a156387df4481ed0534be81}{m\+\_\+time\+::d2u}} (dat)
+\item 
+integer function, dimension(8), public \mbox{\hyperlink{namespacem__time_a083bc231f8ba1879d7f86ab424e77d6c}{m\+\_\+time\+::u2d}} (unixtime)
+\item 
+integer function \mbox{\hyperlink{namespacem__time_a7903410a1d28bcdf3d33ab0c2d74b124}{m\+\_\+time\+::get\+\_\+timezone}} ()
+\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_a7788285d79b8d58323b05e9a30a2d992}{m\+\_\+time\+::sec2days}} (seconds, crop)
+\item 
+real(kind=realtime) function, public \mbox{\hyperlink{namespacem__time_a99393c7906f1989f90ece03969224938}{m\+\_\+time\+::days2sec}} (str)
+\item 
+character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time_ab8a976e2f113cc38b6df80974cee55dc}{m\+\_\+time\+::phase\+\_\+of\+\_\+moon}} (datin)
+\item 
+integer function, public \mbox{\hyperlink{namespacem__time_a702b39998a769b8f60070c0bec975ee2}{m\+\_\+time\+::moon\+\_\+fullness}} (datin)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_a5ccb70e20160fcf26bb403dbff1f138a}{m\+\_\+time\+::easter}} (year, dat)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time_a7c5d028ae1e1e01162ffc7bb55dcbbb1}{m\+\_\+time\+::system\+\_\+sleep}} (seconds)
+\item 
+subroutine, private \mbox{\hyperlink{namespacem__time_af558bfc1fd5b13a6b879b3969866956f}{m\+\_\+time\+::call\+\_\+sleep}} (wait\+\_\+seconds)
+\item 
+subroutine, private \mbox{\hyperlink{namespacem__time_ae63783f7479d2f5093c8031d38ce4304}{m\+\_\+time\+::call\+\_\+usleep}} (wait\+\_\+seconds)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer, parameter, public \mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{m\+\_\+time\+::realtime}} =kind(0.\+0d0)
+\item 
+real(kind=realtime), parameter, private \mbox{\hyperlink{namespacem__time_a48130b5a95a3f2e776269dcee1426797}{m\+\_\+time\+::secday}} =86400.\+0d0
+\item 
+real(kind=realtime), parameter, public \mbox{\hyperlink{namespacem__time_a9fe6fbb44e2779a2fcf96fba36c08918}{m\+\_\+time\+::dt\+\_\+minute}} =60.\+0d0
+\item 
+real(kind=realtime), parameter, public \mbox{\hyperlink{namespacem__time_aa0ca2172092f5e7dcc9b8524e6516fd8}{m\+\_\+time\+::dt\+\_\+hour}} =3600.\+0d0
+\item 
+real(kind=realtime), parameter, public \mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{m\+\_\+time\+::dt\+\_\+day}} =86400.\+0d0
+\item 
+real(kind=realtime), parameter, public \mbox{\hyperlink{namespacem__time_a3d53519e90264faccdae67e389ffc003}{m\+\_\+time\+::dt\+\_\+week}} =dt\+\_\+day$\ast$7.\+0d0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}\label{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479}} 
+\index{M\_time.f90@{M\_time.f90}!uncorrected\_week\_of\_year@{uncorrected\_week\_of\_year}}
+\index{uncorrected\_week\_of\_year@{uncorrected\_week\_of\_year}!M\_time.f90@{M\_time.f90}}
+\doxysubsubsection{\texorpdfstring{uncorrected\_week\_of\_year()}{uncorrected\_week\_of\_year()}}
+{\footnotesize\ttfamily integer function d2w\+::uncorrected\+\_\+week\+\_\+of\+\_\+year (\begin{DoxyParamCaption}\item[{integer, dimension(8), intent(in)}]{datin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+References m\+\_\+time\+::d2o(), and m\+\_\+time\+::dow().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{M__time_8f90_a4a68c5e906616f64da0c3d165fc41479_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,57 @@
+\hypertarget{M__time__oop_8f90}{}\doxysection{/home/urbanjs/venus/\+V600/github/\+M\+\_\+time/src/\+M\+\_\+time\+\_\+oop.f90 File Reference}
+\label{M__time__oop_8f90}\index{/home/urbanjs/venus/V600/github/M\_time/src/M\_time\_oop.f90@{/home/urbanjs/venus/V600/github/M\_time/src/M\_time\_oop.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structm__time__oop_1_1date__time}{m\+\_\+time\+\_\+oop\+::date\+\_\+time}}
+\item 
+interface \mbox{\hyperlink{structm__time__oop_1_1date__time}{m\+\_\+time\+\_\+oop\+::date\+\_\+time}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacem__time__oop}{m\+\_\+time\+\_\+oop}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time__oop_ae43c4146d74863b5aee027ebc0103f48}{m\+\_\+time\+\_\+oop\+::construct\+\_\+from\+\_\+dat}} (dat)
+\item 
+type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time__oop_ac7d9aa1885c2b8df613541be8a147064}{m\+\_\+time\+\_\+oop\+::construct\+\_\+from\+\_\+jed}} (jed)
+\item 
+type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time__oop_ae952d7599526f1b2632452d00363add3}{m\+\_\+time\+\_\+oop\+::construct\+\_\+from\+\_\+uet}} (uet)
+\item 
+integer function, dimension(8), private \mbox{\hyperlink{namespacem__time__oop_a93bafde872994fe68136d83195400e11}{m\+\_\+time\+\_\+oop\+::dt2d\+\_\+}} (self)
+\item 
+real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time__oop_ab4cc90bb587c2d3c2819bffc8f92cb59}{m\+\_\+time\+\_\+oop\+::epoch\+\_\+}} (self)
+\item 
+character(len=\+:) function, allocatable, private \mbox{\hyperlink{namespacem__time__oop_a78bb598e3481faa48df9733a3f9ae060}{m\+\_\+time\+\_\+oop\+::format}} (self, fmt)
+\item 
+real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time__oop_a85c4d4edaa644bf22f68ffd724de036a}{m\+\_\+time\+\_\+oop\+::julian\+\_\+}} (self)
+\item 
+integer function, private \mbox{\hyperlink{namespacem__time__oop_a7845f6da505dff53007df45b5c198081}{m\+\_\+time\+\_\+oop\+::ordinal}} (self)
+\item 
+integer function, private \mbox{\hyperlink{namespacem__time__oop_ad290beea1dd0dc3d34486e8b4cd8a86c}{m\+\_\+time\+\_\+oop\+::weekday}} (self)
+\item 
+type(date\+\_\+time) function, private \mbox{\hyperlink{namespacem__time__oop_aecd1edc1f6ca447d5381c8092eba7924}{m\+\_\+time\+\_\+oop\+::delta}} (self, year, month, day, tz, hour, minute, second, millisecond, week, duration)
+\item 
+subroutine, private \mbox{\hyperlink{namespacem__time__oop_ac81ff1eb27f637a60530d3c5d442fc71}{m\+\_\+time\+\_\+oop\+::init\+\_\+dt}} (self, year, month, day, tz, hour, minute, second, millisecond, type, dat)
+\item 
+type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time__oop_a6830c1cce303ec401ac8e4333a5a73d4}{m\+\_\+time\+\_\+oop\+::plus\+\_\+seconds}} (self, seconds)
+\item 
+type(date\+\_\+time) function \mbox{\hyperlink{namespacem__time__oop_a395fbf19c6617641aea39c33fd4b2087}{m\+\_\+time\+\_\+oop\+::minus\+\_\+seconds}} (self, seconds)
+\item 
+real(kind=realtime) function \mbox{\hyperlink{namespacem__time__oop_a3da83a42a8f957db9bd2f6f0b942ab99}{m\+\_\+time\+\_\+oop\+::minus\+\_\+date\+\_\+time}} (self, other)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__oop_afcc34853af3eda020eb5ff802e04964d}{m\+\_\+time\+\_\+oop\+::eq}} (self, other)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__oop_ab0c5ce86d25993804501d59a8106818f}{m\+\_\+time\+\_\+oop\+::lt}} (self, other)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__oop_a753692f18b6cd100401603d0b88d7c3c}{m\+\_\+time\+\_\+oop\+::gt}} (self, other)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__oop_a5e04ff772ac6d72f68031ec43c1e6c84}{m\+\_\+time\+\_\+oop\+::le}} (self, other)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__oop_aeea1131ab511b897168f00a908b75458}{m\+\_\+time\+\_\+oop\+::ge}} (self, other)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__oop_a7707a7cbd4869301a613ceeb12ed2384}{m\+\_\+time\+\_\+oop\+::ne}} (self, other)
+\end{DoxyCompactItemize}

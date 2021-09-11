@@ -89,6 +89,7 @@ fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/
      cd M_time
      fpm build
      fpm test
+```
 
 or just list it as a dependency in your fpm.toml project file.
 
@@ -96,6 +97,9 @@ or just list it as a dependency in your fpm.toml project file.
      [dependencies]
      M_time        = { git = "https://github.com/urbanjost/M_time.git" }
 ```
+---
+## [CHANGELOG](CHANGELOG.md)
+---
 
 ## SAMPLE PROGRAMS
 
@@ -141,66 +145,6 @@ options. With no options it displays allowed formats. For example:
        2458854 1578240100 005
        The year is 2020 and the month is 01 (January) 11:01:39
        The 5th of January 2020
-
-
-## USAGE 
-
-<table BORDER="1">
-
-<tr><th colspan="3">UNIX EPOCH                </th></tr>
-<tr><td><a href="md/date_to_unix.3.md"> date_to_unix(dat,UNIXTIME,IERR)    </a></td><td>%epoch()  </td><td> Convert date array to Unix Time</td></tr>
-<tr><td><a href="md/unix_to_date.3.md"> unix_to_date(unixtime,DAT,IERR)    </a></td><td>&nbsp;   </td><td> Convert Unix Time to date array</td></tr>
-<tr><td><a href="md/d2u.3.md"> d2u(dat) result (UNIXTIME)  </a></td><td>&nbsp;     </td><td> Convert date array to Unix Time</td></tr>
-<tr><td><a href="md/u2d.3.md"> u2d(unixtime) result (DAT)  </a></td><td>&nbsp;     </td><td> Convert Unix Time to date array</td></tr>
-
-<tr><th colspan="3">JULIAN                    </th></tr>
-<tr><td><a href="md/julian_to_date.3.md"> julian_to_date(julian,DAT,IERR)      </a></td><td>&nbsp;   </td><td> Convert Julian Date to date array</td></tr>
-<tr><td><a href="md/date_to_julian.3.md"> date_to_julian(dat,JULIAN,IERR)      </a></td><td>%julian() </td><td> Converts date array to Julian Date </td></tr>
-<tr><td><a href="md/d2j.3.md"> d2j(dat) result (JULIAN)    </a></td><td>&nbsp;    </td><td> Convert date array to Julian Date</td></tr>
-<tr><td><a href="md/j2d.3.md"> j2d(julian) result (DAT)    </a></td><td>&nbsp;    </td><td> Convert Julian Date to date array</td></tr>
-
-<tr><th colspan="3">DAY OF WEEK               </th></tr>
-<tr><td><a href="md/dow.3.md"> dow(dat,[WEEKDAY],[DAY],IERR)  </a></td><td>%weekday() </td><td> Convert date array to day of the week as number(Mon=1) and name</td></tr>
-
-<tr><th colspan="3">WEEK OF YEAR              </th></tr>
-<tr><td><a href="md/d2w.3.md"> d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) </a></td><td>&nbsp;  </td><td> calculate iso-8601 Week-numbering year date yyyy-Www-d</td></tr>
-<tr><td><a href="md/w2d.3.md"> w2d(iso_year,iso_week,iso_weekday,DAT) </a></td><td>&nbsp;  </td><td> calculate date given iso-8601 Week date yyyy-Www-d</td></tr>
-
-<tr><th colspan="3">ORDINAL DAY               </th></tr>
-<tr><td><a href="md/d2o.3.md"> d2o(dat) result(ORDINAL)                  </a></td><td>%ordinal() </td><td> given date array return ordinal day of year, Jan 1st=1</td></tr>
-<tr><td><a href="md/o2d.3.md"> o2d(ordinal,[year]) result(DAT)                </a></td><td> </td><td> given ordinal day of year return date array, Jan 1st=1</td></tr>
-<tr><td><a href="md/ordinal_to_date.3.md"> ordinal_to_date(ordinal,year,DAT)  </a></td><td> </td><td> given ordinal day of year return date array, Jan 1st=1</td></tr>
-<tr><td><a href="md/ordinal_seconds.3.md"> ordinal_seconds()  </a></td><td> </td><td> return seconds since beginning of year</td></tr>
-
-<tr><th colspan="3">PRINTING DATES            </th></tr>
-<tr><td><a href="md/fmtdate.3.md"> fmtdate(dat,format)  result (TIMESTR) </a></d><td>%format([STRING]) </td><td> Convert date array to string using format</td></tr>
-<tr><td><a href="md/fmtdate_usage.3.md"> fmtdate_usage(indent)           </a></td><td>&nbsp;            </td><td> display macros recognized by fmtdate(3f)</td></tr>
-<tr><td><a href="md/now.3.md"> now(format)        result (NOW)           </a></td><td>&nbsp;            </td><td> return string representing current time given format</td></tr>
-<tr><td><a href="md/box_month.3.md"> box_month(dat,CALEN)                </a></td><td>&nbsp;            </td><td> print specified month into character array</td></tr>
-
-<tr><th colspan="3">MONTH NAME                    </th></tr>
-<tr><td><a href="md/mo2v.3.md"> mo2v(month_name)   result (MONTH_NUMBER) </a></td><td>&nbsp;      </td><td> given month name return month number</td></tr>
-<tr><td><a href="md/v2mo.3.md"> v2mo(month_number) result (MONTH_NAME)   </a></td><td>&nbsp;      </td><td> given month number return month name</td></tr>
-<tr><td><a href="md/mo2d.3.md"> mo2d(month_name)   result (DAT)          </a></td><td>&nbsp;      </td><td> return date array for
-first day of given month name in specified year</td></tr>
-
-<tr><th colspan="3">ASTROLOGICAL                        </th></tr>
-<tr><td><a href="md/easter.3.md"> easter(year,dat) </a></td><td>&nbsp; </td><td> calculate month and day Easter falls on for given year </td></tr>
-<!--
-<tr><td><a href="md/ephemeris.3.md"> ephemeris(dat,planet,DEC_D,DEC,M,DEC_C,ASCENT_H,ASCENT_M) </a></td><td>&nbsp; </td><td> ephemeris position of planets for adjusting an equatorial telescope </td></tr>
--->
-
-<tr><td><a href="md/moon_fullness.3.md"> moon_fullness(DAT) result(FULLNESS)</a></td><td>&nbsp; </td><td> percentage of moon phase from new to full </td></tr>
-<tr><td><a href="md/phase_of_moon.3.md"> phase_of_moon(DAT) result(PHASE)</a></td><td>&nbsp; </td><td> return name for phase of moon for given date </td></tr>
-
-<tr><th colspan="3">DURATION                  </th></tr>
-<tr><td><a href="md/sec2days.3.md">  sec2days(seconds)  result(dhms)     </a></td><td>&nbsp;       </td><td> converts seconds to string D-HH:MM:SS</td></tr>
-<tr><td><a href="md/days2sec.3.md"> days2sec(string)   result(seconds)   </a></td><td>&nbsp;       </td><td> converts string D-HH:MM:SS to seconds</td></tr>
-
-<tr><th colspan="3">READING DATES             </th></tr>
-<tr><td><a href="md/guessdate.3.md">    guessdate(anot,dat)                </a></td><td>&nbsp;       </td><td> Converts a date string to a date array, in various formats</td></tr>
-
-</table>
 
 ## DEFINITIONS
 
@@ -271,6 +215,16 @@ the standard is concerned. That is, DATE_AND_TIME(3f) returns a vector
 that contains a current time zone, but does not specify how a current
 time zone can be explicitly set.  Since this library is intentionally
 designed to complement DATE_AND_TIME(3f) it adopts the same behavior.
+
+## DEVELOPER DOCUMENTATION (experimental)
+
+### doxygen
+
+- [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
+
+### ford
+
+- [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
 
 ## SEE ALSO
 

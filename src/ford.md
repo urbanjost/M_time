@@ -11,7 +11,6 @@ project_download:
 author: John S. Urban
 author_email: urbanjost@comcast.net
 github: https://github.com/urbanjost/M_time
-page_dir: ../docs/page
 media_dir: ../docs/images
 exclude_dir: ../archive
              ../FODDER

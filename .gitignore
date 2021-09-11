@@ -2,8 +2,8 @@ build/*
 FODDER
 src/source
 man
-docs/doxygen_out
-docs/fpm-ford
+#docs/doxygen_out
+#docs/fpm-ford
 app/DAYS2SEC
 app/MONTH
 app/NOW

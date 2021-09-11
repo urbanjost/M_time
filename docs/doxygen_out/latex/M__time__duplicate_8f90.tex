@@ -1,0 +1,57 @@
+\hypertarget{M__time__duplicate_8f90}{}\doxysection{/home/urbanjs/venus/\+V600/github/\+M\+\_\+time/src/\+M\+\_\+time\+\_\+duplicate.f90 File Reference}
+\label{M__time__duplicate_8f90}\index{/home/urbanjs/venus/V600/github/M\_time/src/M\_time\_duplicate.f90@{/home/urbanjs/venus/V600/github/M\_time/src/M\_time\_duplicate.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacem__time__duplicate_1_1v2s}{m\+\_\+time\+\_\+duplicate\+::v2s}}
+\item 
+interface \mbox{\hyperlink{interfacem__time__duplicate_1_1string__to__value}{m\+\_\+time\+\_\+duplicate\+::string\+\_\+to\+\_\+value}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacem__time__duplicate}{m\+\_\+time\+\_\+duplicate}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time__duplicate_abc203f3a6afc1edeecbcdc58b187a5d5}{m\+\_\+time\+\_\+duplicate\+::substitute}} (targetline, old, new, ierr, start, end)
+\item 
+elemental pure character(len(str)) function, public \mbox{\hyperlink{namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6}{m\+\_\+time\+\_\+duplicate\+::upper}} (str, begin, end)
+\item 
+elemental pure character(len(str)) function, public \mbox{\hyperlink{namespacem__time__duplicate_af8b4555e0c47e2ec327f0434d84b9c56}{m\+\_\+time\+\_\+duplicate\+::lower}} (str, begin, end)
+\item 
+subroutine \mbox{\hyperlink{namespacem__time__duplicate_aaf5c25d7bce4f2776df6c1e586b2e277}{m\+\_\+time\+\_\+duplicate\+::stderr}} (string)
+\item 
+pure character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time__duplicate_a487dbbb116d2c7022b39869d4990cf6f}{m\+\_\+time\+\_\+duplicate\+::adjustc}} (string, length)
+\item 
+character(len=len(str)) function, public \mbox{\hyperlink{namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38}{m\+\_\+time\+\_\+duplicate\+::compact}} (str, char)
+\item 
+doubleprecision function, public \mbox{\hyperlink{namespacem__time__duplicate_a118f0d70fa6f319fbd773008c7f86ef9}{m\+\_\+time\+\_\+duplicate\+::s2v}} (chars, ierr, onerr)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98}{m\+\_\+time\+\_\+duplicate\+::split}} (input\+\_\+line, array, delimiters, order, nulls)
+\item 
+subroutine, public \mbox{\hyperlink{namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd}{m\+\_\+time\+\_\+duplicate\+::string\+\_\+to\+\_\+values}} (line, iread, values, inums, delims, ierr)
+\item 
+pure character(len=len(instr)) function, public \mbox{\hyperlink{namespacem__time__duplicate_ac8388a45881cf7c2f9047b4d643ed3f2}{m\+\_\+time\+\_\+duplicate\+::transliterate}} (instr, old\+\_\+set, new\+\_\+set)
+\item 
+character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time__duplicate_a84f53c1e0d6c1c9fe70b19549921d14b}{m\+\_\+time\+\_\+duplicate\+::d2s}} (dvalue, fmt)
+\item 
+character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time__duplicate_a9d1f96975ddf101c13c2f7f0dbf92a02}{m\+\_\+time\+\_\+duplicate\+::r2s}} (rvalue, fmt)
+\item 
+character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time__duplicate_a7570c5a3b71c4ea4f376a38b285ccbd8}{m\+\_\+time\+\_\+duplicate\+::i2s}} (ivalue, fmt)
+\item 
+character(len=\+:) function, allocatable \mbox{\hyperlink{namespacem__time__duplicate_a4bd5e96c3ed16383c576c4e362c16b82}{m\+\_\+time\+\_\+duplicate\+::l2s}} (lvalue, fmt)
+\item 
+subroutine \mbox{\hyperlink{namespacem__time__duplicate_ab836a3b7c441e5b324639db734b7de9f}{m\+\_\+time\+\_\+duplicate\+::value\+\_\+to\+\_\+string}} (gval, chars, length, err, fmt, trimz)
+\item 
+subroutine \mbox{\hyperlink{namespacem__time__duplicate_ae5ec641c9bdaa5d9377e47310e2165be}{m\+\_\+time\+\_\+duplicate\+::trimzeros}} (string)
+\item 
+subroutine \mbox{\hyperlink{namespacem__time__duplicate_a9e2a87974ffb9b81dcfb0ecee076180f}{m\+\_\+time\+\_\+duplicate\+::a2r}} (chars, valu, ierr)
+\item 
+subroutine \mbox{\hyperlink{namespacem__time__duplicate_aaf8891d2fdbd165fecbdf78335f926fc}{m\+\_\+time\+\_\+duplicate\+::a2i}} (chars, valu, ierr)
+\item 
+subroutine \mbox{\hyperlink{namespacem__time__duplicate_ab86bb390cc56184faeef5543735eecc4}{m\+\_\+time\+\_\+duplicate\+::a2d}} (chars, valu, ierr, onerr)
+\item 
+logical function \mbox{\hyperlink{namespacem__time__duplicate_a66a83a4b3d6324843c984658784b2c4e}{m\+\_\+time\+\_\+duplicate\+::decodebase}} (string, basein, out\+\_\+baseten)
+\end{DoxyCompactItemize}

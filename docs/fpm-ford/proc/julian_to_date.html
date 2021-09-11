@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="interactive input editor">
+    
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>julian_to_date &ndash; M_time</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">M_time </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../lists/programs.html">Programs</a></li>
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>julian_to_date
+      <small>Subroutine</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 2.2% of total for procedures.">57 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+    
+     <li><a href='../module/m_time.html'>M_time</a></li>
+    
+  
+     <li class="active">julian_to_date</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-day~8">day</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-hour~4">hour</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-ijul">ijul</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-ja">ja</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jalpha">jalpha</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jb">jb</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jc">jc</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jd">jd</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-je">je</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-minute~3">minute</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-month~5">month</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-second~3">second</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-tz~2">tz</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-year~7">year</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/julian_to_date.html#src">julian_to_date</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>
+public subroutine julian_to_date(julian, dat, ierr)
+    
+    
+   
+</h2>
+    
+  
+
+
+    
+    <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>julian_to_date(3f) - [M_time:JULIAN] converts a JED(Julian Ephemeris
+Date) to a DAT date-time array.
+(LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>subroutine julian_to_date(julian,dat,ierr)
+
+ real(kind=realtime),intent(in) :: julian
+ integer,intent(out)            :: dat(8)
+ integer,intent(out)            :: ierr
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>Converts a Unix Epoch Time (UET) value to a DAT date-time array.
+   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code> julian  Julian Date (days)
+ dat     Integer array holding a &quot;DAT&quot; array, similar in structure
+         to the array returned by the intrinsic DATE_AND_TIME(3f):
+
+          dat=[ year,month,day,timezone,hour,&amp;
+           &amp; minutes,seconds,milliseconds]
+</code></pre></div>
+
+<h2 id="returns">RETURNS</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">unixtime</span>  <span class="nv">The</span> <span class="s2">&quot;</span><span class="s">Unix Epoch</span><span class="s2">&quot;</span> <span class="nv">time</span>, <span class="nv">or</span> <span class="nv">the</span> <span class="nv">number</span> <span class="nv">of</span> <span class="nv">seconds</span> <span class="nv">since</span> <span class="mi">00</span>:<span class="mi">00</span>:<span class="mi">00</span> <span class="nv">on</span>
+          <span class="nv">January</span> <span class="mi">1</span><span class="nv">st</span>, <span class="mi">1970</span>, <span class="nv">UTC</span>.
+<span class="nv">ierr</span>      <span class="nv">Error</span> <span class="nv">code</span>. <span class="k">If</span> <span class="mi">0</span> <span class="nv">no</span> <span class="nv">error</span> <span class="nv">occurred</span>.
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">Sample</span><span class="w"> </span><span class="nl">program</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">program</span><span class="w"> </span><span class="n">demo_julian_to_date</span><span class="w"></span>
+<span class="w">  </span><span class="k">use</span><span class="w"> </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span><span class="w"></span>
+<span class="w">  </span><span class="n">implicit</span><span class="w"> </span><span class="k">none</span><span class="w"></span>
+<span class="w">  </span><span class="nc">real</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">     </span><span class="o">::</span><span class="w"> </span><span class="n">juliandate</span><span class="w"></span>
+<span class="w">  </span><span class="k">integer</span><span class="w">                 </span><span class="o">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">integer</span><span class="w">                 </span><span class="o">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
+<span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">Julian</span><span class="w"> </span><span class="nc">Date</span><span class="w"></span>
+<span class="w">     </span><span class="n">juliandate</span><span class="o">=</span><span class="mf">2457589.129</span><span class="n">d0</span><span class="w"></span>
+<span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">DAT</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="nc">date</span><span class="w"></span>
+<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Sample Date=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="nf">day</span><span class="w"></span>
+<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0</span><span class="n">d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day Before =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="nf">day</span><span class="w"></span>
+<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0</span><span class="n">d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day After  =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">demo_julian_to_date</span><span class="w"></span>
+
+<span class="w"> </span><span class="nl">Results</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">Sample</span><span class="w"> </span><span class="nc">Date</span><span class="o">=</span><span class="n">Tuesday</span><span class="p">,</span><span class="w"> </span><span class="n">July</span><span class="w"> </span><span class="mi">19</span><span class="n">th</span><span class="p">,</span><span class="w"> </span><span class="mi">2016</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">05</span><span class="err">:</span><span class="mi">45</span><span class="w"> </span><span class="n">AM</span><span class="w"> </span><span class="n">UTC</span><span class="o">-</span><span class="mi">04</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="w">  </span><span class="nf">Day</span><span class="w"> </span><span class="k">Before</span><span class="w"> </span><span class="o">=</span><span class="n">Monday</span><span class="p">,</span><span class="w"> </span><span class="n">July</span><span class="w"> </span><span class="mi">18</span><span class="n">th</span><span class="p">,</span><span class="w"> </span><span class="mi">2016</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">05</span><span class="err">:</span><span class="mi">45</span><span class="w"> </span><span class="n">AM</span><span class="w"> </span><span class="n">UTC</span><span class="o">-</span><span class="mi">04</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+<span class="w">  </span><span class="nf">Day</span><span class="w"> </span><span class="k">After</span><span class="w">  </span><span class="o">=</span><span class="n">Wednesday</span><span class="p">,</span><span class="w"> </span><span class="n">July</span><span class="w"> </span><span class="mi">20</span><span class="n">th</span><span class="p">,</span><span class="w"> </span><span class="mi">2016</span><span class="w"> </span><span class="mi">11</span><span class="err">:</span><span class="mi">05</span><span class="err">:</span><span class="mi">45</span><span class="w"> </span><span class="n">AM</span><span class="w"> </span><span class="n">UTC</span><span class="o">-</span><span class="mi">04</span><span class="err">:</span><span class="mi">00</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban, 2015
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+    
+
+    <h3>Arguments</h3>
+    
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-julian~9"></span>real(kind=realtime),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julian</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dat~15"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>dat</strong>(8)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ierr~22"></span>integer,</td>
+  <td>intent(out)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>ierr</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    
+    
+    
+    
+     
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-day~8">day</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-hour~4">hour</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-ijul">ijul</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-ja">ja</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jalpha">jalpha</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jb">jb</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jc">jc</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-jd">jd</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-je">je</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-minute~3">minute</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-month~5">month</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-second~3">second</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-tz~2">tz</a>
+      
+      <a class="list-group-item" href="../proc/julian_to_date.html#variable-year~7">year</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/julian_to_date.html#src">julian_to_date</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-day~8"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>day</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-hour~4"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>hour</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ijul"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>ijul</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ja"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>ja</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-jalpha"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>jalpha</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-jb"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>jb</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-jc"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>jc</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-jd"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>jd</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-je"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>je</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-minute~3"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>minute</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-month~5"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>month</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-second~3"></span>real(kind=realtime),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>second</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-tz~2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>tz</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-year~7"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>year</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">julian</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+
+<span class="c">! ident_3=&quot;@(#)M_time::julian_to_date(3f): Converts Julian Date to DAT date-time array&quot;</span>
+
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">julian</span>            <span class="c">! Julian Date (non-negative)</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">ierr</span>              <span class="c">! 0 for successful execution, otherwise 1</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">tz</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>              <span class="kd">::</span> <span class="nb">second</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">year</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">month</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">day</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">hour</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">minute</span>
+<span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">jalpha</span><span class="p">,</span><span class="n">ja</span><span class="p">,</span><span class="n">jb</span><span class="p">,</span><span class="n">jc</span><span class="p">,</span><span class="n">jd</span><span class="p">,</span><span class="n">je</span><span class="p">,</span><span class="n">ijul</span>
+
+   <span class="k">if</span><span class="p">(</span><span class="n">julian</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mf">0.d0</span><span class="p">)</span> <span class="k">then</span>                      <span class="c">! Negative Julian Date not allowed</span>
+      <span class="n">ierr</span><span class="o">=</span><span class="mi">1</span>
+      <span class="k">return</span>
+<span class="k">   else</span>
+<span class="k">      </span><span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>
+   <span class="k">endif</span>
+<span class="k">   </span><span class="n">tz</span><span class="o">=</span><span class="n">get_timezone</span><span class="p">()</span>
+
+   <span class="n">ijul</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span>                           <span class="c">! Integral Julian Date</span>
+   <span class="nb">second</span><span class="o">=</span><span class="nb">sngl</span><span class="p">((</span><span class="n">julian</span><span class="o">-</span><span class="nb">dble</span><span class="p">(</span><span class="n">ijul</span><span class="p">))</span><span class="o">*</span><span class="n">secday</span><span class="p">)</span>      <span class="c">! Seconds from beginning of Jul. Day</span>
+   <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">+</span><span class="p">(</span><span class="n">tz</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+
+   <span class="k">if</span><span class="p">(</span><span class="nb">second</span><span class="p">.</span><span class="n">ge</span><span class="p">.(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0d0</span><span class="p">))</span> <span class="k">then</span>            <span class="c">! In next calendar day</span>
+      <span class="n">ijul</span><span class="o">=</span><span class="n">ijul</span><span class="o">+</span><span class="mi">1</span>
+      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="p">(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0d0</span><span class="p">)</span>              <span class="c">! Adjust from noon to midnight</span>
+   <span class="k">else</span>                                         <span class="c">! In same calendar day</span>
+      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">+</span><span class="p">(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0d0</span><span class="p">)</span>              <span class="c">! Adjust from noon to midnight</span>
+   <span class="k">endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="nb">second</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="n">secday</span><span class="p">)</span> <span class="k">then</span>                    <span class="c">! Final check to prevent time 24:00:00</span>
+      <span class="n">ijul</span><span class="o">=</span><span class="n">ijul</span><span class="o">+</span><span class="mi">1</span>
+      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="n">secday</span>
+   <span class="k">endif</span>
+
+<span class="k">   </span><span class="n">minute</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">second</span><span class="o">/</span><span class="mi">6</span><span class="mf">0.0d0</span><span class="p">)</span>                    <span class="c">! Integral minutes from beginning of day</span>
+   <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="nb">dble</span><span class="p">(</span><span class="n">minute</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>                <span class="c">! Seconds from beginning of minute</span>
+   <span class="n">hour</span><span class="o">=</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span>                               <span class="c">! Integral hours from beginning of day</span>
+   <span class="n">minute</span><span class="o">=</span><span class="n">minute</span><span class="o">-</span><span class="n">hour</span><span class="o">*</span><span class="mi">60</span>                        <span class="c">! Integral minutes from beginning of hour</span>
+
+   <span class="c">!---------------------------------------------</span>
+   <span class="n">jalpha</span><span class="o">=</span><span class="nb">idint</span><span class="p">((</span><span class="nb">dble</span><span class="p">(</span><span class="n">ijul</span><span class="o">-</span><span class="mi">1867216</span><span class="p">)</span><span class="o">-</span><span class="mf">0.25d0</span><span class="p">)</span><span class="o">/</span><span class="mi">3652</span><span class="mf">4.25d0</span><span class="p">)</span> <span class="c">! Correction for Gregorian Calendar</span>
+   <span class="n">ja</span><span class="o">=</span><span class="n">ijul</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">jalpha</span><span class="o">-</span><span class="nb">idint</span><span class="p">(</span><span class="mf">0.25d0</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">jalpha</span><span class="p">))</span>
+   <span class="c">!---------------------------------------------</span>
+
+   <span class="n">jb</span><span class="o">=</span><span class="n">ja</span><span class="o">+</span><span class="mi">1524</span>
+   <span class="n">jc</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="mi">668</span><span class="mf">0.d0</span><span class="o">+</span><span class="p">(</span><span class="nb">dble</span><span class="p">(</span><span class="n">jb</span><span class="o">-</span><span class="mi">2439870</span><span class="p">)</span><span class="o">-</span><span class="mi">12</span><span class="mf">2.1d0</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="mf">5.25d0</span><span class="p">)</span>
+   <span class="n">jd</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="n">jc</span><span class="o">+</span><span class="nb">idint</span><span class="p">(</span><span class="mf">0.25d0</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">jc</span><span class="p">))</span>
+   <span class="n">je</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="nb">dble</span><span class="p">(</span><span class="n">jb</span><span class="o">-</span><span class="n">jd</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="mf">0.6001d0</span><span class="p">)</span>
+   <span class="n">day</span><span class="o">=</span><span class="n">jb</span><span class="o">-</span><span class="n">jd</span><span class="o">-</span><span class="nb">idint</span><span class="p">(</span><span class="mi">3</span><span class="mf">0.6001d0</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">je</span><span class="p">))</span>
+   <span class="n">month</span><span class="o">=</span><span class="n">je</span><span class="o">-</span><span class="mi">1</span>
+
+   <span class="k">if</span><span class="p">(</span><span class="n">month</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="mi">12</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="o">-</span><span class="mi">12</span>
+   <span class="k">endif</span>
+
+<span class="k">   </span><span class="n">year</span><span class="o">=</span><span class="n">jc</span><span class="o">-</span><span class="mi">4715</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">month</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="mi">2</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span>
+   <span class="k">endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">year</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span>
+   <span class="k">endif</span>
+
+<span class="k">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">tz</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">second</span><span class="p">),</span> <span class="nb">int</span><span class="p">((</span><span class="nb">second</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="nb">second</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="mf">0.0</span><span class="p">)]</span>
+   <span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">end subroutine </span><span class="n">julian_to_date</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2021-09-11 12:47  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
