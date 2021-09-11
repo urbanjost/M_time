@@ -13,7 +13,7 @@ homepage = "https://github.com/urbanjost/M_time.git"
 [[test]]
 name="runTests"
 source-dir="test/"
-main="test_suite_M_time.f90"
+main="test_suite_M_time.F90"
 [test.dependencies]
 M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
 

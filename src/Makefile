@@ -33,8 +33,8 @@ PROGFILES = \
    ../example/demo_w2d.f90 \
    $(NULL)
 
-TESTFILES = ../test/test_suite_M_time.f90
-TEST = ${TESTFILES:.f90=}
+TESTFILES = ../test/test_suite_M_time.F90
+TEST = ${TESTFILES:.F90=}
 
 CPROGFILES = 
 
@@ -106,9 +106,9 @@ run: $(PROG)
 .PHONY: test
 test: $(OBJS)
 	# compile and load
-	$(F90) $(LDFLAGS) $(TESTFILES) -o ${TESTFILES:.f90=} $(OBJS) $(LIBS)
+	$(F90) $(LDFLAGS) $(TESTFILES) -o ${TESTFILES:.F90=} $(OBJS) $(LIBS)
 	# run 
-	${TESTFILES:.f90=}
+	${TESTFILES:.F90=}
 
 .PHONY: doxygen
 doxygen: 

@@ -20,6 +20,7 @@ jobs:
     env:
       FC: gfortran
       GCC_V: ${{ matrix.gcc_v }}
+      TZ: UTC+04:00
 
     steps:
     - name: Checkout code
