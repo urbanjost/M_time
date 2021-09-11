@@ -50,7 +50,7 @@ jobs:
     - name: Run tests (fpm test)
       run: |
         make -p -fNOTTHERE
-	echo "end" > foo.f90
+        echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
         fpm test --profile release
@@ -67,4 +67,4 @@ jobs:
           ls -ltras
       if: contains(matrix.os, 'windows')
       run: |
-      	   dir
+           dir
