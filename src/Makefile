@@ -115,7 +115,7 @@ doxygen:
 	doxygen dox.in
 .PHONY: ford
 ford: 
-	ford ford.md
+	cd ..;ford ford.md
 
 .PHONY: clean
 clean:
