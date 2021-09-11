@@ -123,6 +123,7 @@ subroutine put_environment_variable(name,value,status)
 character(len=*)               :: NAME
 character(len=*)               :: VALUE
 integer, optional, intent(out) :: STATUS
+   write(*,*)'<WARNING>put_environment_variable is not working on this platform'
    if (present(STATUS)) STATUS = -1
 end subroutine put_environment_variable
 
