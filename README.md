@@ -39,7 +39,27 @@ Each routine is accompanied by a man(1) page which includes
 a sample program for that procedure. An HTML manual, the source, and
 example programs are included in the package.
 
-### DOWNLOAD and BUILD using ![make(1)](docs/images/gnu.gif)
+## DOCUMENTATION
+In addition to the USAGE section below the available documentation includes a ...
+
++ [intro page](https://urbanjost.github.io/M_time/M_time.html)
++ [man-page index](https://urbanjost.github.io/M_time/man3.html)
++ [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) is a consolidated
+  single-page version of the man-pages for ease in printing and searching(`requires javascript`)
+<!--
++ [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
++ [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
+-->
+
+![man-pages(1)](docs/images/manpages.gif)
+
+Furthermore there are actual manpages that can be installed on ULS (Unix-Like Systems):
+
+[manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
+and
+[manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
+
+### DOWNLOAD and BUILD using gmake(1)![GNU](docs/images/gnu.gif)
 
 To build the modules download the github repository, enter the src/
 directory and run make(1):
@@ -59,7 +79,7 @@ directory and run make(1):
 This will compile the M_time module and optionally build all the example programs from
 the document pages (in the example/ sub-directory) and run the unit tests.
 
-### DOWNLOAD and BUILD using ![fpm(1)](docs/images/fpm_logo.gif)
+### DOWNLOAD and BUILD using fpm(1)![fpm](docs/images/fpm_logo.gif)
 #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
 Alternatively, download the github repository and build it with 
@@ -122,22 +142,6 @@ options. With no options it displays allowed formats. For example:
        The year is 2020 and the month is 01 (January) 11:01:39
        The 5th of January 2020
 
-## DOCUMENTATION
-In addition to the USAGE section below the documentation includes a ...
-
-+ [man-page index](https://urbanjost.github.io/M_time/man3.html)
-+ [single-page HTML](https://urbanjost.github.io/M_time/M_time.html)
-+ [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) ` requires javascript`
-<!--
-+ [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
-+ [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
--->
-
-Additionally there are ![man-pages(1)](docs/images/manpages.gif)
-
-[manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
-and
-[manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
 
 ## USAGE 
 
