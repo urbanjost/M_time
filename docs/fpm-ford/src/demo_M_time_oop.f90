@@ -132,8 +132,8 @@
               ! keywords with no percent (%) characters
               write(*,303)'Calendar Time ......... ',&
               & event%format('"year-month-day &
+              & hour:minute:second.millisecond timezone"')
               !
-              &hour:minute:second.millisecond timezone"')
               write(*,*)event%format('Longer format.......... &
               &"%W, %L %d, %Y %H:%m:%s %N"') ! a nice friendly format
               !
