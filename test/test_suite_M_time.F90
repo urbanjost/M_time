@@ -428,7 +428,7 @@ do i=1,size(line)-1
    endif
 
    call guessdate(date1,dat)                                         ! convert date string to DAT
-   call unit_check('fmtdate',fmtdate(dat,'year-month-day').eq.trim(date2),fmtdate(dat,'year-month-day'))
+   call unit_check('fmtdate',fmtdate(dat,'year-month-day').eq.trim(date2),'GOT',fmtdate(dat,'year-month-day'),'expected',date2)
 
    ! convert DAT to ISO week date, all generated dates should match ISO week date
    call unit_check('fmtdate',fmtdate(dat,"%I").eq.iso_week_date, msg=iso_week_date)
@@ -479,10 +479,12 @@ line=[ character(len=372) :: &
 
 &' ' ]
 do i=1,size(line)-1
-   read(line(i),*)date1,date2,iso_week_date,comment
-   call guessdate(date1,dat)                                         ! convert date string to DAT
-   call unit_check('guessdate',fmtdate(dat,"%I").eq.iso_week_date,msg=date1)
-   call unit_check('guessdate',fmtdate(dat,"year-month-day").eq.date2,msg=date2)
+ read(line(i),*)date1,date2,iso_week_date,comment
+ call guessdate(date1,dat)                                         ! convert date string to DAT
+ call unit_check('guessdate',&
+ &fmtdate(dat,"%I").eq.iso_week_date,'input',date1,'produced',fmtdate(dat,"%I"),'expected',iso_week_date)
+ call unit_check('guessdate',&
+ &fmtdate(dat,"year-month-day").eq.date2,'input',date1,'produced',fmtdate(dat,"year-month-day"),'expected',date2)
 enddo
 
 call unit_check_done('guessdate')
