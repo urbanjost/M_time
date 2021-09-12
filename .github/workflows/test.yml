@@ -58,10 +58,12 @@ jobs:
 #    - name: Run demo programs (fpm run)
 #      run: fpm run --profile release
 
-    - name: cleanup
+    - name: cleanup Linux
       if: contains(matrix.os, 'ubuntu')
       run: ls -ltras
+    - name: cleanup MacOS
       if: contains(matrix.os, 'macos')
       run: ls -ltras
+    - name: cleanup MSWindows
       if: contains(matrix.os, 'windows')
       run: dir
