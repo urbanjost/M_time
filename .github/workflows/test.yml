@@ -66,10 +66,10 @@ jobs:
     - name: tests Linux
       if: contains(matrix.os, 'ubuntu')
       run: fpm test --profile release
-#
-#    - name: tests MacOS
-#        if: contains(matrix.os, 'macos')
-#        run: fpm test --profile release
+
+    - name: tests MacOS
+      if: contains(matrix.os, 'macos')
+      run: fpm test --profile release
 #
 #    - name: tests MSWindows
 #        if: contains(matrix.os, 'windows')
