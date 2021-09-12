@@ -56,14 +56,17 @@ jobs:
         fpm --version
 
     - name: run tests Linux
+    	run: echo hello
 #        if: contains(matrix.os, 'ubuntu')
 #        run: fpm test --profile release
 #
     - name: run tests MacOS
+    	run: echo hello
 #        if: contains(matrix.os, 'macos')
 #        run: fpm test --profile release
 #
     - name: run tests MSWindows
+    	run: echo hello
 #        if: contains(matrix.os, 'windows')
 #        run: fpm test --profile release -flag "-D _WIN32"
 
