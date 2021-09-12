@@ -130,19 +130,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="18.9% of total for procedures.">499 statements</a>
+    title="19.0% of total for procedures.">501 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/test_suite_M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/test_suite_M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/test_suite_m_time.f90.html'>test_suite_M_time.f90</a></li>
+     <li><a href='../sourcefile/test_suite_m_time.f90.html'>test_suite_M_time.F90</a></li>
     
   
      <li class="active">test_suite_M_time</li>
@@ -316,6 +316,8 @@ subroutine test_suite_M_time()
       
       <li class="list-group-item">
   <ul class="list-inline">
+    
+    <li>M_verify</li>
     
     <li>M_verify</li>
     
@@ -1529,6 +1531,7 @@ subroutine test_w2d()
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">test_suite_M_time</span>
 <span class="k">use </span><span class="n">M_verify</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">unit_check</span><span class="p">,</span><span class="n">unit_check_good</span><span class="p">,</span><span class="n">unit_check_bad</span><span class="p">,</span><span class="n">unit_check_done</span><span class="p">,</span><span class="n">unit_check_start</span><span class="p">,</span><span class="n">unit_check_msg</span><span class="p">,</span><span class="n">unit_check_level</span>
+<span class="k">use </span><span class="n">M_verify</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">unit_check_stop</span>
 <span class="k">use</span><span class="p">,</span><span class="k">intrinsic</span> <span class="kd">::</span> <span class="nb">iso_c_binding</span><span class="p">,</span> <span class="k">only</span><span class="p">:</span> <span class="kt">c_int</span><span class="p">,</span> <span class="kt">c_char</span><span class="p">,</span> <span class="nb">c_null_char</span>
 <span class="k">use </span><span class="n">M_time</span>
 <span class="k">implicit none</span>
@@ -1601,8 +1604,12 @@ subroutine test_w2d()
 <span class="k">call </span><span class="n">unit_check_start</span><span class="p">(</span><span class="s1">&#39;w2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Given iso-8601 Week-numbering year date yyyy-Www-d calculate date&quot; &#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_w2d</span><span class="p">()</span>
 
+<span class="k">call </span><span class="n">unit_check_stop</span><span class="p">(</span><span class="s1">&#39;M_time tests completed&#39;</span><span class="p">)</span>
+
 <span class="k">contains</span>
 <span class="c">!===================================================================================================================================</span>
+<span class="cp">#ifndef _WIN32</span>
+
 <span class="k">subroutine </span><span class="n">put_environment_variable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="k">value</span><span class="p">,</span><span class="n">status</span><span class="p">)</span>
 
 <span class="c">!  This is an private copy of the set_environment_variable routine(3f) routine from</span>
@@ -1626,6 +1633,18 @@ subroutine test_w2d()
 <span class="k">   </span><span class="n">loc_err</span> <span class="o">=</span>  <span class="n">c_setenv</span><span class="p">(</span><span class="n">str2arr</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">NAME</span><span class="p">)),</span><span class="n">str2arr</span><span class="p">(</span><span class="k">VALUE</span><span class="p">))</span>
    <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">STATUS</span><span class="p">))</span> <span class="n">STATUS</span> <span class="o">=</span> <span class="n">loc_err</span>
 <span class="k">end subroutine </span><span class="n">put_environment_variable</span>
+
+<span class="cp">#else</span>
+
+<span class="k">subroutine </span><span class="n">put_environment_variable</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="k">value</span><span class="p">,</span><span class="n">status</span><span class="p">)</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">)</span>               <span class="kd">::</span> <span class="n">NAME</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">)</span>               <span class="kd">::</span> <span class="k">VALUE</span>
+<span class="kt">integer</span><span class="p">,</span> <span class="k">optional</span><span class="p">,</span> <span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">STATUS</span>
+   <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;&lt;WARNING&gt;put_environment_variable is not working on this platform&#39;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">STATUS</span><span class="p">))</span> <span class="n">STATUS</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="k">end subroutine </span><span class="n">put_environment_variable</span>
+
+<span class="cp">#endif</span>
 <span class="c">!===================================================================================================================================</span>
 <span class="k">pure function </span><span class="n">str2arr</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="k">result</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span>
 
@@ -2362,7 +2381,7 @@ subroutine test_w2d()
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-11 12:47  
+             on 2021-09-11 20:08  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

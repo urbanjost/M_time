@@ -14,6 +14,7 @@ end program runtest
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_suite_M_time
 use M_verify, only : unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
+use M_verify, only : unit_check_stop
 use,intrinsic :: iso_c_binding, only: c_int, c_char, c_null_char
 use M_time
 implicit none
@@ -86,8 +87,12 @@ call test_v2mo()
 call unit_check_start('w2d            ',SAME//' "Given iso-8601 Week-numbering year date yyyy-Www-d calculate date" ')
 call test_w2d()
 
+call unit_check_stop('M_time tests completed')
+
 contains
 !===================================================================================================================================
+#ifndef _WIN32
+
 subroutine put_environment_variable(name,value,status)
 
 !  This is an private copy of the set_environment_variable routine(3f) routine from
@@ -111,6 +116,18 @@ end interface
    loc_err =  c_setenv(str2arr(trim(NAME)),str2arr(VALUE))
    if (present(STATUS)) STATUS = loc_err
 end subroutine put_environment_variable
+
+#else
+
+subroutine put_environment_variable(name,value,status)
+character(len=*)               :: NAME
+character(len=*)               :: VALUE
+integer, optional, intent(out) :: STATUS
+   write(*,*)'<WARNING>put_environment_variable is not working on this platform'
+   if (present(STATUS)) STATUS = -1
+end subroutine put_environment_variable
+
+#endif
 !===================================================================================================================================
 pure function str2arr(string) result (array)
 
