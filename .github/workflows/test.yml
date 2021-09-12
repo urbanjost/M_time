@@ -60,11 +60,8 @@ jobs:
 
     - name: cleanup
       if: contains(matrix.os, 'ubuntu')
-      run: |
-          ls -ltras
+      run: ls -ltras
       if: contains(matrix.os, 'macos')
-      run: |
-          ls -ltras
+      run: ls -ltras
       if: contains(matrix.os, 'windows')
-      run: |
-           dir
+      run: dir
