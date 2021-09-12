@@ -49,7 +49,7 @@ jobs:
 
     - name: Run tests (fpm test)
       run: |
-        make -p -fNOTTHERE
+        #make -k -p -fNOTTHERE 
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
