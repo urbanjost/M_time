@@ -47,13 +47,31 @@ jobs:
         use-haskell: ${{ matrix.haskell }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Run tests (fpm test)
+    - name: Display environment
       run: |
         #make -k -p -fNOTTHERE 
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
-        fpm test --profile release
+	fpm --version
+
+     - name: run tests Linux
+         if: contains(matrix.os, 'ubuntu')
+         run: |
+	 ls -ltras
+         fpm test --profile release 
+
+     - name: run tests MacOS
+         if: contains(matrix.os, 'macos')
+         run: |
+	 ls -ltras
+         fpm test --profile release 
+
+     - name: run tests MSWindows
+         if: contains(matrix.os, 'windows')
+         run: |
+	 dir
+         fpm test --profile release -flag "-D _WIN32"
 
 #    - name: Run demo programs (fpm run)
 #      run: fpm run --profile release
