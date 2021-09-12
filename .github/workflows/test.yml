@@ -55,18 +55,18 @@ jobs:
         gfortran --version
         fpm --version
 
-    - name: tests Linux
-    	run: echo hello
+#    - name: tests Linux
+#    	run: echo hello
 #        if: contains(matrix.os, 'ubuntu')
 #        run: fpm test --profile release
 #
-    - name: tests MacOS
-    	run: echo hello
+#    - name: tests MacOS
+#    	run: echo hello
 #        if: contains(matrix.os, 'macos')
 #        run: fpm test --profile release
 #
-    - name: tests MSWindows
-    	run: echo hello
+#    - name: tests MSWindows
+#    	run: echo hello
 #        if: contains(matrix.os, 'windows')
 #        run: fpm test --profile release -flag "-D _WIN32"
 
