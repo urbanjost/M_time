@@ -86,7 +86,7 @@ the document pages (in the example/ sub-directory) and run the unit tests.
 ### DOWNLOAD and BUILD using fpm(1)![fpm](docs/images/fpm_logo.gif)
 #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
-Alternatively, download the github repository and build and test it with 
+To download the github repository and build and test it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 ```bash
      git clone https://github.com/urbanjost/M_time.git
