@@ -6,12 +6,10 @@
 
 ## DESCRIPTION
 
-The `M_time Fortran` module complements the `DATE_AND_TIME(3f)` procedure
-( it is the standard Fortran intrinsic subroutine that returns the current
-date and time in the Gregorian calendar). That is, the primary way this
-module represents dates is as an integer array with the same meaning
-for elements as defined by the `DATE_AND_TIME(3f)` routine. In addition
-it can calculate or read many other date representations such as ...
+M_time(3f) can be used to display Civilian Calendar dates in many formats.
+
+In addition, it can manipulate or read many other date representations
+such as ...
 
   * Julian Dates
   * Unix Epoch Dates
@@ -21,28 +19,34 @@ it can calculate or read many other date representations such as ...
   * ISO-8601 week numbers
   * month and weekday names
 
-__Julian__ and __Unix Epoch Dates__ are particularly useful for manipulating
-dates in simple numeric expressions.
+__Julian__ and __Unix Epoch Dates__ are particularly useful for
+manipulating dates in simple numeric expressions.
+
+The `M_time Fortran` module complements the `DATE_AND_TIME(3f)` procedure
+( it is the standard Fortran intrinsic subroutine that returns the
+current date and time in the Gregorian calendar). That is, the primary
+way this module represents dates is as an integer array with the same
+meaning for elements as defined by the `DATE_AND_TIME(3f)` routine.
 
 The extensive formatting options include showing `SYSTEM_CLOCK(3f)`
 and `CPU_USAGE(3f)` information along with Gregorian date information,
 allowing for the easy incorporation of timing information into program
 messages.
 
-In addition to conventional Civilian Calendar dates, the module
-supports the ISO-8601 standard.
+In addition to conventional Civilian Calendar dates, the module supports
+the ISO-8601 standard.
 
 Both a procedural and OOP (Object Oriented Programming) interface are
-provided. 
+provided.
 
-Each routine is accompanied by a man(1) page which includes
-a sample program for that procedure. An HTML manual, the source, and
-example programs are included in the package.
+Each routine is accompanied by a man(1) page which includes a sample
+program for that procedure. An HTML manual, the source, and example
+programs are included in the package.
 
 ## DOCUMENTATION
-In addition to the USAGE section below the available documentation includes a ...
 
-+ [intro page](https://urbanjost.github.io/M_time/M_time.html)
++ [intro page](https://urbanjost.github.io/M_time/M_time.3m_time.html)
++ [OOP intro page](https://urbanjost.github.io/M_time/M_time_oop.3m_time.html)
 + [man-page index](https://urbanjost.github.io/M_time/man3.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) is a consolidated
   single-page version of the man-pages for ease in printing and searching(`requires javascript`)
@@ -69,7 +73,7 @@ directory and run make(1):
      
      make clean
      # change Makefile if not using one of the listed compilers
-     # (ifort, nvfortran, or gfortran)
+     # COMPILER_NAME={ifort, nvfortran, or gfortran}
      make $COMPILER_NAME
 
      # optionally
@@ -82,15 +86,13 @@ the document pages (in the example/ sub-directory) and run the unit tests.
 ### DOWNLOAD and BUILD using fpm(1)![fpm](docs/images/fpm_logo.gif)
 #### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
-Alternatively, download the github repository and build it with 
+Alternatively, download the github repository and build and test it with 
 fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
 ```bash
      git clone https://github.com/urbanjost/M_time.git
      cd M_time
-     fpm build
      fpm test
 ```
-
 or just list it as a dependency in your fpm.toml project file.
 
 ```toml

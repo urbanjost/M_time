@@ -62,16 +62,6 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
     that procedure. This manual, the source and example utility programs
     are included in the download.
 </p>
-<h3>Utility programs that use the M_time(3f) module:</h3>
-
-<ul>
-   <li> <a href="now.1.html">      now(1)      </a> prints a date in many formats                         </li>
-   <li> <a href="ttee.1.html">     ttee(1)     </a> a filter which timestamps stdout from another command </li>
-   <li> <a href="month.1.html">    month(1)    </a> which lets you print simple calendars                 </li>
-   <li> <a href="days2sec.1.html"> days2sec(1) </a> converts dd-hh:mm:ss to seconds                       </li>
-   <li> <a href="sec2days.1.html"> sec2days(1) </a> converts seconds to dd-hh:mm:ss                       </li>
-   <li> <a href="paws.1.html">     paws(1)     </a> pause until specified time or for specified interval  </li>
-</ul>
 
 <p>
    The M_time(3f) module
@@ -307,15 +297,14 @@ common macros:
   julian   %j     2457597
   ordinal  %O     209
 
-f none of these keywords are found then every letter that
-s a macro is assumed to have an implied percent in front
-f it. For example:
+if none of these keywords are found then every letter that
+is a macro is assumed to have an implied percent in front
+of it. For example:
 
   YMDhms ==&gt; %Y%M%D%h%m%s ==&gt; 20160727212422
 </pre>
 
 </dd>
-
 <dt> OOPS INTERFACE </dt>
 <dd>
 
@@ -331,9 +320,7 @@ f it. For example:
 <p>
     The following example program demonstrates the extensive options available
     for formatting a date as well as how to use the module to  calculate dates
-    such as "Yesterday" and "Tomorrow", as well as how to use the Object
-    Oriented interface to the conventional procedures found in the M_time(3fm)
-    module.
+    such as "Yesterday" and "Tomorrow".
 </p>
 
 <pre class="fortran">>
@@ -395,8 +382,6 @@ end program demo_M_time
            Tuesday, December 29th, 2015 08:07:34 AM
            2015-W53-2
 </pre>
-
-</dd>
 
 <dt>DEFINITIONS</dt>
 <dd>
@@ -508,6 +493,16 @@ end program demo_M_time
 
 <dt> SEE ALSO </dt>
 <dd>
+<h3>Utility programs that use the M_time(3f) module:</h3>
+
+<ul>
+   <li> <a href="now.1.html">      now(1)      </a> prints a date in many formats                         </li>
+   <li> <a href="ttee.1.html">     ttee(1)     </a> a filter which timestamps stdout from another command </li>
+   <li> <a href="month.1.html">    month(1)    </a> which lets you print simple calendars                 </li>
+   <li> <a href="days2sec.1.html"> days2sec(1) </a> converts dd-hh:mm:ss to seconds                       </li>
+   <li> <a href="sec2days.1.html"> sec2days(1) </a> converts seconds to dd-hh:mm:ss                       </li>
+   <li> <a href="paws.1.html">     paws(1)     </a> pause until specified time or for specified interval  </li>
+</ul>
 
 <p>
     The ISO-8601 standard is often used for business-related transactions.
