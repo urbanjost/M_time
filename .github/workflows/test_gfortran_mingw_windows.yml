@@ -15,7 +15,7 @@ jobs:
           { msystem: MINGW64, arch: x86_64 },
           { msystem: MINGW32, arch: i686   }
         ]
-    defaults:
+#    defaults:
 #      run:
 #        shell: msys2 {0}
     steps:
