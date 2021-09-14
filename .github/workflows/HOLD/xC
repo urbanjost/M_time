@@ -22,21 +22,15 @@
         update: false
         install: >-
           git
+          wget
           mingw-w64-${{ matrix.arch }}-gcc-fortran
           mingw-w64-${{ matrix.arch }}-meson
           mingw-w64-${{ matrix.arch }}-ninja
 
-    - name: Configure meson build
-      run: meson setup ${{ env.BUILD_DIR }}
-      env:
-        FC: gfortran
-        CC: gcc
 
     - name: Build project (meson)
       run: meson compile -C ${{ env.BUILD_DIR }}
-
-    - name: Run unit tests (meson)
-      run: meson test -C ${{ env.BUILD_DIR }} --print-errorlogs --no-rebuild
       env:
+        FC: gfortran
+        CC: gcc
         OMP_NUM_THREADS: 2,1
-

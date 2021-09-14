@@ -39,7 +39,6 @@ jobs:
         pacman -U --noconfirm mingw-w64-x86_64-fpm-*-any.pkg.tar.zst
 
     - run: |
-        fpm test
         gfortran --version
         fpm test --compiler gfortran --profile release -flag "-D _WIN32"
     - run: |
