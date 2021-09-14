@@ -1,5 +1,10 @@
 # Workflow for continuous integration tests
-name: CI
+
+# wget https://developer.download.nvidia.com/hpc-sdk/21.7/nvhpc-21-7_21.7_amd64.deb
+# https://developer.download.nvidia.com/hpc-sdk/21.7/nvhpc-2021_21.7_amd64.deb
+# apt-get install ./nvhpc-21-7_21.7_amd64.deb ./nvhpc-2021_21.7_amd64.deb
+
+name: test fpm on ubuntu with nvfortran
 on: [push, pull_request]
 
 jobs:
@@ -30,8 +35,8 @@ jobs:
       env:
         NVCOMPILERS: /opt/nvidia/hpc_sdk
       run: |
-        wget -q https://developer.download.nvidia.com/hpc-sdk/nvhpc-20-7_20.7_amd64.deb https://developer.download.nvidia.com/hpc-sdk/nvhpc-2020_20.7_amd64.deb
-        sudo apt-get install ./nvhpc-20-7_20.7_amd64.deb ./nvhpc-2020_20.7_amd64.deb
+        wget https://developer.download.nvidia.com/hpc-sdk/21.7/nvhpc-21-7_21.7_amd64.deb https://developer.download.nvidia.com/hpc-sdk/21.7/nvhpc-21-7_21.7_amd64.deb
+        sudo apt-get install ./nvhpc-21-7_21.7_amd64.deb ./nvhpc-2021_21.7_amd64.deb
     ###############################################################################
     # Compiler-specific environment
     ###############################################################################
