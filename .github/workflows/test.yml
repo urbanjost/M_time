@@ -41,6 +41,13 @@ jobs:
         --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-${GCC_V} \
         --slave /usr/bingcov gcov /usr/bin/gcov-${GCC_V}
 
+    - name: Install GFortran Windows
+      if: contains(matrix.os, 'windows')
+      run: gfortran --version
+      run: fpm test --profile release
+      env:
+        PATH = "C:\msys64\mingw64\bin;C:\msys64\usr\bin;$env:PATH"
+
     - name: Install fpm
       uses: fortran-lang/setup-fpm@v3
       with:
@@ -74,6 +81,8 @@ jobs:
     - name: tests MSWindows
       if: contains(matrix.os, 'windows')
       run: fpm test --profile release -flag "-D _WIN32"
+      env:
+        PATH = "C:\msys64\mingw64\bin;C:\msys64\usr\bin;$env:PATH"
 
 #    - name: Run demo programs (fpm run)
 #      run: fpm run --profile release
@@ -87,3 +96,51 @@ jobs:
     - name: cleanup MSWindows
       if: contains(matrix.os, 'windows')
       run: dir
+################################################################################
+  # Build with Intel toolchain
+  intel-build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04]
+        fc: [ifort]
+        cc: [icc]
+
+    env:
+      FC: ${{ matrix.fc }}
+      CC: ${{ matrix.cc }}
+      APT_PACKAGES: >-
+        intel-oneapi-compiler-fortran
+        intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
+        intel-oneapi-mkl-devel
+        asciidoctor
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+
+    - name: Add Intel repository
+      run: |
+        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        rm GPG-PUB-KEY-INTEL-SW-PRODUCTS-2023.PUB
+        echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+        sudo apt-get update
+
+    - name: Install Intel oneAPI compiler
+      run: |
+        sudo apt-get install ${{ env.APT_PACKAGES }}
+        source /opt/intel/oneapi/setvars.sh
+        printenv >> $GITHUB_ENV
+
+    - name: Run Intel unit tests on Linux
+      run: fpm test --profile release
+      env:
+        OMP_NUM_THREADS: 2,1
+################################################################################
+
