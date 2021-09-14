@@ -80,8 +80,6 @@ jobs:
     - name: tests MSWindows
       if: contains(matrix.os, 'windows')
       run: fpm test --profile release -flag "-D _WIN32"
-      env:
-        PATH = "C:\msys64\mingw64\bin;C:\msys64\usr\bin;$env:PATH"
 
 #    - name: Run demo programs (fpm run)
 #      run: fpm run --profile release
