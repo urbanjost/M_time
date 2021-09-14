@@ -132,6 +132,12 @@ jobs:
         source /opt/intel/oneapi/setvars.sh
         printenv >> $GITHUB_ENV
 
+    - name: Install fpm
+      uses: fortran-lang/setup-fpm@v3
+      with:
+        use-haskell: ${{ matrix.haskell }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Run Intel unit tests on Linux
       run: fpm test --profile release
       env:
