@@ -25,11 +25,9 @@
       run: |
         gfortran --version
         fpm test
-        fpm run *-demo
 
     - name: Run tests and demo programs (release)
       shell: msys2 {0}
       run: |
         gfortran --version
         fpm test --profile release
-        fpm run *-demo --profile release
