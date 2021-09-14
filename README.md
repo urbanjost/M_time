@@ -1,4 +1,5 @@
 ### M_time.f90 and associated files
+#### [CHANGELOG](CHANGELOG.md)
 ![pocketwatch](docs/images/M_time.3m_time.gif)
 
 ## NAME
@@ -102,9 +103,6 @@ or just list it as a dependency in your fpm.toml project file.
      [dependencies]
      M_time        = { git = "https://github.com/urbanjost/M_time.git" }
 ```
----
-## [CHANGELOG](CHANGELOG.md)
----
 
 ## SAMPLE PROGRAMS
 
