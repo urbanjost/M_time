@@ -1,4 +1,4 @@
-name: mingw and msys windows
+name: mingw windows gfortran
 
 on: [push, pull_request]
 
@@ -6,19 +6,18 @@ env:
   CTEST_TIME_TIMEOUT: "5"  # some failures hang forever
 
 jobs:
-  msys2-build:
+  build:
     runs-on: windows-latest
     strategy:
       fail-fast: false
       matrix:
         include: [
-          { msystem: MSYS,    arch: x86_64 },
           { msystem: MINGW64, arch: x86_64 },
           { msystem: MINGW32, arch: i686   }
         ]
     defaults:
-      run:
-        shell: msys2 {0}
+#      run:
+#        shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
 
@@ -35,7 +34,6 @@ jobs:
           mingw-w64-${{ matrix.arch }}-gcc-fortran
 
     - name: Install fpm
-      shell: msys2 {0}
       run: |
         wget https://github.com/awvwgk/mingw-w64-fpm-pkgbuild/releases/download/current/mingw-w64-x86_64-fpm-0.2.0-1-any.pkg.tar.zst
         pacman -U --noconfirm mingw-w64-x86_64-fpm-*-any.pkg.tar.zst
