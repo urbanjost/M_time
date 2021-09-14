@@ -1,0 +1,54 @@
+name: mingw and msys windows
+
+on: [push, pull_request]
+
+env:
+  CTEST_TIME_TIMEOUT: "5"  # some failures hang forever
+
+jobs:
+  msys2-build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: [
+          { msystem: MSYS,    arch: x86_64 },
+          { msystem: MINGW64, arch: x86_64 },
+          { msystem: MINGW32, arch: i686   }
+        ]
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup MinGW native environment
+      uses: msys2/setup-msys2@v2
+      if: contains(matrix.msystem, 'MINGW')
+      with:
+        msystem: ${{ matrix.msystem }}
+        update: false
+        install: >-
+          git
+          mingw-w64-${{ matrix.arch }}-gcc
+          mingw-w64-${{ matrix.arch }}-gcc-fortran
+
+    - name: Setup msys POSIX environment
+      uses: msys2/setup-msys2@v2
+      if: contains(matrix.msystem, 'MSYS')
+      with:
+        msystem: MSYS
+        update: false
+        install: >-
+          git
+          gcc
+          gcc-fortran
+
+    - run: >-
+        fpm test
+        --compiler gfortran
+	--profile release
+      env:
+        FPM_COMPILER: gfortran
+        CC: gcc
+        CXX: g++

@@ -1,0 +1,42 @@
+  # Test native MinGW Windows build
+  mingw-build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: [
+          { msystem: MINGW64, arch: x86_64 },
+        # { msystem: MINGW32, arch: i686   }
+        ]
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup MSYS2 toolchain
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{ matrix.msystem }}
+        update: false
+        install: >-
+          git
+          mingw-w64-${{ matrix.arch }}-gcc-fortran
+          mingw-w64-${{ matrix.arch }}-meson
+          mingw-w64-${{ matrix.arch }}-ninja
+
+    - name: Configure meson build
+      run: meson setup ${{ env.BUILD_DIR }}
+      env:
+        FC: gfortran
+        CC: gcc
+
+    - name: Build project (meson)
+      run: meson compile -C ${{ env.BUILD_DIR }}
+
+    - name: Run unit tests (meson)
+      run: meson test -C ${{ env.BUILD_DIR }} --print-errorlogs --no-rebuild
+      env:
+        OMP_NUM_THREADS: 2,1
+
