@@ -1,9 +1,9 @@
-name: mingw windows gfortran
+name: fpm test on windows mingw with gfortran
 
 on: [push, pull_request]
 
 env:
-  CTEST_TIME_TIMEOUT: "5"  # some failures hang forever
+  CTEST_TIME_TIMEOUT: "50"  # some failures hang forever
 
 jobs:
   build:
@@ -15,9 +15,9 @@ jobs:
           { msystem: MINGW64, arch: x86_64 },
           { msystem: MINGW32, arch: i686   }
         ]
-#    defaults:
-#      run:
-#        shell: msys2 {0}
+    defaults:
+      run:
+        shell: msys2 {0}
     steps:
     - uses: actions/checkout@v2
 
