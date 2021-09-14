@@ -1,3 +1,11 @@
+name: fpm test with msys windows gfortran
+
+on: [push, pull_request]
+
+env:
+  CTEST_TIME_TIMEOUT: "5"  # some failures hang forever
+
+jobs:
   gfortran-windows-msys2-mingw64:
     runs-on: windows-latest
     steps:
