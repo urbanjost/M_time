@@ -43,7 +43,6 @@ jobs:
 
     - name: Install GFortran Windows
       if: contains(matrix.os, 'windows')
-      run: fpm test --profile release
       env:
          PATH = "C:\msys64\mingw64\bin;C:\msys64\usr\bin;$env:PATH"
 
