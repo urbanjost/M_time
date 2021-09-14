@@ -128,7 +128,7 @@ integer                        :: ichar
    maxlengthout=len(targetline)                        ! max length of output string
    original_input_length=len_trim(targetline)          ! get non-blank length of input line
    dum1(:)=' '                                         ! initialize string to build output in
-   id=mr-ml                                            ! check for window option !! change to optional parameter(s)
+   id=mr-ml                                            ! check for window option !x! change to optional parameter(s)
 !-----------------------------------------------------------------------------------------------------------------------------------
    len_old=len(old)                                    ! length of old substring to be replaced
    len_new=len(new)                                    ! length of new substring to replace old substring
@@ -1568,8 +1568,8 @@ character(len=1024)                      :: msg
    if(present(err)) then
       err=err_local
    elseif(err_local.ne.0)then
-      !! cannot currently do I/O from a function being called from I/O
-      !!write(ERROR_UNIT,'(a)')'*value_to_string* WARNING:['//trim(msg)//']'
+      !x! cannot currently do I/O from a function being called from I/O
+      !x!write(ERROR_UNIT,'(a)')'*value_to_string* WARNING:['//trim(msg)//']'
       chars=chars//' *value_to_string* WARNING:['//trim(msg)//']'
    endif
 
@@ -1702,6 +1702,8 @@ end subroutine trimzeros
 !!    Public Domain
 !===================================================================================================================================
 subroutine a2r(chars,valu,ierr)
+!>
+!! subroutine returns real value from string
 
 !character(len=*),parameter::ident_40="@(#)M_strings::a2r(3fp): subroutine returns real value from string"
 
@@ -1715,7 +1717,7 @@ doubleprecision             :: valu8
       if(valu8.le.huge(valu))then
          valu=real(valu8)
       else
-         !!call stderr('*a2r* - value too large',valu8,'>',huge(valu))
+         !x!call stderr('*a2r* - value too large',valu8,'>',huge(valu))
          call stderr('*a2r* - value too large')
          valu=huge(valu)
          ierr=-1
@@ -1724,6 +1726,8 @@ doubleprecision             :: valu8
 end subroutine a2r
 !----------------------------------------------------------------------------------------------------------------------------------
 subroutine a2i(chars,valu,ierr)
+!>
+!! subroutine returns integer value from string
 
 !character(len=*),parameter::ident_41="@(#)M_strings::a2i(3fp): subroutine returns integer value from string"
 
@@ -1737,7 +1741,7 @@ doubleprecision             :: valu8
       if(valu8.le.huge(valu))then
          valu=int(valu8)
       else
-         !!call stderr('sc','*a2i*','- value too large',valu8,'>',huge(valu))
+         !x!call stderr('sc','*a2i*','- value too large',valu8,'>',huge(valu))
          call stderr('*a2i* - value too large')
          valu=huge(valu)
          ierr=-1
@@ -1746,6 +1750,8 @@ doubleprecision             :: valu8
 end subroutine a2i
 !----------------------------------------------------------------------------------------------------------------------------------
 subroutine a2d(chars,valu,ierr,onerr)
+!>
+!! subroutine returns doubleprecision value from string
 
 !character(len=*),parameter::ident_42="@(#)M_strings::a2d(3fp): subroutine returns double value from string"
 
