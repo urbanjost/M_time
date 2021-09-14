@@ -44,6 +44,12 @@ jobs:
           gcc
           gcc-fortran
 
+    - name: Install fpm
+      uses: fortran-lang/setup-fpm@v3
+      with:
+        use-haskell: ${{ matrix.haskell }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     - run: >-
         fpm test
         --compiler gfortran
