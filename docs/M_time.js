@@ -1,5 +1,6 @@
 function loadthem(){
 append("M_time.3m_time.html");
+append("M_time_oop.3m_time.html");
 append("box_month.3m_time.html");
 append("d2j.3m_time.html");
 append("d2o.3m_time.html");
@@ -18,6 +19,7 @@ append("julian_to_date.3m_time.html");
 append("mo2d.3m_time.html");
 append("mo2v.3m_time.html");
 append("moon_fullness.3m_time.html");
+append("now.3m_time.html");
 append("o2d.3m_time.html");
 append("ordinal_seconds.3m_time.html");
 append("ordinal_to_date.3m_time.html");
@@ -28,5 +30,4 @@ append("u2d.3m_time.html");
 append("unix_to_date.3m_time.html");
 append("v2mo.3m_time.html");
 append("w2d.3m_time.html");
-append("M_time_oop.3m_time.html");
 }
