@@ -251,3 +251,16 @@ Discussion is welcome here as well as at
  - [Fortran Discourse](https://fortran-lang.discourse.group)
  - [Fortran Wiki](http://fortranwiki.org)
  - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
+<?
+<hr><!-- =================================================================== -->
+<p><FONT SIZE=-1>
+<UL>
+   <LI><I>Created: 20060320</I>
+   <SCRIPT language="JavaScript">
+<!---//hide script from old browsers; automatically update modification date
+   document.write( "<LI><I>Date last updated: " +
+   document.lastModified + "</I>");
+//end hiding contents --->
+   </SCRIPT>
+</UL></font>
+<hr><!-- =================================================================== -->
