@@ -1,8 +1,11 @@
 ### M_time.f90 and associated files
 ![pocketwatch](docs/images/M_time.3m_time.gif)
-[![Build FORD(1) docs](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml)
-[![run fpm test on Ubunto, MacOS, MSWindows](https://github.com/urbanjost/M_time/actions/workflows/test.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test.yml)
-[![run fpm test on linux with intel](https://github.com/urbanjost/M_time/actions/workflows/test_intel.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_intel.yml)
+
++ [![Build FORD(1) docs](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml)
++ [![run fpm test on ubuntu with intel](https://github.com/urbanjost/M_time/actions/workflows/test_intel_ubuntu.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_intel_ubuntu.yml)
++ [![run fpm test on ubuntu with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_ubuntu.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_ubuntu.yml)
++ [![run fpm test on macos with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_macos.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_macos.yml)
++ [![run fpm test on windows with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_windows.yml)
 
 ## NAME
    M_time - Fortran module for manipulating and presenting time and date values
