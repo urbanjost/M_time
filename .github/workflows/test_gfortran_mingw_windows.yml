@@ -55,6 +55,10 @@ jobs:
         fpm test
         --compiler gfortran
         --profile release
+    - run: >-
+        fpm test
+        --compiler gfortran
+        --profile debug
       env:
         FPM_COMPILER: gfortran
         CC: gcc

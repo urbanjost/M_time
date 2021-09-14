@@ -1,14 +1,6 @@
 ### M_time.f90 and associated files
 ![pocketwatch](docs/images/M_time.3m_time.gif)
 
-+ [![Build FORD(1) docs](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml)
-+ [![run fpm test on ubuntu with intel](https://github.com/urbanjost/M_time/actions/workflows/test_intel_ubuntu.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_intel_ubuntu.yml)
-+ [![run fpm test on ubuntu with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_ubuntu.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_ubuntu.yml)
-+ [![run fpm test on macos with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_macos.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_macos.yml)
-+ [![run fpm test on windows with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_windows.yml)
-+ [![run fpm test on windows with mingw and msys gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_mingw_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_mingw_windows.yml)
-+ [![run fpm test on windows with msys gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_msys_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_msys_windows.yml)
-
 ## NAME
    M_time - Fortran module for manipulating and presenting time and date values
 
@@ -99,6 +91,9 @@ fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/
 ```bash
      git clone https://github.com/urbanjost/M_time.git
      cd M_time
+     # on MSWindows:
+     fpm test -flag "-D _WIN32"
+     # on other platforms
      fpm test
 ```
 or just list it as a dependency in your fpm.toml project file.
