@@ -42,8 +42,10 @@ jobs:
         gfortran --version
         fpm --version
 
-    - name: tests MacOS
+    - name: tests MacOS (debug)
       run: fpm test --profile debug
+
+    - name: tests MacOS (release)
       run: fpm test --profile release
 
 #    - name: Run demo programs (fpm run)
