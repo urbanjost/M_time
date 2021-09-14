@@ -1,4 +1,4 @@
-name: run fpm test on linux with intel 
+name: run fpm test on linux with intel
 
 on: [push, pull_request]
 
@@ -53,6 +53,10 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run Intel unit tests on Linux
-      run: fpm test --profile release
+      run: |
+        printenv TZ
+	printenv FPM_COMPILER
+	printenv OMP_NUM_THREADS
+        fpm test --profile release --compiler ifort
       env:
         OMP_NUM_THREADS: 2,1
