@@ -42,10 +42,10 @@ jobs:
 
     - run: |
         fpm test
-	gfortran --version 
-	fpm test --compiler gfortran --profile release -flag "-D _WIN32"
+        gfortran --version
+        fpm test --compiler gfortran --profile release -flag "-D _WIN32"
     - run: |
-	gfortran --version
+        gfortran --version
         fpm test --compiler gfortran --profile debug   -flag "-D _WIN32"
       env:
         FPM_COMPILER: gfortran

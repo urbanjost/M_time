@@ -51,10 +51,6 @@ programs are included in the package.
 + [man-page index](https://urbanjost.github.io/M_time/man3.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) is a consolidated
   single-page version of the man-pages for ease in printing and searching(`requires javascript`)
-<!--
-+ [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
-+ [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
--->
 
 ![man-pages(1)](docs/images/manpages.gif)
 
@@ -85,10 +81,8 @@ This will compile the M_time module and optionally build all the example program
 the document pages (in the example/ sub-directory) and run the unit tests.
 
 ### DOWNLOAD and BUILD using fpm(1)![fpm](docs/images/fpm_logo.gif)
-#### (registered at the [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
 
-To download the github repository and build and test it with 
-fpm ( as described at [Fortran Package Manager](https://github.com/fortran-lang/fpm) )
+To download the github repository and build and test it with fpm :
 ```bash
      git clone https://github.com/urbanjost/M_time.git
      cd M_time
@@ -245,9 +239,17 @@ GPS/Satellite communications, and Astronomy it is worth a look.
 The Fortran Wiki [ fortranwiki.org ](http://fortranwiki.org) contains
 information on other libraries and modules that provide date-time
 procedures.
+## REFERENCES
+   + [Fortran Package Manager](https://github.com/fortran-lang/fpm) 
+   + [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
+   + [github actions](https://docs.github.com/en/actions)
 ## RESPONSES
 
 Discussion is welcome here as well as at
  - [Fortran Discourse](https://fortran-lang.discourse.group)
  - [Fortran Wiki](http://fortranwiki.org)
  - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
+<!--
+   TODO:
+
+-->
