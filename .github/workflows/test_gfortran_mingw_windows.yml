@@ -15,6 +15,9 @@ jobs:
           { msystem: MINGW64, arch: x86_64 },
           { msystem: MINGW32, arch: i686   }
         ]
+    env:
+      FC: gfortran
+      TZ: UTC+04:00
     defaults:
       run:
         shell: msys2 {0}

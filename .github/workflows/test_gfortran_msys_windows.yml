@@ -35,9 +35,15 @@ jobs:
       run: |
         gfortran --version
         fpm test --profile release -flag "-D _WIN32"
+      env:
+         FC: gfortran
+         TZ: UTC+04:00
 
     - name: Run tests and demo programs (release)
       shell: msys2 {0}
       run: |
         gfortran --version
         fpm test --profile release -flag "-D _WIN32"
+      env:
+         FC: gfortran
+         TZ: UTC+04:00
