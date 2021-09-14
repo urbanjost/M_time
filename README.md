@@ -1,7 +1,8 @@
 ### M_time.f90 and associated files
 ![pocketwatch](docs/images/M_time.3m_time.gif)
 [![Build FORD(1) docs](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/deploy_api_docs.yml)
-[![fpm test](https://github.com/urbanjost/M_time/actions/workflows/test.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test.yml)
+[![run fpm test on Ubunto, MacOS, MSWindows](https://github.com/urbanjost/M_time/actions/workflows/test.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test.yml)
+[![run fpm test on linux with intel](https://github.com/urbanjost/M_time/actions/workflows/test_intel.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_intel.yml)
 
 ## NAME
    M_time - Fortran module for manipulating and presenting time and date values
