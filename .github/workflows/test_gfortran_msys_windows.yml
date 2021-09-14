@@ -4,6 +4,8 @@ on: [push, pull_request]
 
 env:
   CTEST_TIME_TIMEOUT: "5"  # some failures hang forever
+  FC: gfortran
+  TZ: UTC+04:00
 
 jobs:
   gfortran-windows-msys2-mingw64:
@@ -32,10 +34,10 @@ jobs:
       shell: msys2 {0}
       run: |
         gfortran --version
-        fpm test
+        fpm test --profile release -flag "-D _WIN32"
 
     - name: Run tests and demo programs (release)
       shell: msys2 {0}
       run: |
         gfortran --version
-        fpm test --profile release
+        fpm test --profile release -flag "-D _WIN32"
