@@ -5,7 +5,7 @@ src_dir: src
          test
 output_dir: docs/fpm-ford
 project: M_time
-summary: interactive input editor
+summary: Fortran date and time manipulation and presentation
 project_github: https://github.com/urbanjost/M_time
 project_download:
 author: John S. Urban
