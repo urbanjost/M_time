@@ -10,7 +10,7 @@ new features, changes, and relevant notifications.
 + [![run fpm test on ubuntu with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_ubuntu.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_ubuntu.yml)
 + [![run fpm test on macos with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_macos.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_macos.yml)
 + [![run fpm test on windows with gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_windows.yml)
-+ [![run fpm test on windows with mingw and msys gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_mingw_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_mingw_windows.yml)
++ [![run fpm test on windows with mingw64 gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_mingw64_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_mingw64_windows.yml)
 + [![run fpm test on windows with msys gfortran](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_msys_windows.yml/badge.svg)](https://github.com/urbanjost/M_time/actions/workflows/test_gfortran_msys_windows.yml)
 
 ---
