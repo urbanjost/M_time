@@ -98,7 +98,7 @@ or just list it as a dependency in your fpm.toml project file.
      M_time        = { git = "https://github.com/urbanjost/M_time.git" }
 ```
 
-## SAMPLE PROGRAMS
+## DEMO PROGRAMS![demos](docs/images/demo.gif)
 
 Each man-page contains a small sample program that has been extracted
 and placed in the example/ directory.  The small example programs
@@ -243,12 +243,6 @@ procedures.
    + [Fortran Package Manager](https://github.com/fortran-lang/fpm) 
    + [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
    + [github actions](https://docs.github.com/en/actions)
-## RESPONSES
-
-Discussion is welcome here as well as at
- - [Fortran Discourse](https://fortran-lang.discourse.group)
- - [Fortran Wiki](http://fortranwiki.org)
- - [Google Fortran newsgroup](https://groups.google.com/forum/#!forum/comp.lang.fortran)
 <!--
    TODO:
 
