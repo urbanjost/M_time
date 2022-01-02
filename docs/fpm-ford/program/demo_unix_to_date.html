@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="interactive input editor">
+   <meta name="description" content="Fortran date and time manipulation and presentation">
     
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
@@ -393,28 +393,28 @@
     
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="highlight"><pre><span></span>            <span class="k">program </span><span class="n">demo_unix_to_date</span>
-            <span class="k">use </span><span class="n">M_time</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">unix_to_date</span><span class="p">,</span> <span class="n">u2d</span><span class="p">,</span> <span class="n">fmtdate</span><span class="p">,</span> <span class="n">realtime</span>
-            <span class="k">implicit none</span>
-<span class="k">            </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">unixtime</span>
-            <span class="c">! seconds in a day</span>
-            <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">DAY</span><span class="o">=</span><span class="mi">8640</span><span class="mf">0.0d0</span>
-            <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-            <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">ierr</span>
-               <span class="c">! sample Unix Epoch time</span>
-               <span class="n">unixtime</span><span class="o">=</span><span class="mi">146893903</span><span class="mf">8.4639933d0</span>
-               <span class="c">! create DAT array for today</span>
-               <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-               <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Sample Date=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-               <span class="c">! go back one day</span>
-               <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="o">-</span><span class="n">DAY</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-               <span class="c">! subtract day and print</span>
-               <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day Before =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-               <span class="c">! go forward one day</span>
-               <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="o">+</span><span class="n">DAY</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-               <span class="c">! add day print</span>
-               <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day After  =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-            <span class="k">end program </span><span class="n">demo_unix_to_date</span>
+    <div class="highlight"><pre><span></span>       <span class="k">program </span><span class="n">demo_unix_to_date</span>
+       <span class="k">use </span><span class="n">M_time</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">unix_to_date</span><span class="p">,</span> <span class="n">u2d</span><span class="p">,</span> <span class="n">fmtdate</span><span class="p">,</span> <span class="n">realtime</span>
+       <span class="k">implicit none</span>
+<span class="k">       </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">unixtime</span>
+       <span class="c">! seconds in a day</span>
+       <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">DAY</span><span class="o">=</span><span class="mi">8640</span><span class="mf">0.0d0</span>
+       <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+       <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">ierr</span>
+          <span class="c">! sample Unix Epoch time</span>
+          <span class="n">unixtime</span><span class="o">=</span><span class="mi">146893903</span><span class="mf">8.4639933d0</span>
+          <span class="c">! create DAT array for today</span>
+          <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Sample Date=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+          <span class="c">! go back one day</span>
+          <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="o">-</span><span class="n">DAY</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+          <span class="c">! subtract day and print</span>
+          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day Before =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+          <span class="c">! go forward one day</span>
+          <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="o">+</span><span class="n">DAY</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+          <span class="c">! add day print</span>
+          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day After  =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+       <span class="k">end program </span><span class="n">demo_unix_to_date</span>
 </pre></div>
 
     </section>
@@ -429,13 +429,13 @@
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-12 12:09  
+             on 2022-01-02 00:11  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

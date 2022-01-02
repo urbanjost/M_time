@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="interactive input editor">
+   <meta name="description" content="Fortran date and time manipulation and presentation">
     
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 6.1% of total for programs.">45 statements</a>
+    title=" 6.7% of total for programs.">51 statements</a>
      </li> 
      
      
@@ -439,45 +439,46 @@ subroutine <a href='../proc/main.html'>main</a>()
 <span class="k">contains</span>
 <span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="c">! @(#)help_usage(3f): prints help information</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>     <span class="kd">::</span> <span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">l_help</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span>                        <span class="kd">::</span> <span class="n">i</span>
+<span class="kt">logical</span>                        <span class="kd">::</span> <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span> <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="kd">::</span> <span class="p">&amp;</span>
-<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       today(1f) - [TIME] output current time for uses such as file suffixes.   &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       (LICENSE:PD)                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       today format|--help|--version|--options                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       Outputs the current date using the specified format. Typically used      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       to generate a string to be used in building filenames containing         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       date information.                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       format     any allowable format for the fmtdate(3) routine. Enter        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                  &quot;-&quot; to get a list on stdout. defaults to &quot;YMD&quot;.               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       --help     display this help and exit                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       --version  output version information and exit                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       --options  display allowed options for building a format                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;EXAMPLE                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       Sample commands:                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        cp myfile myfile.`today`                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        find . -ls &gt; MANIFEST.`today epoch`                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        mkdir `today YMDhms`                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        today yearmonthdayhourminutesecond                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        today --options                       # show formatting options         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;NAME                                                                                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       today(1f) - [TIME] output current time for uses such as file suffixes.                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       (LICENSE:PD)                                                                                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;SYNOPSIS                                                                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       today format|--help|--version|--options                                                                                  &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;DESCRIPTION                                                                                                                     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       Outputs the current date using the specified format. Typically used                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       to generate a string to be used in building filenames containing                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       date information.                                                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;OPTIONS                                                                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       format     any allowable format for the fmtdate(3) routine. Enter                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                  &quot;-&quot; to get a list on stdout. defaults to &quot;YMD&quot;.                                                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       --help     display this help and exit                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       --version  output version information and exit                                                                           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       --options  display allowed options for building a format                                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;EXAMPLE                                                                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       Sample commands:                                                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;        cp myfile myfile.`today`                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;        find . -ls &gt; MANIFEST.`today epoch`                                                                                     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;        mkdir `today YMDhms`                                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;        today yearmonthdayhourminutesecond                                                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;        today --options                       # show formatting options                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;AUTHOR                                                                                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   John S. Urban                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;LICENSE                                                                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Public Domain                                                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
    <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
-   <span class="k">stop</span> <span class="c">! if -help was specified, stop</span>
+   <span class="k">stop</span> <span class="c">! if --help was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_usage</span>
-<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">!&gt;</span>
 <span class="c">!!##NAME</span>
 <span class="c">!!        today(1f) - [TIME] output current time for uses such as file suffixes.</span>
@@ -510,10 +511,12 @@ subroutine <a href='../proc/main.html'>main</a>()
 <span class="c">!!    Public Domain</span>
 <span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="c">! @(#)help_version(3f): prints version information</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>     <span class="kd">::</span> <span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">l_version</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span>   <span class="kd">::</span> <span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span>                        <span class="kd">::</span> <span class="n">i</span>
+<span class="kt">logical</span>                        <span class="kd">::</span> <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span> <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="kd">::</span> <span class="p">&amp;</span>
 <span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
@@ -521,13 +524,12 @@ subroutine <a href='../proc/main.html'>main</a>()
 <span class="s1">&#39;@(#)DESCRIPTION:    output current time for uses such as file suffixes.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)VERSION:        1.0, 2009&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       Mon, Dec 28th, 2020 12:47:38 PM&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2022-01-02 00:08:15 UTC-300&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
-   <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="nb">kind</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
-   <span class="k">stop</span> <span class="c">! if -version was specified, stop</span>
+   <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+   <span class="k">stop</span> <span class="c">! if --version was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_version</span>
-<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">subroutine </span><span class="n">main</span><span class="p">()</span>
 <span class="k">use </span><span class="n">M_time</span><span class="p">,</span>    <span class="k">only</span> <span class="p">:</span> <span class="n">now</span><span class="p">,</span> <span class="n">fmtdate_usage</span>
 <span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">kracken</span><span class="p">,</span> <span class="n">lget</span><span class="p">,</span> <span class="n">sget</span>                    <span class="c">! add command-line parser module</span>
@@ -564,13 +566,13 @@ subroutine <a href='../proc/main.html'>main</a>()
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-12 12:09  
+             on 2022-01-02 00:11  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

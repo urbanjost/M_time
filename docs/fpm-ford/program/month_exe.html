@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="interactive input editor">
+   <meta name="description" content="Fortran date and time manipulation and presentation">
     
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 9.5% of total for programs.">70 statements</a>
+    title=" 9.9% of total for programs.">75 statements</a>
      </li> 
      
      
@@ -183,7 +183,7 @@
       
       <a class="list-group-item" href="../program/month_exe.html#variable-dat_values">dat_values</a>
       
-      <a class="list-group-item" href="../program/month_exe.html#variable-ident~5">ident</a>
+      <a class="list-group-item" href="../program/month_exe.html#variable-ident~14">ident</a>
       
       <a class="list-group-item" href="../program/month_exe.html#variable-month~6">month</a>
       
@@ -290,7 +290,7 @@
       
       <a class="list-group-item" href="../program/month_exe.html#variable-dat_values">dat_values</a>
       
-      <a class="list-group-item" href="../program/month_exe.html#variable-ident~5">ident</a>
+      <a class="list-group-item" href="../program/month_exe.html#variable-ident~14">ident</a>
       
       <a class="list-group-item" href="../program/month_exe.html#variable-month~6">month</a>
       
@@ -436,7 +436,7 @@
   
 <tr>
   
-  <td><span class="anchor" id="variable-ident~5"></span>character(len=*),</td>
+  <td><span class="anchor" id="variable-ident~14"></span>character(len=*),</td>
   
   
   <td>parameter</td><td>::</td>
@@ -632,7 +632,7 @@ subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)
    <span class="n">elseif</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">         </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">)</span>                              <span class="c">! check -oo option for a year value if did not find -year VALUE</span>
    <span class="k">endif</span>
-<span class="k">   write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;YEAR=&#39;</span><span class="p">,</span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+   <span class="c">!write(*,*)&#39;YEAR=&#39;,dat_values(1)</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
    <span class="n">cscr</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_month&#39;</span><span class="p">)</span>                                          <span class="c">! get month as string so can see if name or number or blank</span>
    <span class="k">if</span><span class="p">(</span><span class="n">cscr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
@@ -667,54 +667,55 @@ subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="c">! @(#)help_usage(3f): prints help information</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>     <span class="kd">::</span> <span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">l_help</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span>                        <span class="kd">::</span> <span class="n">i</span>
+<span class="kt">logical</span>                        <span class="kd">::</span> <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span> <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="kd">::</span> <span class="p">&amp;</span>
-<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month(1f) - [TIME] display a calendar                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month [[ -year] NNNN] [ -month NN|month_name]                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month(1) displays a simple calendar. If no arguments are specified,          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   the current year is displayed.                                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -month      Display single month output. The month is numeric (1-12)         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;               or a month name or blank. If blank the current month is assumed. &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -year NNNN  Select the year to display. A year starts on Jan 1st.            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -help       Display help text and exit.                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -version    Display version information and exit.                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      month -month 12                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;    December 2015                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;Mo Tu We Th Fr Sa Su                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;    1  2  3  4  5  6                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt; 7  8  9 10 11 12 13                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;14 15 16 17 18 19 20                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;21 22 23 24 25 26 27                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;28 29 30 31                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      month -month April # month names may be given instead of numbers          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;NAME                                                                                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   month(1f) - [TIME] display a calendar                                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   (LICENSE:PD)                                                                                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;SYNOPSIS                                                                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   month [[ -year] NNNN] [ -month NN|month_name]                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;DESCRIPTION                                                                                                                     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   month(1) displays a simple calendar. If no arguments are specified,                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   the current year is displayed.                                                                                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;OPTIONS                                                                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -month      Display single month output. The month is numeric (1-12)                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               or a month name or blank. If blank the current month is assumed.                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -year NNNN  Select the year to display. A year starts on Jan 1st.                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -help       Display help text and exit.                                                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -version    Display version information and exit.                                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;EXAMPLES                                                                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;      month -month 12                                                                                                           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;    December 2015                                                                                                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;Mo Tu We Th Fr Sa Su                                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;    1  2  3  4  5  6                                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt; 7  8  9 10 11 12 13                                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;14 15 16 17 18 19 20                                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;21 22 23 24 25 26 27                                                                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;28 29 30 31                                                                                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;      month -month April # month names may be given instead of numbers                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;AUTHOR                                                                                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   John S. Urban                                                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;LICENSE                                                                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Public Domain                                                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
    <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
-   <span class="k">stop</span> <span class="c">! if -help was specified, stop</span>
+   <span class="k">stop</span> <span class="c">! if --help was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_usage</span>
-<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">!&gt;</span>
 <span class="c">!!##NAME</span>
 <span class="c">!!    month(1f) - [TIME] display a calendar</span>
@@ -756,10 +757,12 @@ subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)
 <span class="c">!!    Public Domain</span>
 <span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="c">! @(#)help_version(3f): prints version information</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>     <span class="kd">::</span> <span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">l_version</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span>   <span class="kd">::</span> <span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span>                        <span class="kd">::</span> <span class="n">i</span>
+<span class="kt">logical</span>                        <span class="kd">::</span> <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span> <span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span> <span class="kd">::</span> <span class="p">&amp;</span>
 <span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
@@ -771,13 +774,12 @@ subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       Mon, Dec 28th, 2020 12:47:38 PM&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2022-01-02 00:08:15 UTC-300&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
-   <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="nb">kind</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
-   <span class="k">stop</span> <span class="c">! if -version was specified, stop</span>
+   <span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+   <span class="k">stop</span> <span class="c">! if --version was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_version</span>
-<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
@@ -796,13 +798,13 @@ subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-12 12:09  
+             on 2022-01-02 00:11  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
-   <meta name="description" content="interactive input editor">
+   <meta name="description" content="Fortran date and time manipulation and presentation">
     
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="22.2% of total for source files.">801 statements</a>
+    title="22.0% of total for source files.">801 statements</a>
      </li> 
      
      
@@ -395,7 +395,7 @@
 <a name="ln-128"></a>   <span class="n">maxlengthout</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">targetline</span><span class="p">)</span>                        <span class="c">! max length of output string</span>
 <a name="ln-129"></a>   <span class="n">original_input_length</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">targetline</span><span class="p">)</span>          <span class="c">! get non-blank length of input line</span>
 <a name="ln-130"></a>   <span class="n">dum1</span><span class="p">(:)</span><span class="o">=</span><span class="s1">&#39; &#39;</span>                                         <span class="c">! initialize string to build output in</span>
-<a name="ln-131"></a>   <span class="n">id</span><span class="o">=</span><span class="n">mr</span><span class="o">-</span><span class="n">ml</span>                                            <span class="c">! check for window option !! change to optional parameter(s)</span>
+<a name="ln-131"></a>   <span class="n">id</span><span class="o">=</span><span class="n">mr</span><span class="o">-</span><span class="n">ml</span>                                            <span class="c">! check for window option !x! change to optional parameter(s)</span>
 <a name="ln-132"></a><span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <a name="ln-133"></a>   <span class="n">len_old</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">old</span><span class="p">)</span>                                    <span class="c">! length of old substring to be replaced</span>
 <a name="ln-134"></a>   <span class="n">len_new</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>                                    <span class="c">! length of new substring to replace old substring</span>
@@ -1835,8 +1835,8 @@
 <a name="ln-1568"></a><span class="k">   if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">err</span><span class="p">))</span> <span class="k">then</span>
 <a name="ln-1569"></a><span class="k">      </span><span class="n">err</span><span class="o">=</span><span class="n">err_local</span>
 <a name="ln-1570"></a>   <span class="n">elseif</span><span class="p">(</span><span class="n">err_local</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1571"></a>      <span class="c">!! cannot currently do I/O from a function being called from I/O</span>
-<a name="ln-1572"></a>      <span class="c">!!write(ERROR_UNIT,&#39;(a)&#39;)&#39;*value_to_string* WARNING:[&#39;//trim(msg)//&#39;]&#39;</span>
+<a name="ln-1571"></a>      <span class="c">!x! cannot currently do I/O from a function being called from I/O</span>
+<a name="ln-1572"></a>      <span class="c">!x!write(ERROR_UNIT,&#39;(a)&#39;)&#39;*value_to_string* WARNING:[&#39;//trim(msg)//&#39;]&#39;</span>
 <a name="ln-1573"></a>      <span class="n">chars</span><span class="o">=</span><span class="n">chars</span><span class="o">//</span><span class="s1">&#39; *value_to_string* WARNING:[&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span>
 <a name="ln-1574"></a>   <span class="k">endif</span>
 <a name="ln-1575"></a>
@@ -1969,281 +1969,287 @@
 <a name="ln-1702"></a><span class="c">!!    Public Domain</span>
 <a name="ln-1703"></a><span class="c">!===================================================================================================================================</span>
 <a name="ln-1704"></a><span class="k">subroutine </span><span class="n">a2r</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-<a name="ln-1705"></a>
-<a name="ln-1706"></a><span class="c">!character(len=*),parameter::ident_40=&quot;@(#)M_strings::a2r(3fp): subroutine returns real value from string&quot;</span>
+<a name="ln-1705"></a><span class="c">!&gt;</span>
+<a name="ln-1706"></a><span class="c">!! subroutine returns real value from string</span>
 <a name="ln-1707"></a>
-<a name="ln-1708"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chars</span>                      <span class="c">! input string</span>
-<a name="ln-1709"></a><span class="kt">real</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">valu</span>                       <span class="c">! value read from input string</span>
-<a name="ln-1710"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">ierr</span>                       <span class="c">! error flag (0 == no error)</span>
-<a name="ln-1711"></a><span class="n">doubleprecision</span>             <span class="kd">::</span> <span class="n">valu8</span>
-<a name="ln-1712"></a>   <span class="n">valu8</span><span class="o">=</span><span class="mf">0.0d0</span>
-<a name="ln-1713"></a>   <span class="k">call </span><span class="n">a2d</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu8</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">onerr</span><span class="o">=</span><span class="mf">0.0d0</span><span class="p">)</span>
-<a name="ln-1714"></a>   <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1715"></a><span class="k">      if</span><span class="p">(</span><span class="n">valu8</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">))</span><span class="k">then</span>
-<a name="ln-1716"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="n">valu8</span><span class="p">)</span>
-<a name="ln-1717"></a>      <span class="k">else</span>
-<a name="ln-1718"></a>         <span class="c">!!call stderr(&#39;*a2r* - value too large&#39;,valu8,&#39;&gt;&#39;,huge(valu))</span>
-<a name="ln-1719"></a>         <span class="k">call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2r* - value too large&#39;</span><span class="p">)</span>
-<a name="ln-1720"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">)</span>
-<a name="ln-1721"></a>         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
-<a name="ln-1722"></a>      <span class="k">endif</span>
-<a name="ln-1723"></a><span class="k">   endif</span>
-<a name="ln-1724"></a><span class="k">end subroutine </span><span class="n">a2r</span>
-<a name="ln-1725"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
-<a name="ln-1726"></a><span class="k">subroutine </span><span class="n">a2i</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
-<a name="ln-1727"></a>
-<a name="ln-1728"></a><span class="c">!character(len=*),parameter::ident_41=&quot;@(#)M_strings::a2i(3fp): subroutine returns integer value from string&quot;</span>
-<a name="ln-1729"></a>
-<a name="ln-1730"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chars</span>                      <span class="c">! input string</span>
-<a name="ln-1731"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">valu</span>                       <span class="c">! value read from input string</span>
-<a name="ln-1732"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">ierr</span>                       <span class="c">! error flag (0 == no error)</span>
-<a name="ln-1733"></a><span class="n">doubleprecision</span>             <span class="kd">::</span> <span class="n">valu8</span>
-<a name="ln-1734"></a>   <span class="n">valu8</span><span class="o">=</span><span class="mf">0.0d0</span>
-<a name="ln-1735"></a>   <span class="k">call </span><span class="n">a2d</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu8</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">onerr</span><span class="o">=</span><span class="mf">0.0d0</span><span class="p">)</span>
-<a name="ln-1736"></a>   <span class="k">if</span><span class="p">(</span><span class="n">valu8</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">))</span><span class="k">then</span>
-<a name="ln-1737"></a><span class="k">      if</span><span class="p">(</span><span class="n">valu8</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">))</span><span class="k">then</span>
-<a name="ln-1738"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">valu8</span><span class="p">)</span>
-<a name="ln-1739"></a>      <span class="k">else</span>
-<a name="ln-1740"></a>         <span class="c">!!call stderr(&#39;sc&#39;,&#39;*a2i*&#39;,&#39;- value too large&#39;,valu8,&#39;&gt;&#39;,huge(valu))</span>
-<a name="ln-1741"></a>         <span class="k">call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2i* - value too large&#39;</span><span class="p">)</span>
-<a name="ln-1742"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">)</span>
-<a name="ln-1743"></a>         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
-<a name="ln-1744"></a>      <span class="k">endif</span>
-<a name="ln-1745"></a><span class="k">   endif</span>
-<a name="ln-1746"></a><span class="k">end subroutine </span><span class="n">a2i</span>
-<a name="ln-1747"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
-<a name="ln-1748"></a><span class="k">subroutine </span><span class="n">a2d</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">onerr</span><span class="p">)</span>
-<a name="ln-1749"></a>
-<a name="ln-1750"></a><span class="c">!character(len=*),parameter::ident_42=&quot;@(#)M_strings::a2d(3fp): subroutine returns double value from string&quot;</span>
-<a name="ln-1751"></a>
-<a name="ln-1752"></a><span class="c">!     1989,2016 John S. Urban.</span>
-<a name="ln-1753"></a><span class="c">!</span>
-<a name="ln-1754"></a><span class="c">!  o  works with any g-format input, including integer, real, and exponential.</span>
-<a name="ln-1755"></a><span class="c">!  o  if an error occurs in the read, iostat is returned in ierr and value is set to zero.  if no error occurs, ierr=0.</span>
-<a name="ln-1756"></a><span class="c">!  o  if the string happens to be &#39;eod&#39; no error message is produced so this string may be used to act as an end-of-data.</span>
-<a name="ln-1757"></a><span class="c">!     IERR will still be non-zero in this case.</span>
-<a name="ln-1758"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
-<a name="ln-1759"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">chars</span>                        <span class="c">! input string</span>
-<a name="ln-1760"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">local_chars</span>
-<a name="ln-1761"></a><span class="n">doubleprecision</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">valu</span>                         <span class="c">! value read from input string</span>
-<a name="ln-1762"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">ierr</span>                         <span class="c">! error flag (0 == no error)</span>
-<a name="ln-1763"></a><span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">optional</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">onerr</span>
+<a name="ln-1708"></a><span class="c">!character(len=*),parameter::ident_40=&quot;@(#)M_strings::a2r(3fp): subroutine returns real value from string&quot;</span>
+<a name="ln-1709"></a>
+<a name="ln-1710"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chars</span>                      <span class="c">! input string</span>
+<a name="ln-1711"></a><span class="kt">real</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">valu</span>                       <span class="c">! value read from input string</span>
+<a name="ln-1712"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">ierr</span>                       <span class="c">! error flag (0 == no error)</span>
+<a name="ln-1713"></a><span class="n">doubleprecision</span>             <span class="kd">::</span> <span class="n">valu8</span>
+<a name="ln-1714"></a>   <span class="n">valu8</span><span class="o">=</span><span class="mf">0.0d0</span>
+<a name="ln-1715"></a>   <span class="k">call </span><span class="n">a2d</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu8</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">onerr</span><span class="o">=</span><span class="mf">0.0d0</span><span class="p">)</span>
+<a name="ln-1716"></a>   <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<a name="ln-1717"></a><span class="k">      if</span><span class="p">(</span><span class="n">valu8</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">))</span><span class="k">then</span>
+<a name="ln-1718"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="n">valu8</span><span class="p">)</span>
+<a name="ln-1719"></a>      <span class="k">else</span>
+<a name="ln-1720"></a>         <span class="c">!x!call stderr(&#39;*a2r* - value too large&#39;,valu8,&#39;&gt;&#39;,huge(valu))</span>
+<a name="ln-1721"></a>         <span class="k">call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2r* - value too large&#39;</span><span class="p">)</span>
+<a name="ln-1722"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">)</span>
+<a name="ln-1723"></a>         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
+<a name="ln-1724"></a>      <span class="k">endif</span>
+<a name="ln-1725"></a><span class="k">   endif</span>
+<a name="ln-1726"></a><span class="k">end subroutine </span><span class="n">a2r</span>
+<a name="ln-1727"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
+<a name="ln-1728"></a><span class="k">subroutine </span><span class="n">a2i</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<a name="ln-1729"></a><span class="c">!&gt;</span>
+<a name="ln-1730"></a><span class="c">!! subroutine returns integer value from string</span>
+<a name="ln-1731"></a>
+<a name="ln-1732"></a><span class="c">!character(len=*),parameter::ident_41=&quot;@(#)M_strings::a2i(3fp): subroutine returns integer value from string&quot;</span>
+<a name="ln-1733"></a>
+<a name="ln-1734"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">chars</span>                      <span class="c">! input string</span>
+<a name="ln-1735"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">valu</span>                       <span class="c">! value read from input string</span>
+<a name="ln-1736"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">ierr</span>                       <span class="c">! error flag (0 == no error)</span>
+<a name="ln-1737"></a><span class="n">doubleprecision</span>             <span class="kd">::</span> <span class="n">valu8</span>
+<a name="ln-1738"></a>   <span class="n">valu8</span><span class="o">=</span><span class="mf">0.0d0</span>
+<a name="ln-1739"></a>   <span class="k">call </span><span class="n">a2d</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu8</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">onerr</span><span class="o">=</span><span class="mf">0.0d0</span><span class="p">)</span>
+<a name="ln-1740"></a>   <span class="k">if</span><span class="p">(</span><span class="n">valu8</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">))</span><span class="k">then</span>
+<a name="ln-1741"></a><span class="k">      if</span><span class="p">(</span><span class="n">valu8</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">))</span><span class="k">then</span>
+<a name="ln-1742"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">valu8</span><span class="p">)</span>
+<a name="ln-1743"></a>      <span class="k">else</span>
+<a name="ln-1744"></a>         <span class="c">!x!call stderr(&#39;sc&#39;,&#39;*a2i*&#39;,&#39;- value too large&#39;,valu8,&#39;&gt;&#39;,huge(valu))</span>
+<a name="ln-1745"></a>         <span class="k">call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2i* - value too large&#39;</span><span class="p">)</span>
+<a name="ln-1746"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">huge</span><span class="p">(</span><span class="n">valu</span><span class="p">)</span>
+<a name="ln-1747"></a>         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
+<a name="ln-1748"></a>      <span class="k">endif</span>
+<a name="ln-1749"></a><span class="k">   endif</span>
+<a name="ln-1750"></a><span class="k">end subroutine </span><span class="n">a2i</span>
+<a name="ln-1751"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
+<a name="ln-1752"></a><span class="k">subroutine </span><span class="n">a2d</span><span class="p">(</span><span class="n">chars</span><span class="p">,</span><span class="n">valu</span><span class="p">,</span><span class="n">ierr</span><span class="p">,</span><span class="n">onerr</span><span class="p">)</span>
+<a name="ln-1753"></a><span class="c">!&gt;</span>
+<a name="ln-1754"></a><span class="c">!! subroutine returns doubleprecision value from string</span>
+<a name="ln-1755"></a>
+<a name="ln-1756"></a><span class="c">!character(len=*),parameter::ident_42=&quot;@(#)M_strings::a2d(3fp): subroutine returns double value from string&quot;</span>
+<a name="ln-1757"></a>
+<a name="ln-1758"></a><span class="c">!     1989,2016 John S. Urban.</span>
+<a name="ln-1759"></a><span class="c">!</span>
+<a name="ln-1760"></a><span class="c">!  o  works with any g-format input, including integer, real, and exponential.</span>
+<a name="ln-1761"></a><span class="c">!  o  if an error occurs in the read, iostat is returned in ierr and value is set to zero.  if no error occurs, ierr=0.</span>
+<a name="ln-1762"></a><span class="c">!  o  if the string happens to be &#39;eod&#39; no error message is produced so this string may be used to act as an end-of-data.</span>
+<a name="ln-1763"></a><span class="c">!     IERR will still be non-zero in this case.</span>
 <a name="ln-1764"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
-<a name="ln-1765"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>   <span class="kd">::</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;(&#39;(bn,g&#39;,i5,&#39;.0)&#39;)&quot;</span>     <span class="c">! format used to build frmt</span>
-<a name="ln-1766"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">frmt</span>                         <span class="c">! holds format built to read input string</span>
-<a name="ln-1767"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">msg</span>                          <span class="c">! hold message from I/O errors</span>
-<a name="ln-1768"></a><span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">intg</span>
-<a name="ln-1769"></a><span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">pnd</span>
-<a name="ln-1770"></a><span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">basevalue</span><span class="p">,</span> <span class="n">ivalu</span>
-<a name="ln-1771"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span><span class="k">save</span>        <span class="kd">::</span> <span class="n">nan_string</span><span class="o">=</span><span class="s1">&#39;NaN&#39;</span>
-<a name="ln-1772"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
-<a name="ln-1773"></a>   <span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>                                                       <span class="c">! initialize error flag to zero</span>
-<a name="ln-1774"></a>   <span class="n">local_chars</span><span class="o">=</span><span class="n">chars</span>
-<a name="ln-1775"></a>   <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-<a name="ln-1776"></a>   <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="n">local_chars</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
-<a name="ln-1777"></a>   <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">local_chars</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>                          <span class="c">! remove any comma characters</span>
-<a name="ln-1778"></a>   <span class="n">pnd</span><span class="o">=</span><span class="nb">scan</span><span class="p">(</span><span class="n">local_chars</span><span class="p">,</span><span class="s1">&#39;#:&#39;</span><span class="p">)</span>
-<a name="ln-1779"></a>   <span class="k">if</span><span class="p">(</span><span class="n">pnd</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1780"></a><span class="k">      write</span><span class="p">(</span><span class="n">frmt</span><span class="p">,</span><span class="n">fmt</span><span class="p">)</span><span class="n">pnd</span><span class="o">-</span><span class="mi">1</span>                                      <span class="c">! build format of form &#39;(BN,Gn.0)&#39;</span>
-<a name="ln-1781"></a>      <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(:</span><span class="n">pnd</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">fmt</span><span class="o">=</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">basevalue</span>   <span class="c">! try to read value from string</span>
-<a name="ln-1782"></a>      <span class="k">if</span><span class="p">(</span><span class="n">decodebase</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="n">pnd</span><span class="o">+</span><span class="mi">1</span><span class="p">:),</span><span class="n">basevalue</span><span class="p">,</span><span class="n">ivalu</span><span class="p">))</span><span class="k">then</span>
-<a name="ln-1783"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="n">ivalu</span><span class="p">,</span><span class="nb">kind</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">))</span>
-<a name="ln-1784"></a>      <span class="k">else</span>
-<a name="ln-1785"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="mf">0.0d0</span>
-<a name="ln-1786"></a>         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
-<a name="ln-1787"></a>      <span class="k">endif</span>
-<a name="ln-1788"></a><span class="k">   else</span>
-<a name="ln-1789"></a><span class="k">      select case</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-1790"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>                                     <span class="c">! assume hexadecimal</span>
-<a name="ln-1791"></a>         <span class="n">frmt</span><span class="o">=</span><span class="s1">&#39;(Z&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
-<a name="ln-1792"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">2</span><span class="p">:),</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">intg</span>
-<a name="ln-1793"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">intg</span><span class="p">)</span>
-<a name="ln-1794"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>                                             <span class="c">! assume binary (base 2)</span>
-<a name="ln-1795"></a>         <span class="n">frmt</span><span class="o">=</span><span class="s1">&#39;(B&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
-<a name="ln-1796"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">2</span><span class="p">:),</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">intg</span>
-<a name="ln-1797"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">intg</span><span class="p">)</span>
-<a name="ln-1798"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">)</span>                                             <span class="c">! assume octal</span>
-<a name="ln-1799"></a>         <span class="n">frmt</span><span class="o">=</span><span class="s1">&#39;(O&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
-<a name="ln-1800"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">2</span><span class="p">:),</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">intg</span>
-<a name="ln-1801"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">intg</span><span class="p">)</span>
-<a name="ln-1802"></a>      <span class="k">case </span><span class="n">default</span>
-<a name="ln-1803"></a>         <span class="k">write</span><span class="p">(</span><span class="n">frmt</span><span class="p">,</span><span class="n">fmt</span><span class="p">)</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">)</span>                        <span class="c">! build format of form &#39;(BN,Gn.0)&#39;</span>
-<a name="ln-1804"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">valu</span>   <span class="c">! try to read value from string</span>
-<a name="ln-1805"></a>      <span class="k">end select</span>
-<a name="ln-1806"></a><span class="k">   endif</span>
-<a name="ln-1807"></a><span class="k">   if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                                            <span class="c">! if an error occurred ierr will be non-zero.</span>
-<a name="ln-1808"></a>      <span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">onerr</span><span class="p">))</span><span class="k">then</span>
-<a name="ln-1809"></a><span class="k">         select type</span><span class="p">(</span><span class="n">onerr</span><span class="p">)</span>
-<a name="ln-1810"></a>         <span class="k">type is</span> <span class="p">(</span><span class="kt">integer</span><span class="p">)</span>
-<a name="ln-1811"></a>            <span class="n">valu</span><span class="o">=</span><span class="n">onerr</span>
-<a name="ln-1812"></a>         <span class="k">type is</span> <span class="p">(</span><span class="kt">real</span><span class="p">)</span>
-<a name="ln-1813"></a>            <span class="n">valu</span><span class="o">=</span><span class="n">onerr</span>
-<a name="ln-1814"></a>         <span class="k">type is</span> <span class="p">(</span><span class="n">doubleprecision</span><span class="p">)</span>
-<a name="ln-1815"></a>            <span class="n">valu</span><span class="o">=</span><span class="n">onerr</span>
-<a name="ln-1816"></a>         <span class="k">end select</span>
-<a name="ln-1817"></a><span class="k">      else</span>                                                      <span class="c">! set return value to NaN</span>
-<a name="ln-1818"></a>         <span class="k">read</span><span class="p">(</span><span class="n">nan_string</span><span class="p">,</span><span class="s1">&#39;(g3.3)&#39;</span><span class="p">)</span><span class="n">valu</span>
-<a name="ln-1819"></a>      <span class="k">endif</span>
-<a name="ln-1820"></a><span class="k">      if</span><span class="p">(</span><span class="n">local_chars</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;eod&#39;</span><span class="p">)</span><span class="k">then</span>                           <span class="c">! print warning message except for special value &quot;eod&quot;</span>
-<a name="ln-1821"></a>         <span class="k">call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2d* - cannot produce number from string [&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
-<a name="ln-1822"></a>         <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1823"></a><span class="k">            call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2d* - [&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
-<a name="ln-1824"></a>         <span class="k">endif</span>
-<a name="ln-1825"></a><span class="k">      endif</span>
-<a name="ln-1826"></a><span class="k">   endif</span>
-<a name="ln-1827"></a><span class="k">end subroutine </span><span class="n">a2d</span>
-<a name="ln-1828"></a><span class="c">!===================================================================================================================================</span>
-<a name="ln-1829"></a><span class="c">!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!</span>
-<a name="ln-1830"></a><span class="c">!===================================================================================================================================</span>
-<a name="ln-1831"></a><span class="c">!&gt;</span>
-<a name="ln-1832"></a><span class="c">!!##NAME</span>
-<a name="ln-1833"></a><span class="c">!!</span>
-<a name="ln-1834"></a><span class="c">!!   decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number</span>
-<a name="ln-1835"></a><span class="c">!!   (LICENSE:PD)</span>
-<a name="ln-1836"></a><span class="c">!!</span>
-<a name="ln-1837"></a><span class="c">!!##SYNOPSIS</span>
-<a name="ln-1838"></a><span class="c">!!</span>
-<a name="ln-1839"></a><span class="c">!!    logical function decodebase(string,basein,out10)</span>
-<a name="ln-1840"></a><span class="c">!!</span>
-<a name="ln-1841"></a><span class="c">!!     character(len=*),intent(in)  :: string</span>
-<a name="ln-1842"></a><span class="c">!!     integer,intent(in)           :: basein</span>
-<a name="ln-1843"></a><span class="c">!!     integer,intent(out)          :: out10</span>
-<a name="ln-1844"></a><span class="c">!!##DESCRIPTION</span>
-<a name="ln-1845"></a><span class="c">!!</span>
-<a name="ln-1846"></a><span class="c">!!   Convert a numeric string representing a whole number in base BASEIN</span>
-<a name="ln-1847"></a><span class="c">!!   to base 10. The function returns FALSE if BASEIN is not in the range</span>
-<a name="ln-1848"></a><span class="c">!!   [2..36] or if string STRING contains invalid characters in base BASEIN</span>
-<a name="ln-1849"></a><span class="c">!!   or if result OUT10 is too big</span>
-<a name="ln-1850"></a><span class="c">!!</span>
-<a name="ln-1851"></a><span class="c">!!   The letters A,B,...,Z represent 10,11,...,36 in the base &gt; 10.</span>
-<a name="ln-1852"></a><span class="c">!!</span>
-<a name="ln-1853"></a><span class="c">!!##OPTIONS</span>
-<a name="ln-1854"></a><span class="c">!!    string   input string. It represents a whole number in</span>
-<a name="ln-1855"></a><span class="c">!!             the base specified by BASEIN unless BASEIN is set</span>
-<a name="ln-1856"></a><span class="c">!!             to zero. When BASEIN is zero STRING is assumed to</span>
-<a name="ln-1857"></a><span class="c">!!             be of the form BASE#VALUE where BASE represents</span>
-<a name="ln-1858"></a><span class="c">!!             the function normally provided by BASEIN.</span>
-<a name="ln-1859"></a><span class="c">!!    basein   base of input string; either 0 or from 2 to 36.</span>
-<a name="ln-1860"></a><span class="c">!!    out10    output value in base 10</span>
-<a name="ln-1861"></a><span class="c">!!</span>
-<a name="ln-1862"></a><span class="c">!!##EXAMPLE</span>
-<a name="ln-1863"></a><span class="c">!!</span>
-<a name="ln-1864"></a><span class="c">!!    Sample program:</span>
-<a name="ln-1865"></a><span class="c">!!</span>
-<a name="ln-1866"></a><span class="c">!!     program demo_decodebase</span>
-<a name="ln-1867"></a><span class="c">!!     use M_strings, only : codebase, decodebase</span>
-<a name="ln-1868"></a><span class="c">!!     implicit none</span>
-<a name="ln-1869"></a><span class="c">!!     integer           :: ba,bd</span>
-<a name="ln-1870"></a><span class="c">!!     character(len=40) :: x,y</span>
-<a name="ln-1871"></a><span class="c">!!     integer           :: r</span>
-<a name="ln-1872"></a><span class="c">!!</span>
-<a name="ln-1873"></a><span class="c">!!     print *,&#39; BASE CONVERSION&#39;</span>
-<a name="ln-1874"></a><span class="c">!!     write(*,&#39;(&quot;Start   Base (2 to 36): &quot;)&#39;,advance=&#39;no&#39;); read *, bd</span>
-<a name="ln-1875"></a><span class="c">!!     write(*,&#39;(&quot;Arrival Base (2 to 36): &quot;)&#39;,advance=&#39;no&#39;); read *, ba</span>
-<a name="ln-1876"></a><span class="c">!!     INFINITE: do</span>
-<a name="ln-1877"></a><span class="c">!!        print *,&#39;&#39;</span>
-<a name="ln-1878"></a><span class="c">!!        write(*,&#39;(&quot;Enter number in start base: &quot;)&#39;,advance=&#39;no&#39;); read *, x</span>
-<a name="ln-1879"></a><span class="c">!!        if(x.eq.&#39;0&#39;) exit INFINITE</span>
-<a name="ln-1880"></a><span class="c">!!        if(decodebase(x,bd,r)) then</span>
-<a name="ln-1881"></a><span class="c">!!           if(codebase(r,ba,y)) then</span>
-<a name="ln-1882"></a><span class="c">!!             write(*,&#39;(&quot;In base &quot;,I2,&quot;: &quot;,A20)&#39;)  ba, y</span>
-<a name="ln-1883"></a><span class="c">!!           else</span>
-<a name="ln-1884"></a><span class="c">!!             print *,&#39;Error in coding number.&#39;</span>
-<a name="ln-1885"></a><span class="c">!!           endif</span>
-<a name="ln-1886"></a><span class="c">!!        else</span>
-<a name="ln-1887"></a><span class="c">!!           print *,&#39;Error in decoding number.&#39;</span>
-<a name="ln-1888"></a><span class="c">!!        endif</span>
-<a name="ln-1889"></a><span class="c">!!     enddo INFINITE</span>
-<a name="ln-1890"></a><span class="c">!!</span>
-<a name="ln-1891"></a><span class="c">!!     end program demo_decodebase</span>
-<a name="ln-1892"></a><span class="c">!!</span>
-<a name="ln-1893"></a><span class="c">!!##AUTHOR</span>
-<a name="ln-1894"></a><span class="c">!!    John S. Urban</span>
-<a name="ln-1895"></a><span class="c">!!</span>
-<a name="ln-1896"></a><span class="c">!!       Ref.: &quot;Math matiques en Turbo-Pascal by</span>
-<a name="ln-1897"></a><span class="c">!!              M. Ducamp and A. Reverchon (2),</span>
-<a name="ln-1898"></a><span class="c">!!              Eyrolles, Paris, 1988&quot;.</span>
-<a name="ln-1899"></a><span class="c">!!</span>
-<a name="ln-1900"></a><span class="c">!!    based on a F90 Version By J-P Moreau (www.jpmoreau.fr)</span>
+<a name="ln-1765"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">chars</span>                        <span class="c">! input string</span>
+<a name="ln-1766"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">local_chars</span>
+<a name="ln-1767"></a><span class="n">doubleprecision</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">valu</span>                         <span class="c">! value read from input string</span>
+<a name="ln-1768"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">ierr</span>                         <span class="c">! error flag (0 == no error)</span>
+<a name="ln-1769"></a><span class="k">class</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="k">optional</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">onerr</span>
+<a name="ln-1770"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
+<a name="ln-1771"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>   <span class="kd">::</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;(&#39;(bn,g&#39;,i5,&#39;.0)&#39;)&quot;</span>     <span class="c">! format used to build frmt</span>
+<a name="ln-1772"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>            <span class="kd">::</span> <span class="n">frmt</span>                         <span class="c">! holds format built to read input string</span>
+<a name="ln-1773"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">msg</span>                          <span class="c">! hold message from I/O errors</span>
+<a name="ln-1774"></a><span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">intg</span>
+<a name="ln-1775"></a><span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">pnd</span>
+<a name="ln-1776"></a><span class="kt">integer</span>                      <span class="kd">::</span> <span class="n">basevalue</span><span class="p">,</span> <span class="n">ivalu</span>
+<a name="ln-1777"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span><span class="k">save</span>        <span class="kd">::</span> <span class="n">nan_string</span><span class="o">=</span><span class="s1">&#39;NaN&#39;</span>
+<a name="ln-1778"></a><span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
+<a name="ln-1779"></a>   <span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>                                                       <span class="c">! initialize error flag to zero</span>
+<a name="ln-1780"></a>   <span class="n">local_chars</span><span class="o">=</span><span class="n">chars</span>
+<a name="ln-1781"></a>   <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<a name="ln-1782"></a>   <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="n">local_chars</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
+<a name="ln-1783"></a>   <span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">local_chars</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>                          <span class="c">! remove any comma characters</span>
+<a name="ln-1784"></a>   <span class="n">pnd</span><span class="o">=</span><span class="nb">scan</span><span class="p">(</span><span class="n">local_chars</span><span class="p">,</span><span class="s1">&#39;#:&#39;</span><span class="p">)</span>
+<a name="ln-1785"></a>   <span class="k">if</span><span class="p">(</span><span class="n">pnd</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<a name="ln-1786"></a><span class="k">      write</span><span class="p">(</span><span class="n">frmt</span><span class="p">,</span><span class="n">fmt</span><span class="p">)</span><span class="n">pnd</span><span class="o">-</span><span class="mi">1</span>                                      <span class="c">! build format of form &#39;(BN,Gn.0)&#39;</span>
+<a name="ln-1787"></a>      <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(:</span><span class="n">pnd</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">fmt</span><span class="o">=</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">basevalue</span>   <span class="c">! try to read value from string</span>
+<a name="ln-1788"></a>      <span class="k">if</span><span class="p">(</span><span class="n">decodebase</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="n">pnd</span><span class="o">+</span><span class="mi">1</span><span class="p">:),</span><span class="n">basevalue</span><span class="p">,</span><span class="n">ivalu</span><span class="p">))</span><span class="k">then</span>
+<a name="ln-1789"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="n">ivalu</span><span class="p">,</span><span class="nb">kind</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">))</span>
+<a name="ln-1790"></a>      <span class="k">else</span>
+<a name="ln-1791"></a><span class="k">         </span><span class="n">valu</span><span class="o">=</span><span class="mf">0.0d0</span>
+<a name="ln-1792"></a>         <span class="n">ierr</span><span class="o">=-</span><span class="mi">1</span>
+<a name="ln-1793"></a>      <span class="k">endif</span>
+<a name="ln-1794"></a><span class="k">   else</span>
+<a name="ln-1795"></a><span class="k">      select case</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-1796"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">,</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>                                     <span class="c">! assume hexadecimal</span>
+<a name="ln-1797"></a>         <span class="n">frmt</span><span class="o">=</span><span class="s1">&#39;(Z&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
+<a name="ln-1798"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">2</span><span class="p">:),</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">intg</span>
+<a name="ln-1799"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">intg</span><span class="p">)</span>
+<a name="ln-1800"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>                                             <span class="c">! assume binary (base 2)</span>
+<a name="ln-1801"></a>         <span class="n">frmt</span><span class="o">=</span><span class="s1">&#39;(B&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
+<a name="ln-1802"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">2</span><span class="p">:),</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">intg</span>
+<a name="ln-1803"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">intg</span><span class="p">)</span>
+<a name="ln-1804"></a>      <span class="k">case</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="s1">&#39;O&#39;</span><span class="p">)</span>                                             <span class="c">! assume octal</span>
+<a name="ln-1805"></a>         <span class="n">frmt</span><span class="o">=</span><span class="s1">&#39;(O&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">))</span><span class="o">//</span><span class="s1">&#39;)&#39;</span>
+<a name="ln-1806"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">(</span><span class="mi">2</span><span class="p">:),</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">intg</span>
+<a name="ln-1807"></a>         <span class="n">valu</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">intg</span><span class="p">)</span>
+<a name="ln-1808"></a>      <span class="k">case </span><span class="n">default</span>
+<a name="ln-1809"></a>         <span class="k">write</span><span class="p">(</span><span class="n">frmt</span><span class="p">,</span><span class="n">fmt</span><span class="p">)</span><span class="nb">len</span><span class="p">(</span><span class="n">local_chars</span><span class="p">)</span>                        <span class="c">! build format of form &#39;(BN,Gn.0)&#39;</span>
+<a name="ln-1810"></a>         <span class="k">read</span><span class="p">(</span><span class="n">local_chars</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="n">frmt</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ierr</span><span class="p">,</span><span class="n">iomsg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span><span class="n">valu</span>   <span class="c">! try to read value from string</span>
+<a name="ln-1811"></a>      <span class="k">end select</span>
+<a name="ln-1812"></a><span class="k">   endif</span>
+<a name="ln-1813"></a><span class="k">   if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                                            <span class="c">! if an error occurred ierr will be non-zero.</span>
+<a name="ln-1814"></a>      <span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">onerr</span><span class="p">))</span><span class="k">then</span>
+<a name="ln-1815"></a><span class="k">         select type</span><span class="p">(</span><span class="n">onerr</span><span class="p">)</span>
+<a name="ln-1816"></a>         <span class="k">type is</span> <span class="p">(</span><span class="kt">integer</span><span class="p">)</span>
+<a name="ln-1817"></a>            <span class="n">valu</span><span class="o">=</span><span class="n">onerr</span>
+<a name="ln-1818"></a>         <span class="k">type is</span> <span class="p">(</span><span class="kt">real</span><span class="p">)</span>
+<a name="ln-1819"></a>            <span class="n">valu</span><span class="o">=</span><span class="n">onerr</span>
+<a name="ln-1820"></a>         <span class="k">type is</span> <span class="p">(</span><span class="n">doubleprecision</span><span class="p">)</span>
+<a name="ln-1821"></a>            <span class="n">valu</span><span class="o">=</span><span class="n">onerr</span>
+<a name="ln-1822"></a>         <span class="k">end select</span>
+<a name="ln-1823"></a><span class="k">      else</span>                                                      <span class="c">! set return value to NaN</span>
+<a name="ln-1824"></a>         <span class="k">read</span><span class="p">(</span><span class="n">nan_string</span><span class="p">,</span><span class="s1">&#39;(g3.3)&#39;</span><span class="p">)</span><span class="n">valu</span>
+<a name="ln-1825"></a>      <span class="k">endif</span>
+<a name="ln-1826"></a><span class="k">      if</span><span class="p">(</span><span class="n">local_chars</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;eod&#39;</span><span class="p">)</span><span class="k">then</span>                           <span class="c">! print warning message except for special value &quot;eod&quot;</span>
+<a name="ln-1827"></a>         <span class="k">call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2d* - cannot produce number from string [&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+<a name="ln-1828"></a>         <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
+<a name="ln-1829"></a><span class="k">            call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*a2d* - [&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+<a name="ln-1830"></a>         <span class="k">endif</span>
+<a name="ln-1831"></a><span class="k">      endif</span>
+<a name="ln-1832"></a><span class="k">   endif</span>
+<a name="ln-1833"></a><span class="k">end subroutine </span><span class="n">a2d</span>
+<a name="ln-1834"></a><span class="c">!===================================================================================================================================</span>
+<a name="ln-1835"></a><span class="c">!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!</span>
+<a name="ln-1836"></a><span class="c">!===================================================================================================================================</span>
+<a name="ln-1837"></a><span class="c">!&gt;</span>
+<a name="ln-1838"></a><span class="c">!!##NAME</span>
+<a name="ln-1839"></a><span class="c">!!</span>
+<a name="ln-1840"></a><span class="c">!!   decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number</span>
+<a name="ln-1841"></a><span class="c">!!   (LICENSE:PD)</span>
+<a name="ln-1842"></a><span class="c">!!</span>
+<a name="ln-1843"></a><span class="c">!!##SYNOPSIS</span>
+<a name="ln-1844"></a><span class="c">!!</span>
+<a name="ln-1845"></a><span class="c">!!    logical function decodebase(string,basein,out10)</span>
+<a name="ln-1846"></a><span class="c">!!</span>
+<a name="ln-1847"></a><span class="c">!!     character(len=*),intent(in)  :: string</span>
+<a name="ln-1848"></a><span class="c">!!     integer,intent(in)           :: basein</span>
+<a name="ln-1849"></a><span class="c">!!     integer,intent(out)          :: out10</span>
+<a name="ln-1850"></a><span class="c">!!##DESCRIPTION</span>
+<a name="ln-1851"></a><span class="c">!!</span>
+<a name="ln-1852"></a><span class="c">!!   Convert a numeric string representing a whole number in base BASEIN</span>
+<a name="ln-1853"></a><span class="c">!!   to base 10. The function returns FALSE if BASEIN is not in the range</span>
+<a name="ln-1854"></a><span class="c">!!   [2..36] or if string STRING contains invalid characters in base BASEIN</span>
+<a name="ln-1855"></a><span class="c">!!   or if result OUT10 is too big</span>
+<a name="ln-1856"></a><span class="c">!!</span>
+<a name="ln-1857"></a><span class="c">!!   The letters A,B,...,Z represent 10,11,...,36 in the base &gt; 10.</span>
+<a name="ln-1858"></a><span class="c">!!</span>
+<a name="ln-1859"></a><span class="c">!!##OPTIONS</span>
+<a name="ln-1860"></a><span class="c">!!    string   input string. It represents a whole number in</span>
+<a name="ln-1861"></a><span class="c">!!             the base specified by BASEIN unless BASEIN is set</span>
+<a name="ln-1862"></a><span class="c">!!             to zero. When BASEIN is zero STRING is assumed to</span>
+<a name="ln-1863"></a><span class="c">!!             be of the form BASE#VALUE where BASE represents</span>
+<a name="ln-1864"></a><span class="c">!!             the function normally provided by BASEIN.</span>
+<a name="ln-1865"></a><span class="c">!!    basein   base of input string; either 0 or from 2 to 36.</span>
+<a name="ln-1866"></a><span class="c">!!    out10    output value in base 10</span>
+<a name="ln-1867"></a><span class="c">!!</span>
+<a name="ln-1868"></a><span class="c">!!##EXAMPLE</span>
+<a name="ln-1869"></a><span class="c">!!</span>
+<a name="ln-1870"></a><span class="c">!!    Sample program:</span>
+<a name="ln-1871"></a><span class="c">!!</span>
+<a name="ln-1872"></a><span class="c">!!     program demo_decodebase</span>
+<a name="ln-1873"></a><span class="c">!!     use M_strings, only : codebase, decodebase</span>
+<a name="ln-1874"></a><span class="c">!!     implicit none</span>
+<a name="ln-1875"></a><span class="c">!!     integer           :: ba,bd</span>
+<a name="ln-1876"></a><span class="c">!!     character(len=40) :: x,y</span>
+<a name="ln-1877"></a><span class="c">!!     integer           :: r</span>
+<a name="ln-1878"></a><span class="c">!!</span>
+<a name="ln-1879"></a><span class="c">!!     print *,&#39; BASE CONVERSION&#39;</span>
+<a name="ln-1880"></a><span class="c">!!     write(*,&#39;(&quot;Start   Base (2 to 36): &quot;)&#39;,advance=&#39;no&#39;); read *, bd</span>
+<a name="ln-1881"></a><span class="c">!!     write(*,&#39;(&quot;Arrival Base (2 to 36): &quot;)&#39;,advance=&#39;no&#39;); read *, ba</span>
+<a name="ln-1882"></a><span class="c">!!     INFINITE: do</span>
+<a name="ln-1883"></a><span class="c">!!        print *,&#39;&#39;</span>
+<a name="ln-1884"></a><span class="c">!!        write(*,&#39;(&quot;Enter number in start base: &quot;)&#39;,advance=&#39;no&#39;); read *, x</span>
+<a name="ln-1885"></a><span class="c">!!        if(x.eq.&#39;0&#39;) exit INFINITE</span>
+<a name="ln-1886"></a><span class="c">!!        if(decodebase(x,bd,r)) then</span>
+<a name="ln-1887"></a><span class="c">!!           if(codebase(r,ba,y)) then</span>
+<a name="ln-1888"></a><span class="c">!!             write(*,&#39;(&quot;In base &quot;,I2,&quot;: &quot;,A20)&#39;)  ba, y</span>
+<a name="ln-1889"></a><span class="c">!!           else</span>
+<a name="ln-1890"></a><span class="c">!!             print *,&#39;Error in coding number.&#39;</span>
+<a name="ln-1891"></a><span class="c">!!           endif</span>
+<a name="ln-1892"></a><span class="c">!!        else</span>
+<a name="ln-1893"></a><span class="c">!!           print *,&#39;Error in decoding number.&#39;</span>
+<a name="ln-1894"></a><span class="c">!!        endif</span>
+<a name="ln-1895"></a><span class="c">!!     enddo INFINITE</span>
+<a name="ln-1896"></a><span class="c">!!</span>
+<a name="ln-1897"></a><span class="c">!!     end program demo_decodebase</span>
+<a name="ln-1898"></a><span class="c">!!</span>
+<a name="ln-1899"></a><span class="c">!!##AUTHOR</span>
+<a name="ln-1900"></a><span class="c">!!    John S. Urban</span>
 <a name="ln-1901"></a><span class="c">!!</span>
-<a name="ln-1902"></a><span class="c">!!##LICENSE</span>
-<a name="ln-1903"></a><span class="c">!!    Public Domain</span>
-<a name="ln-1904"></a><span class="c">!===================================================================================================================================</span>
-<a name="ln-1905"></a><span class="kt">logical </span><span class="k">function </span><span class="n">decodebase</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="n">basein</span><span class="p">,</span><span class="n">out_baseten</span><span class="p">)</span>
-<a name="ln-1906"></a><span class="k">implicit none</span>
-<a name="ln-1907"></a>
-<a name="ln-1908"></a><span class="c">!character(len=*),parameter::ident_72=&quot;@(#)M_strings::decodebase(3f): convert whole number string in base [2-36] to base 10 number&quot;</span>
-<a name="ln-1909"></a>
-<a name="ln-1910"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">string</span>
-<a name="ln-1911"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">basein</span>
-<a name="ln-1912"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">out_baseten</span>
+<a name="ln-1902"></a><span class="c">!!       Ref.: &quot;Math matiques en Turbo-Pascal by</span>
+<a name="ln-1903"></a><span class="c">!!              M. Ducamp and A. Reverchon (2),</span>
+<a name="ln-1904"></a><span class="c">!!              Eyrolles, Paris, 1988&quot;.</span>
+<a name="ln-1905"></a><span class="c">!!</span>
+<a name="ln-1906"></a><span class="c">!!    based on a F90 Version By J-P Moreau (www.jpmoreau.fr)</span>
+<a name="ln-1907"></a><span class="c">!!</span>
+<a name="ln-1908"></a><span class="c">!!##LICENSE</span>
+<a name="ln-1909"></a><span class="c">!!    Public Domain</span>
+<a name="ln-1910"></a><span class="c">!===================================================================================================================================</span>
+<a name="ln-1911"></a><span class="kt">logical </span><span class="k">function </span><span class="n">decodebase</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="n">basein</span><span class="p">,</span><span class="n">out_baseten</span><span class="p">)</span>
+<a name="ln-1912"></a><span class="k">implicit none</span>
 <a name="ln-1913"></a>
-<a name="ln-1914"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">string_local</span>
-<a name="ln-1915"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="nb">long</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span>
-<a name="ln-1916"></a><span class="kt">real</span>              <span class="kd">::</span> <span class="n">y</span>
-<a name="ln-1917"></a><span class="kt">real</span>              <span class="kd">::</span> <span class="n">mult</span>
-<a name="ln-1918"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">ch</span>
-<a name="ln-1919"></a><span class="kt">real</span><span class="p">,</span><span class="k">parameter</span>    <span class="kd">::</span> <span class="n">XMAXREAL</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="nb">huge</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<a name="ln-1920"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">out_sign</span>
-<a name="ln-1921"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">basein_local</span>
-<a name="ln-1922"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">ipound</span>
-<a name="ln-1923"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">ierr</span>
-<a name="ln-1924"></a>
-<a name="ln-1925"></a>  <span class="n">string_local</span><span class="o">=</span><span class="n">upper</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">string</span><span class="p">)))</span>
-<a name="ln-1926"></a>  <span class="n">decodebase</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
-<a name="ln-1927"></a>
-<a name="ln-1928"></a>  <span class="n">ipound</span><span class="o">=</span><span class="nb">index</span><span class="p">(</span><span class="n">string_local</span><span class="p">,</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>                                       <span class="c">! determine if in form [-]base#whole</span>
-<a name="ln-1929"></a>  <span class="k">if</span><span class="p">(</span><span class="n">basein</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mf">0.</span><span class="nb">and</span><span class="p">.</span><span class="n">ipound</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>                                  <span class="c">! split string into two values</span>
-<a name="ln-1930"></a>     <span class="k">call </span><span class="n">string_to_value</span><span class="p">(</span><span class="n">string_local</span><span class="p">(:</span><span class="n">ipound</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">basein_local</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>   <span class="c">! get the decimal value of the base</span>
-<a name="ln-1931"></a>     <span class="n">string_local</span><span class="o">=</span><span class="n">string_local</span><span class="p">(</span><span class="n">ipound</span><span class="o">+</span><span class="mi">1</span><span class="p">:)</span>                              <span class="c">! now that base is known make string just the value</span>
-<a name="ln-1932"></a>     <span class="k">if</span><span class="p">(</span><span class="n">basein_local</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                                         <span class="c">! allow for a negative sign prefix</span>
-<a name="ln-1933"></a>        <span class="n">out_sign</span><span class="o">=</span><span class="mi">1</span>
-<a name="ln-1934"></a>     <span class="k">else</span>
-<a name="ln-1935"></a><span class="k">        </span><span class="n">out_sign</span><span class="o">=-</span><span class="mi">1</span>
-<a name="ln-1936"></a>     <span class="k">endif</span>
-<a name="ln-1937"></a><span class="k">     </span><span class="n">basein_local</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">basein_local</span><span class="p">)</span>
-<a name="ln-1938"></a>  <span class="k">else</span>                                                                 <span class="c">! assume string is a simple positive value</span>
-<a name="ln-1939"></a>     <span class="n">basein_local</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">basein</span><span class="p">)</span>
-<a name="ln-1940"></a>     <span class="n">out_sign</span><span class="o">=</span><span class="mi">1</span>
-<a name="ln-1941"></a>  <span class="k">endif</span>
-<a name="ln-1942"></a>
-<a name="ln-1943"></a><span class="k">  </span><span class="n">out_baseten</span><span class="o">=</span><span class="mi">0</span>
-<a name="ln-1944"></a>  <span class="n">y</span><span class="o">=</span><span class="mf">0.0</span>
-<a name="ln-1945"></a>  <span class="k">ALL</span><span class="p">:</span> <span class="k">if</span><span class="p">(</span><span class="n">basein_local</span><span class="o">&lt;</span><span class="mf">2.</span><span class="nb">or</span><span class="p">.</span><span class="n">basein_local</span><span class="o">&gt;</span><span class="mi">36</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-1946"></a><span class="k">    print</span> <span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*decodebase* ERROR: Base must be between 2 and 36. base=&#39;</span><span class="p">,</span><span class="n">basein_local</span>
-<a name="ln-1947"></a>  <span class="k">else ALL</span>
-<a name="ln-1948"></a><span class="k">     </span><span class="n">out_baseten</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">mult</span><span class="o">=</span><span class="mf">1.0</span>
-<a name="ln-1949"></a>     <span class="nb">long</span><span class="o">=</span><span class="nb">LEN_TRIM</span><span class="p">(</span><span class="n">string_local</span><span class="p">)</span>
-<a name="ln-1950"></a>     <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">long</span>
-<a name="ln-1951"></a><span class="nb">        </span><span class="n">k</span><span class="o">=</span><span class="nb">long</span><span class="o">+</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span>
-<a name="ln-1952"></a>        <span class="n">ch</span><span class="o">=</span><span class="n">string_local</span><span class="p">(</span><span class="n">k</span><span class="p">:</span><span class="n">k</span><span class="p">)</span>
-<a name="ln-1953"></a>        <span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;-&#39;</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">k</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1954"></a><span class="k">           </span><span class="n">out_sign</span><span class="o">=-</span><span class="mi">1</span>
-<a name="ln-1955"></a>           <span class="k">cycle</span>
-<a name="ln-1956"></a><span class="k">        endif</span>
-<a name="ln-1957"></a><span class="k">        if</span><span class="p">(</span><span class="n">ch</span><span class="o">&lt;</span><span class="s1">&#39;0&#39;</span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="n">ch</span><span class="o">&gt;</span><span class="s1">&#39;Z&#39;</span><span class="p">.</span><span class="nb">or</span><span class="p">.(</span><span class="n">ch</span><span class="o">&gt;</span><span class="s1">&#39;9&#39;</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">ch</span><span class="o">&lt;</span><span class="s1">&#39;A&#39;</span><span class="p">))</span><span class="k">then</span>
-<a name="ln-1958"></a><span class="k">           write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;*decodebase* ERROR: invalid character &#39;</span><span class="p">,</span><span class="n">ch</span>
-<a name="ln-1959"></a>           <span class="k">exit ALL</span>
-<a name="ln-1960"></a><span class="k">        endif</span>
-<a name="ln-1961"></a><span class="k">        if</span><span class="p">(</span><span class="n">ch</span><span class="o">&lt;=</span><span class="s1">&#39;9&#39;</span><span class="p">)</span> <span class="k">then</span>
-<a name="ln-1962"></a><span class="k">              </span><span class="n">j</span><span class="o">=</span><span class="nb">IACHAR</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="o">-</span><span class="nb">IACHAR</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
-<a name="ln-1963"></a>        <span class="k">else</span>
-<a name="ln-1964"></a><span class="k">              </span><span class="n">j</span><span class="o">=</span><span class="nb">IACHAR</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="o">-</span><span class="nb">IACHAR</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span>
-<a name="ln-1965"></a>        <span class="k">endif</span>
-<a name="ln-1966"></a><span class="k">        if</span><span class="p">(</span><span class="n">j</span><span class="o">&gt;=</span><span class="n">basein_local</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1967"></a><span class="k">           exit ALL</span>
-<a name="ln-1968"></a><span class="k">        endif</span>
-<a name="ln-1969"></a><span class="k">        </span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="n">mult</span><span class="o">*</span><span class="n">j</span>
-<a name="ln-1970"></a>        <span class="k">if</span><span class="p">(</span><span class="n">mult</span><span class="o">&gt;</span><span class="n">XMAXREAL</span><span class="o">/</span><span class="n">basein_local</span><span class="p">)</span><span class="k">then</span>
-<a name="ln-1971"></a><span class="k">           exit ALL</span>
-<a name="ln-1972"></a><span class="k">        endif</span>
-<a name="ln-1973"></a><span class="k">        </span><span class="n">mult</span><span class="o">=</span><span class="n">mult</span><span class="o">*</span><span class="n">basein_local</span>
-<a name="ln-1974"></a>     <span class="k">enddo</span>
-<a name="ln-1975"></a><span class="k">     </span><span class="n">decodebase</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
-<a name="ln-1976"></a>     <span class="n">out_baseten</span><span class="o">=</span><span class="nb">nint</span><span class="p">(</span><span class="n">out_sign</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="nb">sign</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">basein</span><span class="p">)</span>
-<a name="ln-1977"></a>  <span class="k">endif ALL</span>
-<a name="ln-1978"></a><span class="k">end function </span><span class="n">decodebase</span>
-<a name="ln-1979"></a><span class="k">end module </span><span class="n">M_time_duplicate</span>
+<a name="ln-1914"></a><span class="c">!character(len=*),parameter::ident_72=&quot;@(#)M_strings::decodebase(3f): convert whole number string in base [2-36] to base 10 number&quot;</span>
+<a name="ln-1915"></a>
+<a name="ln-1916"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">string</span>
+<a name="ln-1917"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">basein</span>
+<a name="ln-1918"></a><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>          <span class="kd">::</span> <span class="n">out_baseten</span>
+<a name="ln-1919"></a>
+<a name="ln-1920"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">))</span>   <span class="kd">::</span> <span class="n">string_local</span>
+<a name="ln-1921"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="nb">long</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span>
+<a name="ln-1922"></a><span class="kt">real</span>              <span class="kd">::</span> <span class="n">y</span>
+<a name="ln-1923"></a><span class="kt">real</span>              <span class="kd">::</span> <span class="n">mult</span>
+<a name="ln-1924"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">ch</span>
+<a name="ln-1925"></a><span class="kt">real</span><span class="p">,</span><span class="k">parameter</span>    <span class="kd">::</span> <span class="n">XMAXREAL</span><span class="o">=</span><span class="kt">real</span><span class="p">(</span><span class="nb">huge</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a name="ln-1926"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">out_sign</span>
+<a name="ln-1927"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">basein_local</span>
+<a name="ln-1928"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">ipound</span>
+<a name="ln-1929"></a><span class="kt">integer</span>           <span class="kd">::</span> <span class="n">ierr</span>
+<a name="ln-1930"></a>
+<a name="ln-1931"></a>  <span class="n">string_local</span><span class="o">=</span><span class="n">upper</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">string</span><span class="p">)))</span>
+<a name="ln-1932"></a>  <span class="n">decodebase</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a name="ln-1933"></a>
+<a name="ln-1934"></a>  <span class="n">ipound</span><span class="o">=</span><span class="nb">index</span><span class="p">(</span><span class="n">string_local</span><span class="p">,</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>                                       <span class="c">! determine if in form [-]base#whole</span>
+<a name="ln-1935"></a>  <span class="k">if</span><span class="p">(</span><span class="n">basein</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mf">0.</span><span class="nb">and</span><span class="p">.</span><span class="n">ipound</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>                                  <span class="c">! split string into two values</span>
+<a name="ln-1936"></a>     <span class="k">call </span><span class="n">string_to_value</span><span class="p">(</span><span class="n">string_local</span><span class="p">(:</span><span class="n">ipound</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="n">basein_local</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>   <span class="c">! get the decimal value of the base</span>
+<a name="ln-1937"></a>     <span class="n">string_local</span><span class="o">=</span><span class="n">string_local</span><span class="p">(</span><span class="n">ipound</span><span class="o">+</span><span class="mi">1</span><span class="p">:)</span>                              <span class="c">! now that base is known make string just the value</span>
+<a name="ln-1938"></a>     <span class="k">if</span><span class="p">(</span><span class="n">basein_local</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>                                         <span class="c">! allow for a negative sign prefix</span>
+<a name="ln-1939"></a>        <span class="n">out_sign</span><span class="o">=</span><span class="mi">1</span>
+<a name="ln-1940"></a>     <span class="k">else</span>
+<a name="ln-1941"></a><span class="k">        </span><span class="n">out_sign</span><span class="o">=-</span><span class="mi">1</span>
+<a name="ln-1942"></a>     <span class="k">endif</span>
+<a name="ln-1943"></a><span class="k">     </span><span class="n">basein_local</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">basein_local</span><span class="p">)</span>
+<a name="ln-1944"></a>  <span class="k">else</span>                                                                 <span class="c">! assume string is a simple positive value</span>
+<a name="ln-1945"></a>     <span class="n">basein_local</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">basein</span><span class="p">)</span>
+<a name="ln-1946"></a>     <span class="n">out_sign</span><span class="o">=</span><span class="mi">1</span>
+<a name="ln-1947"></a>  <span class="k">endif</span>
+<a name="ln-1948"></a>
+<a name="ln-1949"></a><span class="k">  </span><span class="n">out_baseten</span><span class="o">=</span><span class="mi">0</span>
+<a name="ln-1950"></a>  <span class="n">y</span><span class="o">=</span><span class="mf">0.0</span>
+<a name="ln-1951"></a>  <span class="k">ALL</span><span class="p">:</span> <span class="k">if</span><span class="p">(</span><span class="n">basein_local</span><span class="o">&lt;</span><span class="mf">2.</span><span class="nb">or</span><span class="p">.</span><span class="n">basein_local</span><span class="o">&gt;</span><span class="mi">36</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-1952"></a><span class="k">    print</span> <span class="o">*</span><span class="p">,</span><span class="s1">&#39;(*decodebase* ERROR: Base must be between 2 and 36. base=&#39;</span><span class="p">,</span><span class="n">basein_local</span>
+<a name="ln-1953"></a>  <span class="k">else ALL</span>
+<a name="ln-1954"></a><span class="k">     </span><span class="n">out_baseten</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">y</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">mult</span><span class="o">=</span><span class="mf">1.0</span>
+<a name="ln-1955"></a>     <span class="nb">long</span><span class="o">=</span><span class="nb">LEN_TRIM</span><span class="p">(</span><span class="n">string_local</span><span class="p">)</span>
+<a name="ln-1956"></a>     <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">long</span>
+<a name="ln-1957"></a><span class="nb">        </span><span class="n">k</span><span class="o">=</span><span class="nb">long</span><span class="o">+</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span>
+<a name="ln-1958"></a>        <span class="n">ch</span><span class="o">=</span><span class="n">string_local</span><span class="p">(</span><span class="n">k</span><span class="p">:</span><span class="n">k</span><span class="p">)</span>
+<a name="ln-1959"></a>        <span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;-&#39;</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">k</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>
+<a name="ln-1960"></a><span class="k">           </span><span class="n">out_sign</span><span class="o">=-</span><span class="mi">1</span>
+<a name="ln-1961"></a>           <span class="k">cycle</span>
+<a name="ln-1962"></a><span class="k">        endif</span>
+<a name="ln-1963"></a><span class="k">        if</span><span class="p">(</span><span class="n">ch</span><span class="o">&lt;</span><span class="s1">&#39;0&#39;</span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="n">ch</span><span class="o">&gt;</span><span class="s1">&#39;Z&#39;</span><span class="p">.</span><span class="nb">or</span><span class="p">.(</span><span class="n">ch</span><span class="o">&gt;</span><span class="s1">&#39;9&#39;</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">ch</span><span class="o">&lt;</span><span class="s1">&#39;A&#39;</span><span class="p">))</span><span class="k">then</span>
+<a name="ln-1964"></a><span class="k">           write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;*decodebase* ERROR: invalid character &#39;</span><span class="p">,</span><span class="n">ch</span>
+<a name="ln-1965"></a>           <span class="k">exit ALL</span>
+<a name="ln-1966"></a><span class="k">        endif</span>
+<a name="ln-1967"></a><span class="k">        if</span><span class="p">(</span><span class="n">ch</span><span class="o">&lt;=</span><span class="s1">&#39;9&#39;</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-1968"></a><span class="k">              </span><span class="n">j</span><span class="o">=</span><span class="nb">IACHAR</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="o">-</span><span class="nb">IACHAR</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<a name="ln-1969"></a>        <span class="k">else</span>
+<a name="ln-1970"></a><span class="k">              </span><span class="n">j</span><span class="o">=</span><span class="nb">IACHAR</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span><span class="o">-</span><span class="nb">IACHAR</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span>
+<a name="ln-1971"></a>        <span class="k">endif</span>
+<a name="ln-1972"></a><span class="k">        if</span><span class="p">(</span><span class="n">j</span><span class="o">&gt;=</span><span class="n">basein_local</span><span class="p">)</span><span class="k">then</span>
+<a name="ln-1973"></a><span class="k">           exit ALL</span>
+<a name="ln-1974"></a><span class="k">        endif</span>
+<a name="ln-1975"></a><span class="k">        </span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">+</span><span class="n">mult</span><span class="o">*</span><span class="n">j</span>
+<a name="ln-1976"></a>        <span class="k">if</span><span class="p">(</span><span class="n">mult</span><span class="o">&gt;</span><span class="n">XMAXREAL</span><span class="o">/</span><span class="n">basein_local</span><span class="p">)</span><span class="k">then</span>
+<a name="ln-1977"></a><span class="k">           exit ALL</span>
+<a name="ln-1978"></a><span class="k">        endif</span>
+<a name="ln-1979"></a><span class="k">        </span><span class="n">mult</span><span class="o">=</span><span class="n">mult</span><span class="o">*</span><span class="n">basein_local</span>
+<a name="ln-1980"></a>     <span class="k">enddo</span>
+<a name="ln-1981"></a><span class="k">     </span><span class="n">decodebase</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a name="ln-1982"></a>     <span class="n">out_baseten</span><span class="o">=</span><span class="nb">nint</span><span class="p">(</span><span class="n">out_sign</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="nb">sign</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">basein</span><span class="p">)</span>
+<a name="ln-1983"></a>  <span class="k">endif ALL</span>
+<a name="ln-1984"></a><span class="k">end function </span><span class="n">decodebase</span>
+<a name="ln-1985"></a><span class="k">end module </span><span class="n">M_time_duplicate</span>
 </pre></div>
 
     </section>
@@ -2256,13 +2262,13 @@
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+        <div class="col-xs-6 col-md-4"><p>&copy; 2022 
                                           </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2021-09-12 12:09  
+             on 2022-01-02 00:11  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>
