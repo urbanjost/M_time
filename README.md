@@ -241,7 +241,7 @@ information on other libraries and modules that provide date-time
 procedures.
 ## REFERENCES
    + [Fortran Package Manager](https://github.com/fortran-lang/fpm) 
-   + [fpm(1) registry](https://github.com/fortran-lang/fpm-registry) )
+   + [fpm(1) registry](https://github.com/fortran-lang/fpm-registry)
    + [github actions](https://docs.github.com/en/actions)
 <!--
    TODO:
