@@ -1,5 +1,5 @@
 ### M_time.f90 and associated files
-#### [CHANGELOG](CHANGELOG.md)
+#### [CHANGELOG](docs/CHANGELOG.md)
 ![pocketwatch](docs/images/M_time.3m_time.gif)
 
 ## NAME
