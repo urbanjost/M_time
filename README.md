@@ -44,8 +44,9 @@ Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
 programs are included in the package.
 
-## DOCUMENTATION
+## DOCUMENTATION   ![docs](docs/images/docs.gif)
 
+### USER
 + [intro page](https://urbanjost.github.io/M_time/M_time.3m_time.html)
 + [OOP intro page](https://urbanjost.github.io/M_time/M_time_oop.3m_time.html)
 + [man-page index](https://urbanjost.github.io/M_time/man3.html)
@@ -59,8 +60,17 @@ Furthermore there are actual manpages that can be installed on ULS (Unix-Like Sy
 [manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
 and
 [manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
+### DEVELOPER DOCUMENTATION (experimental)
 
-### DOWNLOAD and BUILD using gmake(1)![GNU](docs/images/gnu.gif)
+#### doxygen
+
+- [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
+
+#### ford
+
+- [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
+
+## DOWNLOAD and BUILD using gmake(1)![GNU](docs/images/gnu.gif)
 
 To build the modules download the github repository, enter the src/
 directory and run make(1):
@@ -80,7 +90,7 @@ directory and run make(1):
 This will compile the M_time module and optionally build all the example programs from
 the document pages (in the example/ sub-directory) and run the unit tests.
 
-### DOWNLOAD and BUILD using fpm(1)![fpm](docs/images/fpm_logo.gif)
+## DOWNLOAD and BUILD using fpm(1)![fpm](docs/images/fpm_logo.gif)
 
 To download the github repository and build and test it with fpm :
 ```bash
@@ -213,15 +223,6 @@ that contains a current time zone, but does not specify how a current
 time zone can be explicitly set.  Since this library is intentionally
 designed to complement DATE_AND_TIME(3f) it adopts the same behavior.
 
-## DEVELOPER DOCUMENTATION (experimental)
-
-### doxygen
-
-- [doxygen(1) output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
-
-### ford
-
-- [ford(1) output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
 
 ## SEE ALSO
 
