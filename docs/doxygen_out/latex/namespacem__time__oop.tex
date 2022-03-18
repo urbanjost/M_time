@@ -48,6 +48,11 @@ logical function \mbox{\hyperlink{namespacem__time__oop_aeea1131ab511b897168f00a
 \item 
 logical function \mbox{\hyperlink{namespacem__time__oop_a7707a7cbd4869301a613ceeb12ed2384}{ne}} (self, other)
 \end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer, parameter \mbox{\hyperlink{namespacem__time__oop_a212adf058af3afd9f46817077416875b}{dp}} =kind(0.\+0d0)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -67,7 +72,7 @@ mydateformat(\textquotesingle{}\textquotesingle{}) mydateordinal() mydateweekday
 An object-\/oriented interface to the M\+\_\+time module. The following example program demonstrates and documents the interface\hypertarget{namespacem__time__oop_autotoc_md352}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__oop_autotoc_md352}
 sample program
 
-program demo\+\_\+\+M\+\_\+time\+\_\+oop ! ! This is an example using the object-\/oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M\+\_\+time(3fm), but allows for Object Oriented syntax\+: ! use M\+\_\+time\+\_\+oop,only \+: \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} !!use M\+\_\+time\+\_\+oop,only \+: operator(+),operator(-\/),operator($>$),operator($<$) !!use M\+\_\+time\+\_\+oop,only \+: operator($<$=),operator($>$=),operator(==),operator(/=) implicit none integer \+:: dat(8) T\+Y\+P\+E(date\+\_\+time) \+:: event T\+Y\+P\+E(date\+\_\+time) \+:: otherdate T\+Y\+P\+E(date\+\_\+time) \+:: answer
+program demo\+\_\+\+M\+\_\+time\+\_\+oop ! ! This is an example using the object-\/oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M\+\_\+time(3fm), but allows for Object Oriented syntax\+: ! use M\+\_\+time\+\_\+oop,only \+: \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} !!use M\+\_\+time\+\_\+oop,only \+: operator(+),operator(-\/),operator($>$),operator($<$) !!use M\+\_\+time\+\_\+oop,only \+: operator($<$=),operator($>$=),operator(==),operator(/=) implicit none integer,parameter \+:: dp=kind(0.\+0d0) integer \+:: dat(8) T\+Y\+P\+E(date\+\_\+time) \+:: event T\+Y\+P\+E(date\+\_\+time) \+:: otherdate T\+Y\+P\+E(date\+\_\+time) \+:: answer
 
 character(len=$\ast$),parameter \+:: iso\+\_\+fmt=\textquotesingle{}Y-\/M-\/DTh\+:m\+:s.xz\textquotesingle{} ! D\+I\+F\+F\+E\+R\+E\+NT I\+N\+I\+T\+I\+A\+L\+I\+Z\+A\+T\+I\+ON S\+T\+Y\+L\+ES ! (Still debating on how best to do this) write($\ast$,$\ast$) write($\ast$,\textquotesingle{}(a)\textquotesingle{})\textquotesingle{}Various initialization styles\textquotesingle{}
 
@@ -98,7 +103,7 @@ otherdate=date\+\_\+time(\mbox{[}1776,7,4\mbox{]}) print $\ast$,\textquotesingle
 
 ! convert \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} to integer array ! (maybe to use with module M\+\_\+\+T\+I\+ME base procedures) dat=eventdatout() write($\ast$,$\ast$) write($\ast$,404)\textquotesingle{}D\+AT=\textquotesingle{},dat
 
-! O\+V\+E\+R\+L\+O\+A\+D\+ED O\+P\+E\+R\+A\+T\+O\+RS (add and subtract) ! a \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} object can have seconds added answer=event+1$\ast$86400.0d0 ! ! a nice friendly format write($\ast$,$\ast$)answerformat(\textquotesingle{}T\+O\+M\+O\+R\+R\+OW=\char`\"{}\%\+W, \%\+L \%d, \%\+Y \%\+H\+:\%m\+:\%s \%\+N\char`\"{}\textquotesingle{}) ! ! a \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} object can have seconds subtracted answer=event-\/1$\ast$86400.0d0 ! a nice friendly format write($\ast$,$\ast$)answerformat(\textquotesingle{}Y\+E\+S\+T\+E\+R\+D\+AY=\char`\"{}\%\+W, \%\+L \%d, \%\+Y \%\+H\+:\%m\+:\%s \%\+N\char`\"{}\textquotesingle{}) ! ! if both operands are D\+A\+T\+E\+\_\+\+T\+I\+ME objects a subtraction ! finds the time in seconds between the two dates write($\ast$,$\ast$)\textquotesingle{}D\+I\+F\+F\+E\+R\+E\+N\+CE (subtracting one \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} from another)=\textquotesingle{},\& \& answer-\/event
+! O\+V\+E\+R\+L\+O\+A\+D\+ED O\+P\+E\+R\+A\+T\+O\+RS (add and subtract) ! a \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} object can have seconds added answer=event+1$\ast$86400.0\+\_\+dp ! ! a nice friendly format write($\ast$,$\ast$)answerformat(\textquotesingle{}T\+O\+M\+O\+R\+R\+OW=\char`\"{}\%\+W, \%\+L \%d, \%\+Y \%\+H\+:\%m\+:\%s \%\+N\char`\"{}\textquotesingle{}) ! ! a \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} object can have seconds subtracted answer=event-\/1$\ast$86400.0\+\_\+dp ! a nice friendly format write($\ast$,$\ast$)answerformat(\textquotesingle{}Y\+E\+S\+T\+E\+R\+D\+AY=\char`\"{}\%\+W, \%\+L \%d, \%\+Y \%\+H\+:\%m\+:\%s \%\+N\char`\"{}\textquotesingle{}) ! ! if both operands are D\+A\+T\+E\+\_\+\+T\+I\+ME objects a subtraction ! finds the time in seconds between the two dates write($\ast$,$\ast$)\textquotesingle{}D\+I\+F\+F\+E\+R\+E\+N\+CE (subtracting one \mbox{\hyperlink{structm__time__oop_1_1date__time}{date\+\_\+time}} from another)=\textquotesingle{},\& \& answer-\/event
 
 ! O\+V\+E\+R\+L\+O\+A\+D\+ED O\+P\+E\+R\+A\+T\+O\+RS (logical comparisons) ! N\+O\+TE C\+O\+M\+P\+A\+R\+I\+S\+O\+NS A\+RE P\+E\+R\+F\+O\+R\+M\+ED BY ! C\+O\+N\+V\+E\+R\+T\+I\+NG T\+I\+M\+ES TO I\+N\+T\+E\+G\+ER S\+E\+C\+O\+N\+DS write($\ast$,$\ast$)\textquotesingle{}$>$ \textquotesingle{},event.\+eq.\+event ,event.\+lt.\+event ,event.\+gt.\+event \& \& ,event.\+le.\+event ,event.\+ge.\+event ,event.\+ne.\+event ! write($\ast$,$\ast$)\textquotesingle{}$>$ \textquotesingle{},event.\+eq.\+answer ,event.\+lt.\+answer ,event.\+gt.\+answer \& \& ,event.\+le.\+answer ,event.\+ge.\+answer ,event.\+ne.\+answer ! write($\ast$,$\ast$)\textquotesingle{}$>$ \textquotesingle{},answer.\+eq.\+event ,answer.\+lt.\+event ,answer.\+gt.\+event \& \& ,answer.\+le.\+event ,answer.\+ge.\+event ,answer.\+ne.\+event
 
@@ -540,3 +545,12 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{namespacem__time__oop_ad290beea1dd0dc3d34486e8b4cd8a86c_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacem__time__oop_a212adf058af3afd9f46817077416875b}\label{namespacem__time__oop_a212adf058af3afd9f46817077416875b}} 
+\index{m\_time\_oop@{m\_time\_oop}!dp@{dp}}
+\index{dp@{dp}!m\_time\_oop@{m\_time\_oop}}
+\doxysubsubsection{\texorpdfstring{dp}{dp}}
+{\footnotesize\ttfamily integer, parameter m\+\_\+time\+\_\+oop\+::dp =kind(0.\+0d0)}
+

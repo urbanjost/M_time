@@ -55,7 +55,7 @@ programs are included in the package.
 
 ![man-pages(1)](docs/images/manpages.gif)
 
-Furthermore there are actual manpages that can be installed on ULS (Unix-Like Systems):
+Furthermore there are actual man-pages that can be installed on ULS (Unix-Like Systems):
 
 [manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
 and

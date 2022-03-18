@@ -70,17 +70,19 @@ subroutine, private \mbox{\hyperlink{namespacem__time_ae63783f7479d2f5093c8031d3
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+integer, parameter \mbox{\hyperlink{namespacem__time_af78507138db5fae514f4849544f4164b}{dp}} =kind(0.\+0d0)
+\item 
 integer, parameter, public \mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}} =kind(0.\+0d0)
 \item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, private \mbox{\hyperlink{namespacem__time_a48130b5a95a3f2e776269dcee1426797}{secday}} =86400.\+0d0
+real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, private \mbox{\hyperlink{namespacem__time_a48130b5a95a3f2e776269dcee1426797}{secday}} =86400.\+0\+\_\+dp
 \item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_a9fe6fbb44e2779a2fcf96fba36c08918}{dt\+\_\+minute}} =60.\+0d0
+real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_a9fe6fbb44e2779a2fcf96fba36c08918}{dt\+\_\+minute}} =60.\+0\+\_\+dp
 \item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_aa0ca2172092f5e7dcc9b8524e6516fd8}{dt\+\_\+hour}} =3600.\+0d0
+real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_aa0ca2172092f5e7dcc9b8524e6516fd8}{dt\+\_\+hour}} =3600.\+0\+\_\+dp
 \item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{dt\+\_\+day}} =86400.\+0d0
+real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{dt\+\_\+day}} =86400.\+0\+\_\+dp
 \item 
-real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_a3d53519e90264faccdae67e389ffc003}{dt\+\_\+week}} =\mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{dt\+\_\+day}}$\ast$7.\+0d0
+real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public \mbox{\hyperlink{namespacem__time_a3d53519e90264faccdae67e389ffc003}{dt\+\_\+week}} =\mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{dt\+\_\+day}}$\ast$7.\+0\+\_\+dp
 \end{DoxyCompactItemize}
 
 
@@ -1118,14 +1120,15 @@ dat Integer array holding a \char`\"{}\+D\+A\+T\char`\"{} array, similar in stru
  program demo_j2d
  use M_time, only : j2d, d2j, fmtdate, realtime
  implicit none
+ integer,parameter :: dp=kind(0.0d0)
  real(kind=realtime) :: today
  integer :: dat(8)
     call date_and_time(values=dat) ! get the date using intrinsic
     today=d2j(dat)                  ! convert today to Julian Date
     write(*,*)'Today=',fmtdate(j2d(today))
     ! math is easy with Julian Days and Julian Dates
-    write(*,*)'Yesterday=',fmtdate(j2d(today-1.0d0))
-    write(*,*)'Tomorrow=',fmtdate(j2d(today+1.0d0))
+    write(*,*)'Yesterday=',fmtdate(j2d(today-1.0_dp))
+    write(*,*)'Tomorrow=',fmtdate(j2d(today+1.0_dp))
  end program demo_j2d
 
 results:
@@ -1179,19 +1182,20 @@ unixtime The \char`\"{}\+Unix Epoch\char`\"{} time, or the number of seconds sin
   program demo_julian_to_date
   use M_time, only : julian_to_date, fmtdate, realtime
   implicit none
+  integer,parameter :: dp=kind(0.0d0)
   real(kind=realtime)     :: juliandate
   integer                 :: dat(8)
   integer                 :: ierr
      ! set sample Julian Date
-     juliandate=2457589.129d0
+     juliandate=2457589.129_dp
      ! create DAT array for this date
      call julian_to_date(juliandate,dat,ierr)
      write(*,*)'Sample Date=',fmtdate(dat)
      ! go back one day
-     call julian_to_date(juliandate-1.0d0,dat,ierr)
+     call julian_to_date(juliandate-1.0_dp,dat,ierr)
      write(*,*)'Day Before =',fmtdate(dat)
      ! go forward one day
-     call julian_to_date(juliandate+1.0d0,dat,ierr)
+     call julian_to_date(juliandate+1.0_dp,dat,ierr)
      write(*,*)'Day After  =',fmtdate(dat)
   end program demo_julian_to_date
 
@@ -1710,9 +1714,10 @@ dmhs the returned string of form \mbox{[}d\+:h\+:\mbox{]}m\+:s\hypertarget{names
 
  program demo_sec2days
  use M_time, only : sec2days
+ integer,parameter :: dp=kind(0.0d0)
  implicit none
     write(*,*)sec2days(129860)
-    write(*,*)sec2days(80000.0d0)
+    write(*,*)sec2days(80000.0_dp)
     write(*,*)sec2days(80000.0,crop=.true.)
     write(*,*)sec2days('1 day 2.0hr 100 min 300.0seconds')
  end program demo_sec2days
@@ -1833,6 +1838,7 @@ dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbo
  program demo_u2d
  use M_time, only : u2d, d2u, fmtdate, realtime
  implicit none
+ integer,parameter :: dp=kind(0.0d0)
  real(kind=realtime) :: today
  integer :: dat(8)
     ! get the date using intrinsic
@@ -1841,9 +1847,9 @@ dat=\mbox{[} year,month,day,timezone,hour,\& \& minutes,seconds,milliseconds\mbo
     today=d2u(dat)
     write(*,*)'Today=',fmtdate(u2d(today))
     ! subtract day
-    write(*,*)'Yesterday=',fmtdate(u2d(today-86400.0d0))
+    write(*,*)'Yesterday=',fmtdate(u2d(today-86400.0_dp))
     ! add day
-    write(*,*)'Tomorrow=',fmtdate(u2d(today+86400.0d0))
+    write(*,*)'Tomorrow=',fmtdate(u2d(today+86400.0_dp))
  end program demo_u2d
 
 results:
@@ -1903,13 +1909,14 @@ ierr Error code. If 0 no error occurred.\hypertarget{namespacem__time_autotoc_md
   program demo_unix_to_date
   use M_time, only : unix_to_date, u2d, fmtdate, realtime
   implicit none
+  integer,parameter :: dp=kind(0.0d0)
   real(kind=realtime)           :: unixtime
   ! seconds in a day
-  real(kind=realtime),parameter :: DAY=86400.0d0
+  real(kind=realtime),parameter :: DAY=86400.0_dp
   integer                       :: dat(8)
   integer                       :: ierr
      ! sample Unix Epoch time
-     unixtime=1468939038.4639933d0
+     unixtime=1468939038.4639933_dp
      ! create DAT array for today
      call unix_to_date(unixtime,dat,ierr)
      write(*,*)'Sample Date=',fmtdate(dat)
@@ -2061,29 +2068,35 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacem__time_af78507138db5fae514f4849544f4164b}\label{namespacem__time_af78507138db5fae514f4849544f4164b}} 
+\index{m\_time@{m\_time}!dp@{dp}}
+\index{dp@{dp}!m\_time@{m\_time}}
+\doxysubsubsection{\texorpdfstring{dp}{dp}}
+{\footnotesize\ttfamily integer, parameter m\+\_\+time\+::dp =kind(0.\+0d0)\hspace{0.3cm}{\ttfamily [private]}}
+
 \mbox{\Hypertarget{namespacem__time_a97725f8d657c24badff19a794f323a6b}\label{namespacem__time_a97725f8d657c24badff19a794f323a6b}} 
 \index{m\_time@{m\_time}!dt\_day@{dt\_day}}
 \index{dt\_day@{dt\_day}!m\_time@{m\_time}}
 \doxysubsubsection{\texorpdfstring{dt\_day}{dt\_day}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+day =86400.\+0d0}
+{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+day =86400.\+0\+\_\+dp}
 
 \mbox{\Hypertarget{namespacem__time_aa0ca2172092f5e7dcc9b8524e6516fd8}\label{namespacem__time_aa0ca2172092f5e7dcc9b8524e6516fd8}} 
 \index{m\_time@{m\_time}!dt\_hour@{dt\_hour}}
 \index{dt\_hour@{dt\_hour}!m\_time@{m\_time}}
 \doxysubsubsection{\texorpdfstring{dt\_hour}{dt\_hour}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+hour =3600.\+0d0}
+{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+hour =3600.\+0\+\_\+dp}
 
 \mbox{\Hypertarget{namespacem__time_a9fe6fbb44e2779a2fcf96fba36c08918}\label{namespacem__time_a9fe6fbb44e2779a2fcf96fba36c08918}} 
 \index{m\_time@{m\_time}!dt\_minute@{dt\_minute}}
 \index{dt\_minute@{dt\_minute}!m\_time@{m\_time}}
 \doxysubsubsection{\texorpdfstring{dt\_minute}{dt\_minute}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+minute =60.\+0d0}
+{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+minute =60.\+0\+\_\+dp}
 
 \mbox{\Hypertarget{namespacem__time_a3d53519e90264faccdae67e389ffc003}\label{namespacem__time_a3d53519e90264faccdae67e389ffc003}} 
 \index{m\_time@{m\_time}!dt\_week@{dt\_week}}
 \index{dt\_week@{dt\_week}!m\_time@{m\_time}}
 \doxysubsubsection{\texorpdfstring{dt\_week}{dt\_week}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+week =\mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{dt\+\_\+day}}$\ast$7.\+0d0}
+{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, public m\+\_\+time\+::dt\+\_\+week =\mbox{\hyperlink{namespacem__time_a97725f8d657c24badff19a794f323a6b}{dt\+\_\+day}}$\ast$7.\+0\+\_\+dp}
 
 \mbox{\Hypertarget{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}\label{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}} 
 \index{m\_time@{m\_time}!realtime@{realtime}}
@@ -2095,5 +2108,5 @@ Here is the call graph for this function\+:\nopagebreak
 \index{m\_time@{m\_time}!secday@{secday}}
 \index{secday@{secday}!m\_time@{m\_time}}
 \doxysubsubsection{\texorpdfstring{secday}{secday}}
-{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, private m\+\_\+time\+::secday =86400.\+0d0\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily real(kind=\mbox{\hyperlink{namespacem__time_ac10ea9e8d59ec74eaa7d89f2517d7422}{realtime}}), parameter, private m\+\_\+time\+::secday =86400.\+0\+\_\+dp\hspace{0.3cm}{\ttfamily [private]}}
 
