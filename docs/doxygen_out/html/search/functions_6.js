@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['ge_145',['ge',['../structm__time__oop_1_1date__time.html#ad98935041c3935fddf79b90b4e81e6d3',1,'m_time_oop::date_time::ge()'],['../namespacem__time__oop.html#aeea1131ab511b897168f00a908b75458',1,'m_time_oop::ge()']]],
-  ['get_5ftimezone_146',['get_timezone',['../namespacem__time.html#a7903410a1d28bcdf3d33ab0c2d74b124',1,'m_time']]],
-  ['gt_147',['gt',['../structm__time__oop_1_1date__time.html#ab3f696e46c40b46d67eafac09e79a190',1,'m_time_oop::date_time::gt()'],['../namespacem__time__oop.html#a753692f18b6cd100401603d0b88d7c3c',1,'m_time_oop::gt()']]],
-  ['guessdate_148',['guessdate',['../namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794',1,'m_time']]]
+  ['i2s_90',['i2s',['../interfacem__time__duplicate_1_1v2s.html#a753dd0a1757b4090937356a377849b13',1,'m_time_duplicate::v2s::i2s()'],['../namespacem__time__duplicate.html#a7570c5a3b71c4ea4f376a38b285ccbd8',1,'m_time_duplicate::i2s()']]],
+  ['init_91',['init',['../structm__time__oop_1_1date__time.html#ad53d814cb29600d3bf038415dad3d316',1,'m_time_oop::date_time']]],
+  ['init_5fdt_92',['init_dt',['../namespacem__time__oop.html#ac81ff1eb27f637a60530d3c5d442fc71',1,'m_time_oop']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['j2d_46',['j2d',['../namespacem__time.html#a3ad5cad6df02c53e0429c3602a072e3c',1,'m_time']]],
-  ['julian_47',['julian',['../structm__time__oop_1_1date__time.html#a3ead9166ebc7ef39fb37a8468849763f',1,'m_time_oop::date_time']]],
-  ['julian_5f_48',['julian_',['../namespacem__time__oop.html#a85c4d4edaa644bf22f68ffd724de036a',1,'m_time_oop']]],
-  ['julian_5fto_5fdate_49',['julian_to_date',['../namespacem__time.html#abb44cf18cd0a3e420c20469efb056203',1,'m_time']]]
+  ['l2s_28',['l2s',['../interfacem__time__duplicate_1_1v2s.html#ae0e736d40ed72468d824df5b0b70ea66',1,'m_time_duplicate::v2s::l2s()'],['../namespacem__time__duplicate.html#a4bd5e96c3ed16383c576c4e362c16b82',1,'m_time_duplicate::l2s()']]],
+  ['le_29',['le',['../structm__time__oop_1_1date__time.html#a8cec9fe36f455aa1adb573ff1a74fd14',1,'m_time_oop::date_time::le()'],['../namespacem__time__oop.html#a5e04ff772ac6d72f68031ec43c1e6c84',1,'m_time_oop::le()']]],
+  ['lower_30',['lower',['../namespacem__time__duplicate.html#af8b4555e0c47e2ec327f0434d84b9c56',1,'m_time_duplicate']]],
+  ['lt_31',['lt',['../structm__time__oop_1_1date__time.html#a857db372657e3293e452f862fff6ce1d',1,'m_time_oop::date_time::lt()'],['../namespacem__time__oop.html#ab0c5ce86d25993804501d59a8106818f',1,'m_time_oop::lt()']]]
 ];

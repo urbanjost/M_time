@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['i2s_43',['i2s',['../interfacem__time__duplicate_1_1v2s.html#a753dd0a1757b4090937356a377849b13',1,'m_time_duplicate::v2s::i2s()'],['../namespacem__time__duplicate.html#a7570c5a3b71c4ea4f376a38b285ccbd8',1,'m_time_duplicate::i2s()']]],
-  ['init_44',['init',['../structm__time__oop_1_1date__time.html#ad53d814cb29600d3bf038415dad3d316',1,'m_time_oop::date_time']]],
-  ['init_5fdt_45',['init_dt',['../namespacem__time__oop.html#ac81ff1eb27f637a60530d3c5d442fc71',1,'m_time_oop']]]
+  ['julian_26',['julian',['../structm__time__oop_1_1date__time.html#a3ead9166ebc7ef39fb37a8468849763f',1,'m_time_oop::date_time']]],
+  ['julian_5f_27',['julian_',['../namespacem__time__oop.html#a85c4d4edaa644bf22f68ffd724de036a',1,'m_time_oop']]]
 ];

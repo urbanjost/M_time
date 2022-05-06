@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['secday_203',['secday',['../namespacem__time.html#a48130b5a95a3f2e776269dcee1426797',1,'m_time']]],
-  ['second_204',['second',['../structm__time__oop_1_1date__time.html#ab1361dc651eb8faf1b176c175f308ba1',1,'m_time_oop::date_time']]]
+  ['tz_123',['tz',['../structm__time__oop_1_1date__time.html#ad0338a670b1fa55ff5da4ece0762bd4e',1,'m_time_oop::date_time']]]
 ];

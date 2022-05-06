@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['fmtdate_142',['fmtdate',['../namespacem__time.html#a2cb84c9b8af4f395b76aed76e1431328',1,'m_time']]],
-  ['fmtdate_5fusage_143',['fmtdate_usage',['../namespacem__time.html#a914927f70fb9495af1be2e484b967111',1,'m_time']]],
-  ['format_144',['format',['../structm__time__oop_1_1date__time.html#a72439bf18aad8469effe0271bc9c64c9',1,'m_time_oop::date_time::format()'],['../namespacem__time__oop.html#a78bb598e3481faa48df9733a3f9ae060',1,'m_time_oop::format()']]]
+  ['ge_88',['ge',['../structm__time__oop_1_1date__time.html#ad98935041c3935fddf79b90b4e81e6d3',1,'m_time_oop::date_time::ge()'],['../namespacem__time__oop.html#aeea1131ab511b897168f00a908b75458',1,'m_time_oop::ge()']]],
+  ['gt_89',['gt',['../structm__time__oop_1_1date__time.html#ab3f696e46c40b46d67eafac09e79a190',1,'m_time_oop::date_time::gt()'],['../namespacem__time__oop.html#a753692f18b6cd100401603d0b88d7c3c',1,'m_time_oop::gt()']]]
 ];

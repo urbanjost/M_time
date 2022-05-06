@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['r2s_174',['r2s',['../interfacem__time__duplicate_1_1v2s.html#aef0eec8516ef796d42f060d25c7e9dc3',1,'m_time_duplicate::v2s::r2s()'],['../namespacem__time__duplicate.html#a9d1f96975ddf101c13c2f7f0dbf92a02',1,'m_time_duplicate::r2s()']]]
+  ['s2v_106',['s2v',['../namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9',1,'m_time_duplicate']]],
+  ['split_107',['split',['../namespacem__time__duplicate.html#a326e0d62d92969a231864997eea2ab98',1,'m_time_duplicate']]],
+  ['stderr_108',['stderr',['../namespacem__time__duplicate.html#aaf5c25d7bce4f2776df6c1e586b2e277',1,'m_time_duplicate']]],
+  ['string_5fto_5fvalues_109',['string_to_values',['../namespacem__time__duplicate.html#a1bfa9e4483f2452c89c0388971bb21bd',1,'m_time_duplicate']]],
+  ['substitute_110',['substitute',['../namespacem__time__duplicate.html#abc203f3a6afc1edeecbcdc58b187a5d5',1,'m_time_duplicate']]]
 ];

@@ -20,18 +20,18 @@ character(len=\+:) function, allocatable \mbox{\hyperlink{interfacem__time__dupl
 \doxysubsubsection{\texorpdfstring{d2s()}{d2s()}}
 {\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+duplicate\+::v2s\+::d2s (\begin{DoxyParamCaption}\item[{doubleprecision, intent(in)}]{dvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md311}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md311}
-v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md312}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md312}
+\hypertarget{namespacem__time__duplicate_autotoc_md76}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md76}
+v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md77}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md77}
 \begin{DoxyVerb}   function v2s(value) result(outstr)
 
     integer|real|doubleprecision|logical,intent(in ) :: value
     character(len=:),allocatable :: outstr
     character(len=*),optional,intent(in) :: fmt
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md313}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md313}
-v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the strings using internal W\+R\+I\+T\+E() statements. Trailing zeros are removed from non-\/zero values, and the string is left-\/justified.\hypertarget{namespacem__time__duplicate_autotoc_md314}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md314}
-V\+A\+L\+UE input value to be converted to a string F\+MT format can be explicitly given, but is limited to generating a string of eighty or less characters.\hypertarget{namespacem__time__duplicate_autotoc_md315}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md315}
-O\+U\+T\+S\+TR returned string representing input value,\hypertarget{namespacem__time__duplicate_autotoc_md316}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md316}
+\hypertarget{namespacem__time__duplicate_autotoc_md78}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md78}
+v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the strings using internal W\+R\+I\+T\+E() statements. Trailing zeros are removed from non-\/zero values, and the string is left-\/justified.\hypertarget{namespacem__time__duplicate_autotoc_md79}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md79}
+V\+A\+L\+UE input value to be converted to a string F\+MT format can be explicitly given, but is limited to generating a string of eighty or less characters.\hypertarget{namespacem__time__duplicate_autotoc_md80}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md80}
+O\+U\+T\+S\+TR returned string representing input value,\hypertarget{namespacem__time__duplicate_autotoc_md81}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md81}
 \begin{DoxyVerb}Sample Program:
 
  program demo_v2s
@@ -51,8 +51,8 @@ Expected output
  The value of .false. is [F]
  The value of .true. is  [T]
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md317}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md317}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md318}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md318}
+\hypertarget{namespacem__time__duplicate_autotoc_md82}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md82}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md83}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md83}
 Public Domain \mbox{\Hypertarget{interfacem__time__duplicate_1_1v2s_a753dd0a1757b4090937356a377849b13}\label{interfacem__time__duplicate_1_1v2s_a753dd0a1757b4090937356a377849b13}} 
 \index{m\_time\_duplicate::v2s@{m\_time\_duplicate::v2s}!i2s@{i2s}}
 \index{i2s@{i2s}!m\_time\_duplicate::v2s@{m\_time\_duplicate::v2s}}

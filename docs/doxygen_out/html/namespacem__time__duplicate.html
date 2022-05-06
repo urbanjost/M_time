@@ -183,13 +183,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__duplicate_ab86bb390cc56184faeef5543735eecc4_icgraph.png" border="0" usemap="#namespacem__time__duplicate_ab86bb390cc56184faeef5543735eecc4_icgraph" alt=""/></div>
 <map name="namespacem__time__duplicate_ab86bb390cc56184faeef5543735eecc4_icgraph" id="namespacem__time__duplicate_ab86bb390cc56184faeef5543735eecc4_icgraph">
-<area shape="rect" title=" " alt="" coords="419,56,589,83"/>
-<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="202,5,369,32"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="201,56,369,83"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="200,107,371,133"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="8,56,149,83"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,107,152,133"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="8,157,149,184"/>
+<area shape="rect" title=" " alt="" coords="224,56,395,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="7,5,174,32"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="7,56,175,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="5,107,176,133"/>
 </map>
 </div>
 
@@ -281,28 +278,28 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md334"></a>
+<h2><a class="anchor" id="autotoc_md99"></a>
 NAME</h2>
 <p>string_to_value(3f) - [M_strings:NUMERIC] subroutine returns numeric value from string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md335"></a>
+<h2><a class="anchor" id="autotoc_md100"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine string_to_value(chars,valu,ierr)
 
  character(len=*),intent(in)              :: chars   ! input string
  integer|real|doubleprecision,intent(out) :: valu
  integer,intent(out)                      :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md336"></a>
+</pre> <h2><a class="anchor" id="autotoc_md101"></a>
 DESCRIPTION</h2>
 <p>returns a numeric value from a numeric character string.</p>
 <p>works with any g-format input, including integer, real, and exponential. If the input string begins with "B", "Z", or "O" and otherwise represents a positive whole number it is assumed to be a binary, hexadecimal, or octal value. If the string contains commas they are removed. If the string is of the form NN:MMM... or NN::MMM then NN is assumed to be the base of the whole number.</p>
 <p>if an error occurs in the READ, IOSTAT is returned in IERR and value is set to zero. if no error occurs, IERR=0. </p>
-<h2><a class="anchor" id="autotoc_md337"></a>
+<h2><a class="anchor" id="autotoc_md102"></a>
 OPTIONS</h2>
 <p>CHARS input string to read numeric value from </p>
-<h2><a class="anchor" id="autotoc_md338"></a>
+<h2><a class="anchor" id="autotoc_md103"></a>
 RETURNS</h2>
 <p>VALU numeric value returned. May be INTEGER, REAL, or DOUBLEPRECISION. IERR error flag (0 == no error) </p>
-<h2><a class="anchor" id="autotoc_md339"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -313,10 +310,10 @@ EXAMPLE</h2>
     call string_to_value(string,value,ierr)
     write(*,*) 'value of string ['//trim(string)//'] is ',value
  end program demo_string_to_value
-</pre> <h2><a class="anchor" id="autotoc_md340"></a>
+</pre> <h2><a class="anchor" id="autotoc_md105"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md341"></a>
+<h2><a class="anchor" id="autotoc_md106"></a>
 LICENSE</h2>
 <p>Public Domain</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -367,23 +364,23 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md260"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 NAME</h2>
 <p>adjustc(3f) - [M_strings:WHITESPACE] center text (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md261"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 SYNOPSIS</h2>
 <p>pure function adjustc(string[,length])</p>
 <p>character(len=*),intent(in) :: string integer,intent(in),optional :: length character(len=:),allocatable :: adjustc </p>
-<h2><a class="anchor" id="autotoc_md262"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 DESCRIPTION</h2>
 <p>Centers input text in a string of the length specified. Returns a string of length LENGTH if LENGTH is present. Otherwise returns a string of the length of the input string. </p>
-<h2><a class="anchor" id="autotoc_md263"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 OPTIONS</h2>
 <p>string input string to trim and center length line length to center text in, optional. </p>
-<h2><a class="anchor" id="autotoc_md264"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 RETURNS</h2>
 <p>adjustc centered output string</p>
-<h2><a class="anchor" id="autotoc_md265"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -409,10 +406,10 @@ Expected output:
  \==================================================
              this is a centered string
  \==================================================
-</pre> <h2><a class="anchor" id="autotoc_md266"></a>
+</pre> <h2><a class="anchor" id="autotoc_md31"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md267"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 LICENSE</h2>
 <p>Public Domain</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -420,18 +417,9 @@ LICENSE</h2>
   </table>
   </dd>
 </dl>
-<h2><a class="anchor" id="autotoc_md269"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 VERSION     2.0, 20160711</h2>
 <p>AUTHOR John S. Urban </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespacem__time__duplicate_a487dbbb116d2c7022b39869d4990cf6f_icgraph.png" border="0" usemap="#namespacem__time__duplicate_a487dbbb116d2c7022b39869d4990cf6f_icgraph" alt=""/></div>
-<map name="namespacem__time__duplicate_a487dbbb116d2c7022b39869d4990cf6f_icgraph" id="namespacem__time__duplicate_a487dbbb116d2c7022b39869d4990cf6f_icgraph">
-<area shape="rect" title=" " alt="" coords="207,5,401,32"/>
-<area shape="rect" href="namespacem__time.html#a0fe7540912df30d3578f3c469413aea8" title=" " alt="" coords="5,5,159,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -460,26 +448,26 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md270"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 NAME</h2>
 <p>compact(3f) - [M_strings:WHITESPACE] converts contiguous whitespace to a single character (or nothing) (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md271"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 SYNOPSIS</h2>
 <pre class="fragment">function compact(STR,CHAR) result (OUTSTR)
 
  character(len=*),intent(in)          :: STR
  character(len=*),intent(in),optional :: CHAR
  character(len=len(str))              :: OUTSTR
-</pre> <h2><a class="anchor" id="autotoc_md272"></a>
+</pre> <h2><a class="anchor" id="autotoc_md37"></a>
 DESCRIPTION</h2>
 <p>COMPACT(3f) converts multiple spaces, tabs and control characters (called "whitespace") to a single character or nothing. Leading whitespace is removed.</p>
-<h2><a class="anchor" id="autotoc_md273"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 OPTIONS</h2>
 <p>STR input string to reduce or remove whitespace from CHAR By default the character that replaces adjacent whitespace is a space. If the optional CHAR parameter is supplied it will be used to replace the whitespace. If a null character is supplied for CHAR whitespace is removed. </p>
-<h2><a class="anchor" id="autotoc_md274"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 RETURNS</h2>
 <p>OUTSTR string of same length as input string but with all contiguous whitespace reduced to a single space and leading whitespace removed</p>
-<h2><a class="anchor" id="autotoc_md275"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -505,22 +493,12 @@ Expected output
  &gt;Thisisatest
  &gt;This:is:a:test
  &gt;AAAAAAAAAAAA
-</pre> <h2><a class="anchor" id="autotoc_md276"></a>
+</pre> <h2><a class="anchor" id="autotoc_md41"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md277"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 LICENSE</h2>
 <p>Public Domain </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38_icgraph.png" border="0" usemap="#namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38_icgraph" alt=""/></div>
-<map name="namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38_icgraph" id="namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38_icgraph">
-<area shape="rect" title=" " alt="" coords="195,31,397,57"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="5,5,147,32"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="5,56,147,83"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -549,26 +527,26 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md311"></a>
+<h2><a class="anchor" id="autotoc_md76"></a>
 NAME</h2>
 <p>v2s(3f) - [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md312"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 SYNOPSIS</h2>
 <pre class="fragment">   function v2s(value) result(outstr)
 
     integer|real|doubleprecision|logical,intent(in ) :: value
     character(len=:),allocatable :: outstr
     character(len=*),optional,intent(in) :: fmt
-</pre><h2><a class="anchor" id="autotoc_md313"></a>
+</pre><h2><a class="anchor" id="autotoc_md78"></a>
 DESCRIPTION</h2>
 <p>v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type REAL, DOUBLEPRECISION, INTEGER or LOGICAL. It creates the strings using internal WRITE() statements. Trailing zeros are removed from non-zero values, and the string is left-justified.</p>
-<h2><a class="anchor" id="autotoc_md314"></a>
+<h2><a class="anchor" id="autotoc_md79"></a>
 OPTIONS</h2>
 <p>VALUE input value to be converted to a string FMT format can be explicitly given, but is limited to generating a string of eighty or less characters.</p>
-<h2><a class="anchor" id="autotoc_md315"></a>
+<h2><a class="anchor" id="autotoc_md80"></a>
 RETURNS</h2>
 <p>OUTSTR returned string representing input value,</p>
-<h2><a class="anchor" id="autotoc_md316"></a>
+<h2><a class="anchor" id="autotoc_md81"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -588,10 +566,10 @@ Expected output
  The value of 0d0     is [0]
  The value of .false. is [F]
  The value of .true. is  [T]
-</pre><h2><a class="anchor" id="autotoc_md317"></a>
+</pre><h2><a class="anchor" id="autotoc_md82"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md318"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -641,24 +619,24 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md342"></a>
+<h2><a class="anchor" id="autotoc_md107"></a>
 NAME</h2>
 <p>decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md343"></a>
+<h2><a class="anchor" id="autotoc_md108"></a>
 SYNOPSIS</h2>
 <pre class="fragment">logical function decodebase(string,basein,out10)
 
  character(len=*),intent(in)  :: string
  integer,intent(in)           :: basein
  integer,intent(out)          :: out10
-</pre> <h2><a class="anchor" id="autotoc_md344"></a>
+</pre> <h2><a class="anchor" id="autotoc_md109"></a>
 DESCRIPTION</h2>
 <p>Convert a numeric string representing a whole number in base BASEIN to base 10. The function returns FALSE if BASEIN is not in the range [2..36] or if string STRING contains invalid characters in base BASEIN or if result OUT10 is too big</p>
 <p>The letters A,B,...,Z represent 10,11,...,36 in the base &gt; 10.</p>
-<h2><a class="anchor" id="autotoc_md345"></a>
+<h2><a class="anchor" id="autotoc_md110"></a>
 OPTIONS</h2>
 <p>string input string. It represents a whole number in the base specified by BASEIN unless BASEIN is set to zero. When BASEIN is zero STRING is assumed to be of the form BASE::VALUE where BASE represents the function normally provided by BASEIN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10</p>
-<h2><a class="anchor" id="autotoc_md346"></a>
+<h2><a class="anchor" id="autotoc_md111"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -688,12 +666,12 @@ EXAMPLE</h2>
  enddo INFINITE
 
  end program demo_decodebase
-</pre><h2><a class="anchor" id="autotoc_md347"></a>
+</pre><h2><a class="anchor" id="autotoc_md112"></a>
 AUTHOR</h2>
 <p>John S. Urban</p>
 <p>Ref.: "Math matiques en Turbo-Pascal by M. Ducamp and A. Reverchon (2), Eyrolles, Paris, 1988".</p>
 <p>based on a F90 Version By J-P Moreau (www.jpmoreau.fr)</p>
-<h2><a class="anchor" id="autotoc_md348"></a>
+<h2><a class="anchor" id="autotoc_md113"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -712,14 +690,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__duplicate_a66a83a4b3d6324843c984658784b2c4e_icgraph.png" border="0" usemap="#namespacem__time__duplicate_a66a83a4b3d6324843c984658784b2c4e_icgraph" alt=""/></div>
 <map name="namespacem__time__duplicate_a66a83a4b3d6324843c984658784b2c4e_icgraph" id="namespacem__time__duplicate_a66a83a4b3d6324843c984658784b2c4e_icgraph">
-<area shape="rect" title=" " alt="" coords="637,56,863,83"/>
-<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="419,56,589,83"/>
-<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="202,5,369,32"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="201,56,369,83"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="200,107,371,133"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="8,56,149,83"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,107,152,133"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="8,157,149,184"/>
+<area shape="rect" title=" " alt="" coords="443,56,668,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="224,56,395,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="7,5,174,32"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="7,56,175,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="5,107,176,133"/>
 </map>
 </div>
 
@@ -838,29 +813,29 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md251"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 NAME</h2>
 <p>lower(3f) - [M_strings:CASE] changes a string to lowercase over specified range (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md252"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 SYNOPSIS</h2>
 <pre class="fragment">elemental pure function lower(str,begin,end) result (string)
 
  character(*), intent(in) :: str
  integer,optional         :: begin, end
  character(len(str))      :: string  ! output string
-</pre> <h2><a class="anchor" id="autotoc_md253"></a>
+</pre> <h2><a class="anchor" id="autotoc_md18"></a>
 DESCRIPTION</h2>
 <p>lower(string) returns a copy of the input string with all characters converted to miniscule over the specified range, assuming ASCII character sets are being used. If no range is specified the entire string is converted to miniscule.</p>
-<h2><a class="anchor" id="autotoc_md254"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 OPTIONS</h2>
 <p>str string to convert to miniscule begin optional starting position in "str" to begin converting to miniscule end optional ending position in "str" to stop converting to miniscule</p>
-<h2><a class="anchor" id="autotoc_md255"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 RESULTS</h2>
 <p>lower copy of the input string with all characters converted to miniscule over optionally specified range.</p>
-<h2><a class="anchor" id="autotoc_md256"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 TRIVIA</h2>
 <p>The terms "uppercase" and "lowercase" date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.</p>
-<h2><a class="anchor" id="autotoc_md257"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -877,10 +852,10 @@ Expected output
 
    mixed-case input string is .... ABCDEFG abcdefg
    lower-case output string is ... abcdefg abcdefg
-</pre> <h2><a class="anchor" id="autotoc_md258"></a>
+</pre> <h2><a class="anchor" id="autotoc_md23"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md259"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -888,11 +863,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__duplicate_af8b4555e0c47e2ec327f0434d84b9c56_icgraph.png" border="0" usemap="#namespacem__time__duplicate_af8b4555e0c47e2ec327f0434d84b9c56_icgraph" alt=""/></div>
 <map name="namespacem__time__duplicate_af8b4555e0c47e2ec327f0434d84b9c56_icgraph" id="namespacem__time__duplicate_af8b4555e0c47e2ec327f0434d84b9c56_icgraph">
-<area shape="rect" title=" " alt="" coords="423,56,605,83"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="8,5,149,32"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="8,107,149,133"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a326e0d62d92969a231864997eea2ab98" title=" " alt="" coords="200,56,375,83"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,56,152,83"/>
+<area shape="rect" title=" " alt="" coords="228,5,411,32"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a326e0d62d92969a231864997eea2ab98" title=" " alt="" coords="5,5,180,32"/>
 </map>
 </div>
 
@@ -970,10 +942,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md278"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 NAME</h2>
 <p>s2v(3f) - [M_strings:NUMERIC] function returns doubleprecision numeric value from a string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md279"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 SYNOPSIS</h2>
 <pre class="fragment">function s2v(string[,ierr][,onerr])
 
@@ -981,11 +953,11 @@ SYNOPSIS</h2>
  doubleprecision              :: s2v
  integer,intent(out),optional :: ierr
  class(*),intent(in),optional :: onerr
-</pre> <h2><a class="anchor" id="autotoc_md280"></a>
+</pre> <h2><a class="anchor" id="autotoc_md45"></a>
 DESCRIPTION</h2>
 <p>This function converts a string to a DOUBLEPRECISION numeric value.</p>
 <p>The intrinsics INT(3f), REAL(3f), and DBLE(3f) are also extended to take CHARACTER variables. The KIND= keyword is not supported on the extensions. </p>
-<h2><a class="anchor" id="autotoc_md281"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 OPTIONS</h2>
 <pre class="fragment"> string   holds string assumed to represent a numeric value
  ierr     If an error occurs the program is stopped if the optional
@@ -993,10 +965,10 @@ OPTIONS</h2>
           value an error occurred.
  onerr    The value to return on error. A value of zero (NaN) is
           returned on error by default.
-</pre> <h2><a class="anchor" id="autotoc_md282"></a>
+</pre> <h2><a class="anchor" id="autotoc_md47"></a>
 RETURNS</h2>
 <p>s2v</p>
-<h2><a class="anchor" id="autotoc_md283"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -1066,16 +1038,16 @@ Expected output
  &gt;          -3.0000000000000000 -4.9399999999999999E-002 0.10000000000000001
  &gt;          12345.678910000001 0.0000000000000000 12121.000000000000
  &gt;That's all folks!
-</pre> <h2><a class="anchor" id="autotoc_md284"></a>
+</pre> <h2><a class="anchor" id="autotoc_md49"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md285"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 LICENSE</h2>
 <p>Public Domain</p>
-<h2><a class="anchor" id="autotoc_md286"></a>
+<h2><a class="anchor" id="autotoc_md51"></a>
 PROCEDURE:</h2>
 <p>DESCRIPTION: s2v(3f): function returns doubleprecision number from string;zero if error occurs </p>
-<h2><a class="anchor" id="autotoc_md287"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 VERSION:     2.0, 20160704</h2>
 <p>AUTHOR: John S. Urban </p>
 
@@ -1091,17 +1063,6 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="namespacem__time__duplicate.html#aaf5c25d7bce4f2776df6c1e586b2e277" title=" " alt="" coords="716,81,901,108"/>
 <area shape="rect" href="namespacem__time__duplicate.html#abc203f3a6afc1edeecbcdc58b187a5d5" title=" " alt="" coords="449,107,661,133"/>
 <area shape="rect" href="namespacem__time__duplicate.html#aabdd1a3e01b26e896bd06aee488de7c6" title=" " alt="" coords="717,5,901,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespacem__time__duplicate_a118f0d70fa6f319fbd773008c7f86ef9_icgraph.png" border="0" usemap="#namespacem__time__duplicate_a118f0d70fa6f319fbd773008c7f86ef9_icgraph" alt=""/></div>
-<map name="namespacem__time__duplicate_a118f0d70fa6f319fbd773008c7f86ef9_icgraph" id="namespacem__time__duplicate_a118f0d70fa6f319fbd773008c7f86ef9_icgraph">
-<area shape="rect" title=" " alt="" coords="200,56,371,83"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="8,5,149,32"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,56,152,83"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="8,107,149,133"/>
 </map>
 </div>
 
@@ -1150,10 +1111,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md288"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 NAME</h2>
 <p>split(3f) - [M_strings:TOKENS] parse string into an array using specified delimiters (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md289"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine split(input_line,array,delimiters,order,nulls)
 
@@ -1162,10 +1123,10 @@ SYNOPSIS</h2>
  character(len=*),optional,intent(in)     :: delimiters
  character(len=*),optional,intent(in)     :: order
  character(len=*),optional,intent(in)     :: nulls
-</pre> <h2><a class="anchor" id="autotoc_md290"></a>
+</pre> <h2><a class="anchor" id="autotoc_md55"></a>
 DESCRIPTION</h2>
 <p>SPLIT(3f) parses a string using specified delimiter characters and store tokens into an allocatable array</p>
-<h2><a class="anchor" id="autotoc_md291"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 OPTIONS</h2>
 <pre class="fragment">INPUT_LINE  Input string to tokenize
 
@@ -1194,7 +1155,7 @@ NULLS IGNORE|RETURN|IGNOREEND  Treatment of null fields.
             NULLS='return' adjacent delimiters create an empty element
             in the output ARRAY. If NULLS='ignoreend' then only
             trailing delimiters at the right of the string are ignored.
-</pre><h2><a class="anchor" id="autotoc_md292"></a>
+</pre><h2><a class="anchor" id="autotoc_md57"></a>
 EXAMPLES</h2>
 <p>Sample program: </p><pre class="fragment"> program demo_split
  use M_strings, only: split
@@ -1276,10 +1237,10 @@ end program demo_split
  &gt; 19 ==&gt;
  &gt; 20 ==&gt;
  &gt;  SIZE:          20
-</pre> <h2><a class="anchor" id="autotoc_md293"></a>
+</pre> <h2><a class="anchor" id="autotoc_md58"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md294"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1291,17 +1252,6 @@ Here is the call graph for this function:</div>
 <map name="namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98_cgraph" id="namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,180,32"/>
 <area shape="rect" href="namespacem__time__duplicate.html#af8b4555e0c47e2ec327f0434d84b9c56" title=" " alt="" coords="228,5,411,32"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98_icgraph.png" border="0" usemap="#namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98_icgraph" alt=""/></div>
-<map name="namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98_icgraph" id="namespacem__time__duplicate_a326e0d62d92969a231864997eea2ab98_icgraph">
-<area shape="rect" title=" " alt="" coords="200,56,375,83"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="8,5,149,32"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,56,152,83"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="8,107,149,133"/>
 </map>
 </div>
 
@@ -1327,31 +1277,18 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__duplicate_aaf5c25d7bce4f2776df6c1e586b2e277_icgraph.png" border="0" usemap="#namespacem__time__duplicate_aaf5c25d7bce4f2776df6c1e586b2e277_icgraph" alt=""/></div>
 <map name="namespacem__time__duplicate_aaf5c25d7bce4f2776df6c1e586b2e277_icgraph" id="namespacem__time__duplicate_aaf5c25d7bce4f2776df6c1e586b2e277_icgraph">
-<area shape="rect" title=" " alt="" coords="1319,293,1504,320"/>
-<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="827,125,997,152"/>
-<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="590,24,757,50"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="589,74,757,101"/>
-<area shape="rect" href="namespacem__time.html#a727dd77bbd4a5d0e3947c5d303845947" title=" " alt="" coords="1113,445,1217,472"/>
-<area shape="rect" href="namespacem__time.html#a8188c7ed4e592c4f2388d28c75486726" title=" " alt="" coords="1106,496,1223,522"/>
-<area shape="rect" href="namespacem__time.html#a55e2cb9efc9d4d209ae2864f073d4f19" title=" " alt="" coords="1113,572,1217,598"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a1bfa9e4483f2452c89c0388971bb21bd" title=" " alt="" coords="581,126,765,167"/>
-<area shape="rect" href="namespacem__time__duplicate.html#abc203f3a6afc1edeecbcdc58b187a5d5" title=" " alt="" coords="1059,293,1271,320"/>
-<area shape="rect" href="namespacem__time__duplicate.html#ab836a3b7c441e5b324639db734b7de9f" title=" " alt="" coords="1073,691,1256,732"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="588,242,759,269"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="389,344,531,370"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="387,192,533,218"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="389,268,531,294"/>
-<area shape="rect" href="namespacem__time.html#a2cb84c9b8af4f395b76aed76e1431328" title=" " alt="" coords="394,445,526,472"/>
-<area shape="rect" href="namespacem__time.html#ab8960d2aa60e134bcf77247d8b257963" title=" " alt="" coords="819,546,1005,573"/>
-<area shape="rect" href="M__time_8f90.html#a4a68c5e906616f64da0c3d165fc41479" title=" " alt="" coords="813,445,1011,472"/>
-<area shape="rect" href="namespacem__time.html#a6b5e87be0e510ff268c1ecfbf67a3bdb" title=" " alt="" coords="232,445,339,472"/>
-<area shape="rect" href="namespacem__time.html#a914927f70fb9495af1be2e484b967111" title=" " alt="" coords="5,445,184,472"/>
-<area shape="rect" href="namespacem__time.html#ad4ff99ad6f6d5282c4b65ad636a2a627" title=" " alt="" coords="620,445,727,472"/>
-<area shape="rect" href="namespacem__time.html#ac0ec48db8d508bfa23fe4b20c9d1c5a3" title=" " alt="" coords="859,597,965,624"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a84f53c1e0d6c1c9fe70b19549921d14b" title=" " alt="" coords="827,648,997,674"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a7570c5a3b71c4ea4f376a38b285ccbd8" title=" " alt="" coords="829,698,995,725"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a4bd5e96c3ed16383c576c4e362c16b82" title=" " alt="" coords="829,749,995,776"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a9d1f96975ddf101c13c2f7f0dbf92a02" title=" " alt="" coords="829,800,995,826"/>
+<area shape="rect" title=" " alt="" coords="703,123,888,149"/>
+<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="224,68,395,95"/>
+<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="7,5,174,32"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="7,164,175,191"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a1bfa9e4483f2452c89c0388971bb21bd" title=" " alt="" coords="457,145,641,186"/>
+<area shape="rect" href="namespacem__time__duplicate.html#abc203f3a6afc1edeecbcdc58b187a5d5" title=" " alt="" coords="443,93,655,120"/>
+<area shape="rect" href="namespacem__time__duplicate.html#ab836a3b7c441e5b324639db734b7de9f" title=" " alt="" coords="457,305,640,346"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="5,68,176,95"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a84f53c1e0d6c1c9fe70b19549921d14b" title=" " alt="" coords="224,413,395,440"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a7570c5a3b71c4ea4f376a38b285ccbd8" title=" " alt="" coords="226,261,393,288"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a4bd5e96c3ed16383c576c4e362c16b82" title=" " alt="" coords="226,312,393,339"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a9d1f96975ddf101c13c2f7f0dbf92a02" title=" " alt="" coords="226,363,393,389"/>
 </map>
 </div>
 
@@ -1406,10 +1343,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md295"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 NAME</h2>
 <p>string_to_values(3f) - [M_strings:NUMERIC] read a string representing numbers into a numeric array (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md296"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 SYNOPSIS</h2>
 <pre class="fragment">   subroutine string_to_values(line,iread,values,inums,delims,ierr)
 
@@ -1419,14 +1356,14 @@ SYNOPSIS</h2>
     integer          :: inums
     character(len=*) :: delims
     integer          :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md297"></a>
+</pre> <h2><a class="anchor" id="autotoc_md62"></a>
 DESCRIPTION</h2>
 <p>This routine can take a string representing a series of numbers and convert it to a numeric array and return how many numbers were found.</p>
-<h2><a class="anchor" id="autotoc_md298"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 OPTIONS</h2>
 <pre class="fragment">   LINE     Input string containing numbers
    IREAD    maximum number of values to try to read from input string
-</pre><h2><a class="anchor" id="autotoc_md299"></a>
+</pre><h2><a class="anchor" id="autotoc_md64"></a>
 RESULTS</h2>
 <pre class="fragment">   VALUES   real array to be filled with numbers
    INUMS    number of values successfully read (before error occurs
@@ -1436,7 +1373,7 @@ RESULTS</h2>
             not be the last character or it will be ignored.
    IERR     error flag (0=no error, else column number string starts
             at that error occurred on).
-</pre><h2><a class="anchor" id="autotoc_md300"></a>
+</pre><h2><a class="anchor" id="autotoc_md65"></a>
 EXAMPLE</h2>
 <p>Sample Program: </p><pre class="fragment"> program demo_string_to_values
   use M_strings, only : string_to_values
@@ -1466,10 +1403,10 @@ string_to_values:
 input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
 number of values found...           3
 values...................   10.0000000  2.29999995  3.14159989
-</pre> <h2><a class="anchor" id="autotoc_md301"></a>
+</pre> <h2><a class="anchor" id="autotoc_md66"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md302"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1481,15 +1418,6 @@ Here is the call graph for this function:</div>
 <map name="namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd_cgraph" id="namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,189,47"/>
 <area shape="rect" href="namespacem__time__duplicate.html#aaf5c25d7bce4f2776df6c1e586b2e277" title=" " alt="" coords="237,13,423,39"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd_icgraph.png" border="0" usemap="#namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd_icgraph" alt=""/></div>
-<map name="namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd_icgraph" id="namespacem__time__duplicate_a1bfa9e4483f2452c89c0388971bb21bd_icgraph">
-<area shape="rect" title=" " alt="" coords="200,5,384,47"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,13,152,39"/>
 </map>
 </div>
 
@@ -1544,10 +1472,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md235"></a>
+<h2><a class="anchor" id="autotoc_md0"></a>
 NAME</h2>
 <p>substitute(3f) - [M_strings:EDITING] subroutine globally substitutes one substring for another in string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md236"></a>
+<h2><a class="anchor" id="autotoc_md1"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine substitute(targetline,old,new,ierr,start,end)
 
@@ -1557,13 +1485,13 @@ SYNOPSIS</h2>
  integer,intent(out),optional  :: ierr
  integer,intent(in),optional   :: start
  integer,intent(in),optional   :: end
-</pre> <h2><a class="anchor" id="autotoc_md237"></a>
+</pre> <h2><a class="anchor" id="autotoc_md2"></a>
 DESCRIPTION</h2>
 <p>Globally substitute one substring for another in string.</p>
-<h2><a class="anchor" id="autotoc_md238"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 OPTIONS</h2>
 <p>TARGETLINE input line to be changed. Must be long enough to hold altered output. OLD substring to find and replace NEW replacement for OLD substring IERR error code. If IER = -1 bad directive, &gt;= 0 then count of changes made. START sets the left margin to be scanned for OLD in TARGETLINE. END sets the right margin to be scanned for OLD in TARGETLINE.</p>
-<h2><a class="anchor" id="autotoc_md239"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -1598,10 +1526,10 @@ Expected output
  th =&gt; TH    : THis is THe input string
  "" =&gt; BEFORE: BEFORE:THis is THe input string
  i =&gt; ""     : BEFORE:THs s THe nput strng
-</pre> <h2><a class="anchor" id="autotoc_md240"></a>
+</pre> <h2><a class="anchor" id="autotoc_md5"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md241"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1620,17 +1548,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__duplicate_abc203f3a6afc1edeecbcdc58b187a5d5_icgraph.png" border="0" usemap="#namespacem__time__duplicate_abc203f3a6afc1edeecbcdc58b187a5d5_icgraph" alt=""/></div>
 <map name="namespacem__time__duplicate_abc203f3a6afc1edeecbcdc58b187a5d5_icgraph" id="namespacem__time__duplicate_abc203f3a6afc1edeecbcdc58b187a5d5_icgraph">
-<area shape="rect" title=" " alt="" coords="669,144,881,171"/>
-<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="451,144,621,171"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="24,5,165,32"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="21,68,168,95"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="24,195,165,221"/>
-<area shape="rect" href="namespacem__time.html#a2cb84c9b8af4f395b76aed76e1431328" title=" " alt="" coords="470,296,602,323"/>
-<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="234,144,401,171"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="233,195,401,221"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="232,93,403,120"/>
-<area shape="rect" href="namespacem__time.html#a6b5e87be0e510ff268c1ecfbf67a3bdb" title=" " alt="" coords="264,296,371,323"/>
-<area shape="rect" href="namespacem__time.html#a914927f70fb9495af1be2e484b967111" title=" " alt="" coords="5,296,184,323"/>
+<area shape="rect" title=" " alt="" coords="443,56,655,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="224,56,395,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="7,5,174,32"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="7,56,175,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="5,107,176,133"/>
 </map>
 </div>
 
@@ -1667,10 +1589,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md303"></a>
+<h2><a class="anchor" id="autotoc_md68"></a>
 NAME</h2>
 <p>transliterate(3f) - [M_strings:EDITING] replace characters from old set with new set (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md304"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 SYNOPSIS</h2>
 <pre class="fragment">pure function transliterate(instr,old_set,new_set) result(outstr)
 
@@ -1678,10 +1600,10 @@ SYNOPSIS</h2>
  character(len=*),intent(in)  :: old_set
  character(len=*),intent(in)  :: new_set
  character(len=len(instr))    :: outstr
-</pre> <h2><a class="anchor" id="autotoc_md305"></a>
+</pre> <h2><a class="anchor" id="autotoc_md70"></a>
 DESCRIPTION</h2>
 <p>Translate, squeeze, and/or delete characters from the input string.</p>
-<h2><a class="anchor" id="autotoc_md306"></a>
+<h2><a class="anchor" id="autotoc_md71"></a>
 OPTIONS</h2>
 <p>instr input string to change old_set list of letters to change in INSTR if found </p><pre class="fragment">     Each character in the input string that matches a character in
      the old set is replaced.
@@ -1689,10 +1611,10 @@ OPTIONS</h2>
 
      If the new_set is shorter than the old set the last character in the
      new set is used to replace the remaining characters in the new set.
-</pre> <h2><a class="anchor" id="autotoc_md307"></a>
+</pre> <h2><a class="anchor" id="autotoc_md72"></a>
 RETURNS</h2>
 <p>outstr instr with substitutions applied</p>
-<h2><a class="anchor" id="autotoc_md308"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -1722,22 +1644,12 @@ Expected output
  &gt; AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ
  &gt; :A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:Q:R:S:T:U:V:W:X:Y:Z
  &gt; ABCDEFGHIJKLMNOPQRSTUVWXYZ
-</pre><h2><a class="anchor" id="autotoc_md309"></a>
+</pre><h2><a class="anchor" id="autotoc_md74"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md310"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 LICENSE</h2>
 <p>Public Domain </p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespacem__time__duplicate_ac8388a45881cf7c2f9047b4d643ed3f2_icgraph.png" border="0" usemap="#namespacem__time__duplicate_ac8388a45881cf7c2f9047b4d643ed3f2_icgraph" alt=""/></div>
-<map name="namespacem__time__duplicate_ac8388a45881cf7c2f9047b4d643ed3f2_icgraph" id="namespacem__time__duplicate_ac8388a45881cf7c2f9047b4d643ed3f2_icgraph">
-<area shape="rect" title=" " alt="" coords="195,31,421,57"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="5,5,147,32"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="5,56,147,83"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -1756,21 +1668,21 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md327"></a>
+<h2><a class="anchor" id="autotoc_md92"></a>
 NAME</h2>
 <p>trimzeros(3fp) - [M_strings:NUMERIC] Delete trailing zeros from numeric decimal string (LICENSE:PD) </p>
-<h2><a class="anchor" id="autotoc_md328"></a>
+<h2><a class="anchor" id="autotoc_md93"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine trimzeros(str)
 
  character(len=*)  :: str
-</pre> <h2><a class="anchor" id="autotoc_md329"></a>
+</pre> <h2><a class="anchor" id="autotoc_md94"></a>
 DESCRIPTION</h2>
 <p>TRIMZEROS(3f) deletes trailing zeros from a string representing a number. If the resulting string would end in a decimal point, one trailing zero is added. </p>
-<h2><a class="anchor" id="autotoc_md330"></a>
+<h2><a class="anchor" id="autotoc_md95"></a>
 OPTIONS</h2>
 <p>str input string will be assumed to be a numeric value and have trailing zeros removed </p>
-<h2><a class="anchor" id="autotoc_md331"></a>
+<h2><a class="anchor" id="autotoc_md96"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample program:
 
@@ -1782,10 +1694,10 @@ EXAMPLES</h2>
       write(*,*)trimzeros('12345.')
       write(*,*)trimzeros('12345.00e3')
    end program demo_trimzeros
-</pre><h2><a class="anchor" id="autotoc_md332"></a>
+</pre><h2><a class="anchor" id="autotoc_md97"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md333"></a>
+<h2><a class="anchor" id="autotoc_md98"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -1835,29 +1747,29 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md242"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 NAME</h2>
 <p>upper(3f) - [M_strings:CASE] changes a string to uppercase (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md243"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 SYNOPSIS</h2>
 <pre class="fragment">elemental pure function upper(str,begin,end) result (string)
 
  character(*), intent(in)    :: str
  integer,optional,intent(in) :: begin,end
  character(len(str))         :: string  ! output string
-</pre> <h2><a class="anchor" id="autotoc_md244"></a>
+</pre> <h2><a class="anchor" id="autotoc_md9"></a>
 DESCRIPTION</h2>
 <p>upper(string) returns a copy of the input string with all characters converted in the optionally specified range to uppercase, assuming ASCII character sets are being used. If no range is specified the entire string is converted to uppercase.</p>
-<h2><a class="anchor" id="autotoc_md245"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 OPTIONS</h2>
 <p>str string to convert to uppercase begin optional starting position in "str" to begin converting to uppercase end optional ending position in "str" to stop converting to uppercase</p>
-<h2><a class="anchor" id="autotoc_md246"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 RESULTS</h2>
 <p>upper copy of the input string with all characters converted to uppercase over optionally specified range.</p>
-<h2><a class="anchor" id="autotoc_md247"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 TRIVIA</h2>
 <p>The terms "uppercase" and "lowercase" date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.</p>
-<h2><a class="anchor" id="autotoc_md248"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -1878,10 +1790,10 @@ Expected output
  upper-case output string is ... ABCDEFG ABCDEFG
  make first character uppercase  ... This is a sentence.
  upper(3f) is elemental ==&gt;ABC+DEF+GHI
-</pre> <h2><a class="anchor" id="autotoc_md249"></a>
+</pre> <h2><a class="anchor" id="autotoc_md14"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md250"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -1889,18 +1801,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6_icgraph.png" border="0" usemap="#namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6_icgraph" alt=""/></div>
 <map name="namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6_icgraph" id="namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6_icgraph">
-<area shape="rect" title=" " alt="" coords="911,183,1095,209"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a66a83a4b3d6324843c984658784b2c4e" title=" " alt="" coords="637,93,863,120"/>
-<area shape="rect" href="namespacem__time.html#aa5198c7aa4f3d8411c8ce93046ce3794" title=" " alt="" coords="5,157,152,184"/>
-<area shape="rect" href="namespacem__time__oop.html#a78bb598e3481faa48df9733a3f9ae060" title=" " alt="" coords="673,208,827,235"/>
-<area shape="rect" href="namespacem__time.html#ad7bf0886754757e8961e562f06cf3bb7" title=" " alt="" coords="691,259,809,285"/>
-<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="419,68,589,95"/>
-<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="202,5,369,32"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="201,56,369,83"/>
-<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="200,107,371,133"/>
-<area shape="rect" href="namespacem__time.html#a99393c7906f1989f90ece03969224938" title=" " alt="" coords="8,56,149,83"/>
-<area shape="rect" href="namespacem__time.html#a7788285d79b8d58323b05e9a30a2d992" title=" " alt="" coords="8,107,149,133"/>
-<area shape="rect" href="namespacem__time.html#a8188c7ed4e592c4f2388d28c75486726" title=" " alt="" coords="445,259,563,285"/>
+<area shape="rect" title=" " alt="" coords="716,81,900,108"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a66a83a4b3d6324843c984658784b2c4e" title=" " alt="" coords="443,56,668,83"/>
+<area shape="rect" href="namespacem__time__oop.html#a78bb598e3481faa48df9733a3f9ae060" title=" " alt="" coords="478,107,633,133"/>
+<area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="224,56,395,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="7,5,174,32"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="7,56,175,83"/>
+<area shape="rect" href="namespacem__time__duplicate.html#a118f0d70fa6f319fbd773008c7f86ef9" title=" " alt="" coords="5,107,176,133"/>
 </map>
 </div>
 
@@ -1955,10 +1862,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md319"></a>
+<h2><a class="anchor" id="autotoc_md84"></a>
 NAME</h2>
 <p>value_to_string(3f) - [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md320"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine value_to_string(value,chars[,ilen,ierr,fmt,trimz])
 
@@ -1975,16 +1882,16 @@ SYNOPSIS</h2>
  integer,optional                         :: ierr
  character(len=*),intent(in),optional     :: fmt
  logical,intent(in)                       :: trimz
-</pre> <h2><a class="anchor" id="autotoc_md321"></a>
+</pre> <h2><a class="anchor" id="autotoc_md86"></a>
 DESCRIPTION</h2>
 <p>value_to_string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type REAL, DOUBLEPRECISION, INTEGER or LOGICAL. It creates the string using internal writes. It then removes trailing zeros from non-zero values, and left-justifies the string.</p>
-<h2><a class="anchor" id="autotoc_md322"></a>
+<h2><a class="anchor" id="autotoc_md87"></a>
 OPTIONS</h2>
 <p>VALUE input value to be converted to a string FMT You may specify a specific format that produces a string up to the length of CHARS; optional. TRIMZ If a format is supplied the default is not to try to trim trailing zeros. Set TRIMZ to .true. to trim zeros from a string assumed to represent a simple numeric value.</p>
-<h2><a class="anchor" id="autotoc_md323"></a>
+<h2><a class="anchor" id="autotoc_md88"></a>
 RETURNS</h2>
 <p>CHARS returned string representing input value, must be at least 23 characters long; or what is required by optional FMT if longer. ILEN position of last non-blank character in returned string; optional. IERR If not zero, error occurred; optional. </p>
-<h2><a class="anchor" id="autotoc_md324"></a>
+<h2><a class="anchor" id="autotoc_md89"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -2017,10 +1924,10 @@ Expected output
  The value is [THE VALUE IS .750000000]
  The value is [1234]
  The value is [0.33333333333333331]
-</pre><h2><a class="anchor" id="autotoc_md325"></a>
+</pre><h2><a class="anchor" id="autotoc_md90"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md326"></a>
+<h2><a class="anchor" id="autotoc_md91"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 

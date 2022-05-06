@@ -125,10 +125,10 @@ Variables</h2></td></tr>
 <tr class="separator:a212adf058af3afd9f46817077416875b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h2><a class="anchor" id="autotoc_md349"></a>
+<div class="textblock"><h2><a class="anchor" id="autotoc_md114"></a>
 NAME</h2>
 <p>M_time_oop(3fm) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm) (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md350"></a>
+<h2><a class="anchor" id="autotoc_md115"></a>
 SYNOPSIS</h2>
 <p>use M_time_oop, only : <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a></p>
 <p>use M_time_oop,only : operator(+),operator(-),operator(&gt;),operator(&lt;) use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)</p>
@@ -136,13 +136,13 @@ SYNOPSIS</h2>
 <p>mydateyear mydatemonth mydateday mydatetz mydatehour mydateminute mydatesecond mydatemillisecond</p>
 <p>call mydateinit()</p>
 <p>mydateformat('') mydateordinal() mydateweekday() mydateepoch() mydatejulian() dat=mydatedatout() mydatedelta(year=NN, month=NN, day=NN, tz=NN, hour=NN, minute=NN, second=NN, millisecond=NN, week=NN, duration='DD-HH:MM:SS.XX')</p>
-<h2><a class="anchor" id="autotoc_md351"></a>
+<h2><a class="anchor" id="autotoc_md116"></a>
 DESCRIPTION</h2>
 <p>An object-oriented interface to the M_time module. The following example program demonstrates and documents the interface</p>
-<h2><a class="anchor" id="autotoc_md352"></a>
+<h2><a class="anchor" id="autotoc_md117"></a>
 EXAMPLE</h2>
 <p>sample program</p>
-<p>program demo_M_time_oop ! ! This is an example using the object-oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M_time(3fm), but allows for Object Oriented syntax: ! use M_time_oop,only : <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a> !!use M_time_oop,only : operator(+),operator(-),operator(&gt;),operator(&lt;) !!use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=) implicit none integer,parameter :: dp=kind(0.0d0) integer :: dat(8) TYPE(date_time) :: event TYPE(date_time) :: otherdate TYPE(date_time) :: answer</p>
+<p>program demo_M_time_oop ! ! This is an example using the object-oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M_time(3fm), but allows for Object ! Oriented syntax: ! use M_time_oop,only : <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a> !!use M_time_oop,only : operator(+),operator(-),operator(&gt;),operator(&lt;) !!use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=) implicit none integer,parameter :: dp=kind(0.0d0) integer :: dat(8) TYPE(date_time) :: event TYPE(date_time) :: otherdate TYPE(date_time) :: answer</p>
 <p>character(len=*),parameter :: iso_fmt='Y-M-DTh:m:s.xz' ! DIFFERENT INITIALIZATION STYLES ! (Still debating on how best to do this) write(*,*) write(*,'(a)')'Various initialization styles'</p>
 <p>! DEFINE type(date_time) WITH CONSTRUCTOR otherdate=date_time() print *,'DEFAULT CONSTRUCTOR format() ',&amp; &amp; otherdateformat() print *,'DEFAULT CONSTRUCTOR format("") ',&amp; &amp; otherdateformat("") print *,'DEFAULT CONSTRUCTOR format(user-specified) ',&amp; &amp; otherdateformat(iso_fmt) print *,'DEFAULT CONSTRUCTOR format("USA") ',&amp; &amp; otherdateformat("USA")</p>
 <p>otherdate=date_time(1492,10,12,0,0,0,0,0) print *,'DEFAULT CONSTRUCTOR setting values ',&amp; &amp; otherdateformat()</p>
@@ -155,7 +155,7 @@ EXAMPLE</h2>
 <p>! initialize with a DAT array using INIT, ! compatible with DATE_AND_TIME VALUES(8) call otherdateinit(dat=[1970,1,1,0,0,0,0,0]) ! using INIT with ordered values call otherdateinit(2016,6,11,-300,23,1,0,0) ! using INIT with names call otherdateinit(year=2016,month=6,day=11,&amp; &amp; tz=-300,hour=23,minute=1,second=0,millisecond=0) ! ! take current date and exercise the OOP interface ! initialize to current time using INIT call eventinit() write(*,*) write(*,*)'Print members of type(DATE_TIME)' ! show derived type write(*,404)'EVENT=',event 404 format(1x,a,i0,*(",",i0:))</p>
 <p>! MEMBERS ( basic time values are all integers) ! print members of type write(*,101)'year Year................... ',eventyear write(*,101)'month Month.................. ',eventmonth write(*,101)'day Day.................... ',eventday write(*,101)'tz Timezone............... ',eventtz write(*,101)'hour Hour................... ',eventhour write(*,101)'minute Minute................. ',eventminute write(*,101)'second Second................. ',eventsecond write(*,101)'millisecond Millisecond............ ',eventmillisecond</p>
 <p>! PRINT METHODS OF TYPE write(*,*)'Print methods of type(DATE_TIME)' write(*,101)'ordinal Ordinal day of year.... ', eventordinal() write(*,101)'weekday Weekday................ ', eventweekday() 101 format(1x,a,i0) ! DOUBLE PRECISION VALUES EASILY MANIPULATED MATHEMATICALLY write(*,202)'epoch Unix epoch time........ ', eventepoch() write(*,202)'julian Julian date............ ', eventjulian() 202 format(1x,a,g0)</p>
-<p>! FORMATTED STRINGS (many strings possible. ! Takes the same format string as fmtdate(3f)) write(*,*) write(*,*)'Formatted Strings (format("STRING") &amp; &amp; &ndash; see fmtdate(3f) for format descriptions' ! abbreviated month name l Dec write(*,303)'Short month............ ',&amp; &amp; eventformat("%l") ! ! full month name L December write(*,303)'Month.................. ',&amp; &amp; eventformat("%L") ! ! first three characters of weekday w Sat write(*,303)'Short week............. ',&amp; &amp; eventformat("%w") ! ! weekday name W Saturday write(*,303)'Week .................. ',&amp; &amp; eventformat("%W") ! ! with no percent (%) characters write(*,303)'Calendar Time ......... ',&amp; &amp; eventformat("Y-M-D h:m:s.x z") ! ! keywords with no percent (%) characters write(*,303)'Calendar Time ......... ',&amp; &amp; eventformat('"year-month-day &amp;
+<p>! FORMATTED STRINGS (many strings possible. ! Takes the same format string as fmtdate(3f)) write(*,*) write(*,'(a)')' Formatted Strings (format("STRING") &amp; &amp; &ndash; see fmtdate(3f) for format descriptions' ! abbreviated month name l Dec write(*,303)'Short month............ ',&amp; &amp; eventformat("%l") ! ! full month name L December write(*,303)'Month.................. ',&amp; &amp; eventformat("%L") ! ! first three characters of weekday w Sat write(*,303)'Short week............. ',&amp; &amp; eventformat("%w") ! ! weekday name W Saturday write(*,303)'Week .................. ',&amp; &amp; eventformat("%W") ! ! with no percent (%) characters write(*,303)'Calendar Time ......... ',&amp; &amp; eventformat("Y-M-D h:m:s.x z") ! ! keywords with no percent (%) characters write(*,303)'Calendar Time ......... ',&amp; &amp; eventformat('"year-month-day &amp;
         &amp; hour:minute:second.millisecond timezone"') ! write(*,*)eventformat('Longer format.......... &amp; &amp;"%W, %L %d, %Y %H:%m:%s %N"') ! a nice friendly format ! 303 format(1x,a,'"',a,'"')</p>
 <p>! convert <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a> to integer array ! (maybe to use with module M_TIME base procedures) dat=eventdatout() write(*,*) write(*,404)'DAT=',dat</p>
 <p>! OVERLOADED OPERATORS (add and subtract) ! a <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a> object can have seconds added answer=event+1*86400.0_dp ! ! a nice friendly format write(*,*)answerformat('TOMORROW="%W, %L %d, %Y %H:%m:%s %N"') ! ! a <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a> object can have seconds subtracted answer=event-1*86400.0_dp ! a nice friendly format write(*,*)answerformat('YESTERDAY="%W, %L %d, %Y %H:%m:%s %N"') ! ! if both operands are DATE_TIME objects a subtraction ! finds the time in seconds between the two dates write(*,*)'DIFFERENCE (subtracting one <a class="el" href="structm__time__oop_1_1date__time.html">date_time</a> from another)=',&amp; &amp; answer-event</p>
@@ -251,17 +251,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="namespacem__time__oop.html#ae43c4146d74863b5aee027ebc0103f48">construct_from_dat()</a>, and <a class="el" href="namespacem__time.html#a3ad5cad6df02c53e0429c3602a072e3c">m_time::j2d()</a>.</p>
+<p class="reference">References <a class="el" href="namespacem__time__oop.html#ae43c4146d74863b5aee027ebc0103f48">construct_from_dat()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__oop_ac7d9aa1885c2b8df613541be8a147064_cgraph.png" border="0" usemap="#namespacem__time__oop_ac7d9aa1885c2b8df613541be8a147064_cgraph" alt=""/></div>
 <map name="namespacem__time__oop_ac7d9aa1885c2b8df613541be8a147064_cgraph" id="namespacem__time__oop_ac7d9aa1885c2b8df613541be8a147064_cgraph">
-<area shape="rect" title=" " alt="" coords="5,35,176,76"/>
+<area shape="rect" title=" " alt="" coords="5,5,176,47"/>
 <area shape="rect" href="namespacem__time__oop.html#ae43c4146d74863b5aee027ebc0103f48" title=" " alt="" coords="224,5,395,47"/>
-<area shape="rect" href="namespacem__time.html#a3ad5cad6df02c53e0429c3602a072e3c" title=" " alt="" coords="259,71,359,98"/>
-<area shape="rect" href="namespacem__time.html#abb44cf18cd0a3e420c20469efb056203" title=" " alt="" coords="443,71,615,98"/>
-<area shape="rect" href="namespacem__time.html#a7903410a1d28bcdf3d33ab0c2d74b124" title=" " alt="" coords="663,71,832,98"/>
 </map>
 </div>
 
@@ -844,16 +841,14 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="namespacem__time.html#a3fccc53c2650104eff084c7998d18f54">m_time::d2j()</a>, and <a class="el" href="namespacem__time__oop.html#a93bafde872994fe68136d83195400e11">dt2d_()</a>.</p>
+<p class="reference">References <a class="el" href="namespacem__time__oop.html#a93bafde872994fe68136d83195400e11">dt2d_()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time__oop_a85c4d4edaa644bf22f68ffd724de036a_cgraph.png" border="0" usemap="#namespacem__time__oop_a85c4d4edaa644bf22f68ffd724de036a_cgraph" alt=""/></div>
 <map name="namespacem__time__oop_a85c4d4edaa644bf22f68ffd724de036a_cgraph" id="namespacem__time__oop_a85c4d4edaa644bf22f68ffd724de036a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,160,57"/>
-<area shape="rect" href="namespacem__time.html#a3fccc53c2650104eff084c7998d18f54" title=" " alt="" coords="231,5,331,32"/>
-<area shape="rect" href="namespacem__time__oop.html#a93bafde872994fe68136d83195400e11" title=" " alt="" coords="208,56,355,83"/>
-<area shape="rect" href="namespacem__time.html#acfdc970b4154b0c15bd33727636e3992" title=" " alt="" coords="403,5,575,32"/>
+<area shape="rect" title=" " alt="" coords="5,5,160,32"/>
+<area shape="rect" href="namespacem__time__oop.html#a93bafde872994fe68136d83195400e11" title=" " alt="" coords="208,5,355,32"/>
 </map>
 </div>
 

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['transliterate_182',['transliterate',['../namespacem__time__duplicate.html#ac8388a45881cf7c2f9047b4d643ed3f2',1,'m_time_duplicate']]],
-  ['trimzeros_183',['trimzeros',['../namespacem__time__duplicate.html#ae5ec641c9bdaa5d9377e47310e2165be',1,'m_time_duplicate']]]
+  ['upper_113',['upper',['../namespacem__time__duplicate.html#aabdd1a3e01b26e896bd06aee488de7c6',1,'m_time_duplicate']]]
 ];

@@ -201,28 +201,28 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md334"></a>
+<h2><a class="anchor" id="autotoc_md99"></a>
 NAME</h2>
 <p>string_to_value(3f) - [M_strings:NUMERIC] subroutine returns numeric value from string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md335"></a>
+<h2><a class="anchor" id="autotoc_md100"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine string_to_value(chars,valu,ierr)
 
  character(len=*),intent(in)              :: chars   ! input string
  integer|real|doubleprecision,intent(out) :: valu
  integer,intent(out)                      :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md336"></a>
+</pre> <h2><a class="anchor" id="autotoc_md101"></a>
 DESCRIPTION</h2>
 <p>returns a numeric value from a numeric character string.</p>
 <p>works with any g-format input, including integer, real, and exponential. If the input string begins with "B", "Z", or "O" and otherwise represents a positive whole number it is assumed to be a binary, hexadecimal, or octal value. If the string contains commas they are removed. If the string is of the form NN:MMM... or NN::MMM then NN is assumed to be the base of the whole number.</p>
 <p>if an error occurs in the READ, IOSTAT is returned in IERR and value is set to zero. if no error occurs, IERR=0. </p>
-<h2><a class="anchor" id="autotoc_md337"></a>
+<h2><a class="anchor" id="autotoc_md102"></a>
 OPTIONS</h2>
 <p>CHARS input string to read numeric value from </p>
-<h2><a class="anchor" id="autotoc_md338"></a>
+<h2><a class="anchor" id="autotoc_md103"></a>
 RETURNS</h2>
 <p>VALU numeric value returned. May be INTEGER, REAL, or DOUBLEPRECISION. IERR error flag (0 == no error) </p>
-<h2><a class="anchor" id="autotoc_md339"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -233,10 +233,10 @@ EXAMPLE</h2>
     call string_to_value(string,value,ierr)
     write(*,*) 'value of string ['//trim(string)//'] is ',value
  end program demo_string_to_value
-</pre> <h2><a class="anchor" id="autotoc_md340"></a>
+</pre> <h2><a class="anchor" id="autotoc_md105"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md341"></a>
+<h2><a class="anchor" id="autotoc_md106"></a>
 LICENSE</h2>
 <p>Public Domain</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
