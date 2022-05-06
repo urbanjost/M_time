@@ -130,19 +130,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.6% of total for procedures.">16 statements</a>
+    title=" 0.6% of total for procedures.">17 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -180,6 +180,8 @@
       <a class="list-group-item" href="../proc/date_to_unix.html#variable-julian~7">julian</a>
       
       <a class="list-group-item" href="../proc/date_to_unix.html#variable-julian_at_epoch">julian_at_epoch</a>
+      
+      <a class="list-group-item" href="../proc/date_to_unix.html#variable-ref">ref</a>
       
     </div>
   </div>
@@ -376,6 +378,8 @@ Epoch Time
       
       <a class="list-group-item" href="../proc/date_to_unix.html#variable-julian_at_epoch">julian_at_epoch</a>
       
+      <a class="list-group-item" href="../proc/date_to_unix.html#variable-ref">ref</a>
+      
     </div>
   </div>
 </div>
@@ -468,6 +472,20 @@ Epoch Time
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ref"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>ref</strong>(8)</td><td> =</td><td>[1970, 1, 1, 0, 0, 0, 0, 0]</td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -501,9 +519,10 @@ Epoch Time
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>             <span class="kd">::</span> <span class="n">julian</span>
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">save</span>        <span class="kd">::</span> <span class="n">julian_at_epoch</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">save</span>                    <span class="kd">::</span> <span class="n">first</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>               <span class="kd">::</span> <span class="n">ref</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">if</span><span class="p">(</span><span class="n">first</span><span class="p">)</span> <span class="k">then</span>                                        <span class="c">! Convert zero of Unix Epoch Time to Julian Date and save</span>
-   <span class="k">call </span><span class="n">date_to_julian</span><span class="p">([</span><span class="mi">1970</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">julian_at_epoch</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+   <span class="k">call </span><span class="n">date_to_julian</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span><span class="n">julian_at_epoch</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
    <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span>                               <span class="c">! Error</span>
    <span class="n">first</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">endif</span>
@@ -533,7 +552,7 @@ Epoch Time
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

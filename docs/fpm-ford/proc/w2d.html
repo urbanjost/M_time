@@ -130,19 +130,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.4% of total for procedures.">12 statements</a>
+    title=" 0.5% of total for procedures.">14 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -182,6 +182,8 @@
       <a class="list-group-item" href="../proc/w2d.html#variable-jan4weekday">jan4weekday</a>
       
       <a class="list-group-item" href="../proc/w2d.html#variable-ordinal~4">ordinal</a>
+      
+      <a class="list-group-item" href="../proc/w2d.html#variable-temp_dat~3">temp_dat</a>
       
     </div>
   </div>
@@ -355,16 +357,16 @@ Week-numbering year date yyyy-Www-d
 <h2 id="method">METHOD</h2>
 <div class="codehilite"><pre><span></span><code> <span class="nt">Calculating</span> <span class="nt">a</span> <span class="nt">date</span> <span class="nt">given</span> <span class="nt">the</span> <span class="nt">year</span><span class="o">,</span> <span class="nt">week</span> <span class="nt">number</span> <span class="nt">and</span> <span class="nt">weekday</span>
 
- <span class="nt">This</span> <span class="nt">method</span> <span class="nt">requires</span> <span class="nt">that</span> <span class="nt">one</span> <span class="nt">know</span> <span class="nt">the</span> <span class="nt">weekday</span> <span class="nt">of</span> <span class="nt">4</span> <span class="nt">January</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">year</span>
- <span class="nt">in</span> <span class="nt">question</span><span class="o">.</span> <span class="nt">Add</span> <span class="nt">3</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">number</span> <span class="nt">of</span> <span class="nt">this</span> <span class="nt">weekday</span><span class="o">,</span> <span class="nt">giving</span> <span class="nt">a</span> <span class="nt">correction</span>
- <span class="nt">to</span> <span class="nt">be</span> <span class="nt">used</span> <span class="nt">for</span> <span class="nt">dates</span> <span class="nt">within</span> <span class="nt">this</span> <span class="nt">year</span><span class="o">.</span>
+ <span class="nt">This</span> <span class="nt">method</span> <span class="nt">requires</span> <span class="nt">that</span> <span class="nt">one</span> <span class="nt">know</span> <span class="nt">the</span> <span class="nt">weekday</span> <span class="nt">of</span> <span class="nt">4</span> <span class="nt">January</span> <span class="nt">of</span> <span class="nt">the</span>
+ <span class="nt">year</span> <span class="nt">in</span> <span class="nt">question</span><span class="o">.</span> <span class="nt">Add</span> <span class="nt">3</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">number</span> <span class="nt">of</span> <span class="nt">this</span> <span class="nt">weekday</span><span class="o">,</span> <span class="nt">giving</span> <span class="nt">a</span>
+ <span class="nt">correction</span> <span class="nt">to</span> <span class="nt">be</span> <span class="nt">used</span> <span class="nt">for</span> <span class="nt">dates</span> <span class="nt">within</span> <span class="nt">this</span> <span class="nt">year</span><span class="o">.</span>
 
- <span class="nt">Method</span><span class="o">:</span> <span class="nt">Multiply</span> <span class="nt">the</span> <span class="nt">week</span> <span class="nt">number</span> <span class="nt">by</span> <span class="nt">7</span><span class="o">,</span> <span class="nt">then</span> <span class="nt">add</span> <span class="nt">the</span> <span class="nt">weekday</span><span class="o">.</span> <span class="nt">From</span> <span class="nt">this</span>
- <span class="nt">sum</span> <span class="nt">subtract</span> <span class="nt">the</span> <span class="nt">correction</span> <span class="nt">for</span> <span class="nt">the</span> <span class="nt">year</span><span class="o">.</span> <span class="nt">The</span> <span class="nt">result</span> <span class="nt">is</span> <span class="nt">the</span> <span class="nt">ordinal</span>
- <span class="nt">date</span><span class="o">,</span> <span class="nt">which</span> <span class="nt">can</span> <span class="nt">be</span> <span class="nt">converted</span> <span class="nt">into</span> <span class="nt">a</span> <span class="nt">calendar</span> <span class="nt">date</span><span class="o">.</span>
- <span class="nt">If</span> <span class="nt">the</span> <span class="nt">ordinal</span> <span class="nt">date</span> <span class="nt">thus</span> <span class="nt">obtained</span> <span class="nt">is</span> <span class="nt">zero</span> <span class="nt">or</span> <span class="nt">negative</span><span class="o">,</span>
- <span class="nt">the</span> <span class="nt">date</span> <span class="nt">belongs</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">previous</span> <span class="nt">calendar</span> <span class="nt">year</span><span class="o">;</span> <span class="nt">if</span> <span class="nt">greater</span> <span class="nt">than</span> <span class="nt">the</span>
- <span class="nt">number</span> <span class="nt">of</span> <span class="nt">days</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">year</span><span class="o">,</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">year</span><span class="o">.</span>
+ <span class="nt">Method</span><span class="o">:</span> <span class="nt">Multiply</span> <span class="nt">the</span> <span class="nt">week</span> <span class="nt">number</span> <span class="nt">by</span> <span class="nt">7</span><span class="o">,</span> <span class="nt">then</span> <span class="nt">add</span> <span class="nt">the</span> <span class="nt">weekday</span><span class="o">.</span> <span class="nt">From</span>
+ <span class="nt">this</span> <span class="nt">sum</span> <span class="nt">subtract</span> <span class="nt">the</span> <span class="nt">correction</span> <span class="nt">for</span> <span class="nt">the</span> <span class="nt">year</span><span class="o">.</span> <span class="nt">The</span> <span class="nt">result</span> <span class="nt">is</span> <span class="nt">the</span>
+ <span class="nt">ordinal</span> <span class="nt">date</span><span class="o">,</span> <span class="nt">which</span> <span class="nt">can</span> <span class="nt">be</span> <span class="nt">converted</span> <span class="nt">into</span> <span class="nt">a</span> <span class="nt">calendar</span> <span class="nt">date</span><span class="o">.</span>  <span class="nt">If</span> <span class="nt">the</span>
+ <span class="nt">ordinal</span> <span class="nt">date</span> <span class="nt">thus</span> <span class="nt">obtained</span> <span class="nt">is</span> <span class="nt">zero</span> <span class="nt">or</span> <span class="nt">negative</span><span class="o">,</span> <span class="nt">the</span> <span class="nt">date</span> <span class="nt">belongs</span> <span class="nt">to</span>
+ <span class="nt">the</span> <span class="nt">previous</span> <span class="nt">calendar</span> <span class="nt">year</span><span class="o">;</span> <span class="nt">if</span> <span class="nt">greater</span> <span class="nt">than</span> <span class="nt">the</span> <span class="nt">number</span> <span class="nt">of</span> <span class="nt">days</span> <span class="nt">in</span>
+ <span class="nt">the</span> <span class="nt">year</span><span class="o">,</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">year</span><span class="o">.</span>
 
  <span class="nt">Example</span><span class="o">:</span> <span class="nt">year</span> <span class="nt">2008</span><span class="o">,</span> <span class="nt">week</span> <span class="nt">39</span><span class="o">,</span> <span class="nt">Saturday</span> <span class="o">(</span><span class="nt">day</span> <span class="nt">6</span><span class="o">)</span>
  <span class="nt">Correction</span> <span class="nt">for</span> <span class="nt">2008</span><span class="o">:</span> <span class="nt">5</span> <span class="o">+</span> <span class="nt">3</span> <span class="o">=</span> <span class="nt">8</span>
@@ -378,7 +380,8 @@ Week-numbering year date yyyy-Www-d
 <p>Week date representations are in the format YYYYWww-D.</p>
 <div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">[</span><span class="n">YYYY</span><span class="o">]</span><span class="w"> </span><span class="n">indicates</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ISO</span><span class="w"> </span><span class="n">week</span><span class="o">-</span><span class="n">numbering</span><span class="w"> </span><span class="nf">year</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">slightly</span><span class="w"></span>
 <span class="w">   </span><span class="n">different</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">traditional</span><span class="w"> </span><span class="n">Gregorian</span><span class="w"> </span><span class="n">calendar</span><span class="w"> </span><span class="nf">year</span><span class="p">.</span><span class="w"></span>
-<span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">[</span><span class="n">Www</span><span class="o">]</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">week</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">prefixed</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">W</span><span class="p">,</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">W01</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">W53</span><span class="p">.</span><span class="w"></span>
+<span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">[</span><span class="n">Www</span><span class="o">]</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">week</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">prefixed</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">W</span><span class="p">,</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">W01</span><span class="w"></span>
+<span class="w">   </span><span class="n">through</span><span class="w"> </span><span class="n">W53</span><span class="p">.</span><span class="w"></span>
 <span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">[</span><span class="n">D</span><span class="o">]</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">weekday</span><span class="w"> </span><span class="n">number</span><span class="p">,</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">beginning</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">Monday</span><span class="w"></span>
 <span class="w">   </span><span class="ow">and</span><span class="w"> </span><span class="n">ending</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">Sunday</span><span class="p">.</span><span class="w"></span>
 </code></pre></div>
@@ -505,6 +508,8 @@ Week-numbering year date yyyy-Www-d
       
       <a class="list-group-item" href="../proc/w2d.html#variable-ordinal~4">ordinal</a>
       
+      <a class="list-group-item" href="../proc/w2d.html#variable-temp_dat~3">temp_dat</a>
+      
     </div>
   </div>
 </div>
@@ -611,6 +616,20 @@ Week-numbering year date yyyy-Www-d
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-temp_dat~3"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>temp_dat</strong>(8)</td><td></td><td></td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -644,7 +663,9 @@ Week-numbering year date yyyy-Www-d
 <span class="kt">integer</span>                         <span class="kd">::</span> <span class="n">correction</span>
 <span class="kt">integer</span>                         <span class="kd">::</span> <span class="n">ordinal</span>
 <span class="kt">integer</span>                         <span class="kd">::</span> <span class="n">ierr</span>
-   <span class="k">call </span><span class="n">dow</span><span class="p">(</span> <span class="p">[</span><span class="n">iso_year</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">jan4weekday</span><span class="p">,</span> <span class="n">ierr</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span> <span class="c">! get day of week for January 4th where Sun=1</span>
+<span class="kt">integer</span>                         <span class="kd">::</span> <span class="n">temp_dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+   <span class="n">temp_dat</span><span class="o">=</span><span class="p">[</span><span class="n">iso_year</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+   <span class="k">call </span><span class="n">dow</span><span class="p">(</span> <span class="n">temp_dat</span><span class="p">,</span> <span class="n">jan4weekday</span><span class="p">,</span> <span class="n">ierr</span><span class="o">=</span><span class="n">ierr</span><span class="p">)</span> <span class="c">! get day of week for January 4th where Sun=1</span>
    <span class="n">correction</span><span class="o">=</span><span class="n">jan4weekday</span><span class="o">+</span><span class="mi">3</span>                      <span class="c">! calculate correction</span>
    <span class="n">ordinal</span><span class="o">=</span><span class="n">iso_week</span><span class="o">*</span><span class="mi">7</span><span class="o">+</span><span class="n">iso_weekday</span><span class="o">-</span><span class="n">correction</span>     <span class="c">! calculate ordinal day</span>
    <span class="n">dat</span><span class="o">=</span><span class="n">o2d</span><span class="p">(</span><span class="n">ordinal</span><span class="p">,</span><span class="n">iso_year</span><span class="p">)</span>                     <span class="c">! convert ordinal to DAT (routine works with negative values or days past year end)</span>
@@ -670,7 +691,7 @@ Week-numbering year date yyyy-Www-d
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

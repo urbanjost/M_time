@@ -14,7 +14,7 @@
 !
 !>
 !!##NAME
-!!    M_time_oop(3fm) - [M_time::OBJECT_ORIENTED] OOP interface for M_time(3fm)
+!!    M_time_oop(3fm) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm)
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
@@ -59,12 +59,14 @@
 !!     !
 !!     ! This is an example using the object-oriented class/type model
 !!     ! This is essentially the same functionality as the procedures
-!!     ! in the procedural module M_time(3fm), but allows for Object Oriented syntax:
+!!     ! in the procedural module M_time(3fm), but allows for Object
+!!     ! Oriented syntax:
 !!     !
 !!     use M_time_oop,only : date_time
 !!     !!use M_time_oop,only : operator(+),operator(-),operator(>),operator(<)
 !!     !!use M_time_oop,only : operator(<=),operator(>=),operator(==),operator(/=)
 !!     implicit none
+!!     integer,parameter :: dp=kind(0.0d0)
 !!     integer         :: dat(8)
 !!     TYPE(date_time) :: event
 !!     TYPE(date_time) :: otherdate
@@ -164,7 +166,7 @@
 !!        ! FORMATTED STRINGS (many strings possible.
 !!        ! Takes the same format string as fmtdate(3f))
 !!        write(*,*)
-!!        write(*,*)'Formatted Strings (%format("STRING") &
+!!        write(*,'(a)')' Formatted Strings (%format("STRING") &
 !!        & -- see fmtdate(3f) for format descriptions'
 !!        ! abbreviated month name             %l  Dec
 !!        write(*,303)'Short month............ ',&
@@ -204,13 +206,13 @@
 !!
 !!        ! OVERLOADED OPERATORS (add and subtract)
 !!        ! a date_time object can have seconds added
-!!        answer=event+1*86400.0d0
+!!        answer=event+1*86400.0_dp
 !!        !
 !!        ! a nice friendly format
 !!        write(*,*)answer%format('TOMORROW="%W, %L %d, %Y %H:%m:%s %N"')
 !!        !
 !!        ! a date_time object can have seconds subtracted
-!!        answer=event-1*86400.0d0
+!!        answer=event-1*86400.0_dp
 !!        ! a nice friendly format
 !!        write(*,*)answer%format('YESTERDAY="%W, %L %d, %Y %H:%m:%s %N"')
 !!        !
@@ -324,7 +326,7 @@
 !!   DEFAULT CONSTRUCTOR %format()               1970-01-01T00:00:00.000+00:00
 !!   DEFAULT CONSTRUCTOR %format("")             1970-01-01T00:00:00.000+00:00
 !!   DEFAULT CONSTRUCTOR %format(user-specified) 1970-01-01T00:00:00.000+00:00
-!!   DEFAULT CONSTRUCTOR %format("USA")          Thursday, January 1st, 1970 12:00:00 AM
+!!   DEFAULT CONSTRUCTOR %format("USA")   Thursday, January 1st, 1970 12:00:00 AM
 !!   DEFAULT CONSTRUCTOR setting values          1492-10-12T00:00:00.000+00:00
 !!   DEFAULT CONSTRUCTOR with partial values     2016-06-11T00:00:00.000+00:00
 !!   DEFAULT CONSTRUCTOR with values by name     2016-06-11T21:09:11.500-04:00
@@ -347,7 +349,8 @@
 !!   %epoch      Unix epoch time........ 1603590594.1049695
 !!   %julian     Julian date............ 2459147.5763206594
 !!
-!!   Formatted Strings (%format("STRING")  -- see fmtdate(3f) for format descriptions
+!!   Formatted Strings (%format("STRING")
+!!   -- see fmtdate(3f) for format descriptions
 !!   Short month............ "Oct"
 !!   Month.................. "October"
 !!   Short week............. "Sat"
@@ -405,6 +408,7 @@ use M_time, only : d2u, u2d, fmtdate, d2o, dow, fmtdate_usage, days2sec, realtim
 use M_time, only : j2d, d2j
 use M_time_duplicate, only : upper
 implicit none
+integer,parameter :: dp=kind(0.0d0)
 private
 private upper
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -500,7 +504,7 @@ integer,intent(in)          :: dat(:)                       ! (maybe partial) da
 integer                     :: datlocal(8)                  ! date time array similar to that returned by DATE_AND_TIME
 type(date_time)             :: construct_from_dat
 
-   datlocal=u2d(0.0d0)                                      ! initialize to start of Unix Epoch Time using local time zone
+   datlocal=u2d(0.0_dp)                                     ! initialize to start of Unix Epoch Time using local time zone
    if(size(dat).gt.0)then                                   ! allow for partial DAT arrays
       datlocal(:size(dat))=dat
    endif

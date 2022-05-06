@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="12.1% of total for modules and submodules.">287 statements</a>
+    title="12.1% of total for modules and submodules.">288 statements</a>
      </li> 
      
      
@@ -166,6 +166,18 @@
 <h3>Contents</h3>
  
 
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/m_time_oop.html#variable-dp">dp</a>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -217,7 +229,7 @@
     
     <div class="col-md-9" id='text'>
     <h2 id="name">NAME</h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">M_time_oop</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span> <span class="o">-</span> [<span class="nv">M_time</span>::<span class="nv">OBJECT_ORIENTED</span>] <span class="nv">OOP</span> <span class="nv">interface</span> <span class="k">for</span> <span class="nv">M_time</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">M_time_oop</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span> <span class="o">-</span> [<span class="nv">M_time</span>::<span class="nv">INTRO</span>::<span class="nv">OOPS</span>] <span class="nv">OOP</span> <span class="nv">interface</span> <span class="k">for</span> <span class="nv">M_time</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span>
 <span class="ss">(</span><span class="nv">LICENSE</span>:<span class="nv">PD</span><span class="ss">)</span>
 </code></pre></div>
 
@@ -260,12 +272,14 @@ example program demonstrates and documents the interface
  <span class="o">!</span>
  <span class="o">!</span> <span class="n">This</span> <span class="n">is</span> <span class="n">an</span> <span class="n">example</span> <span class="k">using</span> <span class="n">the</span> <span class="n">object</span><span class="o">-</span><span class="n">oriented</span> <span class="k">class</span><span class="o">/</span><span class="n">type</span> <span class="n">model</span>
  <span class="o">!</span> <span class="n">This</span> <span class="n">is</span> <span class="n">essentially</span> <span class="n">the</span> <span class="n">same</span> <span class="n">functionality</span> <span class="n">as</span> <span class="n">the</span> <span class="n">procedures</span>
- <span class="o">!</span> <span class="k">in</span> <span class="n">the</span> <span class="n">procedural</span> <span class="k">module</span> <span class="n">M_time</span><span class="p">(</span><span class="mf">3f</span><span class="n">m</span><span class="p">),</span> <span class="n">but</span> <span class="n">allows</span> <span class="k">for</span> <span class="n">Object</span> <span class="n">Oriented</span> <span class="nl">syntax</span><span class="p">:</span>
+ <span class="o">!</span> <span class="k">in</span> <span class="n">the</span> <span class="n">procedural</span> <span class="k">module</span> <span class="n">M_time</span><span class="p">(</span><span class="mf">3f</span><span class="n">m</span><span class="p">),</span> <span class="n">but</span> <span class="n">allows</span> <span class="k">for</span> <span class="n">Object</span>
+ <span class="o">!</span> <span class="n">Oriented</span> <span class="nl">syntax</span><span class="p">:</span>
  <span class="o">!</span>
  <span class="n">use</span> <span class="n">M_time_oop</span><span class="p">,</span><span class="nl">only</span> <span class="p">:</span> <span class="n">date_time</span>
  <span class="o">!!</span><span class="n">use</span> <span class="n">M_time_oop</span><span class="p">,</span><span class="nl">only</span> <span class="p">:</span> <span class="k">operator</span><span class="p">(</span><span class="o">+</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">-</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span>
  <span class="o">!!</span><span class="n">use</span> <span class="n">M_time_oop</span><span class="p">,</span><span class="nl">only</span> <span class="p">:</span> <span class="k">operator</span><span class="p">(</span><span class="o">&lt;=</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;=</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">==</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">/=</span><span class="p">)</span>
  <span class="n">implicit</span> <span class="n">none</span>
+ <span class="n">integer</span><span class="p">,</span><span class="n">parameter</span> <span class="o">::</span> <span class="n">dp</span><span class="o">=</span><span class="n">kind</span><span class="p">(</span><span class="mf">0.0</span><span class="n">d0</span><span class="p">)</span>
  <span class="n">integer</span>         <span class="o">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
  <span class="n">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span> <span class="o">::</span> <span class="n">event</span>
  <span class="n">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span> <span class="o">::</span> <span class="n">otherdate</span>
@@ -365,7 +379,7 @@ example program demonstrates and documents the interface
     <span class="o">!</span> <span class="n">FORMATTED</span> <span class="n">STRINGS</span> <span class="p">(</span><span class="n">many</span> <span class="n">strings</span> <span class="n">possible</span><span class="p">.</span>
     <span class="o">!</span> <span class="n">Takes</span> <span class="n">the</span> <span class="n">same</span> <span class="n">format</span> <span class="n">string</span> <span class="n">as</span> <span class="n">fmtdate</span><span class="p">(</span><span class="mf">3f</span><span class="p">))</span>
     <span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-    <span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="err">&#39;</span><span class="n">Formatted</span> <span class="n">Strings</span> <span class="p">(</span><span class="o">%</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;STRING&quot;</span><span class="p">)</span> <span class="o">&amp;</span>
+    <span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="err">&#39;</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="sc">&#39;)&#39;</span> <span class="n">Formatted</span> <span class="n">Strings</span> <span class="p">(</span><span class="o">%</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;STRING&quot;</span><span class="p">)</span> <span class="o">&amp;</span>
     <span class="o">&amp;</span> <span class="o">--</span> <span class="n">see</span> <span class="n">fmtdate</span><span class="p">(</span><span class="mf">3f</span><span class="p">)</span> <span class="k">for</span> <span class="n">format</span> <span class="n">descriptions</span><span class="err">&#39;</span>
     <span class="o">!</span> <span class="n">abbreviated</span> <span class="n">month</span> <span class="n">name</span>             <span class="o">%</span><span class="n">l</span>  <span class="n">Dec</span>
     <span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="err">&#39;</span><span class="n">Short</span> <span class="n">month</span><span class="p">............</span> <span class="err">&#39;</span><span class="p">,</span><span class="o">&amp;</span>
@@ -405,13 +419,13 @@ example program demonstrates and documents the interface
 
     <span class="o">!</span> <span class="n">OVERLOADED</span> <span class="n">OPERATORS</span> <span class="p">(</span><span class="n">add</span> <span class="n">and</span> <span class="n">subtract</span><span class="p">)</span>
     <span class="o">!</span> <span class="n">a</span> <span class="n">date_time</span> <span class="n">object</span> <span class="n">can</span> <span class="n">have</span> <span class="n">seconds</span> <span class="n">added</span>
-    <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="mf">86400.0</span><span class="n">d0</span>
+    <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="mf">86400.0</span><span class="n">_dp</span>
     <span class="o">!</span>
     <span class="o">!</span> <span class="n">a</span> <span class="n">nice</span> <span class="n">friendly</span> <span class="n">format</span>
     <span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="o">%</span><span class="n">format</span><span class="p">(</span><span class="err">&#39;</span><span class="n">TOMORROW</span><span class="o">=</span><span class="s">&quot;%W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="err">&#39;</span><span class="p">)</span>
     <span class="o">!</span>
     <span class="o">!</span> <span class="n">a</span> <span class="n">date_time</span> <span class="n">object</span> <span class="n">can</span> <span class="n">have</span> <span class="n">seconds</span> <span class="n">subtracted</span>
-    <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="mi">-1</span><span class="o">*</span><span class="mf">86400.0</span><span class="n">d0</span>
+    <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="mi">-1</span><span class="o">*</span><span class="mf">86400.0</span><span class="n">_dp</span>
     <span class="o">!</span> <span class="n">a</span> <span class="n">nice</span> <span class="n">friendly</span> <span class="n">format</span>
     <span class="n">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="o">%</span><span class="n">format</span><span class="p">(</span><span class="err">&#39;</span><span class="n">YESTERDAY</span><span class="o">=</span><span class="s">&quot;%W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="err">&#39;</span><span class="p">)</span>
     <span class="o">!</span>
@@ -525,7 +539,7 @@ example program demonstrates and documents the interface
    DEFAULT CONSTRUCTOR %format()               1970-01-01T00:00:00.000+00:00
    DEFAULT CONSTRUCTOR %format(&ldquo;&rdquo;)             1970-01-01T00:00:00.000+00:00
    DEFAULT CONSTRUCTOR %format(user-specified) 1970-01-01T00:00:00.000+00:00
-   DEFAULT CONSTRUCTOR %format(&ldquo;USA&rdquo;)          Thursday, January 1st, 1970 12:00:00 AM
+   DEFAULT CONSTRUCTOR %format(&ldquo;USA&rdquo;)   Thursday, January 1st, 1970 12:00:00 AM
    DEFAULT CONSTRUCTOR setting values          1492-10-12T00:00:00.000+00:00
    DEFAULT CONSTRUCTOR with partial values     2016-06-11T00:00:00.000+00:00
    DEFAULT CONSTRUCTOR with values by name     2016-06-11T21:09:11.500-04:00
@@ -546,7 +560,8 @@ example program demonstrates and documents the interface
    %weekday     Weekday................ 6
    %epoch      Unix epoch time........ 1603590594.1049695
    %julian     Julian date............ 2459147.5763206594</p>
-<p>Formatted Strings (%format(&ldquo;STRING&rdquo;)  &ndash; see fmtdate(3f) for format descriptions
+<p>Formatted Strings (%format(&ldquo;STRING&rdquo;)
+   &ndash; see fmtdate(3f) for format descriptions
    Short month............ &ldquo;Oct&rdquo;
    Month.................. &ldquo;October&rdquo;
    Short week............. &ldquo;Sat&rdquo;
@@ -626,6 +641,18 @@ end submodule M_time_oop</p>
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/m_time_oop.html#variable-dp">dp</a>
+      
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -674,6 +701,38 @@ end submodule M_time_oop</p>
 
     
 
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dp"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>dp</strong></td><td> =</td><td>kind(0.0d0)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
     
     
     
@@ -1004,7 +1063,7 @@ private function construct_from_dat(dat)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

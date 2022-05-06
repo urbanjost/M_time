@@ -2,12 +2,14 @@
       !
       ! This is an example using the object-oriented class/type model
       ! This is essentially the same functionality as the procedures
-      ! in the procedural module M_time(3fm), but allows for Object Oriented syntax:
+      ! in the procedural module M_time(3fm), but allows for Object
+      ! Oriented syntax:
       !
       use M_time_oop,only : date_time
       !!use M_time_oop,only : operator(+),operator(-),operator(>),operator(<)
       !!use M_time_oop,only : operator(<=),operator(>=),operator(==),operator(/=)
       implicit none
+      integer,parameter :: dp=kind(0.0d0)
       integer         :: dat(8)
       TYPE(date_time) :: event
       TYPE(date_time) :: otherdate
@@ -107,7 +109,7 @@
          ! FORMATTED STRINGS (many strings possible.
          ! Takes the same format string as fmtdate(3f))
          write(*,*)
-         write(*,*)'Formatted Strings (%format("STRING") &
+         write(*,'(a)')' Formatted Strings (%format("STRING") &
          & -- see fmtdate(3f) for format descriptions'
          ! abbreviated month name             %l  Dec
          write(*,303)'Short month............ ',&
@@ -147,13 +149,13 @@
 
          ! OVERLOADED OPERATORS (add and subtract)
          ! a date_time object can have seconds added
-         answer=event+1*86400.0d0
+         answer=event+1*86400.0_dp
          !
          ! a nice friendly format
          write(*,*)answer%format('TOMORROW="%W, %L %d, %Y %H:%m:%s %N"')
          !
          ! a date_time object can have seconds subtracted
-         answer=event-1*86400.0d0
+         answer=event-1*86400.0_dp
          ! a nice friendly format
          write(*,*)answer%format('YESTERDAY="%W, %L %d, %Y %H:%m:%s %N"')
          !

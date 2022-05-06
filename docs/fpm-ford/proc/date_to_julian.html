@@ -135,14 +135,14 @@
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -335,7 +335,7 @@ Julian Date
   
   <td></td><td>::</td>
   <td><strong>dat</strong>(8)</td><td><p>AUTHOR:    John S. Urban</p>
-<h2 id="version-10-2015-12-21">VERSION:   1.0 2015-12-21</h2>
+<h2 id="version-20-2022-01-16">VERSION:   2.0 2022-01-16</h2>
 <p>REFERENCE: From Wikipedia, the free encyclopedia 2015-12-19</p></td>
   
 </tr>
@@ -645,7 +645,7 @@ Julian Date
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">!&gt;</span>
 <span class="c">!! AUTHOR:    John S. Urban</span>
-<span class="c">!!##VERSION:   1.0 2015-12-21</span>
+<span class="c">!!##VERSION:   2.0 2022-01-16</span>
 <span class="c">!! REFERENCE: From Wikipedia, the free encyclopedia 2015-12-19</span>
 <span class="c">! * There is no year zero</span>
 <span class="c">! * Julian Date must be non-negative</span>
@@ -668,7 +668,7 @@ Julian Date
    <span class="n">utc</span>    <span class="o">=</span> <span class="n">dat</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span>                     <span class="c">! Delta from UTC, convert from minutes to seconds</span>
    <span class="n">hour</span>   <span class="o">=</span> <span class="n">dat</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                        <span class="c">! Hour</span>
    <span class="n">minute</span> <span class="o">=</span> <span class="n">dat</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>                        <span class="c">! Minute</span>
-   <span class="nb">second</span> <span class="o">=</span> <span class="n">dat</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">-</span><span class="n">utc</span><span class="o">+</span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="mf">0.0d0</span>    <span class="c">! Second   ! correction for time zone and milliseconds</span>
+   <span class="nb">second</span> <span class="o">=</span> <span class="n">dat</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">-</span><span class="n">utc</span><span class="o">+</span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="mf">0.0_dp</span>   <span class="c">! Second   ! correction for time zone and milliseconds</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
    <span class="n">julian</span> <span class="o">=</span> <span class="o">-</span><span class="nb">HUGE</span><span class="p">(</span><span class="mi">99999</span><span class="p">)</span>                  <span class="c">! this is the date if an error occurs and IERR is &lt; 0</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
@@ -686,9 +686,9 @@ Julian Date
 <span class="c">!  Staring from a Gregorian calendar date</span>
    <span class="n">JDN</span><span class="o">=</span><span class="n">day</span> <span class="o">+</span> <span class="p">(</span><span class="mi">153</span><span class="o">*</span><span class="n">M</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">365</span><span class="o">*</span><span class="n">Y</span> <span class="o">+</span> <span class="n">Y</span><span class="o">/</span><span class="mi">4</span> <span class="o">-</span> <span class="n">Y</span><span class="o">/</span><span class="mi">100</span> <span class="o">+</span> <span class="n">Y</span><span class="o">/</span><span class="mi">400</span> <span class="o">-</span> <span class="mi">32045</span>  <span class="c">!  with integer truncation</span>
 <span class="c">!  Finding the Julian Calendar date given the JDN (Julian day number) and time of day</span>
-   <span class="n">julian</span><span class="o">=</span><span class="n">JDN</span> <span class="o">+</span> <span class="nb">dble</span><span class="p">(</span><span class="n">hour</span><span class="o">-</span><span class="mi">12</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="mf">4.0d0</span> <span class="o">+</span> <span class="nb">dble</span><span class="p">(</span><span class="n">minute</span><span class="p">)</span><span class="o">/</span><span class="mi">144</span><span class="mf">0.0d0</span> <span class="o">+</span> <span class="nb">second</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0d0</span>
+   <span class="n">julian</span><span class="o">=</span><span class="n">JDN</span> <span class="o">+</span> <span class="nb">dble</span><span class="p">(</span><span class="n">hour</span><span class="o">-</span><span class="mi">12</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="mf">4.0_dp</span> <span class="o">+</span> <span class="nb">dble</span><span class="p">(</span><span class="n">minute</span><span class="p">)</span><span class="o">/</span><span class="mi">144</span><span class="mf">0.0_dp</span> <span class="o">+</span> <span class="nb">second</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_dp</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
-   <span class="k">if</span><span class="p">(</span><span class="n">julian</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mf">0.d0</span><span class="p">)</span> <span class="k">then</span>                  <span class="c">! Julian Day must be non-negative</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">julian</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mf">0.0_dp</span><span class="p">)</span> <span class="k">then</span>                  <span class="c">! Julian Day must be non-negative</span>
       <span class="n">ierr</span><span class="o">=</span><span class="mi">1</span>
    <span class="k">else</span>
 <span class="k">      </span><span class="n">ierr</span><span class="o">=</span><span class="mi">0</span>
@@ -716,7 +716,7 @@ Julian Date
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="14.8% of total for programs.">113 statements</a>
+    title="14.9% of total for programs.">114 statements</a>
      </li> 
      
      
@@ -176,6 +176,8 @@
       <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-answer">answer</a>
       
       <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-dat~32">dat</a>
+      
+      <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-dp~5">dp</a>
       
       <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-event">event</a>
       
@@ -262,6 +264,8 @@ use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)<
       <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-answer">answer</a>
       
       <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-dat~32">dat</a>
+      
+      <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-dp~5">dp</a>
       
       <a class="list-group-item" href="../program/demo_m_time_oop.html#variable-event">event</a>
       
@@ -353,6 +357,20 @@ use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)<
   
 <tr>
   
+  <td><span class="anchor" id="variable-dp~5"></span>integer,</td>
+  
+  
+  <td>parameter</td><td>::</td>
+  <td><strong>dp</strong></td><td> =</td><td>kind(0.0d0)</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-event"></span>type(<a href='../type/date_time.html'>date_time</a>)</td>
   
   
@@ -416,13 +434,15 @@ use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)<
       <span class="c">!</span>
       <span class="c">! This is an example using the object-oriented class/type model</span>
       <span class="c">! This is essentially the same functionality as the procedures</span>
-      <span class="c">! in the procedural module M_time(3fm), but allows for Object Oriented syntax:</span>
+      <span class="c">! in the procedural module M_time(3fm), but allows for Object</span>
+      <span class="c">! Oriented syntax:</span>
       <span class="c">!</span>
       <span class="k">use </span><span class="n">M_time_oop</span><span class="p">,</span><span class="k">only</span> <span class="p">:</span> <span class="n">date_time</span>
       <span class="c">!!use M_time_oop,only : operator(+),operator(-),operator(&gt;),operator(&lt;)</span>
       <span class="c">!!use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)</span>
       <span class="k">implicit none</span>
-<span class="k">      </span><span class="kt">integer</span>         <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="k">      </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
+      <span class="kt">integer</span>         <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
       <span class="k">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span> <span class="kd">::</span> <span class="n">event</span>
       <span class="k">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span> <span class="kd">::</span> <span class="n">otherdate</span>
       <span class="k">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span> <span class="kd">::</span> <span class="n">answer</span>
@@ -521,7 +541,7 @@ use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)<
          <span class="c">! FORMATTED STRINGS (many strings possible.</span>
          <span class="c">! Takes the same format string as fmtdate(3f))</span>
          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-         <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Formatted Strings (%format(&quot;STRING&quot;) &amp;</span>
+         <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s1">&#39; Formatted Strings (%format(&quot;STRING&quot;) &amp;</span>
 <span class="s1">         &amp; -- see fmtdate(3f) for format descriptions&#39;</span>
          <span class="c">! abbreviated month name             %l  Dec</span>
          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Short month............ &#39;</span><span class="p">,&amp;</span>
@@ -561,13 +581,13 @@ use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)<
 
          <span class="c">! OVERLOADED OPERATORS (add and subtract)</span>
          <span class="c">! a date_time object can have seconds added</span>
-         <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0d0</span>
+         <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0_dp</span>
          <span class="c">!</span>
          <span class="c">! a nice friendly format</span>
          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">&#39;TOMORROW=&quot;%W, %L %d, %Y %H:%m:%s %N&quot;&#39;</span><span class="p">)</span>
          <span class="c">!</span>
          <span class="c">! a date_time object can have seconds subtracted</span>
-         <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0d0</span>
+         <span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0_dp</span>
          <span class="c">! a nice friendly format</span>
          <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">&#39;YESTERDAY=&quot;%W, %L %d, %Y %H:%m:%s %N&quot;&#39;</span><span class="p">)</span>
          <span class="c">!</span>
@@ -694,7 +714,7 @@ use M_time_oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)<
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

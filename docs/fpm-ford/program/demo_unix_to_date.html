@@ -130,7 +130,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 2.0% of total for programs.">15 statements</a>
+    title=" 2.1% of total for programs.">16 statements</a>
      </li> 
      
      
@@ -176,6 +176,8 @@
       <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-day">DAY</a>
       
       <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-dat~28">dat</a>
+      
+      <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-dp~3">dp</a>
       
       <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-ierr~27">ierr</a>
       
@@ -260,6 +262,8 @@
       
       <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-dat~28">dat</a>
       
+      <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-dp~3">dp</a>
+      
       <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-ierr~27">ierr</a>
       
       <a class="list-group-item" href="../program/demo_unix_to_date.html#variable-unixtime~8">unixtime</a>
@@ -324,7 +328,7 @@
   
   
   <td>parameter</td><td>::</td>
-  <td><strong>DAY</strong></td><td> =</td><td>86400.0d0</td><td></td>
+  <td><strong>DAY</strong></td><td> =</td><td>86400.0_dp</td><td></td>
   
 </tr>
 
@@ -339,6 +343,20 @@
   
   <td></td><td>::</td>
   <td><strong>dat</strong>(8)</td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-dp~3"></span>integer,</td>
+  
+  
+  <td>parameter</td><td>::</td>
+  <td><strong>dp</strong></td><td> =</td><td>kind(0.0d0)</td><td></td>
   
 </tr>
 
@@ -396,13 +414,14 @@
     <div class="highlight"><pre><span></span>       <span class="k">program </span><span class="n">demo_unix_to_date</span>
        <span class="k">use </span><span class="n">M_time</span><span class="p">,</span> <span class="k">only</span> <span class="p">:</span> <span class="n">unix_to_date</span><span class="p">,</span> <span class="n">u2d</span><span class="p">,</span> <span class="n">fmtdate</span><span class="p">,</span> <span class="n">realtime</span>
        <span class="k">implicit none</span>
-<span class="k">       </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">unixtime</span>
+<span class="k">       </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
+       <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>           <span class="kd">::</span> <span class="n">unixtime</span>
        <span class="c">! seconds in a day</span>
-       <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">DAY</span><span class="o">=</span><span class="mi">8640</span><span class="mf">0.0d0</span>
+       <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">DAY</span><span class="o">=</span><span class="mi">8640</span><span class="mf">0.0_dp</span>
        <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
        <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">ierr</span>
           <span class="c">! sample Unix Epoch time</span>
-          <span class="n">unixtime</span><span class="o">=</span><span class="mi">146893903</span><span class="mf">8.4639933d0</span>
+          <span class="n">unixtime</span><span class="o">=</span><span class="mi">146893903</span><span class="mf">8.4639933_dp</span>
           <span class="c">! create DAT array for today</span>
           <span class="k">call </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
           <span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Sample Date=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
@@ -435,7 +454,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

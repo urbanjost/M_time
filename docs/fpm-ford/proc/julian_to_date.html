@@ -135,14 +135,14 @@
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -289,19 +289,20 @@ Date) to a DAT date-time array.
 <span class="w">  </span><span class="n">program</span><span class="w"> </span><span class="n">demo_julian_to_date</span><span class="w"></span>
 <span class="w">  </span><span class="k">use</span><span class="w"> </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span><span class="w"></span>
 <span class="w">  </span><span class="n">implicit</span><span class="w"> </span><span class="k">none</span><span class="w"></span>
+<span class="w">  </span><span class="k">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="n">kind</span><span class="p">(</span><span class="mf">0.0</span><span class="n">d0</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="nc">real</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">     </span><span class="o">::</span><span class="w"> </span><span class="n">juliandate</span><span class="w"></span>
 <span class="w">  </span><span class="k">integer</span><span class="w">                 </span><span class="o">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">integer</span><span class="w">                 </span><span class="o">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
 <span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">Julian</span><span class="w"> </span><span class="nc">Date</span><span class="w"></span>
-<span class="w">     </span><span class="n">juliandate</span><span class="o">=</span><span class="mf">2457589.129</span><span class="n">d0</span><span class="w"></span>
+<span class="w">     </span><span class="n">juliandate</span><span class="o">=</span><span class="mf">2457589.129</span><span class="n">_dp</span><span class="w"></span>
 <span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">DAT</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="nc">date</span><span class="w"></span>
 <span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
 <span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Sample Date=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
 <span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">back</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="nf">day</span><span class="w"></span>
-<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0</span><span class="n">d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0</span><span class="n">_dp</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
 <span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day Before =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
 <span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="nf">day</span><span class="w"></span>
-<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0</span><span class="n">d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0</span><span class="n">_dp</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
 <span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day After  =&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">demo_julian_to_date</span><span class="w"></span>
 
@@ -713,7 +714,7 @@ Date) to a DAT date-time array.
 <span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">minute</span>
 <span class="kt">integer</span>                          <span class="kd">::</span> <span class="n">jalpha</span><span class="p">,</span><span class="n">ja</span><span class="p">,</span><span class="n">jb</span><span class="p">,</span><span class="n">jc</span><span class="p">,</span><span class="n">jd</span><span class="p">,</span><span class="n">je</span><span class="p">,</span><span class="n">ijul</span>
 
-   <span class="k">if</span><span class="p">(</span><span class="n">julian</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mf">0.d0</span><span class="p">)</span> <span class="k">then</span>                      <span class="c">! Negative Julian Date not allowed</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">julian</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="mf">0.0_dp</span><span class="p">)</span> <span class="k">then</span>                     <span class="c">! Negative Julian Date not allowed</span>
       <span class="n">ierr</span><span class="o">=</span><span class="mi">1</span>
       <span class="k">return</span>
 <span class="k">   else</span>
@@ -725,11 +726,11 @@ Date) to a DAT date-time array.
    <span class="nb">second</span><span class="o">=</span><span class="nb">sngl</span><span class="p">((</span><span class="n">julian</span><span class="o">-</span><span class="nb">dble</span><span class="p">(</span><span class="n">ijul</span><span class="p">))</span><span class="o">*</span><span class="n">secday</span><span class="p">)</span>      <span class="c">! Seconds from beginning of Jul. Day</span>
    <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">+</span><span class="p">(</span><span class="n">tz</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
 
-   <span class="k">if</span><span class="p">(</span><span class="nb">second</span><span class="p">.</span><span class="n">ge</span><span class="p">.(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0d0</span><span class="p">))</span> <span class="k">then</span>            <span class="c">! In next calendar day</span>
+   <span class="k">if</span><span class="p">(</span><span class="nb">second</span><span class="p">.</span><span class="n">ge</span><span class="p">.(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0_dp</span><span class="p">))</span> <span class="k">then</span>           <span class="c">! In next calendar day</span>
       <span class="n">ijul</span><span class="o">=</span><span class="n">ijul</span><span class="o">+</span><span class="mi">1</span>
-      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="p">(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0d0</span><span class="p">)</span>              <span class="c">! Adjust from noon to midnight</span>
+      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="p">(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0_dp</span><span class="p">)</span>             <span class="c">! Adjust from noon to midnight</span>
    <span class="k">else</span>                                         <span class="c">! In same calendar day</span>
-      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">+</span><span class="p">(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0d0</span><span class="p">)</span>              <span class="c">! Adjust from noon to midnight</span>
+      <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">+</span><span class="p">(</span><span class="n">secday</span><span class="o">/</span><span class="mf">2.0_dp</span><span class="p">)</span>             <span class="c">! Adjust from noon to midnight</span>
    <span class="k">endif</span>
 
 <span class="k">   if</span><span class="p">(</span><span class="nb">second</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="n">secday</span><span class="p">)</span> <span class="k">then</span>                    <span class="c">! Final check to prevent time 24:00:00</span>
@@ -737,21 +738,21 @@ Date) to a DAT date-time array.
       <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="n">secday</span>
    <span class="k">endif</span>
 
-<span class="k">   </span><span class="n">minute</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">second</span><span class="o">/</span><span class="mi">6</span><span class="mf">0.0d0</span><span class="p">)</span>                    <span class="c">! Integral minutes from beginning of day</span>
+<span class="k">   </span><span class="n">minute</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">second</span><span class="o">/</span><span class="mi">6</span><span class="mf">0.0_dp</span><span class="p">)</span>                   <span class="c">! Integral minutes from beginning of day</span>
    <span class="nb">second</span><span class="o">=</span><span class="nb">second</span><span class="o">-</span><span class="nb">dble</span><span class="p">(</span><span class="n">minute</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>                <span class="c">! Seconds from beginning of minute</span>
    <span class="n">hour</span><span class="o">=</span><span class="n">minute</span><span class="o">/</span><span class="mi">60</span>                               <span class="c">! Integral hours from beginning of day</span>
    <span class="n">minute</span><span class="o">=</span><span class="n">minute</span><span class="o">-</span><span class="n">hour</span><span class="o">*</span><span class="mi">60</span>                        <span class="c">! Integral minutes from beginning of hour</span>
 
    <span class="c">!---------------------------------------------</span>
-   <span class="n">jalpha</span><span class="o">=</span><span class="nb">idint</span><span class="p">((</span><span class="nb">dble</span><span class="p">(</span><span class="n">ijul</span><span class="o">-</span><span class="mi">1867216</span><span class="p">)</span><span class="o">-</span><span class="mf">0.25d0</span><span class="p">)</span><span class="o">/</span><span class="mi">3652</span><span class="mf">4.25d0</span><span class="p">)</span> <span class="c">! Correction for Gregorian Calendar</span>
-   <span class="n">ja</span><span class="o">=</span><span class="n">ijul</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">jalpha</span><span class="o">-</span><span class="nb">idint</span><span class="p">(</span><span class="mf">0.25d0</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">jalpha</span><span class="p">))</span>
+   <span class="n">jalpha</span><span class="o">=</span><span class="nb">idint</span><span class="p">((</span><span class="nb">dble</span><span class="p">(</span><span class="n">ijul</span><span class="o">-</span><span class="mi">1867216</span><span class="p">)</span><span class="o">-</span><span class="mf">0.25_dp</span><span class="p">)</span><span class="o">/</span><span class="mi">3652</span><span class="mf">4.25_dp</span><span class="p">)</span> <span class="c">! Correction for Gregorian Calendar</span>
+   <span class="n">ja</span><span class="o">=</span><span class="n">ijul</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">jalpha</span><span class="o">-</span><span class="nb">idint</span><span class="p">(</span><span class="mf">0.25_dp</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">jalpha</span><span class="p">))</span>
    <span class="c">!---------------------------------------------</span>
 
    <span class="n">jb</span><span class="o">=</span><span class="n">ja</span><span class="o">+</span><span class="mi">1524</span>
-   <span class="n">jc</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="mi">668</span><span class="mf">0.d0</span><span class="o">+</span><span class="p">(</span><span class="nb">dble</span><span class="p">(</span><span class="n">jb</span><span class="o">-</span><span class="mi">2439870</span><span class="p">)</span><span class="o">-</span><span class="mi">12</span><span class="mf">2.1d0</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="mf">5.25d0</span><span class="p">)</span>
-   <span class="n">jd</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="n">jc</span><span class="o">+</span><span class="nb">idint</span><span class="p">(</span><span class="mf">0.25d0</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">jc</span><span class="p">))</span>
-   <span class="n">je</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="nb">dble</span><span class="p">(</span><span class="n">jb</span><span class="o">-</span><span class="n">jd</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="mf">0.6001d0</span><span class="p">)</span>
-   <span class="n">day</span><span class="o">=</span><span class="n">jb</span><span class="o">-</span><span class="n">jd</span><span class="o">-</span><span class="nb">idint</span><span class="p">(</span><span class="mi">3</span><span class="mf">0.6001d0</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">je</span><span class="p">))</span>
+   <span class="n">jc</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="mi">668</span><span class="mf">0.0_dp</span><span class="o">+</span><span class="p">(</span><span class="nb">dble</span><span class="p">(</span><span class="n">jb</span><span class="o">-</span><span class="mi">2439870</span><span class="p">)</span><span class="o">-</span><span class="mi">12</span><span class="mf">2.1_dp</span><span class="p">)</span><span class="o">/</span><span class="mi">36</span><span class="mf">5.25_dp</span><span class="p">)</span>
+   <span class="n">jd</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="n">jc</span><span class="o">+</span><span class="nb">idint</span><span class="p">(</span><span class="mf">0.25_dp</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">jc</span><span class="p">))</span>
+   <span class="n">je</span><span class="o">=</span><span class="nb">idint</span><span class="p">(</span><span class="nb">dble</span><span class="p">(</span><span class="n">jb</span><span class="o">-</span><span class="n">jd</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="mf">0.6001_dp</span><span class="p">)</span>
+   <span class="n">day</span><span class="o">=</span><span class="n">jb</span><span class="o">-</span><span class="n">jd</span><span class="o">-</span><span class="nb">idint</span><span class="p">(</span><span class="mi">3</span><span class="mf">0.6001_dp</span><span class="o">*</span><span class="nb">dble</span><span class="p">(</span><span class="n">je</span><span class="p">))</span>
    <span class="n">month</span><span class="o">=</span><span class="n">je</span><span class="o">-</span><span class="mi">1</span>
 
    <span class="k">if</span><span class="p">(</span><span class="n">month</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="mi">12</span><span class="p">)</span><span class="k">then</span>
@@ -792,7 +793,7 @@ Date) to a DAT date-time array.
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

@@ -130,19 +130,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.9% of total for procedures.">24 statements</a>
+    title=" 0.9% of total for procedures.">25 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -182,6 +182,8 @@
       <a class="list-group-item" href="../proc/unix_to_date.html#variable-julian~10">julian</a>
       
       <a class="list-group-item" href="../proc/unix_to_date.html#variable-local_unixtime~2">local_unixtime</a>
+      
+      <a class="list-group-item" href="../proc/unix_to_date.html#variable-ref~2">ref</a>
       
     </div>
   </div>
@@ -270,13 +272,14 @@ array
 <span class="w">  </span><span class="n">program</span><span class="w"> </span><span class="n">demo_unix_to_date</span><span class="w"></span>
 <span class="w">  </span><span class="k">use</span><span class="w"> </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">unix_to_date</span><span class="p">,</span><span class="w"> </span><span class="n">u2d</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span><span class="w"></span>
 <span class="w">  </span><span class="n">implicit</span><span class="w"> </span><span class="k">none</span><span class="w"></span>
+<span class="w">  </span><span class="k">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="n">kind</span><span class="p">(</span><span class="mf">0.0</span><span class="n">d0</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="nc">real</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">           </span><span class="o">::</span><span class="w"> </span><span class="n">unixtime</span><span class="w"></span>
 <span class="w">  </span><span class="err">!</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nf">day</span><span class="w"></span>
-<span class="w">  </span><span class="nc">real</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nf">DAY</span><span class="o">=</span><span class="mf">86400.0</span><span class="n">d0</span><span class="w"></span>
+<span class="w">  </span><span class="nc">real</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nf">DAY</span><span class="o">=</span><span class="mf">86400.0</span><span class="n">_dp</span><span class="w"></span>
 <span class="w">  </span><span class="k">integer</span><span class="w">                       </span><span class="o">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="k">integer</span><span class="w">                       </span><span class="o">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
 <span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="n">sample</span><span class="w"> </span><span class="n">Unix</span><span class="w"> </span><span class="n">Epoch</span><span class="w"> </span><span class="nc">time</span><span class="w"></span>
-<span class="w">     </span><span class="n">unixtime</span><span class="o">=</span><span class="mf">1468939038.4639933</span><span class="n">d0</span><span class="w"></span>
+<span class="w">     </span><span class="n">unixtime</span><span class="o">=</span><span class="mf">1468939038.4639933</span><span class="n">_dp</span><span class="w"></span>
 <span class="w">     </span><span class="err">!</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">DAT</span><span class="w"> </span><span class="k">array</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">today</span><span class="w"></span>
 <span class="w">     </span><span class="k">call</span><span class="w"> </span><span class="n">unix_to_date</span><span class="p">(</span><span class="n">unixtime</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
 <span class="w">     </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Sample Date=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
@@ -393,6 +396,8 @@ array
       
       <a class="list-group-item" href="../proc/unix_to_date.html#variable-local_unixtime~2">local_unixtime</a>
       
+      <a class="list-group-item" href="../proc/unix_to_date.html#variable-ref~2">ref</a>
+      
     </div>
   </div>
 </div>
@@ -499,6 +504,20 @@ array
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-ref~2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>ref</strong>(8)</td><td> =</td><td>[1970, 1, 1, 0, 0, 0, 0, 0]</td><td></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -533,6 +552,7 @@ array
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">local_unixtime</span>
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">save</span>         <span class="kd">::</span> <span class="n">Unix_Origin_as_Julian</span>               <span class="c">! start of Unix Time as Julian Date</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">save</span>                     <span class="kd">::</span> <span class="n">first</span><span class="o">=</span><span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>               <span class="kd">::</span> <span class="n">ref</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="c">!  Notice that the value UNIXTIME can be any of several types ( INTEGER,REAL,REAL(KIND=REALTIME))</span>
    <span class="k">select type</span><span class="p">(</span><span class="n">unixtime</span><span class="p">)</span>
    <span class="k">type is</span> <span class="p">(</span><span class="kt">integer</span><span class="p">);</span>             <span class="n">local_unixtime</span><span class="o">=</span><span class="nb">dble</span><span class="p">(</span><span class="n">unixtime</span><span class="p">)</span>
@@ -541,7 +561,7 @@ array
    <span class="k">end select</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
    <span class="k">if</span><span class="p">(</span><span class="n">first</span><span class="p">)</span><span class="k">then</span>                                                             <span class="c">! Initialize calculated constants on first call</span>
-      <span class="k">call </span><span class="n">date_to_julian</span><span class="p">([</span><span class="mi">1970</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">Unix_Origin_as_Julian</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>   <span class="c">! Compute start of Unix Time as a Julian Date</span>
+      <span class="k">call </span><span class="n">date_to_julian</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span><span class="n">Unix_Origin_as_Julian</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>                    <span class="c">! Compute start of Unix Time as a Julian Date</span>
       <span class="k">if</span><span class="p">(</span><span class="n">ierr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="k">return</span>                                                   <span class="c">! Error</span>
       <span class="n">first</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
    <span class="k">endif</span>
@@ -571,7 +591,7 @@ array
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

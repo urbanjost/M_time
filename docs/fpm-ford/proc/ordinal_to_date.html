@@ -130,19 +130,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.2% of total for procedures.">6 statements</a>
+    title=" 0.3% of total for procedures.">8 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -168,6 +168,18 @@
 <h3>Contents</h3>
  
 
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/ordinal_to_date.html#variable-temp_dat~2">temp_dat</a>
+      
+    </div>
+  </div>
+</div>
 
 
 
@@ -340,6 +352,18 @@ public subroutine ordinal_to_date(yyyy, ddd, dat)
 
 
 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/ordinal_to_date.html#variable-temp_dat~2">temp_dat</a>
+      
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -373,6 +397,38 @@ public subroutine ordinal_to_date(yyyy, ddd, dat)
     
 
     
+    <section>    
+      <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-temp_dat~2"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>temp_dat</strong>(8)</td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
     
     
     
@@ -398,9 +454,11 @@ public subroutine ordinal_to_date(yyyy, ddd, dat)
 <span class="kt">integer</span> <span class="kd">::</span> <span class="n">yyyy</span>
 <span class="kt">integer</span> <span class="kd">::</span> <span class="n">ddd</span>
 <span class="kt">integer</span> <span class="kd">::</span> <span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">integer</span> <span class="kd">::</span> <span class="n">temp_dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
    <span class="c">!dat=[year,month,day,timezone,hour,minutes,seconds,milliseconds]</span>
    <span class="c">! find Julian day for first day of given year and add ordinal day -1 and convert back to a DAT</span>
-   <span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">d2j</span><span class="p">(</span> <span class="p">[</span><span class="n">yyyy</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="kt">real</span><span class="p">(</span><span class="n">ddd</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">))</span>
+   <span class="n">temp_dat</span><span class="o">=</span><span class="p">[</span><span class="n">yyyy</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+   <span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span> <span class="n">d2j</span><span class="p">(</span><span class="n">temp_dat</span><span class="p">)</span> <span class="o">+</span> <span class="kt">real</span><span class="p">(</span><span class="n">ddd</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span> <span class="p">)</span>
 <span class="k">end subroutine </span><span class="n">ordinal_to_date</span>
 </pre></div>
 
@@ -423,7 +481,7 @@ public subroutine ordinal_to_date(yyyy, ddd, dat)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

@@ -130,19 +130,19 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 0.8% of total for procedures.">21 statements</a>
+    title=" 0.9% of total for procedures.">23 statements</a>
      </li> 
      
      
      
-    <li><i class="fa fa-code"></i><a href="../src/M_time.f90"> Source File</a></li>
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
      
      
   </ul>
   <ol class="breadcrumb in-well text-right">
   
     
-     <li><a href='../sourcefile/m_time.f90.html'>M_time.f90</a></li>
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
     
      <li><a href='../module/m_time.html'>M_time</a></li>
     
@@ -178,6 +178,8 @@
       <a class="list-group-item" href="../proc/d2o.html#variable-dat_local~2">dat_local</a>
       
       <a class="list-group-item" href="../proc/d2o.html#variable-ierr~10">ierr</a>
+      
+      <a class="list-group-item" href="../proc/d2o.html#variable-temp_dat">temp_dat</a>
       
       <a class="list-group-item" href="../proc/d2o.html#variable-unix_first_day">unix_first_day</a>
       
@@ -370,6 +372,8 @@ public function d2o(dat) result(ordinal)
       
       <a class="list-group-item" href="../proc/d2o.html#variable-ierr~10">ierr</a>
       
+      <a class="list-group-item" href="../proc/d2o.html#variable-temp_dat">temp_dat</a>
+      
       <a class="list-group-item" href="../proc/d2o.html#variable-unix_first_day">unix_first_day</a>
       
       <a class="list-group-item" href="../proc/d2o.html#variable-unixtime">unixtime</a>
@@ -458,6 +462,20 @@ public function d2o(dat) result(ordinal)
   
 <tr>
   
+  <td><span class="anchor" id="variable-temp_dat"></span>integer,</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>temp_dat</strong>(8)</td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
   <td><span class="anchor" id="variable-unix_first_day"></span>real(kind=realtime),</td>
   
   <td>public</td>
@@ -514,6 +532,7 @@ public function d2o(dat) result(ordinal)
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">unixtime</span>               <span class="c">! Unix time (seconds)</span>
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>         <span class="kd">::</span> <span class="n">unix_first_day</span>
 <span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">ierr</span>                   <span class="c">! return 0 on success, otherwise 1 from date_to_unix(3f)</span>
+<span class="kt">integer</span>                     <span class="kd">::</span> <span class="n">temp_dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
    <span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">dat</span><span class="p">))</span><span class="k">then</span>
 <span class="k">     </span><span class="n">dat_local</span><span class="o">=</span><span class="n">dat</span>
    <span class="k">else</span>
@@ -524,7 +543,8 @@ public function d2o(dat) result(ordinal)
 <span class="k">      call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*d2o* bad date array&#39;</span><span class="p">)</span>
       <span class="n">ordinal</span><span class="o">=-</span><span class="mi">1</span>                                      <span class="c">! initialize to bad value</span>
    <span class="k">else</span>
-<span class="k">      call </span><span class="n">date_to_unix</span><span class="p">([</span><span class="n">dat_local</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dat_local</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">unix_first_day</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="k">      </span><span class="n">temp_dat</span><span class="o">=</span><span class="p">[</span><span class="n">dat_local</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dat_local</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+      <span class="k">call </span><span class="n">date_to_unix</span><span class="p">(</span><span class="n">temp_dat</span><span class="p">,</span><span class="n">unix_first_day</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
       <span class="n">ordinal</span><span class="o">=</span><span class="nb">int</span><span class="p">((</span><span class="n">unixtime</span><span class="o">-</span><span class="n">unix_first_day</span><span class="p">)</span><span class="o">/</span><span class="n">secday</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
    <span class="k">endif</span>
 <span class="k">end function </span><span class="n">d2o</span>
@@ -549,7 +569,7 @@ public function d2o(dat) result(ordinal)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2022-01-02 00:11  
+             on 2022-05-05 20:36  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> M_time was developed by John S. Urban</p></div>

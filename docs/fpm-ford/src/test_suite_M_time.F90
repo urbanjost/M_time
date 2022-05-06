@@ -104,6 +104,8 @@ character(len=*)               :: NAME
 character(len=*)               :: VALUE
 integer, optional, intent(out) :: STATUS
 integer                        :: loc_err
+character(kind=c_char,len=1),allocatable :: temp_chars1(:)
+character(kind=c_char,len=1),allocatable :: temp_chars2(:)
 
 interface
    integer(kind=c_int) function c_setenv(c_name,c_VALUE) bind(C,NAME="setenv")
@@ -113,7 +115,9 @@ interface
    end function
 end interface
 
-   loc_err =  c_setenv(str2arr(trim(NAME)),str2arr(VALUE))
+   temp_chars1=str2arr(trim(NAME))
+   temp_chars2=str2arr(VALUE)
+   loc_err =  c_setenv(temp_chars1,temp_chars2)
    if (present(STATUS)) STATUS = loc_err
 end subroutine put_environment_variable
 
