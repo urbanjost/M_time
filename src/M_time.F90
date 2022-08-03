@@ -602,7 +602,7 @@ integer                     :: temp_dat(8)
    if(present(dat))then
      dat_local=dat
    else
-     call date_and_time(values=dat_local)
+     dat_local=getnow()
    endif
    call date_to_unix(dat_local,unixtime,ierr)         ! convert date to Unix Epoch Time
    if(ierr.ne.0)then
@@ -668,7 +668,7 @@ equivalence(vtime(5),hour)
 equivalence(vtime(6),minutes)
 equivalence(vtime(7),seconds)
 equivalence(vtime(8),milliseconds)
-   call date_and_time(values=vtime)
+   vtime=getnow()
    ordinal_day_of_year=d2o(vtime)
    ordinal_seconds=ordinal_day_of_year*24*60*60 +hour*60*60 +minutes*60 +seconds
 end function ordinal_seconds
@@ -815,7 +815,7 @@ integer                    :: ierr                    ! return 0 on success, oth
    if(present(year))then
       dat=[year,1,ordinal,get_timezone(),0,0,0,0]     ! initialize DAT with parameters and set timezone, set HH:MM:SS.XX to zero
    else
-      call date_and_time(values=dat)                  ! set year and timezone to current values
+      dat=getnow()                                    ! set year and timezone to current values
       dat=[dat(1),1,ordinal,dat(4),0,0,0,0]           ! apply ordinal parameter to January of current year, set HH:MM:SS.XX to zero
    endif
    ierr=0
@@ -956,7 +956,7 @@ function mo2d(month_name,year) result (dat)
 character(len=*),intent(in) :: month_name
 integer,intent(in),optional :: year
 integer                     :: dat(8)
-   call date_and_time(values=dat)
+   dat=getnow()
    if(present(year))then
       dat(1)=year
    endif
@@ -1123,7 +1123,7 @@ character(len=*),intent(in),optional :: format
 character(len=:),allocatable         :: now
 integer                              :: values(8)
 !-----------------------------------------------------------------------------------------------------------------------------------
-   call date_and_time(values=values)
+   values=getnow()
    if(present(format))then
       now=fmtdate(values,format)
    else
@@ -1870,7 +1870,7 @@ logical                           :: number
 logical                           :: verbose
 integer                           :: loops
 
-   call date_and_time(values=dat)                           ! get time zone of current process and set defaults
+   dat=getnow()                                             ! get time zone of current process and set defaults
    iye=dat(1)
    mon=dat(2)
    idy=dat(3)
@@ -2732,7 +2732,7 @@ integer                     :: dat_local(8)
    if(present(dat))then                      ! if dat array is present use value contained in it
       call date_to_julian(dat,julian,ierr)
    else                                      ! if dat array is not present create one containing current time
-      call date_and_time(values=dat_local)
+      dat_local=getnow()
       call date_to_julian(dat_local,julian,ierr)
    endif
 
@@ -2871,7 +2871,7 @@ integer,intent(in),optional   :: dat(8)
    if(present(dat))then
       datlocal=dat
    else
-      call date_and_time(values=datlocal)  ! current time is placed in array
+      datlocal=getnow() ! current time is placed in array
    endif
    call date_to_unix(datlocal,unixtime,ierr)
 end function d2u
@@ -2971,7 +2971,7 @@ function get_timezone() result(tz)
 implicit none
 integer :: tz
 integer :: timezone(8)
-   call date_and_time(values=timezone)
+   timezone=getnow()
    tz=timezone(4)
    if(tz.gt.0)then  ! gfortran bug on new-years
       write(*,*)'<ERROR>*get_timezone*TZ=',tz
@@ -3674,7 +3674,7 @@ integer               :: c, i, j, k, l, n
    day = l + 28 - 31 * ( month / 4 )
 
    ! fill out a date_and_time array
-   call date_and_time(values=dat)  ! get current year
+   dat=getnow() ! get current year
    dat=[year,month,day,dat(4),12,0,0,0]
 
 end subroutine Easter
@@ -3823,6 +3823,16 @@ end interface
       how_long=c_usleep(wait_seconds)
    endif
 end subroutine call_usleep
+!==================================================================================================================================!
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!==================================================================================================================================!
+function getnow() result(values)
+
+! ident_33="@(#)M_time::getnow(3f): get DAT for current time or value of SOURCE_DATE_EPOCH"
+
+integer :: values(8)
+   call date_and_time(values=values)
+end function getnow
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
