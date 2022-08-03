@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="Fortran date and time manipulation and presentation">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>fmtdate &ndash; M_time</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">M_time </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="../lists/files.html">Source Files</a></li>
+            <li><a href="../lists/modules.html">Modules</a></li>
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+                   <li><a href="../lists/types.html">Derived Types</a></li>
+            <li><a href="../lists/programs.html">Programs</a></li>
+       
+            </ul>
+        
+            </li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+                             <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/programs.html">Programs</a></li>
+          </ul>
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+  <div class="row">
+    <h1>fmtdate
+      <small>Function</small>
+    </h1>
+    <div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 9.3% of total for procedures.">249 statements</a>
+     </li> 
+    <li><i class="fa fa-code"></i><a href="../src/M_time.F90"> Source File</a></li>
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+     <li><a href='../sourcefile/m_time.f90.html'>M_time.F90</a></li>
+     <li><a href='../module/m_time.html'>M_time</a></li>
+     <li class="active">fmtdate</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    <div id="sidebar">
+  <h3>Contents</h3>
+ 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/fmtdate.html#src">fmtdate</a>
+  </div>
+</div>
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public function fmtdate(values, format) result(timestr)</h2>
+    
+
+    <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">fmtdate</span><span class="ss">(</span><span class="mi">3</span><span class="nv">f</span><span class="ss">)</span> <span class="o">-</span> [<span class="nv">M_time</span>:<span class="nv">DATE_PRINTING</span>] <span class="nv">given</span> <span class="nv">DAT</span> <span class="nv">date</span><span class="o">-</span><span class="nv">time</span> <span class="nv">array</span> <span class="k">return</span>
+<span class="nv">date</span> <span class="nv">as</span> <span class="nv">string</span> <span class="nv">using</span> <span class="nv">specified</span> <span class="nv">format</span>
+<span class="ss">(</span><span class="nv">LICENSE</span>:<span class="nv">PD</span><span class="ss">)</span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">fmtdate(values,format) RESULT </span><span class="p">(</span>timestr<span class="p">)</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">integer</span><span class="p">,</span><span class="n">dimension</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">      </span><span class="p">::</span><span class="w"> </span><span class="nb">values</span><span class="w"></span>
+<span class="w"> </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="p">=</span><span class="o">*</span><span class="p">),</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="n">optional</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="nb">format</span><span class="w"></span>
+<span class="w"> </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="p">=:),</span><span class="n">allocatable</span><span class="w">         </span><span class="p">::</span><span class="w"> </span><span class="n">timestr</span><span class="w"></span>
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>The fmtdate(3f) procedure lets you reformat a DAT array in
+   many common formats using a special string containing macro names
+   beginning with &lsquo;%&rsquo;. To see the allowable macros call or see the
+   fmtdate_usage(3f) routine.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code> <span class="nv">values</span>   <span class="nv">date</span> <span class="nv">in</span> <span class="nv">a</span> <span class="s2">&quot;</span><span class="s">DAT</span><span class="s2">&quot;</span> <span class="nv">array</span>, <span class="nv">which</span> <span class="nv">is</span> <span class="nv">the</span> <span class="nv">same</span> <span class="nv">format</span> <span class="nv">as</span>
+          <span class="nv">the</span> <span class="nv">values</span> <span class="nv">returned</span> <span class="nv">by</span> <span class="nv">the</span> <span class="nv">intrinsic</span> <span class="nv">DATE_AND_TIME</span><span class="ss">(</span><span class="mi">3</span><span class="nv">f</span><span class="ss">)</span>:
+
+             <span class="nv">dat</span><span class="o">=</span>[ <span class="nv">year</span>,<span class="nv">month</span>,<span class="nv">day</span>,<span class="nv">timezone</span>,<span class="nv">hour</span>,<span class="o">&amp;</span>
+              <span class="o">&amp;</span> <span class="nv">minutes</span>,<span class="nv">seconds</span>,<span class="nv">milliseconds</span>]
+
+ <span class="nv">format</span>   <span class="nv">string</span> <span class="nv">describing</span> <span class="nv">how</span> <span class="nv">to</span> <span class="nv">format</span> <span class="nv">the</span> <span class="s2">&quot;</span><span class="s">DAT</span><span class="s2">&quot;</span> <span class="nv">array</span>.
+          <span class="k">For</span> <span class="nv">a</span> <span class="nv">complete</span> <span class="nv">description</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">formatting</span> <span class="nv">macros</span>
+          <span class="nv">supported</span> <span class="nv">see</span> <span class="nv">fmtdate_usage</span><span class="ss">(</span><span class="mi">3</span><span class="nv">f</span><span class="ss">)</span>.
+</code></pre></div>
+
+<h2 id="returns">RETURNS</h2>
+<div class="codehilite"><pre><span></span><code> timestr  formatted output string representing date
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">Sample</span> <span class="nv">program</span>:
+
+ <span class="nv">program</span> <span class="nv">demo_fmtdate</span>
+ <span class="nv">use</span> <span class="nv">M_time</span>, <span class="nv">only</span> : <span class="nv">fmtdate</span>
+ <span class="nv">implicit</span> <span class="nv">none</span>
+ <span class="nv">integer</span> :: <span class="nv">dat</span><span class="ss">(</span><span class="mi">8</span><span class="ss">)</span>
+    <span class="k">call</span> <span class="nl">date_and_time</span><span class="ss">(</span><span class="nv">values</span><span class="o">=</span><span class="nv">dat</span><span class="ss">)</span>
+    <span class="nv">write</span><span class="ss">(</span><span class="o">*</span>,<span class="o">*</span><span class="ss">)</span><span class="nv">fmtdate</span><span class="ss">(</span><span class="nv">dat</span>,<span class="s2">&quot;</span><span class="s">current date: %w, %l %d, %Y %H:%m:%s %N</span><span class="s2">&quot;</span><span class="ss">)</span>
+    <span class="k">call</span> <span class="nl">showme</span><span class="ss">()</span>
+ <span class="nv">contains</span>
+ <span class="nv">subroutine</span> <span class="nv">showme</span><span class="ss">()</span>
+    <span class="nv">use</span> <span class="nv">M_time</span>, <span class="nv">only</span> : <span class="nv">fmtdate_usage</span>
+    <span class="k">call</span> <span class="nl">fmtdate_usage</span><span class="ss">()</span> <span class="o">!</span> <span class="nv">see</span> <span class="nv">all</span> <span class="nv">formatting</span> <span class="nv">options</span>
+ <span class="k">end</span> <span class="nv">subroutine</span> <span class="nv">showme</span>
+ <span class="k">end</span> <span class="nv">program</span> <span class="nv">demo_fmtdate</span>
+
+<span class="nv">results</span>:
+
+   <span class="nv">The</span> <span class="nv">current</span> <span class="nv">date</span> <span class="nv">is</span> <span class="nv">Sun</span>, <span class="nv">Jul</span> <span class="mi">17</span><span class="nv">th</span>, <span class="mi">2016</span> <span class="mi">01</span>:<span class="mi">21</span>:<span class="mi">35</span> <span class="nv">PM</span>
+    ::
+    :: <span class="nv">An</span> <span class="nv">up</span><span class="o">-</span><span class="nv">to</span><span class="o">-</span><span class="nv">date</span> <span class="nv">description</span> <span class="nv">of</span> <span class="nv">all</span> <span class="nv">the</span>
+    :: <span class="nv">formatting</span> <span class="nv">options</span> <span class="nv">will</span> <span class="nv">appear</span> <span class="nv">here</span>
+    ::
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban, 2015-12-19
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
+
+    <h3>Arguments</h3>
+      <table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
+<tbody>
+<tr>
+  <td><span class="anchor" id="variable-values"></span>integer,</td>
+<td>intent(in),</td>
+  <td></td>  <td>dimension(8)</td><td>::</td>
+  <td><strong>values</strong></td><td></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-format~2"></span>character(len=*),</td>
+<td>intent(in),</td>
+  <td>optional</td>  <td></td><td>::</td>
+  <td><strong>format</strong></td><td></td>
+</tr>
+</tbody>
+</table>
+
+   <h3>Return Value <small><span class="anchor" id="variable-timestr"></span>character(len=:),allocatable</small></h3>
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      <h3>Contents</h3>
+ 
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/fmtdate.html#src">fmtdate</a>
+  </div>
+</div>
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="k">function </span><span class="n">fmtdate</span><span class="p">(</span><span class="n">values</span><span class="p">,</span><span class="k">format</span><span class="p">)</span><span class="w"> </span><span class="k">RESULT</span><span class="w"> </span><span class="p">(</span><span class="n">timestr</span><span class="p">)</span><span class="w"></span>
+
+<span class="c">! ident_14=&quot;@(#)M_time::fmtdate(3f): given DAT date-time array return date as string using format&quot;</span>
+
+<span class="c">! JSU 2015-10-24</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">values</span><span class="w">    </span><span class="c">! numeric time values as DATE_AND_TIME(3f) intrinsic returns</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">format</span><span class="w">    </span><span class="c">! input format string</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">timestr</span><span class="w"></span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">valloc</span><span class="w">    </span><span class="c">! numeric time values as DATE_AND_TIME(3f) intrinsic returns</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">longest</span><span class="o">=</span><span class="mi">4096</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">chara</span><span class="w">     </span><span class="c">! character being looked at in format string</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_name</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">dayend</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">day</span><span class="w">       </span><span class="c">! day of week</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">local_format</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">longest</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">text</span><span class="w">      </span><span class="c">! character array</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">longest</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">xxxx</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="n">i10</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_year</span><span class="p">,</span><span class="w"> </span><span class="n">iso_week</span><span class="p">,</span><span class="w"> </span><span class="n">iso_weekday</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">systemclock</span><span class="p">,</span><span class="w"> </span><span class="n">countrate</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">weekday</span><span class="w"></span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">save</span><span class="w">                         </span><span class="kd">::</span><span class="w"> </span><span class="n">called</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="kt">logical</span><span class="w">                              </span><span class="kd">::</span><span class="w"> </span><span class="n">keyword</span><span class="w">   </span><span class="c">! flag that previous character was a % character</span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">save</span><span class="w">                         </span><span class="kd">::</span><span class="w"> </span><span class="n">since</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">cputime</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">unixtime</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">save</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">unixtime_last</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">valloc</span><span class="o">=</span><span class="n">values</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="k">format</span><span class="p">))</span><span class="k">then</span>
+<span class="k">      </span><span class="n">local_format</span><span class="o">=</span><span class="k">format</span>
+<span class="k">   else</span>
+<span class="k">      </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="w"></span>
+<span class="w">   </span><span class="k">endif</span>
+
+<span class="k">   select case</span><span class="p">(</span><span class="n">local_format</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;iso-8601W&#39;</span><span class="p">,</span><span class="s1">&#39;isoweek&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%I&#39;</span><span class="w">                    </span><span class="c">! 2016-W24-5 (yyyy-Www-d)</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;iso-8601&#39;</span><span class="p">,</span><span class="s1">&#39;iso&#39;</span><span class="p">)</span><span class="w">      </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%Y-%M-%DT%h:%m:%s%z&#39;</span><span class="w">   </span><span class="c">! 2006-08-14T02:34:56-0600</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;sql&#39;</span><span class="p">)</span><span class="w">       </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;&quot;%Y-%M-%D %h:%m:%s.%x&quot;&#39;</span><span class="w">          </span><span class="c">!</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;sqlday&#39;</span><span class="p">)</span><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;&quot;%Y-%M-%D&quot;&#39;</span><span class="w">                      </span><span class="c">!</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;sqltime&#39;</span><span class="p">)</span><span class="w">   </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;&quot;%h:%m:%s.%x&quot;&#39;</span><span class="w">                   </span><span class="c">!</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;rfc-2822&#39;</span><span class="p">)</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%w, %D %l %Y %h:%m:%s %T&#39;</span><span class="w">        </span><span class="c">! Mon, 14 Aug 2006 02:34:56 -0600</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;rfc-3339&#39;</span><span class="p">)</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%Y-%M-%DT%h:%m:%s%z&#39;</span><span class="w">             </span><span class="c">! 2006-08-14 02:34:56-06:00</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;suffix&#39;</span><span class="p">)</span><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%Y%D%M%h%m%s&#39;</span><span class="w">                    </span><span class="c">! 20170122210327</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="w">      </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%w %l %D %h:%m:%s UTC%z %Y&#39;</span><span class="w">      </span><span class="c">! Mon Jul 25 03:19:21 UTC-4:00 2016</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;short&#39;</span><span class="p">)</span><span class="w">     </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%w, %l %d, %Y %H:%m:%s %N UTC%z&#39;</span><span class="w"> </span><span class="c">! Fri, Jun 17th, 2016 06:31:00 PM UTC-04:00</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;long&#39;</span><span class="p">)</span><span class="w">      </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%W, %L %d, %Y %H:%m:%s %N UTC%z&#39;</span><span class="w"> </span><span class="c">! Friday, June 17th, 2016 06:31:00 PM UTC-04:00</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="w">         </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;%W, %L %d, %Y %H:%m:%s %N UTC%z&#39;</span><span class="w"> </span><span class="c">! Friday, June 17th, 2016 06:31:00 PM UTC-04:00</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;formal&#39;</span><span class="p">)</span><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;The %d of %L %Y&#39;</span><span class="w">                 </span><span class="c">! The 9th of November 2014</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;lord&#39;</span><span class="p">)</span><span class="w">  </span><span class="p">;</span><span class="w"> </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;the %d day of %L in the year of our Lord %Y&#39;</span><span class="w"> </span><span class="c">! the 9th day of November in the year of our Lord 2014</span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;easter&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">call </span><span class="n">easter</span><span class="p">(</span><span class="n">values</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">valloc</span><span class="p">)</span><span class="w">                                  </span><span class="c">! given year get month and day Easter falls on</span>
+<span class="w">      </span><span class="n">local_format</span><span class="o">=</span><span class="s2">&quot;Easter day: the %d day of %L in the year of our Lord %Y&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="n">local_format</span><span class="o">=</span><span class="s1">&#39;&amp;</span>
+<span class="s1">     &amp; Civil Calendar:%t%W %L %d%n&amp;</span>
+<span class="s1">     &amp; Civil Date:%t%t%Y-%M-%D %h:%m:%s %z%n&amp;</span>
+<span class="s1">     &amp; Julian Date:%t%t%J%n&amp;</span>
+<span class="s1">     &amp; Unix Epoch Time:%t%E%n&amp;</span>
+<span class="s1">     &amp; Day Of Year:%t%t%O%n&amp;</span>
+<span class="s1">     &amp; ISO-8601 week:%t%t%I&amp;</span>
+<span class="s1">     &amp;&#39;</span><span class="w"></span>
+<span class="w">   </span><span class="k">case </span><span class="n">default</span><span class="w"></span>
+<span class="w">      </span><span class="n">xxxx</span><span class="o">=</span><span class="n">local_format</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="nb">index</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;%&#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">               </span><span class="c">! if no % characters try to guess what macros are present</span>
+
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;%M&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;MONTH&#39;</span><span class="p">,</span><span class="s1">&#39;%L&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span><span class="s1">&#39;%l&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;weekday&#39;</span><span class="p">,</span><span class="s1">&#39;%u&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;WEEKDAY&#39;</span><span class="p">,</span><span class="s1">&#39;%W&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;Weekday&#39;</span><span class="p">,</span><span class="s1">&#39;%w&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;today&#39;</span><span class="p">,</span><span class="s1">&#39;%Y%M%D&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;%D&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;DAY&#39;</span><span class="p">,</span><span class="s1">&#39;%d&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;GOOD&#39;</span><span class="p">,</span><span class="s1">&#39;%N&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;HOUR&#39;</span><span class="p">,</span><span class="s1">&#39;%H&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="s1">&#39;%h&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;minute&#39;</span><span class="p">,</span><span class="s1">&#39;%m&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;timezone&#39;</span><span class="p">,</span><span class="s1">&#39;%T&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;TIMEZONE&#39;</span><span class="p">,</span><span class="s1">&#39;%z&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;Timezone&#39;</span><span class="p">,</span><span class="s1">&#39;%Z&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;millisecond&#39;</span><span class="p">,</span><span class="s1">&#39;%x&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;second&#39;</span><span class="p">,</span><span class="s1">&#39;%s&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;epoch&#39;</span><span class="p">,</span><span class="s1">&#39;%e&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;julian&#39;</span><span class="p">,</span><span class="s1">&#39;%j&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;ordinal&#39;</span><span class="p">,</span><span class="s1">&#39;%O&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">         </span><span class="k">if</span><span class="p">(</span><span class="nb">index</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="s1">&#39;%&#39;</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">            </span><span class="c">! if no % characters change every char to %char if a format macro letter</span>
+<span class="w">            </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span><span class="mi">122</span><span class="w"></span>
+<span class="w">             </span><span class="k">select case</span><span class="p">(</span><span class="nb">char</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"></span>
+<span class="w">             </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">:</span><span class="s1">&#39;E&#39;</span><span class="p">,</span><span class="s1">&#39;H&#39;</span><span class="p">:</span><span class="s1">&#39;J&#39;</span><span class="p">,</span><span class="s1">&#39;L&#39;</span><span class="p">:</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span><span class="s1">&#39;S&#39;</span><span class="p">,</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;U&#39;</span><span class="p">,</span><span class="s1">&#39;W&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="s1">&#39;h&#39;</span><span class="p">:</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">:</span><span class="s1">&#39;q&#39;</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="s1">&#39;u&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">xxxx</span><span class="p">,</span><span class="nb">char</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="s1">&#39;%&#39;</span><span class="o">//</span><span class="nb">char</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"></span>
+<span class="w">             </span><span class="k">end select</span>
+<span class="k">            enddo</span>
+<span class="k">         endif</span>
+<span class="k">      endif</span>
+<span class="k">      </span><span class="n">local_format</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">xxxx</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">end select</span>
+
+<span class="k">   </span><span class="n">text</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="w"></span>
+<span class="c">!  write string, when encounter a percent character do a substitution</span>
+<span class="w">   </span><span class="n">keyword</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span><span class="w"></span>
+<span class="w">   </span><span class="n">iout</span><span class="o">=</span><span class="mi">1</span><span class="w"></span>
+
+<span class="w">   </span><span class="k">do </span><span class="n">i10</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">local_format</span><span class="p">)</span><span class="w">                  </span><span class="c">! Read the FORMAT string and replace the &quot;%&quot; strings per the following rules:</span>
+<span class="w">      </span><span class="n">chara</span><span class="o">=</span><span class="n">local_format</span><span class="p">(</span><span class="n">i10</span><span class="p">:</span><span class="n">i10</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">chara</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="s1">&#39;%&#39;</span><span class="p">.</span><span class="nb">and</span><span class="p">..</span><span class="nb">not</span><span class="p">.</span><span class="n">keyword</span><span class="p">)</span><span class="k">then</span>
+<span class="k">            </span><span class="n">keyword</span><span class="o">=</span><span class="p">.</span><span class="n">TRUE</span><span class="p">.</span><span class="w"></span>
+<span class="w">            </span><span class="k">cycle</span>
+<span class="k">      endif</span>
+<span class="k">      if</span><span class="p">(</span><span class="n">keyword</span><span class="p">)</span><span class="k">then</span>
+<span class="k">         </span><span class="n">keyword</span><span class="o">=</span><span class="p">.</span><span class="n">FALSE</span><span class="p">.</span><span class="w"></span>
+<span class="w">         </span><span class="k">select case</span><span class="p">(</span><span class="n">chara</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A1)&#39;</span><span class="p">)</span><span class="n">chara</span><span class="w">                        </span><span class="c">! literal percent character</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A1)&#39;</span><span class="p">)</span><span class="s1">&#39; &#39;</span><span class="w">                          </span><span class="c">! space character</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A1)&#39;</span><span class="p">)</span><span class="s1">&#39;!&#39;</span><span class="w">                          </span><span class="c">! exclamation (bang) character</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">cputime</span><span class="p">)</span><span class="w">                                </span><span class="c">! CPU_TIME()</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(G0)&#39;</span><span class="p">)</span><span class="n">cputime</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">);</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">                                   </span><span class="c">! number of times this routine called</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0)&#39;</span><span class="p">)</span><span class="n">called</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">);</span><span class="w">                                                       </span><span class="c">! the day of the month 1st..31st</span>
+<span class="w">                    </span><span class="n">dayend</span><span class="o">=</span><span class="s1">&#39;  &#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="k">select case</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="w"></span>
+<span class="w">                    </span><span class="k">case</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">31</span><span class="p">);</span><span class="w"> </span><span class="n">dayend</span><span class="o">=</span><span class="s1">&#39;st&#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="k">case</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">22</span><span class="p">);</span><span class="w"> </span><span class="n">dayend</span><span class="o">=</span><span class="s1">&#39;nd&#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="k">case</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">23</span><span class="p">);</span><span class="w"> </span><span class="n">dayend</span><span class="o">=</span><span class="s1">&#39;rd&#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="k">case</span><span class="p">(</span><span class="mi">4</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="mi">24</span><span class="p">:</span><span class="mi">30</span><span class="p">);</span><span class="w"> </span><span class="n">dayend</span><span class="o">=</span><span class="s1">&#39;th&#39;</span><span class="w"></span>
+<span class="w">                    </span><span class="k">case </span><span class="n">default</span><span class="w"></span>
+<span class="w">                    </span><span class="k">end select</span>
+<span class="k">                    write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0,a)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">dayend</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I2.2)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w">                  </span><span class="c">! the day of the month 1..31</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">date_to_unix</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">unixtime</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">               </span><span class="c">! integer Unix Epoch time in seconds</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(G0)&#39;</span><span class="p">)</span><span class="nb">nint</span><span class="p">(</span><span class="n">unixtime</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">date_to_unix</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">unixtime</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">               </span><span class="c">! Unix Epoch time in seconds</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(G0)&#39;</span><span class="p">)</span><span class="n">unixtime</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I2.2)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w">                  </span><span class="c">! the hour of the day, in the range of 0 to 23</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">);</span><span class="w"> </span><span class="n">ii</span><span class="o">=</span><span class="nb">mod</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="mi">12</span><span class="p">)</span><span class="w">                                  </span><span class="c">! hour of day in range 1..12</span>
+<span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="n">ii</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">                       </span><span class="n">ii</span><span class="o">=</span><span class="mi">12</span><span class="w"></span>
+<span class="w">                    </span><span class="k">endif</span>
+<span class="k">                    write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0)&#39;</span><span class="p">)</span><span class="n">ii</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">d2w</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">iso_year</span><span class="p">,</span><span class="n">iso_week</span><span class="p">,</span><span class="n">iso_weekday</span><span class="p">,</span><span class="n">iso_name</span><span class="p">)</span><span class="w"> </span><span class="c">! ISO week of year</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0)&#39;</span><span class="p">)</span><span class="n">iso_week</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">d2w</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">iso_year</span><span class="p">,</span><span class="n">iso_week</span><span class="p">,</span><span class="n">iso_weekday</span><span class="p">,</span><span class="n">iso_name</span><span class="p">)</span><span class="w"> </span><span class="c">! iso-8601 Week-numbering year date</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">iso_name</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">date_to_julian</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">julian</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">               </span><span class="c">! integer Julian Day (truncated to integer)</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0)&#39;</span><span class="p">)</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;J&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">date_to_julian</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">julian</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">               </span><span class="c">! Julian Date out to milliseconds</span>
+<span class="w">                    </span><span class="c">!write(text(iout:),&#39;(I0,&quot;.&quot;,i3.3)&#39;)int(julian),nint((julian-int(julian))*1000.0)</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(g0)&#39;</span><span class="p">)</span><span class="n">julian</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="nb">system_clock</span><span class="p">(</span><span class="nb">count</span><span class="o">=</span><span class="n">systemclock</span><span class="p">,</span><span class="n">count_rate</span><span class="o">=</span><span class="n">countrate</span><span class="p">)</span><span class="w">  </span><span class="c">! systemclock/countrate</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(G0)&#39;</span><span class="p">)</span><span class="kt">real</span><span class="p">(</span><span class="n">systemclock</span><span class="p">)</span><span class="o">/</span><span class="n">countrate</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="nb">system_clock</span><span class="p">(</span><span class="nb">count</span><span class="o">=</span><span class="n">systemclock</span><span class="p">,</span><span class="n">count_rate</span><span class="o">=</span><span class="n">countrate</span><span class="p">)</span><span class="w">  </span><span class="c">! system clock count</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">systemclock</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A3)&#39;</span><span class="p">)</span><span class="n">v2mo</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="w">              </span><span class="c">! three characters of the name of the month of the year</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="n">v2mo</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="w">               </span><span class="c">! name of the month of the year</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I2.2)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w">                  </span><span class="c">! the minutes of the hour, in the range 0 to 59</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I2.2)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                  </span><span class="c">! month of year (1..12)</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">valloc</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="n">ge</span><span class="p">.</span><span class="mi">12</span><span class="p">)</span><span class="k">then</span><span class="w">                              </span><span class="c">! AM||PM</span>
+<span class="w">                       </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(&quot;PM&quot;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="k">else</span>
+<span class="k">                       write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(&quot;AM&quot;)&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="k">endif</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="nb">new_line</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I3.3)&#39;</span><span class="p">)</span><span class="n">d2o</span><span class="p">(</span><span class="n">valloc</span><span class="p">)</span><span class="w">                </span><span class="c">! Ordinal day of year</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">date_to_unix</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">unixtime</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">               </span><span class="c">! integer Unix Epoch time in seconds</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(G0)&#39;</span><span class="p">)</span><span class="nb">floor</span><span class="p">(</span><span class="n">unixtime</span><span class="o">/</span><span class="mi">86400</span><span class="p">)</span><span class="w">        </span><span class="c">! number of whole days since Epoch time</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A)&#39;</span><span class="p">)</span><span class="n">phase_of_moon</span><span class="p">(</span><span class="n">valloc</span><span class="p">)</span><span class="w">         </span><span class="c">! phase of moon</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(i0,&quot;%&quot;)&#39;</span><span class="p">)</span><span class="n">moon_fullness</span><span class="p">(</span><span class="n">valloc</span><span class="p">)</span><span class="w">    </span><span class="c">! percent of fullness</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(&quot;&#39;&#39;&quot;)&#39;</span><span class="p">)</span><span class="w">                           </span><span class="c">! single quote (apostrophe)</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(&#39;&#39;&quot;&#39;&#39;)&#39;</span><span class="p">)</span><span class="w">                          </span><span class="c">! double quote</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I2.2)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="w">                  </span><span class="c">! the seconds of the minute, in the range 0 to 59</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">since</span><span class="p">)</span><span class="k">then</span><span class="w">                                    </span><span class="c">! seconds since last called</span>
+<span class="w">                       </span><span class="n">since</span><span class="o">=</span><span class="p">.</span><span class="n">TRUE</span><span class="p">.</span><span class="w"></span>
+<span class="w">                       </span><span class="k">call </span><span class="n">date_to_unix</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">unixtime_last</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="k">endif</span>
+<span class="k">                    call </span><span class="n">date_to_unix</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">unixtime</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(G0)&#39;</span><span class="p">)</span><span class="n">unixtime</span><span class="o">-</span><span class="n">unixtime_last</span><span class="w"></span>
+<span class="w">                    </span><span class="n">unixtime_last</span><span class="o">=</span><span class="n">unixtime</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A1)&#39;</span><span class="p">)</span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w">                      </span><span class="c">! tab character</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(SP,I3.2,SS,I2.2)&#39;</span><span class="p">)</span><span class="nb">int</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="p">),</span><span class="nb">abs</span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">60</span><span class="p">))</span><span class="w"> </span><span class="c">! time from UTC as +-hhmm</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">dow</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">weekday</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I1)&#39;</span><span class="p">)</span><span class="nb">mod</span><span class="p">(</span><span class="n">weekday</span><span class="o">+</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w">           </span><span class="c">! Return the day of the week, 1..7 Sunday=1</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">dow</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">weekday</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                     </span><span class="c">! Return the day of the week, 1..7 Monday=1</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I1)&#39;</span><span class="p">)</span><span class="n">weekday</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">dow</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">weekday</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                     </span><span class="c">! Return the name of the day of the week</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">day</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">call </span><span class="n">dow</span><span class="p">(</span><span class="n">valloc</span><span class="p">,</span><span class="n">weekday</span><span class="p">,</span><span class="n">day</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w">                     </span><span class="c">! Return the first three characters of the day of the week</span>
+<span class="w">                    </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A3)&#39;</span><span class="p">)</span><span class="n">day</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I3.3)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w">                  </span><span class="c">! the milliseconds of the second, in the range 0 to 999</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(I0.4)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">                  </span><span class="c">! the year, including the century (for example, 1990)</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(SP,I5.4)&#39;</span><span class="p">)</span><span class="n">valloc</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w">               </span><span class="c">! time difference with respect to UTC in minutes</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">);</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(SP,I3.2,&quot;:&quot;,SS,I2.2)&#39;</span><span class="p">)</span><span class="nb">int</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="p">),</span><span class="nb">abs</span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">valloc</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">60</span><span class="p">))</span><span class="w"> </span><span class="c">! time from UTC as +-hh:mm</span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">case </span><span class="n">default</span><span class="w"></span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A1)&#39;</span><span class="p">)</span><span class="n">chara</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="k">end select</span><span class="w"></span>
+<span class="w">         </span><span class="c">!=====================================================================================</span>
+<span class="w">         </span><span class="n">iout</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="w">         </span><span class="k">if</span><span class="p">(</span><span class="n">iout</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="n">longest</span><span class="p">)</span><span class="k">exit</span>
+<span class="k">      else</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">iout</span><span class="p">:),</span><span class="s1">&#39;(A1)&#39;</span><span class="p">)</span><span class="n">chara</span><span class="p">;</span><span class="n">iout</span><span class="o">=</span><span class="n">iout</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="w">      </span><span class="k">endif</span>
+<span class="k">   enddo</span>
+<span class="k">   </span><span class="n">timestr</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"></span>
+<span class="k">end function </span><span class="n">fmtdate</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><p>M_time was developed by John S. Urban<br>&copy; 2022 
+</p>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2022-08-03 21:24            </p>
+        </div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+  </body>
+</html>
