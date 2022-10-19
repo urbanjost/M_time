@@ -498,7 +498,7 @@ contains
 !
 function construct_from_dat(dat)
 
-! ident_1="@(#)M_time::construct_from_dat(3f): construct TYPE(DATE_TIME) with DAT date-time array"
+! ident_1="@(#) M_time construct_from_dat(3f) construct TYPE(DATE_TIME) with DAT date-time array"
 
 integer,intent(in)          :: dat(:)                       ! (maybe partial) date time array
 integer                     :: datlocal(8)                  ! date time array similar to that returned by DATE_AND_TIME
@@ -520,7 +520,7 @@ end function construct_from_dat
 !===================================================================================================================================
 function construct_from_jed(jed)
 
-! ident_2="@(#)M_time::construct_from_jed(3f): construct TYPE(DATE_TIME) with REAL Julian JED date-time value"
+! ident_2="@(#) M_time construct_from_jed(3f) construct TYPE(DATE_TIME) with REAL Julian JED date-time value"
 
 real(kind=realtime),intent(in)   :: jed
 type(date_time)                 :: construct_from_jed
@@ -529,7 +529,7 @@ end function construct_from_jed
 !===================================================================================================================================
 function construct_from_uet(uet)
 
-! ident_3="@(#)M_time::construct_from_uet(3f): construct TYPE(DATE_TIME) with INTEGER Unix UET date-time value"
+! ident_3="@(#) M_time construct_from_uet(3f) construct TYPE(DATE_TIME) with INTEGER Unix UET date-time value"
 
 integer,intent(in)   :: uet
 type(date_time)                 :: construct_from_uet
@@ -543,7 +543,7 @@ end function construct_from_uet
 !===================================================================================================================================
 function dt2d_(self) result (dat)
 
-! ident_4="@(#)M_time::dt2d_(3f): convert derived type date_time to DAT date-time array"
+! ident_4="@(#) M_time dt2d_(3f) convert derived type date_time to DAT date-time array"
 
 class(date_time),intent(in) :: self
 integer                     :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
@@ -554,7 +554,7 @@ end function dt2d_
 !===================================================================================================================================
 function epoch_(self) result (epoch_seconds)
 
-! ident_5="@(#)M_time::epoch_(3f): convert derived type date_time to unix epoch seconds"
+! ident_5="@(#) M_time epoch_(3f) convert derived type date_time to unix epoch seconds"
 
 class(date_time),intent(in) :: self
 real(kind=realtime)         :: epoch_seconds
@@ -563,7 +563,7 @@ end function epoch_
 !===================================================================================================================================
 function format(self,fmt) result (string)
 
-! ident_6="@(#)M_time::format(3f): convert derived type date_time to formatted string"
+! ident_6="@(#) M_time format(3f) convert derived type date_time to formatted string"
 
 class(date_time),intent(in)           :: self
 character(len=*),intent(in),optional  :: fmt
@@ -598,7 +598,7 @@ end function format
 !===================================================================================================================================
 function julian_(self) result (julian_days)
 
-! ident_7="@(#)M_time::julian_(3f): convert derived type date_time to julian date"
+! ident_7="@(#) M_time julian_(3f) convert derived type date_time to julian date"
 
 class(date_time),intent(in) :: self
 real(kind=realtime)         :: julian_days
@@ -607,7 +607,7 @@ end function julian_
 !===================================================================================================================================
 function ordinal(self) result (ordinal_days)
 
-! ident_8="@(#)M_time::ordinal(3f): convert derived type date_time to ordinal date"
+! ident_8="@(#) M_time ordinal(3f) convert derived type date_time to ordinal date"
 
 class(date_time),intent(in) :: self
 integer                     :: ordinal_days
@@ -616,7 +616,7 @@ end function ordinal
 !===================================================================================================================================
 function weekday(self) result (iday)
 
-! ident_9="@(#)M_time::weekday(3f): convert derived type date_time to weekday (1=Monday,7=Sunday)"
+! ident_9="@(#) M_time weekday(3f) convert derived type date_time to weekday (1=Monday 7=Sunday)"
 
 class(date_time),intent(in)   :: self
 integer                       :: iday
@@ -633,7 +633,7 @@ function delta(self,year,month,day,tz,hour,minute,second,millisecond,week,durati
 ! or "a month from now". Once the arbitrary values are used to change the original date_time value convert it to
 ! Epoch time and back to make sure you get a valid date.
 
-! ident_10="@(#)M_time::delta(3f): add times to a type(date_time)"
+! ident_10="@(#) M_time delta(3f) add times to a type(date_time)"
 
 class(date_time),intent(in)           :: self
 integer,intent(in),optional           :: year, month, day, tz, hour, minute, second, millisecond, week
@@ -666,7 +666,7 @@ subroutine init_dt(self,year,month,day,tz,hour,minute,second,millisecond,type,da
 ! If not, initialize to the current time or start of epoch depending on TYPE=["now"|"epoch"]
 ! Then, apply specific values, typically specified by keyword value
 
-! ident_11="@(#)M_time::init_dt(3f): initialize TYPE(DATE_TIME)"
+! ident_11="@(#) M_time init_dt(3f) initialize TYPE(DATE_TIME)"
 
 class(date_time)                     :: self
 type(date_time)                      :: holddt
@@ -729,7 +729,7 @@ end subroutine init_dt
 !===================================================================================================================================
 function plus_seconds(self,seconds) result (dattim)
 
-! ident_12="@(#)M_time::plus_seconds(3f): add derived type date_time object and seconds"
+! ident_12="@(#) M_time plus_seconds(3f) add derived type date_time object and seconds"
 
 class(date_time),intent(in)    :: self
 real(kind=realtime),intent(in) :: seconds
@@ -742,7 +742,7 @@ end function plus_seconds
 !===================================================================================================================================
 function minus_seconds(self,seconds) result (dattim)
 
-! ident_13="@(#)M_time::minus_seconds(3f): subtract seconds from derived type date_time object"
+! ident_13="@(#) M_time minus_seconds(3f) subtract seconds from derived type date_time object"
 
 class(date_time),intent(in)    :: self
 real(kind=realtime),intent(in) :: seconds
@@ -752,7 +752,7 @@ end function minus_seconds
 !===================================================================================================================================
 function minus_date_time(self,other) result (seconds)
 
-! ident_14="@(#)M_time::minus_date_time(3f): add derived type date_time object and seconds"
+! ident_14="@(#) M_time minus_date_time(3f) add derived type date_time object and seconds"
 
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
@@ -762,7 +762,7 @@ end function minus_date_time
 !===================================================================================================================================
 logical function eq(self,other)
 
-! ident_15="@(#)M_time::eq(3f): compare derived type date_time objects (eq,lt,gt,le,ge,ne)"
+! ident_15="@(#) M_time eq(3f) compare derived type date_time objects (eq lt gt le ge ne)"
 
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other

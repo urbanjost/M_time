@@ -5,7 +5,7 @@ module M_time
 use M_time_duplicate
 use, intrinsic :: iso_fortran_env, only : int64
 implicit none
-! ident_1="@(#)M_time::M_time(3f): date and time function module"
+! ident_1="@(#) M_time M_time(3f) date and time function module"
 private
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! version: 6E61627255202E53206E686F4A-2022-03-18
@@ -147,7 +147,7 @@ subroutine date_to_julian(dat,julian,ierr)
 ! * Julian Date starts at noon; while Civil Calendar date starts at midnight
 !-----------------------------------------------------------------------------------------------------------------------------------
 
-! ident_2="@(#)M_time::date_to_julian(3f): Converts proleptic Gregorian DAT date-time array to Julian Date"
+! ident_2="@(#) M_time date_to_julian(3f) Converts proleptic Gregorian DAT date-time array to Julian Date"
 
 integer,intent(in)               :: dat(8)   ! array like returned by DATE_AND_TIME(3f)
 real(kind=realtime),intent(out)  :: julian   ! Julian Date (non-negative, but may be non-integer)
@@ -260,7 +260,7 @@ end subroutine date_to_julian
 !!    Public Domain
 subroutine julian_to_date(julian,dat,ierr)
 
-! ident_3="@(#)M_time::julian_to_date(3f): Converts Julian Date to DAT date-time array"
+! ident_3="@(#) M_time julian_to_date(3f) Converts Julian Date to DAT date-time array"
 
 real(kind=realtime),intent(in)   :: julian            ! Julian Date (non-negative)
 integer,intent(out)              :: dat(8)
@@ -391,7 +391,7 @@ end subroutine julian_to_date
 !!    Public Domain
 subroutine date_to_unix(dat,unixtime,ierr)
 
-! ident_4="@(#)M_time::date_to_unix(3f): Convert DAT date-time array to Unix Epoch Time"
+! ident_4="@(#) M_time date_to_unix(3f) Convert DAT date-time array to Unix Epoch Time"
 
 integer,intent(in)              :: dat(8)       ! date time array similar to that returned by DATE_AND_TIME
 real(kind=realtime),intent(out) :: unixtime     ! Unix time (seconds)
@@ -487,7 +487,7 @@ end subroutine date_to_unix
 !!    Public Domain
 subroutine unix_to_date(unixtime,dat,ierr)
 
-! ident_5="@(#)M_time::unix_to_date(3f): Converts Unix Time to DAT date-time array"
+! ident_5="@(#) M_time unix_to_date(3f) Converts Unix Time to DAT date-time array"
 
 class(*),intent(in)              :: unixtime                            ! Unix time (seconds)
 integer,intent(out)              :: dat(8)                              ! date and time array
@@ -589,7 +589,7 @@ end subroutine unix_to_date
 !!    Public Domain
 function d2o(dat) result (ordinal)
 
-! ident_6="@(#)M_time::d2o(3f): Converts DAT date-time array to Ordinal day"
+! ident_6="@(#) M_time d2o(3f) Converts DAT date-time array to Ordinal day"
 
 ! JSU 2015-12-13
 integer,intent(in),optional :: dat(8)                 ! date time array similar to that returned by DATE_AND_TIME
@@ -655,7 +655,7 @@ end function d2o
 !!    Public Domain
 integer function ordinal_seconds()
 
-! ident_7="@(#)M_time::ordinal_seconds(3f): seconds since beginning of year"
+! ident_7="@(#) M_time ordinal_seconds(3f) seconds since beginning of year"
 
 integer                     :: vtime(8)
 integer                     :: year, month, day, hour, minutes, seconds, timezone, milliseconds
@@ -723,7 +723,7 @@ end function ordinal_seconds
 subroutine ordinal_to_date(yyyy,ddd,dat)
 !x!use M_time, only : d2j,j2d, realtime
 
-! ident_8="@(#)M_time::ordinal_to_date(3f): given a valid year and day of the year returns the DAT array for the date"
+! ident_8="@(#) M_time ordinal_to_date(3f) given a valid year and day of the year returns the DAT array for the date"
 
 integer :: yyyy
 integer :: ddd
@@ -805,7 +805,7 @@ end subroutine ordinal_to_date
 !!    Public Domain
 function o2d(ordinal,year) result (dat)
 
-! ident_9="@(#)M_time::o2d(3f): Converts ordinal day to DAT date-time array"
+! ident_9="@(#) M_time o2d(3f) Converts ordinal day to DAT date-time array"
 
 integer                    :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
 integer,intent(in)         :: ordinal                 ! the returned number of days
@@ -884,7 +884,7 @@ end function o2d
 !!    Public Domain
 function v2mo(imonth) result(month_name)
 
-! ident_10="@(#)M_time::v2mo(3f): returns the month name of a Common month number"
+! ident_10="@(#) M_time v2mo(3f) returns the month name of a Common month number"
 
 ! JSU 2015-12-13
 character(len=:),allocatable :: month_name                                        ! string containing month name or abbreviation.
@@ -951,7 +951,7 @@ end function v2mo
 !!    Public Domain
 function mo2d(month_name,year) result (dat)
 
-! ident_11="@(#)M_time::mo2d(3f): month name to DAT date-time array for 1st of that month in specified year"
+! ident_11="@(#) M_time mo2d(3f) month name to DAT date-time array for 1st of that month in specified year"
 
 character(len=*),intent(in) :: month_name
 integer,intent(in),optional :: year
@@ -982,7 +982,7 @@ end function mo2d
 !!
 !!##SYNOPSIS
 !!
-!!    function mo2v(month_name) result(imonth)
+!!    elemental function mo2v(month_name) result(imonth)
 !!
 !!      character(len=*),intent(in):: month_name ! month name
 !!      integer                    :: imonth     ! month number
@@ -1026,9 +1026,9 @@ end function mo2d
 !!    John S. Urban, 2015
 !!##LICENSE
 !!    Public Domain
-function mo2v(month_name) result(imonth)
+elemental function mo2v(month_name) result(imonth)
 
-! ident_12="@(#)M_time::mo2v(3f): given month name return month number (1-12) of that month"
+! ident_12="@(#) M_time mo2v(3f) given month name return month number (1-12) of that month"
 
 ! JSU 2015-12-13
 character(len=*),intent(in):: month_name   ! string containing month name or abbreviation.
@@ -1116,7 +1116,7 @@ end function mo2v
 !!    Public Domain
 function now(format)
 
-! ident_13="@(#)M_time::now(3f): return string representing current time given format"
+! ident_13="@(#) M_time now(3f) return string representing current time given format"
 
 ! JSU 2015-10-24
 character(len=*),intent(in),optional :: format
@@ -1198,7 +1198,7 @@ end function now
 !!    Public Domain
 function fmtdate(values,format) RESULT (timestr)
 
-! ident_14="@(#)M_time::fmtdate(3f): given DAT date-time array return date as string using format"
+! ident_14="@(#) M_time fmtdate(3f) given DAT date-time array return date as string using format"
 
 ! JSU 2015-10-24
 integer,dimension(8),intent(in)      :: values    ! numeric time values as DATE_AND_TIME(3f) intrinsic returns
@@ -1614,7 +1614,7 @@ end function fmtdate
 !!    Public Domain
 subroutine fmtdate_usage(indent)
 
-! ident_15="@(#)M_time::fmtdate_usage(3f): display macros recognized by fmtdate(3f)"
+! ident_15="@(#) M_time fmtdate_usage(3f) display macros recognized by fmtdate(3f)"
 
 integer,intent(in),optional    :: indent
 character(len=128),allocatable :: usage(:)
@@ -1832,7 +1832,7 @@ end subroutine fmtdate_usage
 !!    Public Domain
 subroutine guessdate(datestring,dat,ier)
 
-! ident_16="@(#)M_time::guessdate(3f): Guess format of a date string to create a DAT date-time array"
+! ident_16="@(#) M_time guessdate(3f) Guess format of a date string to create a DAT date-time array"
 
 ! partially based on a concept from JRH 1991-03-19
 ! JSU, 20160729
@@ -2169,7 +2169,7 @@ end subroutine guessdate
 !!    Public Domain
 subroutine dow(values, weekday, day, ierr)
 
-! ident_17="@(#)M_time::dow(3f): Given DAT date-time array return the day of the week"
+! ident_17="@(#) M_time dow(3f) Given DAT date-time array return the day of the week"
 
 integer,intent(in)                    :: values(8) ! date and time array used to get time zone
 integer,intent(out),optional          :: weekday   ! The day of the week, 1 = Monday, 7 = Sunday
@@ -2341,7 +2341,7 @@ end subroutine dow
 !!    Public Domain
 subroutine d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
 
-! ident_18="@(#)M_time::d2w(3f): DAT date-time array to iso-8601 Week-numbering year date yyyy-Www-d"
+! ident_18="@(#) M_time d2w(3f) DAT date-time array to iso-8601 Week-numbering year date yyyy-Www-d"
 
 integer,intent(in)              :: dat(8)     ! input date array
 integer,intent(out)             :: iso_year, iso_week, iso_weekday
@@ -2557,7 +2557,7 @@ end subroutine d2w
 !-----------------------------------------------------------------------------------------------------------------------------------
 subroutine w2d(iso_year,iso_week,iso_weekday,dat)
 
-! ident_19="@(#)M_time::w2d(3f): convert iso-8601 Week-numbering year date yyyy-Www-d to DAT date-time array"
+! ident_19="@(#) M_time w2d(3f) convert iso-8601 Week-numbering year date yyyy-Www-d to DAT date-time array"
 
 integer,intent(in)              :: iso_year, iso_week, iso_weekday
 integer,intent(out)             :: dat(8)     ! output date array
@@ -2634,7 +2634,7 @@ end subroutine w2d
 !!    Public Domain
 subroutine box_month(dat,calen)
 
-! ident_20="@(#)M_time::box_month(3f): generate month specified by DAT date-time array in character array"
+! ident_20="@(#) M_time box_month(3f) generate month specified by DAT date-time array in character array"
 
 integer,parameter             :: wklen=3*7
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2722,7 +2722,7 @@ end subroutine box_month
 !!    Public Domain
 function d2j(dat) result (julian)
 
-! ident_21="@(#)M_time::d2j(3f): Given DAT date-time array returns Julian Date"
+! ident_21="@(#) M_time d2j(3f) Given DAT date-time array returns Julian Date"
 
 integer,intent(in),optional :: dat(8)
 real(kind=realtime)         :: julian
@@ -2797,7 +2797,7 @@ end function d2j
 !!    Public Domain
 function j2d(julian) result (dat)
 
-! ident_22="@(#)M_time::j2d(3f): Given Julian Date returns DAT date-time array"
+! ident_22="@(#) M_time j2d(3f) Given Julian Date returns DAT date-time array"
 
 real(kind=realtime),intent(in)   :: julian
 integer                          :: dat(8)
@@ -2862,7 +2862,7 @@ end function j2d
 !!    Public Domain
 function d2u(dat) result (unixtime)
 
-! ident_23="@(#)M_time::d2u(3f): Given DAT date-time array returns Unix Epoch time"
+! ident_23="@(#) M_time d2u(3f) Given DAT date-time array returns Unix Epoch time"
 
 real(kind=realtime)           :: unixtime
 integer,intent(in),optional   :: dat(8)
@@ -2943,7 +2943,7 @@ end function d2u
 !!    Public Domain
 function u2d(unixtime) result (dat)
 
-! ident_24="@(#)M_time::u2d(3f): Given Unix Epoch Time returns DAT date-time array"
+! ident_24="@(#) M_time u2d(3f) Given Unix Epoch Time returns DAT date-time array"
 
 class(*),intent(in),optional   :: unixtime
 integer                        :: dat(8)
@@ -3057,7 +3057,7 @@ end function get_timezone
 function sec2days(seconds,crop) result(dhms)
 use, intrinsic :: iso_fortran_env, only : int64
 
-! ident_25="@(#)M_time::sec2days(3f): converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH:MM:SS"
+! ident_25="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
 
 ! on this platform, (select_int_kind(i),i=1,100) returns
 ! 1:2=1 ,3:4=2 ,5:9=4 ,10:18= 8 ,19:38=16 ,39:=-1
@@ -3286,7 +3286,7 @@ end function sec2days
 function days2sec(str) result(time)
 implicit none
 
-! ident_26="@(#)M_time::days2sec(3f): convert string [[-]dd-]hh:mm:ss.nn to seconds or string IId JJh KKm LLs to seconds"
+! ident_26="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
 character(len=*),intent(in)       :: str
 real(kind=realtime)               :: time
@@ -3465,7 +3465,7 @@ end function days2sec
 function phase_of_moon(datin)
 implicit none
 
-! ident_27="@(#)M_time::phase_of_moon(3f): return name for phase of moon for given date"
+! ident_27="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
 
 integer,intent(in)            :: datin(8)
 character(len=:),allocatable  :: phase_of_moon
@@ -3556,7 +3556,7 @@ end function phase_of_moon
 function moon_fullness(datin)
 implicit none
 
-! ident_28="@(#)M_time::moon_fullness(3f): return percentage of moon phase from new to full"
+! ident_28="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
 
 integer,intent(in)            :: datin(8)
 integer                       :: moon_fullness
@@ -3654,7 +3654,7 @@ end function moon_fullness
 SUBROUTINE Easter(year, dat)
 implicit none
 
-! ident_29="@(#)M_time::easter(3f): calculate date for Easter given a year"
+! ident_29="@(#) M_time easter(3f) calculate date for Easter given a year"
 
 integer,intent(in)    :: year
 integer,intent(out)   :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
@@ -3771,7 +3771,7 @@ end subroutine Easter
 subroutine system_sleep(seconds)
 use,intrinsic                 :: iso_c_binding, only: c_int
 
-! ident_30="@(#)M_time::system_sleep(3f): call sleep(3c) or usleep(3c)"
+! ident_30="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
 
 class(*),intent(in)           :: seconds
 integer(kind=c_int)           :: cint
@@ -3787,7 +3787,7 @@ end SUBROUTINE system_sleep
 subroutine call_sleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
 
-! ident_31="@(#)M_time::call_sleep(3fp): call sleep(3c)"
+! ident_31="@(#) M_time call_sleep(3fp) call sleep(3c)"
 
 integer(kind=c_int),intent(in)  :: wait_seconds
 integer(kind=c_int)             :: how_long
@@ -3808,7 +3808,7 @@ end subroutine call_sleep
 subroutine call_usleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
 
-! ident_32="@(#)M_time::call_usleep(3fp): call usleep(3c)"
+! ident_32="@(#) M_time call_usleep(3fp) call usleep(3c)"
 
 integer(kind=c_int),intent(in)  :: wait_seconds
 integer(kind=c_int)             :: how_long
@@ -3828,7 +3828,7 @@ end subroutine call_usleep
 !==================================================================================================================================!
 function getnow() result(values)
 
-! ident_33="@(#)M_time::getnow(3f): get DAT for current time or value of SOURCE_DATE_EPOCH"
+! ident_33="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
 integer :: values(8)
    call date_and_time(values=values)
