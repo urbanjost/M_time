@@ -48,15 +48,23 @@ A simple program that formats the current time as desired, and
 displays the built-in help text for the formatting options is as
 simple as
 ```fortran
-      program demo_now
-      use M_time, only : now, fmtdate_usage
-      implicit none
-         write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
-         call fmtdate_usage() ! see all formatting options
-      end program demo_now
+program demo_now
+use M_time, only : now, fmtdate_usage
+implicit none
+   ! % macros
+   write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
+   ! or, if not found then keywords
+   write(*,*)now("year-month-day")
+   ! and if that is not found, abbreviations
+   write(*,*)now("Y-M-D h:m:s")
+   ! built-in usage descriptions can be displayed as well
+   call fmtdate_usage() ! see all formatting options
+end program demo_now
 ```
 ```text
- The current date is Thu, Oct 20th, 2022 7:17:48 PM
+ The current date is Thu, Oct 20th, 2022 7:26:04 PM
+ 2022-10-20
+ 2022-10-20 19:26:04
    Description                                        Example
    
    Base time array:
@@ -70,13 +78,13 @@ simple as
     (5) %h -- hours, 00 to 23                           19
         %H -- hour (1 to 12, or twelve-hour clock)      7
         %N -- midnight< AM <=noon; noon<= PM <midnight  PM
-    (6) %m -- minutes, 00 to 59                         17
-    (7) %s -- sec, 00 to 59                             48
-    (8) %x -- milliseconds 000 to 999                   759
+    (6) %m -- minutes, 00 to 59                         26
+    (7) %s -- sec, 00 to 59                             04
+    (8) %x -- milliseconds 000 to 999                   781
    Conversions:
-        %E -- Unix Epoch time                           1666307868.7590122
-        %e -- integer value of Unix Epoch time          1666307869
-        %J -- Julian  date                              2459873.4707032409
+        %E -- Unix Epoch time                           1666308364.780985
+        %e -- integer value of Unix Epoch time          1666308365
+        %J -- Julian  date                              2459873.476444224
         %j -- integer value of Julian Date(Julian Day)  2459873
         %O -- Ordinal day (day of year)                 293
         %o -- Whole days since Unix Epoch date          19285
@@ -101,11 +109,11 @@ simple as
         %q -- single quote (apostrophe)                 '
         %Q -- double quote                              "
     Program timing:
-        %c -- CPU_TIME(3f) output                       0.43590000000000000E-2
+        %c -- CPU_TIME(3f) output                       .2884000000000000E-01
         %C -- number of times this routine is used      1
-        %S -- seconds since last use of this format     0.0000000000000000
-        %k -- time in seconds from SYSTEM_CLOCK(3f)     118603.242
-        %K -- time in clicks from SYSTEM_CLOCK(3f)      118603238
+        %S -- seconds since last use of this format     .000000000000000
+        %k -- time in seconds from SYSTEM_CLOCK(3f)     78632.79
+        %K -- time in clicks from SYSTEM_CLOCK(3f)      786327846
    
    If no percent (%) is found in the format one of several
    alternate substitutions occurs.
@@ -113,22 +121,22 @@ simple as
    If the format is composed entirely of one of the following
    keywords the following substitutions occur:
      "iso-8601",
-     "iso"        ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:17:48-04:00
+     "iso"        ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:26:04-04:00
      "iso-8601W",
      "isoweek"    ==> %I                              2022-W42-4
-     "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"          "2022-10-20 19:17:48.761"
+     "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"          "2022-10-20 19:26:04.785"
      "sqlday"     ==> "%Y-%M-%D"                      "2022-10-20"
-     "sqltime"    ==> "%h:%m:%s.%x"                   "19:17:48.762"
+     "sqltime"    ==> "%h:%m:%s.%x"                   "19:26:04.785"
      "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
-                      Thu, 20 Oct 2022 19:17:48 -0400
-     "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:17:48-04:00
+                      Thu, 20 Oct 2022 19:26:04 -0400
+     "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:26:04-04:00
      "date"       ==> %w %l %D %h:%m:%s UTC%z %Y
-                      Thu Oct 20 19:17:48 UTC-04:00 2022
+                      Thu Oct 20 19:26:04 UTC-04:00 2022
      "short"      ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
-                      Thu, Oct 20th, 2022 7:17:48 PM UTC-04:00
+                      Thu, Oct 20th, 2022 7:26:04 PM UTC-04:00
      "long"," "   ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
-                      Thursday, October 20th, 2022 7:17:48 PM UTC-04:00
-     "suffix"     ==> %Y%D%M%h%m%s                    20222010191748
+                      Thursday, October 20th, 2022 7:26:04 PM UTC-04:00
+     "suffix"     ==> %Y%D%M%h%m%s                    20222010192604
      "formal"     ==> The %d of %L %Y                 The 20th of October 2022
      "lord"       ==> the %d day of %L in the year of our Lord %Y
                       the 20th day of October in the year of our Lord 2022
@@ -142,10 +150,10 @@ simple as
       day           %D  20
       timezone      %z  -04:00
       hour          %h  19
-      minute        %m  17
-      second        %s  48
-      millisecond   %x  763
-      epoch         %e  1666307869
+      minute        %m  26
+      second        %s  04
+      millisecond   %x  787
+      epoch         %e  1666308365
       julian        %j  2459873
       ordinal       %O  293
       weekday       %u  4
@@ -161,8 +169,7 @@ simple as
    if none of these keywords are found then every letter that
    is a macro is assumed to have an implied percent in front
    of it. For example:
-      YMDhms ==> %Y%M%D%h%m%s ==> 20221020191748
-   
+      YMDhms ==> %Y%M%D%h%m%s ==> 20221020192604
 ```
 
 ## Documentation   ![docs](docs/images/docs.gif)
