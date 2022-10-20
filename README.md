@@ -44,6 +44,127 @@ Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
 programs are included in the package.
 
+A simple program that formats the current time as desired, and 
+displays the built-in help text for the formatting options is as
+simple as
+```fortran
+      program demo_now
+      use M_time, only : now, fmtdate_usage
+      implicit none
+         write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
+         call fmtdate_usage() ! see all formatting options
+      end program demo_now
+```
+```text
+ The current date is Thu, Oct 20th, 2022 7:17:48 PM
+   Description                                        Example
+   
+   Base time array:
+    (1) %Y -- year, yyyy                                2022
+    (2) %M -- month of year, 01 to 12                   10
+    (3) %D -- day of month, 01 to 31                    20
+        %d -- day of month, with suffix (1st, 2nd,...)  20th
+    (4) %Z -- minutes from UTC                          -0240
+        %z -- -+hh:mm from UTC                          -04:00
+        %T -- -+hhmm  from UTC                          -0400
+    (5) %h -- hours, 00 to 23                           19
+        %H -- hour (1 to 12, or twelve-hour clock)      7
+        %N -- midnight< AM <=noon; noon<= PM <midnight  PM
+    (6) %m -- minutes, 00 to 59                         17
+    (7) %s -- sec, 00 to 59                             48
+    (8) %x -- milliseconds 000 to 999                   759
+   Conversions:
+        %E -- Unix Epoch time                           1666307868.7590122
+        %e -- integer value of Unix Epoch time          1666307869
+        %J -- Julian  date                              2459873.4707032409
+        %j -- integer value of Julian Date(Julian Day)  2459873
+        %O -- Ordinal day (day of year)                 293
+        %o -- Whole days since Unix Epoch date          19285
+        %U -- day of week, 1..7 Sunday=1                5
+        %u -- day of week, 1..7 Monday=1                4
+        %i -- ISO week of year 1..53                    42
+        %I -- iso-8601 week-numbering date(yyyy-Www-d)  2022-W42-4
+    Names:
+        %l -- abbreviated month name                    Oct
+        %L -- full month name                           October
+        %w -- first three characters of weekday         Thu
+        %W -- weekday name                              Thursday
+        %p -- phase of moon                             Waning crescent
+        %P -- percent of way from new to full moon      -30%
+    Literals:
+        %% -- a literal %                               %
+        %t -- tab character                             	
+        %b -- blank character
+        %B -- exclamation(bang) character               !
+        %n -- new line (system dependent)               
+
+        %q -- single quote (apostrophe)                 '
+        %Q -- double quote                              "
+    Program timing:
+        %c -- CPU_TIME(3f) output                       0.43590000000000000E-2
+        %C -- number of times this routine is used      1
+        %S -- seconds since last use of this format     0.0000000000000000
+        %k -- time in seconds from SYSTEM_CLOCK(3f)     118603.242
+        %K -- time in clicks from SYSTEM_CLOCK(3f)      118603238
+   
+   If no percent (%) is found in the format one of several
+   alternate substitutions occurs.
+   
+   If the format is composed entirely of one of the following
+   keywords the following substitutions occur:
+     "iso-8601",
+     "iso"        ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:17:48-04:00
+     "iso-8601W",
+     "isoweek"    ==> %I                              2022-W42-4
+     "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"          "2022-10-20 19:17:48.761"
+     "sqlday"     ==> "%Y-%M-%D"                      "2022-10-20"
+     "sqltime"    ==> "%h:%m:%s.%x"                   "19:17:48.762"
+     "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
+                      Thu, 20 Oct 2022 19:17:48 -0400
+     "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:17:48-04:00
+     "date"       ==> %w %l %D %h:%m:%s UTC%z %Y
+                      Thu Oct 20 19:17:48 UTC-04:00 2022
+     "short"      ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
+                      Thu, Oct 20th, 2022 7:17:48 PM UTC-04:00
+     "long"," "   ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
+                      Thursday, October 20th, 2022 7:17:48 PM UTC-04:00
+     "suffix"     ==> %Y%D%M%h%m%s                    20222010191748
+     "formal"     ==> The %d of %L %Y                 The 20th of October 2022
+     "lord"       ==> the %d day of %L in the year of our Lord %Y
+                      the 20th day of October in the year of our Lord 2022
+     "easter"     ==> FOR THE YEAR OF THE CURRENT DATE:
+                        Easter day: the %d day of %L in the year of our Lord %Y
+     "all"        ==> A SAMPLE OF DATE FORMATS
+   otherwise the following words are replaced with the most
+   common macros:
+      year          %Y  2022
+      month         %M  10
+      day           %D  20
+      timezone      %z  -04:00
+      hour          %h  19
+      minute        %m  17
+      second        %s  48
+      millisecond   %x  763
+      epoch         %e  1666307869
+      julian        %j  2459873
+      ordinal       %O  293
+      weekday       %u  4
+      MONTH         %L  July
+      Month         %l  Jul
+      DAY           %d  7th
+      HOUR          %H  10
+      GOOD          %N  AM
+      Weekday       %w  Thu
+      WEEKDAY       %W  Thursday
+      Timezone      %Z  -240
+      TIMEZONE      %z  -04:00
+   if none of these keywords are found then every letter that
+   is a macro is assumed to have an implied percent in front
+   of it. For example:
+      YMDhms ==> %Y%M%D%h%m%s ==> 20221020191748
+   
+```
+
 ## Documentation   ![docs](docs/images/docs.gif)
 
 ### User
