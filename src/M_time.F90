@@ -135,6 +135,7 @@ real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seco
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine date_to_julian(dat,julian,ierr)
@@ -258,6 +259,7 @@ end subroutine date_to_julian
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine julian_to_date(julian,dat,ierr)
@@ -388,8 +390,10 @@ end subroutine julian_to_date
 !!      Today is:2016:7:18:-240:23:44:20:434
 !!      Unix Epoch time is    1468899860.4340105
 !!      ierr is            0
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine date_to_unix(dat,unixtime,ierr)
@@ -486,6 +490,7 @@ end subroutine date_to_unix
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine unix_to_date(unixtime,dat,ierr)
@@ -588,6 +593,7 @@ end subroutine unix_to_date
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function d2o(dat) result (ordinal)
@@ -652,8 +658,10 @@ end function d2o
 !!     write(*,*)'that took ',iend-istart,'seconds'
 !!     write(*,*)istart,iend
 !!     end program demo_ordinal_seconds
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 integer function ordinal_seconds()
@@ -802,8 +810,10 @@ end subroutine ordinal_to_date
 !!     00:00:00 PM UTC-02:40
 !!     100th day of this year is Saturday, April 9th, 2016 ...
 !!     00:00:00 PM UTC-02:40
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function o2d(ordinal,year) result (dat)
@@ -881,8 +891,10 @@ end function o2d
 !!     November
 !!     December
 !!     UNKNOWN.
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function v2mo(imonth) result(month_name)
@@ -950,6 +962,7 @@ end function v2mo
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function mo2d(month_name,year) result (dat)
@@ -1027,6 +1040,7 @@ end function mo2d
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 elemental function mo2v(month_name) result(imonth)
@@ -1115,6 +1129,7 @@ end function mo2v
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function now(format)
@@ -1197,6 +1212,7 @@ end function now
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015-12-19
+!!
 !!##LICENSE
 !!    Public Domain
 function fmtdate(values,format) RESULT (timestr)
@@ -1611,8 +1627,10 @@ end function fmtdate
 !!    of it. For example:
 !!
 !!       YMDhms ==> %Y%M%D%h%m%s ==> 20160729105408
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015-10-24
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine fmtdate_usage(indent)
@@ -2166,8 +2184,10 @@ end subroutine guessdate
 !!     weekday=1
 !!     day=Monday
 !!     ierr=0
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015-12-19
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine dow(values, weekday, day, ierr)
@@ -2340,6 +2360,7 @@ end subroutine dow
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015-12-19
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
@@ -2555,6 +2576,7 @@ end subroutine d2w
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2633,6 +2655,7 @@ end subroutine w2d
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 subroutine box_month(dat,calen)
@@ -2721,6 +2744,7 @@ end subroutine box_month
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function d2j(dat) result (julian)
@@ -2794,8 +2818,10 @@ end function d2j
 !!     Today=Tuesday, July 19th, 2016 08:48:20 AM
 !!     Yesterday=Monday, July 18th, 2016 08:48:20 AM
 !!     Tomorrow=Wednesday, July 20th, 2016 08:48:20 AM
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function j2d(julian) result (dat)
@@ -2859,8 +2885,10 @@ end function j2d
 !!
 !!     Today is:2016:7:19:-240:2:0:48:561
 !!     Unix Epoch time is    1468908048.5610321
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function d2u(dat) result (unixtime)
@@ -2942,6 +2970,7 @@ end function d2u
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function u2d(unixtime) result (dat)
@@ -3055,6 +3084,7 @@ end function get_timezone
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function sec2days(seconds,crop) result(dhms)
@@ -3284,6 +3314,7 @@ end function sec2days
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function days2sec(str) result(time)
@@ -3463,6 +3494,7 @@ end function days2sec
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function phase_of_moon(datin)
@@ -3552,8 +3584,10 @@ end function phase_of_moon
 !!      Today is:2018:11:3:-240:20:18:44:245
 !!      The phase of the moon is Waning crescent, with a fullness of -30%
 !!      The phase of the moon is Waning crescent, with a fullness of -30%
+!!
 !!##AUTHOR
 !!    John S. Urban, 2015
+!!
 !!##LICENSE
 !!    Public Domain
 function moon_fullness(datin)
