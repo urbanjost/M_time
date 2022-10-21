@@ -104,6 +104,7 @@ real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seco
 !!##RETURNS
 !!    juliandate  A Julian Ephemeris Date (JED) is the number of days since
 !!                noon (not midnight) on January 1st, 4713 BC.
+!!
 !!    ierr        Error code. If 0 no error occurred.
 !!
 !!##EXAMPLE
@@ -222,6 +223,7 @@ end subroutine date_to_julian
 !!##RETURNS
 !!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
 !!              January 1st, 1970, UTC.
+!!
 !!    ierr      Error code. If 0 no error occurred.
 !!
 !!##EXAMPLE
@@ -361,6 +363,7 @@ end subroutine julian_to_date
 !!##RETURNS
 !!    unixtime  The "Unix Epoch" time, or the number of seconds since
 !!              00:00:00 on January 1st, 1970, UTC.
+!!
 !!    ierr      Error code. If 0 no error occurred.
 !!
 !!##EXAMPLE
