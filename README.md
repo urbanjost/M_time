@@ -21,7 +21,10 @@ such as ...
   * month and weekday names
 
 __Julian__ and __Unix Epoch Dates__ are particularly useful for
-manipulating dates in simple numeric expressions.
+manipulating dates in simple numeric expressions. They are numbers with
+units of days and seconds respectively from a fixed date that you can
+easily convert to and from. So you can convert any date to a Julian Date,
+subtract one and you have the date for yesterday, for example.
 
 The `M_time Fortran` module complements the `DATE_AND_TIME(3f)` procedure
 ( it is the standard Fortran intrinsic subroutine that returns the
