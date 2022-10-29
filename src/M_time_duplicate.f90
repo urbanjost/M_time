@@ -1,5 +1,6 @@
 module M_time_duplicate
 ! copy of other GPF routines used here
+implicit none !(type,external)
 public lower
 public substitute
 public upper
@@ -132,7 +133,7 @@ integer                        :: ichar
 !-----------------------------------------------------------------------------------------------------------------------------------
    len_old=len(old)                                    ! length of old substring to be replaced
    len_new=len(new)                                    ! length of new substring to replace old substring
-   if(id.le.0)then                                     ! no window so change entire input string
+   if(id<=0)then                                     ! no window so change entire input string
       il=1                                             ! il is left margin of window to change
       ir=maxlengthout                                  ! ir is right margin of window to change
       dum1(:)=' '                                      ! begin with a blank line
@@ -142,15 +143,15 @@ integer                        :: ichar
       dum1=targetline(:il-1)                           ! begin with what's below margin
    endif                                               ! end of window settings
 !-----------------------------------------------------------------------------------------------------------------------------------
-   if(len_old.eq.0)then                                ! c//new/ means insert new at beginning of line (or left margin)
+   if(len_old==0)then                                ! c//new/ means insert new at beginning of line (or left margin)
       ichar=len_new + original_input_length
-      if(ichar.gt.maxlengthout)then
+      if(ichar>maxlengthout)then
          call stderr('*substitute* new line will be too long')
          ier1=-1
          if (present(ierr))ierr=ier1
          return
       endif
-      if(len_new.gt.0)then
+      if(len_new>0)then
          dum1(il:)=new(:len_new)//targetline(il:original_input_length)
       else
          dum1(il:)=targetline(il:original_input_length)
@@ -165,24 +166,24 @@ integer                        :: ichar
    ic=il                                               ! place looking at in input string
    loop: do
       ind=index(targetline(ic:),old(:len_old))+ic-1    ! try to find start of old string in remaining part of input in change window
-      if(ind.eq.ic-1.or.ind.gt.ir)then                 ! did not find old string or found old string past edit window
+      if(ind==ic-1.or.ind>ir)then                 ! did not find old string or found old string past edit window
          exit loop                                     ! no more changes left to make
       endif
       ier1=ier1+1                                      ! found an old string to change, so increment count of changes
-      if(ind.gt.ic)then                                ! if found old string past at current position in input string copy unchanged
+      if(ind>ic)then                                ! if found old string past at current position in input string copy unchanged
          ladd=ind-ic                                   ! find length of character range to copy as-is from input to output
-         if(ichar-1+ladd.gt.maxlengthout)then
+         if(ichar-1+ladd>maxlengthout)then
             ier1=-1
             exit loop
          endif
          dum1(ichar:)=targetline(ic:ind-1)
          ichar=ichar+ladd
       endif
-      if(ichar-1+len_new.gt.maxlengthout)then
+      if(ichar-1+len_new>maxlengthout)then
          ier1=-2
          exit loop
       endif
-      if(len_new.ne.0)then
+      if(len_new/=0)then
          dum1(ichar:)=new(:len_new)
          ichar=ichar+len_new
       endif
@@ -195,13 +196,13 @@ integer                        :: ichar
    case (0)                                                ! there were no changes made to the window
    case default
       ladd=original_input_length-ic
-      if(ichar+ladd.gt.maxlengthout)then
+      if(ichar+ladd>maxlengthout)then
          call stderr('*substitute* new line will be too long')
          ier1=-1
          if(present(ierr))ierr=ier1
          return
       endif
-      if(ic.lt.len(targetline))then
+      if(ic<len(targetline))then
          dum1(ichar:)=targetline(ic:max(ic,original_input_length))
       endif
       targetline=dum1(:maxlengthout)
@@ -480,7 +481,7 @@ integer                      :: ileft          ! left edge of string if it is ce
 !-----------------------------------------------------------------------------------------------------------------------------------
    if(present(length))then                     ! optional length
       inlen=length                             ! length will be requested length
-      if(inlen.le.0)then                       ! bad input length
+      if(inlen<=0)then                       ! bad input length
          inlen=len(string)                     ! could not use input value, fall back to length of input string
       endif
    else                                        ! output length was not explicitly specified, use input string length
@@ -490,7 +491,7 @@ integer                      :: ileft          ! left edge of string if it is ce
    adjustc(1:inlen)=' '                        ! initialize output string to all blanks
 !-----------------------------------------------------------------------------------------------------------------------------------
    ileft =(inlen-len_trim(adjustl(string)))/2  ! find starting point to start input string to center it
-   if(ileft.gt.0)then                          ! if string will fit centered in output
+   if(ileft>0)then                          ! if string will fit centered in output
       adjustc(ileft+1:inlen)=adjustl(string)   ! center the input text in the output string
    else                                        ! input string will not fit centered in output string
       adjustc(1:inlen)=adjustl(string)         ! copy as much of input to output as can
@@ -573,7 +574,7 @@ character(len=1)                     :: char_p
 logical                              :: nospace
 if(present(char))then
    char_p=char
-   if(len(char).eq.0)then
+   if(len(char)==0)then
       nospace=.true.
    else
       nospace=.false.
@@ -590,7 +591,7 @@ endif
      ch=str(i:i)
      select case(ichar(ch))
        case(0:32,127)                                         ! space or tab character or control character
-         if(position_in_output.eq.0)then                      ! still at beginning so ignore leading whitespace
+         if(position_in_output==0)then                      ! still at beginning so ignore leading whitespace
             cycle IFSPACE
          elseif(.not.last_was_space) then                     ! if have not already put out a space output one
            if(.not.nospace)then
@@ -740,7 +741,7 @@ class(*),intent(in),optional :: onerr
    if(present(ierr))then ! if error is not returned stop program on error
       ierr=ierr_local
       s2v=valu
-   elseif(ierr_local.ne.0)then
+   elseif(ierr_local/=0)then
       write(*,*)'*s2v* stopped while reading '//trim(chars)
       stop 1
    else
@@ -928,7 +929,7 @@ integer                       :: imax                   ! length of longest toke
 !-----------------------------------------------------------------------------------------------------------------------------------
    ! decide on value for optional DELIMITERS parameter
    if (present(delimiters)) then                                     ! optional delimiter list was present
-      if(delimiters.ne.'')then                                       ! if DELIMITERS was specified and not null use it
+      if(delimiters/='')then                                       ! if DELIMITERS was specified and not null use it
          dlim=delimiters
       else                                                           ! DELIMITERS was specified on call as empty string
          dlim=' '//char(9)//char(10)//char(11)//char(12)//char(13)//char(0) ! use default delimiter when not specified
@@ -960,11 +961,11 @@ integer                       :: imax                   ! length of longest toke
       icol=1                                                      ! initialize pointer into input line
       INFINITE: do i30=1,ilen,1                                   ! store into each array element
          ibegin(i30)=icol                                         ! assume start new token on the character
-         if(index(dlim(1:idlim),input_line(icol:icol)).eq.0)then  ! if current character is not a delimiter
+         if(index(dlim(1:idlim),input_line(icol:icol))==0)then  ! if current character is not a delimiter
             iterm(i30)=ilen                                       ! initially assume no more tokens
             do i10=1,idlim                                        ! search for next delimiter
                ifound=index(input_line(ibegin(i30):ilen),dlim(i10:i10))
-               IF(ifound.gt.0)then
+               IF(ifound>0)then
                   iterm(i30)=min(iterm(i30),ifound+ibegin(i30)-2)
                endif
             enddo
@@ -976,7 +977,7 @@ integer                       :: imax                   ! length of longest toke
          endif
          imax=max(imax,iterm(i30)-ibegin(i30)+1)
          icount=i30                                               ! increment count of number of tokens found
-         if(icol.gt.ilen)then                                     ! no text left
+         if(icol>ilen)then                                     ! no text left
             exit INFINITE
          endif
       enddo INFINITE
@@ -998,7 +999,7 @@ integer                       :: imax                   ! length of longest toke
    end select
 !-----------------------------------------------------------------------------------------------------------------------------------
    do i20=1,icount                                                ! fill the array with the tokens that were found
-      if(iterm(i20).lt.ibegin(i20))then
+      if(iterm(i20)<ibegin(i20))then
          select case (trim(adjustl(nlls)))
          case ('ignore','','ignoreend')
          case default
@@ -1091,7 +1092,6 @@ integer                       :: imax                   ! length of longest toke
 !!    Public Domain
 !===================================================================================================================================
 subroutine string_to_values(line,iread,values,inums,delims,ierr)
-implicit none
 !----------------------------------------------------------------------------------------------------------------------------------
 !   1989,1997-12-31,2014 John S. Urban
 
@@ -1119,7 +1119,7 @@ integer                      :: ier
 integer                      :: delimiters_length
 !----------------------------------------------------------------------------------------------------------------------------------
       delims_local=delims                                 ! need a mutable copy of the delimiter list
-      if(delims_local.eq.'')then                          ! if delimiter list is null or all spaces make it a space
+      if(delims_local=='')then                          ! if delimiter list is null or all spaces make it a space
          delims_local=' '                                 ! delimiter is a single space
          delimiters_length=1                        ! length of delimiter list
       else
@@ -1132,12 +1132,12 @@ integer                      :: delimiters_length
 !----------------------------------------------------------------------------------------------------------------------------------
       ilen=0                                        ! ilen will be the position of the right-most non-delimiter in the input line
       do i20=len(line),1,-1                         ! loop from end of string to beginning to find right-most non-delimiter
-         if(index(delims_local(:delimiters_length),line(i20:i20)).eq.0)then   ! found a non-delimiter
+         if(index(delims_local(:delimiters_length),line(i20:i20))==0)then   ! found a non-delimiter
             ilen=i20
             exit
          endif
       enddo
-      if(ilen.eq.0)then                             ! command was totally composed of delimiters
+      if(ilen==0)then                             ! command was totally composed of delimiters
          call stderr('*string_to_values* blank line passed as a list of numbers')
          return
       endif
@@ -1147,22 +1147,22 @@ integer                      :: delimiters_length
 !     now, starting at beginning of string find next non-delimiter
       icol=1                                                     ! pointer to beginning of unprocessed part of LINE
       LOOP: dO i10=1,iread,1                                     ! each pass should find a value
-         if(icol.gt.ilen) EXIT LOOP                              ! everything is done
+         if(icol>ilen) EXIT LOOP                              ! everything is done
          INFINITE: do
-            if(index(delims_local(:delimiters_length),line(icol:icol)).eq.0)then           ! found non-delimiter
+            if(index(delims_local(:delimiters_length),line(icol:icol))==0)then           ! found non-delimiter
                istart=icol
                iend=0                                            ! FIND END OF SUBSTRING
                do i40=istart,ilen                                ! look at each character starting at left
-                  if(index(delims_local(:delimiters_length),line(i40:i40)).ne.0)then       ! determine if character is a delimiter
+                  if(index(delims_local(:delimiters_length),line(i40:i40))/=0)then       ! determine if character is a delimiter
                      iend=i40                                    ! found a delimiter. record where it was found
                      EXIT                                        ! found end of substring so leave loop
                   endif
                enddo
-              if(iend.eq.0)iend=ilen+1                           ! no delimiters found, so this substring goes to end of line
+              if(iend==0)iend=ilen+1                           ! no delimiters found, so this substring goes to end of line
                iend=iend-1                                       ! do not want to pass delimiter to be converted
                rval=0.0
                call string_to_value(line(istart:iend),rval,ier)  ! call procedure to convert string to a numeric value
-               if(ier.eq.0)then                                  ! a substring was successfully converted to a numeric value
+               if(ier==0)then                                  ! a substring was successfully converted to a numeric value
                   values(i10)=rval                               ! store numeric value in return array
                   inums=inums+1                                  ! increment number of values converted to a numeric value
                else                                              ! an error occurred converting string to value
@@ -1264,12 +1264,12 @@ INTEGER                      :: i10                               ! loop counter
 INTEGER                      :: ii,jj
 !-----------------------------------------------------------------------------------------------------------------------------------
    jj=LEN(new_set)
-   IF(jj.NE.0)THEN
+   IF(jj /= 0)THEN
       outstr=instr                                                ! initially assume output string equals input string
       stepthru: DO i10 = 1, LEN(instr)
          ii=iNDEX(old_set,instr(i10:i10))                         ! see if current character is in old_set
-         IF (ii.NE.0)THEN
-            if(ii.le.jj)then                                      ! use corresponding character in new_set
+         IF (ii /= 0)THEN
+            if(ii<=jj)then                                      ! use corresponding character in new_set
                outstr(i10:i10) = new_set(ii:ii)
             else
                outstr(i10:i10) = new_set(jj:jj)                   ! new_set not as long as old_set; use last character in new_set
@@ -1280,7 +1280,7 @@ INTEGER                      :: ii,jj
       outstr=' '
       hopthru: DO i10 = 1, LEN(instr)
          ii=iNDEX(old_set,instr(i10:i10))                         ! see if current character is in old_set
-         IF (ii.EQ.0)THEN                                         ! only keep characters not in old_set
+         IF (ii == 0)THEN                                         ! only keep characters not in old_set
             jj=jj+1
             outstr(jj:jj) = instr(i10:i10)
          ENDIF
@@ -1514,26 +1514,26 @@ character(len=1024)                      :: msg
       select type(gval)
       type is (integer)
          fmt_local='(i0)'
-         if(fmt.ne.'') fmt_local=fmt
+         if(fmt/='') fmt_local=fmt
          write(chars,fmt_local,iostat=err_local,iomsg=msg)gval
       type is (real)
          fmt_local='(bz,g23.10e3)'
          fmt_local='(bz,g0.8)'
-         if(fmt.ne.'') fmt_local=fmt
+         if(fmt/='') fmt_local=fmt
          write(chars,fmt_local,iostat=err_local,iomsg=msg)gval
       type is (doubleprecision)
          fmt_local='(bz,g0)'
-         if(fmt.ne.'') fmt_local=fmt
+         if(fmt/='') fmt_local=fmt
          write(chars,fmt_local,iostat=err_local,iomsg=msg)gval
       type is (logical)
          fmt_local='(l1)'
-         if(fmt.ne.'') fmt_local=fmt
+         if(fmt/='') fmt_local=fmt
          write(chars,fmt_local,iostat=err_local,iomsg=msg)gval
       class default
          call stderr('*value_to_string* UNKNOWN TYPE')
          chars=' '
       end select
-      if(fmt.eq.'') then
+      if(fmt=='') then
          chars=adjustl(chars)
          call trimzeros(chars)
       endif
@@ -1552,7 +1552,7 @@ character(len=1024)                      :: msg
          chars=''
       end select
       chars=adjustl(chars)
-      if(index(chars,'.').ne.0) call trimzeros(chars)
+      if(index(chars,'.')/=0) call trimzeros(chars)
    endif
    if(present(trimz))then
       if(trimz)then
@@ -1567,7 +1567,7 @@ character(len=1024)                      :: msg
 
    if(present(err)) then
       err=err_local
-   elseif(err_local.ne.0)then
+   elseif(err_local/=0)then
       !x! cannot currently do I/O from a function being called from I/O
       !x!write(ERROR_UNIT,'(a)')'*value_to_string* WARNING:['//trim(msg)//']'
       chars=chars//' *value_to_string* WARNING:['//trim(msg)//']'
@@ -1627,7 +1627,7 @@ integer                      :: i, ii
       exp=str(ipos:)                         ! keep exponent string so it can be added back as a suffix
       str=str(1:ipos-1)                      ! just the real part, exponent removed will not have trailing zeros removed
    endif
-   if(index(str,'.').eq.0)then               ! if no decimal character in original string add one to end of string
+   if(index(str,'.')==0)then               ! if no decimal character in original string add one to end of string
       ii=len_trim(str)
       str(ii+1:ii+1)='.'                     ! add decimal to end of string
    endif
@@ -1636,7 +1636,7 @@ integer                      :: i, ii
       case('0')                              ! found a trailing zero so keep trimming
          cycle
       case('.')                              ! found a decimal character at end of remaining string
-         if(i.le.1)then
+         if(i<=1)then
             str='0'
          else
             str=str(1:i-1)
@@ -1713,8 +1713,8 @@ integer,intent(out)         :: ierr                       ! error flag (0 == no 
 doubleprecision             :: valu8
    valu8=0.0d0
    call a2d(chars,valu8,ierr,onerr=0.0d0)
-   if(ierr.eq.0)then
-      if(valu8.le.huge(valu))then
+   if(ierr==0)then
+      if(valu8<=huge(valu))then
          valu=real(valu8)
       else
          !x!call stderr('*a2r* - value too large',valu8,'>',huge(valu))
@@ -1737,8 +1737,8 @@ integer,intent(out)         :: ierr                       ! error flag (0 == no 
 doubleprecision             :: valu8
    valu8=0.0d0
    call a2d(chars,valu8,ierr,onerr=0.0d0)
-   if(valu8.le.huge(valu))then
-      if(valu8.le.huge(valu))then
+   if(valu8<=huge(valu))then
+      if(valu8<=huge(valu))then
          valu=int(valu8)
       else
          !x!call stderr('sc','*a2i*','- value too large',valu8,'>',huge(valu))
@@ -1779,10 +1779,10 @@ character(len=3),save        :: nan_string='NaN'
    ierr=0                                                       ! initialize error flag to zero
    local_chars=chars
    msg=''
-   if(len(local_chars).eq.0)local_chars=' '
+   if(len(local_chars)==0)local_chars=' '
    call substitute(local_chars,',','')                          ! remove any comma characters
    pnd=scan(local_chars,'#:')
-   if(pnd.ne.0)then
+   if(pnd/=0)then
       write(frmt,fmt)pnd-1                                      ! build format of form '(BN,Gn.0)'
       read(local_chars(:pnd-1),fmt=frmt,iostat=ierr,iomsg=msg)basevalue   ! try to read value from string
       if(decodebase(local_chars(pnd+1:),basevalue,ivalu))then
@@ -1810,7 +1810,7 @@ character(len=3),save        :: nan_string='NaN'
          read(local_chars,fmt=frmt,iostat=ierr,iomsg=msg)valu   ! try to read value from string
       end select
    endif
-   if(ierr.ne.0)then                                            ! if an error occurred ierr will be non-zero.
+   if(ierr/=0)then                                            ! if an error occurred ierr will be non-zero.
       if(present(onerr))then
          select type(onerr)
          type is (integer)
@@ -1823,9 +1823,9 @@ character(len=3),save        :: nan_string='NaN'
       else                                                      ! set return value to NaN
          read(nan_string,'(g3.3)')valu
       endif
-      if(local_chars.ne.'eod')then                           ! print warning message except for special value "eod"
+      if(local_chars/='eod')then                           ! print warning message except for special value "eod"
          call stderr('*a2d* - cannot produce number from string ['//trim(chars)//']')
-         if(msg.ne.'')then
+         if(msg/='')then
             call stderr('*a2d* - ['//trim(msg)//']')
          endif
       endif
@@ -1882,7 +1882,7 @@ end subroutine a2d
 !!     INFINITE: do
 !!        print *,''
 !!        write(*,'("Enter number in start base: ")',advance='no'); read *, x
-!!        if(x.eq.'0') exit INFINITE
+!!        if(x=='0') exit INFINITE
 !!        if(decodebase(x,bd,r)) then
 !!           if(codebase(r,ba,y)) then
 !!             write(*,'("In base ",I2,": ",A20)')  ba, y
@@ -1909,7 +1909,6 @@ end subroutine a2d
 !!    Public Domain
 !===================================================================================================================================
 logical function decodebase(string,basein,out_baseten)
-implicit none
 
 !character(len=*),parameter::ident_72="@(#)M_strings::decodebase(3f): convert whole number string in base [2-36] to base 10 number"
 
@@ -1932,10 +1931,10 @@ integer           :: ierr
   decodebase=.false.
 
   ipound=index(string_local,'#')                                       ! determine if in form [-]base#whole
-  if(basein.eq.0.and.ipound.gt.1)then                                  ! split string into two values
+  if(basein==0.and.ipound>1)then                                  ! split string into two values
      call string_to_value(string_local(:ipound-1),basein_local,ierr)   ! get the decimal value of the base
      string_local=string_local(ipound+1:)                              ! now that base is known make string just the value
-     if(basein_local.ge.0)then                                         ! allow for a negative sign prefix
+     if(basein_local>=0)then                                         ! allow for a negative sign prefix
         out_sign=1
      else
         out_sign=-1
@@ -1956,7 +1955,7 @@ integer           :: ierr
      do i=1, long
         k=long+1-i
         ch=string_local(k:k)
-        if(ch.eq.'-'.and.k.eq.1)then
+        if(ch=='-'.and.k==1)then
            out_sign=-1
            cycle
         endif

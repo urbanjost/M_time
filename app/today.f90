@@ -89,7 +89,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)DESCRIPTION:    output current time for uses such as file suffixes.>',&
 '@(#)VERSION:        1.0, 2009>',&
 '@(#)AUTHOR:         John S. Urban>',&
-'@(#)COMPILED:       2022-10-21 21:15:32 UTC-240>',&
+'@(#)COMPILED:       2022-10-28 23:44:20 UTC-240>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop
@@ -109,7 +109,7 @@ character(len=:),allocatable :: options
       call fmtdate_usage()                                     ! see all formatting options
    else
       options= sget('today_oo')                                ! get -oo STRING
-      if(options.eq.'')then                                    ! if options are blank set a default
+      if(options =='')then                                    ! if options are blank set a default
          write(*,'(a)')now('YMD')                              ! display current date using format from command line
       else
          write(*,'(a)')now(options)                            ! display current date using format from command line
