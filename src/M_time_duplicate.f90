@@ -301,7 +301,7 @@ integer                       :: ibegin,iend
    do i = ibegin, iend                               ! step thru each letter in the string in specified range
        select case (str(i:i))
        case ('a':'z')                                ! located miniscule letter
-          string(i:i) = char(iachar(str(i:i))-32)    ! change miniscule letter to uppercase
+          string(i:i) = achar(iachar(str(i:i))-32)   ! change miniscule letter to uppercase
        end select
    end do
 
@@ -392,7 +392,7 @@ integer                      :: ibegin, iend
    do i = ibegin, iend                               ! step thru each letter in the string in specified range
       select case (str(i:i))
       case ('A':'Z')
-         string(i:i) = char(iachar(str(i:i))+32)     ! change letter to miniscule
+         string(i:i) = achar(iachar(str(i:i))+32)    ! change letter to miniscule
       case default
       end select
    end do
@@ -932,10 +932,10 @@ integer                       :: imax                   ! length of longest toke
       if(delimiters/='')then                                       ! if DELIMITERS was specified and not null use it
          dlim=delimiters
       else                                                           ! DELIMITERS was specified on call as empty string
-         dlim=' '//char(9)//char(10)//char(11)//char(12)//char(13)//char(0) ! use default delimiter when not specified
+         dlim=' '//achar(9)//achar(10)//achar(11)//achar(12)//achar(13)//achar(0) ! use default delimiter when not specified
       endif
    else                                                              ! no delimiter value was specified
-      dlim=' '//char(9)//char(10)//char(11)//char(12)//char(13)//char(0)    ! use default delimiter when not specified
+      dlim=' '//achar(9)//achar(10)//achar(11)//achar(12)//achar(13)//achar(0)    ! use default delimiter when not specified
    endif
    idlim=len(dlim)                                                   ! dlim a lot of blanks on some machines if dlim is a big string
 !-----------------------------------------------------------------------------------------------------------------------------------

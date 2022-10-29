@@ -1310,9 +1310,9 @@ real(kind=realtime),save             :: unixtime_last
 
          if(index(xxxx,'%')==0)then            ! if no % characters change every char to %char if a format macro letter
             do i=65,122
-             select case(char(i))
+             select case(achar(i))
              case('B':'E','H':'J','L':'Q','S','T','U','W','Y','Z','b':'e','h':'m','n','o':'q','s':'u','w','x','z')
-                 call substitute(xxxx,char(i),'%'//char(i))
+                 call substitute(xxxx,achar(i),'%'//achar(i))
              end select
             enddo
          endif
@@ -1434,7 +1434,7 @@ real(kind=realtime),save             :: unixtime_last
                     write(text(iout:),'(G0)')unixtime-unixtime_last
                     unixtime_last=unixtime
          !=====================================================================================
-         case('t'); write(text(iout:),'(A1)')CHAR(9)                      ! tab character
+         case('t'); write(text(iout:),'(a1)')achar(9)                     ! tab character
          !=====================================================================================
          case('T'); write(text(iout:),'(SP,I3.2,SS,I2.2)')int(valloc(4)/60),abs(mod(valloc(4),60)) ! time from UTC as +-hhmm
          !=====================================================================================
@@ -2072,7 +2072,7 @@ integer                           :: loops
       enddo
 
       do i=1,len(buff)                                      ! First remove all non-numeric characters
-         idum=ichar(buff(i:i))
+         idum=iachar(buff(i:i))
          if(idum<48.or.idum>57)then
             buff(i:i)=' '
          endif
