@@ -35,12 +35,13 @@ jobs:
            gfortran fpm.F90 -o fpm.exe
     - name: Display environment
       run: |
-        shell: bash
         #make -k -p -fNOTTHERE
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
+        echo $PATH %PATH% $HOME %HOME%
         env
+        which gfortran
         ./fpm.exe --version
 
     - name: tests MSWindows (debug)
