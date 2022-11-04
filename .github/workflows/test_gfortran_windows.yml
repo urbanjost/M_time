@@ -28,7 +28,6 @@ jobs:
 
     - name: Install fpm
       run: |
-           echo $PATH
            pwd
            uname -a
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
@@ -42,6 +41,7 @@ jobs:
         echo $PATH %PATH% $HOME %HOME%
         env
         which gfortran
+        $Env:PATH += ";$pwd"
         ./fpm.exe --version
 
     - name: tests MSWindows (debug)
