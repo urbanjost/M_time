@@ -30,11 +30,8 @@ jobs:
       run: |
            Set-PSDebug -Trace 1
            $Env:Path += [IO.Path]::PathSeparator + $pwd
-           pwd
-           uname -a
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
-           gfortran fpm.F90 -o fpm.exe
-           gfortran -Wall -Wextra -Wimplicit-interface -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single fpm.F90 -o fpm.exe
+           gfortran fpm.F90 -g -fbacktrace -o fpm.exe
            ls fpm.exe
     - name: Display environment
       run: |
@@ -44,6 +41,8 @@ jobs:
         echo POWERSHELL $env:Path 
         Set-PSDebug -Trace 1
         $Env:Path += [IO.Path]::PathSeparator + $pwd
+        pwd
+        uname -a
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         env
