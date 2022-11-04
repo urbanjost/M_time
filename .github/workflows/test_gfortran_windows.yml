@@ -49,7 +49,7 @@ jobs:
         env
         which gfortran
         gfortran --version
-	fpm --version
+        fpm --version
         exit 0
 
     - name: tests MSWindows (debug)
