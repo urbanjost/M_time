@@ -28,11 +28,12 @@ jobs:
 
     - name: Install fpm
       run: |
-           echo $PATH
+           echo %PATH%
+           echo %APPDATA%
            pwd
            uname -a
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
-           gfortran -Wall -Wextra -Wimplicit-interface -fPIC -g -fcheck=bounds -fcheck=array-temps -fbacktrace fpm.F90 -o fpm
+           gfortran fpm.F90 -o %APPDATA%\local\fpm
     - name: Display environment
       run: |
         #make -k -p -fNOTTHERE
