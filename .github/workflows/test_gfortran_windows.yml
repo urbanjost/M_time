@@ -53,14 +53,14 @@ jobs:
            Set-PSDebug -Trace 1
            $Env:Path += [IO.Path]::PathSeparator + $pwd
            fpm.exe test --profile debug -flag "-D _WIN32"
-	   exit 0
+           exit 0
 
     - name: tests MSWindows (release)
       run: |
            Set-PSDebug -Trace 1
            $Env:Path += [IO.Path]::PathSeparator + $pwd
            fpm.exe test --profile release -flag "-D _WIN32"
-	   exit 0
+           exit 0
 
 #    - name: Run demo programs (fpm run)
 #      run: fpm run --profile release
