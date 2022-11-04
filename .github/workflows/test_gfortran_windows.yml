@@ -38,7 +38,7 @@ jobs:
         echo LINUX $PATH
         echo DOS %PATH%
         echo POWERSHELL $env:Path 
-	Set-PSDebug -Trace 1
+        Set-PSDebug -Trace 1
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
