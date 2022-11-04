@@ -35,14 +35,17 @@ jobs:
     - name: Display environment
       run: |
         #make -k -p -fNOTTHERE
+        echo LINUX $PATH
+        echo DOS %PATH%
+        echo POWERSHELL $env:Path 
+	Set-PSDebug -Trace 1
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
-        echo $PATH %PATH% $HOME %HOME%
         env
         which gfortran
         $Env:PATH += ";$pwd"
-        ./fpm.exe --version
+        fpm.exe --version
 
     - name: tests MSWindows (debug)
       run: ./fpm.exe test --profile debug -flag "-D _WIN32"
