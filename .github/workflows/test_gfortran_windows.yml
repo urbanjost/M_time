@@ -34,6 +34,8 @@ jobs:
            uname -a
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
            gfortran fpm.F90 -o fpm.exe
+           gfortran -Wall -Wextra -Wimplicit-interface -fPIC -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single fpm.F90 -o fpm.exe
+           ls fpm.exe
     - name: Display environment
       run: |
         #make -k -p -fNOTTHERE
@@ -44,9 +46,11 @@ jobs:
         $Env:Path += [IO.Path]::PathSeparator + $pwd
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
-        gfortran --version
         env
         which gfortran
+        gfortran --version
+	fpm --version
+        exit 0
 
     - name: tests MSWindows (debug)
       run: |
