@@ -39,7 +39,7 @@ jobs:
         echo DOS %PATH%
         echo POWERSHELL $env:Path 
         Set-PSDebug -Trace 1
-	$Env:Path += [IO.Path]::PathSeparator + $pwd
+        $Env:Path += [IO.Path]::PathSeparator + $pwd
         echo "end" > foo.f90
         gfortran -cpp -E -dM foo.f90
         gfortran --version
