@@ -31,8 +31,10 @@ jobs:
            Set-PSDebug -Trace 1
            $Env:Path += [IO.Path]::PathSeparator + $pwd
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
+           curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/hello.f90 --output hello.f90
            gfortran fpm.F90 -g -fbacktrace -o fpm.exe
-           ls fpm.exe
+           gfortran hello.f90 -g -fbacktrace -o hello.exe
+           ls fpm.exe hello.exe
     - name: Display environment
       run: |
         #make -k -p -fNOTTHERE
@@ -48,6 +50,8 @@ jobs:
         env
         which gfortran
         gfortran --version
+        hello.exe
+        hello
         fpm --version
         exit 0
 
