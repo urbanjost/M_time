@@ -14,7 +14,7 @@ jobs:
 
         - os: windows-latest
           os-arch: windows-x86_64
-          release-flags: --flag '--static -g -fbacktrace -O3'
+          #release-flags: --flag '--static -g -fbacktrace -O3'
           exe: .exe
 
     env:
@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Install fpm
       run: |
@@ -32,7 +32,7 @@ jobs:
            $Env:Path += [IO.Path]::PathSeparator + $pwd
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/hello.f90 --output hello.f90
-           gfortran fpm.F90 -g -fbacktrace -o fpm.exe
+           gfortran -D_WIN32 fpm.F90 -g -fbacktrace -o fpm.exe
            gfortran hello.f90 -g -fbacktrace -o hello.exe
            ls fpm.exe hello.exe
     - name: Display environment
