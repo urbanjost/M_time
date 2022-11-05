@@ -34,7 +34,8 @@ jobs:
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/hello.f90 --output hello.f90
            gfortran -D_WIN32 fpm.F90 -g -fbacktrace -o fpm.exe
            gfortran hello.f90 -g -fbacktrace -o hello.exe
-           ls fpm.exe hello.exe
+           ls fpm.exe
+           ls hello.exe
     - name: Display environment
       run: |
         #make -k -p -fNOTTHERE
