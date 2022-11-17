@@ -2208,8 +2208,8 @@ integer                               :: ierr_local
    else
       ! Julian Day is in Z time zone and starts at noon so add 1/2 day; and add time zone
       !iweekday = mod(int((julian+dble(values(4)/60.0_dp/24.0_dp)+0.5_dp)+1.0_dp), 7)
-      ! REAL added to avoid bug in OpenBSD gfortran on i386
-      iweekday = mod(nint(real(julian+dble(values(4)/60.0_dp/24.0_dp)))+1, 7)
+      ! REAL nint() changed to int(anint()) added to avoid bug in OpenBSD gfortran on i386
+      iweekday = mod(int(anint(julian+dble(values(4)/60.0_dp/24.0_dp)))+1, 7)
       iweekday = iweekday +1  ! change range from 0 to 6 to 1 to 7
       iweekday = mod(iweekday+5,7)+1  ! change from Sunday=1 to Monday=1
 
