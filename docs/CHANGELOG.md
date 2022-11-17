@@ -6,6 +6,13 @@ list of notable changes including records of change such as bug fixes,
 new features, changes, and relevant notifications.
 
 ---
+**2022-11-17**  John S. Urban  <https://github.com/urbanjost>
+
+Thu 17 Nov 2022 11:49:28 AM EST
+### :red: FIX:
+     - corrected DOW() round-off error encountered on i386
+       32-bit platform
+---
 **2015-12-21**  John S. Urban  <https://github.com/urbanjost>
 
 ### :green_circle: ADD:

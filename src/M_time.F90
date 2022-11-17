@@ -410,14 +410,14 @@ real(kind=realtime),save        :: julian_at_epoch
 logical,save                    :: first=.true.
 integer,parameter               :: ref(8)=[1970,1,1,0,0,0,0,0]
 !-----------------------------------------------------------------------------------------------------------------------------------
-if(first) then                                        ! Convert zero of Unix Epoch Time to Julian Date and save
-   call date_to_julian(ref,julian_at_epoch,ierr)
-   if(ierr/=0) return                               ! Error
-   first=.false.
-endif
+   if (first) then                                    ! Convert zero of Unix Epoch Time to Julian Date and save
+      call date_to_julian(ref,julian_at_epoch,ierr)
+      if(ierr /= 0) return                            ! Error
+      first=.false.
+   endif
 !-----------------------------------------------------------------------------------------------------------------------------------
    call date_to_julian(dat,julian,ierr)
-   if(ierr/=0) return                               ! Error
+   if(ierr /= 0) return                               ! Error
    unixtime=(julian-julian_at_epoch)*secday
 end subroutine date_to_unix
 !===================================================================================================================================
@@ -514,15 +514,15 @@ integer,parameter               :: ref(8)=[1970,1,1,0,0,0,0,0]
    type is (real(kind=realtime)); local_unixtime=unixtime
    end select
 !-----------------------------------------------------------------------------------------------------------------------------------
-   if(first)then                                                             ! Initialize calculated constants on first call
-      call date_to_julian(ref,Unix_Origin_as_Julian,ierr)                    ! Compute start of Unix Time as a Julian Date
-      if(ierr/=0) return                                                   ! Error
+   if(first)then                                                 ! Initialize calculated constants on first call
+      call date_to_julian(ref,Unix_Origin_as_Julian,ierr)        ! Compute start of Unix Time as a Julian Date
+      if(ierr/=0) return                                         ! Error
       first=.FALSE.
    endif
 !-----------------------------------------------------------------------------------------------------------------------------------
-   julian=(local_unixtime/secday)+Unix_Origin_as_Julian           ! convert seconds from Unix Epoch to Julian Date
-   call julian_to_date(julian,dat,ierr)                           ! calculate date-time array from Julian Date
-   !dat(4)=get_timezone()                                          ! need to get time zone
+   julian=(local_unixtime/secday)+Unix_Origin_as_Julian          ! convert seconds from Unix Epoch to Julian Date
+   call julian_to_date(julian,dat,ierr)                          ! calculate date-time array from Julian Date
+   !dat(4)=get_timezone()                                        ! need to get time zone
 end subroutine unix_to_date
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
@@ -2207,7 +2207,9 @@ integer                               :: ierr_local
       ierr_local=-2
    else
       ! Julian Day is in Z time zone and starts at noon so add 1/2 day; and add time zone
-      iweekday = mod(int((julian+dble(values(4)/60.0_dp/24.0_dp)+0.5_dp)+1.0_dp), 7)
+      !iweekday = mod(int((julian+dble(values(4)/60.0_dp/24.0_dp)+0.5_dp)+1.0_dp), 7)
+      ! REAL added to avoid bug in OpenBSD gfortran on i386
+      iweekday = mod(nint(real(julian+dble(values(4)/60.0_dp/24.0_dp)))+1, 7)
       iweekday = iweekday +1  ! change range from 0 to 6 to 1 to 7
       iweekday = mod(iweekday+5,7)+1  ! change from Sunday=1 to Monday=1
 

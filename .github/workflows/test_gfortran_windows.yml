@@ -14,7 +14,7 @@ jobs:
 
         - os: windows-latest
           os-arch: windows-x86_64
-          #release-flags: --flag '--static -g -fbacktrace -O3'
+          release-flags: --flag '--static -g -fbacktrace -O3'
           exe: .exe
 
     env:
@@ -31,19 +31,16 @@ jobs:
            Set-PSDebug -Trace 1
            $Env:Path += [IO.Path]::PathSeparator + $pwd
            curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/fpm.F90 --output fpm.F90
-           curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/hello.f90 --output hello.f90
            gfortran -D_WIN32 fpm.F90 -g -fbacktrace -o fpm.exe
-           gfortran hello.f90 -g -fbacktrace -o hello.exe
            ls fpm.exe
+           curl https://raw.githubusercontent.com/urbanjost/index/main/bootstrap/hello.f90 --output hello.f90
+           gfortran hello.f90 -g -fbacktrace -o hello.exe
            ls hello.exe
     - name: Display environment
       run: |
-        #make -k -p -fNOTTHERE
-        echo LINUX $PATH
-        echo DOS %PATH%
-        echo POWERSHELL $env:Path 
         Set-PSDebug -Trace 1
         $Env:Path += [IO.Path]::PathSeparator + $pwd
+        make -k -p -fNOTTHERE
         pwd
         uname -a
         echo "end" > foo.f90
