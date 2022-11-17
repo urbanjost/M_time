@@ -653,9 +653,16 @@ implicit none
 end subroutine test_d2u
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_u2d
-call unit_check_start('u2d')
-call unit_check('u2d',all([2017,03,29,-240,01,46,47,0] == u2d(1490766407)),&
-        & d2u([2017,03,29,-240,01,46,47,0]) )
+integer :: ex(8)
+integer :: re(8)
+integer :: utime
+   call unit_check_start('u2d')
+   utime=1490766407
+   ex=[2017,03,29,-240,01,46,47,0]
+   re=u2d(1490766407)
+   call unit_check('u2d',all(re == ex),&
+   & 'EXPECTED',1490766407, &
+   & 'GOT',d2u([2017,03,29,-240,01,46,47,0]) )
 call unit_check_done('u2d')
 end subroutine test_u2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
