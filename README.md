@@ -54,13 +54,21 @@ simple as
       program demo_now
       use M_time, only : now, fmtdate_usage
       implicit none
+         !
          ! % macros
+	 !
          write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
+	 !
          ! or, if not found then keywords
+	 !
          write(*,*)now("year-month-day")
+	 !
          ! and if that is not found, abbreviations
+	 !
          write(*,*)now("Y-M-D h:m:s")
+	 !
          ! built-in usage descriptions can be displayed as well
+	 !
          call fmtdate_usage() ! see all formatting options
       end program demo_now
 ```
@@ -69,6 +77,9 @@ simple as
    The current date is Thu, Oct 20th, 2022 7:26:04 PM
    2022-10-20
    2022-10-20 19:26:04
+
+<details><summary>Usage Macros</summary>
+
      Description                                        Example
      
      Base time array:
@@ -180,14 +191,19 @@ simple as
 ```text
        YMDhms ==> %Y%M%D%h%m%s ==> 20221020192604
 ```
+
+</details>
+
 ---
 ![docs](docs/images/docs.gif)
 ---
 ## Documentation
 
 ### User
+<!--
 + [intro page](https://urbanjost.github.io/M_time/M_time.3m_time.html)
 + [OOP intro page](https://urbanjost.github.io/M_time/M_time_oop.3m_time.html)
+-->
 + [man-page index](https://urbanjost.github.io/M_time/man3.html)
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) is a consolidated
   single-page version of the man-pages for ease in printing and searching(`requires javascript`)
