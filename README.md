@@ -77,8 +77,10 @@ simple as
    The current date is Thu, Oct 20th, 2022 7:26:04 PM
    2022-10-20
    2022-10-20 19:26:04
-
+```
+<?
 <details><summary>Usage Macros</summary>
+<pre>
 
      Description                                        Example
      
@@ -191,8 +193,9 @@ simple as
 ```text
        YMDhms ==> %Y%M%D%h%m%s ==> 20221020192604
 ```
-
+</pre>
 </details>
+?>
 
 ---
 ![docs](docs/images/docs.gif)
