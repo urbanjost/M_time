@@ -196,10 +196,10 @@ simple as
 
 Furthermore there are actual man-pages that can be installed on ULS (Unix-Like Systems):
 
-[manpage.tgz](https://urbanjost.github.io/M_time/manpage.tgz)
+[manpages.tgz](https://urbanjost.github.io/M_time/manpages.tgz)
 and
-[manpage.zip](https://urbanjost.github.io/M_time/manpage.zip)
-### Developer Documentation (experimental)
+[manpages.zip](https://urbanjost.github.io/M_time/manpages.zip)
+### Developer Documentation
 
 #### doxygen
 
