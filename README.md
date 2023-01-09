@@ -78,10 +78,7 @@ simple as
    2022-10-20
    2022-10-20 19:26:04
 ```
-<?
-<details><summary>Usage Macros</summary>
-<pre>
-
+```text
      Description                                        Example
      
      Base time array:
@@ -193,9 +190,6 @@ simple as
 ```text
        YMDhms ==> %Y%M%D%h%m%s ==> 20221020192604
 ```
-</pre>
-</details>
-?>
 
 ---
 ![docs](docs/images/docs.gif)
