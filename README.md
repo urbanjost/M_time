@@ -47,9 +47,8 @@ Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
 programs are included in the package.
 
-A simple program that formats the current time as desired, and 
-displays the built-in help text for the formatting options is as
-simple as
+A simple program that formats the current time as desired, and displays
+the built-in help text for the formatting options is as simple as
 ```fortran
       program demo_now
       use M_time, only : now, fmtdate_usage
@@ -272,7 +271,7 @@ or just list it as a dependency in your fpm.toml project file.
 ## Demo Programs
 
 Each man-page contains a small sample program that has been extracted
-and placed in the example/ directory.  The small example programs
+and placed in the [example/](example/) directory.  The small example programs
 demonstrate how easily you can generate a variety of output formats:
 ```text
     Sun, Jan 5th, 2020 10:48:33 AM UTC-05:00
@@ -403,9 +402,6 @@ information on other libraries and modules that provide date-time
 procedures.
 ## References
    + [Gregorian Calendar(Wikipedia)](https://en.wikipedia.org/wiki/Gregorian_calendar)
-   + [Fortran Package Manager](https://github.com/fortran-lang/fpm) 
-   + [fpm(1) registry](https://github.com/fortran-lang/fpm-registry)
-   + [github actions](https://docs.github.com/en/actions)
 <!--
    TODO:
 
