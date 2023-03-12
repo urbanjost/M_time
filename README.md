@@ -9,8 +9,7 @@
 
 M_time(3f) can be used to display Civilian Calendar dates in many formats.
 
-In addition, it can manipulate or read many other date representations
-such as ...
+In addition, it can manipulate or read many other date representations ...
 
   * Julian Dates
   * Unix Epoch Dates
@@ -223,6 +222,12 @@ and
 
 ---
 ![GNU](docs/images/gnu.gif)
+---
+## Download tarball or zip file
+
+- [archive](https://github.com/urbanjost/M_time/releases) files containing released
+  versions in tar(1) and zip(1) format.
+
 ---
 ## Download and Build using gmake
 
