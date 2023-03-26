@@ -1852,7 +1852,6 @@ subroutine guessdate(datestring,dat,ier)
 !
 !x! REDO more rigorously with regular expressions and recognize standard formats directly
 
-
 ! NOTE : Main constraint is that day is input BEFORE year unless use YYYY-MM-DD and a : implies HH:MM:SS, no timezone names
 !        Not rigorous. Gets most common formats but can easily make errors in all but simple unambiguous common date formats
 character(len=*),intent(in)       :: datestring ! Date in string format
@@ -1949,7 +1948,6 @@ integer                           :: loops
    call substitute(datestring_local,'OCT',' OCT ')
    call substitute(datestring_local,'NOV',' NOV ')
    call substitute(datestring_local,'DEC',' DEC ')
-
 
    ! assume T[0=9] is from yyyyy-mm-ddThh:mm:ss.xx ISO-8601 format (or SEPTnn,OCTnn AUGUSTnn, where space was added or name changed)
    call substitute(datestring_local,'T0',' 0')
@@ -3241,7 +3239,6 @@ end function sec2days
 !!   A decimal fraction is supported on the seconds (Actually,
 !!   any of the numeric values may represent positive floating
 !!   point numbers). Spaces are ignored.
-!!
 !!
 !!   Simple numeric values may also be used with unit suffixes; where
 !!   s,m,h, or d represents seconds, minutes, hours or days and w
