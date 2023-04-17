@@ -1,13 +1,13 @@
-      program demo_M_time_oop
+      program demo_M_time__oop
       !
       ! This is an example using the object-oriented class/type model
       ! This is essentially the same functionality as the procedures
       ! in the procedural module M_time(3fm), but allows for Object
       ! Oriented syntax:
       !
-      use M_time_oop,only : date_time
-      !!use M_time_oop,only : operator(+),operator(-),operator(>),operator(<)
-      !!use M_time_oop,only : operator(<=),operator(>=),operator(==),operator(/=)
+      use M_time__oop,only : date_time
+      !!use M_time__oop,only : operator(+),operator(-),operator(>),operator(<)
+      !!use M_time__oop,only : operator(<=),operator(>=),operator(==),operator(/=)
       implicit none
       integer,parameter :: dp=kind(0.0d0)
       integer         :: dat(8)
@@ -167,14 +167,14 @@
          ! OVERLOADED OPERATORS (logical comparisons)
          ! NOTE COMPARISONS ARE PERFORMED BY
          ! CONVERTING TIMES TO INTEGER SECONDS
-         write(*,*)'> ',event.eq.event   ,event.lt.event   ,event.gt.event &
-         & ,event.le.event   ,event.ge.event   ,event.ne.event
+         write(*,*)'> ',event==event   ,event<event   ,event>event &
+         & ,event<=event   ,event>=event   ,event/=event
          !
-         write(*,*)'> ',event.eq.answer  ,event.lt.answer  ,event.gt.answer  &
-         & ,event.le.answer  ,event.ge.answer  ,event.ne.answer
+         write(*,*)'> ',event==answer  ,event<answer  ,event>answer  &
+         & ,event<=answer  ,event>=answer  ,event/=answer
          !
-         write(*,*)'> ',answer.eq.event  ,answer.lt.event  ,answer.gt.event  &
-         & ,answer.le.event  ,answer.ge.event  ,answer.ne.event
+         write(*,*)'> ',answer==event  ,answer<event  ,answer>event  &
+         & ,answer<=event  ,answer>=event  ,answer/=event
 
          ! %DELTA easily lets you change dates by common increments
          write(*,*)
@@ -261,4 +261,4 @@
          & "FOR %%DELTA(DURATION='1-20:30:40.50')&
          & %W, %L %d, %Y %H:%m:%s %N")
 
-      end program demo_M_time_oop
+      end program demo_M_time__oop

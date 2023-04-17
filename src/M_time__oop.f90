@@ -14,15 +14,15 @@
 !
 !>
 !!##NAME
-!!    M_time_oop(3fm) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm)
+!!    M_time__oop(3fm) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm)
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
 !!
-!!   use M_time_oop, only : date_time
+!!   use M_time__oop, only : date_time
 !!
-!!    use M_time_oop,only : operator(+),operator(-),operator(>),operator(<)
-!!    use M_time_oop,only : operator(<=),operator(>=),operator(==),operator(/=)
+!!    use M_time__oop,only : operator(+),operator(-),operator(>),operator(<)
+!!    use M_time__oop,only : operator(<=),operator(>=),operator(==),operator(/=)
 !!
 !!    TYPE(date_time) :: mydate
 !!
@@ -55,16 +55,16 @@
 !!
 !!  sample program
 !!
-!!     program demo_M_time_oop
+!!     program demo_M_time__oop
 !!     !
 !!     ! This is an example using the object-oriented class/type model
 !!     ! This is essentially the same functionality as the procedures
 !!     ! in the procedural module M_time(3fm), but allows for Object
 !!     ! Oriented syntax:
 !!     !
-!!     use M_time_oop,only : date_time
-!!     !!use M_time_oop,only : operator(+),operator(-),operator(>),operator(<)
-!!     !!use M_time_oop,only : operator(<=),operator(>=),operator(==),operator(/=)
+!!     use M_time__oop,only : date_time
+!!     !!use M_time__oop,only : operator(+),operator(-),operator(>),operator(<)
+!!     !!use M_time__oop,only : operator(<=),operator(>=),operator(==),operator(/=)
 !!     implicit none
 !!     integer,parameter :: dp=kind(0.0d0)
 !!     integer         :: dat(8)
@@ -224,14 +224,14 @@
 !!        ! OVERLOADED OPERATORS (logical comparisons)
 !!        ! NOTE COMPARISONS ARE PERFORMED BY
 !!        ! CONVERTING TIMES TO INTEGER SECONDS
-!!        write(*,*)'> ',event.eq.event   ,event.lt.event   ,event.gt.event &
-!!        & ,event.le.event   ,event.ge.event   ,event.ne.event
+!!        write(*,*)'> ',event==event   ,event<event   ,event>event &
+!!        & ,event<=event   ,event>=event   ,event/=event
 !!        !
-!!        write(*,*)'> ',event.eq.answer  ,event.lt.answer  ,event.gt.answer  &
-!!        & ,event.le.answer  ,event.ge.answer  ,event.ne.answer
+!!        write(*,*)'> ',event==answer  ,event<answer  ,event>answer  &
+!!        & ,event<=answer  ,event>=answer  ,event/=answer
 !!        !
-!!        write(*,*)'> ',answer.eq.event  ,answer.lt.event  ,answer.gt.event  &
-!!        & ,answer.le.event  ,answer.ge.event  ,answer.ne.event
+!!        write(*,*)'> ',answer==event  ,answer<event  ,answer>event  &
+!!        & ,answer<=event  ,answer>=event  ,answer/=event
 !!
 !!        ! %DELTA easily lets you change dates by common increments
 !!        write(*,*)
@@ -318,7 +318,7 @@
 !!        & "FOR %%DELTA(DURATION='1-20:30:40.50')&
 !!        & %W, %L %d, %Y %H:%m:%s %N")
 !!
-!!     end program demo_M_time_oop
+!!     end program demo_M_time__oop
 !!
 !! Sample output:
 !!
@@ -393,10 +393,10 @@
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 ! submodule is not supported by the compiler used to develop this yet or it would be worth a try
-!!submodule (M_time) M_time_oop
-!!end submodule M_time_oop
+!!submodule (M_time) M_time__oop
+!!end submodule M_time__oop
 !
-module M_time_oop
+module M_time__oop
 !
 ! Define an OOP (Object-Oriented Programming) interface for the M_time module.
 !
@@ -406,8 +406,8 @@ module M_time_oop
 !
 use M_time, only : d2u, u2d, fmtdate, d2o, dow, fmtdate_usage, days2sec, realtime
 use M_time, only : j2d, d2j
-use M_time_duplicate, only : upper
-implicit none
+use M_time__duplicate, only : upper
+implicit none !(type,external)
 integer,parameter :: dp=kind(0.0d0)
 private
 private upper
@@ -498,14 +498,14 @@ contains
 !
 function construct_from_dat(dat)
 
-! ident_1="@(#)M_time::construct_from_dat(3f): construct TYPE(DATE_TIME) with DAT date-time array"
+! ident_1="@(#) M_time construct_from_dat(3f) construct TYPE(DATE_TIME) with DAT date-time array"
 
 integer,intent(in)          :: dat(:)                       ! (maybe partial) date time array
 integer                     :: datlocal(8)                  ! date time array similar to that returned by DATE_AND_TIME
 type(date_time)             :: construct_from_dat
 
    datlocal=u2d(0.0_dp)                                     ! initialize to start of Unix Epoch Time using local time zone
-   if(size(dat).gt.0)then                                   ! allow for partial DAT arrays
+   if(size(dat)>0)then                                   ! allow for partial DAT arrays
       datlocal(:size(dat))=dat
    endif
    construct_from_dat%year=datlocal(1)
@@ -520,7 +520,7 @@ end function construct_from_dat
 !===================================================================================================================================
 function construct_from_jed(jed)
 
-! ident_2="@(#)M_time::construct_from_jed(3f): construct TYPE(DATE_TIME) with REAL Julian JED date-time value"
+! ident_2="@(#) M_time construct_from_jed(3f) construct TYPE(DATE_TIME) with REAL Julian JED date-time value"
 
 real(kind=realtime),intent(in)   :: jed
 type(date_time)                 :: construct_from_jed
@@ -529,7 +529,7 @@ end function construct_from_jed
 !===================================================================================================================================
 function construct_from_uet(uet)
 
-! ident_3="@(#)M_time::construct_from_uet(3f): construct TYPE(DATE_TIME) with INTEGER Unix UET date-time value"
+! ident_3="@(#) M_time construct_from_uet(3f) construct TYPE(DATE_TIME) with INTEGER Unix UET date-time value"
 
 integer,intent(in)   :: uet
 type(date_time)                 :: construct_from_uet
@@ -543,7 +543,7 @@ end function construct_from_uet
 !===================================================================================================================================
 function dt2d_(self) result (dat)
 
-! ident_4="@(#)M_time::dt2d_(3f): convert derived type date_time to DAT date-time array"
+! ident_4="@(#) M_time dt2d_(3f) convert derived type date_time to DAT date-time array"
 
 class(date_time),intent(in) :: self
 integer                     :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
@@ -554,7 +554,7 @@ end function dt2d_
 !===================================================================================================================================
 function epoch_(self) result (epoch_seconds)
 
-! ident_5="@(#)M_time::epoch_(3f): convert derived type date_time to unix epoch seconds"
+! ident_5="@(#) M_time epoch_(3f) convert derived type date_time to unix epoch seconds"
 
 class(date_time),intent(in) :: self
 real(kind=realtime)         :: epoch_seconds
@@ -563,7 +563,7 @@ end function epoch_
 !===================================================================================================================================
 function format(self,fmt) result (string)
 
-! ident_6="@(#)M_time::format(3f): convert derived type date_time to formatted string"
+! ident_6="@(#) M_time format(3f) convert derived type date_time to formatted string"
 
 class(date_time),intent(in)           :: self
 character(len=*),intent(in),optional  :: fmt
@@ -578,7 +578,7 @@ character(len=*),parameter            :: mdy_fmt='%M/%D/%Y %h:%m:%s.%x%z'
    else
       fmtlocal=iso_fmt
    endif
-   if(index(fmtlocal,'%').eq.0)then       ! if a percent(%) in string assume it is a string to be passed to fmtdate
+   if(index(fmtlocal,'%')==0)then       ! if a percent(%) in string assume it is a string to be passed to fmtdate
       select case(upper(fmtlocal))
       case("ISO","ISO-8601",""); fmtlocal=iso_fmt
       case("USA");               fmtlocal=usa_fmt
@@ -598,7 +598,7 @@ end function format
 !===================================================================================================================================
 function julian_(self) result (julian_days)
 
-! ident_7="@(#)M_time::julian_(3f): convert derived type date_time to julian date"
+! ident_7="@(#) M_time julian_(3f) convert derived type date_time to julian date"
 
 class(date_time),intent(in) :: self
 real(kind=realtime)         :: julian_days
@@ -607,7 +607,7 @@ end function julian_
 !===================================================================================================================================
 function ordinal(self) result (ordinal_days)
 
-! ident_8="@(#)M_time::ordinal(3f): convert derived type date_time to ordinal date"
+! ident_8="@(#) M_time ordinal(3f) convert derived type date_time to ordinal date"
 
 class(date_time),intent(in) :: self
 integer                     :: ordinal_days
@@ -616,7 +616,7 @@ end function ordinal
 !===================================================================================================================================
 function weekday(self) result (iday)
 
-! ident_9="@(#)M_time::weekday(3f): convert derived type date_time to weekday (1=Monday,7=Sunday)"
+! ident_9="@(#) M_time weekday(3f) convert derived type date_time to weekday (1=Monday 7=Sunday)"
 
 class(date_time),intent(in)   :: self
 integer                       :: iday
@@ -633,7 +633,7 @@ function delta(self,year,month,day,tz,hour,minute,second,millisecond,week,durati
 ! or "a month from now". Once the arbitrary values are used to change the original date_time value convert it to
 ! Epoch time and back to make sure you get a valid date.
 
-! ident_10="@(#)M_time::delta(3f): add times to a type(date_time)"
+! ident_10="@(#) M_time delta(3f) add times to a type(date_time)"
 
 class(date_time),intent(in)           :: self
 integer,intent(in),optional           :: year, month, day, tz, hour, minute, second, millisecond, week
@@ -666,7 +666,7 @@ subroutine init_dt(self,year,month,day,tz,hour,minute,second,millisecond,type,da
 ! If not, initialize to the current time or start of epoch depending on TYPE=["now"|"epoch"]
 ! Then, apply specific values, typically specified by keyword value
 
-! ident_11="@(#)M_time::init_dt(3f): initialize TYPE(DATE_TIME)"
+! ident_11="@(#) M_time init_dt(3f) initialize TYPE(DATE_TIME)"
 
 class(date_time)                     :: self
 type(date_time)                      :: holddt
@@ -729,7 +729,7 @@ end subroutine init_dt
 !===================================================================================================================================
 function plus_seconds(self,seconds) result (dattim)
 
-! ident_12="@(#)M_time::plus_seconds(3f): add derived type date_time object and seconds"
+! ident_12="@(#) M_time plus_seconds(3f) add derived type date_time object and seconds"
 
 class(date_time),intent(in)    :: self
 real(kind=realtime),intent(in) :: seconds
@@ -742,7 +742,7 @@ end function plus_seconds
 !===================================================================================================================================
 function minus_seconds(self,seconds) result (dattim)
 
-! ident_13="@(#)M_time::minus_seconds(3f): subtract seconds from derived type date_time object"
+! ident_13="@(#) M_time minus_seconds(3f) subtract seconds from derived type date_time object"
 
 class(date_time),intent(in)    :: self
 real(kind=realtime),intent(in) :: seconds
@@ -752,7 +752,7 @@ end function minus_seconds
 !===================================================================================================================================
 function minus_date_time(self,other) result (seconds)
 
-! ident_14="@(#)M_time::minus_date_time(3f): add derived type date_time object and seconds"
+! ident_14="@(#) M_time minus_date_time(3f) add derived type date_time object and seconds"
 
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
@@ -762,43 +762,43 @@ end function minus_date_time
 !===================================================================================================================================
 logical function eq(self,other)
 
-! ident_15="@(#)M_time::eq(3f): compare derived type date_time objects (eq,lt,gt,le,ge,ne)"
+! ident_15="@(#) M_time eq(3f) compare derived type date_time objects (eq lt gt le ge ne)"
 
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
-   eq= int(d2u(dt2d_(self))) .eq. int(d2u(dt2d_(other)))
+   eq= int(d2u(dt2d_(self))) == int(d2u(dt2d_(other)))
 end function eq
 
 logical function lt(self,other)
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
-   lt= int(d2u(dt2d_(self))) .lt. int(d2u(dt2d_(other)))
+   lt= int(d2u(dt2d_(self))) < int(d2u(dt2d_(other)))
 end function lt
 
 logical function gt(self,other)
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
-   gt= int(d2u(dt2d_(self))) .gt. int(d2u(dt2d_(other)))
+   gt= int(d2u(dt2d_(self))) > int(d2u(dt2d_(other)))
 end function gt
 
 logical function le(self,other)
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
-   le= int(d2u(dt2d_(self))) .le. int(d2u(dt2d_(other)))
+   le= int(d2u(dt2d_(self))) <= int(d2u(dt2d_(other)))
 end function le
 
 logical function ge(self,other)
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
-   ge= int(d2u(dt2d_(self))) .ge. int(d2u(dt2d_(other)))
+   ge= int(d2u(dt2d_(self))) >= int(d2u(dt2d_(other)))
 end function ge
 
 logical function ne(self,other)
 class(date_time),intent(in)   :: self
 type(date_time),intent(in)    :: other
-   ne= int(d2u(dt2d_(self))) .ne. int(d2u(dt2d_(other)))
+   ne= int(d2u(dt2d_(self))) /= int(d2u(dt2d_(other)))
 end function ne
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-end module M_time_oop
+end module M_time__oop
