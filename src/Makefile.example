@@ -1,0 +1,134 @@
+#===============================================================================
+# @(#) platform-independent rules for maintaining a FORTRAN90 library
+################################################################################
+# calling makefile must define, LIB, INSTALL, PUTBIN, TMPDIR, library name
+TMPDIR=/tmp
+TARGET_REV=gfortran
+LIBHOME=.
+#@(#) make(1) include file defines bin and lib directory pathnames
+# where to put libraries that are built
+INSTALL=$(LIBHOME)/lib/$(TARGET_REV)
+# where to put binaries that are built
+PUTBIN=$(LIBHOME)/bin/$(TARGET_REV)
+# name of library to build 
+LIB=$(INSTALL)/libM_time.a
+# List of FORTRAN files to make objects from 
+LIBOBJ_F90 = \
+$(LIB)(src/master/Hist/phist.o) \
+ \
+$(LIB)(src/base/dl_inbox.o) \
+ \
+$(NULL)
+#===============================================================================
+SHELL=/bin/sh
+
+.SUFFIXES: .f90 .F90 
+# .f90 -- assume free-format fortran
+# .F90 -- run thru cpp(1) 
+
+# set up conditional macro definitions
+CF90=f90
+AR=bld
+ARFLAGS=rv
+AR=ar
+ARFLAGS=rU
+CF90FLAGS  = -Iinc
+LD=ld
+RANLIB=ranlib
+
+INC = -I$$HERE_DIR/inc -I$$HERE_DIR/../inc -I$$HERE/inc -I$$HERE -I$$HERE_DIR -I$$HERE/../inc $(LIBINC) $$INCHOMEUSH
+
+CC=gcc
+#CCFLAGS =  -I/usr/include -I/usr/X11R6/include $(CCOPTS) -g CCFLAGS =  -I/usr/include -I/usr/include/X11 $(CCOPTS) -g    
+
+CF90 = gfortran
+CF90FLAGS = -I$(INSTALL) -J$(INSTALL) -fno-range-check    -Wunreachable-code -Wunused -Wuninitialized -g -O    -frecord-marker=4    -fcoarray=single 
+
+#-------------------------------------------------------------------------------
+all: directorysetup library 
+	@echo INCHOMEUSH is $(INCHOMEUSH) 
+	@echo INSTALL is $(INSTALL) 
+	@echo INC is $(INC) 
+	@echo HOME is $$HOME 
+	@echo HERE is $$HERE 
+	@echo HERE_DIR is $$HERE_DIR
+#-------------------------------------------------------------------------------
+# to build the fake target 'system' you need to build the library
+#
+directorysetup:
+	@echo "################################ STARTING LIBRARY $(LIB) #######################################################"|cut -c 1-132
+	@banner.sh "`basename $(LIB) .a`:F90"
+	@[ -d "`dirname $(LIB)`" ] || (echo "making directory $(LIB)";mkdir -p "`dirname $(LIB)`")
+	@echo " $(LIB) options :"
+	@echo "   F90: $(CF90) -c $(CF90FLAGS) file.f90"|sed -e 's/ -/@ -/g'|tr '@' '\012'
+	@ HERE_DIR=`pwd` HERE=`dirname $*`; \
+	echo "   F90 preprocess: f90cpp -D$(TARGET_REV) $(INC) $(?) file.F90"|sed -e 's/ -/@ -/g'|tr '@' '\012'
+library: $(LIB)
+	@echo "OBJECTS: $(LIBOBJ) $(LIBOBJ_F90)"|tr -d ')'|xargs -n 1|xargs -IXX  basename XX '.o'|xargs -n 7|tr ' ' '\t'|expand -15
+	@echo $(LIB) up to date on a $(TARGET_REV) system
+	$(RANLIB) $(LIB)
+	@echo "################################ FINISHED LIBRARY $(LIB) #######################################################"|cut -c 1-132
+#-------------------------------------------------------------------------------
+#      When the $?
+#      macro contains more than one prerequisite file name, the $(?D) and
+#      $(?F) (or ${?D} and ${?F}) macros expand to a list of directory name
+#      parts and file name parts respectively.
+# 
+#      For the target lib(member.o) and the .s2.a rule, the internal macros
+#      are defined as follows:
+#            echo "$<  member.s2"
+#            echo "$*  member"
+#            echo "$@  lib"
+#            echo "$?  member.s2"
+#            echo "$%  member.o"
+#-------------------------------------------------------------------------------
+# It is useful for  .o  files  to  be  placed  in  /tmp  to  cut  down  on
+# probability  of  using  slower  NFS connections and/or ar(1) failing to
+# write a complete file without warning on Cray on slow NFS mounts so  use
+# $(TMPDIR) kludge this makes things much faster anyway.  Also making sure
+# *.a file is on a local directory
+$(LIB):  $(LIBOBJ) $(LIBOBJ_F90)
+	@echo "$(LIB) is up to date"
+	@$(RANLIB) $(LIB)
+#===============================================================================
+.f90.a:
+	@echo "==.f90.a=======================> $(?)"
+	@[ -s $(?) ] || echo "error: $(?) is empty"
+	@cp $(?) $(TMPDIR)
+	@cd $(TMPDIR);$(CF90) -c $(CF90FLAGS) ${?F} -I${?D}
+	@$(AR) $(ARFLAGS) $(LIB) $(TMPDIR)/${?F:.f90=.o}
+#-------### SunOS just puts .mod files in directory ###
+#	@[ -f $(TMPDIR)/${?F:.f90=.mod} ] && mv $(TMPDIR)/${?F:.f90=.mod} $(INSTALL)
+#	@[ -f "`find $(TMPDIR)/*.mod|head -1`" ] && mv $(TMPDIR)/*.mod $(INSTALL)
+#-------### --------------------------------------- ###
+	@rm -f $(TMPDIR)/${?F} $(TMPDIR)/${?F:.f90=.o}
+#===============================================================================
+.F90.a:
+	@echo "==.F90.a=======================> $(?)"
+	@########################################################################
+	@# run thru cpp(1) preprocessor first
+	@ HERE_DIR=`pwd` HERE=`dirname $*`; \
+	f90cpp -D$(TARGET_REV) -I${?D}  $(INC) $(?) $(TMPDIR)/$(*F).f90
+	@########################################################################
+	@# compile
+	@cd $(TMPDIR);$(CF90) -c $(CF90FLAGS) -I${?D} $(*F).f90
+	@########################################################################
+	@# place compiled routine into library file
+	@$(AR) $(ARFLAGS) $(LIB) $(TMPDIR)/$(*F).o
+	@########################################################################
+#-------### SunOS just puts .mod files in directory ###
+#	@[ -f $(TMPDIR)/${?F:.f90=.mod} ] && mv $(TMPDIR)/${?F:.f90=.mod} $(INSTALL)
+#	@[ -f "`find $(TMPDIR)/*.mod|head -1`" ] && mv $(TMPDIR)/*.mod $(INSTALL)
+#-------### --------------------------------------- ###
+	@########################################################################
+	@# clean up scratch files
+	@rm -f $(TMPDIR)/$(*F).f90.tmp
+	@rm -f $(TMPDIR)/$(*F).f90 $(TMPDIR)/${?F:.f90=.o}
+	@########################################################################
+#===============================================================================
+clean:
+	-rm -f core 
+#-------------------------------------------------------------------------------
+clobber: clean
+	-rm -f -i $(LIB)
+#-------------------------------------------------------------------------------

@@ -1,0 +1,183 @@
+#@(#) make(1) rules for maintaining a FORTRAN90/C library. John S. Urban 2020-01-14 01:11:41
+NULL=
+
+#PROGFILES = $(wildcard ../example/*.f90) $(wildcard ../app/*.f90)
+#PROGFILES_CPP = $(wildcard ../example/*.F90) $(wildcard ../app/*.f90)
+PROGFILES = $(wildcard ../example/*.f90)
+PROGFILES_CPP = $(wildcard ../example/*.F90)
+PROG = $(patsubst %.f90,%,$(PROGFILES)) $(patsubst %.F90,%,$(PROGFILES_CPP))
+
+CPROGFILES = $(wildcard ../example/*.c)
+CPROG = ${CPROGFILES:.c=}
+
+TESTFILES = $(wildcard ../test/*.f90)
+TESTFILES_CPP = $(wildcard ../test/*.F90)
+#TEST  = ${TESTFILES:.f90=} ${TESTFILES_CPP:.F90=}
+TEST = $(NULL)
+
+SRCS = $(wildcard ./*.f90) $(wildcard ./*F90) $(wildcard ./*.c ) $(wildcard ./*.h )
+LIBOBJS = $(patsubst %.f90,$(LIBRARY)(%.o),$(SRCS)) $(patsubst %.c,$(LIBRARY)(%.o),$(SRCS))
+
+# create a list of corresponding object files
+COBJS_FILES = $(wildcard ./*.c )
+FOBJS_FILES = $(wildcard ./*.f90 )
+FOBJS_FPP_FILES = $(wildcard ./*.F90 )
+OBJS = $(patsubst %.c,%.o,$(COBJS_FILES)) $(patsubst %.f90,%.o,$(FOBJS_FILES)) $(patsubst %.F90,%.o,$(FOBJS_FPP_FILES))
+
+# name of library to build of the form lib$NAME.a
+LIBNAME=M_time
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# platform-specific values you will probably change
+CC := cc
+CFLAGS := -O
+AR=ar
+ARFLAGS=rU
+RANLIB = ranlib
+#
+# You can either ignore it, or disable the "may be used uninitialized"
+# warnings with -Wno-maybe-uninitialized or compile with optimizations
+# (-O1 and more).
+gfortran: FC=gfortran
+gfortran: INSTALL=./lib/$(FC)
+gfortran: FFLAGS := -g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized -J $(INSTALL) -I $(INSTALL)
+gfortran: LDFLAGS :=
+gfortran: all
+        @echo built with $(FC)
+
+nvfortran: FC=nvfortran
+nvfortran: INSTALL=./lib/$(FC)
+nvfortran: FFLAGS := -Minform=inform -Mbackslash -traceback -J $(INSTALL) -I $(INSTALL)
+gfortran: LDFLAGS :=
+nvfortran: all
+        @echo built with $(FC)
+
+ifort: FC=ifort
+ifort: INSTALL=./lib/$(FC)
+ifort: FFLAGS := -warn all -traceback -O -module $(INSTALL) -I $(INSTALL)
+ifort: LDFLAGS :=
+ifort: all
+        @echo built with $(FC)
+
+ifx: FC=ifx
+ifx: INSTALL=./lib/$(FC)
+ifx: FFLAGS := -warn all -traceback -O -module $(INSTALL) -I $(INSTALL)
+ifx: LDFLAGS :=
+ifx: all
+        @echo built with $(FC)
+
+nagfor: FC=nagfor
+ifx: INSTALL=./lib/$(FC)
+nagfor: FFLAGS := -C all -J $(INSTALL) -I $(INSTALL)
+nagfor: all
+        @echo built with $(FC)
+#-------------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#-------------------------------------------------------------------------------
+LIBRARY=$(INSTALL)/lib$(LIBNAME).a
+LIBS := -L$(INSTALL) -l$(LIBNAME)
+
+LIBOBJS = $(LIBRARY)(M_time_duplicate.o)          $(LIBRARY)(M_time.o)    $(LIBRARY)(M_time__oop.o)
+
+# list what to run and then do any teardown. Do not leave this empty
+all: setup $(LIBRARY) $(CPROG) $(PROG)
+        @echo "That's all folks!"
+
+# what to do before you start compiling
+setup:
+        : "Setup for: $(LIBRARY)"
+        @ [ -d "$(INSTALL)" ] ||        (echo "making directory $(INSTALL)";    mkdir -p $(INSTALL))
+
+# what to do after you have built the library
+$(LIBRARY): $(LIBOBJS)
+        : "build index for $(LIBRARY) of $(LIBOBJS) "
+        @ $(RANLIB) $(LIBRARY)
+        @ echo "TARGETS FOR $(LIBRARY) UP TO DATE"
+
+#$(PROG): $(OBJS)
+#       -$(FC) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS) # ||echo "ouch: $@.f90"
+$(PROG): $(LIBRARY)
+        -$(FC) $(FFLAGS) $(LDFLAGS) $@.f90 -o $@ $(LIBS)
+
+.PHONY: help
+help:
+        : all     '-- build M_time module'
+        : run     '-- run manpage demo programs and test program'
+        : test    '-- run test program (requires additional modules)'
+        : man     '-- show all manpages as text'
+        : clean   '-- clean directory of object files and executables'
+        : doxygen '-- run doxygen(1) if you have it'
+        : ford    '-- run ford(1) if you have it'
+        : help    '-- display this text'
+
+.PHONY: run
+run: $(PROG)
+        : run everything
+        echo $? |xargs -n 1|xargs -iXX time XX
+
+.PHONY: test
+test: $(OBJS)
+        : compile and load test
+        $(FC) $(LDFLAGS) $(TESTFILES) -o ${TESTFILES:.F90=} $(OBJS) $(LIBS)
+        : run test
+        ${TESTFILES:.F90=}
+
+.PHONY: doxygen
+doxygen:
+        doxygen dox.in
+.PHONY: ford
+ford:
+        cd ..;ford ford.md
+
+.PHONY: clean
+clean:
+        : PROG  $(PROG)
+        : CPROG $(CPROG)
+        : OBJS  $(OBJS)
+        : TEST  $(TEST)
+        -rm -f $(PROG) $(CPROG) $(OBJS) $(TEST) *.mod *.o
+        #-rm -f $(LIBRARY) $(INSTALL)/*.mod
+
+.PHONY: man
+man:
+        @cd ../man;mandb -c . 1>&2
+        : INDEX OF MANPAGES TOPICS
+        @env MANPATH=../man MANWIDTH=256 man -k .|col -b|expand
+        : ALL MANPAGES AS ASCII
+        @env MANPATH=../man MANWIDTH=80  man -Tutf8 --regex '.*'|col -b|expand
+        : SPELLING
+        @env MANPATH=../man MANWIDTH=80  man -Tutf8 --regex '.*'|col -b|expand|spell|xargs -n 5|column -t
+
+.SUFFIXES: $(SUFFIXES) .f90 .F90 .c
+
+#.f90.o:
+#       : compile .f90 file $<
+#       $(FC) $(FFLAGS) -c $<
+#
+#.F90.o:
+#       : compile .f90 file $<
+#       $(FC) $(FFLAGS) -c $<
+
+.f90.a:
+        : "add .f90 file $% LIBRARY $(LIBRARY)"
+        $(FC) -c $(FFLAGS) $< -o $% $(LIBS)
+        @ $(AR) $(ARFLAGS) $(LIBRARY) $%
+        @ $(AR) $(ARFLAGS) $(LIBRARY) $<  # optionally store the source code too
+        @ /bin/rm -f ${?F:.f90=.o} $%
+.F90.a:
+        : "add .F90 file $% LIBRARY $(LIBRARY)"
+        $(FC) -c $(FFLAGS) $< -o $% $(LIBS)
+        @ $(AR) $(ARFLAGS) $(LIBRARY) $%
+        @ $(AR) $(ARFLAGS) $(LIBRARY) $<  # optionally store the source code too
+        @ /bin/rm -f ${?F:.F90=.o} $%
+.c.a:
+        : "add .c file $% LIBRARY $(LIBRARY)"
+        $(CC) -c $(CFLAGS) $< -o $% $(LIBS)
+        @ $(AR) $(ARFLAGS) $(LIBRARY) $%
+        @ $(AR) $(ARFLAGS) $(LIBRARY) $<  # optionally store the source code too
+        @ /bin/rm -f ${?F:.c=.o} $%
+#=================================================================================
+#$(OBJS): draw.h
+#M_time__oop.o: M_time.o M_time_duplicate.o
+#M_time.o: M_time_duplicate.o
+$(LIBRARY): $(LIBOBJS)
+        : got here

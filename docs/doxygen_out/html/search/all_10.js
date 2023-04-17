@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['transliterate_55',['transliterate',['../namespacem__time__duplicate.html#ac8388a45881cf7c2f9047b4d643ed3f2',1,'m_time_duplicate']]],
-  ['trimzeros_56',['trimzeros',['../namespacem__time__duplicate.html#ae5ec641c9bdaa5d9377e47310e2165be',1,'m_time_duplicate']]],
-  ['tz_57',['tz',['../structm__time__oop_1_1date__time.html#ad0338a670b1fa55ff5da4ece0762bd4e',1,'m_time_oop::date_time']]]
+  ['transliterate_55',['transliterate',['../namespacem__time____duplicate.html#a286c6c0ecf6f8615c294f6b97b51d541',1,'m_time__duplicate']]],
+  ['trimzeros_56',['trimzeros',['../namespacem__time____duplicate.html#aac93e5ea4d30a5926367e9cc27b1bc39',1,'m_time__duplicate']]],
+  ['tz_57',['tz',['../structm__time____oop_1_1date__time.html#a12199639561eb952abfa5abbfe54eff1',1,'m_time__oop::date_time']]]
 ];

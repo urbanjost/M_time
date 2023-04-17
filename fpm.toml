@@ -1,4 +1,4 @@
-# TOML file for fpm as described at https://github.com/fortran-lang/fpm/blob/master/manifest-reference.md
+# TOML file for fpm as described at https://fpm.fortran-lang.org/en/spec/manifest.html
 name = "M_time"
 version = "2.0.1"
 license = "Public Domain"
@@ -10,12 +10,15 @@ categories = ["time"]
 keywords = ["fortran", "date", "time", "Julian", "Unix Epoch", "calendar" ]
 homepage = "https://github.com/urbanjost/M_time.git"
 
+[build]
+module-naming = true
+
 [[test]]
 name="runTests"
 source-dir="test/"
 main="test_suite_M_time.F90"
 [test.dependencies]
-M_msg          = { git = "https://github.com/urbanjost/M_msg.git" }
+M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
 
 [[executable]]
 name="now"

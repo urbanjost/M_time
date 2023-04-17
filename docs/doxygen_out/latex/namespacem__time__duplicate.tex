@@ -68,14 +68,16 @@ logical function \mbox{\hyperlink{namespacem__time__duplicate_a66a83a4b3d6324843
 
 References decodebase(), stderr(), and substitute().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time__duplicate_ab86bb390cc56184faeef5543735eecc4_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -97,7 +99,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 References a2d(), and stderr().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -110,22 +113,22 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{a2r()}{a2r()}}
 {\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+duplicate\+::a2r (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{real, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md99}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md99}
-string\+\_\+to\+\_\+value(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} subroutine returns numeric value from string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md100}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md100}
+\hypertarget{namespacem__time__duplicate_autotoc_md103}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md103}
+string\+\_\+to\+\_\+value(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} subroutine returns numeric value from string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md104}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md104}
 \begin{DoxyVerb}subroutine string_to_value(chars,valu,ierr)
 
  character(len=*),intent(in)              :: chars   ! input string
  integer|real|doubleprecision,intent(out) :: valu
  integer,intent(out)                      :: ierr
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md101}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md101}
+ \hypertarget{namespacem__time__duplicate_autotoc_md105}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md105}
 returns a numeric value from a numeric character string.
 
 works with any g-\/format input, including integer, real, and exponential. If the input string begins with \char`\"{}\+B\char`\"{}, \char`\"{}\+Z\char`\"{}, or \char`\"{}\+O\char`\"{} and otherwise represents a positive whole number it is assumed to be a binary, hexadecimal, or octal value. If the string contains commas they are removed. If the string is of the form NN\+:M\+MM... or N\+N\+::\+M\+MM then NN is assumed to be the base of the whole number.
 
-if an error occurs in the R\+E\+AD, I\+O\+S\+T\+AT is returned in I\+E\+RR and value is set to zero. if no error occurs, I\+E\+RR=0. \hypertarget{namespacem__time__duplicate_autotoc_md102}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md102}
-C\+H\+A\+RS input string to read numeric value from \hypertarget{namespacem__time__duplicate_autotoc_md103}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md103}
-V\+A\+LU numeric value returned. May be I\+N\+T\+E\+G\+ER, R\+E\+AL, or D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON. I\+E\+RR error flag (0 == no error) \hypertarget{namespacem__time__duplicate_autotoc_md104}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md104}
+if an error occurs in the R\+E\+AD, I\+O\+S\+T\+AT is returned in I\+E\+RR and value is set to zero. if no error occurs, I\+E\+RR=0. \hypertarget{namespacem__time__duplicate_autotoc_md106}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md106}
+C\+H\+A\+RS input string to read numeric value from \hypertarget{namespacem__time__duplicate_autotoc_md107}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md107}
+V\+A\+LU numeric value returned. May be I\+N\+T\+E\+G\+ER, R\+E\+AL, or D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON. I\+E\+RR error flag (0 == no error) \hypertarget{namespacem__time__duplicate_autotoc_md108}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md108}
 \begin{DoxyVerb}Sample Program:
 
  program demo_string_to_value
@@ -136,8 +139,8 @@ V\+A\+LU numeric value returned. May be I\+N\+T\+E\+G\+ER, R\+E\+AL, or D\+O\+U\
     write(*,*) 'value of string ['//trim(string)//'] is ',value
  end program demo_string_to_value
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md105}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md105}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md106}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md106}
+ \hypertarget{namespacem__time__duplicate_autotoc_md109}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md109}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md110}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md110}
 Public Domain
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em chars} & subroutine returns real value from string \\
@@ -147,7 +150,8 @@ Public Domain
 
 References a2d(), and stderr().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -160,14 +164,14 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{adjustc()}{adjustc()}}
 {\footnotesize\ttfamily pure character(len=\+:) function, allocatable, public m\+\_\+time\+\_\+duplicate\+::adjustc (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{string,  }\item[{integer, intent(in), optional}]{length }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md25}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md25}
-adjustc(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} center text (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md26}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md26}
+\hypertarget{namespacem__time__duplicate_autotoc_md29}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md29}
+adjustc(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} center text (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md30}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md30}
 pure function adjustc(string\mbox{[},length\mbox{]})
 
-character(len=$\ast$),intent(in) \+:: string integer,intent(in),optional \+:: length character(len=\+:),allocatable \+:: adjustc \hypertarget{namespacem__time__duplicate_autotoc_md27}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md27}
-Centers input text in a string of the length specified. Returns a string of length L\+E\+N\+G\+TH if L\+E\+N\+G\+TH is present. Otherwise returns a string of the length of the input string. \hypertarget{namespacem__time__duplicate_autotoc_md28}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md28}
-string input string to trim and center length line length to center text in, optional. \hypertarget{namespacem__time__duplicate_autotoc_md29}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md29}
-adjustc centered output string\hypertarget{namespacem__time__duplicate_autotoc_md30}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md30}
+character(len=$\ast$),intent(in) \+:: string integer,intent(in),optional \+:: length character(len=\+:),allocatable \+:: adjustc \hypertarget{namespacem__time__duplicate_autotoc_md31}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md31}
+Centers input text in a string of the length specified. Returns a string of length L\+E\+N\+G\+TH if L\+E\+N\+G\+TH is present. Otherwise returns a string of the length of the input string. \hypertarget{namespacem__time__duplicate_autotoc_md32}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md32}
+string input string to trim and center length line length to center text in, optional. \hypertarget{namespacem__time__duplicate_autotoc_md33}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md33}
+adjustc centered output string\hypertarget{namespacem__time__duplicate_autotoc_md34}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md34}
 \begin{DoxyVerb}Sample Program:
 
  program demo_adjustc
@@ -193,32 +197,32 @@ Expected output:
              this is a centered string
  \==================================================
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md31}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md31}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md32}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md32}
+ \hypertarget{namespacem__time__duplicate_autotoc_md35}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md35}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md36}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md36}
 Public Domain
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em string} & P\+R\+O\+C\+E\+D\+U\+RE adjustc(3f) D\+E\+S\+C\+R\+I\+P\+T\+I\+ON center text using implicit or explicit length \\
 \hline
 \end{DoxyParams}
-\hypertarget{namespacem__time__duplicate_autotoc_md34}{}\doxysubsubsection{V\+E\+R\+S\+I\+O\+N     2.\+0, 20160711}\label{namespacem__time__duplicate_autotoc_md34}
+\hypertarget{namespacem__time__duplicate_autotoc_md38}{}\doxysubsubsection{V\+E\+R\+S\+I\+O\+N     2.\+0, 20160711}\label{namespacem__time__duplicate_autotoc_md38}
 A\+U\+T\+H\+OR John S. Urban \mbox{\Hypertarget{namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38}\label{namespacem__time__duplicate_a20fc022f66383c65302e990c00432f38}} 
 \index{m\_time\_duplicate@{m\_time\_duplicate}!compact@{compact}}
 \index{compact@{compact}!m\_time\_duplicate@{m\_time\_duplicate}}
 \doxysubsubsection{\texorpdfstring{compact()}{compact()}}
 {\footnotesize\ttfamily character(len=len(str)) function, public m\+\_\+time\+\_\+duplicate\+::compact (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{str,  }\item[{character(len=$\ast$), intent(in), optional}]{char }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md35}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md35}
-compact(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} converts contiguous whitespace to a single character (or nothing) (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md36}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md36}
+\hypertarget{namespacem__time__duplicate_autotoc_md39}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md39}
+compact(3f) -\/ \mbox{[}M\+\_\+strings\+:W\+H\+I\+T\+E\+S\+P\+A\+CE\mbox{]} converts contiguous whitespace to a single character (or nothing) (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md40}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md40}
 \begin{DoxyVerb}function compact(STR,CHAR) result (OUTSTR)
 
  character(len=*),intent(in)          :: STR
  character(len=*),intent(in),optional :: CHAR
  character(len=len(str))              :: OUTSTR
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md37}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md37}
-C\+O\+M\+P\+A\+C\+T(3f) converts multiple spaces, tabs and control characters (called \char`\"{}whitespace\char`\"{}) to a single character or nothing. Leading whitespace is removed.\hypertarget{namespacem__time__duplicate_autotoc_md38}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md38}
-S\+TR input string to reduce or remove whitespace from C\+H\+AR By default the character that replaces adjacent whitespace is a space. If the optional C\+H\+AR parameter is supplied it will be used to replace the whitespace. If a null character is supplied for C\+H\+AR whitespace is removed. \hypertarget{namespacem__time__duplicate_autotoc_md39}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md39}
-O\+U\+T\+S\+TR string of same length as input string but with all contiguous whitespace reduced to a single space and leading whitespace removed\hypertarget{namespacem__time__duplicate_autotoc_md40}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md40}
+ \hypertarget{namespacem__time__duplicate_autotoc_md41}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md41}
+C\+O\+M\+P\+A\+C\+T(3f) converts multiple spaces, tabs and control characters (called \char`\"{}whitespace\char`\"{}) to a single character or nothing. Leading whitespace is removed.\hypertarget{namespacem__time__duplicate_autotoc_md42}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md42}
+S\+TR input string to reduce or remove whitespace from C\+H\+AR By default the character that replaces adjacent whitespace is a space. If the optional C\+H\+AR parameter is supplied it will be used to replace the whitespace. If a null character is supplied for C\+H\+AR whitespace is removed. \hypertarget{namespacem__time__duplicate_autotoc_md43}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md43}
+O\+U\+T\+S\+TR string of same length as input string but with all contiguous whitespace reduced to a single space and leading whitespace removed\hypertarget{namespacem__time__duplicate_autotoc_md44}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md44}
 \begin{DoxyVerb}Sample Program:
 
  program demo_compact
@@ -244,26 +248,26 @@ Expected output
  >This:is:a:test
  >AAAAAAAAAAAA
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md41}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md41}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md42}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md42}
+ \hypertarget{namespacem__time__duplicate_autotoc_md45}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md45}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md46}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md46}
 Public Domain \mbox{\Hypertarget{namespacem__time__duplicate_a84f53c1e0d6c1c9fe70b19549921d14b}\label{namespacem__time__duplicate_a84f53c1e0d6c1c9fe70b19549921d14b}} 
 \index{m\_time\_duplicate@{m\_time\_duplicate}!d2s@{d2s}}
 \index{d2s@{d2s}!m\_time\_duplicate@{m\_time\_duplicate}}
 \doxysubsubsection{\texorpdfstring{d2s()}{d2s()}}
 {\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+duplicate\+::d2s (\begin{DoxyParamCaption}\item[{doubleprecision, intent(in)}]{dvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md76}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md76}
-v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md77}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md77}
+\hypertarget{namespacem__time__duplicate_autotoc_md80}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md80}
+v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md81}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md81}
 \begin{DoxyVerb}   function v2s(value) result(outstr)
 
     integer|real|doubleprecision|logical,intent(in ) :: value
     character(len=:),allocatable :: outstr
     character(len=*),optional,intent(in) :: fmt
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md78}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md78}
-v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the strings using internal W\+R\+I\+T\+E() statements. Trailing zeros are removed from non-\/zero values, and the string is left-\/justified.\hypertarget{namespacem__time__duplicate_autotoc_md79}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md79}
-V\+A\+L\+UE input value to be converted to a string F\+MT format can be explicitly given, but is limited to generating a string of eighty or less characters.\hypertarget{namespacem__time__duplicate_autotoc_md80}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md80}
-O\+U\+T\+S\+TR returned string representing input value,\hypertarget{namespacem__time__duplicate_autotoc_md81}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md81}
+\hypertarget{namespacem__time__duplicate_autotoc_md82}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md82}
+v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the strings using internal W\+R\+I\+T\+E() statements. Trailing zeros are removed from non-\/zero values, and the string is left-\/justified.\hypertarget{namespacem__time__duplicate_autotoc_md83}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md83}
+V\+A\+L\+UE input value to be converted to a string F\+MT format can be explicitly given, but is limited to generating a string of eighty or less characters.\hypertarget{namespacem__time__duplicate_autotoc_md84}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md84}
+O\+U\+T\+S\+TR returned string representing input value,\hypertarget{namespacem__time__duplicate_autotoc_md85}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md85}
 \begin{DoxyVerb}Sample Program:
 
  program demo_v2s
@@ -283,13 +287,14 @@ Expected output
  The value of .false. is [F]
  The value of .true. is  [T]
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md82}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md82}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md83}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md83}
+\hypertarget{namespacem__time__duplicate_autotoc_md86}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md86}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md87}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md87}
 Public Domain 
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -302,19 +307,19 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{decodebase()}{decodebase()}}
 {\footnotesize\ttfamily logical function m\+\_\+time\+\_\+duplicate\+::decodebase (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{string,  }\item[{integer, intent(in)}]{basein,  }\item[{integer, intent(out)}]{out\+\_\+baseten }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md107}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md107}
-decodebase(3f) -\/ \mbox{[}M\+\_\+strings\+:B\+A\+SE\mbox{]} convert whole number string in base \mbox{[}2-\/36\mbox{]} to base 10 number (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md108}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md108}
+\hypertarget{namespacem__time__duplicate_autotoc_md111}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md111}
+decodebase(3f) -\/ \mbox{[}M\+\_\+strings\+:B\+A\+SE\mbox{]} convert whole number string in base \mbox{[}2-\/36\mbox{]} to base 10 number (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md112}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md112}
 \begin{DoxyVerb}logical function decodebase(string,basein,out10)
 
  character(len=*),intent(in)  :: string
  integer,intent(in)           :: basein
  integer,intent(out)          :: out10
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md109}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md109}
+ \hypertarget{namespacem__time__duplicate_autotoc_md113}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md113}
 Convert a numeric string representing a whole number in base B\+A\+S\+E\+IN to base 10. The function returns F\+A\+L\+SE if B\+A\+S\+E\+IN is not in the range \mbox{[}2..36\mbox{]} or if string S\+T\+R\+I\+NG contains invalid characters in base B\+A\+S\+E\+IN or if result O\+U\+T10 is too big
 
-The letters A,B,...,Z represent 10,11,...,36 in the base $>$ 10.\hypertarget{namespacem__time__duplicate_autotoc_md110}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md110}
-string input string. It represents a whole number in the base specified by B\+A\+S\+E\+IN unless B\+A\+S\+E\+IN is set to zero. When B\+A\+S\+E\+IN is zero S\+T\+R\+I\+NG is assumed to be of the form B\+A\+S\+E\+::\+V\+A\+L\+UE where B\+A\+SE represents the function normally provided by B\+A\+S\+E\+IN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10\hypertarget{namespacem__time__duplicate_autotoc_md111}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md111}
+The letters A,B,...,Z represent 10,11,...,36 in the base $>$ 10.\hypertarget{namespacem__time__duplicate_autotoc_md114}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md114}
+string input string. It represents a whole number in the base specified by B\+A\+S\+E\+IN unless B\+A\+S\+E\+IN is set to zero. When B\+A\+S\+E\+IN is zero S\+T\+R\+I\+NG is assumed to be of the form B\+A\+S\+E\+::\+V\+A\+L\+UE where B\+A\+SE represents the function normally provided by B\+A\+S\+E\+IN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10\hypertarget{namespacem__time__duplicate_autotoc_md115}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md115}
 \begin{DoxyVerb}Sample program:
 
  program demo_decodebase
@@ -344,24 +349,26 @@ string input string. It represents a whole number in the base specified by B\+A\
 
  end program demo_decodebase
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md112}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md112}
+\hypertarget{namespacem__time__duplicate_autotoc_md116}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md116}
 John S. Urban
 
 Ref.\+: "Math matiques en Turbo-\/\+Pascal by M. Ducamp and A. Reverchon (2), Eyrolles, Paris, 1988".
 
-based on a F90 Version By J-\/P Moreau (www.\+jpmoreau.\+fr)\hypertarget{namespacem__time__duplicate_autotoc_md113}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md113}
+based on a F90 Version By J-\/P Moreau (www.\+jpmoreau.\+fr)\hypertarget{namespacem__time__duplicate_autotoc_md117}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md117}
 Public Domain 
 
 References upper().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time__duplicate_a66a83a4b3d6324843c984658784b2c4e_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -378,7 +385,8 @@ Here is the caller graph for this function\+:\nopagebreak
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -395,7 +403,8 @@ Here is the call graph for this function\+:\nopagebreak
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -408,19 +417,19 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{lower()}{lower()}}
 {\footnotesize\ttfamily elemental pure character(len(str)) function, public m\+\_\+time\+\_\+duplicate\+::lower (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{str,  }\item[{integer, intent(in), optional}]{begin,  }\item[{integer, intent(in), optional}]{end }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md16}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md16}
-lower(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to lowercase over specified range (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md17}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md17}
+\hypertarget{namespacem__time__duplicate_autotoc_md20}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md20}
+lower(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to lowercase over specified range (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md21}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md21}
 \begin{DoxyVerb}elemental pure function lower(str,begin,end) result (string)
 
  character(*), intent(in) :: str
  integer,optional         :: begin, end
  character(len(str))      :: string  ! output string
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md18}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md18}
-lower(string) returns a copy of the input string with all characters converted to miniscule over the specified range, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to miniscule.\hypertarget{namespacem__time__duplicate_autotoc_md19}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md19}
-str string to convert to miniscule begin optional starting position in \char`\"{}str\char`\"{} to begin converting to miniscule end optional ending position in \char`\"{}str\char`\"{} to stop converting to miniscule\hypertarget{namespacem__time__duplicate_autotoc_md20}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time__duplicate_autotoc_md20}
-lower copy of the input string with all characters converted to miniscule over optionally specified range.\hypertarget{namespacem__time__duplicate_autotoc_md21}{}\doxysubsubsection{T\+R\+I\+V\+IA}\label{namespacem__time__duplicate_autotoc_md21}
-The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time__duplicate_autotoc_md22}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md22}
+ \hypertarget{namespacem__time__duplicate_autotoc_md22}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md22}
+lower(string) returns a copy of the input string with all characters converted to miniscule over the specified range, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to miniscule.\hypertarget{namespacem__time__duplicate_autotoc_md23}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md23}
+str string to convert to miniscule begin optional starting position in \char`\"{}str\char`\"{} to begin converting to miniscule end optional ending position in \char`\"{}str\char`\"{} to stop converting to miniscule\hypertarget{namespacem__time__duplicate_autotoc_md24}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time__duplicate_autotoc_md24}
+lower copy of the input string with all characters converted to miniscule over optionally specified range.\hypertarget{namespacem__time__duplicate_autotoc_md25}{}\doxysubsubsection{T\+R\+I\+V\+IA}\label{namespacem__time__duplicate_autotoc_md25}
+The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time__duplicate_autotoc_md26}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md26}
 \begin{DoxyVerb}Sample program:
 
  program demo_lower
@@ -437,9 +446,10 @@ Expected output
    mixed-case input string is .... ABCDEFG abcdefg
    lower-case output string is ... abcdefg abcdefg
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md23}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md23}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md24}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md24}
-Public Domain Here is the caller graph for this function\+:\nopagebreak
+ \hypertarget{namespacem__time__duplicate_autotoc_md27}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md27}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md28}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md28}
+Public Domain Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -456,7 +466,8 @@ Public Domain Here is the caller graph for this function\+:\nopagebreak
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -469,8 +480,8 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{s2v()}{s2v()}}
 {\footnotesize\ttfamily doubleprecision function, public m\+\_\+time\+\_\+duplicate\+::s2v (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{integer, optional}]{ierr,  }\item[{class($\ast$), intent(in), optional}]{onerr }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md43}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md43}
-s2v(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} function returns doubleprecision numeric value from a string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md44}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md44}
+\hypertarget{namespacem__time__duplicate_autotoc_md47}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md47}
+s2v(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} function returns doubleprecision numeric value from a string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md48}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md48}
 \begin{DoxyVerb}function s2v(string[,ierr][,onerr])
 
  character(len=*)             :: string
@@ -478,10 +489,10 @@ s2v(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} function returns 
  integer,intent(out),optional :: ierr
  class(*),intent(in),optional :: onerr
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md45}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md45}
+ \hypertarget{namespacem__time__duplicate_autotoc_md49}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md49}
 This function converts a string to a D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON numeric value.
 
-The intrinsics I\+N\+T(3f), R\+E\+A\+L(3f), and D\+B\+L\+E(3f) are also extended to take C\+H\+A\+R\+A\+C\+T\+ER variables. The K\+I\+ND= keyword is not supported on the extensions. \hypertarget{namespacem__time__duplicate_autotoc_md46}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md46}
+The intrinsics I\+N\+T(3f), R\+E\+A\+L(3f), and D\+B\+L\+E(3f) are also extended to take C\+H\+A\+R\+A\+C\+T\+ER variables. The K\+I\+ND= keyword is not supported on the extensions. \hypertarget{namespacem__time__duplicate_autotoc_md50}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md50}
 \begin{DoxyVerb} string   holds string assumed to represent a numeric value
  ierr     If an error occurs the program is stopped if the optional
           parameter IERR is not present. If IERR returns a non-zero
@@ -489,8 +500,8 @@ The intrinsics I\+N\+T(3f), R\+E\+A\+L(3f), and D\+B\+L\+E(3f) are also extended
  onerr    The value to return on error. A value of zero (NaN) is
           returned on error by default.
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md47}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md47}
-s2v\hypertarget{namespacem__time__duplicate_autotoc_md48}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md48}
+ \hypertarget{namespacem__time__duplicate_autotoc_md51}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md51}
+s2v\hypertarget{namespacem__time__duplicate_autotoc_md52}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md52}
 \begin{DoxyVerb}Sample Program:
 
  program demo_s2v
@@ -560,15 +571,16 @@ Expected output
  >          12345.678910000001 0.0000000000000000 12121.000000000000
  >That's all folks!
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md49}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md49}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md50}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md50}
-Public Domain\hypertarget{namespacem__time__duplicate_autotoc_md51}{}\doxysubsubsection{P\+R\+O\+C\+E\+D\+U\+R\+E\+:}\label{namespacem__time__duplicate_autotoc_md51}
-D\+E\+S\+C\+R\+I\+P\+T\+I\+ON\+: s2v(3f)\+: function returns doubleprecision number from string;zero if error occurs \hypertarget{namespacem__time__duplicate_autotoc_md52}{}\doxysubsubsection{V\+E\+R\+S\+I\+O\+N\+:     2.\+0, 20160704}\label{namespacem__time__duplicate_autotoc_md52}
+ \hypertarget{namespacem__time__duplicate_autotoc_md53}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md53}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md54}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md54}
+Public Domain\hypertarget{namespacem__time__duplicate_autotoc_md55}{}\doxysubsubsection{P\+R\+O\+C\+E\+D\+U\+R\+E\+:}\label{namespacem__time__duplicate_autotoc_md55}
+D\+E\+S\+C\+R\+I\+P\+T\+I\+ON\+: s2v(3f)\+: function returns doubleprecision number from string;zero if error occurs \hypertarget{namespacem__time__duplicate_autotoc_md56}{}\doxysubsubsection{V\+E\+R\+S\+I\+O\+N\+:     2.\+0, 20160704}\label{namespacem__time__duplicate_autotoc_md56}
 A\+U\+T\+H\+OR\+: John S. Urban 
 
 References a2d().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -581,8 +593,8 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{split()}{split()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+time\+\_\+duplicate\+::split (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{input\+\_\+line,  }\item[{character(len=\+:), dimension(\+:), intent(out), allocatable}]{array,  }\item[{character(len=$\ast$), intent(in), optional}]{delimiters,  }\item[{character(len=$\ast$), intent(in), optional}]{order,  }\item[{character(len=$\ast$), intent(in), optional}]{nulls }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md53}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md53}
-split(3f) -\/ \mbox{[}M\+\_\+strings\+:T\+O\+K\+E\+NS\mbox{]} parse string into an array using specified delimiters (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md54}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md54}
+\hypertarget{namespacem__time__duplicate_autotoc_md57}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md57}
+split(3f) -\/ \mbox{[}M\+\_\+strings\+:T\+O\+K\+E\+NS\mbox{]} parse string into an array using specified delimiters (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md58}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md58}
 \begin{DoxyVerb}subroutine split(input_line,array,delimiters,order,nulls)
 
  character(len=*),intent(in)              :: input_line
@@ -591,8 +603,8 @@ split(3f) -\/ \mbox{[}M\+\_\+strings\+:T\+O\+K\+E\+NS\mbox{]} parse string into 
  character(len=*),optional,intent(in)     :: order
  character(len=*),optional,intent(in)     :: nulls
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md55}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md55}
-S\+P\+L\+I\+T(3f) parses a string using specified delimiter characters and store tokens into an allocatable array\hypertarget{namespacem__time__duplicate_autotoc_md56}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md56}
+ \hypertarget{namespacem__time__duplicate_autotoc_md59}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md59}
+S\+P\+L\+I\+T(3f) parses a string using specified delimiter characters and store tokens into an allocatable array\hypertarget{namespacem__time__duplicate_autotoc_md60}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md60}
 \begin{DoxyVerb}INPUT_LINE  Input string to tokenize
 
 ARRAY       Output array of tokens
@@ -621,7 +633,7 @@ NULLS IGNORE|RETURN|IGNOREEND  Treatment of null fields.
             in the output ARRAY. If NULLS='ignoreend' then only
             trailing delimiters at the right of the string are ignored.
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md57}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md57}
+\hypertarget{namespacem__time__duplicate_autotoc_md61}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md61}
 Sample program\+: \begin{DoxyVerb} program demo_split
  use M_strings, only: split
  character(len=*),parameter     :: &
@@ -706,13 +718,14 @@ Output \begin{DoxyVerb} > INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2   
  > 20 ==>
  >  SIZE:          20
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md58}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md58}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md59}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md59}
+ \hypertarget{namespacem__time__duplicate_autotoc_md62}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md62}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md63}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md63}
 Public Domain 
 
 References lower().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -725,7 +738,8 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{stderr()}{stderr()}}
 {\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+duplicate\+::stderr (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})}
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -738,8 +752,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{string\_to\_values()}{string\_to\_values()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+time\+\_\+duplicate\+::string\+\_\+to\+\_\+values (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{line,  }\item[{integer, intent(in)}]{iread,  }\item[{real, dimension(iread), intent(inout)}]{values,  }\item[{integer, intent(out)}]{inums,  }\item[{character(len=$\ast$), intent(in)}]{delims,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md60}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md60}
-string\+\_\+to\+\_\+values(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} read a string representing numbers into a numeric array (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md61}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md61}
+\hypertarget{namespacem__time__duplicate_autotoc_md64}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md64}
+string\+\_\+to\+\_\+values(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} read a string representing numbers into a numeric array (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md65}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md65}
 \begin{DoxyVerb}   subroutine string_to_values(line,iread,values,inums,delims,ierr)
 
     character(len=*) :: line
@@ -749,12 +763,12 @@ string\+\_\+to\+\_\+values(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mb
     character(len=*) :: delims
     integer          :: ierr
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md62}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md62}
-This routine can take a string representing a series of numbers and convert it to a numeric array and return how many numbers were found.\hypertarget{namespacem__time__duplicate_autotoc_md63}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md63}
+ \hypertarget{namespacem__time__duplicate_autotoc_md66}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md66}
+This routine can take a string representing a series of numbers and convert it to a numeric array and return how many numbers were found.\hypertarget{namespacem__time__duplicate_autotoc_md67}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md67}
 \begin{DoxyVerb}   LINE     Input string containing numbers
    IREAD    maximum number of values to try to read from input string
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md64}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time__duplicate_autotoc_md64}
+\hypertarget{namespacem__time__duplicate_autotoc_md68}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time__duplicate_autotoc_md68}
 \begin{DoxyVerb}   VALUES   real array to be filled with numbers
    INUMS    number of values successfully read (before error occurs
             if one does)
@@ -764,7 +778,7 @@ This routine can take a string representing a series of numbers and convert it t
    IERR     error flag (0=no error, else column number string starts
             at that error occurred on).
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md65}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md65}
+\hypertarget{namespacem__time__duplicate_autotoc_md69}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md69}
 Sample Program\+: \begin{DoxyVerb} program demo_string_to_values
   use M_strings, only : string_to_values
   character(len=80)  :: s=' 10 20e3;3.45 -400.3e-2;1234; 5678 '
@@ -797,13 +811,14 @@ input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
 number of values found...           3
 values...................   10.0000000  2.29999995  3.14159989
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md66}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md66}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md67}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md67}
+ \hypertarget{namespacem__time__duplicate_autotoc_md70}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md70}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md71}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md71}
 Public Domain 
 
 References stderr().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -816,8 +831,8 @@ Here is the call graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{substitute()}{substitute()}}
 {\footnotesize\ttfamily subroutine, public m\+\_\+time\+\_\+duplicate\+::substitute (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{targetline,  }\item[{character(len=$\ast$), intent(in)}]{old,  }\item[{character(len=$\ast$), intent(in)}]{new,  }\item[{integer, intent(out), optional}]{ierr,  }\item[{integer, intent(in), optional}]{start,  }\item[{integer, intent(in), optional}]{end }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md0}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md0}
-substitute(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} subroutine globally substitutes one substring for another in string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md1}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md1}
+\hypertarget{namespacem__time__duplicate_autotoc_md4}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md4}
+substitute(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} subroutine globally substitutes one substring for another in string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md5}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md5}
 \begin{DoxyVerb}subroutine substitute(targetline,old,new,ierr,start,end)
 
  character(len=*)              :: targetline
@@ -827,9 +842,9 @@ substitute(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} subroutine
  integer,intent(in),optional   :: start
  integer,intent(in),optional   :: end
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md2}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md2}
-Globally substitute one substring for another in string.\hypertarget{namespacem__time__duplicate_autotoc_md3}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md3}
-T\+A\+R\+G\+E\+T\+L\+I\+NE input line to be changed. Must be long enough to hold altered output. O\+LD substring to find and replace N\+EW replacement for O\+LD substring I\+E\+RR error code. If I\+ER = -\/1 bad directive, $>$= 0 then count of changes made. S\+T\+A\+RT sets the left margin to be scanned for O\+LD in T\+A\+R\+G\+E\+T\+L\+I\+NE. E\+ND sets the right margin to be scanned for O\+LD in T\+A\+R\+G\+E\+T\+L\+I\+NE.\hypertarget{namespacem__time__duplicate_autotoc_md4}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md4}
+ \hypertarget{namespacem__time__duplicate_autotoc_md6}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md6}
+Globally substitute one substring for another in string.\hypertarget{namespacem__time__duplicate_autotoc_md7}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md7}
+T\+A\+R\+G\+E\+T\+L\+I\+NE input line to be changed. Must be long enough to hold altered output. O\+LD substring to find and replace N\+EW replacement for O\+LD substring I\+E\+RR error code. If I\+ER = -\/1 bad directive, $>$= 0 then count of changes made. S\+T\+A\+RT sets the left margin to be scanned for O\+LD in T\+A\+R\+G\+E\+T\+L\+I\+NE. E\+ND sets the right margin to be scanned for O\+LD in T\+A\+R\+G\+E\+T\+L\+I\+NE.\hypertarget{namespacem__time__duplicate_autotoc_md8}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md8}
 \begin{DoxyVerb}Sample Program:
 
  program demo_substitute
@@ -864,20 +879,22 @@ Expected output
  "" => BEFORE: BEFORE:THis is THe input string
  i => ""     : BEFORE:THs s THe nput strng
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md5}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md5}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md6}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md6}
+ \hypertarget{namespacem__time__duplicate_autotoc_md9}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md9}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md10}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md10}
 Public Domain 
 
 References stderr().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time__duplicate_abc203f3a6afc1edeecbcdc58b187a5d5_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -890,8 +907,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{transliterate()}{transliterate()}}
 {\footnotesize\ttfamily pure character(len=len(instr)) function, public m\+\_\+time\+\_\+duplicate\+::transliterate (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{instr,  }\item[{character(len=$\ast$), intent(in)}]{old\+\_\+set,  }\item[{character(len=$\ast$), intent(in)}]{new\+\_\+set }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md68}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md68}
-transliterate(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} replace characters from old set with new set (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md69}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md69}
+\hypertarget{namespacem__time__duplicate_autotoc_md72}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md72}
+transliterate(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} replace characters from old set with new set (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md73}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md73}
 \begin{DoxyVerb}pure function transliterate(instr,old_set,new_set) result(outstr)
 
  character(len=*),intent(in)  :: instr
@@ -899,8 +916,8 @@ transliterate(3f) -\/ \mbox{[}M\+\_\+strings\+:E\+D\+I\+T\+I\+NG\mbox{]} replace
  character(len=*),intent(in)  :: new_set
  character(len=len(instr))    :: outstr
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md70}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md70}
-Translate, squeeze, and/or delete characters from the input string.\hypertarget{namespacem__time__duplicate_autotoc_md71}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md71}
+ \hypertarget{namespacem__time__duplicate_autotoc_md74}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md74}
+Translate, squeeze, and/or delete characters from the input string.\hypertarget{namespacem__time__duplicate_autotoc_md75}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md75}
 instr input string to change old\+\_\+set list of letters to change in I\+N\+S\+TR if found \begin{DoxyVerb}     Each character in the input string that matches a character in
      the old set is replaced.
 \end{DoxyVerb}
@@ -909,8 +926,8 @@ instr input string to change old\+\_\+set list of letters to change in I\+N\+S\+
      If the new_set is shorter than the old set the last character in the
      new set is used to replace the remaining characters in the new set.
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md72}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md72}
-outstr instr with substitutions applied\hypertarget{namespacem__time__duplicate_autotoc_md73}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md73}
+ \hypertarget{namespacem__time__duplicate_autotoc_md76}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md76}
+outstr instr with substitutions applied\hypertarget{namespacem__time__duplicate_autotoc_md77}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md77}
 \begin{DoxyVerb}Sample Program:
 
  program demo_transliterate
@@ -940,23 +957,23 @@ Expected output
  > :A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:Q:R:S:T:U:V:W:X:Y:Z
  > ABCDEFGHIJKLMNOPQRSTUVWXYZ
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md74}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md74}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md75}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md75}
+\hypertarget{namespacem__time__duplicate_autotoc_md78}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md78}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md79}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md79}
 Public Domain \mbox{\Hypertarget{namespacem__time__duplicate_ae5ec641c9bdaa5d9377e47310e2165be}\label{namespacem__time__duplicate_ae5ec641c9bdaa5d9377e47310e2165be}} 
 \index{m\_time\_duplicate@{m\_time\_duplicate}!trimzeros@{trimzeros}}
 \index{trimzeros@{trimzeros}!m\_time\_duplicate@{m\_time\_duplicate}}
 \doxysubsubsection{\texorpdfstring{trimzeros()}{trimzeros()}}
 {\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+duplicate\+::trimzeros (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md92}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md92}
-trimzeros(3fp) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} Delete trailing zeros from numeric decimal string (L\+I\+C\+E\+N\+SE\+:PD) \hypertarget{namespacem__time__duplicate_autotoc_md93}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md93}
+\hypertarget{namespacem__time__duplicate_autotoc_md96}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md96}
+trimzeros(3fp) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} Delete trailing zeros from numeric decimal string (L\+I\+C\+E\+N\+SE\+:PD) \hypertarget{namespacem__time__duplicate_autotoc_md97}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md97}
 \begin{DoxyVerb}subroutine trimzeros(str)
 
  character(len=*)  :: str
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md94}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md94}
-T\+R\+I\+M\+Z\+E\+R\+O\+S(3f) deletes trailing zeros from a string representing a number. If the resulting string would end in a decimal point, one trailing zero is added. \hypertarget{namespacem__time__duplicate_autotoc_md95}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md95}
-str input string will be assumed to be a numeric value and have trailing zeros removed \hypertarget{namespacem__time__duplicate_autotoc_md96}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md96}
+ \hypertarget{namespacem__time__duplicate_autotoc_md98}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md98}
+T\+R\+I\+M\+Z\+E\+R\+O\+S(3f) deletes trailing zeros from a string representing a number. If the resulting string would end in a decimal point, one trailing zero is added. \hypertarget{namespacem__time__duplicate_autotoc_md99}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md99}
+str input string will be assumed to be a numeric value and have trailing zeros removed \hypertarget{namespacem__time__duplicate_autotoc_md100}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time__duplicate_autotoc_md100}
 \begin{DoxyVerb}Sample program:
 
    program demo_trimzeros
@@ -968,9 +985,10 @@ str input string will be assumed to be a numeric value and have trailing zeros r
       write(*,*)trimzeros('12345.00e3')
    end program demo_trimzeros
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md97}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md97}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md98}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md98}
-Public Domain Here is the caller graph for this function\+:\nopagebreak
+\hypertarget{namespacem__time__duplicate_autotoc_md101}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md101}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md102}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md102}
+Public Domain Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -983,19 +1001,19 @@ Public Domain Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{upper()}{upper()}}
 {\footnotesize\ttfamily elemental pure character(len(str)) function, public m\+\_\+time\+\_\+duplicate\+::upper (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{str,  }\item[{integer, intent(in), optional}]{begin,  }\item[{integer, intent(in), optional}]{end }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md7}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md7}
-upper(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to uppercase (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md8}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md8}
+\hypertarget{namespacem__time__duplicate_autotoc_md11}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md11}
+upper(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to uppercase (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md12}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md12}
 \begin{DoxyVerb}elemental pure function upper(str,begin,end) result (string)
 
  character(*), intent(in)    :: str
  integer,optional,intent(in) :: begin,end
  character(len(str))         :: string  ! output string
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md9}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md9}
-upper(string) returns a copy of the input string with all characters converted in the optionally specified range to uppercase, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to uppercase.\hypertarget{namespacem__time__duplicate_autotoc_md10}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md10}
-str string to convert to uppercase begin optional starting position in \char`\"{}str\char`\"{} to begin converting to uppercase end optional ending position in \char`\"{}str\char`\"{} to stop converting to uppercase\hypertarget{namespacem__time__duplicate_autotoc_md11}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time__duplicate_autotoc_md11}
-upper copy of the input string with all characters converted to uppercase over optionally specified range.\hypertarget{namespacem__time__duplicate_autotoc_md12}{}\doxysubsubsection{T\+R\+I\+V\+IA}\label{namespacem__time__duplicate_autotoc_md12}
-The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time__duplicate_autotoc_md13}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md13}
+ \hypertarget{namespacem__time__duplicate_autotoc_md13}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md13}
+upper(string) returns a copy of the input string with all characters converted in the optionally specified range to uppercase, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to uppercase.\hypertarget{namespacem__time__duplicate_autotoc_md14}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md14}
+str string to convert to uppercase begin optional starting position in \char`\"{}str\char`\"{} to begin converting to uppercase end optional ending position in \char`\"{}str\char`\"{} to stop converting to uppercase\hypertarget{namespacem__time__duplicate_autotoc_md15}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time__duplicate_autotoc_md15}
+upper copy of the input string with all characters converted to uppercase over optionally specified range.\hypertarget{namespacem__time__duplicate_autotoc_md16}{}\doxysubsubsection{T\+R\+I\+V\+IA}\label{namespacem__time__duplicate_autotoc_md16}
+The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time__duplicate_autotoc_md17}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md17}
 \begin{DoxyVerb}Sample program:
 
  program demo_upper
@@ -1016,9 +1034,10 @@ Expected output
  make first character uppercase  ... This is a sentence.
  upper(3f) is elemental ==>ABC+DEF+GHI
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md14}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md14}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md15}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md15}
-Public Domain Here is the caller graph for this function\+:\nopagebreak
+ \hypertarget{namespacem__time__duplicate_autotoc_md18}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md18}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md19}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md19}
+Public Domain Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1031,8 +1050,8 @@ Public Domain Here is the caller graph for this function\+:\nopagebreak
 \doxysubsubsection{\texorpdfstring{value\_to\_string()}{value\_to\_string()}}
 {\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+duplicate\+::value\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{class($\ast$), intent(in)}]{gval,  }\item[{character(len=$\ast$), intent(out)}]{chars,  }\item[{integer, intent(out), optional}]{length,  }\item[{integer, optional}]{err,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt,  }\item[{logical, intent(in), optional}]{trimz }\end{DoxyParamCaption})}
 
-\hypertarget{namespacem__time__duplicate_autotoc_md84}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md84}
-value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md85}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md85}
+\hypertarget{namespacem__time__duplicate_autotoc_md88}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time__duplicate_autotoc_md88}
+value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time__duplicate_autotoc_md89}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time__duplicate_autotoc_md89}
 \begin{DoxyVerb}subroutine value_to_string(value,chars[,ilen,ierr,fmt,trimz])
 
  character(len=*) :: chars  ! minimum of 23 characters required
@@ -1049,10 +1068,10 @@ value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbo
  character(len=*),intent(in),optional     :: fmt
  logical,intent(in)                       :: trimz
 \end{DoxyVerb}
- \hypertarget{namespacem__time__duplicate_autotoc_md86}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md86}
-value\+\_\+to\+\_\+string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the string using internal writes. It then removes trailing zeros from non-\/zero values, and left-\/justifies the string.\hypertarget{namespacem__time__duplicate_autotoc_md87}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md87}
-V\+A\+L\+UE input value to be converted to a string F\+MT You may specify a specific format that produces a string up to the length of C\+H\+A\+RS; optional. T\+R\+I\+MZ If a format is supplied the default is not to try to trim trailing zeros. Set T\+R\+I\+MZ to .true. to trim zeros from a string assumed to represent a simple numeric value.\hypertarget{namespacem__time__duplicate_autotoc_md88}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md88}
-C\+H\+A\+RS returned string representing input value, must be at least 23 characters long; or what is required by optional F\+MT if longer. I\+L\+EN position of last non-\/blank character in returned string; optional. I\+E\+RR If not zero, error occurred; optional. \hypertarget{namespacem__time__duplicate_autotoc_md89}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md89}
+ \hypertarget{namespacem__time__duplicate_autotoc_md90}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time__duplicate_autotoc_md90}
+value\+\_\+to\+\_\+string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the string using internal writes. It then removes trailing zeros from non-\/zero values, and left-\/justifies the string.\hypertarget{namespacem__time__duplicate_autotoc_md91}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time__duplicate_autotoc_md91}
+V\+A\+L\+UE input value to be converted to a string F\+MT You may specify a specific format that produces a string up to the length of C\+H\+A\+RS; optional. T\+R\+I\+MZ If a format is supplied the default is not to try to trim trailing zeros. Set T\+R\+I\+MZ to .true. to trim zeros from a string assumed to represent a simple numeric value.\hypertarget{namespacem__time__duplicate_autotoc_md92}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time__duplicate_autotoc_md92}
+C\+H\+A\+RS returned string representing input value, must be at least 23 characters long; or what is required by optional F\+MT if longer. I\+L\+EN position of last non-\/blank character in returned string; optional. I\+E\+RR If not zero, error occurred; optional. \hypertarget{namespacem__time__duplicate_autotoc_md93}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time__duplicate_autotoc_md93}
 \begin{DoxyVerb}Sample program:
 
   program demo_value_to_string
@@ -1085,20 +1104,22 @@ Expected output
  The value is [1234]
  The value is [0.33333333333333331]
 \end{DoxyVerb}
-\hypertarget{namespacem__time__duplicate_autotoc_md90}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md90}
-John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md91}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md91}
+\hypertarget{namespacem__time__duplicate_autotoc_md94}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time__duplicate_autotoc_md94}
+John S. Urban \hypertarget{namespacem__time__duplicate_autotoc_md95}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time__duplicate_autotoc_md95}
 Public Domain 
 
 References stderr(), and trimzeros().
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time__duplicate_ab836a3b7c441e5b324639db734b7de9f_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

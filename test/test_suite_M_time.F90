@@ -1,8 +1,8 @@
 program runtest
-use M_msg
-use M_verify
-use M_verify, only : unit_check, unit_check_start, unit_check_good, unit_check_bad, unit_check_done
-use M_verify, only : unit_check_level
+use M_framework__msg
+use M_framework__verify
+use M_framework__verify, only : unit_check, unit_check_start, unit_check_good, unit_check_bad, unit_check_done
+use M_framework__verify, only : unit_check_level
 use M_time
 implicit none
 interface
@@ -17,10 +17,26 @@ contains
 end program runtest
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_suite_M_time
-use M_verify, only : unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
-use M_verify, only : unit_check_stop
+use M_framework__verify, only : unit_check,unit_check_good,unit_check_bad,unit_check_done
+use M_framework__verify, only : unit_check_start,unit_check_msg,unit_check_level
+use M_framework__verify, only : unit_check_stop
 use,intrinsic :: iso_c_binding, only: c_int, c_char, c_null_char
 use M_time
+use M_time,  only: date_to_julian, now, fmtdate, date_to_unix, realtime
+use M_time,  only: julian_to_date, fmtdate, realtime
+use M_time,  only: d2o
+use M_time,  only: ordinal_seconds
+use M_time,  only: o2d, ordinal_to_date, d2o
+use M_time,  only: mo2v
+use M_time,  only: guessdate, fmtdate
+use M_time,  only: guessdate, w2d, d2w, fmtdate
+use M_time,  only: dow
+use M_time,  only: w2d
+use M_time,  only: d2u
+use M_time,  only: sec2days
+use M_time,  only: days2sec, realtime
+use M_time,  only: easter
+use M_time,  only: d2w
 implicit none
 integer :: dat(8)
 integer :: ierr
@@ -154,8 +170,6 @@ end function str2arr
 !===================================================================================================================================
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_date_to_julian()
-!!use M_time,    only : date_to_julian, now, fmtdate, date_to_unix, realtime
-implicit none
 real(kind=realtime) :: julian
 integer             :: ierr
 integer             :: dat(8)
@@ -189,8 +203,6 @@ integer             :: dat(8)
 end subroutine test_date_to_julian
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_julian_to_date()
-!!use M_time, only : julian_to_date, fmtdate, realtime
-implicit none
 real(kind=realtime)          :: juliandate
 integer                      :: dat(8)
 integer                      :: ierr
@@ -245,8 +257,6 @@ call unit_check_done('unix_to_date')
 end subroutine test_unix_to_date
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_d2o()
-!!use M_time, only : d2o
-implicit none
 integer                      :: iday,iyear,omonth,oday,rday
 integer                      :: i,dat(8)
 character(len=40),parameter  :: tests(*)=[ &
@@ -273,8 +283,6 @@ character(len=40)            :: readme
 end subroutine test_d2o
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_ordinal_seconds()
-!!use M_time, only : ordinal_seconds
-implicit none
 integer  :: rday
 
    rday=ordinal_seconds()/(60*60*24)
@@ -285,7 +293,6 @@ end subroutine test_ordinal_seconds
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_ordinal_to_date()
 !!use M_time, only : o2d, ordinal_to_date, d2o
-implicit none
 integer                      :: iday,iyear,omonth,oday
 integer                      :: i,dat(8)
 character(len=40),parameter  :: tests(*)=[ &
@@ -311,8 +318,6 @@ character(len=40)            :: readme
 end subroutine test_ordinal_to_date
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_o2d()
-!!use M_time, only : o2d, ordinal_to_date, d2o
-implicit none
 integer                      :: iday,iyear,omonth,oday
 integer                      :: i,dat(8)
 character(len=40),parameter  :: tests(*)=[ &
@@ -372,7 +377,6 @@ call unit_check_done('mo2d')
 end subroutine test_mo2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_mo2v()
-!!use M_time,     only: mo2v
 
 call unit_check('mo2v', mo2v('jan')        ==   1   ,msg='Check January')
 call unit_check('mo2v', mo2v('Feb')        ==   2   ,msg='Check February')
@@ -400,8 +404,6 @@ call unit_check_done('now')
 end subroutine test_now
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_fmtdate
-!!use M_time, only: guessdate, fmtdate
-implicit none
 character(len=80)              :: date1
 character(len=80)              :: date2
 character(len=80)              :: iso_week_date
@@ -452,8 +454,6 @@ call unit_check_done('fmtdate_usage')
 end subroutine test_fmtdate_usage
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_guessdate
-!!use M_time, only: guessdate, w2d, d2w, fmtdate
-implicit none
 character(len=80)              :: date1
 character(len=80)              :: date2
 character(len=80)              :: iso_week_date
@@ -498,8 +498,6 @@ call unit_check_done('guessdate')
 end subroutine test_guessdate
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_dow
-!!use M_time, only : dow
-implicit none
 integer          :: dat(8)     ! input date array
 integer          :: weekday
 character(len=9) :: day
@@ -511,8 +509,6 @@ call unit_check_done('dow')
 end subroutine test_dow
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_w2d
-!!use M_time, only: w2d
-implicit none
 character(len=372),allocatable :: line(:)
 integer            :: y,m,d
 integer            :: iso_year
@@ -631,8 +627,6 @@ call unit_check_done('j2d')
 end subroutine test_j2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_d2u()
-!!use M_time, only : d2u
-implicit none
 
 !  Note that time zones are usually -HHMM or -HH:MM and not MM, which is what the DAT array uses
 !  Comparing to Unix date(1) command:
@@ -663,8 +657,6 @@ call unit_check_done('u2d')
 end subroutine test_u2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_sec2days()
-!!use M_time, only: sec2days
-implicit none
 
    call unit_check('sec2days',sec2days(129860) ==              '1-12:04:20','129860 is 1-12:04:20')
    call unit_check('sec2days',sec2days(80000.0d0) ==           '0-22:13:20','80000.0d0 is 0-22:13:20')
@@ -676,8 +668,6 @@ implicit none
 end subroutine test_sec2days
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_days2sec()
-!!use M_time, only  : days2sec, realtime
-implicit none
    ! add 0 to nint function because of gfortran-11 bug passing some arguments with functions to class(*) 
    call unit_check('days2sec',0+nint(days2sec('1')) ==              1, 'expected',1,'got',0+nint(days2sec('1')))
    call unit_check('days2sec',0+nint(days2sec('1:00')) ==          60,'expected',60,'got',0+nint(days2sec('1:00')))
@@ -720,8 +710,6 @@ call unit_check_done('moon_fullness')
 end subroutine test_moon_fullness
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_easter()
-!!use M_time,  only : easter
-implicit none
 character(len=20),parameter  :: tests(*)=[ &
 '1980,4,6  ',  &
 '1981,4,19 ',  &
@@ -794,8 +782,6 @@ call unit_check_done('now_ex')
 end subroutine test_now_ex
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_d2w()
-use M_verify, only: unit_check,unit_check_good,unit_check_bad,unit_check_done,unit_check_start,unit_check_msg,unit_check_level
-implicit none
 
    call date_and_time(values=dat)
 
@@ -840,8 +826,6 @@ implicit none
 end subroutine test_d2w
 
 subroutine showme(string)
-use M_time, only : d2w
-implicit none
 character(len=*) :: string
 integer          :: iyear,iweek,iweekday
 character(len=10):: name

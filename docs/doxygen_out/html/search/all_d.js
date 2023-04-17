@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plus_5fseconds_46',['plus_seconds',['../structm__time__oop_1_1date__time.html#a86c3ebbfa03eaab62d536e6d01ad67dd',1,'m_time_oop::date_time::plus_seconds()'],['../namespacem__time__oop.html#a6830c1cce303ec401ac8e4333a5a73d4',1,'m_time_oop::plus_seconds()']]]
+  ['plus_5fseconds_46',['plus_seconds',['../structm__time____oop_1_1date__time.html#ad1c50acc64dd3c5d7209309153358a54',1,'m_time__oop::date_time::plus_seconds()'],['../namespacem__time____oop.html#a4c0664b6b271f77da67b78823f7a69f3',1,'m_time__oop::plus_seconds()']]]
 ];

@@ -278,28 +278,28 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md99"></a>
+<h2><a class="anchor" id="autotoc_md103"></a>
 NAME</h2>
 <p>string_to_value(3f) - [M_strings:NUMERIC] subroutine returns numeric value from string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md100"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine string_to_value(chars,valu,ierr)
 
  character(len=*),intent(in)              :: chars   ! input string
  integer|real|doubleprecision,intent(out) :: valu
  integer,intent(out)                      :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md101"></a>
+</pre> <h2><a class="anchor" id="autotoc_md105"></a>
 DESCRIPTION</h2>
 <p>returns a numeric value from a numeric character string.</p>
 <p>works with any g-format input, including integer, real, and exponential. If the input string begins with "B", "Z", or "O" and otherwise represents a positive whole number it is assumed to be a binary, hexadecimal, or octal value. If the string contains commas they are removed. If the string is of the form NN:MMM... or NN::MMM then NN is assumed to be the base of the whole number.</p>
 <p>if an error occurs in the READ, IOSTAT is returned in IERR and value is set to zero. if no error occurs, IERR=0. </p>
-<h2><a class="anchor" id="autotoc_md102"></a>
+<h2><a class="anchor" id="autotoc_md106"></a>
 OPTIONS</h2>
 <p>CHARS input string to read numeric value from </p>
-<h2><a class="anchor" id="autotoc_md103"></a>
+<h2><a class="anchor" id="autotoc_md107"></a>
 RETURNS</h2>
 <p>VALU numeric value returned. May be INTEGER, REAL, or DOUBLEPRECISION. IERR error flag (0 == no error) </p>
-<h2><a class="anchor" id="autotoc_md104"></a>
+<h2><a class="anchor" id="autotoc_md108"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -310,10 +310,10 @@ EXAMPLE</h2>
     call string_to_value(string,value,ierr)
     write(*,*) 'value of string ['//trim(string)//'] is ',value
  end program demo_string_to_value
-</pre> <h2><a class="anchor" id="autotoc_md105"></a>
+</pre> <h2><a class="anchor" id="autotoc_md109"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md110"></a>
 LICENSE</h2>
 <p>Public Domain</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -364,23 +364,23 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 NAME</h2>
 <p>adjustc(3f) - [M_strings:WHITESPACE] center text (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 SYNOPSIS</h2>
 <p>pure function adjustc(string[,length])</p>
 <p>character(len=*),intent(in) :: string integer,intent(in),optional :: length character(len=:),allocatable :: adjustc </p>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 DESCRIPTION</h2>
 <p>Centers input text in a string of the length specified. Returns a string of length LENGTH if LENGTH is present. Otherwise returns a string of the length of the input string. </p>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 OPTIONS</h2>
 <p>string input string to trim and center length line length to center text in, optional. </p>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 RETURNS</h2>
 <p>adjustc centered output string</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -406,10 +406,10 @@ Expected output:
  \==================================================
              this is a centered string
  \==================================================
-</pre> <h2><a class="anchor" id="autotoc_md31"></a>
+</pre> <h2><a class="anchor" id="autotoc_md35"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 LICENSE</h2>
 <p>Public Domain</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -417,7 +417,7 @@ LICENSE</h2>
   </table>
   </dd>
 </dl>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 VERSION     2.0, 20160711</h2>
 <p>AUTHOR John S. Urban </p>
 
@@ -448,26 +448,26 @@ VERSION     2.0, 20160711</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 NAME</h2>
 <p>compact(3f) - [M_strings:WHITESPACE] converts contiguous whitespace to a single character (or nothing) (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 SYNOPSIS</h2>
 <pre class="fragment">function compact(STR,CHAR) result (OUTSTR)
 
  character(len=*),intent(in)          :: STR
  character(len=*),intent(in),optional :: CHAR
  character(len=len(str))              :: OUTSTR
-</pre> <h2><a class="anchor" id="autotoc_md37"></a>
+</pre> <h2><a class="anchor" id="autotoc_md41"></a>
 DESCRIPTION</h2>
 <p>COMPACT(3f) converts multiple spaces, tabs and control characters (called "whitespace") to a single character or nothing. Leading whitespace is removed.</p>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md42"></a>
 OPTIONS</h2>
 <p>STR input string to reduce or remove whitespace from CHAR By default the character that replaces adjacent whitespace is a space. If the optional CHAR parameter is supplied it will be used to replace the whitespace. If a null character is supplied for CHAR whitespace is removed. </p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md43"></a>
 RETURNS</h2>
 <p>OUTSTR string of same length as input string but with all contiguous whitespace reduced to a single space and leading whitespace removed</p>
-<h2><a class="anchor" id="autotoc_md40"></a>
+<h2><a class="anchor" id="autotoc_md44"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -493,10 +493,10 @@ Expected output
  &gt;Thisisatest
  &gt;This:is:a:test
  &gt;AAAAAAAAAAAA
-</pre> <h2><a class="anchor" id="autotoc_md41"></a>
+</pre> <h2><a class="anchor" id="autotoc_md45"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md46"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -527,26 +527,26 @@ LICENSE</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md76"></a>
+<h2><a class="anchor" id="autotoc_md80"></a>
 NAME</h2>
 <p>v2s(3f) - [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md77"></a>
+<h2><a class="anchor" id="autotoc_md81"></a>
 SYNOPSIS</h2>
 <pre class="fragment">   function v2s(value) result(outstr)
 
     integer|real|doubleprecision|logical,intent(in ) :: value
     character(len=:),allocatable :: outstr
     character(len=*),optional,intent(in) :: fmt
-</pre><h2><a class="anchor" id="autotoc_md78"></a>
+</pre><h2><a class="anchor" id="autotoc_md82"></a>
 DESCRIPTION</h2>
 <p>v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type REAL, DOUBLEPRECISION, INTEGER or LOGICAL. It creates the strings using internal WRITE() statements. Trailing zeros are removed from non-zero values, and the string is left-justified.</p>
-<h2><a class="anchor" id="autotoc_md79"></a>
+<h2><a class="anchor" id="autotoc_md83"></a>
 OPTIONS</h2>
 <p>VALUE input value to be converted to a string FMT format can be explicitly given, but is limited to generating a string of eighty or less characters.</p>
-<h2><a class="anchor" id="autotoc_md80"></a>
+<h2><a class="anchor" id="autotoc_md84"></a>
 RETURNS</h2>
 <p>OUTSTR returned string representing input value,</p>
-<h2><a class="anchor" id="autotoc_md81"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -566,10 +566,10 @@ Expected output
  The value of 0d0     is [0]
  The value of .false. is [F]
  The value of .true. is  [T]
-</pre><h2><a class="anchor" id="autotoc_md82"></a>
+</pre><h2><a class="anchor" id="autotoc_md86"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md83"></a>
+<h2><a class="anchor" id="autotoc_md87"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -619,24 +619,24 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md107"></a>
+<h2><a class="anchor" id="autotoc_md111"></a>
 NAME</h2>
 <p>decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md108"></a>
+<h2><a class="anchor" id="autotoc_md112"></a>
 SYNOPSIS</h2>
 <pre class="fragment">logical function decodebase(string,basein,out10)
 
  character(len=*),intent(in)  :: string
  integer,intent(in)           :: basein
  integer,intent(out)          :: out10
-</pre> <h2><a class="anchor" id="autotoc_md109"></a>
+</pre> <h2><a class="anchor" id="autotoc_md113"></a>
 DESCRIPTION</h2>
 <p>Convert a numeric string representing a whole number in base BASEIN to base 10. The function returns FALSE if BASEIN is not in the range [2..36] or if string STRING contains invalid characters in base BASEIN or if result OUT10 is too big</p>
 <p>The letters A,B,...,Z represent 10,11,...,36 in the base &gt; 10.</p>
-<h2><a class="anchor" id="autotoc_md110"></a>
+<h2><a class="anchor" id="autotoc_md114"></a>
 OPTIONS</h2>
 <p>string input string. It represents a whole number in the base specified by BASEIN unless BASEIN is set to zero. When BASEIN is zero STRING is assumed to be of the form BASE::VALUE where BASE represents the function normally provided by BASEIN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10</p>
-<h2><a class="anchor" id="autotoc_md111"></a>
+<h2><a class="anchor" id="autotoc_md115"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -666,12 +666,12 @@ EXAMPLE</h2>
  enddo INFINITE
 
  end program demo_decodebase
-</pre><h2><a class="anchor" id="autotoc_md112"></a>
+</pre><h2><a class="anchor" id="autotoc_md116"></a>
 AUTHOR</h2>
 <p>John S. Urban</p>
 <p>Ref.: "Math matiques en Turbo-Pascal by M. Ducamp and A. Reverchon (2), Eyrolles, Paris, 1988".</p>
 <p>based on a F90 Version By J-P Moreau (www.jpmoreau.fr)</p>
-<h2><a class="anchor" id="autotoc_md113"></a>
+<h2><a class="anchor" id="autotoc_md117"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -813,29 +813,29 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 NAME</h2>
 <p>lower(3f) - [M_strings:CASE] changes a string to lowercase over specified range (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 SYNOPSIS</h2>
 <pre class="fragment">elemental pure function lower(str,begin,end) result (string)
 
  character(*), intent(in) :: str
  integer,optional         :: begin, end
  character(len(str))      :: string  ! output string
-</pre> <h2><a class="anchor" id="autotoc_md18"></a>
+</pre> <h2><a class="anchor" id="autotoc_md22"></a>
 DESCRIPTION</h2>
 <p>lower(string) returns a copy of the input string with all characters converted to miniscule over the specified range, assuming ASCII character sets are being used. If no range is specified the entire string is converted to miniscule.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 OPTIONS</h2>
 <p>str string to convert to miniscule begin optional starting position in "str" to begin converting to miniscule end optional ending position in "str" to stop converting to miniscule</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 RESULTS</h2>
 <p>lower copy of the input string with all characters converted to miniscule over optionally specified range.</p>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 TRIVIA</h2>
 <p>The terms "uppercase" and "lowercase" date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -852,10 +852,10 @@ Expected output
 
    mixed-case input string is .... ABCDEFG abcdefg
    lower-case output string is ... abcdefg abcdefg
-</pre> <h2><a class="anchor" id="autotoc_md23"></a>
+</pre> <h2><a class="anchor" id="autotoc_md27"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -942,10 +942,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 NAME</h2>
 <p>s2v(3f) - [M_strings:NUMERIC] function returns doubleprecision numeric value from a string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md44"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 SYNOPSIS</h2>
 <pre class="fragment">function s2v(string[,ierr][,onerr])
 
@@ -953,11 +953,11 @@ SYNOPSIS</h2>
  doubleprecision              :: s2v
  integer,intent(out),optional :: ierr
  class(*),intent(in),optional :: onerr
-</pre> <h2><a class="anchor" id="autotoc_md45"></a>
+</pre> <h2><a class="anchor" id="autotoc_md49"></a>
 DESCRIPTION</h2>
 <p>This function converts a string to a DOUBLEPRECISION numeric value.</p>
 <p>The intrinsics INT(3f), REAL(3f), and DBLE(3f) are also extended to take CHARACTER variables. The KIND= keyword is not supported on the extensions. </p>
-<h2><a class="anchor" id="autotoc_md46"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 OPTIONS</h2>
 <pre class="fragment"> string   holds string assumed to represent a numeric value
  ierr     If an error occurs the program is stopped if the optional
@@ -965,10 +965,10 @@ OPTIONS</h2>
           value an error occurred.
  onerr    The value to return on error. A value of zero (NaN) is
           returned on error by default.
-</pre> <h2><a class="anchor" id="autotoc_md47"></a>
+</pre> <h2><a class="anchor" id="autotoc_md51"></a>
 RETURNS</h2>
 <p>s2v</p>
-<h2><a class="anchor" id="autotoc_md48"></a>
+<h2><a class="anchor" id="autotoc_md52"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -1038,16 +1038,16 @@ Expected output
  &gt;          -3.0000000000000000 -4.9399999999999999E-002 0.10000000000000001
  &gt;          12345.678910000001 0.0000000000000000 12121.000000000000
  &gt;That's all folks!
-</pre> <h2><a class="anchor" id="autotoc_md49"></a>
+</pre> <h2><a class="anchor" id="autotoc_md53"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 LICENSE</h2>
 <p>Public Domain</p>
-<h2><a class="anchor" id="autotoc_md51"></a>
+<h2><a class="anchor" id="autotoc_md55"></a>
 PROCEDURE:</h2>
 <p>DESCRIPTION: s2v(3f): function returns doubleprecision number from string;zero if error occurs </p>
-<h2><a class="anchor" id="autotoc_md52"></a>
+<h2><a class="anchor" id="autotoc_md56"></a>
 VERSION:     2.0, 20160704</h2>
 <p>AUTHOR: John S. Urban </p>
 
@@ -1111,10 +1111,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2><a class="anchor" id="autotoc_md57"></a>
 NAME</h2>
 <p>split(3f) - [M_strings:TOKENS] parse string into an array using specified delimiters (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md58"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine split(input_line,array,delimiters,order,nulls)
 
@@ -1123,10 +1123,10 @@ SYNOPSIS</h2>
  character(len=*),optional,intent(in)     :: delimiters
  character(len=*),optional,intent(in)     :: order
  character(len=*),optional,intent(in)     :: nulls
-</pre> <h2><a class="anchor" id="autotoc_md55"></a>
+</pre> <h2><a class="anchor" id="autotoc_md59"></a>
 DESCRIPTION</h2>
 <p>SPLIT(3f) parses a string using specified delimiter characters and store tokens into an allocatable array</p>
-<h2><a class="anchor" id="autotoc_md56"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 OPTIONS</h2>
 <pre class="fragment">INPUT_LINE  Input string to tokenize
 
@@ -1155,7 +1155,7 @@ NULLS IGNORE|RETURN|IGNOREEND  Treatment of null fields.
             NULLS='return' adjacent delimiters create an empty element
             in the output ARRAY. If NULLS='ignoreend' then only
             trailing delimiters at the right of the string are ignored.
-</pre><h2><a class="anchor" id="autotoc_md57"></a>
+</pre><h2><a class="anchor" id="autotoc_md61"></a>
 EXAMPLES</h2>
 <p>Sample program: </p><pre class="fragment"> program demo_split
  use M_strings, only: split
@@ -1237,10 +1237,10 @@ end program demo_split
  &gt; 19 ==&gt;
  &gt; 20 ==&gt;
  &gt;  SIZE:          20
-</pre> <h2><a class="anchor" id="autotoc_md58"></a>
+</pre> <h2><a class="anchor" id="autotoc_md62"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md59"></a>
+<h2><a class="anchor" id="autotoc_md63"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1343,10 +1343,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md60"></a>
+<h2><a class="anchor" id="autotoc_md64"></a>
 NAME</h2>
 <p>string_to_values(3f) - [M_strings:NUMERIC] read a string representing numbers into a numeric array (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md65"></a>
 SYNOPSIS</h2>
 <pre class="fragment">   subroutine string_to_values(line,iread,values,inums,delims,ierr)
 
@@ -1356,14 +1356,14 @@ SYNOPSIS</h2>
     integer          :: inums
     character(len=*) :: delims
     integer          :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md62"></a>
+</pre> <h2><a class="anchor" id="autotoc_md66"></a>
 DESCRIPTION</h2>
 <p>This routine can take a string representing a series of numbers and convert it to a numeric array and return how many numbers were found.</p>
-<h2><a class="anchor" id="autotoc_md63"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 OPTIONS</h2>
 <pre class="fragment">   LINE     Input string containing numbers
    IREAD    maximum number of values to try to read from input string
-</pre><h2><a class="anchor" id="autotoc_md64"></a>
+</pre><h2><a class="anchor" id="autotoc_md68"></a>
 RESULTS</h2>
 <pre class="fragment">   VALUES   real array to be filled with numbers
    INUMS    number of values successfully read (before error occurs
@@ -1373,7 +1373,7 @@ RESULTS</h2>
             not be the last character or it will be ignored.
    IERR     error flag (0=no error, else column number string starts
             at that error occurred on).
-</pre><h2><a class="anchor" id="autotoc_md65"></a>
+</pre><h2><a class="anchor" id="autotoc_md69"></a>
 EXAMPLE</h2>
 <p>Sample Program: </p><pre class="fragment"> program demo_string_to_values
   use M_strings, only : string_to_values
@@ -1403,10 +1403,10 @@ string_to_values:
 input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
 number of values found...           3
 values...................   10.0000000  2.29999995  3.14159989
-</pre> <h2><a class="anchor" id="autotoc_md66"></a>
+</pre> <h2><a class="anchor" id="autotoc_md70"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md67"></a>
+<h2><a class="anchor" id="autotoc_md71"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1472,10 +1472,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md0"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 NAME</h2>
 <p>substitute(3f) - [M_strings:EDITING] subroutine globally substitutes one substring for another in string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md1"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine substitute(targetline,old,new,ierr,start,end)
 
@@ -1485,13 +1485,13 @@ SYNOPSIS</h2>
  integer,intent(out),optional  :: ierr
  integer,intent(in),optional   :: start
  integer,intent(in),optional   :: end
-</pre> <h2><a class="anchor" id="autotoc_md2"></a>
+</pre> <h2><a class="anchor" id="autotoc_md6"></a>
 DESCRIPTION</h2>
 <p>Globally substitute one substring for another in string.</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 OPTIONS</h2>
 <p>TARGETLINE input line to be changed. Must be long enough to hold altered output. OLD substring to find and replace NEW replacement for OLD substring IERR error code. If IER = -1 bad directive, &gt;= 0 then count of changes made. START sets the left margin to be scanned for OLD in TARGETLINE. END sets the right margin to be scanned for OLD in TARGETLINE.</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -1526,10 +1526,10 @@ Expected output
  th =&gt; TH    : THis is THe input string
  "" =&gt; BEFORE: BEFORE:THis is THe input string
  i =&gt; ""     : BEFORE:THs s THe nput strng
-</pre> <h2><a class="anchor" id="autotoc_md5"></a>
+</pre> <h2><a class="anchor" id="autotoc_md9"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1589,10 +1589,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md68"></a>
+<h2><a class="anchor" id="autotoc_md72"></a>
 NAME</h2>
 <p>transliterate(3f) - [M_strings:EDITING] replace characters from old set with new set (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md73"></a>
 SYNOPSIS</h2>
 <pre class="fragment">pure function transliterate(instr,old_set,new_set) result(outstr)
 
@@ -1600,10 +1600,10 @@ SYNOPSIS</h2>
  character(len=*),intent(in)  :: old_set
  character(len=*),intent(in)  :: new_set
  character(len=len(instr))    :: outstr
-</pre> <h2><a class="anchor" id="autotoc_md70"></a>
+</pre> <h2><a class="anchor" id="autotoc_md74"></a>
 DESCRIPTION</h2>
 <p>Translate, squeeze, and/or delete characters from the input string.</p>
-<h2><a class="anchor" id="autotoc_md71"></a>
+<h2><a class="anchor" id="autotoc_md75"></a>
 OPTIONS</h2>
 <p>instr input string to change old_set list of letters to change in INSTR if found </p><pre class="fragment">     Each character in the input string that matches a character in
      the old set is replaced.
@@ -1611,10 +1611,10 @@ OPTIONS</h2>
 
      If the new_set is shorter than the old set the last character in the
      new set is used to replace the remaining characters in the new set.
-</pre> <h2><a class="anchor" id="autotoc_md72"></a>
+</pre> <h2><a class="anchor" id="autotoc_md76"></a>
 RETURNS</h2>
 <p>outstr instr with substitutions applied</p>
-<h2><a class="anchor" id="autotoc_md73"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -1644,10 +1644,10 @@ Expected output
  &gt; AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ
  &gt; :A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:Q:R:S:T:U:V:W:X:Y:Z
  &gt; ABCDEFGHIJKLMNOPQRSTUVWXYZ
-</pre><h2><a class="anchor" id="autotoc_md74"></a>
+</pre><h2><a class="anchor" id="autotoc_md78"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md75"></a>
+<h2><a class="anchor" id="autotoc_md79"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1668,21 +1668,21 @@ LICENSE</h2>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md92"></a>
+<h2><a class="anchor" id="autotoc_md96"></a>
 NAME</h2>
 <p>trimzeros(3fp) - [M_strings:NUMERIC] Delete trailing zeros from numeric decimal string (LICENSE:PD) </p>
-<h2><a class="anchor" id="autotoc_md93"></a>
+<h2><a class="anchor" id="autotoc_md97"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine trimzeros(str)
 
  character(len=*)  :: str
-</pre> <h2><a class="anchor" id="autotoc_md94"></a>
+</pre> <h2><a class="anchor" id="autotoc_md98"></a>
 DESCRIPTION</h2>
 <p>TRIMZEROS(3f) deletes trailing zeros from a string representing a number. If the resulting string would end in a decimal point, one trailing zero is added. </p>
-<h2><a class="anchor" id="autotoc_md95"></a>
+<h2><a class="anchor" id="autotoc_md99"></a>
 OPTIONS</h2>
 <p>str input string will be assumed to be a numeric value and have trailing zeros removed </p>
-<h2><a class="anchor" id="autotoc_md96"></a>
+<h2><a class="anchor" id="autotoc_md100"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample program:
 
@@ -1694,10 +1694,10 @@ EXAMPLES</h2>
       write(*,*)trimzeros('12345.')
       write(*,*)trimzeros('12345.00e3')
    end program demo_trimzeros
-</pre><h2><a class="anchor" id="autotoc_md97"></a>
+</pre><h2><a class="anchor" id="autotoc_md101"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md98"></a>
+<h2><a class="anchor" id="autotoc_md102"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -1747,29 +1747,29 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 NAME</h2>
 <p>upper(3f) - [M_strings:CASE] changes a string to uppercase (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 SYNOPSIS</h2>
 <pre class="fragment">elemental pure function upper(str,begin,end) result (string)
 
  character(*), intent(in)    :: str
  integer,optional,intent(in) :: begin,end
  character(len(str))         :: string  ! output string
-</pre> <h2><a class="anchor" id="autotoc_md9"></a>
+</pre> <h2><a class="anchor" id="autotoc_md13"></a>
 DESCRIPTION</h2>
 <p>upper(string) returns a copy of the input string with all characters converted in the optionally specified range to uppercase, assuming ASCII character sets are being used. If no range is specified the entire string is converted to uppercase.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 OPTIONS</h2>
 <p>str string to convert to uppercase begin optional starting position in "str" to begin converting to uppercase end optional ending position in "str" to stop converting to uppercase</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 RESULTS</h2>
 <p>upper copy of the input string with all characters converted to uppercase over optionally specified range.</p>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 TRIVIA</h2>
 <p>The terms "uppercase" and "lowercase" date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.</p>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -1790,10 +1790,10 @@ Expected output
  upper-case output string is ... ABCDEFG ABCDEFG
  make first character uppercase  ... This is a sentence.
  upper(3f) is elemental ==&gt;ABC+DEF+GHI
-</pre> <h2><a class="anchor" id="autotoc_md14"></a>
+</pre> <h2><a class="anchor" id="autotoc_md18"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -1803,7 +1803,7 @@ Here is the caller graph for this function:</div>
 <map name="namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6_icgraph" id="namespacem__time__duplicate_aabdd1a3e01b26e896bd06aee488de7c6_icgraph">
 <area shape="rect" title=" " alt="" coords="716,81,900,108"/>
 <area shape="rect" href="namespacem__time__duplicate.html#a66a83a4b3d6324843c984658784b2c4e" title=" " alt="" coords="443,56,668,83"/>
-<area shape="rect" href="namespacem__time__oop.html#a78bb598e3481faa48df9733a3f9ae060" title=" " alt="" coords="478,107,633,133"/>
+<area shape="rect" href="namespacem__time____oop.html#a00fe9081f1e093560184d942a8785b60" title=" " alt="" coords="474,107,637,133"/>
 <area shape="rect" href="namespacem__time__duplicate.html#ab86bb390cc56184faeef5543735eecc4" title=" " alt="" coords="224,56,395,83"/>
 <area shape="rect" href="namespacem__time__duplicate.html#aaf8891d2fdbd165fecbdf78335f926fc" title=" " alt="" coords="7,5,174,32"/>
 <area shape="rect" href="namespacem__time__duplicate.html#a9e2a87974ffb9b81dcfb0ecee076180f" title=" " alt="" coords="7,56,175,83"/>
@@ -1862,10 +1862,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md84"></a>
+<h2><a class="anchor" id="autotoc_md88"></a>
 NAME</h2>
 <p>value_to_string(3f) - [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md85"></a>
+<h2><a class="anchor" id="autotoc_md89"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine value_to_string(value,chars[,ilen,ierr,fmt,trimz])
 
@@ -1882,16 +1882,16 @@ SYNOPSIS</h2>
  integer,optional                         :: ierr
  character(len=*),intent(in),optional     :: fmt
  logical,intent(in)                       :: trimz
-</pre> <h2><a class="anchor" id="autotoc_md86"></a>
+</pre> <h2><a class="anchor" id="autotoc_md90"></a>
 DESCRIPTION</h2>
 <p>value_to_string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type REAL, DOUBLEPRECISION, INTEGER or LOGICAL. It creates the string using internal writes. It then removes trailing zeros from non-zero values, and left-justifies the string.</p>
-<h2><a class="anchor" id="autotoc_md87"></a>
+<h2><a class="anchor" id="autotoc_md91"></a>
 OPTIONS</h2>
 <p>VALUE input value to be converted to a string FMT You may specify a specific format that produces a string up to the length of CHARS; optional. TRIMZ If a format is supplied the default is not to try to trim trailing zeros. Set TRIMZ to .true. to trim zeros from a string assumed to represent a simple numeric value.</p>
-<h2><a class="anchor" id="autotoc_md88"></a>
+<h2><a class="anchor" id="autotoc_md92"></a>
 RETURNS</h2>
 <p>CHARS returned string representing input value, must be at least 23 characters long; or what is required by optional FMT if longer. ILEN position of last non-blank character in returned string; optional. IERR If not zero, error occurred; optional. </p>
-<h2><a class="anchor" id="autotoc_md89"></a>
+<h2><a class="anchor" id="autotoc_md93"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -1924,10 +1924,10 @@ Expected output
  The value is [THE VALUE IS .750000000]
  The value is [1234]
  The value is [0.33333333333333331]
-</pre><h2><a class="anchor" id="autotoc_md90"></a>
+</pre><h2><a class="anchor" id="autotoc_md94"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md91"></a>
+<h2><a class="anchor" id="autotoc_md95"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
