@@ -1,46 +1,21 @@
 program runtest
-use M_framework__msg
-use M_framework__verify
-use M_framework__verify, only : unit_check, unit_check_start, unit_check_good, unit_check_bad, unit_check_done
-use M_framework__verify, only : unit_check_level
-use M_time
-implicit none
-interface
-   subroutine test_suite_M_time()
-   end subroutine test_suite_M_time
-end interface
-   unit_check_command=''
-   unit_check_keep_going=.true.
-   unit_check_level=0
-   call test_suite_M_time()
-contains
-end program runtest
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-subroutine test_suite_M_time
-use M_framework__verify, only : unit_check,unit_check_good,unit_check_bad,unit_check_done
-use M_framework__verify, only : unit_check_start,unit_check_msg,unit_check_level
-use M_framework__verify, only : unit_check_stop
 use,intrinsic :: iso_c_binding, only: c_int, c_char, c_null_char
-use M_time
-use M_time,  only: date_to_julian, now, fmtdate, date_to_unix, realtime
-use M_time,  only: julian_to_date, fmtdate, realtime
-use M_time,  only: d2o
-use M_time,  only: ordinal_seconds
-use M_time,  only: o2d, ordinal_to_date, d2o
-use M_time,  only: mo2v
-use M_time,  only: guessdate, fmtdate
-use M_time,  only: guessdate, w2d, d2w, fmtdate
-use M_time,  only: dow
-use M_time,  only: w2d
-use M_time,  only: d2u
-use M_time,  only: sec2days
-use M_time,  only: days2sec, realtime
-use M_time,  only: easter
-use M_time,  only: d2w
+use M_framework__verify, only : unit_check, unit_check_good, unit_check_bad, unit_check_done
+use M_framework__verify, only : unit_check_start, unit_check_msg, unit_check_level
+use M_framework__verify, only : unit_check_stop
+use M_time,  only: &
+             d2o,             d2u,      d2w,      date_to_julian, date_to_unix,    &
+             days2sec,        dow,      easter,   fmtdate,        guessdate,       &
+             julian_to_date,  mo2v,     now,      o2d,            ordinal_seconds, &
+             ordinal_to_date, realtime, sec2days, w2d,            moon_fullness,   &
+             phase_of_moon,   u2d,      j2d,      d2j,            box_month,       &
+             mo2d,            v2mo,                               unix_to_date
 implicit none
 integer :: dat(8)
 integer :: ierr
 character(len=*),parameter :: SAME='-library libGPF -section 3 -description'
+
+unit_check_level=0
 
 !! no not use M_system version or will create a circular dependency
 call put_environment_variable('TZ','America/New_York',ierr) ! some of the test values assume EST
@@ -304,7 +279,6 @@ character(len=40),parameter  :: tests(*)=[ &
    '100      2008  4      9          ',  &
    '100      2016  4      9          ']
 character(len=40)            :: readme
-
 
    do i=2,size(tests)
       readme=tests(i)
@@ -668,7 +642,7 @@ subroutine test_sec2days()
 end subroutine test_sec2days
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_days2sec()
-   ! add 0 to nint function because of gfortran-11 bug passing some arguments with functions to class(*) 
+   ! add 0 to nint function because of gfortran-11 bug passing some arguments with functions to class(*)
    call unit_check('days2sec',0+nint(days2sec('1')) ==              1, 'expected',1,'got',0+nint(days2sec('1')))
    call unit_check('days2sec',0+nint(days2sec('1:00')) ==          60,'expected',60,'got',0+nint(days2sec('1:00')))
    call unit_check('days2sec',0+nint(days2sec('1:00:00')) ==     3600, 'expected',3600,'got',0+nint(days2sec('1:00:00')))
@@ -833,5 +807,4 @@ character(len=10):: name
    call unit_check('d2w', name == string ,iyear,iweek,iweekday,name,string)
 end subroutine showme
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-end subroutine test_suite_M_time
-!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+end program runtest
