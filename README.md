@@ -76,15 +76,10 @@ programs are included in the package.
  + **[ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)()** 
    ! seconds since the beginning of current year
 ### PRINTING DATES
-```fortran
-   [fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)
-   ! Convert date array to string using format
-   [fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)
-   ! display macros recognized by fmtdate
-   [now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW) 
-   ! return string representing current time given format
-   [box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN) 
-   ! print specified month into character array
+   **[fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)** ! Convert date array to string using format
+   **[fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)** ! display macros recognized by fmtdate
+   **[now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW)** ! return string representing current time given format
+   **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
 ```
 ### PRINTING DURATIONS
 ```fortran
