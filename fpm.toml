@@ -54,7 +54,7 @@ homepage = "https://github.com/urbanjost/M_time.git"
 
 [[executable]]
    name="days2sec"
-   #source-dir="app/"
+   source-dir="app/"
    main="days2sec.f90"
    [executable.dependencies]
    M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
