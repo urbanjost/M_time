@@ -64,23 +64,19 @@ programs are included in the package.
    [dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR) 
 ```
 ### WEEK OF YEAR
-```fortran
-   ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-   [d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
-   ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
-   [w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)(iso_year,iso_week,iso_weekday,DAT)  
-```
+  > ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
+  > [d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
+  > ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
+  > [w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)(iso_year,iso_week,iso_weekday,DAT)  
 ### ORDINAL DAY
-```fortran
-   ! given date array return ordinal day of year, Jan 1st=1
+   ``! given date array return ordinal day of year, Jan 1st=1
    [d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)(dat) result(ORDINAL)
    ! given ordinal day of year return date array, Jan 1st=1
    [o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)(ordinal) result(DAT) 
    ! given ordinal day of year return date array, Jan 1st=1
    [ordinal_to_date](https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html)(year,ordinal_day,DAT)
    ! seconds since the beginning of current year
-   [ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)() 
-```
+   [ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)() ``
 ### PRINTING DATES
 ```fortran
    ! Convert date array to string using format
