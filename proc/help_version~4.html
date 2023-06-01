@@ -105,12 +105,12 @@
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/today.f90"> Source File</a>
+              <a href="../src/sec2days.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/today.f90.html'>today.f90</a></li>
-              <li><a href='../program/today.html'>today</a></li>
+              <li><a href='../sourcefile/sec2days.f90.html'>sec2days.f90</a></li>
+              <li><a href='../program/demo_sec2days.html'>demo_sec2days</a></li>
           <li class="active">help_version</li>
         </ol>
       </div>
@@ -180,36 +180,49 @@
     
 
     <h2 id="name">NAME</h2>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">today</span><span class="p">(</span><span class="mi">1</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">TIME</span><span class="o">]</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="n">suffixes</span><span class="p">.</span><span class="w"></span>
-<span class="w">    </span><span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><code><span class="n">sec2days</span><span class="p">(</span><span class="mi">1</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">TIME</span><span class="o">]</span><span class="w"> </span><span class="nf">Convert</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="n">dd</span><span class="o">-</span><span class="nl">hh</span><span class="p">:</span><span class="nl">mm</span><span class="p">:</span><span class="n">ss</span><span class="w"></span>
+<span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 <h2 id="synopsis">SYNOPSIS</h2>
-<div class="codehilite"><pre><span></span><code>    today format|--help|--version|--test
+<div class="codehilite"><pre><span></span><code>sec2days nnnn[.xxx] [ -crop]| --version| --help
 </code></pre></div>
 
 <h2 id="description">DESCRIPTION</h2>
-<div class="codehilite"><pre><span></span><code>    Outputs the current date using the specified format. Typically used
-    to generate a string to be used in building filenames containing
-    date information.
+<div class="codehilite"><pre><span></span><code>Given a numeric string representing seconds convert it to a string
+of the form
+
+   dd-hh:mm:ss
+
+where dd is days, hh hours, mm minutes and ss seconds.
 </code></pre></div>
 
 <h2 id="options">OPTIONS</h2>
-<div class="codehilite"><pre><span></span><code>    <span class="nv">format</span>     <span class="nv">any</span> <span class="nv">allowable</span> <span class="nv">format</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">fmtdate</span><span class="ss">(</span><span class="mi">3</span><span class="ss">)</span> <span class="nv">routine</span>.
-               <span class="nv">defaults</span> <span class="nv">to</span> <span class="s2">&quot;</span><span class="s">YMD</span><span class="s2">&quot;</span>.
-    <span class="o">--</span><span class="nv">help</span>     <span class="nv">display</span> <span class="nv">this</span> <span class="nv">help</span> <span class="nv">and</span> <span class="k">exit</span>
-    <span class="o">--</span><span class="nv">version</span>  <span class="nv">output</span> <span class="nv">version</span> <span class="nv">information</span> <span class="nv">and</span> <span class="k">exit</span>
-    <span class="o">--</span><span class="nv">test</span>     <span class="nv">display</span> <span class="nv">allowed</span> <span class="nv">options</span> <span class="k">for</span> <span class="nv">building</span> <span class="nv">a</span> <span class="nv">format</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">nnnn</span>[.<span class="nv">xxx</span>]  <span class="nv">number</span> <span class="nv">of</span> <span class="nv">seconds</span> <span class="nv">to</span> <span class="nv">convert</span> <span class="nv">to</span> <span class="nv">string</span> <span class="nv">of</span> <span class="nv">form</span> <span class="nv">dd</span><span class="o">-</span><span class="nv">hh</span>:<span class="nv">mm</span>:<span class="nv">ss</span>.
+            <span class="nv">nnnn</span> <span class="nv">may</span> <span class="nv">be</span> <span class="nv">interspersed</span> <span class="nv">with</span> <span class="nv">unit</span> <span class="nv">codes</span> <span class="nv">d</span>,<span class="nv">h</span>,<span class="nv">m</span>,<span class="nv">s</span>. <span class="nv">Spaces</span>,
+            <span class="nv">commas</span> <span class="nv">and</span> <span class="nv">case</span> <span class="nv">are</span> <span class="nv">ignored</span>. <span class="nv">Allowed</span> <span class="nv">aliases</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">unit</span>
+            <span class="nv">codes</span> <span class="nv">are</span>
+              <span class="nv">d</span>  <span class="nv">days</span> <span class="nv">and</span> <span class="nv">day</span>
+              <span class="nv">h</span>  <span class="nv">hours</span>,<span class="nv">hour</span>,<span class="nv">hrs</span>, <span class="nv">and</span> <span class="nv">hr</span>
+              <span class="nv">m</span>  <span class="nv">minutes</span>,<span class="nv">minute</span> <span class="nv">and</span> <span class="nv">min</span>
+              <span class="nv">s</span>  <span class="nv">seconds</span>,<span class="nv">second</span> <span class="nv">and</span> <span class="nv">sec</span>
+
+<span class="o">-</span><span class="nv">crop</span>       <span class="nv">trim</span> <span class="nv">leading</span> <span class="nv">zero</span> <span class="nv">values</span> <span class="nv">from</span> <span class="nv">output</span>
+<span class="o">-</span><span class="nv">radix</span>      <span class="nv">character</span> <span class="nv">used</span> <span class="nv">as</span> <span class="nv">decimal</span> <span class="nv">separator</span>
+<span class="o">--</span><span class="nv">help</span>      <span class="nv">display</span> <span class="nv">this</span> <span class="nv">help</span> <span class="nv">and</span> <span class="k">exit</span>
+<span class="o">--</span><span class="nv">version</span>   <span class="nv">output</span> <span class="nv">version</span> <span class="nv">information</span> <span class="nv">and</span> <span class="k">exit</span>
 </code></pre></div>
 
 <h2 id="example">EXAMPLE</h2>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">Sample</span><span class="w"> </span><span class="n">commands</span><span class="o">:</span><span class="w"></span>
-
-<span class="w">     </span><span class="n">cp</span><span class="w"> </span><span class="n">myfile</span><span class="w"> </span><span class="n">myfile</span><span class="p">.</span><span class="n n-Quoted">`today`</span><span class="w"></span>
-<span class="w">     </span><span class="n">find</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="o">-</span><span class="n">ls</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MANIFEST</span><span class="p">.</span><span class="n n-Quoted">`today epoch`</span><span class="w"></span>
-<span class="w">     </span><span class="n">mkdir</span><span class="w"> </span><span class="n n-Quoted">`today YMDhms`</span><span class="w"></span>
-<span class="w">     </span><span class="n">today</span><span class="w"> </span><span class="n">yearmonthdayhourminutesecond</span><span class="w"></span>
-<span class="w">     </span><span class="n">today</span><span class="w"> </span><span class="o">--</span><span class="n">test</span><span class="w">                          </span><span class="c1"># show formatting options</span><span class="w"></span>
+<p>usage</p>
+<div class="codehilite"><pre><span></span><code>sec2days 129860
+1-12:04:20
+sec2days 1d2h3m4s
+1-02:03:04
+sec2days 1.0 days 2 hours 3 minutes 4 seconds
+1-02:03:04
+sec2days 1.5d
+1-12:00:00
 </code></pre></div>
 
 <h2 id="author">AUTHOR</h2>
@@ -406,10 +419,14 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;@(#)PROGRAM:        today(1f)&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;@(#)DESCRIPTION:    output current time for uses such as file suffixes.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;@(#)VERSION:        1.0, 2009&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)PROGRAM:        sec2days(1f)&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)DESCRIPTION:    convert seconds to string of form dd-hh:mm:ss&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2016-06-17&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)COMPILED:       2023-06-01 12:14:37 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
@@ -436,7 +453,7 @@ parameter
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-06-01 23:46              </p>
+ on 2023-06-01 23:49              </p>
           </div>
         </div>
         <br>
