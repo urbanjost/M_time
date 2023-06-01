@@ -49,33 +49,33 @@ programs are included in the package.
 ## Procedures
 
 ### EPOCH TIME (UT starts at 0000 on 1 Jan. 1970)
-```text
+```fortran
    date_to_unix(dat,UNIXTIME,IERR) ! Convert date array to Unix Time
    unix_to_date(unixtime,DAT,IERR) ! Convert Unix Time to date array
    d2u(dat) result (UNIXTIME)  ! Convert date array to Unix Time
    u2d(unixtime) result (DAT)  ! Convert Unix Time to date array
-```text
+```
 ### JULIAN
-```text
+```fortran
    julian_to_date(julian,DAT,IERR) ! Convert Julian Date to date array
    date_to_julian(dat,JULIAN,IERR) ! Convert date array to Julian Date
    d2j(dat) result (JULIAN)    ! Convert date array to Julian Date
    j2d(julian) result (DAT)    ! Convert Julian Date to date array
-```text
+```
 ### DAY OF WEEK
-```text
+```fortran
    ! Convert date array to day of the week as number(Mon=1) and name
    dow(dat,[WEEKDAY],[DAY],IERR) 
-```text
+```
 ### WEEK OF YEAR
-```text
+```fortran
    ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
    d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
    ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
    w2d(iso_year,iso_week,iso_weekday,DAT)  
-```text
+```
 ### ORDINAL DAY
-```text
+```fortran
    ! given date array return ordinal day of year, Jan 1st=1
    d2o(dat) result(ORDINAL)
    ! given ordinal day of year return date array, Jan 1st=1
@@ -84,9 +84,9 @@ programs are included in the package.
    ordinal_to_date(year,ordinal_day,DAT)
    ! seconds since the beginning of current year
    ordinal_seconds() 
-```text
+```
 ### PRINTING DATES
-```text
+```fortran
    ! Convert date array to string using format
    fmtdate(dat,format) result (TIMESTR)
    ! display macros recognized by fmtdate(3f)
@@ -95,43 +95,43 @@ programs are included in the package.
    now(format) result (NOW) 
    ! print specified month into character array
    box_month(dat,CALEN) 
-```text
+```
 ### PRINTING DURATIONS
-```text
+```fortran
    ! converts seconds to string D-HH:MM:SS
    sec2days(seconds) result (dhms)  
    ! converts string D-HH:MM:SS to seconds from small to large
    days2sec(str) result (seconds) 
-```text
+```
 ### MONTH NAME
-```text
+```fortran
    ! given month name return month number
    mo2v(month_name) result (MONTH_NUMBER) 
    ! given month number return month name
    v2mo(month_number) result (MONTH_NAME) 
    ! given month name and year return date array for 1st day of month
    mo2d(month_name) result (DAT)    
-```text
+```
 ### ASTROLOGICAL
-```text
+```fortran
    ! calculate month and day Easter falls on for given year
    easter(year,dat)    
    ! percentage of moon phase from new to full
    moon_fullness(datin) result(FULLNESS) 
    ! return name for phase of moon for given date
    phase_of_moon(datin) result(PHASE) 
-```text
+```
 ### READING DATES
-```text
+```fortran
    ! Converts a date string to a date array, in various formats
    guessdate(anot,dat) 
-```text
+```
 <!--
 ### C INTERFACE
-```text
+```fortran
    ! Call sleep(3c)
    system_sleep(wait_seconds)  
-```text
+```
 -->
 integer,parameter,public   :: realtime=kind(0.0d0)           ! type for unix epoch time and julian days
 <!--
