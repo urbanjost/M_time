@@ -49,44 +49,42 @@ programs are included in the package.
 ## Procedures
 
 ### EPOCH TIME (UT starts at 0000 on 1 Jan. 1970)
-+ [date_to_unix](https://urbanjost.github.io/M_time/date_to_unit.3m_time.html) (dat,UNIXTIME,IERR) ! Convert date array to Unix Time
-+ [unix_to_date](https://urbanjost.github.io/M_time/unit_to_date.3m_time.html)(unixtime,DAT,IERR) ! Convert Unix Time to date array
-+ [d2u](https://urbanjost.github.io/M_time/d2u.3m_time.html)(dat) result (UNIXTIME)  ! Convert date array to Unix Time
-+ [u2d](https://urbanjost.github.io/M_time/u2d.3m_time.html)(unixtime) result (DAT)  ! Convert Unix Time to date array
++ **[date_to_unix](https://urbanjost.github.io/M_time/date_to_unit.3m_time.html) (dat,UNIXTIME,IERR)** ! Convert date array to Unix Time
++ **[unix_to_date](https://urbanjost.github.io/M_time/unit_to_date.3m_time.html)(unixtime,DAT,IERR)** ! Convert Unix Time to date array
++ **[d2u](https://urbanjost.github.io/M_time/d2u.3m_time.html)(dat) result (UNIXTIME)**  ! Convert date array to Unix Time
++ **[u2d](https://urbanjost.github.io/M_time/u2d.3m_time.html)(unixtime) result (DAT)**  ! Convert Unix Time to date array
 ### JULIAN
-+> [julian_to_date](https://urbanjost.github.io/M_time/julain_to_date.3m_time.html)(julian,DAT,IERR) ! Convert Julian Date to date array
-+> [date_to_julian](https://urbanjost.github.io/M_time/date_to_julian.3m_time.html)(dat,JULIAN,IERR) ! Convert date array to Julian Date
-+> [d2j](https://urbanjost.github.io/M_time/d2j.3m_time.html)(dat) result (JULIAN)    ! Convert date array to Julian Date
-+> [j2d](https://urbanjost.github.io/M_time/j2d.3m_time.html)(julian) result (DAT)    ! Convert Julian Date to date array
++ **[julian_to_date](https://urbanjost.github.io/M_time/julain_to_date.3m_time.html)(julian,DAT,IERR)** ! Convert Julian Date to date array
++ **[date_to_julian](https://urbanjost.github.io/M_time/date_to_julian.3m_time.html)(dat,JULIAN,IERR)** ! Convert date array to Julian Date
++ **[d2j](https://urbanjost.github.io/M_time/d2j.3m_time.html)(dat) result (JULIAN)**    ! Convert date array to Julian Date
++ **[j2d](https://urbanjost.github.io/M_time/j2d.3m_time.html)(julian) result (DAT)**    ! Convert Julian Date to date array
 ### DAY OF WEEK
-```fortran
-   ! Convert date array to day of the week as number and name
-   [dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR) 
-```
++ **[dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR)**
+  ! Convert date array to day of the week as number and name
 ### WEEK OF YEAR
-  > ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-  > [d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
-  > ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
-  > [w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)(iso_year,iso_week,iso_weekday,DAT)  
+**[d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)**(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
+! Calculate iso-8601 Week-numbering year date yyyy-Www-d
+**[w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)**(iso_year,iso_week,iso_weekday,DAT)  
+! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
 ### ORDINAL DAY
-   ``! given date array return ordinal day of year, Jan 1st=1
-   [d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)(dat) result(ORDINAL)
+ + **[d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)**(dat) result(ORDINAL)
+   ! given date array return ordinal day of year, Jan 1st=1
+ + **[o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)**(ordinal) result(DAT) 
    ! given ordinal day of year return date array, Jan 1st=1
-   [o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)(ordinal) result(DAT) 
+ + **[ordinal_to_date](https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html)**(year,ordinal_day,DAT)
    ! given ordinal day of year return date array, Jan 1st=1
-   [ordinal_to_date](https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html)(year,ordinal_day,DAT)
+ + **[ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)()** 
    ! seconds since the beginning of current year
-   [ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)() ``
 ### PRINTING DATES
 ```fortran
-   ! Convert date array to string using format
    [fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)
-   ! display macros recognized by fmtdate
+   ! Convert date array to string using format
    [fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)
-   ! return string representing current time given format
+   ! display macros recognized by fmtdate
    [now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW) 
-   ! print specified month into character array
+   ! return string representing current time given format
    [box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN) 
+   ! print specified month into character array
 ```
 ### PRINTING DURATIONS
 ```fortran
