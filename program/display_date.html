@@ -137,7 +137,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../program/display_date.html#variable-dat~37">dat</a>
             <a class="list-group-item" href="../program/display_date.html#variable-duration~2">duration</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ident~14">ident</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ident~13">ident</a>
             <a class="list-group-item" href="../program/display_date.html#variable-ierr~18">ierr</a>
             <a class="list-group-item" href="../program/display_date.html#variable-inums~2">inums</a>
             <a class="list-group-item" href="../program/display_date.html#variable-output">output</a>
@@ -196,8 +196,8 @@
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li>M_kracken95</li>
                 <li>m_strings</li>
+                <li>M_kracken95</li>
                 <li><a href='../module/m_time.html'>M_time</a></li>
             </ul>
           </li>
@@ -219,7 +219,7 @@
         <div class="list-group">
             <a class="list-group-item" href="../program/display_date.html#variable-dat~37">dat</a>
             <a class="list-group-item" href="../program/display_date.html#variable-duration~2">duration</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ident~14">ident</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ident~13">ident</a>
             <a class="list-group-item" href="../program/display_date.html#variable-ierr~18">ierr</a>
             <a class="list-group-item" href="../program/display_date.html#variable-inums~2">inums</a>
             <a class="list-group-item" href="../program/display_date.html#variable-output">output</a>
@@ -316,7 +316,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~14"></span>
+              <span class="anchor" id="variable-ident~13"></span>
               character(len=*),
             </td>
             <td>
@@ -491,11 +491,11 @@ parameter
 <span class="w">      </span><span class="k">stop</span>
 <span class="k">   endif</span><span class="w"></span>
 <span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
-<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to UET number, convert to dat</span>
-<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_jed&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_jed&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_jed&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to JED number, convert to dat</span>
-<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_dat&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_dat&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">()</span><span class="w">                                                    </span><span class="c">! initialize DAT with current date and time to get time zone</span>
 <span class="w">      </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dat</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="w">                              </span><span class="c">! default is Jan 1st in current year and timezone 00:00:00</span>
 <span class="w">      </span><span class="k">call </span><span class="n">string_to_values</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_dat&#39;</span><span class="p">),</span><span class="n">size</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="n">rdat</span><span class="p">,</span><span class="n">inums</span><span class="p">,</span><span class="s1">&#39; ,:/&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! convert string to array and overlay default values</span>
@@ -503,12 +503,12 @@ parameter
 
 <span class="w">      </span><span class="c">! if -date is all integer digits and whitespace and +- and only one - (for UTC value) then use it directly to load a DAT</span>
 <span class="w">      </span><span class="c">!chars=switch(trim(sget(&#39;now_dat&#39;)))</span>
-<span class="w">      </span><span class="c">!if( all(isdigit(chars).or.isspace(chars).or.chars.eq.&#39;-&#39;.or.chars.eq.&#39;+&#39; ) .and. count(chars.eq.&#39;-&#39;).le.1 )then</span>
+<span class="w">      </span><span class="c">!if( all(isdigit(chars).or.isspace(chars).or.chars == &#39;-&#39;.or.chars == &#39;+&#39; ) .and. count(chars == &#39;-&#39;) &lt;= 1 )then</span>
 <span class="w">      </span><span class="c">!else</span>
 <span class="w">      </span><span class="c">!   write(*,*)&#39;*now* error: invalid characters in -dat input &#39;//trim(sget(&#39;now_dat&#39;))</span>
 <span class="w">      </span><span class="c">!endif</span>
 
-<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_date&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                            </span><span class="c">! convert command option to date string and try to guess date</span>
+<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_date&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                            </span><span class="c">! convert command option to date string and try to guess date</span>
 <span class="w">      </span><span class="k">call </span><span class="n">guessdate</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_date&#39;</span><span class="p">),</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
 <span class="w">   </span><span class="k">else</span><span class="w">                                                            </span><span class="c">! create DAT for current time</span>
 <span class="w">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">()</span><span class="w">                                                    </span><span class="c">! current time</span>
@@ -668,7 +668,7 @@ parameter
 <span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;@(#)COMPILED:       2023-04-16 20:47:38 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)COMPILED:       2023-06-01 12:14:37 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -694,7 +694,7 @@ parameter
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

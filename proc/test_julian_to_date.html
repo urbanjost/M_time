@@ -180,6 +180,7 @@
     
 
 
+
     <h3>Arguments</h3>
     <em>None</em>
     <br>
@@ -337,20 +338,20 @@
 <span class="w">   </span><span class="n">juliandate</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="w">                 </span><span class="c">! set sample Julian Date</span>
 <span class="w">   </span><span class="k">call </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! create DAT array for this date</span>
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">   </span><span class="k">call </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go back one day</span>
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">   </span><span class="k">call </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go forward one day</span>
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span><span class="w"></span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"></span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">)</span><span class="w"></span>
 
 <span class="k">end subroutine </span><span class="n">test_julian_to_date</span><span class="w"></span>
 </pre></div>
@@ -373,7 +374,7 @@
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

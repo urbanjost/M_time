@@ -140,7 +140,7 @@
             <a class="list-group-item" href="../program/month_exe.html#variable-calenyear">calenyear</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-cscr">cscr</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-dat_values">dat_values</a>
-            <a class="list-group-item" href="../program/month_exe.html#variable-ident~13">ident</a>
+            <a class="list-group-item" href="../program/month_exe.html#variable-ident~11">ident</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-month~4">month</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-r">r</a>
         </div>
@@ -165,8 +165,8 @@
       </div>
       <div id="subs-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../program/month_exe.html#proc-help_usage~4">help_usage</a>
-            <a class="list-group-item" href="../program/month_exe.html#proc-help_version~4">help_version</a>
+            <a class="list-group-item" href="../program/month_exe.html#proc-help_usage">help_usage</a>
+            <a class="list-group-item" href="../program/month_exe.html#proc-help_version">help_version</a>
         </div>
       </div>
     </div>
@@ -222,7 +222,7 @@
             <a class="list-group-item" href="../program/month_exe.html#variable-calenyear">calenyear</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-cscr">cscr</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-dat_values">dat_values</a>
-            <a class="list-group-item" href="../program/month_exe.html#variable-ident~13">ident</a>
+            <a class="list-group-item" href="../program/month_exe.html#variable-ident~11">ident</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-month~4">month</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-r">r</a>
         </div>
@@ -247,8 +247,8 @@
       </div>
       <div id="subs-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../program/month_exe.html#proc-help_usage~4">help_usage</a>
-            <a class="list-group-item" href="../program/month_exe.html#proc-help_version~4">help_version</a>
+            <a class="list-group-item" href="../program/month_exe.html#proc-help_usage">help_usage</a>
+            <a class="list-group-item" href="../program/month_exe.html#proc-help_version">help_version</a>
         </div>
       </div>
     </div>
@@ -365,7 +365,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~13"></span>
+              <span class="anchor" id="variable-ident~11"></span>
               character(len=*),
             </td>
             <td>
@@ -426,7 +426,7 @@ parameter
     <section>
     <h2>Subroutines</h2>
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-help_usage~4"></span><h3> subroutine <a href='../proc/help_usage~4.html'>help_usage</a>(l_help)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-help_usage"></span><h3> subroutine <a href='../proc/help_usage.html'>help_usage</a>(l_help)  
 </h3></div>
     <div class="panel-body">
           
@@ -466,11 +466,11 @@ parameter
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-help_version~4"></span><h3> subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-help_version"></span><h3> subroutine <a href='../proc/help_version.html'>help_version</a>(l_version)  
 </h3></div>
     <div class="panel-body">
           
-  <a href="../proc/help_version~4.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <a href="../proc/help_version.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -526,15 +526,15 @@ parameter
 <span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;month_version&#39;</span><span class="p">))</span><span class="w">                          </span><span class="c">! print version information and stop if requested</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">! use user-specified year date instead of current year. Try reading year from two places (-oo and -year) on command line</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                                 </span><span class="c">! check -year option for a year value</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                                 </span><span class="c">! check -year option for a year value</span>
 <span class="w">      </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">)</span><span class="w">                               </span><span class="c">! if value was specified use it</span>
-<span class="w">   </span><span class="n">elseif</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="n">elseif</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">         </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">)</span><span class="w">                              </span><span class="c">! check -oo option for a year value if did not find -year VALUE</span>
 <span class="w">   </span><span class="k">endif</span><span class="w"></span>
 <span class="w">   </span><span class="c">!write(*,*)&#39;YEAR=&#39;,dat_values(1)</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="n">cscr</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_month&#39;</span><span class="p">)</span><span class="w">                                          </span><span class="c">! get month as string so can see if name or number or blank</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">cscr</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">cscr</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      select case</span><span class="p">(</span><span class="n">cscr</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
 <span class="w">      </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="s1">&#39;z&#39;</span><span class="p">)</span><span class="w">                                          </span><span class="c">! assume month name instead of month number</span>
 <span class="w">        </span><span class="n">month</span><span class="o">=</span><span class="n">mo2v</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">cscr</span><span class="p">))</span><span class="w"></span>
@@ -545,7 +545,7 @@ parameter
 <span class="w">      </span><span class="n">month</span><span class="o">=</span><span class="n">dat_values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 <span class="w">   </span><span class="k">endif</span><span class="w"></span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">month</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">                                                </span><span class="c">! no month specified, display an entire year</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">month</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">                                                </span><span class="c">! no month specified, display an entire year</span>
 <span class="w">      </span><span class="k">do </span><span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="w">                                                       </span><span class="c">! display year in four rows</span>
 <span class="w">         </span><span class="k">do </span><span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="w">                                                    </span><span class="c">! three months per row</span>
 <span class="w">            </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="n">c</span><span class="o">+</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="w"></span>
@@ -673,7 +673,7 @@ parameter
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;@(#)COMPILED:       2023-04-16 20:47:38 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)COMPILED:       2023-06-01 12:14:36 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -702,7 +702,7 @@ parameter
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

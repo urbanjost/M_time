@@ -142,28 +142,122 @@ provided.</p>
 <p>Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
 programs are included in the package.</p>
-<p>A simple program that formats the current time as desired, and displays
-the built-in help text for the formatting options is as simple as</p>
-<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="k">program </span><span class="n">demo_now</span><span class="w"></span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate_usage</span><span class="w"></span>
-<span class="w">      </span><span class="k">implicit none</span><span class="w"></span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! % macros</span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is %w, %l %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! or, if not found then keywords</span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;year-month-day&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! and if that is not found, abbreviations</span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;Y-M-D h:m:s&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! built-in usage descriptions can be displayed as well</span>
-<span class="w">     </span><span class="c">!</span>
-<span class="w">         </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">()</span><span class="w"> </span><span class="c">! see all formatting options</span>
-<span class="w">      </span><span class="k">end program </span><span class="n">demo_now</span><span class="w"></span>
+<h2 id="procedures">Procedures</h2>
+<h3 id="epoch-time-ut-starts-at-0000-on-1-jan-1970">EPOCH TIME (UT starts at 0000 on 1 Jan. 1970)</h3>
+<div class="codehilite"><pre><span></span><code>   date_to_unix(dat,UNIXTIME,IERR) ! Convert date array to Unix Time
+   unix_to_date(unixtime,DAT,IERR) ! Convert Unix Time to date array
+   d2u(dat) result (UNIXTIME)  ! Convert date array to Unix Time
+   u2d(unixtime) result (DAT)  ! Convert Unix Time to date array
+```text
+### JULIAN
+```text
+   julian_to_date(julian,DAT,IERR) ! Convert Julian Date to date array
+   date_to_julian(dat,JULIAN,IERR) ! Convert date array to Julian Date
+   d2j(dat) result (JULIAN)    ! Convert date array to Julian Date
+   j2d(julian) result (DAT)    ! Convert Julian Date to date array
+```text
+### DAY OF WEEK
+```text
+   ! Convert date array to day of the week as number(Mon=1) and name
+   dow(dat,[WEEKDAY],[DAY],IERR) 
+```text
+### WEEK OF YEAR
+```text
+   ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
+   d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
+   ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
+   w2d(iso_year,iso_week,iso_weekday,DAT)  
+```text
+### ORDINAL DAY
+```text
+   ! given date array return ordinal day of year, Jan 1st=1
+   d2o(dat) result(ORDINAL)
+   ! given ordinal day of year return date array, Jan 1st=1
+   o2d(ordinal) result(DAT) 
+   ! given ordinal day of year return date array, Jan 1st=1
+   ordinal_to_date(year,ordinal_day,DAT)
+   ! seconds since the beginning of current year
+   ordinal_seconds() 
+```text
+### PRINTING DATES
+```text
+   ! Convert date array to string using format
+   fmtdate(dat,format) result (TIMESTR)
+   ! display macros recognized by fmtdate(3f)
+   fmtdate_usage(indent)
+   ! return string representing current time given format
+   now(format) result (NOW) 
+   ! print specified month into character array
+   box_month(dat,CALEN) 
+```text
+### PRINTING DURATIONS
+```text
+   ! converts seconds to string D-HH:MM:SS
+   sec2days(seconds) result (dhms)  
+   ! converts string D-HH:MM:SS to seconds from small to large
+   days2sec(str) result (seconds) 
+```text
+### MONTH NAME
+```text
+   ! given month name return month number
+   mo2v(month_name) result (MONTH_NUMBER) 
+   ! given month number return month name
+   v2mo(month_number) result (MONTH_NAME) 
+   ! given month name and year return date array for 1st day of month
+   mo2d(month_name) result (DAT)    
+```text
+### ASTROLOGICAL
+```text
+   ! calculate month and day Easter falls on for given year
+   easter(year,dat)    
+   ! percentage of moon phase from new to full
+   moon_fullness(datin) result(FULLNESS) 
+   ! return name for phase of moon for given date
+   phase_of_moon(datin) result(PHASE) 
+```text
+### READING DATES
+```text
+   ! Converts a date string to a date array, in various formats
+   guessdate(anot,dat) 
+```text
+&lt;!--
+### C INTERFACE
+```text
+   ! Call sleep(3c)
+   system_sleep(wait_seconds)  
+```text
+--&gt;
+integer,parameter,public   :: realtime=kind(0.0d0)           ! type for unix epoch time and julian days
+&lt;!--
+! CONVENIENT CONSTANTS FOR USE WITH + AND - OPERATORS
+real(kind=realtime),public,parameter :: dt_minute=60.0_dp     ! one minute in seconds
+real(kind=realtime),public,parameter :: dt_hour=3600.0_dp     ! one hour in seconds
+real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours in seconds
+real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
+--&gt;
+A simple program that formats the current time as desired, and displays
+the built-in help text for the formatting options is as simple as
+```fortran
+      program demo_now
+      use M_time, only : now, fmtdate_usage
+      implicit none
+         !
+         ! % macros
+     !
+         write(*,*)now(&quot;The current date is %w, %l %d, %Y %H:%m:%s %N&quot;)
+     !
+         ! or, if not found then keywords
+     !
+         write(*,*)now(&quot;year-month-day&quot;)
+     !
+         ! and if that is not found, abbreviations
+     !
+         write(*,*)now(&quot;Y-M-D h:m:s&quot;)
+     !
+         ! built-in usage descriptions can be displayed as well
+     !
+         call fmtdate_usage() ! see all formatting options
+      end program demo_now
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code>   The current date is Thu, Oct 20th, 2022 7:26:04 PM
@@ -550,7 +644,7 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

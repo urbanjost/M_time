@@ -452,11 +452,11 @@ parameter
 <span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;sec2days_version&#39;</span><span class="p">))</span><span class="w">                              </span><span class="c">! display version information and stop if true</span>
 <span class="w">   </span><span class="nb">radix</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;sec2days_radix&#39;</span><span class="p">))</span><span class="w"></span>
 <span class="w">   </span><span class="n">line</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;sec2days_oo&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">radix</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">radix</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      call </span><span class="n">substitute</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="w"></span>
 <span class="w">      </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="nb">radix</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="w"></span>
 <span class="w">   </span><span class="k">endif</span>
-<span class="k">   </span><span class="n">strlocal</span><span class="o">=</span><span class="n">sec2days</span><span class="p">(</span><span class="n">line</span><span class="p">,(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;sec2days_crop&#39;</span><span class="p">)))</span><span class="w"> </span><span class="c">! get command line option and convert to dd-hh:mm:ss string</span>
+<span class="k">   </span><span class="n">strlocal</span><span class="o">=</span><span class="n">sec2days</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">line</span><span class="p">),</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;sec2days_crop&#39;</span><span class="p">))</span><span class="w"> </span><span class="c">! get command line option and convert to dd-hh:mm:ss string</span>
 <span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">strlocal</span><span class="w"></span>
 <span class="k">contains</span>
 <span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="w"></span>
@@ -588,7 +588,7 @@ parameter
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;@(#)COMPILED:       2023-04-16 20:47:38 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)COMPILED:       2023-06-01 12:14:37 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -614,7 +614,7 @@ parameter
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

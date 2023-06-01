@@ -105,12 +105,12 @@
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/month.f90"> Source File</a>
+              <a href="../src/today.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/month.f90.html'>month.f90</a></li>
-              <li><a href='../program/month_exe.html'>month_exe</a></li>
+              <li><a href='../sourcefile/today.f90.html'>today.f90</a></li>
+              <li><a href='../program/today.html'>today</a></li>
           <li class="active">help_usage</li>
         </ol>
       </div>
@@ -137,10 +137,10 @@
       </div>
       <div id="vars-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-help_text~7">help_text</a>
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-i~12">i</a>
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-ident~7">ident</a>
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-stopit~7">stopit</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-help_text~8">help_text</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-i~14">i</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-ident~9">ident</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-stopit~8">stopit</a>
         </div>
       </div>
     </div>
@@ -178,6 +178,7 @@
     <h2> subroutine help_usage(l_help)  
 </h2>
     
+
 
 
     <h3>Arguments</h3>
@@ -222,10 +223,10 @@
       </div>
       <div id="vars-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-help_text~7">help_text</a>
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-i~12">i</a>
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-ident~7">ident</a>
-            <a class="list-group-item" href="../proc/help_usage~4.html#variable-stopit~7">stopit</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-help_text~8">help_text</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-i~14">i</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-ident~9">ident</a>
+            <a class="list-group-item" href="../proc/help_usage~4.html#variable-stopit~8">stopit</a>
         </div>
       </div>
     </div>
@@ -273,7 +274,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-help_text~7"></span>
+              <span class="anchor" id="variable-help_text~8"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -290,7 +291,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~12"></span>
+              <span class="anchor" id="variable-i~14"></span>
               integer,
             </td>
               <td>public</td>
@@ -307,7 +308,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~7"></span>
+              <span class="anchor" id="variable-ident~9"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -324,7 +325,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stopit~7"></span>
+              <span class="anchor" id="variable-stopit~8"></span>
               logical,
             </td>
               <td>public</td>
@@ -365,37 +366,28 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
 <span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   month(1f) - [TIME] display a calendar                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       today(1f) - [TIME] output current time for uses such as file suffixes.   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       (LICENSE:PD)                                                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   month [[ -year] NNNN] [ -month NN|month_name]                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       today format|--help|--version|--test                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   month(1) displays a simple calendar. If no arguments are specified,          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   the current year is displayed.                                               &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       Outputs the current date using the specified format. Typically used      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       to generate a string to be used in building filenames containing         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       date information.                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   -month      Display single month output. The month is numeric (1-12)         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;               or a month name or blank. If blank the current month is assumed. &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       format     any allowable format for the fmtdate(3) routine.              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                  defaults to &quot;YMD&quot;.                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       --help     display this help and exit                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       --version  output version information and exit                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       --test     display allowed options for building a format                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;EXAMPLE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;       Sample commands:                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   -year NNNN  Select the year to display. A year starts on Jan 1st.            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   -help       Display help text and exit.                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;   -version    Display version information and exit.                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;      month -month 12                                                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt;    December 2015                                                       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt;Mo Tu We Th Fr Sa Su                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt;    1  2  3  4  5  6                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt; 7  8  9 10 11 12 13                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt;14 15 16 17 18 19 20                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt;21 22 23 24 25 26 27                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       &gt;28 29 30 31                                                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;      month -month April # month names may be given instead of numbers          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;        cp myfile myfile.`today`                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;        find . -ls &gt; MANIFEST.`today epoch`                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;        mkdir `today YMDhms`                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;        today yearmonthdayhourminutesecond                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;        today --test                          # show formatting options         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
@@ -425,7 +417,7 @@ parameter
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

@@ -183,6 +183,7 @@
     
 
 
+
     <h3>Arguments</h3>
     <em>None</em>
     <br>
@@ -416,18 +417,18 @@
 
 <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="n">date1</span><span class="p">,</span><span class="n">date2</span><span class="p">,</span><span class="n">iso_week_date</span><span class="p">,</span><span class="n">comment</span><span class="w"></span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">unit_check_level</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<span class="k">      call </span><span class="n">unit_check_msg</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="s1">&#39;GIVEN:&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">date1</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">comment</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">unit_test_level</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      call </span><span class="n">unit_test_msg</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="s1">&#39;GIVEN:&#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">date1</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">comment</span><span class="p">))</span><span class="w"></span>
 <span class="w">   </span><span class="k">endif</span>
 
 <span class="k">   call </span><span class="n">guessdate</span><span class="p">(</span><span class="n">date1</span><span class="p">,</span><span class="n">dat</span><span class="p">)</span><span class="w">                                         </span><span class="c">! convert date string to DAT</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">date2</span><span class="p">),</span><span class="s1">&#39;GOT&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day&#39;</span><span class="p">),</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">date2</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">date2</span><span class="p">),</span><span class="s1">&#39;GOT&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day&#39;</span><span class="p">),</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">date2</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">   </span><span class="c">! convert DAT to ISO week date, all generated dates should match ISO week date</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_check</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">&quot;%I&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">iso_week_date</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="n">iso_week_date</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">&quot;%I&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">iso_week_date</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="n">iso_week_date</span><span class="p">)</span><span class="w"></span>
 <span class="k">enddo</span>
 
-<span class="k">call </span><span class="n">unit_check_done</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">)</span><span class="w"></span>
 
 <span class="k">end subroutine </span><span class="n">test_fmtdate</span><span class="w"></span>
 </pre></div>
@@ -450,7 +451,7 @@
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>

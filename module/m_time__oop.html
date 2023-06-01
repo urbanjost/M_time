@@ -191,7 +191,7 @@
     <div class="col-md-9" id='text'>
       <h2 id="name">NAME</h2>
 <div class="codehilite"><pre><span></span><code><span class="nv">M_time__oop</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span> <span class="o">-</span> [<span class="nv">M_time</span>::<span class="nv">INTRO</span>::<span class="nv">OOPS</span>] <span class="nv">OOP</span> <span class="nv">interface</span> <span class="k">for</span> <span class="nv">M_time</span><span class="ss">(</span><span class="mi">3</span><span class="nv">fm</span><span class="ss">)</span>
-<span class="ss">(</span><span class="nv">LICENSE</span>:<span class="nv">PD</span><span class="ss">)</span>
+<span class="ss">(</span><span class="nv">LICENSE</span>:<span class="nv">MIT</span><span class="ss">)</span>
 </code></pre></div>
 
 <h2 id="synopsis">SYNOPSIS</h2>
@@ -560,8 +560,16 @@ example program demonstrates and documents the interface
    FOR %DELTA(MILLISECOND=-10000) Saturday, October 24th, 2020 9:49:44 PM
    FOR %DELTA(year=3,month=2,day=100,hour=200,week=-1,minute=300,
    second=1000,millisecond=100000) Thursday, April 4th, 2024 11:06:24 AM
-   FOR %DELTA(DURATION=&lsquo;1-20:30:40.50&rsquo;) Monday, October 26th, 2020 6:20:34 PM
-submodule (M_time) M_time__oop
+   FOR %DELTA(DURATION=&lsquo;1-20:30:40.50&rsquo;) Monday, October 26th, 2020 6:20:34 PM</p>
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban, 2015
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>MIT
+</code></pre></div>
+
+<p>submodule (M_time) M_time__oop
 end submodule M_time__oop</p>
 <br>          <div class="panel panel-default">
       <div class="panel-heading">
@@ -570,8 +578,8 @@ end submodule M_time__oop</p>
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></li>
                 <li><a href='../module/m_time.html'>M_time</a></li>
+                <li><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></li>
             </ul>
           </li>
       </ul>
@@ -929,7 +937,7 @@ parameter
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-datout'>datout</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-datout'>datout</a></strong>
  =>
                     dt2d_
 <small>Function</small>                </td>
@@ -939,7 +947,7 @@ parameter
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-delta'>delta</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-delta'>delta</a></strong>
 <small>Function</small>                </td>
                 <td></td>
               </tr>
@@ -947,7 +955,7 @@ parameter
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-epoch'>epoch</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-epoch'>epoch</a></strong>
  =>
                     epoch_
 <small>Function</small>                </td>
@@ -957,7 +965,7 @@ parameter
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-format'>format</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-format'>format</a></strong>
 <small>Function</small>                </td>
                 <td></td>
               </tr>
@@ -965,7 +973,7 @@ parameter
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-init'>init</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-init'>init</a></strong>
  =>
                     init_dt
 <small>Subroutine</small>                </td>
@@ -975,7 +983,7 @@ parameter
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-julian'>julian</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-julian'>julian</a></strong>
  =>
                     julian_
 <small>Function</small>                </td>
@@ -985,7 +993,7 @@ parameter
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28%2B%29'>operator(+)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28%2B%29'>operator(+)</a></strong>
  =>
                     plus_seconds
 <small></small>                </td>
@@ -995,7 +1003,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28-%29'>operator(-)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28-%29'>operator(-)</a></strong>
  =>
                     minus_seconds
 <small></small>                </td>
@@ -1005,7 +1013,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28-%29~2'>operator(-)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28-%29~2'>operator(-)</a></strong>
  =>
                     minus_date_time
 <small></small>                </td>
@@ -1015,7 +1023,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28SLASH%3D%29'>operator(/=)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28SLASH%3D%29'>operator(/=)</a></strong>
  =>
                     ne
 <small></small>                </td>
@@ -1025,7 +1033,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28lt%29'>operator(<)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28lt%29'>operator(<)</a></strong>
  =>
                     lt
 <small></small>                </td>
@@ -1035,7 +1043,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28lt%3D%29'>operator(<=)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28lt%3D%29'>operator(<=)</a></strong>
  =>
                     le
 <small></small>                </td>
@@ -1045,7 +1053,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28%3D%3D%29'>operator(==)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28%3D%3D%29'>operator(==)</a></strong>
  =>
                     eq
 <small></small>                </td>
@@ -1055,7 +1063,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28gt%29'>operator(>)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28gt%29'>operator(>)</a></strong>
  =>
                     gt
 <small></small>                </td>
@@ -1065,7 +1073,7 @@ generic,
                 <td>
 generic,
                   public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-operator%28gt%3D%29'>operator(>=)</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-operator%28gt%3D%29'>operator(>=)</a></strong>
  =>
                     ge
 <small></small>                </td>
@@ -1075,7 +1083,7 @@ generic,
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-ordinal'>ordinal</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-ordinal'>ordinal</a></strong>
 <small>Function</small>                </td>
                 <td></td>
               </tr>
@@ -1083,7 +1091,7 @@ generic,
                 <td>
                     procedure
                     ,                  public
-                  :: <strong><a href='../type/date_time.html#boundprocedure-weekday'>weekday</a></strong>
+,                   :: <strong><a href='../type/date_time.html#boundprocedure-weekday'>weekday</a></strong>
 <small>Function</small>                </td>
                 <td></td>
               </tr>
@@ -1114,7 +1122,7 @@ generic,
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-04-23 22:05              </p>
+ on 2023-06-01 20:32              </p>
           </div>
         </div>
         <br>
