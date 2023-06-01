@@ -49,88 +49,86 @@ programs are included in the package.
 ## Procedures
 
 ### EPOCH TIME (UT starts at 0000 on 1 Jan. 1970)
-```fortran
-   date_to_unix(dat,UNIXTIME,IERR) ! Convert date array to Unix Time
-   unix_to_date(unixtime,DAT,IERR) ! Convert Unix Time to date array
-   d2u(dat) result (UNIXTIME)  ! Convert date array to Unix Time
-   u2d(unixtime) result (DAT)  ! Convert Unix Time to date array
-```
+`
+   [date_to_unix](https://urbanjost.github.io/M_time/date_to_unit.3m_time.html) (dat,UNIXTIME,IERR) ! Convert date array to Unix Time
+   [unix_to_date](https://urbanjost.github.io/M_time/unit_to_date.3m_time.html)(unixtime,DAT,IERR) ! Convert Unix Time to date array
+   [d2u](https://urbanjost.github.io/M_time/d2u.3m_time.html)(dat) result (UNIXTIME)  ! Convert date array to Unix Time
+   [u2d](https://urbanjost.github.io/M_time/u2d.3m_time.html)(unixtime) result (DAT)  ! Convert Unix Time to date array
+`
 ### JULIAN
-```fortran
-   julian_to_date(julian,DAT,IERR) ! Convert Julian Date to date array
-   date_to_julian(dat,JULIAN,IERR) ! Convert date array to Julian Date
-   d2j(dat) result (JULIAN)    ! Convert date array to Julian Date
-   j2d(julian) result (DAT)    ! Convert Julian Date to date array
-```
+   > [julian_to_date](https://urbanjost.github.io/M_time/julain_to_date.3m_time.html)(julian,DAT,IERR) ! Convert Julian Date to date array
+   > [date_to_julian](https://urbanjost.github.io/M_time/date_to_julian.3m_time.html)(dat,JULIAN,IERR) ! Convert date array to Julian Date
+   > [d2j](https://urbanjost.github.io/M_time/d2j.3m_time.html)(dat) result (JULIAN)    ! Convert date array to Julian Date
+   > [j2d](https://urbanjost.github.io/M_time/j2d.3m_time.html)(julian) result (DAT)    ! Convert Julian Date to date array
 ### DAY OF WEEK
 ```fortran
-   ! Convert date array to day of the week as number(Mon=1) and name
-   dow(dat,[WEEKDAY],[DAY],IERR) 
+   ! Convert date array to day of the week as number and name
+   [dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR) 
 ```
 ### WEEK OF YEAR
 ```fortran
    ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-   d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
+   [d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
    ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
-   w2d(iso_year,iso_week,iso_weekday,DAT)  
+   [w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)(iso_year,iso_week,iso_weekday,DAT)  
 ```
 ### ORDINAL DAY
 ```fortran
    ! given date array return ordinal day of year, Jan 1st=1
-   d2o(dat) result(ORDINAL)
+   [d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)(dat) result(ORDINAL)
    ! given ordinal day of year return date array, Jan 1st=1
-   o2d(ordinal) result(DAT) 
+   [o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)(ordinal) result(DAT) 
    ! given ordinal day of year return date array, Jan 1st=1
-   ordinal_to_date(year,ordinal_day,DAT)
+   [ordinal_to_date](https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html)(year,ordinal_day,DAT)
    ! seconds since the beginning of current year
-   ordinal_seconds() 
+   [ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)() 
 ```
 ### PRINTING DATES
 ```fortran
    ! Convert date array to string using format
-   fmtdate(dat,format) result (TIMESTR)
-   ! display macros recognized by fmtdate(3f)
-   fmtdate_usage(indent)
+   [fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)
+   ! display macros recognized by fmtdate
+   [fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)
    ! return string representing current time given format
-   now(format) result (NOW) 
+   [now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW) 
    ! print specified month into character array
-   box_month(dat,CALEN) 
+   [box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN) 
 ```
 ### PRINTING DURATIONS
 ```fortran
    ! converts seconds to string D-HH:MM:SS
-   sec2days(seconds) result (dhms)  
+   [sec2days](https://urbanjost.github.io/M_time/sec2days.3m_time.html)(seconds) result (dhms)  
    ! converts string D-HH:MM:SS to seconds from small to large
-   days2sec(str) result (seconds) 
+   [days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds) 
 ```
 ### MONTH NAME
 ```fortran
    ! given month name return month number
-   mo2v(month_name) result (MONTH_NUMBER) 
+   [mo2v](https://urbanjost.github.io/M_time/mo2v.3m_time.html)(month_name) result (MONTH_NUMBER) 
    ! given month number return month name
-   v2mo(month_number) result (MONTH_NAME) 
+   [v2mo](https://urbanjost.github.io/M_time/v2mo.3m_time.html)(month_number) result (MONTH_NAME) 
    ! given month name and year return date array for 1st day of month
-   mo2d(month_name) result (DAT)    
+   [mo2d](https://urbanjost.github.io/M_time/mo2d.3m_time.html)(month_name) result (DAT)    
 ```
 ### ASTROLOGICAL
 ```fortran
    ! calculate month and day Easter falls on for given year
-   easter(year,dat)    
+   [easter](https://urbanjost.github.io/M_time/easter.3m_time.html)(year,dat)    
    ! percentage of moon phase from new to full
-   moon_fullness(datin) result(FULLNESS) 
+   [moon_fullness](https://urbanjost.github.io/M_time/moon_fullness.3m_time.html)(datin) result(FULLNESS) 
    ! return name for phase of moon for given date
-   phase_of_moon(datin) result(PHASE) 
+   [phase_of_moon](https://urbanjost.github.io/M_time/phase_of_moon.3m_time.html)(datin) result(PHASE) 
 ```
 ### READING DATES
 ```fortran
    ! Converts a date string to a date array, in various formats
-   guessdate(anot,dat) 
+   [guessdate](https://urbanjost.github.io/M_time/guessdate.3m_time.html)(anot,dat) 
 ```
 <!--
 ### C INTERFACE
 ```fortran
    ! Call sleep(3c)
-   system_sleep(wait_seconds)  
+   [system_sleep](https://urbanjost.github.io/M_time/system_sleep.3m_time.html)(wait_seconds)  
 ```
 -->
 integer,parameter,public   :: realtime=kind(0.0d0)           ! type for unix epoch time and julian days
