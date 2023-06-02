@@ -75,7 +75,7 @@ programs are included in the package.
 + **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
 ### Printing Durations
 + **[sec2days](https://urbanjost.github.io/M_time/sec2days.3m_time.html)(seconds) result (dhms)**  ! converts seconds to string D-HH:MM:SS
-+ **[days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds)** ! converts string D-HH:MM:SS to seconds from small to large
++ **[days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds)** ! converts strings like "D-HH:MM:SS" or "4 days 2 hrs" to seconds 
 ### Month Name
 + **[mo2v](https://urbanjost.github.io/M_time/mo2v.3m_time.html)(month_name) result (MONTH_NUMBER)** ! given month name return month number
 + **[v2mo](https://urbanjost.github.io/M_time/v2mo.3m_time.html)(month_number) result (MONTH_NAME)** ! given month number return month name

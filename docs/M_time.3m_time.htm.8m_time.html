@@ -102,10 +102,10 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 </p>
 
 <p>
-    The  extensive  formatting  options  include  showing  SYSTEM_CLOCK(3f) and
-    CPU_USAGE(3f) information along with Gregorian date  information,  allowing
+    The extensive formatting options include showing SYSTEM_CLOCK(3f) and
+    CPU_USAGE(3f) information along with Gregorian date information, allowing
     for the easy incorporation of timing information into program messages. In
-    addition to conventional Civilian Calendar dates,  the  module
+    addition to conventional Civilian Calendar dates, the module
     supports the ISO-8601 standard methods of displaying dates.
 </p>
 
@@ -184,16 +184,16 @@ first day of given month name in specified year</td></tr>
 
 <p>
     You can easily use Julian Ephemeris Dates and Unix Epoch Times to add
-    and subtract  times  from  dates  or  to  calculate  the interval
-    between  dates. But JEDs and UETs and even the Gregorian Calendar
+    and subtract times from dates or to calculate the interval
+    between dates. But JEDs and UETs and even the Gregorian Calendar
     arrays in the DAT arrays are not the way we typically describe a
     date   on the Civilian Calendar. So the fmtdate(3f) routine lets us
     print a DAT array in a variety of familiar styles.
 </p>
 
 <p>
-    The  fmtdate(3f)  and now(3f) procedures let you display a Gregorian date using
-    either keywords for standard formats or using macros  in  a  user-specified
+    The fmtdate(3f)  and now(3f) procedures let you display a Gregorian date using
+    either keywords for standard formats or using macros in a user-specified
     formatting string. A formatting string may contain the following macros:
 </p>
 <pre>
@@ -322,7 +322,7 @@ of it. For example:
 
 <p>
     The following example program demonstrates the extensive options available
-    for formatting a date as well as how to use the module to  calculate dates
+    for formatting a date as well as how to use the module to calculate dates
     such as "Yesterday" and "Tomorrow".
 </p>
 
@@ -413,7 +413,7 @@ end program demo_M_time
     Gregorian calendar) if the partners to information exchange agree.
 
 <p>
-    <b>Unix  Epoch  Time (UET)</b>  is  defined as the number of  seconds since
+    <b>Unix Epoch Time (UET)</b>  is defined as the number of seconds since
     00:00:00  on January 1st. 1970, UTC.
 </p>
 
@@ -423,21 +423,21 @@ end program demo_M_time
 </p>
 
 <p>
-    If  you  are  not familiar with them, in this context Julian Dates and Unix
-    Epoch Times are scalar numbers that allow for easy computations using dates
-    (to   go   back   one   day   just   subtract  one  from a Julian Date, for
-    example). Since these values are generally  not  considered   intelligible,
-    routines  are  included to convert between these scalar values and the date
-    array so human-readable results can be obtained.
+    If you are not familiar with them, in this context Julian Dates and
+    Unix Epoch Times are scalar numbers that allow for easy computations
+    using dates (to go back one day just subtract one from a Julian
+    Date, for example). Since these values are generally not considered
+    intelligible, routines are included to convert between these scalar
+    values and the date array so human-readable results can be obtained.
 </p>
 
 <p>
-    <b>Coordinated  Universal  Time</b>  (French:  Temps  universel coordonn'e),
-    abbreviated as <b>UTC</b>, is the primary time standard by which the  world
-    regulates  clocks  and time. It is within about 1 second of mean solar time
-    at 0o longitude;[1] it does not observe daylight saving time. It is one  of
-    several  closely  related successors to Greenwich Mean Time (GMT). For most
-    purposes, UTC is considered interchangeable with GMT, but GMT is no  longer
+    <b>Coordinated Universal Time</b>  (French:  Temps universel coordonn'e),
+    abbreviated as <b>UTC</b>, is the primary time standard by which the world
+    regulates clocks and time. It is within about 1 second of mean solar time
+    at 0o longitude;[1] it does not observe daylight saving time. It is one of
+    several closely related successors to Greenwich Mean Time (GMT). For most
+    purposes, UTC is considered interchangeable with GMT, but GMT is no longer
     precisely defined by the scientific community.
 </p>
 </dd>
@@ -446,30 +446,30 @@ end program demo_M_time
 <dd>
 
 <p>
-    Like  most collections of date and time procedures M_time is
-    <em>not</em> a high-precision library  that  accounts  internally
-    for leap  seconds  and relativistic  effects.
+    Like most collections of date and time procedures M_time is
+    <em>not</em> a high-precision library that accounts internally
+    for leap seconds and relativistic effects.
 </p>
 
 <p>
     M_time(3f) is intended for use in the recent era and is not
-    appropriate  for  use  with historical dates that used some other
+    appropriate for use with historical dates that used some other
     calendar scheme such as the Julian Calendar. That is, you have to
     remember to account for conversions to other calendar systems when
     using historical dates.
 </p>
 
 <p>
-    When Daylight Savings is  in  effect calculations  will  generally be
-    correct,  as  the date model includes a timezone value; but you are
-    responsible for ensuring dates you  create  use the  correct timezone
-    value  or otherwise account for Daylight Savings Time as needed.
+    When Daylight Savings is in effect calculations will generally be
+    correct,  as the date model includes a timezone value; but you are
+    responsible for ensuring dates you create use the correct timezone
+    value or otherwise account for Daylight Savings Time as needed.
 </p>
 
 <p>
     Currently, dates are manipulated using the current system timezone,
     which can typically be set using the environment variable TZ. So if
-    you desire to  set the default timezone you generally set the
+    you desire to set the default timezone you generally set the
     environment variable <em>before</em> executing your program. This
     is compatible with current observed behavior for the intrinsic
     procedure DATE_AND_TIME(3f) with compilers I have tested with, but
@@ -512,15 +512,15 @@ end program demo_M_time
 </p>
 
 <p>
-    There  are  (of course) the C/C++ intrinsics which provide much of the same
-    functionality that should be bindable  to  Fortran  via the   ISO_C_BINDING
+    There are (of course) the C/C++ intrinsics which provide much of the same
+    functionality that should be bindable to Fortran via the ISO_C_BINDING
     module.
 </p>
 
 <p>
     If you are looking for a high-precision Fortran library that is well tested
-    for manipulating dates  I  would  suggest  looking  at the  NASA   SPICElib
-    library. If   you  care    about    Leap   Seconds,  Orbital   Mechanics,
+    for manipulating dates I would suggest looking at the NASA SPICElib
+    library. If you care about Leap Seconds, Orbital Mechanics,
     GPS/Satellite communications, and Astronomy it is worth a look.
 </p>
 

@@ -1785,7 +1785,8 @@ end subroutine fmtdate_usage
 !!   ISO_C_BINDING interface.
 !!
 !!##OPTIONS
-!!    anot  A string assumed to represent a date including a year, month and day.
+!!    anot  A string assumed to represent a date including a year, month
+!!          and day.
 !!
 !!    dat   Integer array holding a "DAT" array, similar in structure
 !!          to the array returned by the intrinsic DATE_AND_TIME(3f):
@@ -3218,7 +3219,7 @@ end function sec2days
 !!
 !!##DESCRIPTION
 !!   Given a string representing a duration of the form
-!!   "[-][[[dd-]hh:]mm:]ss"  or [NNd][NNh][NNm[]NNs][NNw]
+!!   [-][[[dd-]hh:]mm:]ss or [NNd][NNh][NNm[]NNs][NNw]
 !!   return a value representing seconds.
 !!
 !!   If "dd-" is present, units for the numbers are assumed to
@@ -3748,17 +3749,17 @@ end subroutine Easter
 !!        !
 !!        write(*,'(a)')"Time before integer call is: ",now()
 !!        call system_sleep(4)
-!!        write(*,'(a)')"Time after  integer call is: ",now()
+!!        write(*,'(a)')"Time after integer call is: ",now()
 !!        !
 !!        write(*,'(a)')"Time before real call is: ",now()
 !!        call system_sleep(4.0)
-!!        write(*,'(a)')"Time after  real call is: ",now()
+!!        write(*,'(a)')"Time after real call is: ",now()
 !!        !
 !!        write(*,'(a)')"Time before loop is: ",now()
 !!        do i=1,1000
 !!           call system_sleep(4.0/1000.0)
 !!        enddo
-!!        write(*,'(a)')"Time after loop  is: ",now()
+!!        write(*,'(a)')"Time after loop is: ",now()
 !!        !
 !!     end program demo_system_sleep
 !!
@@ -3770,11 +3771,11 @@ end subroutine Easter
 !!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
 !!      Time before real call is:
 !!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
-!!      Time after  real call is:
+!!      Time after real call is:
 !!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
 !!      Time before loop is:
 !!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
-!!      Time after loop  is:
+!!      Time after loop is:
 !!      Sunday, July 17th, 2016 2:30:09 AM UTC-0240
 !!
 !!##AUTHOR
