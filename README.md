@@ -59,64 +59,36 @@ programs are included in the package.
 + **[d2j](https://urbanjost.github.io/M_time/d2j.3m_time.html)(dat) result (JULIAN)**    ! Convert date array to Julian Date
 + **[j2d](https://urbanjost.github.io/M_time/j2d.3m_time.html)(julian) result (DAT)**    ! Convert Julian Date to date array
 ### DAY OF WEEK
-+ **[dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR)**
-  ! Convert date array to day of the week as number and name
++ **[dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR)** ! Convert date array to day of the week as number and name
 ### WEEK OF YEAR
-**[d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)**(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
-! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-**[w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)**(iso_year,iso_week,iso_weekday,DAT)  
-! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
++ **[d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)**(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)** ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
++ **[w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)**(iso_year,iso_week,iso_weekday,DAT)**  ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
 ### ORDINAL DAY
- + **[d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)**(dat) result(ORDINAL)
-   ! given date array return ordinal day of year, Jan 1st=1
- + **[o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)**(ordinal) result(DAT) 
-   ! given ordinal day of year return date array, Jan 1st=1
- + **[ordinal_to_date](https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html)**(year,ordinal_day,DAT)
-   ! given ordinal day of year return date array, Jan 1st=1
- + **[ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)()** 
-   ! seconds since the beginning of current year
++ **[d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)(dat) result(ORDINAL)** ! given date array return ordinal day of year, Jan 1st=1
++ **[o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)(ordinal) result(DAT)** ! given ordinal day of year return date array, Jan 1st=1
++ **[ordinal_to_date](https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html) (year,ordinal_day,DAT)** ! given ordinal day of year return date array, Jan 1st=1
+ + **[ordinal_seconds](https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html)()** ! seconds since the beginning of current year
 ### PRINTING DATES
-   **[fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)** ! Convert date array to string using format
-   **[fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)** ! display macros recognized by fmtdate
-   **[now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW)** ! return string representing current time given format
-   **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
-```
++ **[fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)** ! Convert date array to string using format
++ **[fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)** ! display macros recognized by fmtdate
++ **[now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW)** ! return string representing current time given format
++ **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
 ### PRINTING DURATIONS
-```fortran
-   ! converts seconds to string D-HH:MM:SS
-   [sec2days](https://urbanjost.github.io/M_time/sec2days.3m_time.html)(seconds) result (dhms)  
-   ! converts string D-HH:MM:SS to seconds from small to large
-   [days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds) 
-```
++ **[sec2days](https://urbanjost.github.io/M_time/sec2days.3m_time.html)(seconds) result (dhms)**  ! converts seconds to string D-HH:MM:SS
++ **[days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds)** ! converts string D-HH:MM:SS to seconds from small to large
 ### MONTH NAME
-```fortran
-   ! given month name return month number
-   [mo2v](https://urbanjost.github.io/M_time/mo2v.3m_time.html)(month_name) result (MONTH_NUMBER) 
-   ! given month number return month name
-   [v2mo](https://urbanjost.github.io/M_time/v2mo.3m_time.html)(month_number) result (MONTH_NAME) 
-   ! given month name and year return date array for 1st day of month
-   [mo2d](https://urbanjost.github.io/M_time/mo2d.3m_time.html)(month_name) result (DAT)    
-```
++ **[mo2v](https://urbanjost.github.io/M_time/mo2v.3m_time.html)(month_name) result (MONTH_NUMBER)** ! given month name return month number
++ **[v2mo](https://urbanjost.github.io/M_time/v2mo.3m_time.html)(month_number) result (MONTH_NAME)** ! given month number return month name
++ **[mo2d](https://urbanjost.github.io/M_time/mo2d.3m_time.html)(month_name) result (DAT)**    ! given month name and year return date array for 1st day of month
 ### ASTROLOGICAL
-```fortran
-   ! calculate month and day Easter falls on for given year
-   [easter](https://urbanjost.github.io/M_time/easter.3m_time.html)(year,dat)    
-   ! percentage of moon phase from new to full
-   [moon_fullness](https://urbanjost.github.io/M_time/moon_fullness.3m_time.html)(datin) result(FULLNESS) 
-   ! return name for phase of moon for given date
-   [phase_of_moon](https://urbanjost.github.io/M_time/phase_of_moon.3m_time.html)(datin) result(PHASE) 
-```
++ **[easter](https://urbanjost.github.io/M_time/easter.3m_time.html)(year,dat)**    ! calculate month and day Easter falls on for given year
++ **[moon_fullness](https://urbanjost.github.io/M_time/moon_fullness.3m_time.html)(datin) result(FULLNESS)** ! percentage of moon phase from new to full
++ **[phase_of_moon](https://urbanjost.github.io/M_time/phase_of_moon.3m_time.html)(datin) result(PHASE)** ! return name for phase of moon for given date
 ### READING DATES
-```fortran
-   ! Converts a date string to a date array, in various formats
-   [guessdate](https://urbanjost.github.io/M_time/guessdate.3m_time.html)(anot,dat) 
-```
++ **[guessdate](https://urbanjost.github.io/M_time/guessdate.3m_time.html)(anot,dat)** ! Converts a date string to a date array, in various formats
 <!--
 ### C INTERFACE
-```fortran
-   ! Call sleep(3c)
-   [system_sleep](https://urbanjost.github.io/M_time/system_sleep.3m_time.html)(wait_seconds)  
-```
++ **[system_sleep](https://urbanjost.github.io/M_time/system_sleep.3m_time.html)(wait_seconds)**  ! Call sleep(3c)
 -->
 integer,parameter,public   :: realtime=kind(0.0d0)           ! type for unix epoch time and julian days
 <!--
