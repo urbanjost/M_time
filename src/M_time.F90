@@ -48,8 +48,8 @@ private
    public mo2d           !(month_name) result (DAT)           ! given month name and year return date array for 1st day of month
 ! ASTROLOGICAL
    public easter         !(year,dat)                          ! calculate month and day Easter falls on for given year
-   public moon_fullness  !(datin) result(FULLNESS)            ! percentage of moon phase from new to full
-   public phase_of_moon  !(datin) result(PHASE)               ! return name for phase of moon for given date
+   public moon_fullness  !(dat) result(FULLNESS)              ! percentage of moon phase from new to full
+   public phase_of_moon  !(dat) result(PHASE)                 ! return name for phase of moon for given date
 !x! public ephemeris      !(dat,planet,DD,DM,DC,AH,AM)         ! ephemeris position of planets for adjusting an equatorial telescope
 ! READING DATES
    public guessdate      !(anot,dat)                          ! Converts a date string to a date array, in various formats
@@ -809,11 +809,11 @@ function o2d(ordinal,year) result (dat)
 
 ! ident_9="@(#) M_time o2d(3f) Converts ordinal day to DAT date-time array"
 
-integer                    :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
-integer,intent(in)         :: ordinal                 ! the returned number of days
-integer,optional           :: year
-real(kind=realtime)        :: unixtime                ! Unix time (seconds)
-integer                    :: ierr                    ! return 0 on success, otherwise 1 from date_to_unix(3f)
+integer                     :: dat(8)                 ! date time array similar to that returned by DATE_AND_TIME
+integer,intent(in)          :: ordinal                ! the returned number of days
+integer,intent(in),optional :: year
+real(kind=realtime)         :: unixtime               ! Unix time (seconds)
+integer                     :: ierr                   ! return 0 on success, otherwise 1 from date_to_unix(3f)
    if(present(year))then
       dat=[year,1,ordinal,get_timezone(),0,0,0,0]     ! initialize DAT with parameters and set timezone, set HH:MM:SS.XX to zero
    else
@@ -3211,7 +3211,7 @@ end function sec2days
 !!
 !!##SYNOPSIS
 !!
-!!    function days2sec(str) result(time)
+!!    elemental impure function days2sec(str) result(time)
 !!
 !!     character(len=*),intent(in)       :: str
 !!     real(kind=realtime)               :: time
@@ -3304,7 +3304,7 @@ end function sec2days
 !!
 !!##LICENSE
 !!    MIT
-function days2sec(str) result(time)
+elemental impure function days2sec(str) result(time)
 
 ! ident_26="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
@@ -3416,9 +3416,9 @@ end function days2sec
 !!     (LICENSE:MIT)
 !!##SYNOPSIS
 !!
-!!   function phase_of_moon(datin)
+!!   function phase_of_moon(dat)
 !!
-!!    integer,intent(in)            :: datin(8)
+!!    integer,intent(in)            :: dat(8)
 !!    character(len=:),allocatable  :: phase_of_moon
 !!
 !!##DESCRIPTION
@@ -3483,11 +3483,11 @@ end function days2sec
 !!
 !!##LICENSE
 !!    MIT
-function phase_of_moon(datin)
+function phase_of_moon(dat)
 
 ! ident_27="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
 
-integer,intent(in)            :: datin(8)
+integer,intent(in)            :: dat(8)
 character(len=:),allocatable  :: phase_of_moon
 
 real(kind=realtime),parameter :: syndonic_month=29.530588853_realtime ! average period of a lunar cycle, or days per lunation
@@ -3500,7 +3500,7 @@ real(kind=realtime),parameter :: phase_length=syndonic_month/8_realtime  ! days 
 integer                       :: phase
 real(kind=realtime)           :: days
 
-days= d2j(datin)-d2j(reference)                               ! days between reference date and input date
+days= d2j(dat)-d2j(reference)                               ! days between reference date and input date
 days = mod(days + phase_length/2.0_dp, syndonic_month)        ! modulo calculation of which phase rounding up
 if(days<0)days=days+syndonic_month                         ! correct for days before reference date
 phase = int( days * ( size(phase_names) / syndonic_month ))+1 ! index into phase names
@@ -3517,9 +3517,9 @@ end function phase_of_moon
 !!     (LICENSE:MIT)
 !!##SYNOPSIS
 !!
-!!   function moon_fullness(datin)
+!!   function moon_fullness(dat)
 !!
-!!    integer,intent(in)            :: datin(8)
+!!    integer,intent(in)            :: dat(8)
 !!    integer                       :: moon_fullness
 !!
 !!##DESCRIPTION
@@ -3534,12 +3534,12 @@ end function phase_of_moon
 !!
 !!##OPTIONS
 !!
-!!  datin      DAT Date array describing input date
+!!    dat    DAT Date array describing input date
 !!
 !!##RESULTS
 !!
-!!     moon_fullness  0 is a new or dark moon, 100 is a full moon, + for waxing
-!!                    and - for waning.
+!!    moon_fullness  0 is a new or dark moon, 100 is a full moon, + for waxing
+!!                   and - for waning.
 !!
 !!##EXAMPLES
 !!
@@ -3575,18 +3575,18 @@ end function phase_of_moon
 !!
 !!##LICENSE
 !!    MIT
-function moon_fullness(datin)
+function moon_fullness(dat)
 
 ! ident_28="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
 
-integer,intent(in)            :: datin(8)
+integer,intent(in)            :: dat(8)
 integer                       :: moon_fullness
 
 real(kind=realtime),parameter :: syndonic_month=29.530588853_realtime  ! average period of a lunar cycle, or days per lunation
 integer,parameter             :: reference(*)= [2000,1,6,0,18,14,0,0]  ! new moon of January 2000 was January 6, 18:14 UTC.
 real(kind=realtime)           :: days_into_cycle
 
-days_into_cycle = mod(d2j(datin)-d2j(reference) , syndonic_month)      ! number of days into lunar cycle
+days_into_cycle = mod(d2j(dat)-d2j(reference) , syndonic_month)      ! number of days into lunar cycle
 if(days_into_cycle<0)days_into_cycle=days_into_cycle+syndonic_month ! correct for input date being before reference date
 
 if(days_into_cycle<=syndonic_month/2.0_realtime)then                 ! if waxing from new to full report as 0% to 100%
@@ -3843,12 +3843,12 @@ end subroutine call_usleep
 !==================================================================================================================================!
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !==================================================================================================================================!
-function getnow() result(values)
+function getnow() result(dat)
 
 ! ident_33="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
-integer :: values(8)
-   call date_and_time(values=values)
+integer :: dat(8)
+   call date_and_time(values=dat)
 end function getnow
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
