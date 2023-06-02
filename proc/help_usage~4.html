@@ -105,12 +105,12 @@
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/today.f90"> Source File</a>
+              <a href="../src/sec2days.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/today.f90.html'>today.f90</a></li>
-              <li><a href='../program/today.html'>today</a></li>
+              <li><a href='../sourcefile/sec2days.f90.html'>sec2days.f90</a></li>
+              <li><a href='../program/demo_sec2days.html'>demo_sec2days</a></li>
           <li class="active">help_usage</li>
         </ol>
       </div>
@@ -366,28 +366,47 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
 <span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       today(1f) - [TIME] output current time for uses such as file suffixes.   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       (LICENSE:PD)                                                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       today format|--help|--version|--test                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       Outputs the current date using the specified format. Typically used      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       to generate a string to be used in building filenames containing         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       date information.                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       format     any allowable format for the fmtdate(3) routine.              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;                  defaults to &quot;YMD&quot;.                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       --help     display this help and exit                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       --version  output version information and exit                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       --test     display allowed options for building a format                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;EXAMPLE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;       Sample commands:                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   sec2days(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;        cp myfile myfile.`today`                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;        find . -ls &gt; MANIFEST.`today epoch`                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;        mkdir `today YMDhms`                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;        today yearmonthdayhourminutesecond                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
-<span class="s1">&#39;        today --test                          # show formatting options         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   sec2days nnnn[.xxx] [ -crop]| --version| --help                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   Given a numeric string representing seconds convert it to a string           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   of the form                                                                  &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;      dd-hh:mm:ss                                                               &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   where dd is days, hh hours, mm minutes and ss seconds.                       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   nnnn[.xxx]  number of seconds to convert to string of form dd-hh:mm:ss.      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;               nnnn may be interspersed with unit codes d,h,m,s. Spaces,        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;               commas and case are ignored. Allowed aliases for the unit        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;               codes are                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                 d  days and day                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                 h  hours,hour,hrs, and hr                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                 m  minutes,minute and min                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                 s  seconds,second and sec                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   -crop       trim leading zero values from output                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   -radix      character used as decimal separator                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   --help      display this help and exit                                       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   --version   output version information and exit                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;EXAMPLE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39; usage                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   sec2days 129860                                                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   1-12:04:20                                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   sec2days 1d2h3m4s                                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   1-02:03:04                                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   sec2days 1.0 days 2 hours 3 minutes 4 seconds                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   1-02:03:04                                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   sec2days 1.5d                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   1-12:00:00                                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
 <span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
@@ -417,7 +436,7 @@ parameter
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-06-02 00:21              </p>
+ on 2023-06-02 00:25              </p>
           </div>
         </div>
         <br>
