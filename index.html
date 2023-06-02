@@ -159,69 +159,51 @@ programs are included in the package.</p>
 </ul>
 <h3 id="day-of-week">DAY OF WEEK</h3>
 <ul>
-<li><strong><a href="https://urbanjost.github.io/M_time/dow.3m_time.html">dow</a>(dat,[WEEKDAY],[DAY],IERR)</strong>
-  ! Convert date array to day of the week as number and name</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/dow.3m_time.html">dow</a>(dat,[WEEKDAY],[DAY],IERR)</strong> ! Convert date array to day of the week as number and name</li>
 </ul>
 <h3 id="week-of-year">WEEK OF YEAR</h3>
-<p><strong><a href="https://urbanjost.github.io/M_time/d2w.3m_time.html">d2w</a></strong>(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) 
-! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-<strong><a href="https://urbanjost.github.io/M_time/w2d.3m_time.html">w2d</a></strong>(iso_year,iso_week,iso_weekday,DAT)<br>
-! given iso-8601 Week-numbering year date yyyy-Www-d calculate date</p>
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/d2w.3m_time.html">d2w</a></strong>(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)** ! Calculate iso-8601 Week-numbering year date yyyy-Www-d</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/w2d.3m_time.html">w2d</a></strong>(iso_year,iso_week,iso_weekday,DAT)**  ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date</li>
+</ul>
 <h3 id="ordinal-day">ORDINAL DAY</h3>
 <ul>
-<li><strong><a href="https://urbanjost.github.io/M_time/d2o.3m_time.html">d2o</a></strong>(dat) result(ORDINAL)
-   ! given date array return ordinal day of year, Jan 1st=1</li>
-<li><strong><a href="https://urbanjost.github.io/M_time/o2d.3m_time.html">o2d</a></strong>(ordinal) result(DAT) 
-   ! given ordinal day of year return date array, Jan 1st=1</li>
-<li><strong><a href="https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html">ordinal_to_date</a></strong>(year,ordinal_day,DAT)
-   ! given ordinal day of year return date array, Jan 1st=1</li>
-<li><strong><a href="https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html">ordinal_seconds</a>()</strong> 
-   ! seconds since the beginning of current year</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/d2o.3m_time.html">d2o</a>(dat) result(ORDINAL)</strong> ! given date array return ordinal day of year, Jan 1st=1</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/o2d.3m_time.html">o2d</a>(ordinal) result(DAT)</strong> ! given ordinal day of year return date array, Jan 1st=1</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/ordinal_to_date.3m_time.html">ordinal_to_date</a> (year,ordinal_day,DAT)</strong> ! given ordinal day of year return date array, Jan 1st=1</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/ordinal_seconds.3m_time.html">ordinal_seconds</a>()</strong> ! seconds since the beginning of current year</li>
 </ul>
 <h3 id="printing-dates">PRINTING DATES</h3>
-<p><strong><a href="https://urbanjost.github.io/M_time/fmtdate.3m_time.html">fmtdate</a>(dat,format) result (TIMESTR)</strong> ! Convert date array to string using format
-   <strong><a href="https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html">fmtdate_usage</a>(indent)</strong> ! display macros recognized by fmtdate
-   <strong><a href="https://urbanjost.github.io/M_time/now.3m_time.html">now</a>(format) result (NOW)</strong> ! return string representing current time given format
-   <strong><a href="https://urbanjost.github.io/M_time/box_month.3m_time.html">box_month</a>(dat,CALEN)</strong> ! print specified month into character array</p>
-<div class="codehilite"><pre><span></span><code><span class="err">###</span><span class="w"> </span><span class="n">PRINTING</span><span class="w"> </span><span class="n">DURATIONS</span><span class="w"></span>
-<span class="err">```</span><span class="k">fortran</span><span class="w"></span>
-<span class="w">   </span><span class="err">!</span><span class="w"> </span><span class="n">converts</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">D</span><span class="o">-</span><span class="nl">HH</span><span class="p">:</span><span class="nl">MM</span><span class="p">:</span><span class="n">SS</span><span class="w"></span>
-<span class="w">   </span><span class="o">[</span><span class="n">sec2days</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">sec2days</span><span class="mf">.3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">seconds</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">dhms</span><span class="p">)</span><span class="w">  </span>
-<span class="w">   </span><span class="err">!</span><span class="w"> </span><span class="n">converts</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">D</span><span class="o">-</span><span class="nl">HH</span><span class="p">:</span><span class="nl">MM</span><span class="p">:</span><span class="n">SS</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">seconds</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">small</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">large</span><span class="w"></span>
-<span class="w">   </span><span class="o">[</span><span class="n">days2sec</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">days2sec</span><span class="mf">.3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="nf">str</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span><span class="w"> </span>
-</code></pre></div>
-
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/fmtdate.3m_time.html">fmtdate</a>(dat,format) result (TIMESTR)</strong> ! Convert date array to string using format</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html">fmtdate_usage</a>(indent)</strong> ! display macros recognized by fmtdate</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/now.3m_time.html">now</a>(format) result (NOW)</strong> ! return string representing current time given format</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/box_month.3m_time.html">box_month</a>(dat,CALEN)</strong> ! print specified month into character array</li>
+</ul>
+<h3 id="printing-durations">PRINTING DURATIONS</h3>
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/sec2days.3m_time.html">sec2days</a>(seconds) result (dhms)</strong>  ! converts seconds to string D-HH:MM:SS</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/days2sec.3m_time.html">days2sec</a>(str) result (seconds)</strong> ! converts string D-HH:MM:SS to seconds from small to large</li>
+</ul>
 <h3 id="month-name">MONTH NAME</h3>
-<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="c">! given month name return month number</span>
-<span class="w">   </span><span class="p">[</span><span class="n">mo2v</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">mo2v</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">month_name</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">MONTH_NUMBER</span><span class="p">)</span><span class="w"> </span>
-<span class="w">   </span><span class="c">! given month number return month name</span>
-<span class="w">   </span><span class="p">[</span><span class="n">v2mo</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">v2mo</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">month_number</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">MONTH_NAME</span><span class="p">)</span><span class="w"> </span>
-<span class="w">   </span><span class="c">! given month name and year return date array for 1st day of month</span>
-<span class="w">   </span><span class="p">[</span><span class="n">mo2d</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">mo2d</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">month_name</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="p">(</span><span class="n">DAT</span><span class="p">)</span><span class="w">    </span>
-</code></pre></div>
-
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/mo2v.3m_time.html">mo2v</a>(month_name) result (MONTH_NUMBER)</strong> ! given month name return month number</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/v2mo.3m_time.html">v2mo</a>(month_number) result (MONTH_NAME)</strong> ! given month number return month name</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/mo2d.3m_time.html">mo2d</a>(month_name) result (DAT)</strong>    ! given month name and year return date array for 1st day of month</li>
+</ul>
 <h3 id="astrological">ASTROLOGICAL</h3>
-<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="c">! calculate month and day Easter falls on for given year</span>
-<span class="w">   </span><span class="p">[</span><span class="n">easter</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">easter</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">year</span><span class="p">,</span><span class="n">dat</span><span class="p">)</span><span class="w">    </span>
-<span class="w">   </span><span class="c">! percentage of moon phase from new to full</span>
-<span class="w">   </span><span class="p">[</span><span class="n">moon_fullness</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">moon_fullness</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">datin</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">FULLNESS</span><span class="p">)</span><span class="w"> </span>
-<span class="w">   </span><span class="c">! return name for phase of moon for given date</span>
-<span class="w">   </span><span class="p">[</span><span class="n">phase_of_moon</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">phase_of_moon</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">datin</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">PHASE</span><span class="p">)</span><span class="w"> </span>
-</code></pre></div>
-
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/easter.3m_time.html">easter</a>(year,dat)</strong>    ! calculate month and day Easter falls on for given year</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/moon_fullness.3m_time.html">moon_fullness</a>(datin) result(FULLNESS)</strong> ! percentage of moon phase from new to full</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/phase_of_moon.3m_time.html">phase_of_moon</a>(datin) result(PHASE)</strong> ! return name for phase of moon for given date</li>
+</ul>
 <h3 id="reading-dates">READING DATES</h3>
-<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="c">! Converts a date string to a date array, in various formats</span>
-<span class="w">   </span><span class="p">[</span><span class="n">guessdate</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">guessdate</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">anot</span><span class="p">,</span><span class="n">dat</span><span class="p">)</span><span class="w"> </span>
-</code></pre></div>
-
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/guessdate.3m_time.html">guessdate</a>(anot,dat)</strong> ! Converts a date string to a date array, in various formats</li>
+</ul>
 <!--
 ### C INTERFACE
-
-<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="c">! Call sleep(3c)</span>
-<span class="w">   </span><span class="p">[</span><span class="n">system_sleep</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">urbanjost</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="o">/</span><span class="n">M_time</span><span class="o">/</span><span class="n">system_sleep</span><span class="p">.</span><span class="mi">3</span><span class="n">m_time</span><span class="p">.</span><span class="n">html</span><span class="p">)(</span><span class="n">wait_seconds</span><span class="p">)</span><span class="w">  </span>
-</code></pre></div>
-
-
++ **[system_sleep](https://urbanjost.github.io/M_time/system_sleep.3m_time.html)(wait_seconds)**  ! Call sleep(3c)
 -->
 <p>integer,parameter,public   :: realtime=kind(0.0d0)           ! type for unix epoch time and julian days</p>
 <!--
@@ -639,7 +621,7 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
             <p class="text-right">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-06-01 23:49              </p>
+ on 2023-06-02 00:07              </p>
           </div>
         </div>
         <br>
