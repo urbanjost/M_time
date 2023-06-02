@@ -248,13 +248,9 @@ the built-in help text for the formatting options is as simple as
 + [BOOK_M_time](https://urbanjost.github.io/M_time/BOOK_M_time.html) is a consolidated
   single-page version of the man-pages for ease in printing and searching(`requires javascript`)
 
-![man-pages](docs/images/manpages.gif)
-
-Furthermore there are actual man-pages that can be installed on ULS (Unix-Like Systems):
-
-[manpages.tgz](https://urbanjost.github.io/M_time/manpages.tgz)
-and
-[manpages.zip](https://urbanjost.github.io/M_time/manpages.zip)
++ Furthermore there are actual man-pages that can be installed on ULS (Unix-Like Systems):
+    - ![man-pages](docs/images/manpages.gif) [manpages.tgz](https://urbanjost.github.io/M_time/manpages.tgz)
+    - ![man-pages](docs/images/manpages.gif) [manpages.zip](https://urbanjost.github.io/M_time/manpages.zip)
 ### Developer Documentation
 
 #### doxygen
@@ -433,6 +429,8 @@ that contains a current time zone, but does not specify how a current
 time zone can be explicitly set.  Since this library is intentionally
 designed to complement DATE_AND_TIME(3f) it adopts the same behavior.
 
+### Status
++ [CD/CI STATUS](docs/STATUS.md)
 
 ## See Also
 
