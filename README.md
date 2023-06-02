@@ -107,22 +107,12 @@ the built-in help text for the formatting options is as simple as
       program demo_now
       use M_time, only : now, fmtdate_usage
       implicit none
-         !
-         ! % macros
-	 !
-         write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
-	 !
-         ! or, if not found then keywords
-	 !
-         write(*,*)now("year-month-day")
-	 !
-         ! and if that is not found, abbreviations
-	 !
-         write(*,*)now("Y-M-D h:m:s")
-	 !
-         ! built-in usage descriptions can be displayed as well
-	 !
-         call fmtdate_usage() ! see all formatting options
+       write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N") ! % macros
+       write(*,*)now("year-month-day") ! or, if macros not found then keywords
+       write(*,*)now("Y-M-D h:m:s")    ! and if that is not found, abbreviations
+
+      ! built-in usage descriptions can be displayed as well
+       call fmtdate_usage() ! see all formatting options
       end program demo_now
 ```
 
