@@ -49,12 +49,12 @@ programs are included in the package.
 ## Procedures
 
 ### Epoch Time (UT starts at 0000 on 1 Jan. 1970)
-+ **[date_to_unix](https://urbanjost.github.io/M_time/date_to_unit.3m_time.html) (dat,UNIXTIME,IERR)** ! Convert date array to Unix Time
-+ **[unix_to_date](https://urbanjost.github.io/M_time/unit_to_date.3m_time.html)(unixtime,DAT,IERR)** ! Convert Unix Time to date array
++ **[date_to_unix](https://urbanjost.github.io/M_time/date_to_unix.3m_time.html) (dat,UNIXTIME,IERR)** ! Convert date array to Unix Time
++ **[unix_to_date](https://urbanjost.github.io/M_time/unix_to_date.3m_time.html)(unixtime,DAT,IERR)** ! Convert Unix Time to date array
 + **[d2u](https://urbanjost.github.io/M_time/d2u.3m_time.html)(dat) result (UNIXTIME)**  ! Convert date array to Unix Time
 + **[u2d](https://urbanjost.github.io/M_time/u2d.3m_time.html)(unixtime) result (DAT)**  ! Convert Unix Time to date array
 ### Julian
-+ **[julian_to_date](https://urbanjost.github.io/M_time/julain_to_date.3m_time.html)(julian,DAT,IERR)** ! Convert Julian Date to date array
++ **[julian_to_date](https://urbanjost.github.io/M_time/julian_to_date.3m_time.html)(julian,DAT,IERR)** ! Convert Julian Date to date array
 + **[date_to_julian](https://urbanjost.github.io/M_time/date_to_julian.3m_time.html)(dat,JULIAN,IERR)** ! Convert date array to Julian Date
 + **[d2j](https://urbanjost.github.io/M_time/d2j.3m_time.html)(dat) result (JULIAN)**    ! Convert date array to Julian Date
 + **[j2d](https://urbanjost.github.io/M_time/j2d.3m_time.html)(julian) result (DAT)**    ! Convert Julian Date to date array
