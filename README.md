@@ -1,6 +1,5 @@
-### M_time.f90 and associated files
-#### [CHANGELOG](docs/CHANGELOG.md)
-![pocketwatch](docs/images/M_time.3m_time.gif)
+[![pocketwatch](docs/images/M_time.3m_time.gif)](https://urbanjost.github.io/M_time/fpm-ford/index.html)
+# [M_time](https://urbanjost.github.io/M_time/man3.html)
 
 ## Name
    M_time - Fortran module for manipulating and presenting time and date values
@@ -253,13 +252,9 @@ the built-in help text for the formatting options is as simple as
     - ![man-pages](docs/images/manpages.gif) [manpages.zip](https://urbanjost.github.io/M_time/manpages.zip)
 ### Developer Documentation
 
-#### doxygen
-
 - [doxygen output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
-
-#### ford
-
 - [ford output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
+- [CHANGELOG](docs/CHANGELOG.md)
 
 ---
 ![GNU](docs/images/gnu.gif)

@@ -7,7 +7,7 @@ output_dir: docs/fpm-ford
 project: M_time
 summary: Fortran date and time manipulation and presentation
 project_github: https://github.com/urbanjost/M_time
-project_download:
+project_download: https://github.com/urbanjost/M_time/archive/refs/heads/master.zip
 author: John S. Urban
 author_email: urbanjost@comcast.net
 github: https://github.com/urbanjost/M_time
