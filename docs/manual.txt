@@ -83,7 +83,7 @@ LICENSE
 
 
 
-			       October 03, 2023 	  month.1.man(1m_time)
+			       December 23, 2023	  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -130,7 +130,7 @@ LICENSE
 
 
 
-			       October 03, 2023 	  today.1.man(1m_time)
+			       December 23, 2023	  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -198,7 +198,7 @@ LICENSE
 
 
 
-			       October 03, 2023        sec2days.1.man(1m_time)
+			       December 23, 2023       sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -281,7 +281,7 @@ LICENSE
 
 
 
-			       October 03, 2023        days2sec.1.man(1m_time)
+			       December 23, 2023       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -338,7 +338,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  d2j(3m_time)
+			       December 23, 2023		  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -398,7 +398,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  d2u(3m_time)
+			       December 23, 2023		  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -534,7 +534,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  d2w(3m_time)
+			       December 23, 2023		  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -611,7 +611,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  dow(3m_time)
+			       December 23, 2023		  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -685,7 +685,7 @@ EXAMPLE
 
 
 
-			       October 03, 2023 	       easter(3m_time)
+			       December 23, 2023	       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -756,7 +756,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	      fmtdate(3m_time)
+			       December 23, 2023	      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -857,6 +857,7 @@ EXAMPLE
        "isoweek"    ==> %I 2016-W30-5
        "sql"	    ==> "%Y-%M-%D %h:%m:%s.%x"
        "sqlday"     ==> "%Y-%M-%D"
+       "dash"	    ==> %Y-%M-%D
        "sqltime"    ==> "%h:%m:%s.%x"
        "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
        "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z
@@ -910,7 +911,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	fmtdate_usage(3m_time)
+			       December 23, 2023	fmtdate_usage(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -978,7 +979,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	moon_fullness(3m_time)
+			       December 23, 2023	moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1037,7 +1038,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  now(3m_time)
+			       December 23, 2023		  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1105,7 +1106,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  o2d(3m_time)
+			       December 23, 2023		  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1148,7 +1149,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023       ordinal_seconds(3m_time)
+			       December 23, 2023      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1207,7 +1208,7 @@ EXAMPLE
 
 
 
-			       October 03, 2023       ordinal_to_date(3m_time)
+			       December 23, 2023      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1292,7 +1293,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	phase_of_moon(3m_time)
+			       December 23, 2023	phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1374,7 +1375,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	     sec2days(3m_time)
+			       December 23, 2023	     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1444,7 +1445,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	 system_sleep(3m_time)
+			       December 23, 2023	 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1514,7 +1515,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  u2d(3m_time)
+			       December 23, 2023		  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1591,7 +1592,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	 unix_to_date(3m_time)
+			       December 23, 2023	 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1653,7 +1654,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		 v2mo(3m_time)
+			       December 23, 2023		 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1833,7 +1834,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  w2d(3m_time)
+			       December 23, 2023		  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -1924,7 +1925,7 @@ EXAMPLE
 
 LICENSE
    MIT
-			       October 03, 2023 	    guessdate(3m_time)
+			       December 23, 2023	    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -1987,7 +1988,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  j2d(3m_time)
+			       December 23, 2023		  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2064,7 +2065,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023        julian_to_date(3m_time)
+			       December 23, 2023       julian_to_date(3m_time)
 untitled()							    untitled()
 
 
@@ -2294,6 +2295,7 @@ untitled()							    untitled()
       "sql"	   ==> "%Y-%M-%D %h:%m:%s.%x"
       "sqlday"	   ==> "%Y-%M-%D"
       "sqltime"    ==> "%h:%m:%s.%x"
+      "dash"	   ==> %Y-%M-%D
       "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T  !  Example: Mon, 14 Aug 2006 02:34:
     56 -0600
 
@@ -2593,7 +2595,7 @@ untitled()							    untitled()
 
 
 
-			       October 03, 2023 		    untitled()
+			       December 23, 2023		    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -2979,7 +2981,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	  M_time__oop(3m_time)
+			       December 23, 2023	  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3037,7 +3039,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		 mo2d(3m_time)
+			       December 23, 2023		 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -3094,7 +3096,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		 mo2v(3m_time)
+			       December 23, 2023		 mo2v(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3164,7 +3166,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023        date_to_julian(3m_time)
+			       December 23, 2023       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3229,7 +3231,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	 date_to_unix(3m_time)
+			       December 23, 2023	 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3334,7 +3336,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	     days2sec(3m_time)
+			       December 23, 2023	     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3412,7 +3414,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 		  d2o(3m_time)
+			       December 23, 2023		  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3475,4 +3477,4 @@ AUTHOR
 
 LICENSE
    MIT
-			       October 03, 2023 	    box_month(3m_time)
+			       December 23, 2023	    box_month(3m_time)

@@ -1249,6 +1249,7 @@ real(kind=realtime),save             :: unixtime_last
    case('sql')       ; local_format='"%Y-%M-%D %h:%m:%s.%x"'          !
    case('sqlday')    ; local_format='"%Y-%M-%D"'                      !
    case('sqltime')   ; local_format='"%h:%m:%s.%x"'                   !
+   case('dash')      ; local_format='%Y-%M-%D'                        !
    case('rfc-2822')  ; local_format='%w, %D %l %Y %h:%m:%s %T'        ! Mon, 14 Aug 2006 02:34:56 -0600
    case('rfc-3339')  ; local_format='%Y-%M-%DT%h:%m:%s%z'             ! 2006-08-14 02:34:56-06:00
    case('suffix')    ; local_format='%Y%D%M%h%m%s'                    ! 20170122210327
@@ -1568,6 +1569,7 @@ end function fmtdate
 !!      "isoweek"    ==> %I 2016-W30-5
 !!      "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"
 !!      "sqlday"     ==> "%Y-%M-%D"
+!!      "dash"       ==> %Y-%M-%D
 !!      "sqltime"    ==> "%h:%m:%s.%x"
 !!      "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
 !!      "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z
@@ -1699,6 +1701,7 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%b  "sql"        ==> "%%Y-%%M-%%D %%h:%%m:%%s.%%x"          "%Y-%M-%D %h:%m:%s.%x"  ',&
 &'%b  "sqlday"     ==> "%%Y-%%M-%%D"                      "%Y-%M-%D"                  ',&
 &'%b  "sqltime"    ==> "%%h:%%m:%%s.%%x"                   "%h:%m:%s.%x"              ',&
+&'%b  "dash"       ==> %%Y-%%M-%%D                         %Y-%M-%D                   ',&
 &'%b  "rfc-2822"   ==> %%w, %%D %%l %%Y %%h:%%m:%%s %%T        ',&
 &'%b                   %w, %D %l %Y %h:%m:%s %T                ',&
 &'%b  "rfc-3339"   ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z             %Y-%M-%DT%h:%m:%s%z     ',&
