@@ -34,42 +34,42 @@ homepage = "https://github.com/urbanjost/M_time.git"
    source-dir="test/"
    main="test_suite_M_time.F90"
    [test.dependencies]
-   M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
+   M_framework = {namespace = "GPF"}
 
 [[executable]]
    name="now"
    source-dir="app/"
    main="now.f90"
    [executable.dependencies]
-   M_kracken95  = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   M_kracken95  = { namespace = "GPF" }
+   M_strings    = { namespace = "GPF" }
 
 [[executable]]
    name="sec2days"
    source-dir="app/"
    main="sec2days.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   M_kracken95    = { namespace = "GPF" }
+   M_strings    = { namespace = "GPF" }
 
 [[executable]]
    name="days2sec"
    source-dir="app/"
    main="days2sec.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   M_kracken95    = { namespace = "GPF" }
+   M_strings    = { namespace = "GPF" }
 
 [[executable]]
    name="month"
    source-dir="app/"
    main="month.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+   M_kracken95    = { namespace = "GPF" }
 
 [[executable]]
    name="today"
    source-dir="app/"
    main="today.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+   M_kracken95    = { namespace = "GPF" }
