@@ -17,13 +17,13 @@ private
 ! EPOCH TIME (UT starts at 0000 on 1 Jan. 1970)
    public date_to_unix   !(dat,UNIXTIME,IERR)                 ! Convert date array to Unix Time
    public unix_to_date   !(unixtime,DAT,IERR)                 ! Convert Unix Time to date array
-   public d2u            !(dat) result (UNIXTIME)             ! Convert date array to Unix Time
-   public u2d            !(unixtime) result (DAT)             ! Convert Unix Time to date array
+   public d2u            !(dat) result(UNIXTIME)              ! Convert date array to Unix Time
+   public u2d            !(unixtime) result(DAT)              ! Convert Unix Time to date array
 ! JULIAN
    public julian_to_date !(julian,DAT,IERR)                   ! Convert Julian Date to date array
    public date_to_julian !(dat,JULIAN,IERR)                   ! Convert date array to Julian Date
-   public d2j            !(dat) result (JULIAN)               ! Convert date array to Julian Date
-   public j2d            !(julian) result (DAT)               ! Convert Julian Date to date array
+   public d2j            !(dat) result(JULIAN)                ! Convert date array to Julian Date
+   public j2d            !(julian) result(DAT)                ! Convert Julian Date to date array
 ! DAY OF WEEK
    public dow            !(dat,[WEEKDAY],[DAY],IERR)          ! Convert date array to day of the week as number(Mon=1) and name
 ! WEEK OF YEAR
@@ -35,21 +35,21 @@ private
    public ordinal_to_date!(year,ordinal_day,DAT)              ! given ordinal day of year return date array, Jan 1st=1
    public ordinal_seconds!()                                  ! seconds since the beginning of current year
 ! PRINTING DATES
-   public fmtdate        !(dat,format) result (TIMESTR)       ! Convert date array to string using format
+   public fmtdate        !(dat,format) result(TIMESTR)        ! Convert date array to string using format
    public fmtdate_usage  !(indent)                            ! display macros recognized by fmtdate(3f)
-   public now            !(format) result (NOW)               ! return string representing current time given format
+   public now            !(format) result(NOW)                ! return string representing current time given format
    public box_month      !(dat,CALEN)                         ! print specified month into character array
 ! PRINTING DURATIONS
-   public sec2days       !(seconds) result (dhms)             ! converts seconds to string D-HH:MM:SS
-   public days2sec       !(str) result (seconds)              ! converts string D-HH:MM:SS to seconds from small to large
+   public sec2days       !(seconds) result(dhms)              ! converts seconds to string D-HH:MM:SS
+   public days2sec       !(str) result(seconds)               ! converts string D-HH:MM:SS to seconds from small to large
 ! MONTH NAME
-   public mo2v           !(month_name) result (MONTH_NUMBER)  ! given month name return month number
-   public v2mo           !(month_number) result (MONTH_NAME)  ! given month number return month name
-   public mo2d           !(month_name) result (DAT)           ! given month name and year return date array for 1st day of month
+   public mo2v           !(month_name) result(MONTH_NUMBER)   ! given month name return month number
+   public v2mo           !(month_number) result(MONTH_NAME)   ! given month number return month name
+   public mo2d           !(month_name) result(DAT)            ! given month name and year return date array for 1st day of month
 ! ASTROLOGICAL
    public easter         !(year,dat)                          ! calculate month and day Easter falls on for given year
-   public moon_fullness  !(datin) result(FULLNESS)            ! percentage of moon phase from new to full
-   public phase_of_moon  !(datin) result(PHASE)               ! return name for phase of moon for given date
+   public moon_fullness  !(dat) result(FULLNESS)              ! percentage of moon phase from new to full
+   public phase_of_moon  !(dat) result(PHASE)                 ! return name for phase of moon for given date
 !x! public ephemeris      !(dat,planet,DD,DM,DC,AH,AM)         ! ephemeris position of planets for adjusting an equatorial telescope
 ! READING DATES
    public guessdate      !(anot,dat)                          ! Converts a date string to a date array, in various formats
@@ -534,7 +534,7 @@ end subroutine unix_to_date
 !!
 !!##SYNOPSIS
 !!
-!!    function d2o(dat) result (ordinal)
+!!    function d2o(dat) result(ordinal)
 !!
 !!     integer,intent(in),optional :: dat(8)
 !!     integer                     :: ordinal
@@ -598,7 +598,7 @@ end subroutine unix_to_date
 !!
 !!##LICENSE
 !!    MIT
-function d2o(dat) result (ordinal)
+function d2o(dat) result(ordinal)
 
 ! ident_6="@(#) M_time d2o(3f) Converts DAT date-time array to Ordinal day"
 
@@ -750,7 +750,7 @@ end subroutine ordinal_to_date
 !!
 !!##SYNOPSIS
 !!
-!!    function o2d(ordinal,[year]) result (dat)
+!!    function o2d(ordinal,[year]) result(dat)
 !!
 !!     integer,intent(in) :: ordinal  ! the day of the year
 !!     integer,optional   :: year     ! year
@@ -805,15 +805,15 @@ end subroutine ordinal_to_date
 !!
 !!##LICENSE
 !!    MIT
-function o2d(ordinal,year) result (dat)
+function o2d(ordinal,year) result(dat)
 
 ! ident_9="@(#) M_time o2d(3f) Converts ordinal day to DAT date-time array"
 
-integer                    :: dat(8)                  ! date time array similar to that returned by DATE_AND_TIME
-integer,intent(in)         :: ordinal                 ! the returned number of days
-integer,optional           :: year
-real(kind=realtime)        :: unixtime                ! Unix time (seconds)
-integer                    :: ierr                    ! return 0 on success, otherwise 1 from date_to_unix(3f)
+integer                     :: dat(8)                 ! date time array similar to that returned by DATE_AND_TIME
+integer,intent(in)          :: ordinal                ! the returned number of days
+integer,intent(in),optional :: year
+real(kind=realtime)         :: unixtime               ! Unix time (seconds)
+integer                     :: ierr                   ! return 0 on success, otherwise 1 from date_to_unix(3f)
    if(present(year))then
       dat=[year,1,ordinal,get_timezone(),0,0,0,0]     ! initialize DAT with parameters and set timezone, set HH:MM:SS.XX to zero
    else
@@ -914,7 +914,7 @@ end function v2mo
 !!
 !!##SYNOPSIS
 !!
-!!       function mo2d(month_name,year) result (dat)
+!!       function mo2d(month_name,year) result(dat)
 !!
 !!        character(len=*),intent(in) :: month_name
 !!        integer,intent(in),optional :: year
@@ -954,7 +954,7 @@ end function v2mo
 !!
 !!##LICENSE
 !!    MIT
-function mo2d(month_name,year) result (dat)
+function mo2d(month_name,year) result(dat)
 
 ! ident_11="@(#) M_time mo2d(3f) month name to DAT date-time array for 1st of that month in specified year"
 
@@ -1076,7 +1076,7 @@ end function mo2v
 !!
 !!##SYNOPSIS
 !!
-!!    function now(format) RESULT (timestr)
+!!    function now(format) result(timestr)
 !!
 !!     character(len=*),intent(in)     :: format  ! input format string
 !!     character(len=:),allocatable    :: timestr ! formatted date
@@ -1148,7 +1148,7 @@ end function now
 !!
 !!##SYNOPSIS
 !!
-!!    function fmtdate(values,format) RESULT (timestr)
+!!    function fmtdate(values,format) result(timestr)
 !!
 !!     integer,dimension(8),intent(in)      :: values
 !!     character(len=*),intent(in),optional :: format
@@ -1204,7 +1204,7 @@ end function now
 !!
 !!##LICENSE
 !!    MIT
-function fmtdate(values,format) RESULT (timestr)
+function fmtdate(values,format) result(timestr)
 
 ! ident_14="@(#) M_time fmtdate(3f) given DAT date-time array return date as string using format"
 
@@ -1249,6 +1249,7 @@ real(kind=realtime),save             :: unixtime_last
    case('sql')       ; local_format='"%Y-%M-%D %h:%m:%s.%x"'          !
    case('sqlday')    ; local_format='"%Y-%M-%D"'                      !
    case('sqltime')   ; local_format='"%h:%m:%s.%x"'                   !
+   case('dash')      ; local_format='%Y-%M-%D'                        !
    case('rfc-2822')  ; local_format='%w, %D %l %Y %h:%m:%s %T'        ! Mon, 14 Aug 2006 02:34:56 -0600
    case('rfc-3339')  ; local_format='%Y-%M-%DT%h:%m:%s%z'             ! 2006-08-14 02:34:56-06:00
    case('suffix')    ; local_format='%Y%D%M%h%m%s'                    ! 20170122210327
@@ -1568,6 +1569,7 @@ end function fmtdate
 !!      "isoweek"    ==> %I 2016-W30-5
 !!      "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"
 !!      "sqlday"     ==> "%Y-%M-%D"
+!!      "dash"       ==> %Y-%M-%D
 !!      "sqltime"    ==> "%h:%m:%s.%x"
 !!      "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
 !!      "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z
@@ -1699,6 +1701,7 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%b  "sql"        ==> "%%Y-%%M-%%D %%h:%%m:%%s.%%x"          "%Y-%M-%D %h:%m:%s.%x"  ',&
 &'%b  "sqlday"     ==> "%%Y-%%M-%%D"                      "%Y-%M-%D"                  ',&
 &'%b  "sqltime"    ==> "%%h:%%m:%%s.%%x"                   "%h:%m:%s.%x"              ',&
+&'%b  "dash"       ==> %%Y-%%M-%%D                         %Y-%M-%D                   ',&
 &'%b  "rfc-2822"   ==> %%w, %%D %%l %%Y %%h:%%m:%%s %%T        ',&
 &'%b                   %w, %D %l %Y %h:%m:%s %T                ',&
 &'%b  "rfc-3339"   ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z             %Y-%M-%DT%h:%m:%s%z     ',&
@@ -1785,7 +1788,8 @@ end subroutine fmtdate_usage
 !!   ISO_C_BINDING interface.
 !!
 !!##OPTIONS
-!!    anot  A string assumed to represent a date including a year, month and day.
+!!    anot  A string assumed to represent a date including a year, month
+!!          and day.
 !!
 !!    dat   Integer array holding a "DAT" array, similar in structure
 !!          to the array returned by the intrinsic DATE_AND_TIME(3f):
@@ -2694,7 +2698,7 @@ end subroutine box_month
 !!
 !!##SYNOPSIS
 !!
-!!    function d2j(dat) result (julian)
+!!    function d2j(dat) result(julian)
 !!
 !!     integer,intent(in)  :: dat(8)
 !!     real(kind=realtime) :: julian
@@ -2736,7 +2740,7 @@ end subroutine box_month
 !!
 !!##LICENSE
 !!    MIT
-function d2j(dat) result (julian)
+function d2j(dat) result(julian)
 
 ! ident_21="@(#) M_time d2j(3f) Given DAT date-time array returns Julian Date"
 
@@ -2764,7 +2768,7 @@ end function d2j
 !!
 !!##SYNOPSIS
 !!
-!!    function j2d(julian) result (dat)
+!!    function j2d(julian) result(dat)
 !!
 !!     real(kind=realtime),intent(in),optional :: julian
 !!     integer                                 :: dat(8)
@@ -2813,7 +2817,7 @@ end function d2j
 !!
 !!##LICENSE
 !!    MIT
-function j2d(julian) result (dat)
+function j2d(julian) result(dat)
 
 ! ident_22="@(#) M_time j2d(3f) Given Julian Date returns DAT date-time array"
 
@@ -2833,7 +2837,7 @@ end function j2d
 !!
 !!##SYNOPSIS
 !!
-!!    function d2u(dat) result (unixtime)
+!!    function d2u(dat) result(unixtime)
 !!
 !!       integer,intent(in),optional :: dat(8)
 !!       real(kind=realtime)         :: unixtime
@@ -2880,7 +2884,7 @@ end function j2d
 !!
 !!##LICENSE
 !!    MIT
-function d2u(dat) result (unixtime)
+function d2u(dat) result(unixtime)
 
 ! ident_23="@(#) M_time d2u(3f) Given DAT date-time array returns Unix Epoch time"
 
@@ -2906,7 +2910,7 @@ end function d2u
 !!
 !!##SYNOPSIS
 !!
-!!    function u2d(unixtime) result (dat)
+!!    function u2d(unixtime) result(dat)
 !!
 !!     class(*),intent(in),optional      :: unixtime
 !!     ! integer
@@ -2962,7 +2966,7 @@ end function d2u
 !!
 !!##LICENSE
 !!    MIT
-function u2d(unixtime) result (dat)
+function u2d(unixtime) result(dat)
 
 ! ident_24="@(#) M_time u2d(3f) Given Unix Epoch Time returns DAT date-time array"
 
@@ -2978,11 +2982,10 @@ integer                        :: ierr
       type is (real);                local_unixtime=unixtime
       type is (real(kind=realtime)); local_unixtime=unixtime
       end select
+      call unix_to_date(local_unixtime,dat,ierr)
    else
-      local_unixtime=d2u()
+      call date_and_time(values=dat)  ! current time is placed in array
    endif
-
-   call unix_to_date(local_unixtime,dat,ierr)
 
 end function u2d
 !===================================================================================================================================
@@ -3211,14 +3214,14 @@ end function sec2days
 !!
 !!##SYNOPSIS
 !!
-!!    function days2sec(str) result(time)
+!!    elemental impure function days2sec(str) result(time)
 !!
 !!     character(len=*),intent(in)       :: str
 !!     real(kind=realtime)               :: time
 !!
 !!##DESCRIPTION
 !!   Given a string representing a duration of the form
-!!   "[-][[[dd-]hh:]mm:]ss"  or [NNd][NNh][NNm[]NNs][NNw]
+!!   [-][[[dd-]hh:]mm:]ss or [NNd][NNh][NNm[]NNs][NNw]
 !!   return a value representing seconds.
 !!
 !!   If "dd-" is present, units for the numbers are assumed to
@@ -3304,7 +3307,7 @@ end function sec2days
 !!
 !!##LICENSE
 !!    MIT
-function days2sec(str) result(time)
+elemental impure function days2sec(str) result(time)
 
 ! ident_26="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
@@ -3416,9 +3419,9 @@ end function days2sec
 !!     (LICENSE:MIT)
 !!##SYNOPSIS
 !!
-!!   function phase_of_moon(datin)
+!!   function phase_of_moon(dat)
 !!
-!!    integer,intent(in)            :: datin(8)
+!!    integer,intent(in)            :: dat(8)
 !!    character(len=:),allocatable  :: phase_of_moon
 !!
 !!##DESCRIPTION
@@ -3483,11 +3486,11 @@ end function days2sec
 !!
 !!##LICENSE
 !!    MIT
-function phase_of_moon(datin)
+function phase_of_moon(dat)
 
 ! ident_27="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
 
-integer,intent(in)            :: datin(8)
+integer,intent(in)            :: dat(8)
 character(len=:),allocatable  :: phase_of_moon
 
 real(kind=realtime),parameter :: syndonic_month=29.530588853_realtime ! average period of a lunar cycle, or days per lunation
@@ -3500,7 +3503,7 @@ real(kind=realtime),parameter :: phase_length=syndonic_month/8_realtime  ! days 
 integer                       :: phase
 real(kind=realtime)           :: days
 
-days= d2j(datin)-d2j(reference)                               ! days between reference date and input date
+days= d2j(dat)-d2j(reference)                               ! days between reference date and input date
 days = mod(days + phase_length/2.0_dp, syndonic_month)        ! modulo calculation of which phase rounding up
 if(days<0)days=days+syndonic_month                         ! correct for days before reference date
 phase = int( days * ( size(phase_names) / syndonic_month ))+1 ! index into phase names
@@ -3517,9 +3520,9 @@ end function phase_of_moon
 !!     (LICENSE:MIT)
 !!##SYNOPSIS
 !!
-!!   function moon_fullness(datin)
+!!   function moon_fullness(dat)
 !!
-!!    integer,intent(in)            :: datin(8)
+!!    integer,intent(in)            :: dat(8)
 !!    integer                       :: moon_fullness
 !!
 !!##DESCRIPTION
@@ -3534,12 +3537,12 @@ end function phase_of_moon
 !!
 !!##OPTIONS
 !!
-!!  datin      DAT Date array describing input date
+!!    dat    DAT Date array describing input date
 !!
 !!##RESULTS
 !!
-!!     moon_fullness  0 is a new or dark moon, 100 is a full moon, + for waxing
-!!                    and - for waning.
+!!    moon_fullness  0 is a new or dark moon, 100 is a full moon, + for waxing
+!!                   and - for waning.
 !!
 !!##EXAMPLES
 !!
@@ -3575,18 +3578,18 @@ end function phase_of_moon
 !!
 !!##LICENSE
 !!    MIT
-function moon_fullness(datin)
+function moon_fullness(dat)
 
 ! ident_28="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
 
-integer,intent(in)            :: datin(8)
+integer,intent(in)            :: dat(8)
 integer                       :: moon_fullness
 
 real(kind=realtime),parameter :: syndonic_month=29.530588853_realtime  ! average period of a lunar cycle, or days per lunation
 integer,parameter             :: reference(*)= [2000,1,6,0,18,14,0,0]  ! new moon of January 2000 was January 6, 18:14 UTC.
 real(kind=realtime)           :: days_into_cycle
 
-days_into_cycle = mod(d2j(datin)-d2j(reference) , syndonic_month)      ! number of days into lunar cycle
+days_into_cycle = mod(d2j(dat)-d2j(reference) , syndonic_month)      ! number of days into lunar cycle
 if(days_into_cycle<0)days_into_cycle=days_into_cycle+syndonic_month ! correct for input date being before reference date
 
 if(days_into_cycle<=syndonic_month/2.0_realtime)then                 ! if waxing from new to full report as 0% to 100%
@@ -3748,17 +3751,17 @@ end subroutine Easter
 !!        !
 !!        write(*,'(a)')"Time before integer call is: ",now()
 !!        call system_sleep(4)
-!!        write(*,'(a)')"Time after  integer call is: ",now()
+!!        write(*,'(a)')"Time after integer call is: ",now()
 !!        !
 !!        write(*,'(a)')"Time before real call is: ",now()
 !!        call system_sleep(4.0)
-!!        write(*,'(a)')"Time after  real call is: ",now()
+!!        write(*,'(a)')"Time after real call is: ",now()
 !!        !
 !!        write(*,'(a)')"Time before loop is: ",now()
 !!        do i=1,1000
 !!           call system_sleep(4.0/1000.0)
 !!        enddo
-!!        write(*,'(a)')"Time after loop  is: ",now()
+!!        write(*,'(a)')"Time after loop is: ",now()
 !!        !
 !!     end program demo_system_sleep
 !!
@@ -3770,11 +3773,11 @@ end subroutine Easter
 !!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
 !!      Time before real call is:
 !!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
-!!      Time after  real call is:
+!!      Time after real call is:
 !!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
 !!      Time before loop is:
 !!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
-!!      Time after loop  is:
+!!      Time after loop is:
 !!      Sunday, July 17th, 2016 2:30:09 AM UTC-0240
 !!
 !!##AUTHOR
@@ -3843,12 +3846,12 @@ end subroutine call_usleep
 !==================================================================================================================================!
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !==================================================================================================================================!
-function getnow() result(values)
+function getnow() result(dat)
 
 ! ident_33="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
-integer :: values(8)
-   call date_and_time(values=values)
+integer :: dat(8)
+   call date_and_time(values=dat)
 end function getnow
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!

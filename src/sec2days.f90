@@ -16,7 +16,7 @@ character(len=IPvalue)         :: line
       call substitute(line,'.',' ')
       call substitute(line,radix,'.')
    endif
-   strlocal=sec2days(trim(line),lget('sec2days_crop')) ! get command line option and convert to dd-hh:mm:ss string
+   strlocal=sec2days(line,lget('sec2days_crop')) ! get command line option and convert to dd-hh:mm:ss string
    write(*,'(a)')strlocal
 contains
 subroutine help_usage(l_help)
@@ -148,7 +148,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       2023-06-01 12:14:37 UTC-240>',&
+'@(#)COMPILED:       2023-12-23 11:57:24 UTC-300>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop
