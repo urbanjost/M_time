@@ -23,18 +23,29 @@ help_text=[ CHARACTER(LEN=128) :: &
 '       date information.                                                        ',&
 'OPTIONS                                                                         ',&
 '       format     any allowable format for the fmtdate(3) routine.              ',&
-'                  defaults to "YMD".                                            ',&
+'                  defaults to "Y-M-D".                                          ',&
 '       --help     display this help and exit                                    ',&
 '       --version  output version information and exit                           ',&
 '       --test     display allowed options for building a format                 ',&
 'EXAMPLE                                                                         ',&
 '       Sample commands:                                                         ',&
 '                                                                                ',&
-'        cp myfile myfile.`today`                                                ',&
-'        find . -ls > MANIFEST.`today epoch`                                     ',&
-'        mkdir `today YMDhms`                                                    ',&
-'        today yearmonthdayhourminutesecond                                      ',&
-'        today --test                          # show formatting options         ',&
+'        $today                                                                  ',&
+'        2024-05-27                                                              ',&
+'                                                                                ',&
+'        $mv -v myfile myfile.`today`                                            ',&
+'        renamed ''myfile'' -> ''myfile.2024-05-27''                             ',&
+'                                                                                ',&
+'        $find . -ls > MANIFEST.`today epoch`; ls MANIFEST.*                     ',&
+'        MANIFEST.1716840303                                                     ',&
+'                                                                                ',&
+'        $mkdir `today YMDhms`                                                   ',&
+'        20240527160333                                                          ',&
+'                                                                                ',&
+'        $today yearmonthdayhourminutesecond                                     ',&
+'        20240527160442                                                          ',&
+'                                                                                ',&
+'        $today --test                          # show formatting options        ',&
 'AUTHOR                                                                          ',&
 '   John S. Urban                                                                ',&
 'LICENSE                                                                         ',&
@@ -57,9 +68,9 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples>',&
 '@(#)PROGRAM:        today(1f)>',&
 '@(#)DESCRIPTION:    output current time for uses such as file suffixes.>',&
-'@(#)VERSION:        1.0, 2009>',&
+'@(#)VERSION:        1.0, 2009, 1.0.1 2024>',&
 '@(#)AUTHOR:         John S. Urban>',&
-'@(#)COMPILED:       2024-04-29 19:15:04 UTC-240>',&
+'@(#)COMPILED:       2024-05-27 16:09:02 UTC-240>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop
@@ -79,11 +90,8 @@ character(len=:),allocatable :: options
       call fmtdate_usage()                                     ! see all formatting options
    else
       options= sget('today_oo')                                ! get -oo STRING
-      if(options == '')then                                    ! if options are blank set a default
-         write(*,'(a)')now('YMD')                              ! display current date using format from command line
-      else
-         write(*,'(a)')now(options)                            ! display current date using format from command line
-      endif
+      if(options == '')options='Y-M-D'                         ! if options are blank set a default
+      write(*,'(a)')now(options)                               ! display current date using format from command line
    endif
 end subroutine main
 end program today
