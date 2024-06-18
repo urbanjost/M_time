@@ -1,3 +1,4 @@
+<!-- M_timestamp -->
 [![pocketwatch](docs/images/M_time.3m_time.gif)](https://urbanjost.github.io/M_time/fpm-ford/index.html)
 # [M_time](https://urbanjost.github.io/M_time/man3.html)
 

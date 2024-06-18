@@ -83,7 +83,7 @@ LICENSE
 
 
 
-			       December 23, 2023	  month.1.man(1m_time)
+				 June 17, 2024		  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -102,7 +102,7 @@ DESCRIPTION
 
 OPTIONS
   format
-    any allowable format for the fmtdate(3) routine.  defaults to "YMD".
+    any allowable format for the fmtdate(3) routine.  defaults to "Y-M-D".
 
   --help
     display this help and exit
@@ -116,11 +116,22 @@ OPTIONS
 EXAMPLE
   Sample commands:
 
-	  cp myfile myfile.`today`
-	  find . -ls > MANIFEST.`today epoch`
-	  mkdir `today YMDhms`
-	  today yearmonthdayhourminutesecond
-	  today --test				# show formatting options
+	  $today
+	  2024-05-27
+
+	  $mv -v myfile myfile.`today`
+	  renamed 'myfile' -> 'myfile.2024-05-27'
+
+	  $find . -ls > MANIFEST.`today epoch`; ls MANIFEST.*
+	  MANIFEST.1716840303
+
+	  $mkdir `today YMDhms`
+	  20240527160333
+
+	  $today yearmonthdayhourminutesecond
+	  20240527160442
+
+	  $today --test 			 # show formatting options
 
 AUTHOR
   John S. Urban
@@ -130,7 +141,7 @@ LICENSE
 
 
 
-			       December 23, 2023	  today.1.man(1m_time)
+				 June 17, 2024		  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -198,7 +209,7 @@ LICENSE
 
 
 
-			       December 23, 2023       sec2days.1.man(1m_time)
+				 June 17, 2024	       sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -281,7 +292,7 @@ LICENSE
 
 
 
-			       December 23, 2023       days2sec.1.man(1m_time)
+				 June 17, 2024	       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -338,7 +349,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  d2j(3m_time)
+				 June 17, 2024			  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -398,7 +409,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  d2u(3m_time)
+				 June 17, 2024			  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -534,7 +545,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  d2w(3m_time)
+				 June 17, 2024			  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -611,7 +622,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  dow(3m_time)
+				 June 17, 2024			  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -685,7 +696,7 @@ EXAMPLE
 
 
 
-			       December 23, 2023	       easter(3m_time)
+				 June 17, 2024		       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -756,7 +767,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	      fmtdate(3m_time)
+				 June 17, 2024		      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -911,7 +922,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	fmtdate_usage(3m_time)
+				 June 17, 2024		fmtdate_usage(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -979,7 +990,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	moon_fullness(3m_time)
+				 June 17, 2024		moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1038,7 +1049,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  now(3m_time)
+				 June 17, 2024			  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1106,7 +1117,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  o2d(3m_time)
+				 June 17, 2024			  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1149,7 +1160,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023      ordinal_seconds(3m_time)
+				 June 17, 2024	      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1208,7 +1219,7 @@ EXAMPLE
 
 
 
-			       December 23, 2023      ordinal_to_date(3m_time)
+				 June 17, 2024	      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1293,7 +1304,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	phase_of_moon(3m_time)
+				 June 17, 2024		phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1375,7 +1386,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	     sec2days(3m_time)
+				 June 17, 2024		     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1445,7 +1456,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	 system_sleep(3m_time)
+				 June 17, 2024		 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1515,7 +1526,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  u2d(3m_time)
+				 June 17, 2024			  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1592,7 +1603,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	 unix_to_date(3m_time)
+				 June 17, 2024		 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1654,7 +1665,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		 v2mo(3m_time)
+				 June 17, 2024			 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1834,7 +1845,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  w2d(3m_time)
+				 June 17, 2024			  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -1925,7 +1936,7 @@ EXAMPLE
 
 LICENSE
    MIT
-			       December 23, 2023	    guessdate(3m_time)
+				 June 17, 2024		    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -1988,7 +1999,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  j2d(3m_time)
+				 June 17, 2024			  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2065,7 +2076,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023       julian_to_date(3m_time)
+				 June 17, 2024	       julian_to_date(3m_time)
 untitled()							    untitled()
 
 
@@ -2595,7 +2606,7 @@ untitled()							    untitled()
 
 
 
-			       December 23, 2023		    untitled()
+				 June 17, 2024			    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -2981,7 +2992,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	  M_time__oop(3m_time)
+				 June 17, 2024		  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3039,7 +3050,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		 mo2d(3m_time)
+				 June 17, 2024			 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -3096,7 +3107,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		 mo2v(3m_time)
+				 June 17, 2024			 mo2v(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3166,7 +3177,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023       date_to_julian(3m_time)
+				 June 17, 2024	       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3231,7 +3242,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	 date_to_unix(3m_time)
+				 June 17, 2024		 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3336,7 +3347,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	     days2sec(3m_time)
+				 June 17, 2024		     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3414,7 +3425,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023		  d2o(3m_time)
+				 June 17, 2024			  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3477,4 +3488,4 @@ AUTHOR
 
 LICENSE
    MIT
-			       December 23, 2023	    box_month(3m_time)
+				 June 17, 2024		    box_month(3m_time)

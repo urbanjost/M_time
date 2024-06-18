@@ -4,6 +4,7 @@
 module M_time
 use M_time__duplicate
 use, intrinsic :: iso_fortran_env, only : int64
+use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT
 implicit none !(external,type)
 
 ! ident_1="@(#) M_time M_time(3f) date and time function module"
@@ -73,6 +74,8 @@ real(kind=realtime),public,parameter :: dt_minute=60.0_dp     ! one minute in se
 real(kind=realtime),public,parameter :: dt_hour=3600.0_dp     ! one hour in seconds
 real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours in seconds
 real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
+!-----------------------------------------------------------------------------------------------------------------------------------
+character(len=*),parameter   :: gen='(*(g0))'
 !-----------------------------------------------------------------------------------------------------------------------------------
  contains
 !===================================================================================================================================
@@ -408,7 +411,7 @@ integer,intent(out)             :: ierr         ! return 0 on success, otherwise
 real(kind=realtime)             :: julian
 real(kind=realtime),save        :: julian_at_epoch
 logical,save                    :: first=.true.
-integer,parameter               :: ref(8)=[1970,1,1,0,0,0,0,0]
+integer,parameter               :: ref(*)=[1970,1,1,0,0,0,0,0]
 !-----------------------------------------------------------------------------------------------------------------------------------
    if (first) then                                    ! Convert zero of Unix Epoch Time to Julian Date and save
       call date_to_julian(ref,julian_at_epoch,ierr)
@@ -617,7 +620,7 @@ integer                     :: temp_dat(8)
    endif
    call date_to_unix(dat_local,unixtime,ierr)         ! convert date to Unix Epoch Time
    if(ierr/=0)then
-      call stderr('*d2o* bad date array')
+      ('*d2o* bad date array')
       ordinal=-1                                      ! initialize to bad value
    else
       temp_dat=[dat_local(1),1,1,dat_local(4),0,0,0,0]
@@ -823,7 +826,7 @@ integer                     :: ierr                   ! return 0 on success, oth
    ierr=0
    call date_to_unix(dat,unixtime,ierr)               ! convert date to Unix Epoch Time
    if(ierr/=0)then
-      call stderr('*o2d* bad date array')
+      write(stderr,gen) '<ERROR>*o2d*: bad date array'
    else
       dat=u2d(unixtime)
    endif
@@ -967,7 +970,7 @@ integer                     :: dat(8)
    endif
    dat(2)=mo2v(month_name) ! convert given month name to a number
    if(dat(2)<=0)then
-      call stderr('*mo2d* bad month name '//trim(month_name))
+      write(stderr,gen) '<ERROR>*mo2d*: bad month name ',trim(month_name)
       dat(2)=1
    endif
    dat(3)=1  ! set day to first of month
@@ -2098,7 +2101,7 @@ integer                           :: loops
    enddo INFINITE
    if(verbose)write(*,*)'*guessdate* H ',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
    if(itries>=1000)then
-      write(*,*)'*guessdate* ERROR: could not extract date for '//trim(datestring)
+      write(stderr,gen)'<ERROR>*guessdate*: could not extract date for '//trim(datestring)
    endif
    dat(1)=iye
    dat(2)=mon
@@ -2227,7 +2230,7 @@ integer                               :: ierr_local
    if(present(ierr))then
       ierr=ierr_local
    elseif(ierr_local/=0)then
-      write(*,*)'*dow* Unprocessed Error ',ierr_local,' stopping.'
+      write(stderr,gen) '<ERROR>*dow*: Unprocessed Error ',ierr_local,' stopping.'
       stop 2
    endif
 
@@ -2984,7 +2987,7 @@ integer                        :: ierr
       end select
       call unix_to_date(local_unixtime,dat,ierr)
    else
-      call date_and_time(values=dat)  ! current time is placed in array
+      dat=getnow() ! current time is placed in array
    endif
 
 end function u2d
@@ -2997,7 +3000,7 @@ integer :: timezone(8)
    timezone=getnow()
    tz=timezone(4)
    if(tz>0)then  ! gfortran bug on new-years
-      write(*,*)'<ERROR>*get_timezone*TZ=',tz
+      write(stderr,gen)'<ERROR>*get_timezone*: TZ=',tz
       tz=mod(tz,1440)-1440
    endif
 end function get_timezone
@@ -3132,7 +3135,11 @@ doubleprecision                   :: dtime
       call substitute(strlocal,'week','w')
       call substitute(strlocal,'wks','w')
       call substitute(strlocal,'wk','w')
-
+      !do i=2,len_trim(strlocal)
+      ! maybe filter out other characters obviously not part of values?
+      ! if a letter not in smhdw remove but leave numeric values alone. Allow sign and e?
+      ! or parse
+      !enddo
       call substitute(strlocal,'s','s ')          ! assuming only one suffix character and not too many to exceed length of strlocal
       call substitute(strlocal,'m','m ')
       call substitute(strlocal,'h','h ')
@@ -3387,7 +3394,7 @@ logical                           :: negative
       iwords=size(array)
 
       if(iwords>4)then
-         write(*,*)'*days2sec* error: too many values in '//trim(strlocal)
+         write(stderr,gen)'<ERROR>*days2sec*: too many values in '//trim(strlocal)
          iwords=4
       endif
 
@@ -3852,7 +3859,22 @@ function getnow() result(dat)
 
 integer :: dat(8)
    call date_and_time(values=dat)
+   ! VALUES : An array of at least eight elements. If there is no data
+   ! available for a value it is set to -HUGE(VALUES). Otherwise, it contains:
+   !    •  VALUES(1) : The year, including the century.
+   !    •  VALUES(2) : The month of the year
+   !    •  VALUES(3) : The day of the month
+   !    •  VALUES(4) : Time difference in minutes between the reported time and UTC time.
+   !    •  VALUES(5) : The hour of the day, in the range 0 to 23.
+   !    •  VALUES(6) : The minutes of the hour, in the range 0 to 59
+   !    •  VALUES(7) : The seconds of the minute, in the range 0 to 60
+   !    •  VALUES(8) : The milliseconds of the second, in the range 0 to 999.
+   if(any(dat.eq.-huge(0))then
+      WRITE(stderr,"('<ERROR>*getnow*: date_and_time(3f) contains unsupported values')")
+      stop 3
+   endif
 end function getnow
+
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
