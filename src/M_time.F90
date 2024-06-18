@@ -620,7 +620,7 @@ integer                     :: temp_dat(8)
    endif
    call date_to_unix(dat_local,unixtime,ierr)         ! convert date to Unix Epoch Time
    if(ierr/=0)then
-      ('*d2o* bad date array')
+      write(stderr,gen)'<ERROR>*d2o*: bad date array'
       ordinal=-1                                      ! initialize to bad value
    else
       temp_dat=[dat_local(1),1,1,dat_local(4),0,0,0,0]
@@ -3869,7 +3869,7 @@ integer :: dat(8)
    !    •  VALUES(6) : The minutes of the hour, in the range 0 to 59
    !    •  VALUES(7) : The seconds of the minute, in the range 0 to 60
    !    •  VALUES(8) : The milliseconds of the second, in the range 0 to 999.
-   if(any(dat.eq.-huge(0))then
+   if(any(dat.eq.-huge(0)))then
       WRITE(stderr,"('<ERROR>*getnow*: date_and_time(3f) contains unsupported values')")
       stop 3
    endif

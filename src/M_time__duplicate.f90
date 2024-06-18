@@ -1,6 +1,8 @@
 module M_time__duplicate
+use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT
 ! copy of other GPF routines used here
 implicit none !(type,external)
+private
 public lower
 public substitute
 public upper
@@ -12,12 +14,17 @@ public string_to_values
 public string_to_value
 public transliterate
 public v2s
+
 interface v2s
    module procedure d2s, r2s, i2s, l2s
 end interface
+
 interface string_to_value
    module procedure a2d, a2r, a2i
 end interface
+
+character(len=*),parameter   :: gen='(*(g0))'
+
 contains
 !>
 !!##NAME
@@ -146,7 +153,7 @@ integer                        :: ichar
    if(len_old==0)then                                ! c//new/ means insert new at beginning of line (or left margin)
       ichar=len_new + original_input_length
       if(ichar>maxlengthout)then
-         call stderr('*substitute* new line will be too long')
+         write(stderr,gen)'<ERROR>*substitute* - new line will be too long'
          ier1=-1
          if (present(ierr))ierr=ier1
          return
@@ -192,12 +199,12 @@ integer                        :: ichar
 !-----------------------------------------------------------------------------------------------------------------------------------
    select case (ier1)
    case (:-1)
-      call stderr('*substitute* new line will be too long')
+      write(stderr,gen) '<ERROR>*substitute* - new line will be too long'
    case (0)                                                ! there were no changes made to the window
    case default
       ladd=original_input_length-ic
       if(ichar+ladd>maxlengthout)then
-         call stderr('*substitute* new line will be too long')
+         write(stderr,gen)'<ERROR>*substitute* - new line will be too long'
          ier1=-1
          if(present(ierr))ierr=ier1
          return
@@ -398,14 +405,6 @@ integer                      :: ibegin, iend
    end do
 
 end function lower
-!===================================================================================================================================
-!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
-!===================================================================================================================================
-subroutine stderr(string)
-use, intrinsic :: iso_fortran_env, only : ERROR_UNIT
-character(len=*) :: string
-   write(ERROR_UNIT,'(a)')string
-end subroutine stderr
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
@@ -742,7 +741,7 @@ class(*),intent(in),optional :: onerr
       ierr=ierr_local
       s2v=valu
    elseif(ierr_local/=0)then
-      write(*,*)'*s2v* stopped while reading '//trim(chars)
+      write(stderr,*)'<ERROR>*s2v* - stopped while reading '//trim(chars)
       stop 1
    else
       s2v=valu
@@ -1138,7 +1137,7 @@ integer                      :: delimiters_length
          endif
       enddo
       if(ilen==0)then                             ! command was totally composed of delimiters
-         call stderr('*string_to_values* blank line passed as a list of numbers')
+         write(stderr,gen) '<ERROR>*string_to_values* - blank line passed as a list of numbers'
          return
       endif
 !----------------------------------------------------------------------------------------------------------------------------------
@@ -1530,7 +1529,7 @@ character(len=1024)                      :: msg
          if(fmt/='') fmt_local=fmt
          write(chars,fmt_local,iostat=err_local,iomsg=msg)gval
       class default
-         call stderr('*value_to_string* UNKNOWN TYPE')
+         write(stderr,gen) '<ERROR>*value_to_string* - UNKNOWN TYPE'
          chars=' '
       end select
       if(fmt=='') then
@@ -1717,8 +1716,7 @@ doubleprecision             :: valu8
       if(valu8<=huge(valu))then
          valu=real(valu8)
       else
-         !x!call stderr('*a2r* - value too large',valu8,'>',huge(valu))
-         call stderr('*a2r* - value too large')
+         write(stderr,gen) '<ERROR>*a2r* - value too large',valu8,'>',huge(valu)
          valu=huge(valu)
          ierr=-1
       endif
@@ -1741,8 +1739,7 @@ doubleprecision             :: valu8
       if(valu8<=huge(valu))then
          valu=int(valu8)
       else
-         !x!call stderr('sc','*a2i*','- value too large',valu8,'>',huge(valu))
-         call stderr('*a2i* - value too large')
+         write(stderr,gen) '<ERROR>*a2i*','- value too large',valu8,'>',huge(valu)
          valu=huge(valu)
          ierr=-1
       endif
@@ -1824,9 +1821,9 @@ character(len=3),save        :: nan_string='NaN'
          read(nan_string,'(g3.3)')valu
       endif
       if(local_chars/='eod')then                           ! print warning message except for special value "eod"
-         call stderr('*a2d* - cannot produce number from string ['//trim(chars)//']')
+         write(stderr,gen) '<ERROR>*a2d* - cannot produce number from string ['//trim(chars)//']'
          if(msg/='')then
-            call stderr('*a2d* - ['//trim(msg)//']')
+            write(stderr,gen) '       *a2d* - ['//trim(msg)//']'
          endif
       endif
    endif
@@ -1960,7 +1957,7 @@ integer           :: ierr
            cycle
         endif
         if(ch<'0'.or.ch>'Z'.or.(ch>'9'.and.ch<'A'))then
-           write(*,*)'*decodebase* ERROR: invalid character ',ch
+           write(stderr,*)'<ERROR>*decodebase* - invalid character ',ch
            exit ALL
         endif
         if(ch<='9') then

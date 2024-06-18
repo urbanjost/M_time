@@ -16,8 +16,6 @@ elemental pure character(len(str)) function, public \mbox{\hyperlink{namespacem_
 \item 
 elemental pure character(len(str)) function, public \mbox{\hyperlink{namespacem__time____duplicate_a024aaaa6a9341043d511ada527d24778}{lower}} (str, begin, end)
 \item 
-subroutine \mbox{\hyperlink{namespacem__time____duplicate_a7110c106344668cb498875db097aeedf}{stderr}} (string)
-\item 
 pure character(len=\+:) function, allocatable, public \mbox{\hyperlink{namespacem__time____duplicate_a823578f00899e6e86b27df0d9f8a3e61}{adjustc}} (string, length)
 \item 
 character(len=len(str)) function, public \mbox{\hyperlink{namespacem__time____duplicate_ad0a3ea09eff6074d0aec370164821e61}{compact}} (str, char)
@@ -50,6 +48,11 @@ subroutine \mbox{\hyperlink{namespacem__time____duplicate_a6540c593eca59ea89cda8
 \item 
 logical function \mbox{\hyperlink{namespacem__time____duplicate_ae2223333e8558137ee25cd7675b2800b}{decodebase}} (string, basein, out\+\_\+baseten)
 \end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len= $\ast$), parameter \mbox{\hyperlink{namespacem__time____duplicate_a8ab4d9ed13d67b956d6d0212a46a3184}{gen}} =\textquotesingle{}($\ast$(g0))\textquotesingle{}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
@@ -57,7 +60,7 @@ logical function \mbox{\hyperlink{namespacem__time____duplicate_ae2223333e855813
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!a2d@{a2d}}
 \index{a2d@{a2d}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{a2d()}{a2d()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::a2d (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{doubleprecision, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr,  }\item[{class($\ast$), intent(in), optional}]{onerr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::a2d (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{doubleprecision, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr,  }\item[{class($\ast$), intent(in), optional}]{onerr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -66,18 +69,16 @@ logical function \mbox{\hyperlink{namespacem__time____duplicate_ae2223333e855813
 \end{DoxyParams}
 
 
-References decodebase(), stderr(), and substitute().
+References decodebase(), gen, and substitute().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time____duplicate_a6540c593eca59ea89cda8b14150ff1cc_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -88,7 +89,7 @@ Here is the caller graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!a2i@{a2i}}
 \index{a2i@{a2i}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{a2i()}{a2i()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::a2i (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{integer, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::a2i (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{integer, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -97,10 +98,9 @@ Here is the caller graph for this function\+:
 \end{DoxyParams}
 
 
-References a2d(), and stderr().
+References a2d(), and gen.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -111,7 +111,7 @@ Here is the call graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!a2r@{a2r}}
 \index{a2r@{a2r}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{a2r()}{a2r()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::a2r (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{real, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::a2r (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{chars,  }\item[{real, intent(out)}]{valu,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \hypertarget{namespacem__time____duplicate_autotoc_md99}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time____duplicate_autotoc_md99}
 string\+\_\+to\+\_\+value(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} subroutine returns numeric value from string (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time____duplicate_autotoc_md100}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time____duplicate_autotoc_md100}
@@ -148,10 +148,9 @@ Public Domain
 \end{DoxyParams}
 
 
-References a2d(), and stderr().
+References a2d(), and gen.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -254,7 +253,7 @@ Public Domain \mbox{\Hypertarget{namespacem__time____duplicate_aecbd619fedccfc7e
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!d2s@{d2s}}
 \index{d2s@{d2s}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{d2s()}{d2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::d2s (\begin{DoxyParamCaption}\item[{doubleprecision, intent(in)}]{dvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::d2s (\begin{DoxyParamCaption}\item[{doubleprecision, intent(in)}]{dvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \hypertarget{namespacem__time____duplicate_autotoc_md76}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time____duplicate_autotoc_md76}
 v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time____duplicate_autotoc_md77}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time____duplicate_autotoc_md77}
@@ -293,8 +292,7 @@ Public Domain
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -305,7 +303,7 @@ Here is the call graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!decodebase@{decodebase}}
 \index{decodebase@{decodebase}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{decodebase()}{decodebase()}}
-{\footnotesize\ttfamily logical function m\+\_\+time\+\_\+\+\_\+duplicate\+::decodebase (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{string,  }\item[{integer, intent(in)}]{basein,  }\item[{integer, intent(out)}]{out\+\_\+baseten }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily logical function m\+\_\+time\+\_\+\+\_\+duplicate\+::decodebase (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{string,  }\item[{integer, intent(in)}]{basein,  }\item[{integer, intent(out)}]{out\+\_\+baseten }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \hypertarget{namespacem__time____duplicate_autotoc_md107}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time____duplicate_autotoc_md107}
 decodebase(3f) -\/ \mbox{[}M\+\_\+strings\+:B\+A\+SE\mbox{]} convert whole number string in base \mbox{[}2-\/36\mbox{]} to base 10 number (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time____duplicate_autotoc_md108}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time____duplicate_autotoc_md108}
@@ -359,16 +357,14 @@ Public Domain
 
 References upper().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=348pt]{namespacem__time____duplicate_ae2223333e8558137ee25cd7675b2800b_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -379,14 +375,13 @@ Here is the caller graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!i2s@{i2s}}
 \index{i2s@{i2s}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{i2s()}{i2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::i2s (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ivalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::i2s (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{ivalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -397,14 +392,13 @@ Here is the call graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!l2s@{l2s}}
 \index{l2s@{l2s}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{l2s()}{l2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::l2s (\begin{DoxyParamCaption}\item[{logical, intent(in)}]{lvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::l2s (\begin{DoxyParamCaption}\item[{logical, intent(in)}]{lvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -448,8 +442,7 @@ Expected output
 \end{DoxyVerb}
  \hypertarget{namespacem__time____duplicate_autotoc_md23}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time____duplicate_autotoc_md23}
 John S. Urban \hypertarget{namespacem__time____duplicate_autotoc_md24}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time____duplicate_autotoc_md24}
-Public Domain Here is the caller graph for this function\+:
-\nopagebreak
+Public Domain Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -460,14 +453,13 @@ Public Domain Here is the caller graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!r2s@{r2s}}
 \index{r2s@{r2s}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{r2s()}{r2s()}}
-{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::r2s (\begin{DoxyParamCaption}\item[{real, intent(in)}]{rvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily character(len=\+:) function, allocatable m\+\_\+time\+\_\+\+\_\+duplicate\+::r2s (\begin{DoxyParamCaption}\item[{real, intent(in)}]{rvalue,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
 References value\+\_\+to\+\_\+string().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -579,8 +571,7 @@ A\+U\+T\+H\+OR\+: John S. Urban
 
 References a2d().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -724,26 +715,11 @@ Public Domain
 
 References lower().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=348pt]{namespacem__time____duplicate_acc01fe28c66ed3b08758969cf6674ca9_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{namespacem__time____duplicate_a7110c106344668cb498875db097aeedf}\label{namespacem__time____duplicate_a7110c106344668cb498875db097aeedf}} 
-\index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!stderr@{stderr}}
-\index{stderr@{stderr}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
-\doxysubsubsection{\texorpdfstring{stderr()}{stderr()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::stderr (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})}
-
-Here is the caller graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{namespacem__time____duplicate_a7110c106344668cb498875db097aeedf_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time____duplicate_ae0ea3a3d65d513305f0d6ebdff5b7b80}\label{namespacem__time____duplicate_ae0ea3a3d65d513305f0d6ebdff5b7b80}} 
@@ -815,16 +791,8 @@ values...................   10.0000000  2.29999995  3.14159989
 John S. Urban \hypertarget{namespacem__time____duplicate_autotoc_md67}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time____duplicate_autotoc_md67}
 Public Domain 
 
-References stderr().
+References gen.
 
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=348pt]{namespacem__time____duplicate_ae0ea3a3d65d513305f0d6ebdff5b7b80_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{namespacem__time____duplicate_ac19b76c55f99db9189de7ce90373b82f}\label{namespacem__time____duplicate_ac19b76c55f99db9189de7ce90373b82f}} 
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!substitute@{substitute}}
 \index{substitute@{substitute}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
@@ -883,18 +851,9 @@ Expected output
 John S. Urban \hypertarget{namespacem__time____duplicate_autotoc_md6}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time____duplicate_autotoc_md6}
 Public Domain 
 
-References stderr().
+References gen.
 
-Here is the call graph for this function\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=348pt]{namespacem__time____duplicate_ac19b76c55f99db9189de7ce90373b82f_cgraph}
-\end{center}
-\end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -963,7 +922,7 @@ Public Domain \mbox{\Hypertarget{namespacem__time____duplicate_aac93e5ea4d30a592
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!trimzeros@{trimzeros}}
 \index{trimzeros@{trimzeros}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{trimzeros()}{trimzeros()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::trimzeros (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::trimzeros (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \hypertarget{namespacem__time____duplicate_autotoc_md92}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time____duplicate_autotoc_md92}
 trimzeros(3fp) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} Delete trailing zeros from numeric decimal string (L\+I\+C\+E\+N\+SE\+:PD) \hypertarget{namespacem__time____duplicate_autotoc_md93}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time____duplicate_autotoc_md93}
@@ -987,8 +946,7 @@ str input string will be assumed to be a numeric value and have trailing zeros r
 \end{DoxyVerb}
 \hypertarget{namespacem__time____duplicate_autotoc_md97}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time____duplicate_autotoc_md97}
 John S. Urban \hypertarget{namespacem__time____duplicate_autotoc_md98}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time____duplicate_autotoc_md98}
-Public Domain Here is the caller graph for this function\+:
-\nopagebreak
+Public Domain Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1036,8 +994,7 @@ Expected output
 \end{DoxyVerb}
  \hypertarget{namespacem__time____duplicate_autotoc_md14}{}\doxysubsubsection{A\+U\+T\+H\+OR}\label{namespacem__time____duplicate_autotoc_md14}
 John S. Urban \hypertarget{namespacem__time____duplicate_autotoc_md15}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time____duplicate_autotoc_md15}
-Public Domain Here is the caller graph for this function\+:
-\nopagebreak
+Public Domain Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1048,7 +1005,7 @@ Public Domain Here is the caller graph for this function\+:
 \index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!value\_to\_string@{value\_to\_string}}
 \index{value\_to\_string@{value\_to\_string}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
 \doxysubsubsection{\texorpdfstring{value\_to\_string()}{value\_to\_string()}}
-{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::value\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{class($\ast$), intent(in)}]{gval,  }\item[{character(len=$\ast$), intent(out)}]{chars,  }\item[{integer, intent(out), optional}]{length,  }\item[{integer, optional}]{err,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt,  }\item[{logical, intent(in), optional}]{trimz }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine m\+\_\+time\+\_\+\+\_\+duplicate\+::value\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{class($\ast$), intent(in)}]{gval,  }\item[{character(len=$\ast$), intent(out)}]{chars,  }\item[{integer, intent(out), optional}]{length,  }\item[{integer, optional}]{err,  }\item[{character(len=$\ast$), intent(in), optional}]{fmt,  }\item[{logical, intent(in), optional}]{trimz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 \hypertarget{namespacem__time____duplicate_autotoc_md84}{}\doxysubsubsection{N\+A\+ME}\label{namespacem__time____duplicate_autotoc_md84}
 value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric string from a numeric value (L\+I\+C\+E\+N\+SE\+:PD)\hypertarget{namespacem__time____duplicate_autotoc_md85}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time____duplicate_autotoc_md85}
@@ -1108,21 +1065,28 @@ Expected output
 John S. Urban \hypertarget{namespacem__time____duplicate_autotoc_md91}{}\doxysubsubsection{L\+I\+C\+E\+N\+SE}\label{namespacem__time____duplicate_autotoc_md91}
 Public Domain 
 
-References stderr(), and trimzeros().
+References gen, and trimzeros().
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=348pt]{namespacem__time____duplicate_a5aafa9887974aee94d516bdf3a3f0536_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time____duplicate_a5aafa9887974aee94d516bdf3a3f0536_icgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacem__time____duplicate_a8ab4d9ed13d67b956d6d0212a46a3184}\label{namespacem__time____duplicate_a8ab4d9ed13d67b956d6d0212a46a3184}} 
+\index{m\_time\_\_duplicate@{m\_time\_\_duplicate}!gen@{gen}}
+\index{gen@{gen}!m\_time\_\_duplicate@{m\_time\_\_duplicate}}
+\doxysubsubsection{\texorpdfstring{gen}{gen}}
+{\footnotesize\ttfamily character(len=$\ast$), parameter m\+\_\+time\+\_\+\+\_\+duplicate\+::gen =\textquotesingle{}($\ast$(g0))\textquotesingle{}\hspace{0.3cm}{\ttfamily [private]}}
+
