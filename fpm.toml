@@ -35,7 +35,8 @@ homepage = "https://github.com/urbanjost/M_time.git"
    main="test_suite_M_time.F90"
    [test.dependencies]
    M_framework          = { git = "https://github.com/urbanjost/M_framework.git" }
-   #M_framework = {namespace = "GPF"}
+   # M_framework = { namespace =  "GPF" }
+   # M_framework    = { path = "GLINKS/M_framework.git" }
 
 [[executable]]
    name="now"
@@ -46,6 +47,8 @@ homepage = "https://github.com/urbanjost/M_time.git"
    M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
    # M_kracken95  = { namespace = "GPF" }
    # M_strings    = { namespace = "GPF" }
+   # M_kracken95  = { path = "GLINKS/M_kracken95.git" }
+   # M_strings    = { path = "GLINKS/M_strings.git" }
 
 [[executable]]
    name="sec2days"
@@ -56,6 +59,8 @@ homepage = "https://github.com/urbanjost/M_time.git"
    M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
    # M_kracken95  = { namespace = "GPF" }
    # M_strings    = { namespace = "GPF" }
+   # M_kracken95  = { path = "GLINKS/M_kracken95.git" }
+   # M_strings    = { path = "GLINKS/M_strings.git" }
 
 [[executable]]
    name="days2sec"
@@ -66,6 +71,8 @@ homepage = "https://github.com/urbanjost/M_time.git"
    M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
    # M_kracken95  = { namespace = "GPF" }
    # M_strings    = { namespace = "GPF" }
+   # M_kracken95  = { path = "GLINKS/M_kracken95.git" }
+   # M_strings    = { path = "GLINKS/M_strings.git" }
 
 [[executable]]
    name="month"
@@ -75,6 +82,8 @@ homepage = "https://github.com/urbanjost/M_time.git"
    M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
    # M_kracken95  = { namespace = "GPF" }
    # M_strings    = { namespace = "GPF" }
+   # M_kracken95  = { path = "GLINKS/M_kracken95.git" }
+   # M_strings    = { path = "GLINKS/M_strings.git" }
 
 [[executable]]
    name="today"
@@ -83,3 +92,4 @@ homepage = "https://github.com/urbanjost/M_time.git"
    [executable.dependencies]
    M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
    # M_kracken95  = { namespace = "GPF" }
+   # M_kracken95  = { path = "GLINKS/M_kracken95.git" }

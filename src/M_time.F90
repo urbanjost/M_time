@@ -46,7 +46,7 @@ private
 ! MONTH NAME
    public mo2v           !(month_name) result(MONTH_NUMBER)   ! given month name return month number
    public v2mo           !(month_number) result(MONTH_NAME)   ! given month number return month name
-   public mo2d           !(month_name) result(DAT)            ! given month name and year return date array for 1st day of month
+   public mo2d           !(month_name,year) result(DAT)       ! given month name and year return date array for 1st day of month
 ! ASTROLOGICAL
    public easter         !(year,dat)                          ! calculate month and day Easter falls on for given year
    public moon_fullness  !(dat) result(FULLNESS)              ! percentage of moon phase from new to full
@@ -76,6 +76,11 @@ real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours i
 real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),parameter   :: gen='(*(g0))'
+!-----------------------------------------------------------------------------------------------------------------------------------
+interface w2d
+   module procedure w2d_numeric
+   module procedure w2d_string
+end interface w2d
 !-----------------------------------------------------------------------------------------------------------------------------------
  contains
 !===================================================================================================================================
@@ -925,8 +930,8 @@ end function v2mo
 !!
 !!##DESCRIPTION
 !!   Given a Common Calendar month name, return the date as a "DAT" array
-!!   for the 1st day of the month. An optional year may be specified. The
-!!   year defaults to the current year.
+!!   for the 1st day of the month. An optional year that defaults to the
+!!   current year may be specified.
 !!
 !!##OPTIONS
 !!    month_name  A string representing a Common Calendar month name.
@@ -945,12 +950,12 @@ end function v2mo
 !!     program demo_mo2d
 !!     use M_time, only : mo2d
 !!     implicit none
-!!        write(*,'(*(i0:,":"))')mo2d('March')
+!!        write(*,'("MARCH:",*(i0:,":"))')mo2d('March')
 !!     end program demo_mo2d
 !!
-!!    results:
+!!    Results:
 !!
-!!       2016:3:1:-240:0:0:0:0
+!!          > MARCH:2016:3:1:-240:0:0:0:0
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
@@ -1103,21 +1108,18 @@ end function mo2v
 !!     program demo_now
 !!     use M_time, only : now
 !!     implicit none
+!!        write(*,*)now("The current date is year/month/day hour:minute:second timezone")
+!!        write(*,*)now("The current date is WEEKDAY at HOUR GOOD, MONTH DAY, year")
 !!        write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
-!!        call showme()
-!!     contains
-!!     subroutine showme() ! see all formatting options
-!!     use M_time, only : fmtdate_usage
-!!        call fmtdate_usage() ! see all formatting options
-!!     end subroutine
+!!        write(*,*)now("iso")
 !!     end program demo_now
+!! ```
+!! Results:
 !!
-!!    results:
-!!
-!!       The current date is Sun, Jul 17th, 2016 01:21:35 PM
-!!        ::
-!!        :: description of all formatting options will appear here
-!!        ::
+!!  >  The current date is 2024/06/28 14:56:36 -0400
+!!  >  The current date is Friday at 2 PM, June 28th, 2024
+!!  >  The current date is Fri, Jun 28th, 2024 2:56:36 PM
+!!  >  2024-06-28T14:56:36-04:00
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
@@ -1186,21 +1188,11 @@ end function now
 !!     integer :: dat(8)
 !!        call date_and_time(values=dat)
 !!        write(*,*)fmtdate(dat,"current date: %w, %l %d, %Y %H:%m:%s %N")
-!!        call showme()
-!!     contains
-!!     subroutine showme()
-!!        use M_time, only : fmtdate_usage
-!!        call fmtdate_usage() ! see all formatting options
-!!     end subroutine showme
 !!     end program demo_fmtdate
 !!
 !!    results:
 !!
 !!       The current date is Sun, Jul 17th, 2016 01:21:35 PM
-!!        ::
-!!        :: An up-to-date description of all the
-!!        :: formatting options will appear here
-!!        ::
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015-12-19
@@ -1262,6 +1254,7 @@ real(kind=realtime),save             :: unixtime_last
    case(' ')         ; local_format='%W, %L %d, %Y %H:%m:%s %N UTC%z' ! Friday, June 17th, 2016 06:31:00 PM UTC-04:00
    case('formal')    ; local_format='The %d of %L %Y'                 ! The 9th of November 2014
    case('lord')  ; local_format='the %d day of %L in the year of our Lord %Y' ! the 9th day of November in the year of our Lord 2014
+   case('usage','?','help') ; local_format='%?'                       ! call fmtdate_usage
    case('easter')
       call easter(values(1), valloc)                                  ! given year get month and day Easter falls on
       local_format="Easter day: the %d day of %L in the year of our Lord %Y"
@@ -1282,10 +1275,12 @@ real(kind=realtime),save             :: unixtime_last
          call substitute(xxxx,'month','%M')
          call substitute(xxxx,'MONTH','%L')
          call substitute(xxxx,'Month','%l')
+         call substitute(xxxx,'Mth','%l')
 
          call substitute(xxxx,'weekday','%u')
          call substitute(xxxx,'WEEKDAY','%W')
          call substitute(xxxx,'Weekday','%w')
+         call substitute(xxxx,'wkday','%w')
          call substitute(xxxx,'today','%Y%M%D')
          call substitute(xxxx,'day','%D')
          call substitute(xxxx,'DAY','%d')
@@ -1452,9 +1447,10 @@ real(kind=realtime),save             :: unixtime_last
          !=====================================================================================
          case('Y'); write(text(iout:),'(I0.4)')valloc(1)                  ! the year, including the century (for example, 1990)
          !=====================================================================================
-         case('Z'); write(text(iout:),'(SP,I5.4)')valloc(4)               ! time difference with respect to UTC in minutes
+         case('Z'); write(text(iout:),'(SP,I5.4,"m")')valloc(4)           ! time difference with respect to UTC in minutes
          !=====================================================================================
          case('z'); write(text(iout:),'(SP,I3.2,":",SS,I2.2)')int(valloc(4)/60),abs(mod(valloc(4),60)) ! time from UTC as +-hh:mm
+         case('?'); write(text(iout:),'()'); call fmtdate_usage()
          !=====================================================================================
          case default
             write(text(iout:),'(A1)')chara
@@ -1518,7 +1514,7 @@ end function fmtdate
 !!     (2) %M -- month of year, 01 to 12                   07
 !!     (3) %D -- day of month, 01 to 31                    29
 !!         %d -- day of month, with suffix (1st, 2nd,...)  29th
-!!     (4) %Z -- minutes from UTC                          -0240
+!!     (4) %Z -- minutes from UTC                          -0240m
 !!         %z -- -+hh:mm from UTC                          -04:00
 !!         %T -- -+hhmm  from UTC                          -0400
 !!     (5) %h -- hours, 00 to 23                           10
@@ -1559,6 +1555,8 @@ end function fmtdate
 !!         %S -- seconds since last use of this format   .0000000000000000
 !!         %k -- time in seconds from SYSTEM_CLOCK(3f)   723258.812
 !!         %K -- time in clicks from SYSTEM_CLOCK(3f)    723258812
+!!   Help:
+!!         %? -- call fmtdate_usage
 !!
 !!    If no percent (%) is found in the format one of several
 !!    alternate substitutions occurs.
@@ -1567,24 +1565,25 @@ end function fmtdate
 !!    keywords the following substitutions occur:
 !!
 !!      "iso-8601",
-!!      "iso"        ==> %Y-%M-%DT%h:%m:%s%z
+!!      "iso"           ==> %Y-%M-%DT%h:%m:%s%z
 !!      "iso-8601W",
-!!      "isoweek"    ==> %I 2016-W30-5
-!!      "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"
-!!      "sqlday"     ==> "%Y-%M-%D"
-!!      "dash"       ==> %Y-%M-%D
-!!      "sqltime"    ==> "%h:%m:%s.%x"
-!!      "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
-!!      "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z
-!!      "date"       ==> %w %l %D %h:%m:%s UTC%z %Y
-!!      "short"      ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
-!!      "long"," "   ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
-!!      "suffix"     ==> %Y%D%M%h%m%s
-!!      "formal"     ==> The %d of %L %Y
-!!      "lord"       ==> the %d day of %L in the year of our Lord %Y
-!!      "easter"     ==> FOR THE YEAR OF THE CURRENT DATE:
+!!      "isoweek"       ==> %I 2016-W30-5
+!!      "sql"           ==> "%Y-%M-%D %h:%m:%s.%x"
+!!      "sqlday"        ==> "%Y-%M-%D"
+!!      "dash"          ==> %Y-%M-%D
+!!      "sqltime"       ==> "%h:%m:%s.%x"
+!!      "rfc-2822"      ==> %w, %D %l %Y %h:%m:%s %T
+!!      "rfc-3339"      ==> %Y-%M-%DT%h:%m:%s%z
+!!      "date"          ==> %w %l %D %h:%m:%s UTC%z %Y
+!!      "short"         ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
+!!      "long"," "      ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
+!!      "suffix"        ==> %Y%D%M%h%m%s
+!!      "formal"        ==> The %d of %L %Y
+!!      "lord"          ==> the %d day of %L in the year of our Lord %Y
+!!      "easter"        ==> FOR THE YEAR OF THE CURRENT DATE:
 !!                       Easter day: the %d day of %L in the year of our Lord %Y
-!!      "all"        ==> A SAMPLE OF DATE FORMATS
+!!      "all"           ==> A SAMPLE OF DATE FORMATS
+!!      "usage|help|?"  ==> %?
 !!
 !!    otherwise the following words are replaced with the most
 !!    common macros:
@@ -1606,15 +1605,15 @@ end function fmtdate
 !!
 !!    string values:
 !!
-!!       MONTH    %L  July
-!!       Month    %l  Jul
-!!       WEEKDAY  %W  Thursday
-!!       Weekday  %w  Thu
-!!       DAY      %d  7th
-!!       TIMEZONE %z  -04:00
-!!       Timezone %Z  -240
-!!       GOOD     %N  AM
-!!       HOUR     %H  10
+!!       MONTH          %L  July
+!!       Month|mth      %l  Jul
+!!       WEEKDAY        %W  Thursday
+!!       Weekday|wkday  %w  Thu
+!!       DAY            %d  7th
+!!       TIMEZONE       %z  -04:00
+!!       Timezone       %Z  -240m
+!!       GOOD           %N  AM
+!!       HOUR           %H  10
 !!
 !!    if none of these keywords are found then every letter that
 !!    is a macro is assumed to have an implied percent in front
@@ -1691,6 +1690,8 @@ usage=[ CHARACTER(LEN=128) :: &
 &'     %%S -- seconds since last use of this format     %S     ',&
 &'     %%k -- time in seconds from SYSTEM_CLOCK(3f)     %k     ',&
 &'     %%K -- time in clicks from SYSTEM_CLOCK(3f)      %K     ',&
+&'%b Help:                                                     ',&
+&'     %%? -- call fmtdate_usage()                             ',&
 &'%b                                                           ',&
 &'%bIf no percent (%%) is found in the format one of several   ',&
 &'%balternate substitutions occurs.                            ',&
@@ -1698,52 +1699,53 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%bIf the format is composed entirely of one of the following ',&
 &'%bkeywords the following substitutions occur:                ',&
 &'%b  "iso-8601",                                              ',&
-&'%b  "iso"        ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z             %Y-%M-%DT%h:%m:%s%z     ',&
-&'%b  "iso-8601W",                                                                    ',&
-&'%b  "isoweek"    ==> %%I                              %I                            ',&
-&'%b  "sql"        ==> "%%Y-%%M-%%D %%h:%%m:%%s.%%x"          "%Y-%M-%D %h:%m:%s.%x"  ',&
-&'%b  "sqlday"     ==> "%%Y-%%M-%%D"                      "%Y-%M-%D"                  ',&
-&'%b  "sqltime"    ==> "%%h:%%m:%%s.%%x"                   "%h:%m:%s.%x"              ',&
-&'%b  "dash"       ==> %%Y-%%M-%%D                         %Y-%M-%D                   ',&
-&'%b  "rfc-2822"   ==> %%w, %%D %%l %%Y %%h:%%m:%%s %%T        ',&
-&'%b                   %w, %D %l %Y %h:%m:%s %T                ',&
-&'%b  "rfc-3339"   ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z             %Y-%M-%DT%h:%m:%s%z     ',&
-&'%b  "date"       ==> %%w %%l %%D %%h:%%m:%%s UTC%%z %%Y      ',&
-&'%b                   %w %l %D %h:%m:%s UTC%z %Y              ',&
-&'%b  "short"      ==> %%w, %%l %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
-&'%b                   %w, %l %d, %Y %H:%m:%s %N UTC%z         ',&
-&'%b  "long"," "   ==> %%W, %%L %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
-&'%b                   %W, %L %d, %Y %H:%m:%s %N UTC%z         ',&
-&'%b  "suffix"     ==> %%Y%%D%%M%%h%%m%%s                    %Y%D%M%h%m%s             ',&
-&'%b  "formal"     ==> The %%d of %%L %%Y                 The %d of %L %Y             ',&
-&'%b  "lord"       ==> the %%d day of %%L in the year of our Lord %%Y                 ',&
-&'%b                   the %d day of %L in the year of our Lord %Y                    ',&
-&'%b  "easter"     ==> FOR THE YEAR OF THE CURRENT DATE:       ',&
-&'%b                     Easter day: the %%d day of %%L in the year of our Lord %%Y   ',&
-&'%b  "all"        ==> A SAMPLE OF DATE FORMATS                ',&
+&'%b  "iso"          ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z ==> %Y-%M-%DT%h:%m:%s%z   ',&
+&'%b  "iso-8601W",                                                                  ',&
+&'%b  "isoweek"      ==> %%I ==> %I                          ',&
+&'%b  "sql"          ==> "%%Y-%%M-%%D %%h:%%m:%%s.%%x" ==> "%Y-%M-%D %h:%m:%s.%x"',&
+&'%b  "sqlday"       ==> "%%Y-%%M-%%D" ==> "%Y-%M-%D"                ',&
+&'%b  "sqltime"      ==> "%%h:%%m:%%s.%%x" ==> "%h:%m:%s.%x"            ',&
+&'%b  "dash"         ==> %%Y-%%M-%%D ==> %Y-%M-%D                 ',&
+&'%b  "rfc-2822"     ==> %%w, %%D %%l %%Y %%h:%%m:%%s %%T      ',&
+&'%b                     %w, %D %l %Y %h:%m:%s %T              ',&
+&'%b  "rfc-3339"     ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z ==> %Y-%M-%DT%h:%m:%s%z   ',&
+&'%b  "date"         ==> %%w %%l %%D %%h:%%m:%%s UTC%%z %%Y      ',&
+&'%b                     %w %l %D %h:%m:%s UTC%z %Y              ',&
+&'%b  "short"        ==> %%w, %%l %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
+&'%b                     %w, %l %d, %Y %H:%m:%s %N UTC%z         ',&
+&'%b  "long"," "     ==> %%W, %%L %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
+&'%b                     %W, %L %d, %Y %H:%m:%s %N UTC%z         ',&
+&'%b  "suffix"       ==> %%Y%%D%%M%%h%%m%%s ==> %Y%D%M%h%m%s           ',&
+&'%b  "formal"       ==> The %%d of %%L %%Y ==> The %d of %L %Y           ',&
+&'%b  "lord"         ==> the %%d day of %%L in the year of our Lord %%Y               ',&
+&'%b                     the %d day of %L in the year of our Lord %Y                  ',&
+&'%b  "easter"       ==> FOR THE YEAR OF THE CURRENT DATE:       ',&
+&'%b                       Easter day: the %%d day of %%L in the year of our Lord %%Y ',&
+&'%b  "all"          ==> A SAMPLE OF DATE FORMATS                ',&
+&'%b  "usage|help|?" ==> call fmtdate_usage                    ',&
 &'%botherwise the following words are replaced with the most   ',&
 &'%bcommon macros:                                             ',&
-&'%b   year          %%Y  %Y                                   ',&
-&'%b   month         %%M  %M                                   ',&
-&'%b   day           %%D  %D                                   ',&
-&'%b   timezone      %%z  %z                                   ',&
-&'%b   hour          %%h  %h                                   ',&
-&'%b   minute        %%m  %m                                   ',&
-&'%b   second        %%s  %s                                   ',&
-&'%b   millisecond   %%x  %x                                   ',&
-&'%b   epoch         %%e  %e                                   ',&
-&'%b   julian        %%j  %j                                   ',&
-&'%b   ordinal       %%O  %O                                   ',&
-&'%b   weekday       %%u  %u                                   ',&
-&'%b   MONTH         %%L  July                                 ',&
-&'%b   Month         %%l  Jul                                  ',&
-&'%b   DAY           %%d  7th                                  ',&
-&'%b   HOUR          %%H  10                                   ',&
-&'%b   GOOD          %%N  AM                                   ',&
-&'%b   Weekday       %%w  Thu                                  ',&
-&'%b   WEEKDAY       %%W  Thursday                             ',&
-&'%b   Timezone      %%Z  -240                                 ',&
-&'%b   TIMEZONE      %%z  -04:00                               ',&
+&'%b   year            %%Y  %Y                                 ',&
+&'%b   month           %%M  %M                                 ',&
+&'%b   day             %%D  %D                                 ',&
+&'%b   timezone        %%z  %z                                 ',&
+&'%b   hour            %%h  %h                                 ',&
+&'%b   minute          %%m  %m                                 ',&
+&'%b   second          %%s  %s                                 ',&
+&'%b   millisecond     %%x  %x                                 ',&
+&'%b   epoch           %%e  %e                                 ',&
+&'%b   julian          %%j  %j                                 ',&
+&'%b   ordinal         %%O  %O                                 ',&
+&'%b   weekday         %%u  %u                                 ',&
+&'%b   MONTH           %%L  July                               ',&
+&'%b   Month|mth       %%l  Jul                                ',&
+&'%b   DAY             %%d  7th                                ',&
+&'%b   HOUR            %%H  10                                 ',&
+&'%b   GOOD            %%N  AM                                 ',&
+&'%b   Weekday|wkday   %%w  Thu                                ',&
+&'%b   WEEKDAY         %%W  Thursday                           ',&
+&'%b   Timezone        %%Z  -240m                              ',&
+&'%b   TIMEZONE        %%z  -04:00                             ',&
 &'%bif none of these keywords are found then every letter that ',&
 &'%bis a macro is assumed to have an implied percent in front  ',&
 &'%bof it. For example:                                        ',&
@@ -2413,10 +2415,20 @@ end subroutine d2w
 !!
 !!##SYNOPSIS
 !!
-!!    subroutine w2d(iso_year,iso_week,iso_weekday,dat)
+!!    either
 !!
-!!     integer,intent(in)      :: iso_year, iso_week, iso_weekday
-!!     integer,intent(out)     :: dat(8)     ! output date array
+!!       subroutine w2d(iso_year,iso_week,iso_weekday,dat)
+!!
+!!        integer,intent(in)      :: iso_year, iso_week, iso_weekday
+!!        integer,intent(out)     :: dat(8)     ! output date array
+!!
+!!    or
+!!
+!!       subroutine w2d(iso_week,dat,ierr)
+!!
+!!        character(len=*),intent(in)  :: iso8601_week
+!!        integer,intent(out)          :: dat(8)     ! output date array
+!!        integer,intent(out),optional :: ierr
 !!
 !!##DESCRIPTION
 !!   Given an ISO-8601 week return a "DAT" array defining a date and time,
@@ -2424,10 +2436,16 @@ end subroutine d2w
 !!   year, week of year and weekday.
 !!
 !!##OPTIONS
-!!    iso_year     ISO-8601 year number for the given date
-!!    iso_week     ISO-8601 week number for the given date
-!!    iso_weekday  ISO-8601 weekday number for the given date
-!!    iso_name     ISO-8601 Week string for the data in the form "yyyy-Www-d".
+!!    iso_year      ISO-8601 year number for the given date
+!!    iso_week      ISO-8601 week number for the given date.
+!!                  Valid values are from 1 to 53.
+!!    iso_weekday   ISO-8601 weekday number for the given date.
+!!                  Valid values are from 1 to 7, where 1 is Monday.
+!!
+!!    iso8601_week  ISO-8601 Week string for the data in the form
+!!                  "yyyy-Www-D", "yyyyWwwD", "yyyy-Www", and "yyyyWww"
+!!                  where yyyy is the year, ww is the iso_week, and D is
+!!                  the weekday.
 !!
 !!##RETURNS
 !!    dat          "DAT" array (an integer array of the same format as
@@ -2435,6 +2453,16 @@ end subroutine d2w
 !!                 describing the date to be used, which is the basic
 !!                 time description used by the other M_time(3fm) module
 !!                 procedures.
+!!    ierr         optional error code result. If non-zero an error occurred.
+!!                 If an error occurs and IERR is not present the program
+!!                 terminates.
+!!##NOTES
+!!
+!!   If D is omitted 1 is returned although this does not appear in the
+!!   iso-8601 standard at the current time.
+!!
+!!   The returned dat array is currently always assumed to have the local
+!!   timezone. This might be changed to always assume ZULU time.
 !!
 !!##EXAMPLE
 !!
@@ -2457,6 +2485,21 @@ end subroutine d2w
 !!       write(*,'(a)')&
 !!       & 'Given 27 September 2008 is 2008-W39-6'
 !!       call printit(2008,39,6)
+!!
+!!       string : block
+!!          character(len=*),parameter :: array(4)=[character(len=80) ::  &
+!!          & '2008-W39-6', '2008W396', '2008-W39', '2008W39' ]
+!!          integer  :: dat(8)
+!!          integer  :: i
+!!          do i=1,size(array)
+!!             write(*,'(a)')&
+!!             & 'Given string '//array(i)
+!!             call w2d(array(i),dat)
+!!             write(*,'(a,i0)')'RESULT:          '
+!!             write(*,'(a,*(i0:,","))')'   DAT array        ',dat
+!!             write(*,'(a,/,67("="))')'    '//fmtdate(dat,'long')
+!!          enddo
+!!       endblock string
 !!     contains
 !!     subroutine printit(iso_year,iso_week,iso_weekday)
 !!     ! ISO-8601 Week: 2016-W29-1
@@ -2551,7 +2594,8 @@ end subroutine d2w
 !!     Result: 27 September 2008
 !!
 !!##ISO_NAME
-!!   Week date representations are in the format YYYYWww-D.
+!!   Week date representations are in the format YYYY-Www ,YYYYWww,
+!!   YYYY-Www-D or YYYYWwwD
 !!
 !!     o [YYYY] indicates the ISO week-numbering year which is slightly
 !!       different from the traditional Gregorian calendar year.
@@ -2576,9 +2620,9 @@ end subroutine d2w
 !!##LICENSE
 !!    MIT
 !-----------------------------------------------------------------------------------------------------------------------------------
-subroutine w2d(iso_year,iso_week,iso_weekday,dat)
+subroutine w2d_numeric(iso_year,iso_week,iso_weekday,dat)
 
-! ident_19="@(#) M_time w2d(3f) convert iso-8601 Week-numbering year date yyyy-Www-d to DAT date-time array"
+! ident_19="@(#) M_time w2d_numeric(3f) convert iso-8601 Week-numbering year date yyyy-Www-d to DAT date-time array"
 
 integer,intent(in)              :: iso_year, iso_week, iso_weekday
 integer,intent(out)             :: dat(8)     ! output date array
@@ -2592,7 +2636,69 @@ integer                         :: temp_dat(8)
    correction=jan4weekday+3                      ! calculate correction
    ordinal=iso_week*7+iso_weekday-correction     ! calculate ordinal day
    dat=o2d(ordinal,iso_year)                     ! convert ordinal to DAT (routine works with negative values or days past year end)
-end subroutine w2d
+end subroutine w2d_numeric
+!-----------------------------------------------------------------------------------------------------------------------------------
+subroutine w2d_string(iso8601_week,dat,ierr)
+
+! ident_20="@(#) or form yyyy-Www-d to DAT date-time array"
+
+character(len=*),intent(in)   :: iso8601_week
+integer                       :: iso_year, iso_week, iso_weekday
+integer,intent(out)           :: dat(8)     ! output date array
+integer,intent(out),optional  :: ierr
+integer                       :: ierr_
+integer                       :: returncode
+character(len=:), allocatable :: array(:)
+character(len=:), allocatable :: stopmessage
+
+! some additional verification with verify() would be in order that of form yyyyWwwd or yyyy-Www-d
+
+   CALL split(iso8601_week, array, delimiters=' wW-')
+   ierr_=1                     ! initialize return to indicate error
+   stopmessage="<ERROR>*w2d_string*: string not of format yyyy-Www-dd:"//iso8601_week
+   dat=-99999
+
+   if(size(array)==2)then       ! assume compact form of yyyyWwwdd where ww is from 01 to 53 and rearrange to three strings
+      if(len_trim(array(2)).gt.2)then
+         array=[character(len=len(array)) :: array(1),array(2)(1:2),array(2)(3:)]
+      elseif(len_trim(array(2)).eq.2) then
+         array=[character(len=len(array)) :: array(1),array(2),'1']
+      endif
+   endif
+
+   if(size(array)==3)then  ! assume yyyy-Www-d
+      ierr_=0
+
+      iso_year=nint(s2v(array(1),returncode))
+      ierr_=ierr_+abs(returncode)
+
+      iso_week=nint(s2v(array(2),returncode))
+      ierr_=ierr_+abs(returncode)
+      if(iso_week < 1 .or. iso_week > 53 ) then
+         stopmessage="<ERROR>*w2d_string*: week out of bounds {1-53} :"//iso8601_week
+         ierr_=ierr_+abs(returncode)
+      endif
+
+      iso_weekday=nint(s2v(array(3),returncode))
+      ierr_=ierr_+abs(returncode)
+      if(iso_weekday < 1 .or. iso_weekday > 7) then
+         stopmessage="<ERROR>*w2d_string*: day of week out of bounds {1-7} :"//iso8601_week
+         ierr_=ierr_+1
+      endif
+
+   endif
+   if(ierr_.eq.0)then
+      call w2d_numeric(iso_year,iso_week,iso_weekday,dat)
+   endif
+
+   if(present(ierr))then
+      ierr=ierr_
+   elseif(ierr_.ne.0)then
+      write(stderr,'(a)') stopmessage
+      stop 4
+   endif
+
+end subroutine w2d_string
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
@@ -2656,7 +2762,7 @@ end subroutine w2d
 !!    MIT
 subroutine box_month(dat,calen)
 
-! ident_20="@(#) M_time box_month(3f) generate month specified by DAT date-time array in character array"
+! ident_21="@(#) M_time box_month(3f) generate month specified by DAT date-time array in character array"
 
 integer,parameter             :: wklen=3*7
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -2745,7 +2851,7 @@ end subroutine box_month
 !!    MIT
 function d2j(dat) result(julian)
 
-! ident_21="@(#) M_time d2j(3f) Given DAT date-time array returns Julian Date"
+! ident_22="@(#) M_time d2j(3f) Given DAT date-time array returns Julian Date"
 
 integer,intent(in),optional :: dat(8)
 real(kind=realtime)         :: julian
@@ -2822,7 +2928,7 @@ end function d2j
 !!    MIT
 function j2d(julian) result(dat)
 
-! ident_22="@(#) M_time j2d(3f) Given Julian Date returns DAT date-time array"
+! ident_23="@(#) M_time j2d(3f) Given Julian Date returns DAT date-time array"
 
 real(kind=realtime),intent(in)   :: julian
 integer                          :: dat(8)
@@ -2889,7 +2995,7 @@ end function j2d
 !!    MIT
 function d2u(dat) result(unixtime)
 
-! ident_23="@(#) M_time d2u(3f) Given DAT date-time array returns Unix Epoch time"
+! ident_24="@(#) M_time d2u(3f) Given DAT date-time array returns Unix Epoch time"
 
 real(kind=realtime)           :: unixtime
 integer,intent(in),optional   :: dat(8)
@@ -2971,7 +3077,7 @@ end function d2u
 !!    MIT
 function u2d(unixtime) result(dat)
 
-! ident_24="@(#) M_time u2d(3f) Given Unix Epoch Time returns DAT date-time array"
+! ident_25="@(#) M_time u2d(3f) Given Unix Epoch Time returns DAT date-time array"
 
 class(*),intent(in),optional   :: unixtime
 integer                        :: dat(8)
@@ -3084,7 +3190,7 @@ end function get_timezone
 function sec2days(seconds,crop) result(dhms)
 use, intrinsic :: iso_fortran_env, only : int64
 
-! ident_25="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
+! ident_26="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
 
 ! on this platform, (select_int_kind(i),i=1,100) returns
 ! 1:2=1 ,3:4=2 ,5:9=4 ,10:18= 8 ,19:38=16 ,39:=-1
@@ -3316,7 +3422,7 @@ end function sec2days
 !!    MIT
 elemental impure function days2sec(str) result(time)
 
-! ident_26="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
+! ident_27="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
 character(len=*),intent(in)       :: str
 real(kind=realtime)               :: time
@@ -3495,7 +3601,7 @@ end function days2sec
 !!    MIT
 function phase_of_moon(dat)
 
-! ident_27="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
+! ident_28="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
 
 integer,intent(in)            :: dat(8)
 character(len=:),allocatable  :: phase_of_moon
@@ -3587,7 +3693,7 @@ end function phase_of_moon
 !!    MIT
 function moon_fullness(dat)
 
-! ident_28="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
+! ident_29="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
 
 integer,intent(in)            :: dat(8)
 integer                       :: moon_fullness
@@ -3684,7 +3790,7 @@ end function moon_fullness
 !!   Latest revision 8 April 2002
 SUBROUTINE Easter(year, dat)
 
-! ident_29="@(#) M_time easter(3f) calculate date for Easter given a year"
+! ident_30="@(#) M_time easter(3f) calculate date for Easter given a year"
 
 integer,intent(in)    :: year
 integer,intent(out)   :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
@@ -3798,7 +3904,7 @@ end subroutine Easter
 subroutine system_sleep(seconds)
 use,intrinsic                 :: iso_c_binding, only: c_int
 
-! ident_30="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
+! ident_31="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
 
 class(*),intent(in)           :: seconds
 integer(kind=c_int)           :: cint
@@ -3814,7 +3920,7 @@ end SUBROUTINE system_sleep
 subroutine call_sleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
 
-! ident_31="@(#) M_time call_sleep(3fp) call sleep(3c)"
+! ident_32="@(#) M_time call_sleep(3fp) call sleep(3c)"
 
 integer(kind=c_int),intent(in)  :: wait_seconds
 integer(kind=c_int)             :: how_long
@@ -3834,7 +3940,7 @@ end subroutine call_sleep
 !===================================================================================================================================
 subroutine call_usleep(milliseconds)
 
-! ident_32="@(#) M_time call_usleep(3fp) call usleep(3c)"
+! ident_33="@(#) M_time call_usleep(3fp) call usleep(3c)"
 
 use,intrinsic                   :: iso_c_binding, only: c_int
 integer(kind=c_int),intent(in)  :: milliseconds
@@ -3855,7 +3961,7 @@ end subroutine call_usleep
 !==================================================================================================================================!
 function getnow() result(dat)
 
-! ident_33="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
+! ident_34="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
 integer :: dat(8)
    call date_and_time(values=dat)
@@ -3870,7 +3976,7 @@ integer :: dat(8)
    !    •  VALUES(7) : The seconds of the minute, in the range 0 to 60
    !    •  VALUES(8) : The milliseconds of the second, in the range 0 to 999.
    if(any(dat.eq.-huge(0)))then
-      WRITE(stderr,"('<ERROR>*getnow*: date_and_time(3f) contains unsupported values')")
+      write(stderr,"('<ERROR>*getnow*: date_and_time(3f) contains unsupported values')")
       stop 3
    endif
 end function getnow

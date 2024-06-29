@@ -94,6 +94,8 @@ Functions/Subroutines</h2></td></tr>
 <tr class="separator:ac64706de64837d0c2eb69bb3d042393b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc01fe28c66ed3b08758969cf6674ca9"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____duplicate.html#acc01fe28c66ed3b08758969cf6674ca9">split</a> (input_line, array, delimiters, order, nulls)</td></tr>
 <tr class="separator:acc01fe28c66ed3b08758969cf6674ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a663015f524ad6b165f63a68e06291f34"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____duplicate.html#a663015f524ad6b165f63a68e06291f34">slice</a> (input_line, ibegin, iend, delimiters, nulls)</td></tr>
+<tr class="separator:a663015f524ad6b165f63a68e06291f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0ea3a3d65d513305f0d6ebdff5b7b80"><td class="memItemLeft" align="right" valign="top">subroutine, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____duplicate.html#ae0ea3a3d65d513305f0d6ebdff5b7b80">string_to_values</a> (line, iread, values, inums, delims, ierr)</td></tr>
 <tr class="separator:ae0ea3a3d65d513305f0d6ebdff5b7b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a286c6c0ecf6f8615c294f6b97b51d541"><td class="memItemLeft" align="right" valign="top">pure character(len=len(instr)) function, public&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____duplicate.html#a286c6c0ecf6f8615c294f6b97b51d541">transliterate</a> (instr, old_set, new_set)</td></tr>
@@ -304,28 +306,28 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md99"></a>
+<h2><a class="anchor" id="autotoc_md100"></a>
 NAME</h2>
 <p>string_to_value(3f) - [M_strings:NUMERIC] subroutine returns numeric value from string (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md100"></a>
+<h2><a class="anchor" id="autotoc_md101"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine string_to_value(chars,valu,ierr)
 
  character(len=*),intent(in)              :: chars   ! input string
  integer|real|doubleprecision,intent(out) :: valu
  integer,intent(out)                      :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md101"></a>
+</pre> <h2><a class="anchor" id="autotoc_md102"></a>
 DESCRIPTION</h2>
 <p>returns a numeric value from a numeric character string.</p>
 <p>works with any g-format input, including integer, real, and exponential. If the input string begins with "B", "Z", or "O" and otherwise represents a positive whole number it is assumed to be a binary, hexadecimal, or octal value. If the string contains commas they are removed. If the string is of the form NN:MMM... or NN::MMM then NN is assumed to be the base of the whole number.</p>
 <p>if an error occurs in the READ, IOSTAT is returned in IERR and value is set to zero. if no error occurs, IERR=0. </p>
-<h2><a class="anchor" id="autotoc_md102"></a>
+<h2><a class="anchor" id="autotoc_md103"></a>
 OPTIONS</h2>
 <p>CHARS input string to read numeric value from </p>
-<h2><a class="anchor" id="autotoc_md103"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 RETURNS</h2>
 <p>VALU numeric value returned. May be INTEGER, REAL, or DOUBLEPRECISION. IERR error flag (0 == no error) </p>
-<h2><a class="anchor" id="autotoc_md104"></a>
+<h2><a class="anchor" id="autotoc_md105"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -336,10 +338,10 @@ EXAMPLE</h2>
     call string_to_value(string,value,ierr)
     write(*,*) 'value of string ['//trim(string)//'] is ',value
  end program demo_string_to_value
-</pre> <h2><a class="anchor" id="autotoc_md105"></a>
+</pre> <h2><a class="anchor" id="autotoc_md106"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md107"></a>
 LICENSE</h2>
 <p>Public Domain</p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -560,26 +562,26 @@ LICENSE</h2>
   </tr>
 </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md76"></a>
+<h2><a class="anchor" id="autotoc_md77"></a>
 NAME</h2>
 <p>v2s(3f) - [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md77"></a>
+<h2><a class="anchor" id="autotoc_md78"></a>
 SYNOPSIS</h2>
 <pre class="fragment">   function v2s(value) result(outstr)
 
     integer|real|doubleprecision|logical,intent(in ) :: value
     character(len=:),allocatable :: outstr
     character(len=*),optional,intent(in) :: fmt
-</pre><h2><a class="anchor" id="autotoc_md78"></a>
+</pre><h2><a class="anchor" id="autotoc_md79"></a>
 DESCRIPTION</h2>
 <p>v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type REAL, DOUBLEPRECISION, INTEGER or LOGICAL. It creates the strings using internal WRITE() statements. Trailing zeros are removed from non-zero values, and the string is left-justified.</p>
-<h2><a class="anchor" id="autotoc_md79"></a>
+<h2><a class="anchor" id="autotoc_md80"></a>
 OPTIONS</h2>
 <p>VALUE input value to be converted to a string FMT format can be explicitly given, but is limited to generating a string of eighty or less characters.</p>
-<h2><a class="anchor" id="autotoc_md80"></a>
+<h2><a class="anchor" id="autotoc_md81"></a>
 RETURNS</h2>
 <p>OUTSTR returned string representing input value,</p>
-<h2><a class="anchor" id="autotoc_md81"></a>
+<h2><a class="anchor" id="autotoc_md82"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample Program:
 
@@ -599,10 +601,10 @@ Expected output
  The value of 0d0     is [0]
  The value of .false. is [F]
  The value of .true. is  [T]
-</pre><h2><a class="anchor" id="autotoc_md82"></a>
+</pre><h2><a class="anchor" id="autotoc_md83"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md83"></a>
+<h2><a class="anchor" id="autotoc_md84"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -659,24 +661,24 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md107"></a>
+<h2><a class="anchor" id="autotoc_md108"></a>
 NAME</h2>
 <p>decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md108"></a>
+<h2><a class="anchor" id="autotoc_md109"></a>
 SYNOPSIS</h2>
 <pre class="fragment">logical function decodebase(string,basein,out10)
 
  character(len=*),intent(in)  :: string
  integer,intent(in)           :: basein
  integer,intent(out)          :: out10
-</pre> <h2><a class="anchor" id="autotoc_md109"></a>
+</pre> <h2><a class="anchor" id="autotoc_md110"></a>
 DESCRIPTION</h2>
 <p>Convert a numeric string representing a whole number in base BASEIN to base 10. The function returns FALSE if BASEIN is not in the range [2..36] or if string STRING contains invalid characters in base BASEIN or if result OUT10 is too big</p>
 <p>The letters A,B,...,Z represent 10,11,...,36 in the base &gt; 10.</p>
-<h2><a class="anchor" id="autotoc_md110"></a>
+<h2><a class="anchor" id="autotoc_md111"></a>
 OPTIONS</h2>
 <p>string input string. It represents a whole number in the base specified by BASEIN unless BASEIN is set to zero. When BASEIN is zero STRING is assumed to be of the form BASE::VALUE where BASE represents the function normally provided by BASEIN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10</p>
-<h2><a class="anchor" id="autotoc_md111"></a>
+<h2><a class="anchor" id="autotoc_md112"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -706,12 +708,12 @@ EXAMPLE</h2>
  enddo INFINITE
 
  end program demo_decodebase
-</pre><h2><a class="anchor" id="autotoc_md112"></a>
+</pre><h2><a class="anchor" id="autotoc_md113"></a>
 AUTHOR</h2>
 <p>John S. Urban</p>
 <p>Ref.: "Math matiques en Turbo-Pascal by M. Ducamp and A. Reverchon (2), Eyrolles, Paris, 1988".</p>
 <p>based on a F90 Version By J-P Moreau (www.jpmoreau.fr)</p>
-<h2><a class="anchor" id="autotoc_md113"></a>
+<h2><a class="anchor" id="autotoc_md114"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -917,8 +919,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time____duplicate_a024aaaa6a9341043d511ada527d24778_icgraph.png" border="0" usemap="#namespacem__time____duplicate_a024aaaa6a9341043d511ada527d24778_icgraph" alt=""/></div>
 <map name="namespacem__time____duplicate_a024aaaa6a9341043d511ada527d24778_icgraph" id="namespacem__time____duplicate_a024aaaa6a9341043d511ada527d24778_icgraph">
-<area shape="rect" title=" " alt="" coords="208,5,363,47"/>
-<area shape="rect" href="namespacem__time____duplicate.html#acc01fe28c66ed3b08758969cf6674ca9" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" title=" " alt="" coords="411,35,565,76"/>
+<area shape="rect" href="namespacem__time____duplicate.html#a663015f524ad6b165f63a68e06291f34" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" href="namespacem__time____duplicate.html#acc01fe28c66ed3b08758969cf6674ca9" title=" " alt="" coords="5,35,160,76"/>
 </map>
 </div>
 
@@ -1128,6 +1131,122 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a663015f524ad6b165f63a68e06291f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a663015f524ad6b165f63a68e06291f34">&#9670;&nbsp;</a></span>slice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine m_time__duplicate::slice </td>
+          <td>(</td>
+          <td class="paramtype">character(len=*), intent(in)&#160;</td>
+          <td class="paramname"><em>input_line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>ibegin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">integer, dimension(:), intent(out), allocatable&#160;</td>
+          <td class="paramname"><em>iend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=*), intent(in), optional&#160;</td>
+          <td class="paramname"><em>delimiters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(len=*), intent(in), optional&#160;</td>
+          <td class="paramname"><em>nulls</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<h2><a class="anchor" id="autotoc_md53"></a>
+NAME</h2>
+<p>slice(3f) - [M_strings:TOKENS] parse string into an array using specified delimiters (LICENSE:PD)</p>
+<h2><a class="anchor" id="autotoc_md54"></a>
+SYNOPSIS</h2>
+<pre class="fragment">subroutine slice(input_line,ibegin,iend,delimiters,nulls)
+
+ character(len=*),intent(in)              :: input_line
+ integer,allocatable,intent(out)          :: ibegin(:),iend(:)
+ character(len=*),optional,intent(in)     :: delimiters
+ character(len=*),optional,intent(in)     :: nulls
+</pre><h2><a class="anchor" id="autotoc_md55"></a>
+DESCRIPTION</h2>
+<p>slice(3f) parses a string using specified delimiter characters and store token beginning and ending positions into allocatable arrays</p>
+<h2><a class="anchor" id="autotoc_md56"></a>
+OPTIONS</h2>
+<p>INPUT_LINE Input string to tokenize</p>
+<p>IBEGIN,IEND arrays containing start and end positions of tokens. IEND(I)&lt;IBEGIN(I) designates a null token.</p>
+<p>DELIMITERS List of delimiter characters. The default delimiters are the "whitespace" characters (space, tab,new line, vertical tab, formfeed, carriage return, and null). You may specify an alternate set of delimiter characters.</p>
+<p>Multi-character delimiters are not supported (Each character in the DELIMITERS list is considered to be a delimiter).</p>
+<p>Quoting of delimiter characters is not supported.</p>
+<p>NULLS="IGNORE"|"RETURN"|"IGNOREEND" Treatment of null fields. By default adjacent delimiters in the input string do not create an empty string in the output array. if NULLS='return' adjacent delimiters create an empty element in the output ARRAY. If NULLS='ignoreend' then only trailing delimiters at the right of the string are ignored.</p>
+<h2><a class="anchor" id="autotoc_md57"></a>
+EXAMPLES</h2>
+<p>Sample program:</p>
+<p>program demo_slice use M_strings, only: slice implicit none integer :: i character(len=*),parameter :: &amp; &amp; line=' aBcdef ghijklmnop qrstuvwxyz 1:|:2 333|333 a B cc ' integer,allocatable :: ibegin(:), iend(:) ! output arrays of positions character(len=*),parameter :: title='(80("="),t1,a)' write(*,*)'INPUT LINE:['//line//']' ! write(*,title)'typical call: ' call slice(line,ibegin,iend) call printme() ! write(*,title)'custom list of delimiters=":|" : ' call slice(line,ibegin,iend,delimiters=':|',nulls='ignore') call printme() ! write(*,title)'delimiters=":|", and count null fields: ' call slice(line,ibegin,iend,delimiters=':|',nulls='return') call printme() ! write(*,title)'default delimiters and return null fields: ' call slice(line,ibegin,iend,delimiters='',nulls='return') call printme() contains subroutine printme() write(*,'((*(:/,3x,"[",g0,"]")))')&amp; &amp; (line(ibegin(i):iend(i)),i=1,size(ibegin)) write(*,'(*(g0,1x))')'SIZE:',size(ibegin) end subroutine printme end program demo_slice</p>
+<p>Results:</p>
+<blockquote class="doxtable">
+<p>INPUT LINE: [ aBcdef ghijklmnop qrstuvwxyz 1:|:2 333|333 a B cc ] typical call: ========================================================</p>
+<p>[aBcdef] [ghijklmnop] [qrstuvwxyz] [1:|:2] [333|333] [a] [B] [cc] SIZE: 8 custom list of delimiters=":|" : =====================================</p>
+<p>[ aBcdef ghijklmnop qrstuvwxyz 1] [2 333] [333 a B cc ] SIZE: 3 delimiters=":|", and count null fields: ==============================</p>
+<p>[ aBcdef ghijklmnop qrstuvwxyz 1] [] [] [2 333] [333 a B cc ] SIZE: 5 default delimiters and return null fields: ===========================</p>
+<p>[] [] [aBcdef] [] [] [ghijklmnop] [qrstuvwxyz] [] [1:|:2] [] [] [] [] [333|333] [a] [B] [cc] [] [] [] SIZE: 20 </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md58"></a>
+&lt;/blockquote&gt;</h1>
+<h2><a class="anchor" id="autotoc_md59"></a>
+AUTHOR</h2>
+<p>John S. Urban</p>
+<h2><a class="anchor" id="autotoc_md60"></a>
+LICENSE</h2>
+<p>Public Domain </p>
+
+<p class="reference">References <a class="el" href="namespacem__time____duplicate.html#a024aaaa6a9341043d511ada527d24778">lower()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_cgraph.png" border="0" usemap="#namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_cgraph" alt=""/></div>
+<map name="namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_cgraph" id="namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,160,47"/>
+<area shape="rect" href="namespacem__time____duplicate.html#a024aaaa6a9341043d511ada527d24778" title=" " alt="" coords="208,5,363,47"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_icgraph.png" border="0" usemap="#namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_icgraph" alt=""/></div>
+<map name="namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_icgraph" id="namespacem__time____duplicate_a663015f524ad6b165f63a68e06291f34_icgraph">
+<area shape="rect" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" href="namespacem__time____duplicate.html#acc01fe28c66ed3b08758969cf6674ca9" title=" " alt="" coords="5,5,160,47"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="acc01fe28c66ed3b08758969cf6674ca9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc01fe28c66ed3b08758969cf6674ca9">&#9670;&nbsp;</a></span>split()</h2>
 
@@ -1171,147 +1290,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md53"></a>
-NAME</h2>
-<p>split(3f) - [M_strings:TOKENS] parse string into an array using specified delimiters (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md54"></a>
-SYNOPSIS</h2>
-<pre class="fragment">subroutine split(input_line,array,delimiters,order,nulls)
 
- character(len=*),intent(in)              :: input_line
- character(len=:),allocatable,intent(out) :: array(:)
- character(len=*),optional,intent(in)     :: delimiters
- character(len=*),optional,intent(in)     :: order
- character(len=*),optional,intent(in)     :: nulls
-</pre> <h2><a class="anchor" id="autotoc_md55"></a>
-DESCRIPTION</h2>
-<p>SPLIT(3f) parses a string using specified delimiter characters and store tokens into an allocatable array</p>
-<h2><a class="anchor" id="autotoc_md56"></a>
-OPTIONS</h2>
-<pre class="fragment">INPUT_LINE  Input string to tokenize
-
-ARRAY       Output array of tokens
-
-DELIMITERS  List of delimiter characters.
-            The default delimiters are the "whitespace" characters
-            (space, tab,new line, vertical tab, formfeed, carriage
-            return, and null). You may specify an alternate set of
-            delimiter characters.
-
-            Multi-character delimiters are not supported (Each
-            character in the DELIMITERS list is considered to be
-            a delimiter).
-
-            Quoting of delimiter characters is not supported.
-
-ORDER SEQUENTIAL|REVERSE|RIGHT  Order of output array.
-            By default ARRAY contains the tokens having parsed
-            the INPUT_LINE from left to right. If ORDER='RIGHT'
-            or ORDER='REVERSE' the parsing goes from right to left.
-
-NULLS IGNORE|RETURN|IGNOREEND  Treatment of null fields.
-            By default adjacent delimiters in the input string
-            do not create an empty string in the output array. if
-            NULLS='return' adjacent delimiters create an empty element
-            in the output ARRAY. If NULLS='ignoreend' then only
-            trailing delimiters at the right of the string are ignored.
-</pre><h2><a class="anchor" id="autotoc_md57"></a>
-EXAMPLES</h2>
-<p>Sample program: </p><pre class="fragment"> program demo_split
- use M_strings, only: split
- character(len=*),parameter     :: &amp;
- &amp; line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
- character(len=:),allocatable :: array(:) ! output array of tokens
-    write(*,*)'INPUT LINE:['//LINE//']'
-    write(*,'(80("="))')
-    write(*,*)'typical call:'
-    CALL split(line,array)
-    write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-    write(*,'(80("-"))')
-    write(*,*)'custom list of delimiters (colon and vertical line):'
-    CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
-    write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-    write(*,'(80("-"))')
-    write(*,*)&amp;
-    &amp;'custom list of delimiters, reverse array order and count null fields:'
-    CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
-    write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-    write(*,'(80("-"))')
-    write(*,*)'INPUT LINE:['//LINE//']'
-    write(*,*)&amp;
-    &amp;'default delimiters and reverse array order and return null fields:'
-    CALL split(line,array,delimiters='',order='reverse',nulls='return')
-    write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
-    write(*,*)'SIZE:',SIZE(array)
-end program demo_split
-</pre><p>Output </p><pre class="fragment"> &gt; INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
- &gt; ===========================================================================
- &gt;  typical call:
- &gt; 1 ==&gt; aBcdef
- &gt; 2 ==&gt; ghijklmnop
- &gt; 3 ==&gt; qrstuvwxyz
- &gt; 4 ==&gt; 1:|:2
- &gt; 5 ==&gt; 333|333
- &gt; 6 ==&gt; a
- &gt; 7 ==&gt; B
- &gt; 8 ==&gt; cc
- &gt;  SIZE:           8
- &gt; --------------------------------------------------------------------------
- &gt;  custom list of delimiters (colon and vertical line):
- &gt; 1 ==&gt;   aBcdef   ghijklmnop qrstuvwxyz  1
- &gt; 2 ==&gt; 2     333
- &gt; 3 ==&gt; 333 a B cc
- &gt;  SIZE:           3
- &gt; --------------------------------------------------------------------------
- &gt;  custom list of delimiters, reverse array order and return null fields:
- &gt; 1 ==&gt; 333 a B cc
- &gt; 2 ==&gt; 2     333
- &gt; 3 ==&gt;
- &gt; 4 ==&gt;
- &gt; 5 ==&gt;   aBcdef   ghijklmnop qrstuvwxyz  1
- &gt;  SIZE:           5
- &gt; --------------------------------------------------------------------------
- &gt;  INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
- &gt;  default delimiters and reverse array order and count null fields:
- &gt; 1 ==&gt;
- &gt; 2 ==&gt;
- &gt; 3 ==&gt;
- &gt; 4 ==&gt; cc
- &gt; 5 ==&gt; B
- &gt; 6 ==&gt; a
- &gt; 7 ==&gt; 333|333
- &gt; 8 ==&gt;
- &gt; 9 ==&gt;
- &gt; 10 ==&gt;
- &gt; 11 ==&gt;
- &gt; 12 ==&gt; 1:|:2
- &gt; 13 ==&gt;
- &gt; 14 ==&gt; qrstuvwxyz
- &gt; 15 ==&gt; ghijklmnop
- &gt; 16 ==&gt;
- &gt; 17 ==&gt;
- &gt; 18 ==&gt; aBcdef
- &gt; 19 ==&gt;
- &gt; 20 ==&gt;
- &gt;  SIZE:          20
-</pre> <h2><a class="anchor" id="autotoc_md58"></a>
-AUTHOR</h2>
-<p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md59"></a>
-LICENSE</h2>
-<p>Public Domain </p>
-
-<p class="reference">References <a class="el" href="namespacem__time____duplicate.html#a024aaaa6a9341043d511ada527d24778">lower()</a>.</p>
+<p class="reference">References <a class="el" href="namespacem__time____duplicate.html#a024aaaa6a9341043d511ada527d24778">lower()</a>, and <a class="el" href="namespacem__time____duplicate.html#a663015f524ad6b165f63a68e06291f34">slice()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time____duplicate_acc01fe28c66ed3b08758969cf6674ca9_cgraph.png" border="0" usemap="#namespacem__time____duplicate_acc01fe28c66ed3b08758969cf6674ca9_cgraph" alt=""/></div>
 <map name="namespacem__time____duplicate_acc01fe28c66ed3b08758969cf6674ca9_cgraph" id="namespacem__time____duplicate_acc01fe28c66ed3b08758969cf6674ca9_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,160,47"/>
-<area shape="rect" href="namespacem__time____duplicate.html#a024aaaa6a9341043d511ada527d24778" title=" " alt="" coords="208,5,363,47"/>
+<area shape="rect" href="namespacem__time____duplicate.html#a024aaaa6a9341043d511ada527d24778" title=" " alt="" coords="411,5,565,47"/>
+<area shape="rect" href="namespacem__time____duplicate.html#a663015f524ad6b165f63a68e06291f34" title=" " alt="" coords="208,35,363,76"/>
 </map>
 </div>
 
@@ -1366,10 +1354,10 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md60"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 NAME</h2>
 <p>string_to_values(3f) - [M_strings:NUMERIC] read a string representing numbers into a numeric array (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md61"></a>
+<h2><a class="anchor" id="autotoc_md62"></a>
 SYNOPSIS</h2>
 <pre class="fragment">   subroutine string_to_values(line,iread,values,inums,delims,ierr)
 
@@ -1379,14 +1367,14 @@ SYNOPSIS</h2>
     integer          :: inums
     character(len=*) :: delims
     integer          :: ierr
-</pre> <h2><a class="anchor" id="autotoc_md62"></a>
+</pre> <h2><a class="anchor" id="autotoc_md63"></a>
 DESCRIPTION</h2>
 <p>This routine can take a string representing a series of numbers and convert it to a numeric array and return how many numbers were found.</p>
-<h2><a class="anchor" id="autotoc_md63"></a>
+<h2><a class="anchor" id="autotoc_md64"></a>
 OPTIONS</h2>
 <pre class="fragment">   LINE     Input string containing numbers
    IREAD    maximum number of values to try to read from input string
-</pre><h2><a class="anchor" id="autotoc_md64"></a>
+</pre><h2><a class="anchor" id="autotoc_md65"></a>
 RESULTS</h2>
 <pre class="fragment">   VALUES   real array to be filled with numbers
    INUMS    number of values successfully read (before error occurs
@@ -1396,7 +1384,7 @@ RESULTS</h2>
             not be the last character or it will be ignored.
    IERR     error flag (0=no error, else column number string starts
             at that error occurred on).
-</pre><h2><a class="anchor" id="autotoc_md65"></a>
+</pre><h2><a class="anchor" id="autotoc_md66"></a>
 EXAMPLE</h2>
 <p>Sample Program: </p><pre class="fragment"> program demo_string_to_values
   use M_strings, only : string_to_values
@@ -1426,10 +1414,10 @@ string_to_values:
 input string............. 10 20e3;3.45 -400.3e-2;1234; 5678
 number of values found...           3
 values...................   10.0000000  2.29999995  3.14159989
-</pre> <h2><a class="anchor" id="autotoc_md66"></a>
+</pre> <h2><a class="anchor" id="autotoc_md67"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md67"></a>
+<h2><a class="anchor" id="autotoc_md68"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1594,10 +1582,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md68"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 NAME</h2>
 <p>transliterate(3f) - [M_strings:EDITING] replace characters from old set with new set (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md70"></a>
 SYNOPSIS</h2>
 <pre class="fragment">pure function transliterate(instr,old_set,new_set) result(outstr)
 
@@ -1605,10 +1593,10 @@ SYNOPSIS</h2>
  character(len=*),intent(in)  :: old_set
  character(len=*),intent(in)  :: new_set
  character(len=len(instr))    :: outstr
-</pre> <h2><a class="anchor" id="autotoc_md70"></a>
+</pre> <h2><a class="anchor" id="autotoc_md71"></a>
 DESCRIPTION</h2>
 <p>Translate, squeeze, and/or delete characters from the input string.</p>
-<h2><a class="anchor" id="autotoc_md71"></a>
+<h2><a class="anchor" id="autotoc_md72"></a>
 OPTIONS</h2>
 <p>instr input string to change old_set list of letters to change in INSTR if found </p><pre class="fragment">     Each character in the input string that matches a character in
      the old set is replaced.
@@ -1616,10 +1604,10 @@ OPTIONS</h2>
 
      If the new_set is shorter than the old set the last character in the
      new set is used to replace the remaining characters in the new set.
-</pre> <h2><a class="anchor" id="autotoc_md72"></a>
+</pre> <h2><a class="anchor" id="autotoc_md73"></a>
 RETURNS</h2>
 <p>outstr instr with substitutions applied</p>
-<h2><a class="anchor" id="autotoc_md73"></a>
+<h2><a class="anchor" id="autotoc_md74"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample Program:
 
@@ -1649,10 +1637,10 @@ Expected output
  &gt; AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ
  &gt; :A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:Q:R:S:T:U:V:W:X:Y:Z
  &gt; ABCDEFGHIJKLMNOPQRSTUVWXYZ
-</pre><h2><a class="anchor" id="autotoc_md74"></a>
+</pre><h2><a class="anchor" id="autotoc_md75"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md75"></a>
+<h2><a class="anchor" id="autotoc_md76"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 
@@ -1681,21 +1669,21 @@ LICENSE</h2>
   </tr>
 </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md92"></a>
+<h2><a class="anchor" id="autotoc_md93"></a>
 NAME</h2>
 <p>trimzeros(3fp) - [M_strings:NUMERIC] Delete trailing zeros from numeric decimal string (LICENSE:PD) </p>
-<h2><a class="anchor" id="autotoc_md93"></a>
+<h2><a class="anchor" id="autotoc_md94"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine trimzeros(str)
 
  character(len=*)  :: str
-</pre> <h2><a class="anchor" id="autotoc_md94"></a>
+</pre> <h2><a class="anchor" id="autotoc_md95"></a>
 DESCRIPTION</h2>
 <p>TRIMZEROS(3f) deletes trailing zeros from a string representing a number. If the resulting string would end in a decimal point, one trailing zero is added. </p>
-<h2><a class="anchor" id="autotoc_md95"></a>
+<h2><a class="anchor" id="autotoc_md96"></a>
 OPTIONS</h2>
 <p>str input string will be assumed to be a numeric value and have trailing zeros removed </p>
-<h2><a class="anchor" id="autotoc_md96"></a>
+<h2><a class="anchor" id="autotoc_md97"></a>
 EXAMPLES</h2>
 <pre class="fragment">Sample program:
 
@@ -1707,10 +1695,10 @@ EXAMPLES</h2>
       write(*,*)trimzeros('12345.')
       write(*,*)trimzeros('12345.00e3')
    end program demo_trimzeros
-</pre><h2><a class="anchor" id="autotoc_md97"></a>
+</pre><h2><a class="anchor" id="autotoc_md98"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md98"></a>
+<h2><a class="anchor" id="autotoc_md99"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 <div class="dynheader">
@@ -1883,10 +1871,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<h2><a class="anchor" id="autotoc_md84"></a>
+<h2><a class="anchor" id="autotoc_md85"></a>
 NAME</h2>
 <p>value_to_string(3f) - [M_strings:NUMERIC] return numeric string from a numeric value (LICENSE:PD)</p>
-<h2><a class="anchor" id="autotoc_md85"></a>
+<h2><a class="anchor" id="autotoc_md86"></a>
 SYNOPSIS</h2>
 <pre class="fragment">subroutine value_to_string(value,chars[,ilen,ierr,fmt,trimz])
 
@@ -1903,16 +1891,16 @@ SYNOPSIS</h2>
  integer,optional                         :: ierr
  character(len=*),intent(in),optional     :: fmt
  logical,intent(in)                       :: trimz
-</pre> <h2><a class="anchor" id="autotoc_md86"></a>
+</pre> <h2><a class="anchor" id="autotoc_md87"></a>
 DESCRIPTION</h2>
 <p>value_to_string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type REAL, DOUBLEPRECISION, INTEGER or LOGICAL. It creates the string using internal writes. It then removes trailing zeros from non-zero values, and left-justifies the string.</p>
-<h2><a class="anchor" id="autotoc_md87"></a>
+<h2><a class="anchor" id="autotoc_md88"></a>
 OPTIONS</h2>
 <p>VALUE input value to be converted to a string FMT You may specify a specific format that produces a string up to the length of CHARS; optional. TRIMZ If a format is supplied the default is not to try to trim trailing zeros. Set TRIMZ to .true. to trim zeros from a string assumed to represent a simple numeric value.</p>
-<h2><a class="anchor" id="autotoc_md88"></a>
+<h2><a class="anchor" id="autotoc_md89"></a>
 RETURNS</h2>
 <p>CHARS returned string representing input value, must be at least 23 characters long; or what is required by optional FMT if longer. ILEN position of last non-blank character in returned string; optional. IERR If not zero, error occurred; optional. </p>
-<h2><a class="anchor" id="autotoc_md89"></a>
+<h2><a class="anchor" id="autotoc_md90"></a>
 EXAMPLE</h2>
 <pre class="fragment">Sample program:
 
@@ -1945,10 +1933,10 @@ Expected output
  The value is [THE VALUE IS .750000000]
  The value is [1234]
  The value is [0.33333333333333331]
-</pre><h2><a class="anchor" id="autotoc_md90"></a>
+</pre><h2><a class="anchor" id="autotoc_md91"></a>
 AUTHOR</h2>
 <p>John S. Urban </p>
-<h2><a class="anchor" id="autotoc_md91"></a>
+<h2><a class="anchor" id="autotoc_md92"></a>
 LICENSE</h2>
 <p>Public Domain </p>
 

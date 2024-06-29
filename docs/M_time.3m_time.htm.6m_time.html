@@ -61,10 +61,16 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <p>
     The M_time(3f) Fortran module and associated utility programs
     provide date and time-related procedures. Both a procedural and OOP
-    (Object Oriented Programming) interface are provided. Each routine
-    is accompanied by a man-page which includes a sample program for
-    that procedure. This manual, the source and example utility programs
-    are included in the download.
+    (Object Oriented Programming) interface are provided.
+    The primary conversion procedures are provided as both a simple function
+    and a subroutine returning error flags and finer-grained control.
+
+    Each routine is accompanied by a man-page which includes a sample
+    program for that procedure. This is also provided in HTML format
+    both in individual pages and a book format.
+
+    The man-page example programs, unit tests and additional examples
+    are all provided in the distribution package.
 </p>
 
 <p>
@@ -122,16 +128,42 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <table BORDER="1">
 
 <tr><th colspan="3">UNIX EPOCH                </th></tr>
-<tr><td><a href="date_to_unix.3m_time.html"> date_to_unix(dat,UNIXTIME,IERR)    </a></td><td>%epoch()  </td><td> Convert date array to Unix Time</td></tr>
-<tr><td><a href="unix_to_date.3m_time.html"> unix_to_date(unixtime,DAT,IERR)    </a></td><td>&nbsp;   </td><td> Convert Unix Time to date array</td></tr>
-<tr><td><a href="d2u.3m_time.html"> d2u(dat) result(UNIXTIME)  </a></td><td>&nbsp;     </td><td> Convert date array to Unix Time</td></tr>
-<tr><td><a href="u2d.3m_time.html"> u2d(unixtime) result(DAT)  </a></td><td>&nbsp;     </td><td> Convert Unix Time to date array</td></tr>
+
+<tr> <td><a href="date_to_unix.3m_time.html"> date_to_unix(dat,UNIXTIME,IERR) </a>
+     </br>or</br>
+     <a href="d2u.3m_time.html"> d2u(dat)&nbsp;result(UNIXTIME) </a>
+     </td>
+     <td>%epoch()  </td>
+     <td> Convert date array to Unix Time</td>
+</tr>
+
+<tr><td><a href="unix_to_date.3m_time.html"> unix_to_date(unixtime,DAT,IERR)    </a>
+    </br>or</br>
+    <a href="u2d.3m_time.html"> u2d(unixtime)&nbsp;result(DAT)  </a>
+    </td>
+    <td>&nbsp;   </td>
+    <td> Convert Unix Time to date array</td>
+</tr>
 
 <tr><th colspan="3">JULIAN                    </th></tr>
-<tr><td><a href="julian_to_date.3m_time.html"> julian_to_date(julian,DAT,IERR)      </a></td><td>&nbsp;   </td><td> Convert Julian Date to date array</td></tr>
-<tr><td><a href="date_to_julian.3m_time.html"> date_to_julian(dat,JULIAN,IERR)      </a></td><td>%julian() </td><td> Converts date array to Julian Date </td></tr>
-<tr><td><a href="d2j.3m_time.html"> d2j(dat) result(JULIAN)    </a></td><td>&nbsp;    </td><td> Convert date array to Julian Date</td></tr>
-<tr><td><a href="j2d.3m_time.html"> j2d(julian) result(DAT)    </a></td><td>&nbsp;    </td><td> Convert Julian Date to date array</td></tr>
+
+<tr>
+   <td><a href="julian_to_date.3m_time.html"> julian_to_date(julian,DAT,IERR)      </a>
+   </br>or</br>
+   <a href="j2d.3m_time.html"> j2d(julian)&nbsp;result(DAT)    </a>
+   </td>
+   <td>&nbsp;   </td>
+   <td> Convert Julian Date to date array</td>
+</tr>
+
+<tr>
+   <td><a href="date_to_julian.3m_time.html"> date_to_julian(dat,JULIAN,IERR)      </a>
+   </br>or</br>
+   <a href="d2j.3m_time.html"> d2j(dat)&nbsp;result(JULIAN)    </a>
+   </td>
+   <td>%julian() </td>
+   <td> Converts date array to Julian Date </td>
+</tr>
 
 <tr><th colspan="3">DAY OF WEEK               </th></tr>
 <tr><td><a href="dow.3m_time.html"> dow(dat,[WEEKDAY],[DAY],IERR)  </a></td><td>%weekday() </td><td> Convert date array to day of the week as number(Mon=1) and name</td></tr>
@@ -142,20 +174,29 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 
 <tr><th colspan="3">ORDINAL DAY               </th></tr>
 <tr><td><a href="d2o.3m_time.html"> d2o(dat) result(ORDINAL)                  </a></td><td>%ordinal() </td><td> given date array return ordinal day of year, Jan 1st=1</td></tr>
-<tr><td><a href="o2d.3m_time.html"> o2d(ordinal,[year]) result(DAT)                </a></td><td> </td><td> given ordinal day of year return date array, Jan 1st=1</td></tr>
-<tr><td><a href="ordinal_to_date.3m_time.html"> ordinal_to_date(ordinal,year,DAT)  </a></td><td> </td><td> given ordinal day of year return date array, Jan 1st=1</td></tr>
+
+
+<tr>
+   <td><a href="ordinal_to_date.3m_time.html"> ordinal_to_date(ordinal,year,DAT)  </a>
+   </br>or</br>
+   <a href="o2d.3m_time.html"> o2d(ordinal,[year]) result(DAT) </a>
+   </td>
+   <td>&nbsp;   </td>
+   <td> given ordinal day of year return date array, Jan 1st=1 </td>
+</tr>
+
 <tr><td><a href="ordinal_seconds.3m_time.html"> ordinal_seconds()  </a></td><td> </td><td> return seconds since beginning of year</td></tr>
 
 <tr><th colspan="3">PRINTING DATES            </th></tr>
-<tr><td><a href="fmtdate.3m_time.html"> fmtdate(dat,format)  result(TIMESTR) </a></d><td>%format([STRING]) </td><td> Convert date array to string using format</td></tr>
+<tr><td><a href="fmtdate.3m_time.html"> fmtdate(dat,format)  result(TIMESTR) </a></d><td>%format([string]) </td><td> Convert date array to string using format</td></tr>
 <tr><td><a href="fmtdate_usage.3m_time.html"> fmtdate_usage(indent)           </a></td><td>&nbsp;            </td><td> display macros recognized by fmtdate(3f)</td></tr>
-<tr><td><a href="now.3m_time.html"> now(format)        result(NOW)           </a></td><td>&nbsp;            </td><td> return string representing current time given format</td></tr>
+<tr><td><a href="now.3m_time.html"> now(format)        result(TIMESTR)        </a></td><td>&nbsp;            </td><td> return string representing current time given format</td></tr>
 <tr><td><a href="box_month.3m_time.html"> box_month(dat,CALEN)                </a></td><td>&nbsp;            </td><td> print specified month into character array</td></tr>
 
 <tr><th colspan="3">MONTH NAME                    </th></tr>
 <tr><td><a href="mo2v.3m_time.html"> mo2v(month_name)   result(MONTH_NUMBER) </a></td><td>&nbsp;      </td><td> given month name return month number</td></tr>
 <tr><td><a href="v2mo.3m_time.html"> v2mo(month_number) result(MONTH_NAME)   </a></td><td>&nbsp;      </td><td> given month number return month name</td></tr>
-<tr><td><a href="mo2d.3m_time.html"> mo2d(month_name)   result(DAT)          </a></td><td>&nbsp;      </td><td> return date array for
+<tr><td><a href="mo2d.3m_time.html"> mo2d(month_name,year)   result(DAT)          </a></td><td>&nbsp;      </td><td> return date array for
 first day of given month name in specified year</td></tr>
 
 <tr><th colspan="3">ASTROLOGICAL                        </th></tr>
@@ -164,15 +205,15 @@ first day of given month name in specified year</td></tr>
 <tr><td><a href="ephemeris.3m_time.html"> ephemeris(dat,planet,DEC_D,DEC,M,DEC_C,ASCENT_H,ASCENT_M) </a></td><td>&nbsp; </td><td> ephemeris position of planets for adjusting an equatorial telescope </td></tr>
 -->
 
-<tr><td><a href="moon_fullness.3m_time.html"> moon_fullness(DAT) result(FULLNESS)</a></td><td>&nbsp; </td><td> percentage of moon phase from new to full </td></tr>
-<tr><td><a href="phase_of_moon.3m_time.html"> phase_of_moon(DAT) result(PHASE)</a></td><td>&nbsp; </td><td> return name for phase of moon for given date </td></tr>
+<tr><td><a href="moon_fullness.3m_time.html"> moon_fullness(dat) result(FULLNESS)</a></td><td>&nbsp; </td><td> percentage of moon phase from new to full </td></tr>
+<tr><td><a href="phase_of_moon.3m_time.html"> phase_of_moon(dat) result(PHASE)</a></td><td>&nbsp; </td><td> return name for phase of moon for given date </td></tr>
 
 <tr><th colspan="3">DURATION                  </th></tr>
-<tr><td><a href="sec2days.3m_time.html">  sec2days(seconds)  result(dhms)     </a></td><td>&nbsp;       </td><td> converts seconds to string D-HH:MM:SS</td></tr>
-<tr><td><a href="days2sec.3m_time.html"> days2sec(string)   result(seconds)   </a></td><td>&nbsp;       </td><td> converts string D-HH:MM:SS to seconds</td></tr>
+<tr><td><a href="sec2days.3m_time.html">  sec2days(seconds)  result(DHMS)     </a></td><td>&nbsp;       </td><td> converts seconds to string D-HH:MM:SS</td></tr>
+<tr><td><a href="days2sec.3m_time.html"> days2sec(string)   result(SECONDS)   </a></td><td>&nbsp;       </td><td> converts string D-HH:MM:SS to seconds</td></tr>
 
 <tr><th colspan="3">READING DATES             </th></tr>
-<tr><td><a href="guessdate.3m_time.html">    guessdate(anot,dat)                </a></td><td>&nbsp;       </td><td> Converts a date string to a date array, in various formats</td></tr>
+<tr><td><a href="guessdate.3m_time.html">    guessdate(anot,DAT)                </a></td><td>&nbsp;       </td><td> Converts a date string to a date array, in various formats</td></tr>
 
 <tr><th colspan="3">C INTERFACE               </th></tr>
 <tr><td><a href="system_sleep.3m_time.html">   system_sleep(wait_seconds)     </a></td><td>&nbsp;       </td><td> Call sleep(3c) or usleep(3c)</td></tr>
@@ -205,7 +246,7 @@ Description                                        Example
   (2) %M -- month of year, 01 to 12                   07
   (3) %D -- day of month, 01 to 31                    27
       %d -- day of month, with suffix (1st, 2nd,...)  27th
-  (4) %Z -- minutes from UTC                          -0240
+  (4) %Z -- minutes from UTC                          -0240m
       %z -- -+hh:mm from UTC                          -04:00
       %T -- -+hhmm  from UTC                          -0400
   (5) %h -- hours, 00 to 23                           21
@@ -246,6 +287,8 @@ Description                                        Example
       %S -- seconds since last use of this format     .0000000000000000
       %k -- time in seconds from SYSTEM_CLOCK(3f)     588272.750
       %K -- time in clicks from SYSTEM_CLOCK(3f)      588272750
+  Help:
+      %? -- call fmtdate_usage
 
 If no percent (%) is found in the format one of several
 alternate substitutions occurs.
@@ -276,30 +319,43 @@ keywords the following substitution occurs:
   "all"        ==&gt; A SAMPLE OF DATE FORMATS
 
 otherwise the following words are replaced with the most
-common macros:
+common macros. If more than one name lowercase is a numeric
+value string and all uppercase is a alphanumeric string:
 
-  String   Macro  Example
-  year     %Y     2016
-  month    %M     07
-  MONTH    %L     July
-  Month    %l     Jul
-  day      %D     27
-  DAY      %d     7th
-  hour     %h     21
-  HOUR     %H     10
-  GOOD     %N     AM
-  minute   %m     24
-  second   %s     22
-  weekday  %u     3
-  Weekday  %w     Thu
-  WEEKDAY  %W     Thursday
-  timezone %T     -0400
-  Timezone %Z     -240
-  TIMEZONE %z     -04:00
+  String         Macro  Example
+  year           %Y     2016
 
-  epoch    %e     1469669063
-  julian   %j     2457597
-  ordinal  %O     209
+  month          %M     07
+  MONTH          %L     July
+  Month|mth      %l     Jul
+
+  day            %D     27
+  DAY            %d     27th
+
+  hour           %h     21
+
+  HOUR           %H     11
+  GOOD           %N     AM
+
+  minute         %m     24
+
+  second         %s     22
+
+  weekday        %u     3
+  WEEKDAY        %W     Thursday
+  Weekday|wkday  %w     Thu
+
+  timezone       %T     -0400   (+-HHMM)
+  TIMEZONE       %z     -04:00  (+-HH:MM)
+  Timezone       %Z     -240m   (+-MMMMm)
+
+  epoch          %e     1469669063
+
+  julian         %j     2457597
+
+  ordinal        %O     209
+
+  usage|help|?   %?     call fmtdate_usage()
 
 if none of these keywords are found then every letter that
 is a macro is assumed to have an implied percent in front

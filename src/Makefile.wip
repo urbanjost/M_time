@@ -94,7 +94,7 @@ $(LIBRARY): $(LIBOBJS)
         @ echo "TARGETS FOR $(LIBRARY) UP TO DATE"
 
 #$(PROG): $(OBJS)
-#       -$(FC) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS) # ||echo "ouch: $@.f90"
+#       -$(FC) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS) ||echo "ouch: $@.f90"
 $(PROG): $(LIBRARY)
         -$(FC) $(FFLAGS) $(LDFLAGS) $@.f90 -o $@ $(LIBS)
 

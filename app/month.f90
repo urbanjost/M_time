@@ -78,7 +78,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '   the current year is displayed.                                               ',&
 '                                                                                ',&
 'OPTIONS                                                                         ',&
-'   -month      Display single month output. The month is numeric (1-12)         ',&
+'   -month NN   Display single month output. The month is numeric (1-12)         ',&
 '               or a month name or blank. If blank the current month is assumed. ',&
 '                                                                                ',&
 '   -year NNNN  Select the year to display. A year starts on Jan 1st.            ',&
@@ -121,7 +121,7 @@ end subroutine help_usage
 !!    the current year is displayed.
 !!
 !!##OPTIONS
-!!    -month      Display single month output. The month is numeric (1-12)
+!!    -month NN   Display single month output. The month is numeric (1-12)
 !!                or a month name or blank. If blank the current month is assumed.
 !!
 !!    -year NNNN  Select the year to display. A year starts on Jan 1st.
@@ -165,7 +165,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       2024-06-18 01:06:50 UTC-240>',&
+'@(#)COMPILED:       2024-06-28 23:08:33 UTC-240>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop

@@ -23,51 +23,46 @@ LIBS :=
 CC := cc
 CFLAGS := -O
 FC := gfortran
-FFLAGS := -O
 LDFLAGS :=
-F90=gfortran
+F90 := gfortran
 #
 # You can either ignore it, or disable the "may be used uninitialized"
 # warnings with -Wno-maybe-uninitialized or compile with optimizations
 # (-O1 and more).
-gfortran: F90=gfortran
-gfortran: F90FLAGS := -g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized
-gfortran: all
-	@echo built with $(F90)
-
-nvfortran: F90=nvfortran
-nvfortran: F90FLAGS := -Minform=inform -Mbackslash -traceback
-nvfortran: all
-	@echo built with $(F90)
-
-ifort: F90=ifort
-ifort: F90FLAGS := -warn all -traceback
-ifort: all
-	@echo built with $(F90)
-
-nagfor: F90=nagfor
-nagfor: F90FLAGS := -C all
-nagfor: all
-	@echo built with $(F90)
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+gfortran:
+	$(MAKE) F90=gfortran F90FLAGS='-g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized' all
+nvfortran:
+	$(MAKE) F90=nvfortran F90FLAGS='-Minform=inform -Mbackslash -traceback' all
+ifort:
+	$(MAKE) F90=ifort F90FLAGS='-warn all -traceback -diag-disable=10448' all
+ifx:
+	$(MAKE) F90=ifx F90FLAGS='-warn all -traceback' all
+nagfor:
+	$(MAKE) F90=nagfor F90FLAGS='-C' all
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 all: $(PROG) $(CPROG)
 	@echo "That's all folks!"
 
 $(PROG): $(OBJS)
 
-	-$(F90) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS) # ||echo "ouch: $@.f90"
+	-$(F90) $(F90FLAGS) $(LDFLAGS) $@.f90 -o $@ $(OBJS) $(LIBS)
 
 .PHONY: help
 help:
-	: make    '-- build M_time module'
-	: run     '-- run manpage demo programs and test program'
-	: test    '-- run test program (requires additional modules)'
-	: man     '-- show all manpages as text'
-	: clean   '-- clean directory of object files and executables'
-	: doxygen '-- run doxygen(1) if you have it'
-	: ford    '-- run ford(1) if you have it'
-	: help    '-- display this text'
+	: ' build M_time module (defaults to gfortran)                '
+	: '    make clean F90=ifx ifx                                 '
+	: '    make clean F90=ifort ifort                             '
+	: '    make clean F90=nvfortran nvfortran                     '
+	: '    make clean F90=gfortran gfortran                       '
+	: ' eg: make clean ifx                                        '
+	: ' OPTIONS:                                                  '
+	: ' run     -- run manpage demo programs and test program     '
+	: ' test    -- run test program (requires additional modules) '
+	: ' man     -- show all manpages as text                      '
+	: ' clean   -- clean directory of object files and executables'
+	: ' doxygen -- run doxygen(1) if you have it                  '
+	: ' ford    -- run ford(1) if you have it                     '
+	: ' help    -- display this text                              '
 
 .PHONY: run
 run: $(PROG)
