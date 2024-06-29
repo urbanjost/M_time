@@ -1080,7 +1080,7 @@ end function mo2v
 !>
 !!##NAME
 !!    now(3f) - [M_time:DATE_PRINTING] return string representing current
-!!    time given format
+!!    time given one of many formats to present with
 !!    (LICENSE:MIT)
 !!
 !!##SYNOPSIS

@@ -1,0 +1,290 @@
+<html> 
+<head> 
+<title> </title>
+<style> 
+px {font-family: "Lucida Console", Monaco, monospace }
+p { font-size:100%; line-height:1.1em; }
+body {xfont-style: sans-serif}
+body {
+color:#333; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:1em; line-height:1.3em; }
+a:visited { color:#666; }
+h1,h2,h3,h4,h5,h6 { color:#333; font-family:georgia, verdana, sans-serif; }
+h1 { font-size:150%; page-break-before:auto;background-color: #aaaaff}
+h2 { font-size:143%;color:teal; }
+h3 { font-size:134%;color:blue; }
+h4 { font-size:120%;color:gray; }
+img { max-width: 55em}
+p{ padding: 0;margin:0; }
+p{ padding-right:1.4em; }
+p{ padding-bottom:0.1em; }
+p{ padding-top:1em; }
+p{ whitespace: pre-wrap; }
+h5,h6 { font-size:100% }
+a.nav,a:link.nav, a:visited.nav { background-color:#FFF; color:#000; }
+XXtable { border:double #000; border-collapse:collapse; }
+XXtable { border-collapse:collapse; }
+XXtd { border:thin solid #888; }
+XXtd { border:none; }
+li { margin-bottom:0.5em; }
+blockquote { display:block; font-size:100%; line-height:1.1em; margin:0 0 0.5em; padding:0 2.5em; }
+pre { background-color:#DDD; font-size:100%; overflow:auto; padding:1em; }
+a,li span { color:#000; }
+a:hover, a.nav:hover, a:hover math { background-color:#000; color:#FFF; }
+#Container { margin:0 10px; text-align:center; background-color: #BBB}
+#Content { border-top:none; margin:auto; padding:0.3em; text-align:left; width:100%; max-width:55em; background:#FFF}
+span.webName { font-size:.5em; }
+textarea#content { font-size: 1em; line-height: 1.125; }
+h1#pageName { line-height:1em; margin:0.2em 0 0.2em 0; padding:0; }
+.property { color:#666; font-size:100%; }
+a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
+.byline { color:#666; font-size:1.0em; font-style:italic; margin-bottom:1em; padding-top:1px; } 
+</style> 
+</head>
+<BODY bgcolor=#F0F0F0 text=#000000 link=#0000ff vlink=#C000C0 alink=#ff0000><A NAME=top></A>
+<!--
+<h5><a href="index.html">[UP]</a></h5>
+<button type="button" onclick="javascript:history.back()">Back</button>
+-->
+<div id="Container">
+<div id="Content">
+<CENTER>
+<H1><HR><I>User Commands  &nbsp;-&nbsp;</I><NOBR>ttee (1)</NOBR><HR></H1>
+</CENTER>
+<A name=0>
+
+     <H3>NAME</H3>
+
+</A>
+<BLOCKQUOTE>
+ttee(1f) - [TIME] write input to stdout and a file with timing info.
+(LICENSE:PD)
+<P>
+</BLOCKQUOTE>
+<A name=contents></A><H3>CONTENTS</H3></A>
+<BLOCKQUOTE>
+<A HREF=#1>Synopsis</A><BR>
+<A HREF=#2>Description</A><BR>
+<A HREF=#3>Limits</A><BR>
+<A HREF=#4>Examples</A><BR>
+<A HREF=#5>Author</A><BR>
+<A HREF=#6>License</A><BR>
+</BLOCKQUOTE>
+<A name=7>
+
+     <H3>SYNOPSIS</H3>
+
+</A>
+<BLOCKQUOTE>
+ttee [[ <B>-o</B>|<B>--output</B>] filename(s)] [ <B>-a</B>|<B>--append</B>] [ <B>--timestamp</B> FLAG]] &#46;&#46;&#46;
+[ <B>-fmt</B> FORMAT] [ <B>--help</B> | <B>--version</B>]
+</BLOCKQUOTE>
+<A name=2>
+
+     <H3>DESCRIPTION</H3>
+
+</A>
+<BLOCKQUOTE>
+Read from standard input and write to standard output and files
+with an optional timestamp in front of each line.
+<P>
+<B>-o</B>|<B>--output</B> FILENAME(S)
+specify name of output file(s). If the filenames are first the
+keyword <B>-o</B>|<B>--output</B> is optional.
+<P>
+<B>-a</B>|<B>--append</B>
+append to the given output file(s), do not overwrite
+<P>
+<B>-t</B>|<B>--timestamp</B> FLAG
+which files to add the timestamp to. Default is "all"
+Allowed values are stdout, output, all, none.
+<P>
+<B>-fmt</B> FORMAT
+Change format for timestamp prefix using a call to now(3f).
+<P>
+<PRE>
+          Description                                        Example
+<P>
+          Base time array:
+           (1) %Y -- year, yyyy                                2022
+           (2) %M -- month of year, 01 to 12                   08
+           (3) %D -- day of month, 01 to 31                    02
+               %d -- day of month, with suffix (1st, 2nd,&#46;&#46;&#46;)  2nd
+           (4) %Z -- minutes from UTC                          -0240
+               %z -- -+hh:mm from UTC                          -04:00
+               %T -- -+hhmm  from UTC                          -0400
+           (5) %h -- hours, 00 to 23                           03
+               %H -- hour (1 to 12, or twelve-hour clock)      3
+               %N -- midnight&lt; AM &lt;=noon; noon&lt;= PM &lt;midnight  AM
+           (6) %m -- minutes, 00 to 59                         46
+           (7) %s -- sec, 00 to 59                             47
+           (8) %x -- milliseconds 000 to 999                   455
+          Conversions:
+               %E -- Unix Epoch time                           1659426407.455006
+               %e -- integer value of Unix Epoch time          1659426407
+               %J -- Julian  date                              2459793.824160393
+               %j -- integer value of Julian Date(Julian Day)  2459793
+               %O -- Ordinal day (day of year)                 214
+               %o -- Whole days since Unix Epoch date          19206
+               %U -- day of week, 1..7 Sunday=1                3
+               %u -- day of week, 1..7 Monday=1                2
+               %i -- ISO week of year 1..53                    31
+               %I -- iso-8601 week-numbering date(yyyy-Www-d)  2022-W31-2
+           Names:
+               %l -- abbreviated month name                    Aug
+               %L -- full month name                           August
+               %w -- first three characters of weekday         Tue
+               %W -- weekday name                              Tuesday
+               %p -- phase of moon                             Waxing crescent
+               %P -- percent of way from new to full moon      31%
+           Literals:
+               %% -- a literal %                               %
+               %t -- tab character                             
+               %b -- blank character
+               %B -- exclamation(bang) character               !
+               %n -- new line (system dependent)              
+<P>
+               %q -- single quote (apostrophe)                 &#146;
+               %Q -- double quote                              "
+           Program timing:
+               %c -- CPU_TIME(3f) output                       .2323500000000000E-01
+               %C -- number of times this routine is used      1
+               %S -- seconds since last use of this format     .000000000000000
+               %k -- time in seconds from SYSTEM_CLOCK(3f)     68611.47
+               %K -- time in clicks from SYSTEM_CLOCK(3f)      686114677
+<P>
+          If no percent (%) is found in the format one of several
+          alternate substitutions occurs.
+<P>
+          If the format is composed entirely of one of the following
+          keywords the following substitutions occur:
+            "iso-8601",
+            "iso"        ==&gt; %Y-%M-%DT%h:%m:%s%z             2022-08-02T03:46:47-04:00
+            "iso-8601W",
+            "isoweek"    ==&gt; %I                              2022-W31-2
+            "sql"        ==&gt; "%Y-%M-%D %h:%m:%s.%x"          "2022-08-02 03:46:47.470"
+            "sqlday"     ==&gt; "%Y-%M-%D"                      "2022-08-02"
+            "sqltime"    ==&gt; "%h:%m:%s.%x"                   "03:46:47.470"
+            "rfc-2822"   ==&gt; %w, %D %l %Y %h:%m:%s %T
+                             Tue, 02 Aug 2022 03:46:47 -0400
+            "rfc-3339"   ==&gt; %Y-%M-%DT%h:%m:%s%z             2022-08-02T03:46:47-04:00
+            "date"       ==&gt; %w %l %D %h:%m:%s UTC%z %Y
+                             Tue Aug 02 03:46:47 UTC-04:00 2022
+            "short"      ==&gt; %w, %l %d, %Y %H:%m:%s %N UTC%z
+                             Tue, Aug 2nd, 2022 3:46:47 AM UTC-04:00
+            "long"," "   ==&gt; %W, %L %d, %Y %H:%m:%s %N UTC%z
+                             Tuesday, August 2nd, 2022 3:46:47 AM UTC-04:00
+            "suffix"     ==&gt; %Y%D%M%h%m%s                    20220208034647
+            "formal"     ==&gt; The %d of %L %Y                 The 2nd of August 2022
+            "lord"       ==&gt; the %d day of %L in the year of our Lord %Y
+                             the 2nd day of August in the year of our Lord 2022
+            "easter"     ==&gt; FOR THE YEAR OF THE CURRENT DATE:
+                               Easter day: the %d day of %L in the year of our Lord %Y
+            "all"        ==&gt; A SAMPLE OF DATE FORMATS
+          otherwise the following words are replaced with the most
+          common macros:
+             year          %Y  2022
+             month         %M  08
+             day           %D  02
+             timezone      %z  -04:00
+             hour          %h  03
+             minute        %m  46
+             second        %s  47
+             millisecond   %x  471
+             epoch         %e  1659426407
+             julian        %j  2459793
+             ordinal       %O  214
+             weekday       %u  2
+             MONTH         %L  July
+             Month         %l  Jul
+             DAY           %d  7th
+             HOUR          %H  10
+             GOOD          %N  AM
+             Weekday       %w  Thu
+             WEEKDAY       %W  Thursday
+             Timezone      %Z  -240
+             TIMEZONE      %z  -04:00
+          if none of these keywords are found then every letter that
+          is a macro is assumed to have an implied percent in front
+          of it. For example:
+             YMDhms ==&gt; %Y%M%D%h%m%s ==&gt; 20220802034647
+<P>
+</PRE>
+<TABLE cellpadding=3>
+<TR valign=top><TD width=6% nowrap>
+<B></B><B>--help</B> </TD><TD valign=bottom>
+display this help and exit
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B></B><B>--version</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+output version information and exit
+</TD></TR>
+<TR></TR></TABLE></BLOCKQUOTE>
+<A name=3>
+
+     <H3>LIMITS</H3>
+
+</A>
+<BLOCKQUOTE>
+Program limits:
+<TABLE cellpadding=3><!-- tsb: Program limits:
+ -->
+<TR></TR><TR></TR>
+<TR valign=top><TD width=3%>
+o
+</TD><TD>
+Input line width maximum is 1024 characters.
+</TD></TR>
+<TR valign=top><TD width=3%>
+o
+</TD><TD>
+Maximum length of output filenames is 4098, individual filename is 1024.
+</TD></TR>
+<TR valign=top><TD width=3%>
+o
+</TD><TD>
+Minimum number of output files is probably at least 90; but is
+system dependent.
+</TD></TR>
+<TR></TR></TABLE></BLOCKQUOTE>
+<A name=4>
+
+     <H3>EXAMPLES</H3>
+
+</A>
+<BLOCKQUOTE>
+Basic command usage:
+<P>
+<PRE>
+    # write stdout of "program" to ttee.out with a timestamp and stdout
+    program|ttee --output ttee.out --timestamp output|grep -i iteration
+<P>
+    # write stdout of "program" to log.txt and stdout with a Julian Day
+    program|ttee log.txt -fmt "%J :"
+    2457565.488 :Iteration 1 : Error: 1.20
+    2457565.558 :Iteration 2 : Error: 0.08
+    2467569.684 :Iteration 3 : Error: 1.2e-3
+</PRE>
+</BLOCKQUOTE>
+<A name=5>
+
+     <H3>AUTHOR</H3>
+
+</A>
+<BLOCKQUOTE>
+John S. Urban
+</BLOCKQUOTE>
+<A name=6>
+
+     <H3>LICENSE</H3>
+
+</A>
+<BLOCKQUOTE>
+Public Domain
+</BLOCKQUOTE>
+<P><HR>
+<TABLE width=100%><TR> <TD width=33%><I>Nemo Release 3.1</I></TD> <TD width=33% align=center>ttee (1)</TD> <TD align=right width=33%><I>June 23, 2024</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from 3a6b0952-2089-475a-989c-186e35792713 using man macros.</FONT>
+<br><br><center><img src="images/ttee.1.gif"></center>
+</div>
+</div>
+</body>
+</HTML>

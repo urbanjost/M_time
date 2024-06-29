@@ -42,13 +42,13 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 </head>
 <BODY bgcolor=#F0F0F0 text=#000000 link=#0000ff vlink=#C000C0 alink=#ff0000><A NAME=top></A>
 <!--
-<h5><a href="https://github.com/urbanjost/M_time">[UP]</a></h5>
+<h5><a href="index.html">[UP]</a></h5>
 <button type="button" onclick="javascript:history.back()">Back</button>
 -->
 <div id="Container">
 <div id="Content">
 <CENTER>
-<H1><HR><I>Manual Reference Pages &nbsp;-&nbsp;</I><NOBR>sec2days.1.man (1m_time)</NOBR><HR></H1>
+<H1><HR><I>User Commands  &nbsp;-&nbsp;</I><NOBR>paws (1)</NOBR><HR></H1>
 </CENTER>
 <A name=0>
 
@@ -56,7 +56,7 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 
 </A>
 <BLOCKQUOTE>
-sec2days(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss
+paws(1f) - [TIME] pause until specified time or for specified duration
 (LICENSE:PD)
 <P>
 </BLOCKQUOTE>
@@ -75,7 +75,9 @@ sec2days(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss
 
 </A>
 <BLOCKQUOTE>
-sec2days nnnn[.xxx] [ <B>-crop</B>]| <B>--version</B>| <B>--help</B>
+paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ <B>-msg</B> message][ <B>-cmd</B> command][ <B>-repeat</B> TIMES[ <B>-fmt</B> ]]|&#46;&#46;&#46;
+[ <B>-uet</B>|<B>-jed</B>|<B>-dat</B>|[ <B>-date</B>|<B>-until</B>]]
+paws <B>--version</B>|<B>--help</B>
 </BLOCKQUOTE>
 <A name=2>
 
@@ -83,14 +85,10 @@ sec2days nnnn[.xxx] [ <B>-crop</B>]| <B>--version</B>| <B>--help</B>
 
 </A>
 <BLOCKQUOTE>
-Given a numeric string representing seconds convert it to a string
-of the form
-<P>
-<PRE>
-      dd-hh:mm:ss
-<P>
-</PRE>
-where dd is days, hh hours, mm minutes and ss seconds.
+Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours,
+mm minutes and ss.xxx seconds convert it to seconds. Then, pause for that
+many seconds. Alternatively, pause until specified date has passed.
+If no duration is specified wait until a carriage return is entered.
 </BLOCKQUOTE>
 <A name=3>
 
@@ -100,39 +98,59 @@ where dd is days, hh hours, mm minutes and ss seconds.
 <BLOCKQUOTE>
 <TABLE cellpadding=3>
 <TR valign=top><TD colspan=2>
-<B>nnnn[.xxx]</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
-number of seconds to convert to string of form dd-hh:mm:ss.
-nnnn may be interspersed with unit codes d,h,m,s. Spaces,
-commas and case are ignored. Allowed aliases for the unit
-codes are
-<TABLE width=100% cellpadding=3><!-- tsb: number of seconds to convert to string of form dd-hh:mm:ss.
- -->
-<TR></TR><TR></TR>
-<TR valign=top><TD width=6% nowrap>
-<B>d</B> </TD><TD valign=bottom>
-days and day
+<B>dd-hh:mm:ss</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+Given a string representing a duration of time in the
+following forms:
+</TD></TR>
+<TR><TD colspan=2>
+<PRE>
+                   dd-hh:mm:ss[.xx]
+                      hh:mm:ss[.xx]
+                         mm:ss[.xx]
+                            ss[.xx]
+                      or
+                   xx[.yy]SUFFIX
+<P>
+</PRE>
+convert it to seconds and pause for that amount of time.
+Suffix may be s for seconds, m for minutes, h for hours,
+or d for days.
+</TD></TR>
+<TR valign=top><TD colspan=2>
+<B></B><B>-date</B>|<B>-until</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+wait until the specified date has passed (before starting
+optional pause). See guessdate(3f) for syntax allowed for
+the date.
 </TD></TR>
 <TR valign=top><TD width=6% nowrap>
-<B>h</B> </TD><TD valign=bottom>
-hours,hour,hrs, and hr
+<B></B><B>-uet</B> </TD><TD valign=bottom>
+wait until the specified Unix Epoch Time has passed
 </TD></TR>
 <TR valign=top><TD width=6% nowrap>
-<B>m</B> </TD><TD valign=bottom>
-minutes,minute and min
+<B></B><B>-jed</B> </TD><TD valign=bottom>
+wait until the specified Julian Ephemeris Date has passed
 </TD></TR>
 <TR valign=top><TD width=6% nowrap>
-<B>s</B> </TD><TD valign=bottom>
-seconds,second and sec
+<B></B><B>-dat</B> </TD><TD valign=bottom>
+wait until the specified date vector has passed
+(year month day timezone hour minutes seconds milliseconds)
 </TD></TR>
-<TR></TR></TABLE><!-- .TP -->
+<TR valign=top><TD colspan=2>
+<B></B><B>-repeat</B> NNN </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
+The duration is repeated NNN times with the date displayed
+at the end of each pause.
 </TD></TR>
 <TR valign=top><TD width=6% nowrap>
-<B></B><B>-crop</B> </TD><TD valign=bottom>
-trim leading zero values from output
+<B></B><B>--msg</B> </TD><TD valign=bottom>
+message to display before pausing
 </TD></TR>
 <TR valign=top><TD width=6% nowrap>
-<B></B><B>-radix</B> </TD><TD valign=bottom>
-character used as decimal separator
+<B></B><B>--cmd</B> </TD><TD valign=bottom>
+command to execute after a pause
+</TD></TR>
+<TR valign=top><TD width=6% nowrap>
+<B></B><B>--fmt</B> </TD><TD valign=bottom>
+date format (see fmtdate(3f) for details)
 </TD></TR>
 <TR valign=top><TD width=6% nowrap>
 <B></B><B>--help</B> </TD><TD valign=bottom>
@@ -142,25 +160,23 @@ display this help and exit
 <B></B><B>--version</B> </TD></TR><TR valign=top><TD width=6%>&nbsp;</TD><TD>
 output version information and exit
 </TD></TR>
-<TR></TR></TABLE></BLOCKQUOTE>
+<TR></TR></TABLE>For more information on the format of the dates, see the now(1) command.
+</BLOCKQUOTE>
 <A name=4>
 
      <H3>EXAMPLE</H3>
 
 </A>
 <BLOCKQUOTE>
-usage
+Typical usage:
 <P>
 <PRE>
-   sec2days 129860
-   1-12:04:20
-   sec2days 1d2h3m4s
-   1-02:03:04
-   sec2days 1.0 days 2 hours 3 minutes 4 seconds
-   1-02:03:04
-   sec2days 1.5d
-   1-12:00:00
-<P>
+   paws 2:00:00              # pause for two hours
+   paws 3600                 # pause one hour
+   paws 0.10                 # pause one tenth of a second
+   paws 1 -repeat 60         # pause sixty seconds, display the date each second
+   paws -until 23:59:59      # pause until midnight
+   paws 15:00 -date 23:59:59 # pause till midnight then an additional 15 minutes
 </PRE>
 </BLOCKQUOTE>
 <A name=5>
@@ -180,8 +196,8 @@ John S. Urban
 Public Domain
 </BLOCKQUOTE>
 <P><HR>
-<TABLE width=100%><TR> <TD width=33%><I>Nemo Release 3.1</I></TD> <TD width=33% align=center>sec2days.1.man (1m_time)</TD> <TD align=right width=33%><I>June 29, 2024</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from e7a8a17f-5526-418e-bbe6-3cb5720f4376 using man macros.</FONT>
-<br><br><center><img src="images/sec2days.1.gif"></center>
+<TABLE width=100%><TR> <TD width=33%><I>Nemo Release 3.1</I></TD> <TD width=33% align=center>paws (1)</TD> <TD align=right width=33%><I>June 23, 2024</I></TD> </TR></TABLE><FONT SIZE=-1>Generated by <A HREF="http://www.squarebox.co.uk/download/manServer.shtml">manServer 1.08</A> from a6111d1e-2a81-422e-af53-45b9d1f53a83 using man macros.</FONT>
+<br><br><center><img src="images/paws.1.gif"></center>
 </div>
 </div>
 </body>

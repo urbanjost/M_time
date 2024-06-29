@@ -20,7 +20,7 @@ mo2d (3m_time)	     - [M_time:MONTH_NAME] given month name return DAT date-time 
 mo2v (3m_time)	     - [M_time:MONTH_NAME] given month name return month number (1-12) of that month (LICENSE:MIT)
 month (1)	     - [TIME] display a calendar (LICENSE:PD)
 moon_fullness (3m_time) - [M_time:ASTROLOGICAL] return percentage of moon phase from new to full (LICENSE:MIT)
-now (3m_time)	     - [M_time:DATE_PRINTING] return string representing current time given format (LICENSE:MIT)
+now (3m_time)	     - [M_time:DATE_PRINTING] return string representing current time given one of many formats to present with (LICENSE:MIT)
 o2d (3m_time)	     - [M_time:ORDINAL_DAY] converts Ordinal day to DAT date-time array (LICENSE:MIT)
 ordinal_seconds (3m_time) - [M_time:ORDINAL_DAY] seconds since beginning of year (LICENSE:MIT)
 ordinal_to_date (3m_time) - [M_time:ORDINAL_DAY] when given a valid year and day of the year returns the DAT array for the date (LICENSE:MIT)
@@ -1023,7 +1023,7 @@ now(3m_time)							  now(3m_time)
 
 NAME
   now(3f) - [M_time:DATE_PRINTING] return string representing current time
-  given format (LICENSE:MIT)
+  given one of many formats to present with (LICENSE:MIT)
 
 
 SYNOPSIS
@@ -2148,7 +2148,7 @@ untitled()							    untitled()
 
 
 
-	      [1][GPF Home Page]
+	      [GPF Home Page]
 
    NAME
   M_time(3fm) - [M_time::INTRO] Fortran module for manipulating and presenting
@@ -2211,86 +2211,86 @@ untitled()							    untitled()
   Summary of functions
 
    UNIX EPOCH
-  [2]date_to_unix(dat,UNIXTIME,IERR) or [3]d2u(dat) result(UNIXTIME) %epoch()
-  Convert date array to Unix Time [4]unix_to_date(unixtime,DAT,IERR) or
+  date_to_unix(dat,UNIXTIME,IERR) or d2u(dat) result(UNIXTIME) %epoch()
+  Convert date array to Unix Time unix_to_date(unixtime,DAT,IERR) or
 
-  [5]u2d(unixtime) result(DAT)
+  u2d(unixtime) result(DAT)
     Convert Unix Time to date array
 
    JULIAN
-  [6]julian_to_date(julian,DAT,IERR) or
+  julian_to_date(julian,DAT,IERR) or
 
-  [7]j2d(julian) result(DAT)
-    Convert Julian Date to date array [8]date_to_julian(dat,JULIAN,IERR) or
-    [9]d2j(dat) result(JULIAN) %julian() Converts date array to Julian Date
+  j2d(julian) result(DAT)
+    Convert Julian Date to date array date_to_julian(dat,JULIAN,IERR) or
+    d2j(dat) result(JULIAN) %julian() Converts date array to Julian Date
 
    DAY OF WEEK
-  [10]dow(dat,[WEEKDAY],[DAY],IERR) %weekday() Convert date array to day of
-  the week as number(Mon=1) and name
+  dow(dat,[WEEKDAY],[DAY],IERR) %weekday() Convert date array to day of the
+  week as number(Mon=1) and name
 
    WEEK OF YEAR
-  [11]d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)
+  d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)
     calculate iso-8601 Week- numerically and as string yyyy-Www-d
-    [12]w2d(iso_year,iso_week,iso_weekday,DAT) or
+    w2d(iso_year,iso_week,iso_weekday,DAT) or
 
-  [13]w2d(iso_string,DAT,[IERR])
+  w2d(iso_string,DAT,[IERR])
     calculate date DAT given iso-8601 Week date (numerically or as a string
     yyyy-Www-d) `
 
    ORDINAL DAY
-  [14]d2o(dat) result(ORDINAL) %ordinal() given date array return ordinal day
-  of year, Jan 1st=1 [15]ordinal_to_date(ordinal,year,DAT) or
+  d2o(dat) result(ORDINAL) %ordinal() given date array return ordinal day of
+  year, Jan 1st=1 ordinal_to_date(ordinal,year,DAT) or
 
-  [16]o2d(ordinal,[year]) result(DAT)
-    given ordinal day of year return date array, Jan 1st=1
-    [17]ordinal_seconds() return seconds since beginning of year
+  o2d(ordinal,[year]) result(DAT)
+    given ordinal day of year return date array, Jan 1st=1 ordinal_seconds()
+    return seconds since beginning of year
 
    PRINTING DATES
-  [18]fmtdate(dat,format) result(TIMESTR) %format([string]) Convert date array
-  to string using format
+  fmtdate(dat,format) result(TIMESTR) %format([string]) Convert date array to
+  string using format
 
-  [19]fmtdate_usage(indent)
+  fmtdate_usage(indent)
     display macros recognized by fmtdate(3f)
 
-  [20]now(format) result(TIMESTR)
+  now(format) result(TIMESTR)
     return string representing current time given format
 
-  [21]box_month(dat,CALEN)
+  box_month(dat,CALEN)
     print specified month into character array
 
    MONTH NAME
-  [22]mo2v(month_name) result(MONTH_NUMBER)
+  mo2v(month_name) result(MONTH_NUMBER)
     given month name return month number
 
-  [23]v2mo(month_number) result(MONTH_NAME)
+  v2mo(month_number) result(MONTH_NAME)
     given month number return month name
 
-  [24]mo2d(month_name,year) result(DAT)
+  mo2d(month_name,year) result(DAT)
     return date array for first day of given month name in specified year
 
    ASTROLOGICAL
-  [25]easter(year,dat)
+  easter(year,dat)
     calculate month and day Easter falls on for given year
 
-  [26]moon_fullness(dat) result(FULLNESS)
+  moon_fullness(dat) result(FULLNESS)
     percentage of moon phase from new to full
 
-  [27]phase_of_moon(dat) result(PHASE)
+  phase_of_moon(dat) result(PHASE)
     return name for phase of moon for given date
 
    DURATION
-  [28]sec2days(seconds) result(DHMS)
+  sec2days(seconds) result(DHMS)
     converts seconds to string D-HH:MM:SS
 
-  [29]days2sec(string) result(SECONDS)
+  days2sec(string) result(SECONDS)
     converts string D-HH:MM:SS to seconds
 
    READING DATES
-  [30]guessdate(anot,DAT)
+  guessdate(anot,DAT)
     Converts a date string to a date array, in various formats
 
    C INTERFACE
-  [31]system_sleep(wait_seconds)
+  system_sleep(wait_seconds)
     Call sleep(3c) or usleep(3c)
 
    FORMATTING OPTIONS IN FMTDATE
@@ -2395,7 +2395,7 @@ untitled()							    untitled()
       "lord"	   ==> the %d day of %L in the year of our Lord %Y
 			  Ex: the 29th day of June in the year of our Lord 2024
       "easter"	   ==> Easter day: the %d day of %L in the year of our Lord %Y
-			  Ex: Easter day: \
+			  Ex: Easter day: ...
 			  the 31st day of March in the year of our Lord 2024
       "all"	   ==> A SAMPLE OF DATE FORMATS
 			  Civil Calendar:   Saturday June 29th
@@ -2460,7 +2460,7 @@ untitled()							    untitled()
   for formatting a date as well as how to use the module to calculate dates
   such as "Yesterday" and "Tomorrow".
 
-  > program demo_M_time
+  program demo_M_time
 
     use M_time, only:
       j2d, d2j, u2d, d2u, fmtdate, realtime
@@ -2504,7 +2504,7 @@ untitled()							    untitled()
 
     end program demo_M_time
 
-    Sample output of example program ...
+    Sample output ...
 
    Today
    ISO	     2015-12-22T08:07:34.025-0300
@@ -2601,108 +2601,27 @@ untitled()							    untitled()
    SEE ALSO
   Utility programs that use the M_time(3f) module:
 
-	    + [32]now(1) prints a date in many formats
-	    + [33]ttee(1) a filter which timestamps stdout from another
-	      command
-	    + [34]month(1) which lets you print simple calendars
-	    + [35]days2sec(1) converts dd-hh:mm:ss to seconds
-	    + [36]sec2days(1) converts seconds to dd-hh:mm:ss
-	    + [37]paws(1) pause until specified time or for specified
-	      interval
+	    + now(1) prints a date in many formats
+	    + ttee(1) a filter which timestamps stdout from another command
+	    + month(1) which lets you print simple calendars
+	    + days2sec(1) converts dd-hh:mm:ss to seconds
+	    + sec2days(1) converts seconds to dd-hh:mm:ss
+	    + paws(1) pause until specified time or for specified interval
 
 	    The ISO-8601 standard is often used for business-related
 	    transactions.
 
-	    There are (of course) the C/C++ intrinsics which provide much of
-	    the same functionality that should be bindable to Fortran via
-	    the ISO_C_BINDING module.
+	    There are C/C++ intrinsics which provide much of the same
+	    functionality that should be bindable to Fortran via the
+	    ISO_C_BINDING module.
 
-	    If you are looking for a high-precision Fortran library that is
-	    well tested for manipulating dates I would suggest looking at
-	    the NASA SPICElib library. If you care about Leap Seconds,
-	    Orbital Mechanics, GPS/Satellite communications, and Astronomy
-	    it is worth a look.
+	    The Fortran Wiki fortranwiki.org contains information on other
+	    libraries and modules that provide date-time procedures.
 
-	    The Fortran Wiki [38]fortranwiki.org contains information on
-	    other libraries and modules that provide date-time procedures.
-
-  References
-
-    1.	http://www.urbanjost.altervista.org/LIBRARY/libGPF/GPF.html
-
-    2.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/date_to_unix.3m_time.html
-
-    3.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/d2u.3m_time.html
-
-    4.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/unix_to_date.3m_time.html
-
-    5.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/u2d.3m_time.html
-
-    6.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/julian_to_date.3m_time.html
-
-    7.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/j2d.3m_time.html
-
-    8.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/date_to_julian.3m_time.html
-
-    9.	file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/d2j.3m_time.html
-
-  10. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/dow.3m_time.html
-
-      11. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/d2w.3m_time.html
-
-      12. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/w2d.3m_time.html
-
-      13. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/w2d.3m_time.html
-
-      14. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/d2o.3m_time.html
-
-      15. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ordinal_to_date.3m_time.html
-
-      16. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/o2d.3m_time.html
-
-      17. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ordinal_seconds.3m_time.html
-
-      18. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/fmtdate.3m_time.html
-
-      19. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/fmtdate_usage.3m_time.html
-
-      20. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/now.3m_time.html
-
-      21. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/box_month.3m_time.html
-
-      22. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/mo2v.3m_time.html
-
-      23. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/v2mo.3m_time.html
-
-      24. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/mo2d.3m_time.html
-
-      25. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/easter.3m_time.html
-
-      26. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/moon_fullness.3m_time.html
-
-      27. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/phase_of_moon.3m_time.html
-
-      28. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/sec2days.3m_time.html
-
-      29. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/days2sec.3m_time.html
-
-      30. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/guessdate.3m_time.html
-
-      31. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/system_sleep.3m_time.html
-
-      32. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/now.1.html
-
-      33. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ttee.1.html
-
-      34. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/month.1.html
-
-      35. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/days2sec.1.html
-
-      36. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/sec2days.1.html
-
-      37. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/paws.1.html
-
-      38. http://fortranwiki.org/
+	    If you care about Leap Seconds, Orbital Mechanics, GPS/Satellite
+	    communications, and Astronomy the high-precision NASA SPICElib
+	    Fortran library is worth a look. It is well tested for
+	    manipulating high-precision dates.
 
 
 

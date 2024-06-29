@@ -338,7 +338,7 @@ keywords the following substitution occurs:
   "lord"       ==&gt; the %d day of %L in the year of our Lord %Y
                       Ex: the 29th day of June in the year of our Lord 2024
   "easter"     ==&gt; Easter day: the %d day of %L in the year of our Lord %Y
-                      Ex: Easter day: \
+                      Ex: Easter day: ...
                       the 31st day of March in the year of our Lord 2024
   "all"        ==&gt; A SAMPLE OF DATE FORMATS
                       Civil Calendar:   Saturday June 29th
@@ -413,7 +413,7 @@ of it. For example:
     such as "Yesterday" and "Tomorrow".
 </p>
 
-<pre class="fortran">>
+<pre class="fortran">
 program demo_M_time
 use M_time, only:  j2d, d2j, u2d, d2u, fmtdate, realtime
 integer                      :: dat(8)
@@ -451,7 +451,7 @@ character(len=:),allocatable :: friendly
 end program demo_M_time
 </pre>
 
-<h3> Sample output of example program ...</h3>
+<h3> Sample output ...</h3>
 
 <pre>
 
@@ -599,22 +599,22 @@ end program demo_M_time
 </p>
 
 <p>
-    There are (of course) the C/C++ intrinsics which provide much of the same
+    There are C/C++ intrinsics which provide much of the same
     functionality that should be bindable to Fortran via the ISO_C_BINDING
     module.
 </p>
 
 <p>
-    If you are looking for a high-precision Fortran library that is well tested
-    for manipulating dates I would suggest looking at the NASA SPICElib
-    library. If you care about Leap Seconds, Orbital Mechanics,
-    GPS/Satellite communications, and Astronomy it is worth a look.
+    The Fortran Wiki <a href="http://fortranwiki.org"> fortranwiki.org
+    </a> contains information on other libraries and modules that provide
+    date-time procedures.
 </p>
 
 <p>
-    The Fortran Wiki <a href="http://fortranwiki.org"> fortranwiki.org </a>
-    contains information on other libraries and modules that provide date-time
-    procedures.
+    If you care about Leap Seconds, Orbital Mechanics, GPS/Satellite
+    communications, and Astronomy the high-precision NASA SPICElib
+    Fortran library is worth a look. It is well tested for manipulating
+    high-precision dates.
 </p>
 
 </dd>
