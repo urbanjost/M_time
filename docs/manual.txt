@@ -2,7 +2,7 @@ box_month (3m_time)  - [M_time:DATE_PRINTING] create specified month in a charac
 d2j (3m_time)	     - [M_time:JULIAN] given DAT date-time array returns Julian Date (LICENSE:MIT)
 d2o (3m_time)	     - [M_time:ORDINAL_DAY] converts DAT date-time array to Ordinal day (LICENSE:MIT)
 d2u (3m_time)	     - [M_time:UNIX_EPOCH] given DAT date-time array returns Unix Epoch Time (UET starts at 0000 on 1 Jan. 1970, UTC) (LICENSE:MIT)
-d2w (3m_time)	     - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week-numbering year date yyyy-Www-d given DAT date-time array (LICENSE:MIT)
+d2w (3m_time)	     - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week, both numerically and as a string of the form "yyyy-Wmm-d" given a DAT date-time array (LICENSE:MIT)
 date_to_julian (3m_time) - [M_time:JULIAN] converts DAT date-time array to Julian Date (LICENSE:MIT)
 date_to_unix (3m_time) - [M_time:UNIX_EPOCH] converts DAT date-time array to Unix Epoch Time (LICENSE:MIT)
 days2sec (1)	     - [TIME] Convert [[-]dd-][[hh:]mm:]ss to seconds (LICENSE:PD)
@@ -32,7 +32,7 @@ today (1)	     - [TIME] output current time for uses such as file suffixes. (LIC
 u2d (3m_time)	     - [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT date-time array (LICENSE:MIT)
 unix_to_date (3m_time) - [M_time:UNIX_EPOCH] converts Unix Epoch Time to DAT date-time array (LICENSE:MIT)
 v2mo (3m_time)	     - [M_time:MONTH_NAME] returns the month name of a Common month number (LICENSE:MIT)
-w2d (3m_time)	     - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601 Week-numbering year date yyyy-Www-d (LICENSE:MIT)
+w2d (3m_time)	     - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601 numeric Week values or from string "yyyy-Www-d" (LICENSE:MIT)
 month.1.man(1m_time)					  month.1.man(1m_time)
 
 
@@ -83,7 +83,7 @@ LICENSE
 
 
 
-				 June 28, 2024		  month.1.man(1m_time)
+				 June 29, 2024		  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -141,7 +141,7 @@ LICENSE
 
 
 
-				 June 28, 2024		  today.1.man(1m_time)
+				 June 29, 2024		  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -209,7 +209,7 @@ LICENSE
 
 
 
-				 June 28, 2024	       sec2days.1.man(1m_time)
+				 June 29, 2024	       sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -292,7 +292,7 @@ LICENSE
 
 
 
-				 June 28, 2024	       days2sec.1.man(1m_time)
+				 June 29, 2024	       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -349,7 +349,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  d2j(3m_time)
+				 June 29, 2024			  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -409,14 +409,15 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  d2u(3m_time)
+				 June 29, 2024			  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
 
 NAME
-  d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week-numbering year date
-  yyyy-Www-d given DAT date-time array (LICENSE:MIT)
+  d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week, both numerically
+  and as a string of the form "yyyy-Wmm-d" given a DAT date-time array
+  (LICENSE:MIT)
 
 
 SYNOPSIS
@@ -435,8 +436,10 @@ DESCRIPTION
 OPTIONS
   dat
     "DAT" array (an integer array of the same format as the array returned by
-    the intrinsic DATE_AND_TIME(3f)) describing the date, which is the basic
-    time description used by the other M_time(3fm) module procedures.
+    the intrinsic DATE_AND_TIME(3f)) describing the date,
+
+		      dat=[ year,month,day,timezone,hour,&
+		       & minutes,seconds,milliseconds]
 
 RETURNS
   iso_year
@@ -545,7 +548,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  d2w(3m_time)
+				 June 29, 2024			  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -573,6 +576,9 @@ OPTIONS
     "DAT" array (an integer array of the same format as the array returned by
     the intrinsic DATE_AND_TIME(3f)) describing the date to be used to
     calculate the day of the week.
+
+		  dat=[ year,month,day,timezone,hour,&
+		   & minutes,seconds,milliseconds]
 
 RETURNS
   weekday
@@ -622,7 +628,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  dow(3m_time)
+				 June 29, 2024			  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -696,7 +702,7 @@ EXAMPLE
 
 
 
-				 June 28, 2024		       easter(3m_time)
+				 June 29, 2024		       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -757,7 +763,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		      fmtdate(3m_time)
+				 June 29, 2024		      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -874,9 +880,36 @@ EXAMPLE
        "all"	       ==> A SAMPLE OF DATE FORMATS
        "usage|help|?"  ==> %?
 
-  otherwise the following words are replaced with the most common macros:
+  Examples of single keywords
 
-  numeric values:
+     iso-8601
+     iso       : 2024-06-29T08:56:48-04:00
+     iso-8601W
+     isoweek   : 2024-W26-6
+     sql       : "2024-06-29 08:56:48.750"
+     sqlday    : "2024-06-29"
+     dash      : 2024-06-29
+     sqltime   : 08:56:48.833
+     rfc-2822  : Sat, 29 Jun 2024 08:56:48 -0400
+     rfc-3339  : 2024-06-29T08:56:48-04:00
+     date      : Sat Jun 29 08:56:48 UTC-04:00 2024
+     short     : Sat, Jun 29th, 2024 8:56:48 AM UTC-04:00
+     long      : Saturday, June 29th, 2024 8:56:48 AM UTC-04:00
+     suffix    : 20242906085648
+     formal    : The 29th of June 2024
+     lord      : the 29th day of June in the year of our Lord 2024
+     easter    : Easter day: the 31st day of March in the year of our Lord 2024
+     all       : Civil Calendar: Saturday June 29th
+		 Civil Date: 2024-06-29 08:56:49 -04:00
+		 Julian Date: 2460491.0394568751
+		 Unix Epoch Time: 1719665809.0740056
+		 Day Of Year: 181
+		 ISO-8601 week: 2024-W26-6
+
+     otherwise the following words are replaced with the most
+     common macros:
+
+     numeric values:
 
 	year	 %Y  2016
 	month	 %M  07
@@ -891,7 +924,7 @@ EXAMPLE
 	ordinal  %O  211
 	weekday  %u  5
 
-  string values:
+     string values:
 
 	MONTH	       %L  July
 	Month|mth      %l  Jul
@@ -903,8 +936,9 @@ EXAMPLE
 	GOOD	       %N  AM
 	HOUR	       %H  10
 
-  if none of these keywords are found then every letter that is a macro is
-  assumed to have an implied percent in front of it. For example:
+     if none of these keywords are found then every letter that
+     is a macro is assumed to have an implied percent in front
+     of it. For example:
 
 	YMDhms ==> %Y%M%D%h%m%s ==> 20160729105408
 
@@ -914,7 +948,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		fmtdate_usage(3m_time)
+				 June 29, 2024		fmtdate_usage(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -982,7 +1016,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		moon_fullness(3m_time)
+				 June 29, 2024		moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1019,9 +1053,12 @@ EXAMPLE
       program demo_now
       use M_time, only : now
       implicit none
-	 write(*,*)now("The current date is year/month/day hour:minute:second timezone")
-	 write(*,*)now("The current date is WEEKDAY at HOUR GOOD, MONTH DAY, year")
-	 write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
+	 write(*,*)now("The current date is &
+	    &year/month/day hour:minute:second timezone")
+	 write(*,*)now("The current date is &
+	    &WEEKDAY at HOUR GOOD, MONTH DAY, year")
+	 write(*,*)now("The current date is &
+	    &%w, %l %d, %Y %H:%m:%s %N")
 	 write(*,*)now("iso")
       end program demo_now
   ``` Results:
@@ -1037,7 +1074,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  now(3m_time)
+				 June 29, 2024			  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1105,7 +1142,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  o2d(3m_time)
+				 June 29, 2024			  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1148,7 +1185,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024	      ordinal_seconds(3m_time)
+				 June 29, 2024	      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1207,7 +1244,7 @@ EXAMPLE
 
 
 
-				 June 28, 2024	      ordinal_to_date(3m_time)
+				 June 29, 2024	      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1292,7 +1329,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		phase_of_moon(3m_time)
+				 June 29, 2024		phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1374,7 +1411,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		     sec2days(3m_time)
+				 June 29, 2024		     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1444,7 +1481,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		 system_sleep(3m_time)
+				 June 29, 2024		 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1514,7 +1551,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  u2d(3m_time)
+				 June 29, 2024			  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1591,7 +1628,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		 unix_to_date(3m_time)
+				 June 29, 2024		 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1653,14 +1690,14 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			 v2mo(3m_time)
+				 June 29, 2024			 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
 
 NAME
   w2d(3f) - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601
-  Week-numbering year date yyyy-Www-d (LICENSE:MIT)
+  numeric Week values or from string "yyyy-Www-d" (LICENSE:MIT)
 
 
 SYNOPSIS
@@ -1704,9 +1741,11 @@ OPTIONS
 RETURNS
   dat
     "DAT" array (an integer array of the same format as the array returned by
-    the intrinsic DATE_AND_TIME(3f)) describing the date to be used, which is
-    the basic time description used by the other M_time(3fm) module
-    procedures.
+    the intrinsic DATE_AND_TIME(3f)) describing the date to be used
+
+		      dat=[ year,month,day,timezone,hour,&
+		       & minutes,seconds,milliseconds]
+
 
   ierr
     optional error code result. If non-zero an error occurred.	If an error
@@ -1873,7 +1912,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  w2d(3m_time)
+				 June 29, 2024			  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -1964,7 +2003,7 @@ EXAMPLE
 
 LICENSE
    MIT
-				 June 28, 2024		    guessdate(3m_time)
+				 June 29, 2024		    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -2027,7 +2066,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  j2d(3m_time)
+				 June 29, 2024			  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2104,7 +2143,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024	       julian_to_date(3m_time)
+				 June 29, 2024	       julian_to_date(3m_time)
 untitled()							    untitled()
 
 
@@ -2191,65 +2230,67 @@ untitled()							    untitled()
 
    WEEK OF YEAR
   [11]d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)
-    calculate iso-8601 Week-numbering year date yyyy-Www-d
+    calculate iso-8601 Week- numerically and as string yyyy-Www-d
+    [12]w2d(iso_year,iso_week,iso_weekday,DAT) or
 
-  [12]w2d(iso_year,iso_week,iso_weekday,DAT)
-    calculate date given iso-8601 Week date yyyy-Www-d
+  [13]w2d(iso_string,DAT,[IERR])
+    calculate date DAT given iso-8601 Week date (numerically or as a string
+    yyyy-Www-d) `
 
    ORDINAL DAY
-  [13]d2o(dat) result(ORDINAL) %ordinal() given date array return ordinal day
-  of year, Jan 1st=1 [14]ordinal_to_date(ordinal,year,DAT) or
+  [14]d2o(dat) result(ORDINAL) %ordinal() given date array return ordinal day
+  of year, Jan 1st=1 [15]ordinal_to_date(ordinal,year,DAT) or
 
-  [15]o2d(ordinal,[year]) result(DAT)
+  [16]o2d(ordinal,[year]) result(DAT)
     given ordinal day of year return date array, Jan 1st=1
-    [16]ordinal_seconds() return seconds since beginning of year
+    [17]ordinal_seconds() return seconds since beginning of year
 
    PRINTING DATES
-  [17]fmtdate(dat,format) result(TIMESTR) %format([string]) Convert date array
+  [18]fmtdate(dat,format) result(TIMESTR) %format([string]) Convert date array
   to string using format
 
-  [18]fmtdate_usage(indent)
+  [19]fmtdate_usage(indent)
     display macros recognized by fmtdate(3f)
 
-  [19]now(format) result(TIMESTR)
+  [20]now(format) result(TIMESTR)
     return string representing current time given format
 
-  [20]box_month(dat,CALEN)
+  [21]box_month(dat,CALEN)
     print specified month into character array
 
    MONTH NAME
-  [21]mo2v(month_name) result(MONTH_NUMBER)
+  [22]mo2v(month_name) result(MONTH_NUMBER)
     given month name return month number
 
-  [22]v2mo(month_number) result(MONTH_NAME)
+  [23]v2mo(month_number) result(MONTH_NAME)
     given month number return month name
 
-  [23]mo2d(month_name,year) result(DAT)
+  [24]mo2d(month_name,year) result(DAT)
     return date array for first day of given month name in specified year
 
    ASTROLOGICAL
-  [24]easter(year,dat)
+  [25]easter(year,dat)
     calculate month and day Easter falls on for given year
 
-  [25]moon_fullness(dat) result(FULLNESS)
+  [26]moon_fullness(dat) result(FULLNESS)
     percentage of moon phase from new to full
 
-  [26]phase_of_moon(dat) result(PHASE)
+  [27]phase_of_moon(dat) result(PHASE)
     return name for phase of moon for given date
 
    DURATION
-  [27]sec2days(seconds) result(DHMS)
+  [28]sec2days(seconds) result(DHMS)
     converts seconds to string D-HH:MM:SS
 
-  [28]days2sec(string) result(SECONDS)
+  [29]days2sec(string) result(SECONDS)
     converts string D-HH:MM:SS to seconds
 
    READING DATES
-  [29]guessdate(anot,DAT)
+  [30]guessdate(anot,DAT)
     Converts a date string to a date array, in various formats
 
    C INTERFACE
-  [30]system_sleep(wait_seconds)
+  [31]system_sleep(wait_seconds)
     Call sleep(3c) or usleep(3c)
 
    FORMATTING OPTIONS IN FMTDATE
@@ -2309,11 +2350,11 @@ untitled()							    untitled()
 	  %q -- single quote (apostrophe)
 	  %Q -- double quote
       Program timing:
-	  %c -- CPU_TIME(3f) output			  .78125000000000000E-001
-	  %C -- number of times this routine is used	  1
-	  %S -- seconds since last use of this format	  .0000000000000000
-	  %k -- time in seconds from SYSTEM_CLOCK(3f)	  588272.750
-	  %K -- time in clicks from SYSTEM_CLOCK(3f)	  588272750
+	  %c -- CPU_TIME(3f) output			 .78125000000000000E-001
+	  %C -- number of times this routine is used	 1
+	  %S -- seconds since last use of this format	 .0000000000000000
+	  %k -- time in seconds from SYSTEM_CLOCK(3f)	 588272.750
+	  %K -- time in clicks from SYSTEM_CLOCK(3f)	 588272750
       Help:
 	  %? -- call fmtdate_usage
 
@@ -2324,28 +2365,45 @@ untitled()							    untitled()
     following substitution occurs:
 
       "iso-8601",
-      "iso"	   ==> %Y-%M-%DT%h:%m:%s%z  ! Example: 2017-08-26T18:56:33,510912700
-    -04:00
-
+      "iso"	   ==> %Y-%M-%DT%h:%m:%s%z
+			  Ex: 2017-08-26T18:56:33,510912700-04:00
       "iso-8601W",
       "isoweek"    ==> %I
+			  Ex: 2024-W26-6
       "sql"	   ==> "%Y-%M-%D %h:%m:%s.%x"
+			  Ex: "2024-06-29 08:42:14.311"
       "sqlday"	   ==> "%Y-%M-%D"
+			  Ex: "2024-06-29"
       "sqltime"    ==> "%h:%m:%s.%x"
+			  Ex: "08:42:31.528"
       "dash"	   ==> %Y-%M-%D
-      "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T  !  Example: Mon, 14 Aug 2006 02:34:
-    56 -0600
-
-      "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z  !  Example: 2006-08-14 02:34:56-06:00
+			  Ex: 2024-06-29
+      "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
+			  Ex: Mon, 14 Aug 2006 02:34:56 -0600
+      "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z
+			  Ex: 2006-08-14 02:34:56-06:00
       "date"	   ==> %w %l %D %h:%m:%s UTC%z %Y
+			  Ex: Sat Jun 29 08:43:14 UTC-04:00 2024
       "short"	   ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
+			  Ex: Sat, Jun 29th, 2024 8:43:18 AM UTC-04:00
       "long"," "   ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
+			  Ex: Saturday, June 29th, 2024 8:43:23 AM UTC-04:00
       "suffix"	   ==> %Y%D%M%h%m%s
+			  Ex: 20242906084327
       "formal"	   ==> The %d of %L %Y
+			  Ex: The 29th of June 2024
       "lord"	   ==> the %d day of %L in the year of our Lord %Y
-      "easter"	   ==> FOR THE YEAR OF THE CURRENT DATE:
-			  Easter day: the %d day of %L in the year of our Lord %Y
+			  Ex: the 29th day of June in the year of our Lord 2024
+      "easter"	   ==> Easter day: the %d day of %L in the year of our Lord %Y
+			  Ex: Easter day: \
+			  the 31st day of March in the year of our Lord 2024
       "all"	   ==> A SAMPLE OF DATE FORMATS
+			  Civil Calendar:   Saturday June 29th
+			  Civil Date:		    2024-06-29 08:44:29 -04:00
+			  Julian Date:		    2460491.0308968634
+			  Unix Epoch Time:  1719665069.4890008
+			  Day Of Year:		    181
+			  ISO-8601 week:	    2024-W26-6
 
     otherwise the following words are replaced with the most common macros. If
     more than one name lowercase is a numeric value string and all uppercase
@@ -2543,13 +2601,13 @@ untitled()							    untitled()
    SEE ALSO
   Utility programs that use the M_time(3f) module:
 
-	    + [31]now(1) prints a date in many formats
-	    + [32]ttee(1) a filter which timestamps stdout from another
+	    + [32]now(1) prints a date in many formats
+	    + [33]ttee(1) a filter which timestamps stdout from another
 	      command
-	    + [33]month(1) which lets you print simple calendars
-	    + [34]days2sec(1) converts dd-hh:mm:ss to seconds
-	    + [35]sec2days(1) converts seconds to dd-hh:mm:ss
-	    + [36]paws(1) pause until specified time or for specified
+	    + [34]month(1) which lets you print simple calendars
+	    + [35]days2sec(1) converts dd-hh:mm:ss to seconds
+	    + [36]sec2days(1) converts seconds to dd-hh:mm:ss
+	    + [37]paws(1) pause until specified time or for specified
 	      interval
 
 	    The ISO-8601 standard is often used for business-related
@@ -2565,7 +2623,7 @@ untitled()							    untitled()
 	    Orbital Mechanics, GPS/Satellite communications, and Astronomy
 	    it is worth a look.
 
-	    The Fortran Wiki [37]fortranwiki.org contains information on
+	    The Fortran Wiki [38]fortranwiki.org contains information on
 	    other libraries and modules that provide date-time procedures.
 
   References
@@ -2594,59 +2652,61 @@ untitled()							    untitled()
 
       12. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/w2d.3m_time.html
 
-      13. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/d2o.3m_time.html
+      13. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/w2d.3m_time.html
 
-      14. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ordinal_to_date.3m_time.html
+      14. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/d2o.3m_time.html
 
-      15. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/o2d.3m_time.html
+      15. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ordinal_to_date.3m_time.html
 
-      16. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ordinal_seconds.3m_time.html
+      16. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/o2d.3m_time.html
 
-      17. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/fmtdate.3m_time.html
+      17. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ordinal_seconds.3m_time.html
 
-      18. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/fmtdate_usage.3m_time.html
+      18. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/fmtdate.3m_time.html
 
-      19. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/now.3m_time.html
+      19. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/fmtdate_usage.3m_time.html
 
-      20. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/box_month.3m_time.html
+      20. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/now.3m_time.html
 
-      21. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/mo2v.3m_time.html
+      21. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/box_month.3m_time.html
 
-      22. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/v2mo.3m_time.html
+      22. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/mo2v.3m_time.html
 
-      23. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/mo2d.3m_time.html
+      23. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/v2mo.3m_time.html
 
-      24. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/easter.3m_time.html
+      24. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/mo2d.3m_time.html
 
-      25. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/moon_fullness.3m_time.html
+      25. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/easter.3m_time.html
 
-      26. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/phase_of_moon.3m_time.html
+      26. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/moon_fullness.3m_time.html
 
-      27. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/sec2days.3m_time.html
+      27. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/phase_of_moon.3m_time.html
 
-      28. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/days2sec.3m_time.html
+      28. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/sec2days.3m_time.html
 
-      29. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/guessdate.3m_time.html
+      29. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/days2sec.3m_time.html
 
-      30. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/system_sleep.3m_time.html
+      30. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/guessdate.3m_time.html
 
-      31. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/now.1.html
+      31. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/system_sleep.3m_time.html
 
-      32. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ttee.1.html
+      32. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/now.1.html
 
-      33. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/month.1.html
+      33. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/ttee.1.html
 
-      34. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/days2sec.1.html
+      34. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/month.1.html
 
-      35. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/sec2days.1.html
+      35. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/days2sec.1.html
 
-      36. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/paws.1.html
+      36. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/sec2days.1.html
 
-      37. http://fortranwiki.org/
+      37. file:///media/urbanjs/T7/venus/urbanjs_2024-06-24/home/urbanjs/venus/V600/github/M_time/docs/paws.1.html
+
+      38. http://fortranwiki.org/
 
 
 
-				 June 28, 2024			    untitled()
+				 June 29, 2024			    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -2659,8 +2719,10 @@ NAME
 SYNOPSIS
   use M_time__oop, only : date_time
 
-     use M_time__oop,only : operator(+),operator(-),operator(>),operator(<)
-     use M_time__oop,only : operator(<=),operator(>=),operator(==),operator(/=)
+     use M_time__oop,only : &
+	 & operator(+),operator(-),operator(>),operator(<)
+     use M_time__oop,only : &
+	 & operator(<=),operator(>=),operator(==),operator(/=)
 
      TYPE(date_time) :: mydate
 
@@ -2700,8 +2762,10 @@ EXAMPLE
       ! Oriented syntax:
       !
       use M_time__oop,only : date_time
-      !!use M_time__oop,only : operator(+),operator(-),operator(>),operator(<)
-      !!use M_time__oop,only : operator(<=),operator(>=),operator(==),operator(/=)
+      !!use M_time__oop,only : &
+      & operator(+),operator(-),operator(>),operator(<)
+      !!use M_time__oop,only : &
+      & operator(<=),operator(>=),operator(==),operator(/=)
       implicit none
       integer,parameter :: dp=kind(0.0d0)
       integer	      :: dat(8)
@@ -3032,7 +3096,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		  M_time__oop(3m_time)
+				 June 29, 2024		  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3090,7 +3154,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			 mo2d(3m_time)
+				 June 29, 2024			 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -3147,7 +3211,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			 mo2v(3m_time)
+				 June 29, 2024			 mo2v(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3217,7 +3281,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024	       date_to_julian(3m_time)
+				 June 29, 2024	       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3282,7 +3346,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		 date_to_unix(3m_time)
+				 June 29, 2024		 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3387,7 +3451,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		     days2sec(3m_time)
+				 June 29, 2024		     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3465,7 +3529,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024			  d2o(3m_time)
+				 June 29, 2024			  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3528,4 +3592,4 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 28, 2024		    box_month(3m_time)
+				 June 29, 2024		    box_month(3m_time)

@@ -6,8 +6,10 @@
       ! Oriented syntax:
       !
       use M_time__oop,only : date_time
-      !!use M_time__oop,only : operator(+),operator(-),operator(>),operator(<)
-      !!use M_time__oop,only : operator(<=),operator(>=),operator(==),operator(/=)
+      !!use M_time__oop,only : &
+      & operator(+),operator(-),operator(>),operator(<)
+      !!use M_time__oop,only : &
+      & operator(<=),operator(>=),operator(==),operator(/=)
       implicit none
       integer,parameter :: dp=kind(0.0d0)
       integer         :: dat(8)

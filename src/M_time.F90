@@ -28,8 +28,9 @@ private
 ! DAY OF WEEK
    public dow            !(dat,[WEEKDAY],[DAY],IERR)          ! Convert date array to day of the week as number(Mon=1) and name
 ! WEEK OF YEAR
-   public d2w  !(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)  ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-   public w2d  !(iso_year,iso_week,iso_weekday,DAT)           ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
+   public d2w !(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)   ! Calculate iso-8601 Week numerically and as string "yyyy-Www-d"
+   public w2d !(iso_year,iso_week,iso_weekday,DAT)            ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
+              !(iso_wee_string,DAT,IERR)
 ! ORDINAL DAY
    public d2o            !(dat) result(ORDINAL)               ! given date array return ordinal day of year, Jan 1st=1
    public o2d            !(ordinal) result(DAT)               ! given ordinal day of year return date array, Jan 1st=1
@@ -1108,9 +1109,12 @@ end function mo2v
 !!     program demo_now
 !!     use M_time, only : now
 !!     implicit none
-!!        write(*,*)now("The current date is year/month/day hour:minute:second timezone")
-!!        write(*,*)now("The current date is WEEKDAY at HOUR GOOD, MONTH DAY, year")
-!!        write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N")
+!!        write(*,*)now("The current date is &
+!!           &year/month/day hour:minute:second timezone")
+!!        write(*,*)now("The current date is &
+!!           &WEEKDAY at HOUR GOOD, MONTH DAY, year")
+!!        write(*,*)now("The current date is &
+!!           &%w, %l %d, %Y %H:%m:%s %N")
 !!        write(*,*)now("iso")
 !!     end program demo_now
 !! ```
@@ -1367,10 +1371,10 @@ real(kind=realtime),save             :: unixtime_last
                     endif
                     write(text(iout:),'(I0)')ii
          !=====================================================================================
-         case('i'); call d2w(valloc,iso_year,iso_week,iso_weekday,iso_name) ! ISO week of year
+         case('i'); call d2w(valloc,iso_year,iso_week,iso_weekday,iso_name) ! return ISO-8601 week of year
                     write(text(iout:),'(I0)')iso_week
          !=====================================================================================
-         case('I'); call d2w(valloc,iso_year,iso_week,iso_weekday,iso_name) ! iso-8601 Week-numbering year date
+         case('I'); call d2w(valloc,iso_year,iso_week,iso_weekday,iso_name) ! return ISO-8601 Week as string of form "yyyy-Www-d"
                     write(text(iout:),'(a)')iso_name
          !=====================================================================================
          case('j'); call date_to_julian(valloc,julian,ierr)               ! integer Julian Day (truncated to integer)
@@ -1585,6 +1589,32 @@ end function fmtdate
 !!      "all"           ==> A SAMPLE OF DATE FORMATS
 !!      "usage|help|?"  ==> %?
 !!
+!!   Examples of single keywords
+!!
+!!    iso-8601
+!!    iso       : 2024-06-29T08:56:48-04:00
+!!    iso-8601W
+!!    isoweek   : 2024-W26-6
+!!    sql       : "2024-06-29 08:56:48.750"
+!!    sqlday    : "2024-06-29"
+!!    dash      : 2024-06-29
+!!    sqltime   : 08:56:48.833
+!!    rfc-2822  : Sat, 29 Jun 2024 08:56:48 -0400
+!!    rfc-3339  : 2024-06-29T08:56:48-04:00
+!!    date      : Sat Jun 29 08:56:48 UTC-04:00 2024
+!!    short     : Sat, Jun 29th, 2024 8:56:48 AM UTC-04:00
+!!    long      : Saturday, June 29th, 2024 8:56:48 AM UTC-04:00
+!!    suffix    : 20242906085648
+!!    formal    : The 29th of June 2024
+!!    lord      : the 29th day of June in the year of our Lord 2024
+!!    easter    : Easter day: the 31st day of March in the year of our Lord 2024
+!!    all       : Civil Calendar: Saturday June 29th
+!!                Civil Date: 2024-06-29 08:56:49 -04:00
+!!                Julian Date: 2460491.0394568751
+!!                Unix Epoch Time: 1719665809.0740056
+!!                Day Of Year: 181
+!!                ISO-8601 week: 2024-W26-6
+!!
 !!    otherwise the following words are replaced with the most
 !!    common macros:
 !!
@@ -1698,31 +1728,31 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%b                                                           ',&
 &'%bIf the format is composed entirely of one of the following ',&
 &'%bkeywords the following substitutions occur:                ',&
-&'%b  "iso-8601",                                              ',&
-&'%b  "iso"          ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z ==> %Y-%M-%DT%h:%m:%s%z   ',&
-&'%b  "iso-8601W",                                                                  ',&
-&'%b  "isoweek"      ==> %%I ==> %I                          ',&
-&'%b  "sql"          ==> "%%Y-%%M-%%D %%h:%%m:%%s.%%x" ==> "%Y-%M-%D %h:%m:%s.%x"',&
-&'%b  "sqlday"       ==> "%%Y-%%M-%%D" ==> "%Y-%M-%D"                ',&
-&'%b  "sqltime"      ==> "%%h:%%m:%%s.%%x" ==> "%h:%m:%s.%x"            ',&
-&'%b  "dash"         ==> %%Y-%%M-%%D ==> %Y-%M-%D                 ',&
-&'%b  "rfc-2822"     ==> %%w, %%D %%l %%Y %%h:%%m:%%s %%T      ',&
-&'%b                     %w, %D %l %Y %h:%m:%s %T              ',&
-&'%b  "rfc-3339"     ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z ==> %Y-%M-%DT%h:%m:%s%z   ',&
-&'%b  "date"         ==> %%w %%l %%D %%h:%%m:%%s UTC%%z %%Y      ',&
-&'%b                     %w %l %D %h:%m:%s UTC%z %Y              ',&
-&'%b  "short"        ==> %%w, %%l %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
-&'%b                     %w, %l %d, %Y %H:%m:%s %N UTC%z         ',&
-&'%b  "long"," "     ==> %%W, %%L %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
-&'%b                     %W, %L %d, %Y %H:%m:%s %N UTC%z         ',&
-&'%b  "suffix"       ==> %%Y%%D%%M%%h%%m%%s ==> %Y%D%M%h%m%s           ',&
-&'%b  "formal"       ==> The %%d of %%L %%Y ==> The %d of %L %Y           ',&
-&'%b  "lord"         ==> the %%d day of %%L in the year of our Lord %%Y               ',&
-&'%b                     the %d day of %L in the year of our Lord %Y                  ',&
-&'%b  "easter"       ==> FOR THE YEAR OF THE CURRENT DATE:       ',&
-&'%b                       Easter day: the %%d day of %%L in the year of our Lord %%Y ',&
-&'%b  "all"          ==> A SAMPLE OF DATE FORMATS                ',&
-&'%b  "usage|help|?" ==> call fmtdate_usage                    ',&
+&'%b "iso-8601",                                              ',&
+&'%b "iso"          ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z ==> %Y-%M-%DT%h:%m:%s%z   ',&
+&'%b "iso-8601W",                                                                  ',&
+&'%b "isoweek"      ==> %%I ==> %I                          ',&
+&'%b "sql"          ==> "%%Y-%%M-%%D %%h:%%m:%%s.%%x" ==> "%Y-%M-%D %h:%m:%s.%x"',&
+&'%b "sqlday"       ==> "%%Y-%%M-%%D" ==> "%Y-%M-%D"                ',&
+&'%b "sqltime"      ==> "%%h:%%m:%%s.%%x" ==> "%h:%m:%s.%x"            ',&
+&'%b "dash"         ==> %%Y-%%M-%%D ==> %Y-%M-%D                 ',&
+&'%b "rfc-2822"     ==> %%w, %%D %%l %%Y %%h:%%m:%%s %%T      ',&
+&'%b                    %w, %D %l %Y %h:%m:%s %T              ',&
+&'%b "rfc-3339"     ==> %%Y-%%M-%%DT%%h:%%m:%%s%%z ==> %Y-%M-%DT%h:%m:%s%z   ',&
+&'%b "date"         ==> %%w %%l %%D %%h:%%m:%%s UTC%%z %%Y      ',&
+&'%b                    %w %l %D %h:%m:%s UTC%z %Y              ',&
+&'%b "short"        ==> %%w, %%l %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
+&'%b                    %w, %l %d, %Y %H:%m:%s %N UTC%z         ',&
+&'%b "long"," "     ==> %%W, %%L %%d, %%Y %%H:%%m:%%s %%N UTC%%z',&
+&'%b                    %W, %L %d, %Y %H:%m:%s %N UTC%z         ',&
+&'%b "suffix"       ==> %%Y%%D%%M%%h%%m%%s ==> %Y%D%M%h%m%s           ',&
+&'%b "formal"       ==> The %%d of %%L %%Y ==> The %d of %L %Y           ',&
+&'%b "lord"         ==> the %%d day of %%L in the year of our Lord %%Y               ',&
+&'%b                    the %d day of %L in the year of our Lord %Y                  ',&
+&'%b "easter"       ==> FOR THE YEAR OF THE CURRENT DATE:       ',&
+&'%b                    Easter day: the %%d day of %%L in the year of our Lord %%Y ',&
+&'%b "all"          ==> A SAMPLE OF DATE FORMATS                ',&
+&'%b "usage|help|?" ==> call fmtdate_usage                    ',&
 &'%botherwise the following words are replaced with the most   ',&
 &'%bcommon macros:                                             ',&
 &'%b   year            %%Y  %Y                                 ',&
@@ -2142,6 +2172,9 @@ end subroutine guessdate
 !!             the array returned by the intrinsic DATE_AND_TIME(3f))
 !!             describing the date to be used to calculate the day
 !!             of the week.
+!!
+!!                 dat=[ year,month,day,timezone,hour,&
+!!                  & minutes,seconds,milliseconds]
 !!##RETURNS
 !!    weekday  The numeric day of the week, starting with Monday=1.
 !!             Optional.
@@ -2246,8 +2279,9 @@ end subroutine dow
 !===================================================================================================================================
 !>
 !!##NAME
-!!    d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week-numbering
-!!    year date yyyy-Www-d given DAT date-time array
+!!    d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week, both
+!!    numerically and as a string of the form "yyyy-Wmm-d" given a DAT
+!!    date-time array
 !!    (LICENSE:MIT)
 !!
 !!##SYNOPSIS
@@ -2266,8 +2300,10 @@ end subroutine dow
 !!##OPTIONS
 !!    dat          "DAT" array (an integer array of the same format as
 !!                 the array returned by the intrinsic DATE_AND_TIME(3f))
-!!                 describing the date, which is the basic time description
-!!                 used by the other M_time(3fm) module procedures.
+!!                 describing the date,
+!!
+!!                     dat=[ year,month,day,timezone,hour,&
+!!                      & minutes,seconds,milliseconds]
 !!##RETURNS
 !!    iso_year     ISO-8601 year number for the given date
 !!    iso_week     ISO-8601 week number for the given date
@@ -2410,7 +2446,7 @@ end subroutine d2w
 !>
 !!##NAME
 !!    w2d(3f) - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601
-!!    Week-numbering year date yyyy-Www-d
+!!    numeric Week values or from string "yyyy-Www-d"
 !!    (LICENSE:MIT)
 !!
 !!##SYNOPSIS
@@ -2450,9 +2486,11 @@ end subroutine d2w
 !!##RETURNS
 !!    dat          "DAT" array (an integer array of the same format as
 !!                 the array returned by the intrinsic DATE_AND_TIME(3f))
-!!                 describing the date to be used, which is the basic
-!!                 time description used by the other M_time(3fm) module
-!!                 procedures.
+!!                 describing the date to be used
+!!
+!!                     dat=[ year,month,day,timezone,hour,&
+!!                      & minutes,seconds,milliseconds]
+!!
 !!    ierr         optional error code result. If non-zero an error occurred.
 !!                 If an error occurs and IERR is not present the program
 !!                 terminates.
@@ -3985,9 +4023,6 @@ end function getnow
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 end module M_time
-!===================================================================================================================================
-!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
-!===================================================================================================================================
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================

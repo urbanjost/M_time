@@ -60,7 +60,7 @@ integer, parameter \mbox{\hyperlink{namespacem__time____oop_a288336b28ddd017d33b
 M\+\_\+time\+\_\+\+\_\+oop(3fm) -\/ \mbox{[}M\+\_\+time\+::\+I\+N\+T\+R\+O\+::\+O\+O\+PS\mbox{]} O\+OP interface for M\+\_\+time(3fm) (L\+I\+C\+E\+N\+SE\+:M\+IT)\hypertarget{namespacem__time____oop_autotoc_md116}{}\doxysubsubsection{S\+Y\+N\+O\+P\+S\+IS}\label{namespacem__time____oop_autotoc_md116}
 use M\+\_\+time\+\_\+\+\_\+oop, only \+: \mbox{\hyperlink{structm__time____oop_1_1date__time}{date\+\_\+time}}
 
-use M\+\_\+time\+\_\+\+\_\+oop,only \+: operator(+),operator(-\/),operator($>$),operator($<$) use M\+\_\+time\+\_\+\+\_\+oop,only \+: operator($<$=),operator($>$=),operator(==),operator(/=)
+use M\+\_\+time\+\_\+\+\_\+oop,only \+: \& \& operator(+),operator(-\/),operator($>$),operator($<$) use M\+\_\+time\+\_\+\+\_\+oop,only \+: \& \& operator($<$=),operator($>$=),operator(==),operator(/=)
 
 T\+Y\+P\+E(date\+\_\+time) \+:: mydate
 
@@ -72,7 +72,7 @@ mydateformat(\textquotesingle{}\textquotesingle{}) mydateordinal() mydateweekday
 An object-\/oriented interface to the M\+\_\+time module. The following example program demonstrates and documents the interface\hypertarget{namespacem__time____oop_autotoc_md118}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____oop_autotoc_md118}
 sample program
 
-program demo\+\_\+\+M\+\_\+time\+\_\+\+\_\+oop ! ! This is an example using the object-\/oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M\+\_\+time(3fm), but allows for Object ! Oriented syntax\+: ! use M\+\_\+time\+\_\+\+\_\+oop,only \+: \mbox{\hyperlink{structm__time____oop_1_1date__time}{date\+\_\+time}} !!use M\+\_\+time\+\_\+\+\_\+oop,only \+: operator(+),operator(-\/),operator($>$),operator($<$) !!use M\+\_\+time\+\_\+\+\_\+oop,only \+: operator($<$=),operator($>$=),operator(==),operator(/=) implicit none integer,parameter \+:: dp=kind(0.\+0d0) integer \+:: dat(8) T\+Y\+P\+E(date\+\_\+time) \+:: event T\+Y\+P\+E(date\+\_\+time) \+:: otherdate T\+Y\+P\+E(date\+\_\+time) \+:: answer
+program demo\+\_\+\+M\+\_\+time\+\_\+\+\_\+oop ! ! This is an example using the object-\/oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M\+\_\+time(3fm), but allows for Object ! Oriented syntax\+: ! use M\+\_\+time\+\_\+\+\_\+oop,only \+: \mbox{\hyperlink{structm__time____oop_1_1date__time}{date\+\_\+time}} !!use M\+\_\+time\+\_\+\+\_\+oop,only \+: \& \& operator(+),operator(-\/),operator($>$),operator($<$) !!use M\+\_\+time\+\_\+\+\_\+oop,only \+: \& \& operator($<$=),operator($>$=),operator(==),operator(/=) implicit none integer,parameter \+:: dp=kind(0.\+0d0) integer \+:: dat(8) T\+Y\+P\+E(date\+\_\+time) \+:: event T\+Y\+P\+E(date\+\_\+time) \+:: otherdate T\+Y\+P\+E(date\+\_\+time) \+:: answer
 
 character(len=$\ast$),parameter \+:: iso\+\_\+fmt=\textquotesingle{}Y-\/M-\/DTh\+:m\+:s.xz\textquotesingle{} ! D\+I\+F\+F\+E\+R\+E\+NT I\+N\+I\+T\+I\+A\+L\+I\+Z\+A\+T\+I\+ON S\+T\+Y\+L\+ES ! (Still debating on how best to do this) write($\ast$,$\ast$) write($\ast$,\textquotesingle{}(a)\textquotesingle{})\textquotesingle{}Various initialization styles\textquotesingle{}
 
