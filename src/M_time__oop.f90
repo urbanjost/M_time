@@ -64,10 +64,8 @@
 !!     ! in the procedural module M_time(3fm), but allows for Object
 !!     ! Oriented syntax:
 !!     !
-!!     use M_time__oop,only : date_time
-!!     !!use M_time__oop,only : &
-!!     & operator(+),operator(-),operator(>),operator(<)
-!!     !!use M_time__oop,only : &
+!!     use M_time__oop,only : date_time, &
+!!     & operator(+),operator(-),operator(>),operator(<), &
 !!     & operator(<=),operator(>=),operator(==),operator(/=)
 !!     implicit none
 !!     integer,parameter :: dp=kind(0.0d0)
