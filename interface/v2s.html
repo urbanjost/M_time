@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 0.1% of total for procedures.</p>Including implementation: 51 statements,  2.0% of total for procedures.">3 statements</a>
+                 title="<p> 0.1% of total for procedures.</p>Including implementation: 51 statements,  2.3% of total for procedures.">3 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -156,15 +156,66 @@
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-d2s"></span> <h3>public  function <a href='../proc/d2s.html'>d2s</a>(dvalue, fmt) result(outstr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-d2s"></span> <h3>private  function d2s(dvalue, fmt) result(outstr)  
 </h3></div>
     <div class="card-body">
-          
-  <p>v2s(3f) returns a representation of a numeric value as a
+        <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>  v2s(3f) - [M_strings:NUMERIC] return numeric string from a numeric value
+  (LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="k">function</span><span class="w"> </span><span class="nf">v2s(value) result</span><span class="p">(</span>outstr<span class="p">)</span>
+
+<span class="w">    </span><span class="n">integer</span><span class="o">|</span><span class="nb">real</span><span class="o">|</span><span class="n">doubleprecision</span><span class="o">|</span><span class="nb">logical</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">value</span>
+<span class="w">    </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="p">=:),</span><span class="n">allocatable</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">outstr</span>
+<span class="w">    </span><span class="n">character</span><span class="p">(</span><span class="n">len</span><span class="p">=</span><span class="o">*</span><span class="p">),</span><span class="n">optional</span><span class="p">,</span><span class="n">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">::</span><span class="w"> </span><span class="n">fmt</span>
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>v2s(3f) returns a representation of a numeric value as a
    string when given a numeric value of type REAL, DOUBLEPRECISION,
    INTEGER or LOGICAL. It creates the strings using internal WRITE()
    statements. Trailing zeros are removed from non-zero values, and the
-   string is left-justified.</p><a href="../proc/d2s.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+   string is left-justified.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>VALUE   input value to be converted to a string
+FMT     format can be explicitly given, but is limited to
+        generating a string of eighty or less characters.
+</code></pre></div>
+
+<h2 id="returns">RETURNS</h2>
+<div class="codehilite"><pre><span></span><code>OUTSTR  returned string representing input value,
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">Sample</span><span class="w"> </span><span class="nl">Program</span><span class="p">:</span>
+
+<span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">demo_v2s</span>
+<span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="n">M_strings</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="err">:</span><span class="w"> </span><span class="n">v2s</span>
+<span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The value of 3.0/4.0 is [&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="mf">3.0</span><span class="o">/</span><span class="mf">4.0</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span>
+<span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The value of 1234    is [&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span>
+<span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The value of 0d0     is [&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(</span><span class="mi">0</span><span class="n">d0</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span>
+<span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The value of .false. is [&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(.</span><span class="k">false</span><span class="p">.)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span>
+<span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The value of .true. is  [&#39;</span><span class="o">//</span><span class="n">v2s</span><span class="p">(.</span><span class="k">true</span><span class="p">.)</span><span class="o">//</span><span class="s1">&#39;]&#39;</span>
+<span class="w"> </span><span class="k">end</span><span class="w"> </span><span class="n">program</span><span class="w"> </span><span class="n">demo_v2s</span>
+
+<span class="n">Expected</span><span class="w"> </span><span class="k">output</span>
+
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="mf">3.0</span><span class="o">/</span><span class="mf">4.0</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">[</span><span class="n">0.75</span><span class="o">]</span>
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="mi">1234</span><span class="w">    </span><span class="k">is</span><span class="w"> </span><span class="o">[</span><span class="n">1234</span><span class="o">]</span>
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="mi">0</span><span class="n">d0</span><span class="w">     </span><span class="k">is</span><span class="w"> </span><span class="o">[</span><span class="n">0</span><span class="o">]</span>
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p">.</span><span class="k">false</span><span class="p">.</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">[</span><span class="n">F</span><span class="o">]</span>
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="p">.</span><span class="k">true</span><span class="p">.</span><span class="w"> </span><span class="k">is</span><span class="w">  </span><span class="o">[</span><span class="n">T</span><span class="o">]</span>
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -189,12 +240,12 @@
             <td>::</td>
             <td><strong>dvalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt"></span>
+              <span class="anchor" id="variable-fmt~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -204,7 +255,7 @@
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -220,11 +271,10 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-r2s"></span> <h3>public  function <a href='../proc/r2s.html'>r2s</a>(rvalue, fmt) result(outstr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-r2s"></span> <h3>private  function r2s(rvalue, fmt) result(outstr)  
 </h3></div>
     <div class="card-body">
-          
-  
+        
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -249,12 +299,12 @@
             <td>::</td>
             <td><strong>rvalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt~2"></span>
+              <span class="anchor" id="variable-fmt~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -264,7 +314,7 @@
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -280,11 +330,10 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-i2s"></span> <h3>public  function <a href='../proc/i2s.html'>i2s</a>(ivalue, fmt) result(outstr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-i2s"></span> <h3>private  function i2s(ivalue, fmt) result(outstr)  
 </h3></div>
     <div class="card-body">
-          
-  
+        
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -309,12 +358,12 @@
             <td>::</td>
             <td><strong>ivalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt~3"></span>
+              <span class="anchor" id="variable-fmt~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -324,7 +373,7 @@
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -340,11 +389,10 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-l2s"></span> <h3>public  function <a href='../proc/l2s.html'>l2s</a>(lvalue, fmt) result(outstr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-l2s"></span> <h3>private  function l2s(lvalue, fmt) result(outstr)  
 </h3></div>
     <div class="card-body">
-          
-  
+        
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -369,12 +417,12 @@
             <td>::</td>
             <td><strong>lvalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt~4"></span>
+              <span class="anchor" id="variable-fmt~5"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -384,7 +432,7 @@
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -416,7 +464,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>

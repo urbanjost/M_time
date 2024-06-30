@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 9.1% of total for programs.">114 statements</a>
+                 title=" 8.8% of total for programs.">114 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -114,11 +114,11 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-answer">answer</a>
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dat~6">dat</a>
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dp~2">dp</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-answer~2">answer</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dat~33">dat</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dp~3">dp</a>
             <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-event">event</a>
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-iso_fmt">iso_fmt</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-iso_fmt~2">iso_fmt</a>
             <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-otherdate">otherdate</a>
         </div>
       </div>
@@ -168,9 +168,8 @@
       </div>
     </div>
 
-    <p>use M_time__oop,only : operator(+),operator(-),operator(&gt;),operator(&lt;)
-use M_time__oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)</p>
-<br>
+    
+
 
     <section>
     <h2>Variables</h2>
@@ -186,7 +185,7 @@ use M_time__oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-answer"></span>
+              <span class="anchor" id="variable-answer~2"></span>
               type(<a href='../type/date_time.html'>date_time</a>)
             </td>
             <td>
@@ -202,7 +201,7 @@ use M_time__oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~6"></span>
+              <span class="anchor" id="variable-dat~33"></span>
               integer
             </td>
             <td>
@@ -218,7 +217,7 @@ use M_time__oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~2"></span>
+              <span class="anchor" id="variable-dp~3"></span>
               integer,
             </td>
             <td>
@@ -250,7 +249,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_fmt"></span>
+              <span class="anchor" id="variable-iso_fmt~2"></span>
               character(len=*),
             </td>
             <td>
@@ -304,8 +303,15 @@ parameter
 <span class="w">      </span><span class="c">! Oriented syntax:</span>
 <span class="w">      </span><span class="c">!</span>
 <span class="w">      </span><span class="k">use </span><span class="n">M_time__oop</span><span class="p">,</span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">date_time</span>
-<span class="w">      </span><span class="c">!!use M_time__oop,only : operator(+),operator(-),operator(&gt;),operator(&lt;)</span>
-<span class="w">      </span><span class="c">!!use M_time__oop,only : operator(&lt;=),operator(&gt;=),operator(==),operator(/=)</span>
+<span class="w">      </span><span class="c">! The type includes the operators ...</span>
+<span class="w">      </span><span class="c">!  operator(+)</span>
+<span class="w">      </span><span class="c">!  operator(-)</span>
+<span class="w">      </span><span class="c">!  operator(&gt;)</span>
+<span class="w">      </span><span class="c">!  operator(&lt;)</span>
+<span class="w">      </span><span class="c">!  operator(&lt;=)</span>
+<span class="w">      </span><span class="c">!  operator(&gt;=)</span>
+<span class="w">      </span><span class="c">!  operator(==)</span>
+<span class="w">      </span><span class="c">!  operator(/=)</span>
 <span class="w">      </span><span class="k">implicit none</span>
 <span class="k">      </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
@@ -582,7 +588,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>

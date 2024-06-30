@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.7% of total for procedures.">19 statements</a>
+                 title=" 0.9% of total for procedures.">19 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -161,8 +161,8 @@ array for beginning of that month in specified year
 
 <h2 id="description">DESCRIPTION</h2>
 <p>Given a Common Calendar month name, return the date as a &ldquo;DAT&rdquo; array
-   for the 1st day of the month. An optional year may be specified. The
-   year defaults to the current year.</p>
+   for the 1st day of the month. An optional year that defaults to the
+   current year may be specified.</p>
 <h2 id="options">OPTIONS</h2>
 <div class="codehilite"><pre><span></span><code>month_name  A string representing a Common Calendar month name.
 year        Optional year. Defaults to current year
@@ -182,12 +182,12 @@ year        Optional year. Defaults to current year
  <span class="s s-Atom">program</span> <span class="s s-Atom">demo_mo2d</span>
  <span class="s s-Atom">use</span> <span class="nv">M_time</span><span class="p">,</span> <span class="s s-Atom">only</span> <span class="o">:</span> <span class="s s-Atom">mo2d</span>
  <span class="s s-Atom">implicit</span> <span class="s s-Atom">none</span>
-    <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">*</span><span class="p">,</span><span class="s s-Atom">&#39;(*(i0:,&quot;:&quot;))&#39;</span><span class="p">)</span><span class="nf">mo2d</span><span class="p">(</span><span class="s s-Atom">&#39;March&#39;</span><span class="p">)</span>
+    <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">*</span><span class="p">,</span><span class="s s-Atom">&#39;(&quot;MARCH:&quot;,*(i0:,&quot;:&quot;))&#39;</span><span class="p">)</span><span class="nf">mo2d</span><span class="p">(</span><span class="s s-Atom">&#39;March&#39;</span><span class="p">)</span>
  <span class="s s-Atom">end</span> <span class="s s-Atom">program</span> <span class="s s-Atom">demo_mo2d</span>
 
-<span class="s s-Atom">results</span><span class="p">:</span>
+<span class="nv">Results</span><span class="o">:</span>
 
-   <span class="mi">2016</span><span class="o">:</span><span class="mi">3</span><span class="o">:</span><span class="mi">1</span><span class="o">:-</span><span class="mi">240</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">0</span>
+      <span class="o">&gt;</span> <span class="nv">MARCH</span><span class="o">:</span><span class="mi">2016</span><span class="o">:</span><span class="mi">3</span><span class="o">:</span><span class="mi">1</span><span class="o">:-</span><span class="mi">240</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">0</span><span class="o">:</span><span class="mi">0</span>
 </code></pre></div>
 
 <h2 id="author">AUTHOR</h2>
@@ -227,7 +227,7 @@ year        Optional year. Defaults to current year
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-year~6"></span>
+              <span class="anchor" id="variable-year~4"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -245,7 +245,7 @@ year        Optional year. Defaults to current year
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-dat~39"></span>
+          <span class="anchor" id="variable-dat~8"></span>
           integer, (8)
         </small>
       </h3>
@@ -277,7 +277,7 @@ year        Optional year. Defaults to current year
 <span class="w">   </span><span class="k">endif</span>
 <span class="k">   </span><span class="n">dat</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="n">mo2v</span><span class="p">(</span><span class="n">month_name</span><span class="p">)</span><span class="w"> </span><span class="c">! convert given month name to a number</span>
 <span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">dat</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<span class="k">      call </span><span class="n">stderr</span><span class="p">(</span><span class="s1">&#39;*mo2d* bad month name &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">month_name</span><span class="p">))</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="n">gen</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&lt;ERROR&gt;*mo2d*: bad month name &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">month_name</span><span class="p">)</span>
 <span class="w">      </span><span class="n">dat</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span>
 <span class="w">   </span><span class="k">endif</span>
 <span class="k">   </span><span class="n">dat</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span><span class="w">  </span><span class="c">! set day to first of month</span>
@@ -309,7 +309,7 @@ year        Optional year. Defaults to current year
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>

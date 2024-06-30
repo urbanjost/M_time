@@ -1,6 +1,8 @@
 module M_time__duplicate
+use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT
 ! copy of other GPF routines used here
 implicit none !(type,external)
+private
 public lower
 public substitute
 public upper
@@ -12,12 +14,17 @@ public string_to_values
 public string_to_value
 public transliterate
 public v2s
+
 interface v2s
    module procedure d2s, r2s, i2s, l2s
 end interface
+
 interface string_to_value
    module procedure a2d, a2r, a2i
 end interface
+
+character(len=*),parameter   :: gen='(*(g0))'
+
 contains
 !>
 !!##NAME
@@ -146,7 +153,7 @@ integer                        :: ichar
    if(len_old==0)then                                ! c//new/ means insert new at beginning of line (or left margin)
       ichar=len_new + original_input_length
       if(ichar>maxlengthout)then
-         call stderr('*substitute* new line will be too long')
+         write(stderr,gen)'<ERROR>*substitute* - new line will be too long'
          ier1=-1
          if (present(ierr))ierr=ier1
          return
@@ -192,12 +199,12 @@ integer                        :: ichar
 !-----------------------------------------------------------------------------------------------------------------------------------
    select case (ier1)
    case (:-1)
-      call stderr('*substitute* new line will be too long')
+      write(stderr,gen) '<ERROR>*substitute* - new line will be too long'
    case (0)                                                ! there were no changes made to the window
    case default
       ladd=original_input_length-ic
       if(ichar+ladd>maxlengthout)then
-         call stderr('*substitute* new line will be too long')
+         write(stderr,gen)'<ERROR>*substitute* - new line will be too long'
          ier1=-1
          if(present(ierr))ierr=ier1
          return
@@ -398,14 +405,6 @@ integer                      :: ibegin, iend
    end do
 
 end function lower
-!===================================================================================================================================
-!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
-!===================================================================================================================================
-subroutine stderr(string)
-use, intrinsic :: iso_fortran_env, only : ERROR_UNIT
-character(len=*) :: string
-   write(ERROR_UNIT,'(a)')string
-end subroutine stderr
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
@@ -742,7 +741,7 @@ class(*),intent(in),optional :: onerr
       ierr=ierr_local
       s2v=valu
    elseif(ierr_local/=0)then
-      write(*,*)'*s2v* stopped while reading '//trim(chars)
+      write(stderr,*)'<ERROR>*s2v* - stopped while reading '//trim(chars)
       stop 1
    else
       s2v=valu
@@ -751,48 +750,84 @@ end function s2v
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
+subroutine split(input_line,array,delimiters,order,nulls)
+intrinsic index, min, present, len
+character(len=*),intent(in)              :: input_line
+character(len=*),optional,intent(in)     :: delimiters
+character(len=*),optional,intent(in)     :: order
+character(len=*),optional,intent(in)     :: nulls
+character(len=:),allocatable,intent(out) :: array(:)
+integer,allocatable           :: ibegin(:)
+integer,allocatable           :: iend(:)
+character(len=:),allocatable  :: ordr
+character(len=:),allocatable  :: nlls
+integer                       :: ii,iiii
+integer                       :: i20
+integer                       :: imax
+   call slice(input_line,ibegin,iend,delimiters,nulls)
+   if(present(nulls))then; nlls=trim(lower(adjustl(nulls))); else; nlls='ignore'    ; endif
+   if(present(order))then; ordr=trim(lower(adjustl(order))); else; ordr='sequential'; endif
+   select case (ordr)
+   case ('reverse','right') ; ii=size(ibegin) ; iiii=-1
+   case default             ; ii=1            ; iiii=1
+   end select
+   imax=maxval(iend-ibegin+1)
+   allocate(character(len=imax) :: array(size(ibegin)))
+   do i20=1,size(ibegin)
+      if(iend(i20) < ibegin(i20))then
+         select case (nlls)
+         case ('ignore','','ignoreend')
+         case default
+            array(ii)=' '
+            ii=ii+iiii
+         end select
+      else
+         array(ii)=input_line(ibegin(i20):iend(i20))
+         ii=ii+iiii
+      endif
+   enddo
+end subroutine split
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
 !>
 !!##NAME
-!!    split(3f) - [M_strings:TOKENS] parse string into an array using specified delimiters
+!!    slice(3f) - [M_strings:TOKENS] parse string into an array using
+!!    specified delimiters
 !!    (LICENSE:PD)
 !!
 !!##SYNOPSIS
 !!
-!!    subroutine split(input_line,array,delimiters,order,nulls)
+!!    subroutine slice(input_line,ibegin,iend,delimiters,nulls)
 !!
 !!     character(len=*),intent(in)              :: input_line
-!!     character(len=:),allocatable,intent(out) :: array(:)
+!!     integer,allocatable,intent(out)          :: ibegin(:),iend(:)
 !!     character(len=*),optional,intent(in)     :: delimiters
-!!     character(len=*),optional,intent(in)     :: order
 !!     character(len=*),optional,intent(in)     :: nulls
+!!
 !!##DESCRIPTION
-!!   SPLIT(3f) parses a string using specified delimiter characters and
-!!   store tokens into an allocatable array
+!!     slice(3f) parses a string using specified delimiter characters and
+!!     store token beginning and ending positions into allocatable arrays
 !!
 !!##OPTIONS
+!!    INPUT_LINE   Input string to tokenize
 !!
-!!    INPUT_LINE  Input string to tokenize
+!!    IBEGIN,IEND  arrays containing start and end positions of tokens.
+!!                 IEND(I)<IBEGIN(I) designates a null token.
 !!
-!!    ARRAY       Output array of tokens
+!!    DELIMITERS   List of delimiter characters.
+!!                 The default delimiters are the "whitespace" characters
+!!                 (space, tab,new line, vertical tab, formfeed, carriage
+!!                 return, and null). You may specify an alternate set of
+!!                 delimiter characters.
 !!
-!!    DELIMITERS  List of delimiter characters.
-!!                The default delimiters are the "whitespace" characters
-!!                (space, tab,new line, vertical tab, formfeed, carriage
-!!                return, and null). You may specify an alternate set of
-!!                delimiter characters.
+!!                 Multi-character delimiters are not supported (Each
+!!                 character in the DELIMITERS list is considered to be
+!!                 a delimiter).
 !!
-!!                Multi-character delimiters are not supported (Each
-!!                character in the DELIMITERS list is considered to be
-!!                a delimiter).
+!!                 Quoting of delimiter characters is not supported.
 !!
-!!                Quoting of delimiter characters is not supported.
-!!
-!!    ORDER SEQUENTIAL|REVERSE|RIGHT  Order of output array.
-!!                By default ARRAY contains the tokens having parsed
-!!                the INPUT_LINE from left to right. If ORDER='RIGHT'
-!!                or ORDER='REVERSE' the parsing goes from right to left.
-!!
-!!    NULLS IGNORE|RETURN|IGNOREEND  Treatment of null fields.
+!!    NULLS="IGNORE"|"RETURN"|"IGNOREEND"  Treatment of null fields.
 !!                By default adjacent delimiters in the input string
 !!                do not create an empty string in the output array. if
 !!                NULLS='return' adjacent delimiters create an empty element
@@ -803,99 +838,102 @@ end function s2v
 !!
 !!  Sample program:
 !!
-!!       program demo_split
-!!       use M_strings, only: split
-!!       character(len=*),parameter     :: &
-!!       & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
-!!       character(len=:),allocatable :: array(:) ! output array of tokens
-!!          write(*,*)'INPUT LINE:['//LINE//']'
-!!          write(*,'(80("="))')
-!!          write(*,*)'typical call:'
-!!          CALL split(line,array)
-!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!          write(*,*)'SIZE:',SIZE(array)
-!!          write(*,'(80("-"))')
-!!          write(*,*)'custom list of delimiters (colon and vertical line):'
-!!          CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
-!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!          write(*,*)'SIZE:',SIZE(array)
-!!          write(*,'(80("-"))')
-!!          write(*,*)&
-!!          &'custom list of delimiters, reverse array order and count null fields:'
-!!          CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
-!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!          write(*,*)'SIZE:',SIZE(array)
-!!          write(*,'(80("-"))')
-!!          write(*,*)'INPUT LINE:['//LINE//']'
-!!          write(*,*)&
-!!          &'default delimiters and reverse array order and return null fields:'
-!!          CALL split(line,array,delimiters='',order='reverse',nulls='return')
-!!          write(*,'(i0," ==> ",a)')(i,trim(array(i)),i=1,size(array))
-!!          write(*,*)'SIZE:',SIZE(array)
-!!      end program demo_split
+!!     program demo_slice
+!!     use M_strings, only: slice
+!!     implicit none
+!!     integer :: i
+!!     character(len=*),parameter     :: &
+!!     & line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
+!!     integer,allocatable :: ibegin(:), iend(:) ! output arrays of positions
+!!     character(len=*),parameter :: title='(80("="),t1,a)'
+!!        write(*,*)'INPUT LINE:['//line//']'
+!!        !
+!!        write(*,title)'typical call: '
+!!        call slice(line,ibegin,iend)
+!!        call printme()
+!!        !
+!!        write(*,title)'custom list of delimiters=":|" : '
+!!        call slice(line,ibegin,iend,delimiters=':|',nulls='ignore')
+!!        call printme()
+!!        !
+!!        write(*,title)'delimiters=":|", and count null fields: '
+!!        call slice(line,ibegin,iend,delimiters=':|',nulls='return')
+!!        call printme()
+!!        !
+!!        write(*,title)'default delimiters and return null fields: '
+!!        call slice(line,ibegin,iend,delimiters='',nulls='return')
+!!        call printme()
+!!     contains
+!!     subroutine printme()
+!!        write(*,'((*(:/,3x,"[",g0,"]")))')&
+!!                & (line(ibegin(i):iend(i)),i=1,size(ibegin))
+!!        write(*,'(*(g0,1x))')'SIZE:',size(ibegin)
+!!     end subroutine printme
+!!     end program demo_slice
 !!
-!!   Output
+!! Results:
 !!
-!!        > INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
-!!        > ===========================================================================
-!!        >  typical call:
-!!        > 1 ==> aBcdef
-!!        > 2 ==> ghijklmnop
-!!        > 3 ==> qrstuvwxyz
-!!        > 4 ==> 1:|:2
-!!        > 5 ==> 333|333
-!!        > 6 ==> a
-!!        > 7 ==> B
-!!        > 8 ==> cc
-!!        >  SIZE:           8
-!!        > --------------------------------------------------------------------------
-!!        >  custom list of delimiters (colon and vertical line):
-!!        > 1 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
-!!        > 2 ==> 2     333
-!!        > 3 ==> 333 a B cc
-!!        >  SIZE:           3
-!!        > --------------------------------------------------------------------------
-!!        >  custom list of delimiters, reverse array order and return null fields:
-!!        > 1 ==> 333 a B cc
-!!        > 2 ==> 2     333
-!!        > 3 ==>
-!!        > 4 ==>
-!!        > 5 ==>   aBcdef   ghijklmnop qrstuvwxyz  1
-!!        >  SIZE:           5
-!!        > --------------------------------------------------------------------------
-!!        >  INPUT LINE:[  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
-!!        >  default delimiters and reverse array order and count null fields:
-!!        > 1 ==>
-!!        > 2 ==>
-!!        > 3 ==>
-!!        > 4 ==> cc
-!!        > 5 ==> B
-!!        > 6 ==> a
-!!        > 7 ==> 333|333
-!!        > 8 ==>
-!!        > 9 ==>
-!!        > 10 ==>
-!!        > 11 ==>
-!!        > 12 ==> 1:|:2
-!!        > 13 ==>
-!!        > 14 ==> qrstuvwxyz
-!!        > 15 ==> ghijklmnop
-!!        > 16 ==>
-!!        > 17 ==>
-!!        > 18 ==> aBcdef
-!!        > 19 ==>
-!!        > 20 ==>
-!!        >  SIZE:          20
+!!  > INPUT LINE:
+!!  > [  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    ]
+!!  > typical call: ========================================================
+!!  >
+!!  >    [aBcdef]
+!!  >    [ghijklmnop]
+!!  >    [qrstuvwxyz]
+!!  >    [1:|:2]
+!!  >    [333|333]
+!!  >    [a]
+!!  >    [B]
+!!  >    [cc]
+!!  > SIZE: 8
+!!  > custom list of delimiters=":|" : =====================================
+!!  >
+!!  >    [  aBcdef   ghijklmnop qrstuvwxyz  1]
+!!  >    [2     333]
+!!  >    [333 a B cc    ]
+!!  > SIZE: 3
+!!  > delimiters=":|", and count null fields: ==============================
+!!  >
+!!  >    [  aBcdef   ghijklmnop qrstuvwxyz  1]
+!!  >    []
+!!  >    []
+!!  >    [2     333]
+!!  >    [333 a B cc    ]
+!!  > SIZE: 5
+!!  > default delimiters and return null fields: ===========================
+!!  >
+!!  >    []
+!!  >    []
+!!  >    [aBcdef]
+!!  >    []
+!!  >    []
+!!  >    [ghijklmnop]
+!!  >    [qrstuvwxyz]
+!!  >    []
+!!  >    [1:|:2]
+!!  >    []
+!!  >    []
+!!  >    []
+!!  >    []
+!!  >    [333|333]
+!!  >    [a]
+!!  >    [B]
+!!  >    [cc]
+!!  >    []
+!!  >    []
+!!  >    []
+!!  > SIZE: 20
+!! ======================================================================
+!!
 !!##AUTHOR
 !!    John S. Urban
+!!
 !!##LICENSE
 !!    Public Domain
-!===================================================================================================================================
-subroutine split(input_line,array,delimiters,order,nulls)
+subroutine slice(input_line,ibegin,iend,delimiters,nulls)
 !-----------------------------------------------------------------------------------------------------------------------------------
 
-!character(len=*),parameter::ident_7="&
-!&@(#)M_strings::split(3f): parse string on delimiter characters and store tokens into an allocatable array"
+! ident_9="@(#) M_strings slice(3f) parse string on delimiter characters and store tokens into an allocatable array"
 
 !  John S. Urban
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -905,84 +943,77 @@ intrinsic index, min, present, len
 !    o by default adjacent delimiters in the input string do not create an empty string in the output array
 !    o no quoting of delimiters is supported
 character(len=*),intent(in)              :: input_line  ! input string to tokenize
+integer,allocatable,intent(out)          :: ibegin(:)   ! positions in input string where tokens start
+integer,allocatable,intent(out)          :: iend(:)     ! positions in input string where tokens end
 character(len=*),optional,intent(in)     :: delimiters  ! list of delimiter characters
-character(len=*),optional,intent(in)     :: order       ! order of output array sequential|[reverse|right]
 character(len=*),optional,intent(in)     :: nulls       ! return strings composed of delimiters or not ignore|return|ignoreend
-character(len=:),allocatable,intent(out) :: array(:)    ! output array of tokens
 !-----------------------------------------------------------------------------------------------------------------------------------
-integer                       :: n                      ! max number of strings INPUT_LINE could split into if all delimiter
-integer,allocatable           :: ibegin(:)              ! positions in input string where tokens start
-integer,allocatable           :: iterm(:)               ! positions in input string where tokens end
-character(len=:),allocatable  :: dlim                   ! string containing delimiter characters
-character(len=:),allocatable  :: ordr                   ! string containing order keyword
-character(len=:),allocatable  :: nlls                   ! string containing nulls keyword
-integer                       :: ii,iiii                ! loop parameters used to control print order
-integer                       :: icount                 ! number of tokens found
-integer                       :: ilen                   ! length of input string with trailing spaces trimmed
-integer                       :: i10,i20,i30            ! loop counters
-integer                       :: icol                   ! pointer into input string as it is being parsed
-integer                       :: idlim                  ! number of delimiter characters
-integer                       :: ifound                 ! where next delimiter character is found in remaining input string data
-integer                       :: inotnull               ! count strings not composed of delimiters
-integer                       :: ireturn                ! number of tokens returned
-integer                       :: imax                   ! length of longest token
+integer                         :: n                      ! max number of strings INPUT_LINE could slice into if all delimiter
+character(len=:),allocatable    :: dlim                   ! string containing delimiter characters
+character(len=:),allocatable    :: nlls                   ! string containing nulls keyword
+integer                         :: icount                 ! number of tokens found
+integer                         :: ii                     ! loop parameters used to control print order
+integer                         :: lgth                   ! length of input string with trailing spaces trimmed
+integer                         :: i10,i20,i30            ! loop counters
+integer                         :: icol                   ! pointer into input string as it is being parsed
+integer                         :: idlim                  ! number of delimiter characters
+integer                         :: ifound                 ! where next delimiter character is found in remaining input string data
+integer                         :: inotnull               ! count strings not composed of delimiters
+integer                         :: ireturn                ! number of tokens returned
+integer                         :: imax                   ! length of longest token
 !-----------------------------------------------------------------------------------------------------------------------------------
    ! decide on value for optional DELIMITERS parameter
    if (present(delimiters)) then                                     ! optional delimiter list was present
-      if(delimiters/='')then                                       ! if DELIMITERS was specified and not null use it
+      if(delimiters /= '')then                                       ! if DELIMITERS was specified and not null use it
          dlim=delimiters
       else                                                           ! DELIMITERS was specified on call as empty string
-         dlim=' '//achar(9)//achar(10)//achar(11)//achar(12)//achar(13)//achar(0) ! use default delimiter when not specified
+         dlim=' '//char(9)//char(10)//char(11)//char(12)//char(13)//char(0) ! use default delimiter when not specified
       endif
    else                                                              ! no delimiter value was specified
-      dlim=' '//achar(9)//achar(10)//achar(11)//achar(12)//achar(13)//achar(0)    ! use default delimiter when not specified
+      dlim=' '//char(9)//char(10)//char(11)//char(12)//char(13)//char(0)    ! use default delimiter when not specified
    endif
    idlim=len(dlim)                                                   ! dlim a lot of blanks on some machines if dlim is a big string
 !-----------------------------------------------------------------------------------------------------------------------------------
-   if(present(order))then; ordr=lower(adjustl(order)); else; ordr='sequential'; endif ! decide on value for optional ORDER parameter
    if(present(nulls))then; nlls=lower(adjustl(nulls)); else; nlls='ignore'    ; endif ! optional parameter
 !-----------------------------------------------------------------------------------------------------------------------------------
-   n=len(input_line)+1                        ! max number of strings INPUT_LINE could split into if all delimiter
+   n=len(input_line)+1                        ! max number of strings INPUT_LINE could slice into if all delimiter
+   if(allocated(ibegin))deallocate(ibegin)    !x! intel compiler says allocated already ?
+   if(allocated(iend))deallocate(iend)      !x! intel compiler says allocated already ?
    allocate(ibegin(n))                        ! allocate enough space to hold starting location of tokens if string all tokens
-   allocate(iterm(n))                         ! allocate enough space to hold ending location of tokens if string all tokens
+   allocate(iend(n))                         ! allocate enough space to hold ending location of tokens if string all tokens
    ibegin(:)=1
-   iterm(:)=1
+   iend(:)=1
 !-----------------------------------------------------------------------------------------------------------------------------------
-   ilen=len(input_line)                                           ! ILEN is the column position of the last non-blank character
+   lgth=len(input_line)                                           ! lgth is the column position of the last non-blank character
    icount=0                                                       ! how many tokens found
    inotnull=0                                                     ! how many tokens found not composed of delimiters
    imax=0                                                         ! length of longest token found
 !-----------------------------------------------------------------------------------------------------------------------------------
-   select case (ilen)
-!-----------------------------------------------------------------------------------------------------------------------------------
-   case (:0)                                                      ! command was totally blank
-!-----------------------------------------------------------------------------------------------------------------------------------
-   case default                                                   ! there is at least one non-delimiter in INPUT_LINE if get here
+   if(lgth > 0)then                                              ! there is at least one non-delimiter in INPUT_LINE if get here
       icol=1                                                      ! initialize pointer into input line
-      INFINITE: do i30=1,ilen,1                                   ! store into each array element
+      INFINITE: do i30=1,lgth,1                                   ! store into each array element
          ibegin(i30)=icol                                         ! assume start new token on the character
-         if(index(dlim(1:idlim),input_line(icol:icol))==0)then  ! if current character is not a delimiter
-            iterm(i30)=ilen                                       ! initially assume no more tokens
+         if(index(dlim(1:idlim),input_line(icol:icol)) == 0)then  ! if current character is not a delimiter
+            iend(i30)=lgth                                       ! initially assume no more tokens
             do i10=1,idlim                                        ! search for next delimiter
-               ifound=index(input_line(ibegin(i30):ilen),dlim(i10:i10))
-               IF(ifound>0)then
-                  iterm(i30)=min(iterm(i30),ifound+ibegin(i30)-2)
+               ifound=index(input_line(ibegin(i30):lgth),dlim(i10:i10))
+               IF(ifound > 0)then
+                  iend(i30)=min(iend(i30),ifound+ibegin(i30)-2)
                endif
             enddo
-            icol=iterm(i30)+2                                     ! next place to look as found end of this token
+            icol=iend(i30)+2                                     ! next place to look as found end of this token
             inotnull=inotnull+1                                   ! increment count of number of tokens not composed of delimiters
          else                                                     ! character is a delimiter for a null string
-            iterm(i30)=icol-1                                     ! record assumed end of string. Will be less than beginning
+            iend(i30)=icol-1                                     ! record assumed end of string. Will be less than beginning
             icol=icol+1                                           ! advance pointer into input string
          endif
-         imax=max(imax,iterm(i30)-ibegin(i30)+1)
+         imax=max(imax,iend(i30)-ibegin(i30)+1)
          icount=i30                                               ! increment count of number of tokens found
-         if(icol>ilen)then                                     ! no text left
+         if(icol > lgth)then                                     ! no text left
             exit INFINITE
          endif
       enddo INFINITE
-!-----------------------------------------------------------------------------------------------------------------------------------
-   end select
+   endif
 !-----------------------------------------------------------------------------------------------------------------------------------
    select case (trim(adjustl(nlls)))
    case ('ignore','','ignoreend')
@@ -990,29 +1021,27 @@ integer                       :: imax                   ! length of longest toke
    case default
       ireturn=icount
    end select
-   allocate(character(len=imax) :: array(ireturn))                ! allocate the array to return
-   !allocate(array(ireturn))                                       ! allocate the array to turn
 !-----------------------------------------------------------------------------------------------------------------------------------
-   select case (trim(adjustl(ordr)))                              ! decide which order to store tokens
-   case ('reverse','right') ; ii=ireturn ; iiii=-1                ! last to first
-   case default             ; ii=1       ; iiii=1                 ! first to last
-   end select
-!-----------------------------------------------------------------------------------------------------------------------------------
+   ii=0
    do i20=1,icount                                                ! fill the array with the tokens that were found
-      if(iterm(i20)<ibegin(i20))then
+      if(iend(i20) < ibegin(i20))then
          select case (trim(adjustl(nlls)))
          case ('ignore','','ignoreend')
          case default
-            array(ii)=' '
-            ii=ii+iiii
+            ii=ii+1
+            ibegin(ii)=ibegin(i20)
+            iend(ii)=iend(i20)
          end select
       else
-         array(ii)=input_line(ibegin(i20):iterm(i20))
-         ii=ii+iiii
+         ii=ii+1
+         ibegin(ii)=ibegin(i20)
+         iend(ii)=iend(i20)
       endif
    enddo
+   ibegin=ibegin(:ii)
+   iend=iend(:ii)
 !-----------------------------------------------------------------------------------------------------------------------------------
-   end subroutine split
+end subroutine slice
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
@@ -1138,7 +1167,7 @@ integer                      :: delimiters_length
          endif
       enddo
       if(ilen==0)then                             ! command was totally composed of delimiters
-         call stderr('*string_to_values* blank line passed as a list of numbers')
+         write(stderr,gen) '<ERROR>*string_to_values* - blank line passed as a list of numbers'
          return
       endif
 !----------------------------------------------------------------------------------------------------------------------------------
@@ -1530,7 +1559,7 @@ character(len=1024)                      :: msg
          if(fmt/='') fmt_local=fmt
          write(chars,fmt_local,iostat=err_local,iomsg=msg)gval
       class default
-         call stderr('*value_to_string* UNKNOWN TYPE')
+         write(stderr,gen) '<ERROR>*value_to_string* - UNKNOWN TYPE'
          chars=' '
       end select
       if(fmt=='') then
@@ -1717,8 +1746,7 @@ doubleprecision             :: valu8
       if(valu8<=huge(valu))then
          valu=real(valu8)
       else
-         !x!call stderr('*a2r* - value too large',valu8,'>',huge(valu))
-         call stderr('*a2r* - value too large')
+         write(stderr,gen) '<ERROR>*a2r* - value too large',valu8,'>',huge(valu)
          valu=huge(valu)
          ierr=-1
       endif
@@ -1741,8 +1769,7 @@ doubleprecision             :: valu8
       if(valu8<=huge(valu))then
          valu=int(valu8)
       else
-         !x!call stderr('sc','*a2i*','- value too large',valu8,'>',huge(valu))
-         call stderr('*a2i* - value too large')
+         write(stderr,gen) '<ERROR>*a2i*','- value too large',valu8,'>',huge(valu)
          valu=huge(valu)
          ierr=-1
       endif
@@ -1824,9 +1851,9 @@ character(len=3),save        :: nan_string='NaN'
          read(nan_string,'(g3.3)')valu
       endif
       if(local_chars/='eod')then                           ! print warning message except for special value "eod"
-         call stderr('*a2d* - cannot produce number from string ['//trim(chars)//']')
+         write(stderr,gen) '<ERROR>*a2d* - cannot produce number from string ['//trim(chars)//']'
          if(msg/='')then
-            call stderr('*a2d* - ['//trim(msg)//']')
+            write(stderr,gen) '       *a2d* - ['//trim(msg)//']'
          endif
       endif
    endif
@@ -1960,7 +1987,7 @@ integer           :: ierr
            cycle
         endif
         if(ch<'0'.or.ch>'Z'.or.(ch>'9'.and.ch<'A'))then
-           write(*,*)'*decodebase* ERROR: invalid character ',ch
+           write(stderr,*)'<ERROR>*decodebase* - invalid character ',ch
            exit ALL
         endif
         if(ch<='9') then

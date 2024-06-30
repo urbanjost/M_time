@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 2.0% of total for programs.">25 statements</a>
+                 title=" 2.9% of total for programs.">37 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -195,7 +195,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_year"></span>
+              <span class="anchor" id="variable-iso_year~7"></span>
               integer
             </td>
 <td></td>
@@ -210,7 +210,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_week"></span>
+              <span class="anchor" id="variable-iso_week~7"></span>
               integer
             </td>
 <td></td>
@@ -225,7 +225,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_weekday"></span>
+              <span class="anchor" id="variable-iso_weekday~7"></span>
               integer
             </td>
 <td></td>
@@ -266,6 +266,21 @@
 <span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
 <span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given 27 September 2008 is 2008-W39-6&#39;</span>
 <span class="w">        </span><span class="k">call </span><span class="n">printit</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">block</span>
+<span class="k">           </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">           </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;2008-W39-6&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2008W396&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2008-W39&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2008W39&#39;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">           </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">           </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">           </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="k">array</span><span class="p">)</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given string &#39;</span><span class="o">//</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">              </span><span class="k">call </span><span class="n">w2d</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;RESULT:          &#39;</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,*(i0:,&quot;,&quot;))&#39;</span><span class="p">)</span><span class="s1">&#39;   DAT array        &#39;</span><span class="p">,</span><span class="n">dat</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,/,67(&quot;=&quot;))&#39;</span><span class="p">)</span><span class="s1">&#39;    &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;long&#39;</span><span class="p">)</span>
+<span class="w">           </span><span class="k">enddo</span>
+<span class="k">        endblock </span><span class="n">string</span>
 <span class="w">      </span><span class="k">contains</span>
 <span class="k">      subroutine </span><span class="n">printit</span><span class="p">(</span><span class="n">iso_year</span><span class="p">,</span><span class="n">iso_week</span><span class="p">,</span><span class="n">iso_weekday</span><span class="p">)</span>
 <span class="w">      </span><span class="c">! ISO-8601 Week: 2016-W29-1</span>
@@ -304,7 +319,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>

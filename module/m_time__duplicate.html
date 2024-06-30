@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="33.7% of total for modules and submodules.">800 statements</a>
+                 title="33.7% of total for modules and submodules.">835 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -139,12 +139,7 @@
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-adjustc">adjustc</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-compact">compact</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-d2s">d2s</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-decodebase">decodebase</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-i2s">i2s</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-l2s">l2s</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-lower">lower</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-r2s">r2s</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-s2v">s2v</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-transliterate">transliterate</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-upper">upper</a>
@@ -159,15 +154,9 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-a2d">a2d</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-a2i">a2i</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-a2r">a2r</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-split">split</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-stderr">stderr</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-string_to_values">string_to_values</a>
             <a class="list-group-item" href="../module/m_time__duplicate.html#proc-substitute">substitute</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-trimzeros">trimzeros</a>
-            <a class="list-group-item" href="../module/m_time__duplicate.html#proc-value_to_string">value_to_string</a>
         </div>
       </div>
     </div>
@@ -187,7 +176,19 @@
 
     <div class="col-md-9" id='text'>
       
-      
+<br>          <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
       
       <br>
 
@@ -205,10 +206,9 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    public  subroutine <a href='../proc/a2d.html'>a2d</a>(chars, valu, ierr, onerr)  
+    private  subroutine a2d(chars, valu, ierr, onerr)  
 
     </h3>
-    
   
 
   <h4>Arguments</h4>
@@ -234,7 +234,7 @@
             <td>::</td>
             <td><strong>chars</strong></td>
             <td>
-<p>subroutine returns doubleprecision value from string</p>
+                <p>subroutine returns doubleprecision value from string</p>
             </td>
         </tr>
         <tr>
@@ -249,12 +249,12 @@
             <td>::</td>
             <td><strong>valu</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~15"></span>
+              <span class="anchor" id="variable-ierr~24"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -264,7 +264,7 @@
             <td>::</td>
             <td><strong>ierr</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
@@ -279,7 +279,7 @@
             <td>::</td>
             <td><strong>onerr</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -289,10 +289,9 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    public  subroutine <a href='../proc/a2r.html'>a2r</a>(chars, valu, ierr)  
+    private  subroutine a2r(chars, valu, ierr)  
 
     </h3>
-    
   <h2 id="name">NAME</h2>
 <div class="codehilite"><pre><span></span><code>  string_to_value(3f) - [M_strings:NUMERIC] subroutine returns numeric value from string
   (LICENSE:PD)
@@ -368,7 +367,7 @@
             <td>::</td>
             <td><strong>chars</strong></td>
             <td>
-<p>subroutine returns real value from string</p>
+                <p>subroutine returns real value from string</p>
             </td>
         </tr>
         <tr>
@@ -383,12 +382,12 @@
             <td>::</td>
             <td><strong>valu</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~13"></span>
+              <span class="anchor" id="variable-ierr~22"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -398,7 +397,7 @@
             <td>::</td>
             <td><strong>ierr</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -408,10 +407,9 @@
           </li>
           <li class="list-group-item">
                 <h3>
-    public  subroutine <a href='../proc/a2i.html'>a2i</a>(chars, valu, ierr)  
+    private  subroutine a2i(chars, valu, ierr)  
 
     </h3>
-    
   
 
   <h4>Arguments</h4>
@@ -437,7 +435,7 @@
             <td>::</td>
             <td><strong>chars</strong></td>
             <td>
-<p>subroutine returns integer value from string</p>
+                <p>subroutine returns integer value from string</p>
             </td>
         </tr>
         <tr>
@@ -452,12 +450,12 @@
             <td>::</td>
             <td><strong>valu</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~14"></span>
+              <span class="anchor" id="variable-ierr~23"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -467,7 +465,7 @@
             <td>::</td>
             <td><strong>ierr</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -487,10 +485,9 @@
     <ul class="list-group">
           <li class="list-group-item">
                 <h3>
-    public  function <a href='../proc/d2s.html'>d2s</a>(dvalue, fmt) result(outstr)  
+    private  function d2s(dvalue, fmt) result(outstr)  
 
     </h3>
-    
   <h2 id="name">NAME</h2>
 <div class="codehilite"><pre><span></span><code>  v2s(3f) - [M_strings:NUMERIC] return numeric string from a numeric value
   (LICENSE:PD)
@@ -572,12 +569,12 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>dvalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt"></span>
+              <span class="anchor" id="variable-fmt~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -587,7 +584,7 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -602,10 +599,9 @@ FMT     format can be explicitly given, but is limited to
           </li>
           <li class="list-group-item">
                 <h3>
-    public  function <a href='../proc/r2s.html'>r2s</a>(rvalue, fmt) result(outstr)  
+    private  function r2s(rvalue, fmt) result(outstr)  
 
     </h3>
-    
   
 
   <h4>Arguments</h4>
@@ -631,12 +627,12 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>rvalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt~2"></span>
+              <span class="anchor" id="variable-fmt~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -646,7 +642,7 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -661,10 +657,9 @@ FMT     format can be explicitly given, but is limited to
           </li>
           <li class="list-group-item">
                 <h3>
-    public  function <a href='../proc/i2s.html'>i2s</a>(ivalue, fmt) result(outstr)  
+    private  function i2s(ivalue, fmt) result(outstr)  
 
     </h3>
-    
   
 
   <h4>Arguments</h4>
@@ -690,12 +685,12 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>ivalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt~3"></span>
+              <span class="anchor" id="variable-fmt~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -705,7 +700,7 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -720,10 +715,9 @@ FMT     format can be explicitly given, but is limited to
           </li>
           <li class="list-group-item">
                 <h3>
-    public  function <a href='../proc/l2s.html'>l2s</a>(lvalue, fmt) result(outstr)  
+    private  function l2s(lvalue, fmt) result(outstr)  
 
     </h3>
-    
   
 
   <h4>Arguments</h4>
@@ -749,12 +743,12 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>lvalue</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-fmt~4"></span>
+              <span class="anchor" id="variable-fmt~5"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -764,7 +758,7 @@ FMT     format can be explicitly given, but is limited to
             <td>::</td>
             <td><strong>fmt</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -807,7 +801,7 @@ FMT     format can be explicitly given, but is limited to
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-string~6"></span>
+              <span class="anchor" id="variable-string~5"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -818,7 +812,7 @@ FMT     format can be explicitly given, but is limited to
             <td><strong>string</strong></td>
             <td>
 <p>PROCEDURE   adjustc(3f)
- DESCRIPTION center text using implicit or explicit length</p><a href="../proc/adjustc.html#variable-string~6" class="pull-right"><emph>Read more&hellip;</emph></a>
+ DESCRIPTION center text using implicit or explicit length</p><a href="../proc/adjustc.html#variable-string~5" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -870,7 +864,7 @@ FMT     format can be explicitly given, but is limited to
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-str~3"></span>
+              <span class="anchor" id="variable-str~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -911,266 +905,6 @@ FMT     format can be explicitly given, but is limited to
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-d2s"></span> <h3>public  function <a href='../proc/d2s.html'>d2s</a>(dvalue, fmt) result(outstr)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>v2s(3f) returns a representation of a numeric value as a
-   string when given a numeric value of type REAL, DOUBLEPRECISION,
-   INTEGER or LOGICAL. It creates the strings using internal WRITE()
-   statements. Trailing zeros are removed from non-zero values, and the
-   string is left-justified.</p><a href="../proc/d2s.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-dvalue"></span>
-              doubleprecision,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>dvalue</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fmt"></span>
-              character(len=*),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fmt</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>character(len=:), allocatable</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-decodebase"></span> <h3>public  function <a href='../proc/decodebase.html'>decodebase</a>(string, basein, out_baseten)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>decodebase(3f) - [M_strings:BASE] convert whole number string in base [2-36] to base 10 number
-   (LICENSE:PD)</p><a href="../proc/decodebase.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-string~12"></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>string</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-basein"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>basein</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-out_baseten"></span>
-              integer,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>out_baseten</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>logical</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-i2s"></span> <h3>public  function <a href='../proc/i2s.html'>i2s</a>(ivalue, fmt) result(outstr)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ivalue"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>ivalue</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fmt~3"></span>
-              character(len=*),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fmt</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>character(len=:), allocatable</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-l2s"></span> <h3>public  function <a href='../proc/l2s.html'>l2s</a>(lvalue, fmt) result(outstr)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-lvalue"></span>
-              logical,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>lvalue</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fmt~4"></span>
-              character(len=*),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fmt</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>character(len=:), allocatable</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-lower"></span> <h3>public pure elemental function <a href='../proc/lower.html'>lower</a>(str, begin, end) result(string)  
 </h3></div>
     <div class="card-body">
@@ -1193,7 +927,7 @@ FMT     format can be explicitly given, but is limited to
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-str~2"></span>
+              <span class="anchor" id="variable-str~3"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1249,66 +983,6 @@ FMT     format can be explicitly given, but is limited to
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-r2s"></span> <h3>public  function <a href='../proc/r2s.html'>r2s</a>(rvalue, fmt) result(outstr)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-rvalue"></span>
-              real,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>rvalue</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fmt~2"></span>
-              character(len=*),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fmt</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>character(len=:), allocatable</small>
-    </h4>
-    
-
-    </div>
-  </div>
-
-              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-s2v"></span> <h3>public  function <a href='../proc/s2v.html'>s2v</a>(chars, ierr, onerr)  
 </h3></div>
     <div class="card-body">
@@ -1343,7 +1017,7 @@ FMT     format can be explicitly given, but is limited to
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~11"></span>
+              <span class="anchor" id="variable-ierr~20"></span>
               integer,
             </td>
 <td></td>
@@ -1479,7 +1153,7 @@ FMT     format can be explicitly given, but is limited to
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-str"></span>
+              <span class="anchor" id="variable-str~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1540,237 +1214,11 @@ FMT     format can be explicitly given, but is limited to
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-a2d"></span> <h3>public  subroutine <a href='../proc/a2d.html'>a2d</a>(chars, valu, ierr, onerr)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-chars~5"></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>chars</strong></td>
-            <td>
-<p>subroutine returns doubleprecision value from string</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-valu~4"></span>
-              doubleprecision,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>valu</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ierr~15"></span>
-              integer,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>ierr</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-onerr~2"></span>
-              class(*),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>onerr</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-a2i"></span> <h3>public  subroutine <a href='../proc/a2i.html'>a2i</a>(chars, valu, ierr)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-chars~4"></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>chars</strong></td>
-            <td>
-<p>subroutine returns integer value from string</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-valu~3"></span>
-              integer,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>valu</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ierr~14"></span>
-              integer,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>ierr</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-a2r"></span> <h3>public  subroutine <a href='../proc/a2r.html'>a2r</a>(chars, valu, ierr)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>returns a numeric value from a numeric character string.</p><a href="../proc/a2r.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-chars~3"></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>chars</strong></td>
-            <td>
-<p>subroutine returns real value from string</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-valu~2"></span>
-              real,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>valu</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ierr~13"></span>
-              integer,
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>ierr</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-split"></span> <h3>public  subroutine <a href='../proc/split.html'>split</a>(input_line, array, delimiters, order, nulls)  
 </h3></div>
     <div class="card-body">
           
-  <p>SPLIT(3f) parses a string using specified delimiter characters and
-   store tokens into an allocatable array</p><a href="../proc/split.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1800,7 +1248,7 @@ FMT     format can be explicitly given, but is limited to
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-array~2"></span>
+              <span class="anchor" id="variable-array~4"></span>
               character(len=:),
             </td>
 <td>intent(out),</td>
@@ -1866,46 +1314,6 @@ FMT     format can be explicitly given, but is limited to
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-stderr"></span> <h3>public  subroutine <a href='../proc/stderr.html'>stderr</a>(string)  
-</h3></div>
-    <div class="card-body">
-          
-  
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-string~5"></span>
-              character(len=*)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>string</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-string_to_values"></span> <h3>public  subroutine <a href='../proc/string_to_values.html'>string_to_values</a>(line, iread, values, inums, delims, ierr)  
 </h3></div>
     <div class="card-body">
@@ -1926,7 +1334,7 @@ FMT     format can be explicitly given, but is limited to
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-line~4"></span>
+              <span class="anchor" id="variable-line"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1956,7 +1364,7 @@ FMT     format can be explicitly given, but is limited to
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-values"></span>
+              <span class="anchor" id="variable-values~4"></span>
               real,
             </td>
 <td>intent(inout)</td>
@@ -1971,7 +1379,7 @@ FMT     format can be explicitly given, but is limited to
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-inums"></span>
+              <span class="anchor" id="variable-inums~2"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -2001,7 +1409,7 @@ FMT     format can be explicitly given, but is limited to
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~12"></span>
+              <span class="anchor" id="variable-ierr~21"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -2086,7 +1494,7 @@ FMT     format can be explicitly given, but is limited to
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~10"></span>
+              <span class="anchor" id="variable-ierr~19"></span>
               integer,
             </td>
 <td>intent(out),</td>
@@ -2136,167 +1544,6 @@ FMT     format can be explicitly given, but is limited to
     </div>
   </div>
 
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-trimzeros"></span> <h3>public  subroutine <a href='../proc/trimzeros.html'>trimzeros</a>(string)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>TRIMZEROS(3f) deletes trailing zeros from a string representing a
-   number. If the resulting string would end in a decimal point, one
-   trailing zero is added.</p><a href="../proc/trimzeros.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-string~11"></span>
-              character(len=*)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>string</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-value_to_string"></span> <h3>public  subroutine <a href='../proc/value_to_string.html'>value_to_string</a>(gval, chars, length, err, fmt, trimz)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>value_to_string(3f) returns a numeric representation of a numeric
-   value in a string given a numeric value of type REAL, DOUBLEPRECISION,
-   INTEGER or LOGICAL. It creates the string using internal writes. It
-   then removes trailing zeros from non-zero values, and left-justifies
-   the string.</p><a href="../proc/value_to_string.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-gval"></span>
-              class(*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>gval</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-chars~2"></span>
-              character(len=*),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>chars</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-length~2"></span>
-              integer,
-            </td>
-<td>intent(out),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>length</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-err"></span>
-              integer,
-            </td>
-<td></td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>err</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fmt~5"></span>
-              character(len=*),
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fmt</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-trimz"></span>
-              logical,
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>trimz</strong></td>
-            <td>
-
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
         </section>
         <br>
 
@@ -2320,7 +1567,7 @@ FMT     format can be explicitly given, but is limited to
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>

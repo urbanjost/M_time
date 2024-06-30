@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 0.1% of total for procedures.</p>Including implementation: 105 statements,  4.1% of total for procedures.">3 statements</a>
+                 title="<p> 0.1% of total for procedures.</p>Including implementation: 105 statements,  4.8% of total for procedures.">3 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -155,11 +155,10 @@
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-a2d"></span> <h3>public  subroutine <a href='../proc/a2d.html'>a2d</a>(chars, valu, ierr, onerr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-a2d"></span> <h3>private  subroutine a2d(chars, valu, ierr, onerr)  
 </h3></div>
     <div class="card-body">
-          
-  
+        
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -184,7 +183,7 @@
             <td>::</td>
             <td><strong>chars</strong></td>
             <td>
-<p>subroutine returns doubleprecision value from string</p>
+                <p>subroutine returns doubleprecision value from string</p>
             </td>
         </tr>
         <tr>
@@ -199,12 +198,12 @@
             <td>::</td>
             <td><strong>valu</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~15"></span>
+              <span class="anchor" id="variable-ierr~24"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -214,7 +213,7 @@
             <td>::</td>
             <td><strong>ierr</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
@@ -229,7 +228,7 @@
             <td>::</td>
             <td><strong>onerr</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -240,11 +239,60 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-a2r"></span> <h3>public  subroutine <a href='../proc/a2r.html'>a2r</a>(chars, valu, ierr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-a2r"></span> <h3>private  subroutine a2r(chars, valu, ierr)  
 </h3></div>
     <div class="card-body">
-          
-  <p>returns a numeric value from a numeric character string.</p><a href="../proc/a2r.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+        <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code>  string_to_value(3f) - [M_strings:NUMERIC] subroutine returns numeric value from string
+  (LICENSE:PD)
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>subroutine string_to_value(chars,valu,ierr)
+
+ character(len=*),intent(in)              :: chars   ! input string
+ integer|real|doubleprecision,intent(out) :: valu
+ integer,intent(out)                      :: ierr
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<p>returns a numeric value from a numeric character string.</p>
+<p>works with any g-format input, including integer, real, and
+   exponential. If the input string begins with &ldquo;B&rdquo;, &ldquo;Z&rdquo;, or &ldquo;O&rdquo;
+   and otherwise represents a positive whole number it is assumed to
+   be a binary, hexadecimal, or octal value. If the string contains
+   commas they are removed. If the string is of the form NN:MMM&hellip; or
+   NN#MMM then NN is assumed to be the base of the whole number.</p>
+<p>if an error occurs in the READ, IOSTAT is returned in IERR and
+   value is set to zero. if no error occurs, IERR=0.</p>
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code>   CHARS  input string to read numeric value from
+</code></pre></div>
+
+<h2 id="returns">RETURNS</h2>
+<div class="codehilite"><pre><span></span><code>   VALU   numeric value returned. May be INTEGER, REAL, or DOUBLEPRECISION.
+   IERR   error flag (0 == no error)
+</code></pre></div>
+
+<h2 id="example">EXAMPLE</h2>
+<div class="codehilite"><pre><span></span><code>Sample Program:
+
+ program demo_string_to_value
+ use M_strings, only: string_to_value
+ character(len=80) :: string
+    string=&#39; -40.5e-2 &#39;
+    call string_to_value(string,value,ierr)
+    write(*,*) &#39;value of string [&#39;//trim(string)//&#39;] is &#39;,value
+ end program demo_string_to_value
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -269,7 +317,7 @@
             <td>::</td>
             <td><strong>chars</strong></td>
             <td>
-<p>subroutine returns real value from string</p>
+                <p>subroutine returns real value from string</p>
             </td>
         </tr>
         <tr>
@@ -284,12 +332,12 @@
             <td>::</td>
             <td><strong>valu</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~13"></span>
+              <span class="anchor" id="variable-ierr~22"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -299,7 +347,7 @@
             <td>::</td>
             <td><strong>ierr</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -310,11 +358,10 @@
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-a2i"></span> <h3>public  subroutine <a href='../proc/a2i.html'>a2i</a>(chars, valu, ierr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-a2i"></span> <h3>private  subroutine a2i(chars, valu, ierr)  
 </h3></div>
     <div class="card-body">
-          
-  
+        
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -339,7 +386,7 @@
             <td>::</td>
             <td><strong>chars</strong></td>
             <td>
-<p>subroutine returns integer value from string</p>
+                <p>subroutine returns integer value from string</p>
             </td>
         </tr>
         <tr>
@@ -354,12 +401,12 @@
             <td>::</td>
             <td><strong>valu</strong></td>
             <td>
-
+                
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~14"></span>
+              <span class="anchor" id="variable-ierr~23"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -369,7 +416,7 @@
             <td>::</td>
             <td><strong>ierr</strong></td>
             <td>
-
+                
             </td>
         </tr>
     </tbody>
@@ -396,7 +443,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>

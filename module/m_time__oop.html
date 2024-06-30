@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="12.1% of total for modules and submodules.">288 statements</a>
+                 title="11.6% of total for modules and submodules.">288 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -115,7 +115,7 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/m_time__oop.html#variable-dp~8">dp</a>
+            <a class="list-group-item" href="../module/m_time__oop.html#variable-dp~2">dp</a>
         </div>
       </div>
     </div>
@@ -173,11 +173,17 @@
 </code></pre></div>
 
 <h2 id="synopsis">SYNOPSIS</h2>
-<p>use M_time__oop, only : date_time</p>
-<div class="codehilite"><pre><span></span><code><span class="n">use</span><span class="w"> </span><span class="n">M_time__oop</span><span class="p">,</span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">operator</span><span class="p">(</span><span class="o">+</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">-</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span>
-<span class="n">use</span><span class="w"> </span><span class="n">M_time__oop</span><span class="p">,</span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;=</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;=</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">==</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">/=</span><span class="p">)</span>
-
-<span class="n">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">mydate</span>
+<p>use M_time__oop, only : date_time
+   ! the type includes the following operators:
+   !    operator(+)
+   !    operator(-)
+   !    operator(&gt;)
+   !    operator(&lt;)
+   !    operator(&lt;=)
+   !    operator(&gt;=)
+   !    operator(==)
+   !    operator(/=)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">mydate</span>
 
 <span class="w">   </span><span class="n">mydate</span><span class="o">%</span><span class="n">year</span>
 <span class="w">   </span><span class="n">mydate</span><span class="o">%</span><span class="n">month</span>
@@ -215,8 +221,15 @@ example program demonstrates and documents the interface
 <span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">Oriented</span><span class="w"> </span><span class="n">syntax</span><span class="o">:</span>
 <span class="w"> </span><span class="o">!</span>
 <span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">M_time__oop</span><span class="p">,</span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">date_time</span>
-<span class="w"> </span><span class="o">!!</span><span class="n">use</span><span class="w"> </span><span class="n">M_time__oop</span><span class="p">,</span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">operator</span><span class="p">(</span><span class="o">+</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">-</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span>
-<span class="w"> </span><span class="o">!!</span><span class="n">use</span><span class="w"> </span><span class="n">M_time__oop</span><span class="p">,</span><span class="n">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;=</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;=</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">==</span><span class="p">),</span><span class="k">operator</span><span class="p">(</span><span class="o">/=</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">includes</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">operators</span><span class="w"> </span><span class="p">...</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">&lt;=</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">&gt;=</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">==</span><span class="p">)</span>
+<span class="w"> </span><span class="o">!</span><span class="w">  </span><span class="k">operator</span><span class="p">(</span><span class="o">/=</span><span class="p">)</span>
 <span class="w"> </span><span class="n">implicit</span><span class="w"> </span><span class="n">none</span>
 <span class="w"> </span><span class="n">integer</span><span class="p">,</span><span class="n">parameter</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="n">kind</span><span class="p">(</span><span class="mf">0.0</span><span class="n">d0</span><span class="p">)</span>
 <span class="w"> </span><span class="n">integer</span><span class="w">         </span><span class="o">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
@@ -581,7 +594,7 @@ end submodule M_time__oop</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~8"></span>
+              <span class="anchor" id="variable-dp~2"></span>
               integer,
             </td>
               <td>public,</td>
@@ -632,7 +645,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~59"></span>
+              <span class="anchor" id="variable-dat~24"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -689,7 +702,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-day~9"></span>
+              <span class="anchor" id="variable-day~7"></span>
               integer,
             </td>
               <td>public</td>
@@ -808,7 +821,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-year~8"></span>
+              <span class="anchor" id="variable-year~6"></span>
               integer,
             </td>
               <td>public</td>
@@ -876,7 +889,7 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/date_time.html#boundprocedure-julian~12'>julian</a></strong> => julian_</td>
+  <strong><a href='../type/date_time.html#boundprocedure-julian~10'>julian</a></strong> => julian_</td>
                 <td></td>
               </tr>
               <tr>
@@ -931,7 +944,7 @@ parameter
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/date_time.html#boundprocedure-weekday~6'>weekday</a></strong></td>
+  <strong><a href='../type/date_time.html#boundprocedure-weekday~4'>weekday</a></strong></td>
                 <td></td>
               </tr>
           </tbody>
@@ -964,7 +977,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-04-29 23:19              </p>
+ on 2024-06-30 01:47              </p>
           </div>
         </div>
         <br>
