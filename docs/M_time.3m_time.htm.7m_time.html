@@ -59,18 +59,18 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <dt> DESCRIPTION </dt>
 <dd>
 <p>
-    The M_time(3f) Fortran module and associated utility programs
-    provide date and time-related procedures. Both a procedural and OOP
-    (Object Oriented Programming) interface are provided.
-    The primary conversion procedures are provided as both a simple function
-    and a subroutine returning error flags and finer-grained control.
+   The M_time(3f) Fortran module and associated utility programs
+   provide date and time-related procedures. Both a procedural and OOP
+   (Object Oriented Programming) interface are provided.
+   The primary conversion procedures are provided as both a simple function
+   and a subroutine returning error flags and finer-grained control.
 
-    Each routine is accompanied by a man-page which includes a sample
-    program for that procedure. This is also provided in HTML format
-    both in individual pages and a book format.
+   Each routine is accompanied by a man-page which includes a sample
+   program for that procedure. This is also provided in HTML format
+   both in individual pages and a book format.
 
-    The man-page example programs, unit tests and additional examples
-    are all provided in the distribution package.
+   The man-page example programs, unit tests and additional examples
+   are all provided in the distribution package.
 </p>
 
 <p>
@@ -80,16 +80,16 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <ul>
    <li> provides for formatting dates. </li>
    <li> facilitates simple computations using time and date values in the recent era. </li>
-   <li> allow for macro-level timing of code. </li>
+   <li> allows for macro-level timing of code. </li>
 </ul>
 
 <p>
-    The M_TIME(3f) module complements the DATE_AND_TIME(3f) procedure, which is
-    the standard intrinsic subroutine that returns the current date and time in
-    the   Gregorian   calendar. That is, the primary way this module represents
-    dates is as an integer array with the same meaning for elements as defined
-    by the DATE_AND_TIME(3f) routine. In addition it can calculate or read many
-    other date representations such as ...
+   The M_TIME(3f) module complements the DATE_AND_TIME(3f) procedure, which is
+   the standard intrinsic subroutine that returns the current date and time in
+   the   Gregorian   calendar. That is, the primary way this module represents
+   dates is as an integer array with the same meaning for elements as defined
+   by the DATE_AND_TIME(3f) routine. In addition it can calculate or read many
+   other date representations such as ...
 </p>
 
 <ul>
@@ -103,20 +103,20 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 </ul>
 
 <p>
-    Julian and Unix Epoch Dates are particularly useful for manipulating dates
-    in simple numeric expressions.
+   Julian and Unix Epoch Dates are particularly useful for manipulating dates
+   in simple numeric expressions.
 </p>
 
 <p>
-    The extensive formatting options include showing SYSTEM_CLOCK(3f) and
-    CPU_USAGE(3f) information along with Gregorian date information, allowing
-    for the easy incorporation of timing information into program messages. In
-    addition to conventional Civilian Calendar dates, the module
-    supports the ISO-8601 standard methods of displaying dates.
+   The extensive formatting options include showing SYSTEM_CLOCK(3f) and
+   CPU_USAGE(3f) information along with Gregorian date information, allowing
+   for the easy incorporation of timing information into program messages. In
+   addition to conventional Civilian Calendar dates, the module
+   supports the ISO-8601 standard methods of displaying dates.
 </p>
 
 <p>
-    A Fortran-callable sleep(3c)/usleep(3c) procedure is also provided.
+   A Fortran-callable sleep(3c)/usleep(3c) procedure is also provided.
 </p>
 
 </dd>
@@ -235,18 +235,18 @@ first day of given month name in specified year</td></tr>
 <dd>
 
 <p>
-    You can easily use Julian Ephemeris Dates and Unix Epoch Times to add
-    and subtract times from dates or to calculate the interval
-    between dates. But JEDs and UETs and even the Gregorian Calendar
-    arrays in the DAT arrays are not the way we typically describe a
-    date   on the Civilian Calendar. So the fmtdate(3f) routine lets us
-    print a DAT array in a variety of familiar styles.
+   You can easily use Julian Ephemeris Dates and Unix Epoch Times to add
+   and subtract times from dates or to calculate the interval
+   between dates. But JEDs and UETs and even the Gregorian Calendar
+   arrays in the DAT arrays are not the way we typically describe a
+   date   on the Civilian Calendar. So the fmtdate(3f) routine lets us
+   print a DAT array in a variety of familiar styles.
 </p>
 
 <p>
-    The fmtdate(3f)  and now(3f) procedures let you display a Gregorian date using
-    either keywords for standard formats or using macros in a user-specified
-    formatting string. A formatting string may contain the following macros:
+   The fmtdate(3f)  and now(3f) procedures let you display a Gregorian date using
+   either keywords for standard formats or using macros in a user-specified
+   formatting string. A formatting string may contain the following macros:
 </p>
 <pre>
 
@@ -292,6 +292,9 @@ Description                                        Example
       %n -- new line (system dependent)
       %q -- single quote (apostrophe)
       %Q -- double quote
+  Duration:
+      %a -- Time since now (age) as d-hh:mm:ss       1-20:14:40
+      %A -- Time since now (age) as seconds          123456.890
   Program timing:
       %c -- CPU_TIME(3f) output                      .78125000000000000E-001
       %C -- number of times this routine is used     1
@@ -348,9 +351,9 @@ keywords the following substitution occurs:
                       Day Of Year:              181
                       ISO-8601 week:            2024-W26-6
 
-otherwise the following words are replaced with the most
-common macros. If more than one name lowercase is a numeric
-value string and all uppercase is a alphanumeric string:
+otherwise the following words are replaced with the most common
+macros. For duplicate names the lowercase one is a numeric value string
+and all uppercase is an alphanumeric string:
 
   String         Macro  Example
   year           %Y     2016
@@ -385,9 +388,12 @@ value string and all uppercase is a alphanumeric string:
 
   ordinal        %O     209
 
+  age            %A     100-20:30:40
+  AGE            %a     20900.3030
+
   usage|help|?   %?     call fmtdate_usage()
 
-if none of these keywords are found then every letter that
+If none of these keywords are found then every letter that
 is a macro is assumed to have an implied percent in front
 of it. For example:
 
@@ -413,42 +419,46 @@ of it. For example:
     such as "Yesterday" and "Tomorrow".
 </p>
 
+    Sample program:
+    </br>
 <pre class="fortran">
-program demo_M_time
-use M_time, only:  j2d, d2j, u2d, d2u, fmtdate, realtime
-integer                      :: dat(8)
-real(kind=realtime)          :: julian, unixtime
-character(len=*),parameter   :: iso_fmt='%Y-%M-%DT%h:%m:%s.%x%z'
-character(len=:),allocatable :: friendly
+! yesterday, today, tomorrow
 
-   friendly='%W, %L %d, %Y %H:%m:%s %N' ! a nice friendly format
+     program demo_M_time
+     use M_time, only: j2d, d2j, u2d, d2u, fmtdate, realtime
+     integer :: dat(8)
+     real(kind=realtime) :: julian, unixtime
+     character(len=*),parameter :: iso_fmt='%Y-%M-%DT%h:%m:%s.%x%z'
+     character(len=:),allocatable :: friendly
 
-   call date_and_time(values=dat)  ! current time is placed in array
+        friendly='%W, %L %d, %Y %H:%m:%s %N' ! a nice friendly format
 
-   write(*,*)'Today'
-   write(*,*)'ISO       ',fmtdate(dat,iso_fmt)
-   write(*,*)'Friendly  ',fmtdate(dat,friendly)
-   write(*,*)'ISO week  ',fmtdate(dat,'%I')
+        call date_and_time(values=dat)  ! current time is placed in array
 
-   julian=d2j(dat)
-   unixtime=d2u(dat)
+        write(*,*)'Today'
+        write(*,*)'ISO       ',fmtdate(dat,iso_fmt)
+        write(*,*)'Friendly  ',fmtdate(dat,friendly)
+        write(*,*)'ISO week  ',fmtdate(dat,'%I')
 
-   write(*,*)'Yesterday' ! subtract a day from scalar time and print
-   write(*,*)'          ',fmtdate(u2d(unixtime-86400),iso_fmt)
-   write(*,*)'          ',fmtdate(j2d(julian-1.0),friendly)
-   write(*,*)'          ',fmtdate(j2d(julian-1.0),'%I')
+        julian=d2j(dat)
+        unixtime=d2u(dat)
 
-   write(*,*)'Tomorrow'  ! add a day to scalar time and print
-   write(*,*)'          ',fmtdate(u2d(unixtime+86400),iso_fmt)
-   write(*,*)'          ',fmtdate(j2d(julian+1.0),friendly)
-   write(*,*)'          ',fmtdate(j2d(julian+1.0),'%I')
+        write(*,*)'Yesterday' ! subtract a day from scalar time and print
+        write(*,*)'          ',fmtdate(u2d(unixtime-86400),iso_fmt)
+        write(*,*)'          ',fmtdate(j2d(julian-1.0),friendly)
+        write(*,*)'          ',fmtdate(j2d(julian-1.0),'%I')
 
-   write(*,*)'Next Week'  ! add a week to scalar time and print
-   write(*,*)'          ',fmtdate(u2d(unixtime+7*86400),iso_fmt)
-   write(*,*)'          ',fmtdate(j2d(julian+7.0),friendly)
-   write(*,*)'          ',fmtdate(j2d(julian+7.0),'%I')
+        write(*,*)'Tomorrow'  ! add a day to scalar time and print
+        write(*,*)'          ',fmtdate(u2d(unixtime+86400),iso_fmt)
+        write(*,*)'          ',fmtdate(j2d(julian+1.0),friendly)
+        write(*,*)'          ',fmtdate(j2d(julian+1.0),'%I')
 
-end program demo_M_time
+        write(*,*)'Next Week'  ! add a week to scalar time and print
+        write(*,*)'          ',fmtdate(u2d(unixtime+7*86400),iso_fmt)
+        write(*,*)'          ',fmtdate(j2d(julian+7.0),friendly)
+        write(*,*)'          ',fmtdate(j2d(julian+7.0),'%I')
+
+     end program demo_M_time
 </pre>
 
 <h3> Sample output ...</h3>
@@ -477,55 +487,59 @@ end program demo_M_time
 <dd>
 
 <p>
-    A "date_and_time" array <b>"DAT"</b> has the same format as the array of
-    values generated by the Fortran intrinsic DATE_AND_TIME(3f). That is, it is
-    an 8-element integer array containing year, month, day, Time zone
-    difference from UTC in minutes, hour, minutes, seconds, and milliseconds of
-    the second. This array represents a date on the Proleptic Gregorian
-    Calendar.
-</p>
-
-    The <b>Proleptic Gregorian Calendar</b> assumes the Gregorian Calendar
-    existed back to the beginning of the Julian Day calendar (4713 BC). This
-    means historic dates will often be confused, as the Julian Calendar was
-    used in the USA until 1752-09-03, for example. The Gregorian Calendar was
-    formally decreed on 1582-10-15 but was not adapted in many countries. The
-    Julian Calendar was first used around 45 BC.
-
-    Note that the Proleptic Gregorian Calendar includes a year zero (0). It is
-    frequently used in computer software to simplify the handling of older
-    dates. For example, it is the calendar used by MySQL, SQLite, PHP, CIM,
-    Delphi, Python and COBOL. The Proleptic Gregorian Calendar is explicitly
-    required for all dates before 1582 by ISO 8601:2004 (clause 4.3.2.1 The
-    Gregorian calendar) if the partners to information exchange agree.
-
-<p>
-    <b>Unix Epoch Time (UET)</b>  is defined as the number of seconds since
-    00:00:00  on January 1st. 1970, UTC.
+   A "date_and_time" array <b>"DAT"</b> has the same format as the array of
+   values generated by the Fortran intrinsic DATE_AND_TIME(3f). That is, it is
+   an 8-element integer array containing year, month, day, Time zone
+   difference from UTC in minutes, hour, minutes, seconds, and milliseconds of
+   the second. This array represents a date on the Proleptic Gregorian
+   Calendar.
 </p>
 
 <p>
-    A  <b>JED</b>  is defined as a <b>Julian Ephemeris Date</b>. JED days start
-    at noon (not at midnight). 4713-01-01 BC at noon is defined as JED 0.0.
+   The <b>Proleptic Gregorian Calendar</b> assumes the Gregorian Calendar
+   existed back to the beginning of the Julian Day calendar (4713 BC). This
+   means historic dates will often be confused, as the Julian Calendar was
+   used in the USA until 1752-09-03, for example. The Gregorian Calendar was
+   formally decreed on 1582-10-15 but was not adapted in many countries. The
+   Julian Calendar was first used around 45 BC.
 </p>
 
 <p>
-    If you are not familiar with them, in this context Julian Dates and
-    Unix Epoch Times are scalar numbers that allow for easy computations
-    using dates (to go back one day just subtract one from a Julian
-    Date, for example). Since these values are generally not considered
-    intelligible, routines are included to convert between these scalar
-    values and the date array so human-readable results can be obtained.
+   Note that the Proleptic Gregorian Calendar includes a year zero (0). It is
+   frequently used in computer software to simplify the handling of older
+   dates. For example, it is the calendar used by MySQL, SQLite, PHP, CIM,
+   Delphi, Python and COBOL. The Proleptic Gregorian Calendar is explicitly
+   required for all dates before 1582 by ISO 8601:2004 (clause 4.3.2.1 The
+   Gregorian calendar) if the partners to information exchange agree.
 </p>
 
 <p>
-    <b>Coordinated Universal Time</b>  (French:  Temps universel coordonn'e),
-    abbreviated as <b>UTC</b>, is the primary time standard by which the world
-    regulates clocks and time. It is within about 1 second of mean solar time
-    at 0o longitude;[1] it does not observe daylight saving time. It is one of
-    several closely related successors to Greenwich Mean Time (GMT). For most
-    purposes, UTC is considered interchangeable with GMT, but GMT is no longer
-    precisely defined by the scientific community.
+   <b>Unix Epoch Time (UET)</b>  is defined as the number of seconds since
+   00:00:00  on January 1st. 1970, UTC.
+</p>
+
+<p>
+   A  <b>JED</b>  is defined as a <b>Julian Ephemeris Date</b>. JED days start
+   at noon (not at midnight). 4713-01-01 BC at noon is defined as JED 0.0.
+</p>
+
+<p>
+   If you are not familiar with them, in this context Julian Dates and
+   Unix Epoch Times are scalar numbers that allow for easy computations
+   using dates (to go back one day just subtract one from a Julian
+   Date, for example). Since these values are generally not considered
+   intelligible, routines are included to convert between these scalar
+   values and the date array so human-readable results can be obtained.
+</p>
+
+<p>
+   <b>Coordinated Universal Time</b>  (French:  Temps universel coordonn'e),
+   abbreviated as <b>UTC</b>, is the primary time standard by which the world
+   regulates clocks and time. It is within about 1 second of mean solar time
+   at 0o longitude;[1] it does not observe daylight saving time. It is one of
+   several closely related successors to Greenwich Mean Time (GMT). For most
+   purposes, UTC is considered interchangeable with GMT, but GMT is no longer
+   precisely defined by the scientific community.
 </p>
 </dd>
 
@@ -533,48 +547,47 @@ end program demo_M_time
 <dd>
 
 <p>
-    Like most collections of date and time procedures M_time is
-    <em>not</em> a high-precision library that accounts internally
-    for leap seconds and relativistic effects.
+   Like most collections of date and time procedures M_time is
+   <em>not</em> a high-precision library that accounts internally
+   for leap seconds and relativistic effects.
 </p>
 
 <p>
-    M_time(3f) is intended for use in the recent era and is not
-    appropriate for use with historical dates that used some other
-    calendar scheme such as the Julian Calendar. That is, you have to
-    remember to account for conversions to other calendar systems when
-    using historical dates.
+   M_time(3f) is intended for use in the recent era and is not
+   appropriate for use with historical dates that used some other
+   calendar scheme such as the Julian Calendar. That is, you have to
+   remember to account for conversions to other calendar systems when
+   using historical dates.
 </p>
 
 <p>
-    When Daylight Savings is in effect calculations will generally be
-    correct,  as the date model includes a timezone value; but you are
-    responsible for ensuring dates you create use the correct timezone
-    value or otherwise account for Daylight Savings Time as needed.
+   When Daylight Savings is in effect calculations will generally be
+   correct,  as the date model includes a timezone value; but you are
+   responsible for ensuring dates you create use the correct timezone
+   value or otherwise account for Daylight Savings Time as needed.
 </p>
 
 <p>
-    Currently, dates are manipulated using the current system timezone,
-    which can typically be set using the environment variable TZ. So if
-    you desire to set the default timezone you generally set the
-    environment variable <em>before</em> executing your program. This
-    is compatible with current observed behavior for the intrinsic
-    procedure DATE_AND_TIME(3f) with compilers I have tested with, but
-    does not seem to be a specified behavior as far as the standard is
-    concerned. That is, DATE_AND_TIME(3f) returns a vector that contains
-    a current time zone, but does not specify how a current time zone
-    can be explicitly set. Since this library is intentionally designed
-    to complement DATE_AND_TIME(3f) it adopts the same behavior. A routine
-    to let you set a default time zone could be added in the future.
+   Currently, dates are manipulated using the current system timezone,
+   which can typically be set using the environment variable TZ. So if
+   you desire to set the default timezone you generally set the
+   environment variable <em>before</em> executing your program. This
+   is compatible with current observed behavior for the intrinsic
+   procedure DATE_AND_TIME(3f) with compilers I have tested with, but
+   does not seem to be a specified behavior as far as the standard is
+   concerned. That is, DATE_AND_TIME(3f) returns a vector that contains
+   a current time zone, but does not specify how a current time zone
+   can be explicitly set. Since this library is intentionally designed
+   to complement DATE_AND_TIME(3f) it adopts the same behavior. A routine
+   to let you set a default time zone could be added in the future.
 </p>
 
 <p>
-    Note the environment variable can be set using
-    put_environment_variable(3f) from the libGPF library:
+   Note the environment variable can be set using
+   put_environment_variable(3f) from the libGPF library:
 </p>
 
 <pre>
-
      use M_system, only : put_environment_variable
      call put_environment_variable('TZ','America/New_York',ierr)
 </pre>
@@ -595,26 +608,26 @@ end program demo_M_time
 </ul>
 
 <p>
-    The ISO-8601 standard is often used for business-related transactions.
+   The ISO-8601 standard is often used for business-related transactions.
 </p>
 
 <p>
-    There are C/C++ intrinsics which provide much of the same
-    functionality that should be bindable to Fortran via the ISO_C_BINDING
-    module.
+   There are C/C++ intrinsics which provide much of the same
+   functionality that should be bindable to Fortran via the ISO_C_BINDING
+   module.
 </p>
 
 <p>
-    The Fortran Wiki <a href="http://fortranwiki.org"> fortranwiki.org
-    </a> contains information on other libraries and modules that provide
-    date-time procedures.
+   The Fortran Wiki <a href="http://fortranwiki.org"> fortranwiki.org
+   </a> contains information on other libraries and modules that provide
+   date-time procedures.
 </p>
 
 <p>
-    If you care about Leap Seconds, Orbital Mechanics, GPS/Satellite
-    communications, and Astronomy the high-precision NASA SPICElib
-    Fortran library is worth a look. It is well tested for manipulating
-    high-precision dates.
+   If you care about Leap Seconds, Orbital Mechanics, GPS/Satellite
+   communications, and Astronomy the high-precision NASA SPICElib
+   Fortran library is worth a look. It is well tested for manipulating
+   high-precision dates.
 </p>
 
 </dd>

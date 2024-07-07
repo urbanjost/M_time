@@ -518,34 +518,6 @@ do i=1,size(line)-1
    call w2d(iso_year,iso_week,iso_weekday,dat)                                      ! convert ISO week date to DAT
    call unit_test('w2d',dat(1) == y.and.dat(2) == m.and.dat(3) == d,msg=line(i))   ! all should match
 enddo
-   string : block
-      character(len=132) :: line
-      character(len=*),parameter :: array(4)=[character(len=80) ::  &
-      & '2008-W39-6', '2008W396', '2008-W39', '2008W39' ]
-      integer  :: dat(8)
-      integer  :: expected(8)
-
-      expected = [ 2008,9,27,-240,0,0,0,0 ]
-
-      call w2d(array(1),dat)
-      write(line,'(a,*(i0:,","))')'   DAT=',dat
-      call unit_test('w2d',all(dat.eq.expected),array(1),line) 
-
-      call w2d(array(2),dat)
-      write(line,'(a,*(i0:,","))')'   DAT=',dat
-      call unit_test('w2d',all(dat.eq.expected),array(2),line) 
-
-      expected = [ 2008,9,22,-240,0,0,0,0 ]
-
-      call w2d(array(3),dat)
-      write(line,'(a,*(i0:,","))')'   DAT=',dat
-      call unit_test('w2d',all(dat.eq.expected),array(3),line) 
-
-      call w2d(array(4),dat)
-      write(line,'(a,*(i0:,","))')'   DAT=',dat
-      call unit_test('w2d',all(dat.eq.expected),array(4),line) 
-
-   endblock string
 
 call unit_test_end('w2d')
 

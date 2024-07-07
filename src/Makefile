@@ -50,10 +50,10 @@ $(PROG): $(OBJS)
 .PHONY: help
 help:
 	: ' build M_time module (defaults to gfortran)                '
-	: '    make clean F90=ifx ifx                                 '
-	: '    make clean F90=ifort ifort                             '
-	: '    make clean F90=nvfortran nvfortran                     '
-	: '    make clean F90=gfortran gfortran                       '
+	: '    make F90=ifx                                           '
+	: '    make F90=ifort                                         '
+	: '    make F90=nvfortran                                     '
+	: '    make F90=gfortran                                      '
 	: ' eg: make clean ifx                                        '
 	: ' OPTIONS:                                                  '
 	: ' run     -- run manpage demo programs and test program     '

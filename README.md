@@ -62,7 +62,7 @@ programs are included in the package.
 + **[dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR)** ! Convert date array to day of the week as number and name
 ### Week of Year
 + **[d2w](https://urbanjost.github.io/M_time/d2w.3m_time.html)(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)** ! Calculate iso-8601 Week-numbering year date yyyy-Www-d
-+ **[w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)(iso_year,iso_week,iso_weekday,DAT)**  ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
++ **[w2d](https://urbanjost.github.io/M_time/w2d.3m_time.html)([iso8601_week]|[iso_year,iso_week,iso_weekday],DAT)**  ! given iso-8601 Week as numeric year, week and day_of_week, or string "yyyy-Www-d" calculate date as a DAT array
 ### Ordinal Day
 + **[d2o](https://urbanjost.github.io/M_time/d2o.3m_time.html)(dat) result(ORDINAL)** ! given date array return ordinal day of year, Jan 1st=1
 + **[o2d](https://urbanjost.github.io/M_time/o2d.3m_time.html)(ordinal) result(DAT)** ! given ordinal day of year return date array, Jan 1st=1

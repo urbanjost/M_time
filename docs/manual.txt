@@ -83,7 +83,7 @@ LICENSE
 
 
 
-				 June 29, 2024		  month.1.man(1m_time)
+				 July 07, 2024		  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -141,7 +141,7 @@ LICENSE
 
 
 
-				 June 29, 2024		  today.1.man(1m_time)
+				 July 07, 2024		  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -209,7 +209,7 @@ LICENSE
 
 
 
-				 June 29, 2024	       sec2days.1.man(1m_time)
+				 July 07, 2024	       sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -292,7 +292,7 @@ LICENSE
 
 
 
-				 June 29, 2024	       days2sec.1.man(1m_time)
+				 July 07, 2024	       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -349,7 +349,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  d2j(3m_time)
+				 July 07, 2024			  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -409,7 +409,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  d2u(3m_time)
+				 July 07, 2024			  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -548,7 +548,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  d2w(3m_time)
+				 July 07, 2024			  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -628,7 +628,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  dow(3m_time)
+				 July 07, 2024			  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -702,7 +702,7 @@ EXAMPLE
 
 
 
-				 June 29, 2024		       easter(3m_time)
+				 July 07, 2024		       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -763,7 +763,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		      fmtdate(3m_time)
+				 July 07, 2024		      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -845,6 +845,9 @@ EXAMPLE
 	  %n -- new line (system dependent)
 	  %q -- single quote (apostrophe)
 	  %Q -- double quote
+       Duration:
+	  %a -- Time since now as d-h:m:s		1-12:34:30
+	  %A -- TIme since now as seconds		12810.4500
        Program timing:
 	  %c -- CPU_TIME(3f) output			.21875000000000000
 	  %C -- number of times this routine is used	1
@@ -923,6 +926,7 @@ EXAMPLE
 	julian	 %j  2457599
 	ordinal  %O  211
 	weekday  %u  5
+	age	 %A  13238944.3030
 
      string values:
 
@@ -935,8 +939,9 @@ EXAMPLE
 	Timezone       %Z  -240m
 	GOOD	       %N  AM
 	HOUR	       %H  10
+	AGE	       %a  1200-10:30:40
 
-     if none of these keywords are found then every letter that
+     If none of these keywords are found then every letter that
      is a macro is assumed to have an implied percent in front
      of it. For example:
 
@@ -948,7 +953,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		fmtdate_usage(3m_time)
+				 July 07, 2024		fmtdate_usage(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -1016,7 +1021,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		moon_fullness(3m_time)
+				 July 07, 2024		moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1074,7 +1079,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  now(3m_time)
+				 July 07, 2024			  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1142,7 +1147,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  o2d(3m_time)
+				 July 07, 2024			  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1185,7 +1190,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024	      ordinal_seconds(3m_time)
+				 July 07, 2024	      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1244,7 +1249,7 @@ EXAMPLE
 
 
 
-				 June 29, 2024	      ordinal_to_date(3m_time)
+				 July 07, 2024	      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1329,7 +1334,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		phase_of_moon(3m_time)
+				 July 07, 2024		phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1411,7 +1416,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		     sec2days(3m_time)
+				 July 07, 2024		     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1481,7 +1486,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		 system_sleep(3m_time)
+				 July 07, 2024		 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1551,7 +1556,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  u2d(3m_time)
+				 July 07, 2024			  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1628,7 +1633,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		 unix_to_date(3m_time)
+				 July 07, 2024		 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1690,7 +1695,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			 v2mo(3m_time)
+				 July 07, 2024			 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1912,7 +1917,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  w2d(3m_time)
+				 July 07, 2024			  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -2003,7 +2008,7 @@ EXAMPLE
 
 LICENSE
    MIT
-				 June 29, 2024		    guessdate(3m_time)
+				 July 07, 2024		    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -2066,7 +2071,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  j2d(3m_time)
+				 July 07, 2024			  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2143,7 +2148,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024	       julian_to_date(3m_time)
+				 July 07, 2024	       julian_to_date(3m_time)
 untitled()							    untitled()
 
 
@@ -2173,7 +2178,7 @@ untitled()							    untitled()
   •  facilitates simple computations using time and date values in the recent
      era.
 
-  •  allow for macro-level timing of code.
+  •  allows for macro-level timing of code.
 
   The M_TIME(3f) module complements the DATE_AND_TIME(3f) procedure, which is
   the standard intrinsic subroutine that returns the current date and time in
@@ -2349,6 +2354,9 @@ untitled()							    untitled()
 	  %n -- new line (system dependent)
 	  %q -- single quote (apostrophe)
 	  %Q -- double quote
+      Duration:
+	  %a -- Time since now (age) as d-hh:mm:ss	 1-20:14:40
+	  %A -- Time since now (age) as seconds 	 123456.890
       Program timing:
 	  %c -- CPU_TIME(3f) output			 .78125000000000000E-001
 	  %C -- number of times this routine is used	 1
@@ -2405,9 +2413,9 @@ untitled()							    untitled()
 			  Day Of Year:		    181
 			  ISO-8601 week:	    2024-W26-6
 
-    otherwise the following words are replaced with the most common macros. If
-    more than one name lowercase is a numeric value string and all uppercase
-    is a alphanumeric string:
+    otherwise the following words are replaced with the most common macros.
+    For duplicate names the lowercase one is a numeric value string and all
+    uppercase is an alphanumeric string:
 
       String	     Macro  Example
       year	     %Y     2016
@@ -2442,9 +2450,12 @@ untitled()							    untitled()
 
       ordinal	     %O     209
 
+      age	     %A     100-20:30:40
+      AGE	     %a     20900.3030
+
       usage|help|?   %?     call fmtdate_usage()
 
-    if none of these keywords are found then every letter that is a macro is
+    If none of these keywords are found then every letter that is a macro is
     assumed to have an implied percent in front of it. For example:
 
       YMDhms ==> %Y%M%D%h%m%s ==> 20160727212422
@@ -2460,51 +2471,47 @@ untitled()							    untitled()
   for formatting a date as well as how to use the module to calculate dates
   such as "Yesterday" and "Tomorrow".
 
-  program demo_M_time
+  Sample program:
 
-    use M_time, only:
-      j2d, d2j, u2d, d2u, fmtdate, realtime
+  ! yesterday, today, tomorrow
 
-    integer
-      :: dat(8)
+       program demo_M_time
+       use M_time, only: j2d, d2j, u2d, d2u, fmtdate, realtime
+       integer :: dat(8)
+       real(kind=realtime) :: julian, unixtime
+       character(len=*),parameter :: iso_fmt='%Y-%M-%DT%h:%m:%s.%x%z'
+       character(len=:),allocatable :: friendly
 
-    real(kind=realtime)
-      :: julian, unixtime
+	  friendly='%W, %L %d, %Y %H:%m:%s %N' ! a nice friendly format
 
-    character(len=*),parameter
-      :: iso_fmt='%Y-%M-%DT%h:%m:%s.%x%z' character(len=:),allocatable ::
-      friendly
+	  call date_and_time(values=dat)  ! current time is placed in array
 
-       friendly='%W, %L %d, %Y %H:%m:%s %N' ! a nice friendly format
+	  write(*,*)'Today'
+	  write(*,*)'ISO       ',fmtdate(dat,iso_fmt)
+	  write(*,*)'Friendly  ',fmtdate(dat,friendly)
+	  write(*,*)'ISO week  ',fmtdate(dat,'%I')
 
-       call date_and_time(values=dat)  ! current time is placed in array
+	  julian=d2j(dat)
+	  unixtime=d2u(dat)
 
-       write(*,*)'Today'
-       write(*,*)'ISO	    ',fmtdate(dat,iso_fmt)
-       write(*,*)'Friendly  ',fmtdate(dat,friendly)
-       write(*,*)'ISO week  ',fmtdate(dat,'%I')
+	  write(*,*)'Yesterday' ! subtract a day from scalar time and print
+	  write(*,*)'	       ',fmtdate(u2d(unixtime-86400),iso_fmt)
+	  write(*,*)'	       ',fmtdate(j2d(julian-1.0),friendly)
+	  write(*,*)'	       ',fmtdate(j2d(julian-1.0),'%I')
 
-       julian=d2j(dat)
-       unixtime=d2u(dat)
+	  write(*,*)'Tomorrow'	! add a day to scalar time and print
+	  write(*,*)'	       ',fmtdate(u2d(unixtime+86400),iso_fmt)
+	  write(*,*)'	       ',fmtdate(j2d(julian+1.0),friendly)
+	  write(*,*)'	       ',fmtdate(j2d(julian+1.0),'%I')
 
-       write(*,*)'Yesterday' ! subtract a day from scalar time and print
-       write(*,*)'	    ',fmtdate(u2d(unixtime-86400),iso_fmt)
-       write(*,*)'	    ',fmtdate(j2d(julian-1.0),friendly)
-       write(*,*)'	    ',fmtdate(j2d(julian-1.0),'%I')
+	  write(*,*)'Next Week'  ! add a week to scalar time and print
+	  write(*,*)'	       ',fmtdate(u2d(unixtime+7*86400),iso_fmt)
+	  write(*,*)'	       ',fmtdate(j2d(julian+7.0),friendly)
+	  write(*,*)'	       ',fmtdate(j2d(julian+7.0),'%I')
 
-       write(*,*)'Tomorrow'  ! add a day to scalar time and print
-       write(*,*)'	    ',fmtdate(u2d(unixtime+86400),iso_fmt)
-       write(*,*)'	    ',fmtdate(j2d(julian+1.0),friendly)
-       write(*,*)'	    ',fmtdate(j2d(julian+1.0),'%I')
+       end program demo_M_time
 
-       write(*,*)'Next Week'  ! add a week to scalar time and print
-       write(*,*)'	    ',fmtdate(u2d(unixtime+7*86400),iso_fmt)
-       write(*,*)'	    ',fmtdate(j2d(julian+7.0),friendly)
-       write(*,*)'	    ',fmtdate(j2d(julian+7.0),'%I')
-
-    end program demo_M_time
-
-    Sample output ...
+  Sample output ...
 
    Today
    ISO	     2015-12-22T08:07:34.025-0300
@@ -2536,13 +2543,14 @@ untitled()							    untitled()
   dates will often be confused, as the Julian Calendar was used in the USA
   until 1752-09-03, for example. The Gregorian Calendar was formally decreed
   on 1582-10-15 but was not adapted in many countries. The Julian Calendar was
-  first used around 45 BC. Note that the Proleptic Gregorian Calendar includes
-  a year zero (0). It is frequently used in computer software to simplify the
-  handling of older dates. For example, it is the calendar used by MySQL,
-  SQLite, PHP, CIM, Delphi, Python and COBOL. The Proleptic Gregorian Calendar
-  is explicitly required for all dates before 1582 by ISO 8601:2004 (clause
-  4.3.2.1 The Gregorian calendar) if the partners to information exchange
-  agree.
+  first used around 45 BC.
+
+  Note that the Proleptic Gregorian Calendar includes a year zero (0). It is
+  frequently used in computer software to simplify the handling of older
+  dates. For example, it is the calendar used by MySQL, SQLite, PHP, CIM,
+  Delphi, Python and COBOL. The Proleptic Gregorian Calendar is explicitly
+  required for all dates before 1582 by ISO 8601:2004 (clause 4.3.2.1 The
+  Gregorian calendar) if the partners to information exchange agree.
 
   Unix Epoch Time (UET) is defined as the number of seconds since 00:00:00 on
   January 1st. 1970, UTC.
@@ -2595,8 +2603,8 @@ untitled()							    untitled()
   Note the environment variable can be set using put_environment_variable(3f)
   from the libGPF library:
 
-    use M_system, only : put_environment_variable call
-    put_environment_variable('TZ','America/New_York',ierr)
+  use M_system, only : put_environment_variable call
+  put_environment_variable('TZ','America/New_York',ierr)
 
    SEE ALSO
   Utility programs that use the M_time(3f) module:
@@ -2625,7 +2633,7 @@ untitled()							    untitled()
 
 
 
-				 June 29, 2024			    untitled()
+				 July 07, 2024			    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -3032,7 +3040,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		  M_time__oop(3m_time)
+				 July 07, 2024		  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3090,7 +3098,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			 mo2d(3m_time)
+				 July 07, 2024			 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -3147,7 +3155,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			 mo2v(3m_time)
+				 July 07, 2024			 mo2v(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3217,7 +3225,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024	       date_to_julian(3m_time)
+				 July 07, 2024	       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3282,7 +3290,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		 date_to_unix(3m_time)
+				 July 07, 2024		 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3387,7 +3395,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		     days2sec(3m_time)
+				 July 07, 2024		     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3465,7 +3473,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024			  d2o(3m_time)
+				 July 07, 2024			  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3528,4 +3536,4 @@ AUTHOR
 
 LICENSE
    MIT
-				 June 29, 2024		    box_month(3m_time)
+				 July 07, 2024		    box_month(3m_time)
