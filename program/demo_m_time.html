@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 2.4% of total for programs.">31 statements</a>
+                 title=" 2.1% of total for programs.">27 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -114,9 +114,11 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_m_time.html#variable-__unnamed__"><em>unnamed</em></a>
-            <a class="list-group-item" href="../program/demo_m_time.html#variable-__unnamed__~2"><em>unnamed</em></a>
-            <a class="list-group-item" href="../program/demo_m_time.html#variable-parameter">parameter</a>
+            <a class="list-group-item" href="../program/demo_m_time.html#variable-dat~33">dat</a>
+            <a class="list-group-item" href="../program/demo_m_time.html#variable-friendly">friendly</a>
+            <a class="list-group-item" href="../program/demo_m_time.html#variable-iso_fmt">iso_fmt</a>
+            <a class="list-group-item" href="../program/demo_m_time.html#variable-julian~10">julian</a>
+            <a class="list-group-item" href="../program/demo_m_time.html#variable-unixtime~9">unixtime</a>
         </div>
       </div>
     </div>
@@ -182,14 +184,62 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-__unnamed__"></span>
+              <span class="anchor" id="variable-dat~33"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dat</strong>(8)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-friendly"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>friendly</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iso_fmt"></span>
+              character(len=*),
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>iso_fmt</strong></td>
+<td> =</td>
+                <td>&#39;%Y-%M-%DT%h:%m:%s.%x%z&#39;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-julian~10"></span>
               real(kind=realtime)
             </td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong></strong></td>
+            <td><strong>julian</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -198,30 +248,14 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-__unnamed__~2"></span>
-              character(len=*)
+              <span class="anchor" id="variable-unixtime~9"></span>
+              real(kind=realtime)
             </td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong></strong></td>
-                <td></td>
-                <td></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-parameter"></span>
-              character(len=*)
-            </td>
-            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>parameter</strong></td>
+            <td><strong>unixtime</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -244,49 +278,41 @@
 
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">program </span><span class="n">demo_M_time</span>
+    <div class="hl codehilite"><pre><span></span><span class="w">       </span><span class="k">program </span><span class="n">demo_M_time</span>
+<span class="w">       </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">j2d</span><span class="p">,</span><span class="w"> </span><span class="n">d2j</span><span class="p">,</span><span class="w"> </span><span class="n">u2d</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span>
+<span class="w">       </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">       </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span><span class="p">,</span><span class="w"> </span><span class="n">unixtime</span>
+<span class="w">       </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fmt</span><span class="o">=</span><span class="s1">&#39;%Y-%M-%DT%h:%m:%s.%x%z&#39;</span>
+<span class="w">       </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">friendly</span>
 
-<span class="w">    </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span>
-<span class="w">      </span><span class="n">j2d</span><span class="p">,</span><span class="w"> </span><span class="n">d2j</span><span class="p">,</span><span class="w"> </span><span class="n">u2d</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span>
+<span class="w">          </span><span class="n">friendly</span><span class="o">=</span><span class="s1">&#39;%W, %L %d, %Y %H:%m:%s %N&#39;</span><span class="w"> </span><span class="c">! a nice friendly format</span>
 
-<span class="w">    </span><span class="kt">integer</span>
-<span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">          </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span><span class="w">  </span><span class="c">! current time is placed in array</span>
 
-<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span>
-<span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span><span class="p">,</span><span class="w"> </span><span class="n">unixtime</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Today&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;ISO       &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">iso_fmt</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Friendly  &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">friendly</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;ISO week  &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span>
-<span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fmt</span><span class="o">=</span><span class="s1">&#39;%Y-%M-%DT%h:%m:%s.%x%z&#39;</span><span class="w"> </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span>
-<span class="w">      </span><span class="n">friendly</span>
+<span class="w">          </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">          </span><span class="n">unixtime</span><span class="o">=</span><span class="n">d2u</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
-<span class="w">       </span><span class="n">friendly</span><span class="o">=</span><span class="s1">&#39;%W, %L %d, %Y %H:%m:%s %N&#39;</span><span class="w"> </span><span class="c">! a nice friendly format</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Yesterday&#39;</span><span class="w"> </span><span class="c">! subtract a day from scalar time and print</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="n">unixtime</span><span class="o">-</span><span class="mi">86400</span><span class="p">),</span><span class="n">iso_fmt</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span><span class="n">friendly</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
 
-<span class="w">       </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span><span class="w">  </span><span class="c">! current time is placed in array</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Tomorrow&#39;</span><span class="w">  </span><span class="c">! add a day to scalar time and print</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="n">unixtime</span><span class="o">+</span><span class="mi">86400</span><span class="p">),</span><span class="n">iso_fmt</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">1.0</span><span class="p">),</span><span class="n">friendly</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">1.0</span><span class="p">),</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
 
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Today&#39;</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;ISO       &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">iso_fmt</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Friendly  &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">friendly</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;ISO week  &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Next Week&#39;</span><span class="w">  </span><span class="c">! add a week to scalar time and print</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="n">unixtime</span><span class="o">+</span><span class="mi">7</span><span class="o">*</span><span class="mi">86400</span><span class="p">),</span><span class="n">iso_fmt</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">7.0</span><span class="p">),</span><span class="n">friendly</span><span class="p">)</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">7.0</span><span class="p">),</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
 
-<span class="w">       </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-<span class="w">       </span><span class="n">unixtime</span><span class="o">=</span><span class="n">d2u</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Yesterday&#39;</span><span class="w"> </span><span class="c">! subtract a day from scalar time and print</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="n">unixtime</span><span class="o">-</span><span class="mi">86400</span><span class="p">),</span><span class="n">iso_fmt</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span><span class="n">friendly</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">-</span><span class="mf">1.0</span><span class="p">),</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
-
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Tomorrow&#39;</span><span class="w">  </span><span class="c">! add a day to scalar time and print</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="n">unixtime</span><span class="o">+</span><span class="mi">86400</span><span class="p">),</span><span class="n">iso_fmt</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">1.0</span><span class="p">),</span><span class="n">friendly</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">1.0</span><span class="p">),</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
-
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Next Week&#39;</span><span class="w">  </span><span class="c">! add a week to scalar time and print</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">u2d</span><span class="p">(</span><span class="n">unixtime</span><span class="o">+</span><span class="mi">7</span><span class="o">*</span><span class="mi">86400</span><span class="p">),</span><span class="n">iso_fmt</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">7.0</span><span class="p">),</span><span class="n">friendly</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;          &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">julian</span><span class="o">+</span><span class="mf">7.0</span><span class="p">),</span><span class="s1">&#39;%I&#39;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">end program </span><span class="n">demo_M_time</span>
+<span class="w">       </span><span class="k">end program </span><span class="n">demo_M_time</span>
 </pre></div>
 
     </section>
@@ -309,7 +335,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-06-30 01:47              </p>
+ on 2024-07-07 20:15              </p>
           </div>
         </div>
         <br>

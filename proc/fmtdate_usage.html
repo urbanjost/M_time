@@ -224,6 +224,9 @@ by fmtdate(3f) and now(3f)
 <span class="w">     </span><span class="nf">%n</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="p">(</span><span class="n">system</span><span class="w"> </span><span class="n">dependent</span><span class="p">)</span>
 <span class="w">     </span><span class="nf">%q</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">single</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="p">(</span><span class="n">apostrophe</span><span class="p">)</span>
 <span class="w">     </span><span class="o">%</span><span class="n">Q</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">quote</span>
+<span class="w">  </span><span class="nl">Duration</span><span class="p">:</span>
+<span class="w">     </span><span class="nf">%a</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">Time</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">d</span><span class="o">-</span><span class="n">h</span><span class="o">:</span><span class="n">m</span><span class="o">:</span><span class="n">s</span><span class="w">               </span><span class="mi">1-12</span><span class="o">:</span><span class="mi">34</span><span class="o">:</span><span class="mi">30</span>
+<span class="w">     </span><span class="o">%</span><span class="n">A</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">TIme</span><span class="w"> </span><span class="n">since</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">seconds</span><span class="w">               </span><span class="mf">12810.4500</span>
 <span class="w">  </span><span class="n">Program</span><span class="w"> </span><span class="n">timing</span><span class="o">:</span>
 <span class="w">     </span><span class="nf">%c</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">CPU_TIME</span><span class="p">(</span><span class="mf">3f</span><span class="p">)</span><span class="w"> </span><span class="n">output</span><span class="w">                     </span><span class="mf">.21875000000000000</span>
 <span class="w">     </span><span class="o">%</span><span class="n">C</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">times</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">routine</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">used</span><span class="w">    </span><span class="mi">1</span>
@@ -304,6 +307,7 @@ by fmtdate(3f) and now(3f)
 <span class="w">   </span><span class="n">julian</span><span class="w">   </span><span class="nv">%j</span><span class="w">  </span><span class="mi">2457599</span>
 <span class="w">   </span><span class="n">ordinal</span><span class="w">  </span><span class="nv">%O</span><span class="w">  </span><span class="mi">211</span>
 <span class="w">   </span><span class="n">weekday</span><span class="w">  </span><span class="nv">%u</span><span class="w">  </span><span class="mi">5</span>
+<span class="w">   </span><span class="n">age</span><span class="w">      </span><span class="nv">%A</span><span class="w">  </span><span class="mf">13238944.3030</span>
 
 <span class="n">string</span><span class="w"> </span><span class="nb">values</span><span class="p">:</span>
 
@@ -316,8 +320,9 @@ by fmtdate(3f) and now(3f)
 <span class="w">   </span><span class="n">Timezone</span><span class="w">       </span><span class="nv">%Z</span><span class="w">  </span><span class="o">-</span><span class="mi">240</span><span class="n">m</span>
 <span class="w">   </span><span class="n">GOOD</span><span class="w">           </span><span class="nv">%N</span><span class="w">  </span><span class="n">AM</span>
 <span class="w">   </span><span class="n">HOUR</span><span class="w">           </span><span class="nv">%H</span><span class="w">  </span><span class="mi">10</span>
+<span class="w">   </span><span class="n">AGE</span><span class="w">            </span><span class="nv">%a</span><span class="w">  </span><span class="mi">1200</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">40</span>
 
-<span class="k">if</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">keywords</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">every</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">that</span>
+<span class="n">If</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">keywords</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">every</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">that</span>
 <span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">macro</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">assumed</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">implied</span><span class="w"> </span><span class="n">percent</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">front</span>
 <span class="n">of</span><span class="w"> </span><span class="n">it</span><span class="o">.</span><span class="w"> </span><span class="n">For</span><span class="w"> </span><span class="n">example:</span>
 
@@ -434,6 +439,9 @@ by fmtdate(3f) and now(3f)
 <span class="p">&amp;</span><span class="s1">&#39;     %%n -- new line (system dependent)               %n     &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;     %%q -- single quote (apostrophe)                 %q     &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;     %%Q -- double quote                              %Q     &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;%b Duration:                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;     %%a -- Time since now as d-hh:mm:ss              %a     &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;     %%A -- Time since now as seconds                 %A     &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;%b Program timing:                                           &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;     %%c -- CPU_TIME(3f) output                       %c     &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;     %%C -- number of times this routine is used      %C     &#39;</span><span class="p">,&amp;</span>
@@ -496,7 +504,9 @@ by fmtdate(3f) and now(3f)
 <span class="p">&amp;</span><span class="s1">&#39;%b   WEEKDAY         %%W  Thursday                           &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;%b   Timezone        %%Z  -240m                              &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;%b   TIMEZONE        %%z  -04:00                             &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;%bif none of these keywords are found then every letter that &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;%b   age             %%a  100-22:59:01                       &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;%b   AGE             %%A  23423008.543                       &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;%bIf none of these keywords are found then every letter that &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;%bis a macro is assumed to have an implied percent in front  &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;%bof it. For example:                                        &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;%b   YMDhms ==&gt; %%Y%%M%%D%%h%%m%%s ==&gt; %Y%M%D%h%m%s          &#39;</span><span class="p">,&amp;</span>
@@ -526,7 +536,7 @@ by fmtdate(3f) and now(3f)
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-06-30 01:47              </p>
+ on 2024-07-07 20:15              </p>
           </div>
         </div>
         <br>

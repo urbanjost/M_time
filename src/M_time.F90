@@ -1304,11 +1304,13 @@ real(kind=realtime),save             :: unixtime_last
          call substitute(xxxx,'epoch','%e')
          call substitute(xxxx,'julian','%j')
          call substitute(xxxx,'ordinal','%O')
+         call substitute(xxxx,'AGE','%a')
+         call substitute(xxxx,'age','%A')
 
          if(index(xxxx,'%')==0)then            ! if no % characters change every char to %char if a format macro letter
             do i=65,122
              select case(achar(i))
-             case('B':'E','H':'J','L':'Q','S','T','U','W','Y','Z','b':'e','h':'m','n','o':'q','s':'u','w','x','z')
+             case('A','B':'E','H':'J','L':'Q','S','T','U','W','Y','Z','a','b':'e','h':'m','n','o':'q','s':'u','w','x','z')
                  call substitute(xxxx,achar(i),'%'//achar(i))
              end select
             enddo
@@ -1333,6 +1335,10 @@ real(kind=realtime),save             :: unixtime_last
          select case(chara)
          !=====================================================================================
          case('%'); write(text(iout:),'(A1)')chara                        ! literal percent character
+         !=====================================================================================
+         case('a'); write(text(iout:),'(G0)')sec2days(d2u()-d2u(valloc))  ! time since now in d-h:m:s format
+         !=====================================================================================
+         case('A'); write(text(iout:),'(G0)')(d2u()-d2u(valloc))          ! time since now in seconds
          !=====================================================================================
          case('b'); write(text(iout:),'(A1)')' '                          ! space character
          !=====================================================================================
@@ -1553,6 +1559,9 @@ end function fmtdate
 !!         %n -- new line (system dependent)
 !!         %q -- single quote (apostrophe)
 !!         %Q -- double quote
+!!      Duration:
+!!         %a -- Time since now as d-h:m:s               1-12:34:30
+!!         %A -- TIme since now as seconds               12810.4500
 !!      Program timing:
 !!         %c -- CPU_TIME(3f) output                     .21875000000000000
 !!         %C -- number of times this routine is used    1
@@ -1632,6 +1641,7 @@ end function fmtdate
 !!       julian   %j  2457599
 !!       ordinal  %O  211
 !!       weekday  %u  5
+!!       age      %A  13238944.3030
 !!
 !!    string values:
 !!
@@ -1644,8 +1654,9 @@ end function fmtdate
 !!       Timezone       %Z  -240m
 !!       GOOD           %N  AM
 !!       HOUR           %H  10
+!!       AGE            %a  1200-10:30:40
 !!
-!!    if none of these keywords are found then every letter that
+!!    If none of these keywords are found then every letter that
 !!    is a macro is assumed to have an implied percent in front
 !!    of it. For example:
 !!
@@ -1714,6 +1725,9 @@ usage=[ CHARACTER(LEN=128) :: &
 &'     %%n -- new line (system dependent)               %n     ',&
 &'     %%q -- single quote (apostrophe)                 %q     ',&
 &'     %%Q -- double quote                              %Q     ',&
+&'%b Duration:                                                 ',&
+&'     %%a -- Time since now as d-hh:mm:ss              %a     ',&
+&'     %%A -- Time since now as seconds                 %A     ',&
 &'%b Program timing:                                           ',&
 &'     %%c -- CPU_TIME(3f) output                       %c     ',&
 &'     %%C -- number of times this routine is used      %C     ',&
@@ -1776,7 +1790,9 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%b   WEEKDAY         %%W  Thursday                           ',&
 &'%b   Timezone        %%Z  -240m                              ',&
 &'%b   TIMEZONE        %%z  -04:00                             ',&
-&'%bif none of these keywords are found then every letter that ',&
+&'%b   age             %%a  100-22:59:01                       ',&
+&'%b   AGE             %%A  23423008.543                       ',&
+&'%bIf none of these keywords are found then every letter that ',&
 &'%bis a macro is assumed to have an implied percent in front  ',&
 &'%bof it. For example:                                        ',&
 &'%b   YMDhms ==> %%Y%%M%%D%%h%%m%%s ==> %Y%M%D%h%m%s          ',&
