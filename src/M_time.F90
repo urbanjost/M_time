@@ -2713,9 +2713,9 @@ character(len=:), allocatable :: stopmessage
    dat=-99999
 
    if(size(array)==2)then       ! assume compact form of yyyyWwwdd where ww is from 01 to 53 and rearrange to three strings
-      if(len_trim(array(2)).gt.2)then
+      if(len_trim(array(2)) > 2)then
          array=[character(len=len(array)) :: array(1),array(2)(1:2),array(2)(3:)]
-      elseif(len_trim(array(2)).eq.2) then
+      elseif(len_trim(array(2)) == 2) then
          array=[character(len=len(array)) :: array(1),array(2),'1']
       endif
    endif
@@ -2741,13 +2741,13 @@ character(len=:), allocatable :: stopmessage
       endif
 
    endif
-   if(ierr_.eq.0)then
+   if(ierr_ == 0)then
       call w2d_numeric(iso_year,iso_week,iso_weekday,dat)
    endif
 
    if(present(ierr))then
       ierr=ierr_
-   elseif(ierr_.ne.0)then
+   elseif(ierr_ /= 0)then
       write(stderr,'(a)') stopmessage
       stop 4
    endif
@@ -4029,7 +4029,7 @@ integer :: dat(8)
    !    •  VALUES(6) : The minutes of the hour, in the range 0 to 59
    !    •  VALUES(7) : The seconds of the minute, in the range 0 to 60
    !    •  VALUES(8) : The milliseconds of the second, in the range 0 to 999.
-   if(any(dat.eq.-huge(0)))then
+   if(any(dat == -huge(0)))then
       write(stderr,"('<ERROR>*getnow*: date_and_time(3f) contains unsupported values')")
       stop 3
    endif
