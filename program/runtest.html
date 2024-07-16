@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="38.1% of total for programs.">493 statements</a>
+                 title="38.1% of total for programs.">494 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -115,7 +115,8 @@
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../program/runtest.html#variable-same">SAME</a>
-            <a class="list-group-item" href="../program/runtest.html#variable-dat~44">dat</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-sameend">SAMEEND</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-dat~48">dat</a>
             <a class="list-group-item" href="../program/runtest.html#variable-ierr~32">ierr</a>
         </div>
       </div>
@@ -210,9 +211,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">M_framework__verify</li>
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
                   <li class="list-inline-item"><a href='../module/m_time.html'>M_time</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
+                  <li class="list-inline-item">M_framework__verify</li>
               </ul>
             </li>
         </ul>
@@ -220,7 +221,7 @@
     </div>
 
     <p>no not use M_system version or will create a circular dependency
-call unit_test_start(&lsquo;ephemeris      &lsquo;,SAME//&rsquo; &ldquo;ephemeris position of planets for adjusting an equatorial telescope&rdquo; &lsquo;)
+call unit_test_start(&lsquo;ephemeris      &lsquo;,SAME//&rsquo;ephemeris position of planets for adjusting an equatorial telescope&rsquo;//SAMEEND)
 call test_ephemeris()</p>
 <br>
 
@@ -247,14 +248,30 @@ parameter
             <td>::</td>
             <td><strong>SAME</strong></td>
 <td> =</td>
-                <td>&#39;-library libGPF -section 3 -description&#39;</td>
+                <td>&#39;&#39;</td>
             <td>
                 
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~44"></span>
+              <span class="anchor" id="variable-sameend"></span>
+              character(len=*),
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>SAMEEND</strong></td>
+<td> =</td>
+                <td>&#39;&#39;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dat~48"></span>
               integer
             </td>
             <td>
@@ -317,7 +334,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-string~12"></span>
+              <span class="anchor" id="variable-string~13"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -438,7 +455,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-string~13"></span>
+              <span class="anchor" id="variable-string~14"></span>
               character(len=*)
             </td>
 <td></td>
@@ -855,7 +872,8 @@ parameter
 <span class="k">implicit none</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SAME</span><span class="o">=</span><span class="s1">&#39;-library libGPF -section 3 -description&#39;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SAME</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c">! &#39;-library libGPF -section 3 -description &quot;&#39;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SAMEEND</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c">! &#39;&quot;&#39;</span>
 
 <span class="n">unit_test_level</span><span class="o">=</span><span class="mi">0</span>
 
@@ -865,65 +883,65 @@ parameter
 
 <span class="k">call </span><span class="n">unit_test_msg</span><span class="p">(</span><span class="s1">&#39;M_time&#39;</span><span class="p">,</span><span class="s1">&#39;This section contains unit tests for procedures in the M_time(3f) module.&#39;</span><span class="p">)</span>
 
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;box_month      &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;print specified month into character array&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;box_month      &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;print specified month into character array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_box_month</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2j            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Convert date array to Julian Date&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2j            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert date array to Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_d2j</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2o            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Converts date-time array to Ordinal day&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2o            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts date-time array to Ordinal day&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_d2o</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;ordinal_seconds&#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;seconds since begiing of year&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;ordinal_seconds&#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;seconds since begiing of year&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_ordinal_seconds</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2u            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Convert date array to Unix Time&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2u            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert date array to Unix Time&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_d2u</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2w            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Calculate iso-8601 Week-numbering year date yyyy-Www-d&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2w            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Calculate iso-8601 Week-numbering year date yyyy-Www-d&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_d2w</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_julian &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Converts Proleptic Gregorian date array to Julian Date&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_julian &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Proleptic Gregorian date array to Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_date_to_julian</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_unix   &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Converts date array to Unix Time (UT starts at 0000 on 1 Jan. 1970, UTC)&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_unix   &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts date array to Unix Time (UT starts at 0000 on 1 Jan. 1970, UTC)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_date_to_unix</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;days2sec       &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;converts string D-HH:MM:SS to seconds from small to large&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;days2sec       &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;converts string D-HH:MM:SS to seconds from small to large&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_days2sec</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;dow            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Return the day of the week&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;dow            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Return the day of the week&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_dow</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;easter         &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Determine month and day Easter falls on for given year&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;easter         &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Determine month and day Easter falls on for given year&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_easter</span><span class="p">()</span>
-<span class="c">!!call unit_test_start(&#39;ephemeris      &#39;,SAME//&#39; &quot;ephemeris position of planets for adjusting an equatorial telescope&quot; &#39;)</span>
+<span class="c">!!call unit_test_start(&#39;ephemeris      &#39;,SAME//&#39;ephemeris position of planets for adjusting an equatorial telescope&#39;//SAMEEND)</span>
 <span class="c">!!call test_ephemeris()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;fmtdate        &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;given date array return date as string using format&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;fmtdate        &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;given date array return date as string using format&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_fmtdate</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;fmtdate_usage  &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;display macros recognized by fmtdate(3f)&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;fmtdate_usage  &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;display macros recognized by fmtdate(3f)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_fmtdate_usage</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;guessdate      &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Reads in a date, in various formats&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;guessdate      &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Reads in a date, in various formats&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_guessdate</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;j2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Convert Julian Date to date array&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;j2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Julian Date to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_j2d</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;julian_to_date &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Converts Julian Date to (year, month, day, hour, minute, second)&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;julian_to_date &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Julian Date to (year, month, day, hour, minute, second)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_julian_to_date</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;mo2d           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;return date array for beginning of given month name in specified year&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;mo2d           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;return date array for beginning of given month name in specified year&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_mo2d</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;mo2v           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;given month as name return month number (1-12) of that month&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;mo2v           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;given month as name return month number (1-12) of that month&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_mo2v</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;moon_fullness  &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;return name for phase of moon for given date&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;moon_fullness  &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;return name for phase of moon for given date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_moon_fullness</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;now            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;return string representing current time given format&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;now            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;return string representing current time given format&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_now</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;now_ex         &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;use of now(3f) outside of a module&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;now_ex         &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;use of now(3f) outside of a module&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_now_ex</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;o2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;given ordinal day of year return date array, Jan 1st=1&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;o2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;given ordinal day of year return date array, Jan 1st=1&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_o2d</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;ordinal_to_date&#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;given ordinal day of year return date array, Jan 1st=1&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;ordinal_to_date&#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;given ordinal day of year return date array, Jan 1st=1&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_ordinal_to_date</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;phase_of_moon  &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;percentage of moon phase from new to full&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;phase_of_moon  &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;percentage of moon phase from new to full&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_phase_of_moon</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;sec2days       &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;converts seconds to string D-HH:MM:SS&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;sec2days       &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;converts seconds to string D-HH:MM:SS&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_sec2days</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;u2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Convert Unix Time to date array&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;u2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Unix Time to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_u2d</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;unix_to_date   &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Converts Unix Time to date array&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;unix_to_date   &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Unix Time to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_unix_to_date</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;v2mo           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;returns the month name of a Common month&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;v2mo           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;returns the month name of a Common month&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_v2mo</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;w2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39; &quot;Given iso-8601 Week-numbering year date yyyy-Www-d calculate date&quot; &#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;w2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Given iso-8601 Week-numbering year date yyyy-Www-d calculate date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_w2d</span><span class="p">()</span>
 
 <span class="k">call </span><span class="n">unit_test_stop</span><span class="p">(</span><span class="s1">&#39;M_time tests completed&#39;</span><span class="p">)</span>
@@ -1674,7 +1692,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-07-15 06:35              </p>
+ on 2024-07-16 05:58              </p>
           </div>
         </div>
         <br>
