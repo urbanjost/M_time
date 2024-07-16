@@ -1945,7 +1945,7 @@ integer           :: ierr
   out_baseten=0
   y=0.0
   ALL: if(basein_local<2.or.basein_local>36) then
-    print *,'(*decodebase* ERROR: Base must be between 2 and 36. base=',basein_local
+    print gen,'(*decodebase* ERROR: Base must be between 2 and 36. base=',basein_local
   else ALL
      out_baseten=0;y=0.0; mult=1.0
      long=LEN_TRIM(string_local)
