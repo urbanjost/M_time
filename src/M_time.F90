@@ -76,7 +76,7 @@ real(kind=realtime),public,parameter :: dt_hour=3600.0_dp     ! one hour in seco
 real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours in seconds
 real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
 !-----------------------------------------------------------------------------------------------------------------------------------
-character(len=*),parameter   :: gen='(*(g0))'
+character(len=*),parameter   :: gen='(*(g0,1x))'
 !-----------------------------------------------------------------------------------------------------------------------------------
 interface w2d
    module procedure w2d_numeric
@@ -976,7 +976,7 @@ integer                     :: dat(8)
    endif
    dat(2)=mo2v(month_name) ! convert given month name to a number
    if(dat(2)<=0)then
-      write(stderr,gen) '<ERROR>*mo2d*: bad month name ',trim(month_name)
+      write(stderr,gen) '<ERROR>*mo2d*: bad month name:',trim(month_name)
       dat(2)=1
    endif
    dat(3)=1  ! set day to first of month
@@ -1957,7 +1957,7 @@ integer                           :: loops
          temp=temp(3:)
       endif
    endif
-   if(verbose)write(*,*)'*guessdate* a ',temp,'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* a',temp,'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    number=.false.                                        ! when transition from letter to number add a space
    do i=1,len(temp)
@@ -1974,7 +1974,7 @@ integer                           :: loops
    enddo
 !-----------------------------------------------------------------------------------------------------------------------------------
 
-   if(verbose)write(*,*)'*guessdate* b ',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* b',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
    datestring_local=datestring_local//'                 '  ! pad string so substitute will fit if old string shorter than new string
    !make sure spaces are around month names
    call substitute(datestring_local,'JANUARY',' JAN ')
@@ -2019,12 +2019,12 @@ integer                           :: loops
    call substitute(datestring_local,': ',':')
    call substitute(datestring_local,' :',':')
 
-   if(verbose)write(*,*)'*guessdate* A ',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* A ',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    call substitute(datestring_local,'UTC',' ')
 !-----------------------------------------------------------------------------------------------------------------------------------
    call split(datestring_local,scratch,' ;,"''')
-   if(verbose)write(*,*)'*guessdate* B ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* B ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    do i=1,size(scratch)                                                       ! a leading +/- is assumed to be a timezone
       if( index("+-",scratch(i)(1:1)) /= 0)then
@@ -2041,7 +2041,7 @@ integer                           :: loops
          scratch(i)=' '
       endif
    enddo
-   if(verbose)write(*,*)'*guessdate* C ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* C ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    do i=1,size(scratch)                      ! AM and PM are assumed to only occur significantly (not end of day or month name, ...)
       if(len_trim(scratch(i))>=2)then
@@ -2056,7 +2056,7 @@ integer                           :: loops
          end select
       endif
    enddo
-   if(verbose)write(*,*)'*guessdate* E ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* E ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    do i=1,size(scratch)                                                      ! look for HH:MM:SS
       if(index(scratch(i),':')/=0)then
@@ -2071,7 +2071,7 @@ integer                           :: loops
          scratch(i)=' '
       endif
    enddo
-   if(verbose)write(*,*)'*guessdate* F ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* F ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    do i=1,size(scratch)                                                       ! assume yyyy-mm-dd if found a dash
       if(index(scratch(i),"-")/=0)then
@@ -2090,20 +2090,20 @@ integer                           :: loops
             end select
       endif
    enddo
-   if(verbose)write(*,*)'*guessdate* D ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* D ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    datestring_local=''
    do i=1,size(scratch)
       datestring_local=datestring_local//' '//adjustl(trim(scratch(i)))
    enddo
-   if(verbose)write(*,*)'*guessdate* G ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* G ',(trim(scratch(i)),'|',i=1,size(scratch)),'::',iye,mon,idy,itz,ihr,imi,ise,imill
 !-----------------------------------------------------------------------------------------------------------------------------------
    if(datestring_local==' ')then
      loops=0
    else
      loops=1000
    endif
-   if(verbose)write(*,*)'*guessdate* Ga',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill,loops
+   if(verbose)write(*,gen)'*guessdate* Ga',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill,loops
    INFINITE: do itries=1,loops                              ! give up after 1000 passes
       buff=datestring_local                                 ! copy to buffer
       alpha=.false.
@@ -2147,9 +2147,9 @@ integer                           :: loops
       endif
       exit
    enddo INFINITE
-   if(verbose)write(*,*)'*guessdate* H ',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
+   if(verbose)write(*,gen)'*guessdate* H ',datestring_local,'::',iye,mon,idy,itz,ihr,imi,ise,imill
    if(itries>=1000)then
-      write(stderr,gen)'<ERROR>*guessdate*: could not extract date for '//trim(datestring)
+      write(stderr,gen)'<ERROR>*guessdate*: could not extract date for',trim(datestring)
    endif
    dat(1)=iye
    dat(2)=mon
@@ -2281,7 +2281,7 @@ integer                               :: ierr_local
    if(present(ierr))then
       ierr=ierr_local
    elseif(ierr_local/=0)then
-      write(stderr,gen) '<ERROR>*dow*: Unprocessed Error ',ierr_local,' stopping.'
+      write(stderr,gen) '<ERROR>*dow*: Unprocessed Error',ierr_local,'stopping.'
       stop 2
    endif
 
@@ -3554,7 +3554,7 @@ logical                           :: negative
       iwords=size(array)
 
       if(iwords>4)then
-         write(stderr,gen)'<ERROR>*days2sec*: too many values in '//trim(strlocal)
+         write(stderr,gen)'<ERROR>*days2sec*: too many values in',trim(strlocal)
          iwords=4
       endif
 

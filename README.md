@@ -23,7 +23,7 @@ __Julian__ and __Unix Epoch Dates__ are particularly useful for
 manipulating dates in simple numeric expressions. They are numbers with
 units of days and seconds respectively from a fixed date that you can
 easily convert to and from. So you can convert any date to a Julian Date,
-subtract one and you have the date for yesterday, for example.
+subtract one and you have the date for the day before, for example.
 
 The `M_time Fortran` module complements the `DATE_AND_TIME(3f)` procedure
 ( it is the standard Fortran intrinsic subroutine that returns the
@@ -75,7 +75,7 @@ programs are included in the package.
 + **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
 ### Printing Durations
 + **[sec2days](https://urbanjost.github.io/M_time/sec2days.3m_time.html)(seconds) result (dhms)**  ! converts seconds to string D-HH:MM:SS
-+ **[days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds)** ! converts strings like "D-HH:MM:SS" or "4 days 2 hrs" to seconds 
++ **[days2sec](https://urbanjost.github.io/M_time/days2sec.3m_time.html)(str) result (seconds)** ! converts strings like "D-HH:MM:SS" or "4 days 2 hrs" to seconds
 ### Month Name
 + **[mo2v](https://urbanjost.github.io/M_time/mo2v.3m_time.html)(month_name) result (MONTH_NUMBER)** ! given month name return month number
 + **[v2mo](https://urbanjost.github.io/M_time/v2mo.3m_time.html)(month_number) result (MONTH_NAME)** ! given month number return month name
@@ -123,7 +123,7 @@ the built-in help text for the formatting options is as simple as
 ```
 ```text
      Description                                        Example
-     
+
      Base time array:
       (1) %Y -- year, yyyy                                2022
       (2) %M -- month of year, 01 to 12                   10
@@ -158,11 +158,11 @@ the built-in help text for the formatting options is as simple as
           %P -- percent of way from new to full moon      -30%
       Literals:
           %% -- a literal %                               %
-          %t -- tab character                             	
+          %t -- tab character
           %b -- blank character
           %B -- exclamation(bang) character               !
-          %n -- new line (system dependent)               
-  
+          %n -- new line (system dependent)
+
           %q -- single quote (apostrophe)                 '
           %Q -- double quote                              "
       Program timing:
@@ -174,7 +174,7 @@ the built-in help text for the formatting options is as simple as
 ```
    If no percent (%) is found in the format one of several
    alternate substitutions occurs.
-   
+
    If the format is composed entirely of one of the following
    keywords the following substitutions occur:
 ```text
@@ -273,7 +273,7 @@ directory and run make(1):
 ```text
      git clone https://github.com/urbanjost/M_time.git
      cd M_time/src
-     
+
      make clean
      # change Makefile if not using one of the listed compilers
      # COMPILER_NAME={ifort, nvfortran, or gfortran}
