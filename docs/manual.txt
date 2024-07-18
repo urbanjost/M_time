@@ -83,7 +83,7 @@ LICENSE
 
 
 
-				 July 16, 2024		  month.1.man(1m_time)
+				 July 18, 2024		  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -141,7 +141,7 @@ LICENSE
 
 
 
-				 July 16, 2024		  today.1.man(1m_time)
+				 July 18, 2024		  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -209,7 +209,7 @@ LICENSE
 
 
 
-				 July 16, 2024	       sec2days.1.man(1m_time)
+				 July 18, 2024	       sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -292,7 +292,7 @@ LICENSE
 
 
 
-				 July 16, 2024	       days2sec.1.man(1m_time)
+				 July 18, 2024	       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -349,7 +349,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  d2j(3m_time)
+				 July 18, 2024			  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -409,7 +409,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  d2u(3m_time)
+				 July 18, 2024			  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -548,7 +548,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  d2w(3m_time)
+				 July 18, 2024			  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -559,12 +559,13 @@ NAME
 
 
 SYNOPSIS
-  subroutine dow(values, weekday, day, ierr)
+  subroutine dow(values, weekday, day, ierr, short)
 
       integer,intent(in) :: values(8)
       integer,intent(out),optional :: weekday
       character(len=*),intent(out),optional :: day
       integer,intent(out),optional :: ierr
+      logical,intent(in),optional :: short
 
 
 DESCRIPTION
@@ -628,7 +629,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  dow(3m_time)
+				 July 18, 2024			  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -702,7 +703,7 @@ EXAMPLE
 
 
 
-				 July 16, 2024		       easter(3m_time)
+				 July 18, 2024		       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -763,7 +764,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		      fmtdate(3m_time)
+				 July 18, 2024		      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -953,7 +954,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		fmtdate_usage(3m_time)
+				 July 18, 2024		fmtdate_usage(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -1021,7 +1022,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		moon_fullness(3m_time)
+				 July 18, 2024		moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1079,7 +1080,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  now(3m_time)
+				 July 18, 2024			  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1147,7 +1148,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  o2d(3m_time)
+				 July 18, 2024			  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1190,7 +1191,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024	      ordinal_seconds(3m_time)
+				 July 18, 2024	      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1249,7 +1250,7 @@ EXAMPLE
 
 
 
-				 July 16, 2024	      ordinal_to_date(3m_time)
+				 July 18, 2024	      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1334,7 +1335,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		phase_of_moon(3m_time)
+				 July 18, 2024		phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1416,7 +1417,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		     sec2days(3m_time)
+				 July 18, 2024		     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1486,7 +1487,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		 system_sleep(3m_time)
+				 July 18, 2024		 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1556,7 +1557,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  u2d(3m_time)
+				 July 18, 2024			  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1633,7 +1634,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		 unix_to_date(3m_time)
+				 July 18, 2024		 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1644,10 +1645,11 @@ NAME
 
 
 SYNOPSIS
-  function v2mo(imonth) result(month_name)
+  function v2mo(imonth,short) result(month_name)
 
       integer,intent(in)	   :: imonth	  ! month number (1-12)
       character(len=:),allocatable :: month_name  ! month name
+      logical,intent(in),optional  :: short
 
 
 DESCRIPTION
@@ -1658,6 +1660,9 @@ OPTIONS
   imonth
     Common month number (1-12). If out of the allowable range the month name
     returned will be 'UNKNOWN'.
+
+  short
+    Flag whether to return short or long name
 
 RETURNS
   month_name
@@ -1695,7 +1700,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			 v2mo(3m_time)
+				 July 18, 2024			 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1917,7 +1922,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  w2d(3m_time)
+				 July 18, 2024			  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -2008,7 +2013,7 @@ EXAMPLE
 
 LICENSE
    MIT
-				 July 16, 2024		    guessdate(3m_time)
+				 July 18, 2024		    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -2071,7 +2076,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  j2d(3m_time)
+				 July 18, 2024			  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2148,7 +2153,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024	       julian_to_date(3m_time)
+				 July 18, 2024	       julian_to_date(3m_time)
 untitled()							    untitled()
 
 
@@ -2633,7 +2638,7 @@ untitled()							    untitled()
 
 
 
-				 July 16, 2024			    untitled()
+				 July 18, 2024			    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -3040,7 +3045,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		  M_time__oop(3m_time)
+				 July 18, 2024		  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3098,7 +3103,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			 mo2d(3m_time)
+				 July 18, 2024			 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -3122,8 +3127,7 @@ DESCRIPTION
 
 OPTIONS
   month_name
-    name or abbreviation of month. Case is ignored Once enough characters are
-    found to uniquely identify a month the rest of the name is ignored.
+    name or abbreviation of month. Case is ignored.
 
 RETURNS
   imonth
@@ -3137,7 +3141,6 @@ EXAMPLE
       implicit none
 	 write(*,*)mo2v("April")
 	 write(*,*)mo2v('Apr')
-	 ! NOTE: still matches September, as "SE" was enough
 	 write(*,*)mo2v('sexember')
 	 write(*,*)mo2v('unknown')  ! returns -1
       end program demo_mo2v
@@ -3146,7 +3149,7 @@ EXAMPLE
 
 	>  4
 	>  4
-	>  9
+	> -1
 	> -1
 
 
@@ -3155,7 +3158,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			 mo2v(3m_time)
+				 July 18, 2024			 mo2v(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3225,7 +3228,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024	       date_to_julian(3m_time)
+				 July 18, 2024	       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3290,7 +3293,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		 date_to_unix(3m_time)
+				 July 18, 2024		 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3395,7 +3398,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		     days2sec(3m_time)
+				 July 18, 2024		     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3473,7 +3476,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024			  d2o(3m_time)
+				 July 18, 2024			  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3536,4 +3539,4 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 16, 2024		    box_month(3m_time)
+				 July 18, 2024		    box_month(3m_time)

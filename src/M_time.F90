@@ -45,9 +45,9 @@ private
    public sec2days       !(seconds) result(dhms)              ! converts seconds to string D-HH:MM:SS
    public days2sec       !(str) result(seconds)               ! converts string D-HH:MM:SS to seconds from small to large
 ! MONTH NAME
-   public mo2v           !(month_name) result(MONTH_NUMBER)   ! given month name return month number
-   public v2mo           !(month_number) result(MONTH_NAME)   ! given month number return month name
-   public mo2d           !(month_name,year) result(DAT)       ! given month name and year return date array for 1st day of month
+   public mo2v           !(month_name) result(MONTH_NUMBER)       ! given month name return month number
+   public v2mo           !(month_number,short) result(MONTH_NAME) ! given month number return month name
+   public mo2d           !(month_name,year) result(DAT)           ! given month name and year return date array for 1st day of month
 ! ASTROLOGICAL
    public easter         !(year,dat)                          ! calculate month and day Easter falls on for given year
    public moon_fullness  !(dat) result(FULLNESS)              ! percentage of moon phase from new to full
@@ -77,6 +77,18 @@ real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours i
 real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),parameter   :: gen='(*(g0,1x))'
+!-----------------------------------------------------------------------------------------------------------------------------------
+character(len=:),save,allocatable :: M_time_weekday_names(:)
+character(len=:),save,allocatable :: M_time_month_names(:)
+character(len=:),save,allocatable :: M_time_weekday_names_abbr(:)
+character(len=:),save,allocatable :: M_time_month_names_abbr(:)
+!-----------------------------------------------------------------------------------------------------------------------------------
+character(len=*),parameter   :: G_month_names(12)=[                               &
+   &'January  ', 'February ', 'March    ', 'April    ', 'May      ', 'June     ', &
+   &'July     ', 'August   ', 'September', 'October  ', 'November ', 'December ']
+character(len=3),parameter   :: G_month_names_abbr(12)=G_month_names(:)(1:3)
+character(len=*),parameter   :: G_weekday_names(7)=[character(len=9) :: &
+   & 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ]
 !-----------------------------------------------------------------------------------------------------------------------------------
 interface w2d
    module procedure w2d_numeric
@@ -848,10 +860,11 @@ end function o2d
 !!
 !!##SYNOPSIS
 !!
-!!    function v2mo(imonth) result(month_name)
+!!    function v2mo(imonth,short) result(month_name)
 !!
 !!     integer,intent(in)           :: imonth      ! month number (1-12)
 !!     character(len=:),allocatable :: month_name  ! month name
+!!     logical,intent(in),optional  :: short
 !!
 !!##DESCRIPTION
 !!   Given a Common Calendar month number, return the name of the month
@@ -860,6 +873,7 @@ end function o2d
 !!##OPTIONS
 !!    imonth      Common month number (1-12). If out of the allowable range
 !!                the month name returned will be 'UNKNOWN'.
+!!    short       Flag whether to return short or long name
 !!##RETURNS
 !!    month_name  A string representing a month name or the word 'UNKNOWN'
 !!
@@ -895,21 +909,57 @@ end function o2d
 !!
 !!##LICENSE
 !!    MIT
-function v2mo(imonth) result(month_name)
+function v2mo(imonth,short) result(month_name)
 
 ! ident_10="@(#) M_time v2mo(3f) returns the month name of a Common month number"
 
 ! JSU 2015-12-13
 character(len=:),allocatable :: month_name                                        ! string containing month name or abbreviation.
 integer,intent(in)           :: imonth                                            ! the number of the month(1-12)
-character(len=*),parameter   :: names(12)=[                                    &
-   &'January  ', 'February ', 'March    ', 'April    ', 'May      ', 'June     ', &
-   &'July     ', 'August   ', 'September', 'October  ', 'November ', 'December ']
+logical,intent(in),optional  :: short
+logical                      :: short_
 
-   select case(imonth)
-   case (1:12);        month_name=trim(names(imonth))
-   case default;       month_name='UNKNOWN'
-   end select
+   if(present(short))then
+      short_=short
+   else
+      short_=.false.
+   endif
+
+   if(short_)then ! short names
+      if(allocated(M_time_month_names_abbr))then                                          ! user user-specified month names
+         if(size(M_time_month_names_abbr).ne.12)then
+            write(stderr,gen) '<ERROR>*v2mo*: month name abbr. count not 12:',size(M_time_month_names_abbr)
+            month_name='UNKNOWN'
+         else
+            select case(imonth)
+            case (1:12);     month_name=trim(M_time_month_names_abbr(imonth))
+            case default;    month_name='UNKNOWN'
+            end select
+         endif
+      else
+         select case(imonth)
+         case (1:12);        month_name=trim(G_month_names(imonth)(1:3))
+         case default;       month_name='UNKNOWN'
+         end select
+      endif
+   else  ! long names
+      if(allocated(M_time_month_names))then                                          ! user user-specified month names
+         if(size(M_time_month_names).ne.12)then
+            write(stderr,gen) '<ERROR>*v2mo*: month name count not 12:',size(M_time_month_names)
+            month_name='UNKNOWN'
+         else
+            select case(imonth)
+            case (1:12);     month_name=trim(M_time_month_names(imonth))
+            case default;    month_name='UNKNOWN'
+            end select
+         endif
+      else
+         select case(imonth)
+         case (1:12);        month_name=trim(G_month_names(imonth))
+         case default;       month_name='UNKNOWN'
+         end select
+      endif
+   endif
 
 end function v2mo
 !===================================================================================================================================
@@ -1008,9 +1058,7 @@ end function mo2d
 !!   12 for December.
 !!
 !!##OPTIONS
-!!    month_name  name or abbreviation of month. Case is ignored
-!!                Once enough characters are found to uniquely identify a
-!!                month the rest of the name is ignored.
+!!    month_name  name or abbreviation of month. Case is ignored.
 !!##RETURNS
 !!    imonth      month number returned. If the name is not recognized a -1
 !!                is returned.
@@ -1024,7 +1072,6 @@ end function mo2d
 !!     implicit none
 !!        write(*,*)mo2v("April")
 !!        write(*,*)mo2v('Apr')
-!!        ! NOTE: still matches September, as "SE" was enough
 !!        write(*,*)mo2v('sexember')
 !!        write(*,*)mo2v('unknown')  ! returns -1
 !!     end program demo_mo2v
@@ -1033,7 +1080,7 @@ end function mo2d
 !!
 !!       >  4
 !!       >  4
-!!       >  9
+!!       > -1
 !!       > -1
 !!
 !!##AUTHOR
@@ -1041,38 +1088,33 @@ end function mo2d
 !!
 !!##LICENSE
 !!    MIT
-elemental function mo2v(month_name) result(imonth)
+elemental impure function mo2v(month_name) result(imonth)
 
 ! ident_12="@(#) M_time mo2v(3f) given month name return month number (1-12) of that month"
 
 ! JSU 2015-12-13
-character(len=*),intent(in):: month_name   ! string containing month name or abbreviation.
-integer                    :: imonth       ! the number of the month(1-12), or -1 if the name could not be recognized.
-character(len=3)           :: string
-  string = upper(month_name)     ! Case is ignored; test string now guaranteed to have three characters
+character(len=*),intent(in)  :: month_name   ! string containing month name or abbreviation.
+integer                      :: imonth       ! the number of the month(1-12), or -1 if the name could not be recognized.
+character(len=:),allocatable :: months(:)
+character(len=:),allocatable :: upper_months(:)
+character(len=:),allocatable :: upper_month_name
+  upper_month_name = upper(month_name)     ! Case is ignored; test string now guaranteed to have three characters
   imonth = 0
-  FIND: select case(string(1:1)) ! The month name has to match up to the unique beginning of a month name, and the rest is ignored.
-  case('F'); imonth=2      ! February
-  case('S'); imonth=9      ! September
-  case('O'); imonth=10     ! October
-  case('N'); imonth=11     ! November
-  case('D'); imonth=12     ! December
-  case default
-     select case(string(1:2))
-     case('JA'); imonth=1    ! JAnuary
-     case('AP'); imonth=4    ! APril
-     case('AU'); imonth=8    ! AUgust
-     case default
-        select case(string(1:3))
-        case('MAR'); imonth=3 ! MARch
-        case('MAY'); imonth=5 ! MAY
-        case('JUN'); imonth=6 ! JUNe
-        case('JUL'); imonth=7 ! JULy
-        case default
-           imonth=-1
-        end select
-     end select
-  end select FIND
+  if(allocated(M_time_month_names))then
+     upper_months=upper(M_time_month_names)
+  else
+     upper_months=upper(G_month_names)
+  endif
+  if(size(upper_months).ne.12)then
+     write(stderr,gen) '<ERROR>*mo2v*: month name count not 12:',size(upper_months)
+     months=['UNKNOWN']
+  else
+     months=pack(upper_months//'',upper_month_name.eq.upper_months(:)(:len_trim(upper_month_name))) ! concatenate for gfortran bug
+     if(size(months).gt.1)months=pack(months//'',upper_month_name.eq.months)
+     if(size(months).eq.0)months=['UNKNOWN']
+  endif
+  imonth=findloc(upper_months//'', months(1)//'',dim=1) ! concatenation avoids gfortran bug
+  if(imonth.eq.0)imonth=-1
 end function mo2v
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
@@ -1217,7 +1259,7 @@ integer,parameter                    :: longest=4096
 character(len=1)                     :: chara     ! character being looked at in format string
 character(len=10)                    :: iso_name
 character(len=2)                     :: dayend
-character(len=9)                     :: day       ! day of week
+character(len=:),allocatable         :: day       ! day of week
 character(len=:),allocatable         :: local_format
 character(len=longest)               :: text      ! character array
 character(len=longest)               :: xxxx
@@ -1240,6 +1282,12 @@ real(kind=realtime),save             :: unixtime_last
       local_format=format
    else
       local_format=' '
+   endif
+
+   if(allocated(M_time_weekday_names))then      ! day must be allocated, make sure long enough for user-define names
+      day=repeat(' ',len(M_time_weekday_names))
+   else
+      day=repeat(' ',len(G_weekday_names))
    endif
 
    select case(local_format)
@@ -1396,7 +1444,7 @@ real(kind=realtime),save             :: unixtime_last
          case('K'); call system_clock(count=systemclock,count_rate=countrate)  ! system clock count
                     write(text(iout:),'(I0)') systemclock
          !=====================================================================================
-         case('l'); write(text(iout:),'(A3)')v2mo(valloc(2))              ! three characters of the name of the month of the year
+         case('l'); write(text(iout:),'(A)')v2mo(valloc(2),short=.true.)  ! short name of the month of the year
          !=====================================================================================
          case('L'); write(text(iout:),'(A)')v2mo(valloc(2))               ! name of the month of the year
          !=====================================================================================
@@ -1450,8 +1498,12 @@ real(kind=realtime),save             :: unixtime_last
          case('W'); call dow(valloc,weekday,day,ierr)                     ! Return the name of the day of the week
                     write(text(iout:),'(a)')day
          !=====================================================================================
-         case('w'); call dow(valloc,weekday,day,ierr)                     ! Return the first three characters of the day of the week
-                    write(text(iout:),'(A3)')day(1:3)
+         case('w'); call dow(valloc,weekday,day,ierr)                     ! Return the first abbreviation of the day of the week
+                    if(allocated(M_time_weekday_names_abbr))then
+                       text(iout:)=M_time_weekday_names_abbr(weekday)
+                    else
+                       write(text(iout:),'(A)')G_weekday_names(weekday)(1:3)
+                    endif
          !=====================================================================================
          case('x'); write(text(iout:),'(I3.3)')valloc(8)                  ! the milliseconds of the second, in the range 0 to 999
          !=====================================================================================
@@ -2172,12 +2224,13 @@ end subroutine guessdate
 !!
 !!##SYNOPSIS
 !!
-!!    subroutine dow(values, weekday, day, ierr)
+!!    subroutine dow(values, weekday, day, ierr, short)
 !!
 !!     integer,intent(in) :: values(8)
 !!     integer,intent(out),optional :: weekday
 !!     character(len=*),intent(out),optional :: day
 !!     integer,intent(out),optional :: ierr
+!!     logical,intent(in),optional :: short
 !!
 !!##DESCRIPTION
 !!   Given a date array DAT
@@ -2235,7 +2288,7 @@ end subroutine guessdate
 !!
 !!##LICENSE
 !!    MIT
-subroutine dow(values, weekday, day, ierr)
+subroutine dow(values, weekday, day, ierr, short)
 
 ! ident_17="@(#) M_time dow(3f) Given DAT date-time array return the day of the week"
 
@@ -2243,9 +2296,11 @@ integer,intent(in)                    :: values(8) ! date and time array used to
 integer,intent(out),optional          :: weekday   ! The day of the week, 1 = Monday, 7 = Sunday
 character(len=*),intent(out),optional :: day       ! The name of the day of the week, e.g. 'Sunday'. Minimum length = 9
 integer,intent(out),optional          :: ierr      ! Error code,0=correct,-1=invalid input date,-2=neither day nor weekday specified
+logical,intent(in),optional           :: short
 real(kind=realtime)                   :: julian    ! the Julian Date for which the weekday is required,
 integer                               :: iweekday
 integer                               :: ierr_local
+logical                               :: short_
 
    call date_to_julian(values,julian,ierr_local)   ! need Julian Date to calculate day of week for first day of month
    ierr_local = 0
@@ -2264,16 +2319,46 @@ integer                               :: ierr_local
       iweekday = mod(iweekday+5,7)+1  ! change from Sunday=1 to Monday=1
 
       if(present(day)) then
-         select case(iweekday)
-         case(1)     ;day = 'Monday'
-         case(2)     ;day = 'Tuesday'
-         case(3)     ;day = 'Wednesday'
-         case(4)     ;day = 'Thursday'
-         case(5)     ;day = 'Friday'
-         case(6)     ;day = 'Saturday'
-         case(7)     ;day = 'Sunday'
-         case default;day = 'error'
-         end select
+         if(present(short))then
+            short_=short
+         else
+            short_=.false.
+         endif
+         if(short_)then
+            if(allocated(M_time_weekday_names_abbr))then
+               if(size(M_time_weekday_names_abbr).ne.7)then
+                  write(stderr,gen) '<ERROR>*dow*: weekday name abbr. count not 7:',size(M_time_weekday_names_abbr)
+                  day='error'
+               else
+                  select case(iweekday)
+                  case(1:7)   ;day = M_time_weekday_names_abbr(iweekday)
+                  case default;day = 'error'
+                  end select
+               endif
+            else
+               select case(iweekday)
+               case(1:7)   ;day = G_weekday_names(iweekday)(1:3)
+               case default;day = 'error'
+               end select
+            endif
+         else
+            if(allocated(M_time_weekday_names))then
+               if(size(M_time_weekday_names).ne.7)then
+                  write(stderr,gen) '<ERROR>*dow*: weekday name count not 7:',size(M_time_weekday_names)
+                  day='error'
+               else
+                  select case(iweekday)
+                  case(1:7)   ;day = M_time_weekday_names(iweekday)
+                  case default;day = 'error'
+                  end select
+               endif
+            else
+               select case(iweekday)
+               case(1:7)   ;day = G_weekday_names(iweekday)
+               case default;day = 'error'
+               end select
+            endif
+         endif
       endif
 
    endif
@@ -4034,7 +4119,6 @@ integer :: dat(8)
       stop 3
    endif
 end function getnow
-
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
