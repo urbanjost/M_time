@@ -16,6 +16,7 @@ append("fmtdate_usage.3m_time.html");
 append("guessdate.3m_time.html");
 append("j2d.3m_time.html");
 append("julian_to_date.3m_time.html");
+append("locale.3m_time.html");
 append("mo2d.3m_time.html");
 append("mo2v.3m_time.html");
 append("moon_fullness.3m_time.html");

@@ -4,7 +4,7 @@
 !-----------------------------------------------------------------------------------------------------------------------------------
 program display_date
 use M_kracken95, only : kracken, lget, retrev, sget, dget     ! command line parameter cracking module
-use M_time,    only : now,fmtdate_usage,fmtdate,days2sec,d2u,u2d,realtime,guessdate,j2d
+use M_time,    only : now,fmtdate_usage,fmtdate,days2sec,d2u,u2d,realtime,guessdate,j2d,locale
 use m_strings, only : string_to_values, isdigit, isspace, switch
 implicit none
 character(len=*),parameter     :: ident="@(#)now(1f): writes timestamp using specified syntax"
@@ -14,6 +14,7 @@ real(kind=realtime)            :: duration=0
 character(len=:),allocatable   :: output
 !character(len=1),allocatable   :: chars(:)
 integer                        :: ierr, inums
+   call locale('LANGUAGE')
 !- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    call kracken('now',' -help .F. -version .F. -dat -date -jed -uet -test .false. -delta')  ! crack command line
    call help_version(lget('now_version'))                                    ! display version number if --version is present
@@ -205,7 +206,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       2024-07-18 04:48:34 UTC-240>',&
+'@(#)COMPILED:       2024-07-19 20:06:44 UTC-240>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop

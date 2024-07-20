@@ -1,0 +1,1710 @@
+subroutine locale_deutsch()
+! LANG=deutsch
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "Mo","Di","Mi","Do","Fr","Sa","So"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "Jan","Feb","Mrz","Apr","Mai","Jun", &
+& "Jul","Aug","Sep","Okt","Nov","Dez" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "Januar","Februar","M rz","April","Mai","Juni", &
+& "Juli","August","September","Oktober","November","Dezember" ]
+ ! ASCII weekdays
+months(3)(2:2)=char(228)
+ ! ASCII weekdays_abbr
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_deutsch
+
+
+subroutine locale_slovak()
+! LANG=slovak
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "po","ut","st"," t","pi","so","ne"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "pondelok","utorok","streda"," tvrtok","piatok","sobota","nede a"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mar","apr","m j","j n", &
+& "j l","aug","sep","okt","nov","dec" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "janu r","febru r","marec","apr l","m j","j n", &
+& "j l","august","september","okt ber","november","december" ]
+weekdays(4)(1:1)=char(185)
+weekdays(7)(5:5)=char(181)
+months(1)(5:5)=char(225)
+months(2)(6:6)=char(225)
+months(4)(4:4)=char(237)
+months(5)(2:2)=char(225)
+months(6)(2:2)=char(250)
+months(7)(2:2)=char(250)
+months(10)(4:4)=char(243)
+weekdays_abbr(4)(1:1)=char(185)
+months_abbr(5)(2:2)=char(225)
+months_abbr(6)(2:2)=char(250)
+months_abbr(7)(2:2)=char(250)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_slovak
+
+
+subroutine locale_czech()
+! LANG=czech
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "po"," t","st"," t","p ","so","ne"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "pond l "," ter ","st eda"," tvrtek","p tek","sobota","ned le"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "led"," no","b e","dub","kv "," vn", &
+& " vc","srp","z  ","  j","lis","pro" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "leden"," nor","b ezen","duben","kv ten"," erven", &
+& " ervenec","srpen","z   ","  jen","listopad","prosinec" ]
+weekdays(1)(5:5)=char(236)
+weekdays(1)(7:7)=char(237)
+weekdays(2)(1:1)=char(250)
+weekdays(2)(5:5)=char(253)
+weekdays(3)(3:3)=char(248)
+weekdays(4)(1:1)=char(232)
+weekdays(5)(2:2)=char(225)
+weekdays(7)(4:4)=char(236)
+months(2)(1:1)=char(250)
+months(3)(2:2)=char(248)
+months(5)(3:3)=char(236)
+months(6)(1:1)=char(232)
+months(7)(1:1)=char(232)
+months(9)(2:2)=char(225)
+months(9)(3:3)=char(248)
+months(9)(4:4)=char(237)
+months(10)(1:1)=char(248)
+months(10)(2:2)=char(237)
+weekdays_abbr(2)(1:1)=char(250)
+weekdays_abbr(4)(1:1)=char(232)
+weekdays_abbr(5)(2:2)=char(225)
+months_abbr(2)(1:1)=char(250)
+months_abbr(3)(2:2)=char(248)
+months_abbr(5)(3:3)=char(236)
+months_abbr(6)(1:1)=char(232)
+months_abbr(7)(1:1)=char(232)
+months_abbr(9)(2:2)=char(225)
+months_abbr(9)(3:3)=char(248)
+months_abbr(10)(1:1)=char(248)
+months_abbr(10)(2:2)=char(237)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_czech
+
+subroutine locale_catalan()
+! LANG=catalan
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "dl.","dt.","dc.","dj.","dv.","ds.","dg."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "dilluns","dimarts","dimecres","dijous","divendres","dissabte","diumenge"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "gen.","febr.","mar ","abr.","maig","juny", &
+& "jul.","ag.","set.","oct.","nov.","des." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "gener","febrer","mar ","abril","maig","juny", &
+& "juliol","agost","setembre","octubre","novembre","desembre" ]
+ ! ASCII weekdays
+months(3)(4:4)=char(231)
+ ! ASCII weekdays_abbr
+months_abbr(3)(4:4)=char(231)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_catalan
+
+
+subroutine locale_spanish()
+! LANG=spanish
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "lu.","ma.","mi.","ju.","vi.","s .","do."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "lunes","martes","mi rcoles","jueves","viernes","s bado","domingo"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "ene.","feb.","mar.","abr.","may.","jun.", &
+& "jul.","ago.","sep.","oct.","nov.","dic." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "enero","febrero","marzo","abril","mayo","junio", &
+& "julio","agosto","septiembre","octubre","noviembre","diciembre" ]
+weekdays(3)(3:3)=char(233)
+weekdays(6)(2:2)=char(225)
+ ! ASCII months
+weekdays_abbr(6)(2:2)=char(225)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_spanish
+
+
+subroutine locale_russian()
+! LANG=russian
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "  ","  ","  ","  ","  ","  ","  "]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "           ","       ","     ","       ","       ","       ","           "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "   ","   ","   ","   ","   ","   ", &
+& "   ","   ","   ","   ","   ","   " ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "      ","       ","    ","      ","   ","    ", &
+& "    ","      ","        ","       ","      ","       " ]
+weekdays(1)(1:1)=char(223)
+weekdays(1)(2:2)=char(222)
+weekdays(1)(3:3)=char(221)
+weekdays(1)(4:4)=char(213)
+weekdays(1)(5:5)=char(212)
+weekdays(1)(6:6)=char(213)
+weekdays(1)(7:7)=char(219)
+weekdays(1)(8:8)=char(236)
+weekdays(1)(9:9)=char(221)
+weekdays(1)(10:10)=char(216)
+weekdays(1)(11:11)=char(218)
+weekdays(2)(1:1)=char(210)
+weekdays(2)(2:2)=char(226)
+weekdays(2)(3:3)=char(222)
+weekdays(2)(4:4)=char(224)
+weekdays(2)(5:5)=char(221)
+weekdays(2)(6:6)=char(216)
+weekdays(2)(7:7)=char(218)
+weekdays(3)(1:1)=char(225)
+weekdays(3)(2:2)=char(224)
+weekdays(3)(3:3)=char(213)
+weekdays(3)(4:4)=char(212)
+weekdays(3)(5:5)=char(208)
+weekdays(4)(1:1)=char(231)
+weekdays(4)(2:2)=char(213)
+weekdays(4)(3:3)=char(226)
+weekdays(4)(4:4)=char(210)
+weekdays(4)(5:5)=char(213)
+weekdays(4)(6:6)=char(224)
+weekdays(4)(7:7)=char(211)
+weekdays(5)(1:1)=char(223)
+weekdays(5)(2:2)=char(239)
+weekdays(5)(3:3)=char(226)
+weekdays(5)(4:4)=char(221)
+weekdays(5)(5:5)=char(216)
+weekdays(5)(6:6)=char(230)
+weekdays(5)(7:7)=char(208)
+weekdays(6)(1:1)=char(225)
+weekdays(6)(2:2)=char(227)
+weekdays(6)(3:3)=char(209)
+weekdays(6)(4:4)=char(209)
+weekdays(6)(5:5)=char(222)
+weekdays(6)(6:6)=char(226)
+weekdays(6)(7:7)=char(208)
+weekdays(7)(1:1)=char(210)
+weekdays(7)(2:2)=char(222)
+weekdays(7)(3:3)=char(225)
+weekdays(7)(4:4)=char(218)
+weekdays(7)(5:5)=char(224)
+weekdays(7)(6:6)=char(213)
+weekdays(7)(7:7)=char(225)
+weekdays(7)(8:8)=char(213)
+weekdays(7)(9:9)=char(221)
+weekdays(7)(10:10)=char(236)
+weekdays(7)(11:11)=char(213)
+months(1)(1:1)=char(207)
+months(1)(2:2)=char(221)
+months(1)(3:3)=char(210)
+months(1)(4:4)=char(208)
+months(1)(5:5)=char(224)
+months(1)(6:6)=char(236)
+months(2)(1:1)=char(196)
+months(2)(2:2)=char(213)
+months(2)(3:3)=char(210)
+months(2)(4:4)=char(224)
+months(2)(5:5)=char(208)
+months(2)(6:6)=char(219)
+months(2)(7:7)=char(236)
+months(3)(1:1)=char(188)
+months(3)(2:2)=char(208)
+months(3)(3:3)=char(224)
+months(3)(4:4)=char(226)
+months(4)(1:1)=char(176)
+months(4)(2:2)=char(223)
+months(4)(3:3)=char(224)
+months(4)(4:4)=char(213)
+months(4)(5:5)=char(219)
+months(4)(6:6)=char(236)
+months(5)(1:1)=char(188)
+months(5)(2:2)=char(208)
+months(5)(3:3)=char(217)
+months(6)(1:1)=char(184)
+months(6)(2:2)=char(238)
+months(6)(3:3)=char(221)
+months(6)(4:4)=char(236)
+months(7)(1:1)=char(184)
+months(7)(2:2)=char(238)
+months(7)(3:3)=char(219)
+months(7)(4:4)=char(236)
+months(8)(1:1)=char(176)
+months(8)(2:2)=char(210)
+months(8)(3:3)=char(211)
+months(8)(4:4)=char(227)
+months(8)(5:5)=char(225)
+months(8)(6:6)=char(226)
+months(9)(1:1)=char(193)
+months(9)(2:2)=char(213)
+months(9)(3:3)=char(221)
+months(9)(4:4)=char(226)
+months(9)(5:5)=char(239)
+months(9)(6:6)=char(209)
+months(9)(7:7)=char(224)
+months(9)(8:8)=char(236)
+months(10)(1:1)=char(190)
+months(10)(2:2)=char(218)
+months(10)(3:3)=char(226)
+months(10)(4:4)=char(239)
+months(10)(5:5)=char(209)
+months(10)(6:6)=char(224)
+months(10)(7:7)=char(236)
+months(11)(1:1)=char(189)
+months(11)(2:2)=char(222)
+months(11)(3:3)=char(239)
+months(11)(4:4)=char(209)
+months(11)(5:5)=char(224)
+months(11)(6:6)=char(236)
+months(12)(1:1)=char(180)
+months(12)(2:2)=char(213)
+months(12)(3:3)=char(218)
+months(12)(4:4)=char(208)
+months(12)(5:5)=char(209)
+months(12)(6:6)=char(224)
+months(12)(7:7)=char(236)
+weekdays_abbr(1)(1:1)=char(191)
+weekdays_abbr(1)(2:2)=char(221)
+weekdays_abbr(2)(1:1)=char(178)
+weekdays_abbr(2)(2:2)=char(226)
+weekdays_abbr(3)(1:1)=char(193)
+weekdays_abbr(3)(2:2)=char(224)
+weekdays_abbr(4)(1:1)=char(199)
+weekdays_abbr(4)(2:2)=char(226)
+weekdays_abbr(5)(1:1)=char(191)
+weekdays_abbr(5)(2:2)=char(226)
+weekdays_abbr(6)(1:1)=char(193)
+weekdays_abbr(6)(2:2)=char(209)
+weekdays_abbr(7)(1:1)=char(178)
+weekdays_abbr(7)(2:2)=char(225)
+months_abbr(1)(1:1)=char(239)
+months_abbr(1)(2:2)=char(221)
+months_abbr(1)(3:3)=char(210)
+months_abbr(2)(1:1)=char(228)
+months_abbr(2)(2:2)=char(213)
+months_abbr(2)(3:3)=char(210)
+months_abbr(3)(1:1)=char(220)
+months_abbr(3)(2:2)=char(208)
+months_abbr(3)(3:3)=char(224)
+months_abbr(4)(1:1)=char(208)
+months_abbr(4)(2:2)=char(223)
+months_abbr(4)(3:3)=char(224)
+months_abbr(5)(1:1)=char(220)
+months_abbr(5)(2:2)=char(208)
+months_abbr(5)(3:3)=char(217)
+months_abbr(6)(1:1)=char(216)
+months_abbr(6)(2:2)=char(238)
+months_abbr(6)(3:3)=char(221)
+months_abbr(7)(1:1)=char(216)
+months_abbr(7)(2:2)=char(238)
+months_abbr(7)(3:3)=char(219)
+months_abbr(8)(1:1)=char(208)
+months_abbr(8)(2:2)=char(210)
+months_abbr(8)(3:3)=char(211)
+months_abbr(9)(1:1)=char(225)
+months_abbr(9)(2:2)=char(213)
+months_abbr(9)(3:3)=char(221)
+months_abbr(10)(1:1)=char(222)
+months_abbr(10)(2:2)=char(218)
+months_abbr(10)(3:3)=char(226)
+months_abbr(11)(1:1)=char(221)
+months_abbr(11)(2:2)=char(222)
+months_abbr(11)(3:3)=char(239)
+months_abbr(12)(1:1)=char(212)
+months_abbr(12)(2:2)=char(213)
+months_abbr(12)(3:3)=char(218)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_russian
+
+
+subroutine locale_norwegian()
+! LANG=norwegian
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "man.","tir.","ons.","tor.","fre.","l r.","s n."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "mandag","tirsdag","onsdag","torsdag","fredag","l rdag","s ndag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mar","apr","mai","jun", &
+& "jul","aug","sep","okt","nov","des" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januar","februar","mars","april","mai","juni", &
+& "juli","august","september","oktober","november","desember" ]
+weekdays(6)(2:2)=char(248)
+weekdays(7)(2:2)=char(248)
+ ! ASCII months
+weekdays_abbr(6)(2:2)=char(248)
+weekdays_abbr(7)(2:2)=char(248)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_norwegian
+
+
+subroutine locale_bokmal()
+! LANG=bokmal
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "man.","tir.","ons.","tor.","fre.","l r.","s n."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "mandag","tirsdag","onsdag","torsdag","fredag","l rdag","s ndag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mar","apr","mai","jun", &
+& "jul","aug","sep","okt","nov","des" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januar","februar","mars","april","mai","juni", &
+& "juli","august","september","oktober","november","desember" ]
+
+weekdays(6)(2:2)=char(248)
+weekdays(7)(2:2)=char(248)
+ ! ASCII months
+weekdays_abbr(6)(2:2)=char(248)
+weekdays_abbr(7)(2:2)=char(248)
+ ! ASCII months_abbr
+
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+
+end subroutine locale_bokmal
+
+subroutine locale_dansk()
+! LANG=dansk
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "ma","ti","on","to","fr","l ","s "]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "mandag","tirsdag","onsdag","torsdag","fredag","l rdag","s ndag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mar","apr","maj","jun", &
+& "jul","aug","sep","okt","nov","dec" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januar","februar","marts","april","maj","juni", &
+& "juli","august","september","oktober","november","december" ]
+weekdays(6)(2:2)=char(248)
+weekdays(7)(2:2)=char(248)
+ ! ASCII months
+weekdays_abbr(6)(2:2)=char(248)
+weekdays_abbr(7)(2:2)=char(248)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_dansk
+
+
+subroutine locale_nynorsk()
+! LANG=nynorsk
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "m n","tys","ons","tor","fre","lau","s n"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "m ndag","tysdag","onsdag","torsdag","fredag","laurdag","s ndag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mar","apr","mai","jun", &
+& "jul","aug","sep","okt","nov","des" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januar","februar","mars","april","mai","juni", &
+& "juli","august","september","oktober","november","desember" ]
+weekdays(1)(2:2)=char(229)
+weekdays(7)(2:2)=char(248)
+ ! ASCII months
+weekdays_abbr(1)(2:2)=char(229)
+weekdays_abbr(7)(2:2)=char(248)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_nynorsk
+
+
+
+subroutine locale_swedish()
+! LANG=swedish
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "m n","tis","ons","tor","fre","l r","s n"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "m ndag","tisdag","onsdag","torsdag","fredag","l rdag","s ndag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mar","apr","maj","jun", &
+& "jul","aug","sep","okt","nov","dec" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januari","februari","mars","april","maj","juni", &
+& "juli","augusti","september","oktober","november","december" ]
+weekdays(1)(2:2)=char(229)
+weekdays(6)(2:2)=char(246)
+weekdays(7)(2:2)=char(246)
+ ! ASCII months
+weekdays_abbr(1)(2:2)=char(229)
+weekdays_abbr(6)(2:2)=char(246)
+weekdays_abbr(7)(2:2)=char(246)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_swedish
+
+
+subroutine locale_dutch()
+! LANG=dutch
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "ma","di","wo","do","vr","za","zo"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "maandag","dinsdag","woensdag","donderdag","vrijdag","zaterdag","zondag"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","feb","mrt","apr","mei","jun", &
+& "jul","aug","sep","okt","nov","dec" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januari","februari","maart","april","mei","juni", &
+& "juli","augustus","september","oktober","november","december" ]
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_dutch
+
+
+subroutine locale_finnish()
+! LANG=finnish
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "ma","ti","ke","to","pe","la","su"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "maanantai","tiistai","keskiviikko","torstai","perjantai","lauantai","sunnuntai"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "tammi","helmi","maalis","huhti","touko","kes ", &
+& "hein ","elo","syys","loka","marras","joulu" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "tammikuu","helmikuu","maaliskuu","huhtikuu","toukokuu","kes kuu", &
+& "hein kuu","elokuu","syyskuu","lokakuu","marraskuu","joulukuu" ]
+ ! ASCII weekdays
+months(6)(4:4)=char(228)
+months(7)(5:5)=char(228)
+ ! ASCII weekdays_abbr
+months_abbr(6)(4:4)=char(228)
+months_abbr(7)(5:5)=char(228)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_finnish
+
+
+subroutine locale_french()
+! LANG=french
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "lun.","mar.","mer.","jeu.","ven.","sam.","dim."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "lundi","mardi","mercredi","jeudi","vendredi","samedi","dimanche"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "janv.","f vr.","mars","avr.","mai","juin", &
+& "juil.","ao t","sept.","oct.","nov.","d c." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "janvier","f vrier","mars","avril","mai","juin", &
+& "juillet","ao t","septembre","octobre","novembre","d cembre" ]
+ ! ASCII weekdays
+months(2)(2:2)=char(233)
+months(8)(3:3)=char(251)
+months(12)(2:2)=char(233)
+ ! ASCII weekdays_abbr
+months_abbr(2)(2:2)=char(233)
+months_abbr(8)(3:3)=char(251)
+months_abbr(12)(2:2)=char(233)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_french
+
+
+subroutine locale_galego()
+! LANG=galego
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "Luns","Mar.","M r.","Xov.","Ven.","S b.","Dom."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "luns","martes","m rcores","xoves","venres","s bado","domingo"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "Xan.","Feb.","Mar.","Abr.","Maio","Xu o", &
+& "Xul.","Ago.","Set.","Out.","Nov.","Dec." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "Xaneiro","Febreiro","Marzo","Abril","Maio","Xu o", &
+& "Xullo","Agosto","Setembro","Outubro","Novembro","Decembro" ]
+weekdays(3)(2:2)=char(233)
+weekdays(6)(2:2)=char(225)
+months(6)(3:3)=char(241)
+weekdays_abbr(3)(2:2)=char(233)
+weekdays_abbr(6)(2:2)=char(225)
+months_abbr(6)(3:3)=char(241)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_galego
+
+subroutine locale_greek()
+! LANG=greek
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "   ","   ","   ","   ","   ","   ","   "]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "       ","     ","       ","      ","         ","       ","       "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "   ","   ","   ","   ","   ","    ", &
+& "    ","   ","   ","   ","   ","   " ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "          ","           ","       ","        ","     ","       ", &
+& "       ","         ","           ","         ","         ","          " ]
+weekdays(1)(1:1)=char(196)
+weekdays(1)(2:2)=char(229)
+weekdays(1)(3:3)=char(245)
+weekdays(1)(4:4)=char(244)
+weekdays(1)(5:5)=char(221)
+weekdays(1)(6:6)=char(241)
+weekdays(1)(7:7)=char(225)
+weekdays(2)(1:1)=char(212)
+weekdays(2)(2:2)=char(241)
+weekdays(2)(3:3)=char(223)
+weekdays(2)(4:4)=char(244)
+weekdays(2)(5:5)=char(231)
+weekdays(3)(1:1)=char(212)
+weekdays(3)(2:2)=char(229)
+weekdays(3)(3:3)=char(244)
+weekdays(3)(4:4)=char(220)
+weekdays(3)(5:5)=char(241)
+weekdays(3)(6:6)=char(244)
+weekdays(3)(7:7)=char(231)
+weekdays(4)(1:1)=char(208)
+weekdays(4)(2:2)=char(221)
+weekdays(4)(3:3)=char(236)
+weekdays(4)(4:4)=char(240)
+weekdays(4)(5:5)=char(244)
+weekdays(4)(6:6)=char(231)
+weekdays(5)(1:1)=char(208)
+weekdays(5)(2:2)=char(225)
+weekdays(5)(3:3)=char(241)
+weekdays(5)(4:4)=char(225)
+weekdays(5)(5:5)=char(243)
+weekdays(5)(6:6)=char(234)
+weekdays(5)(7:7)=char(229)
+weekdays(5)(8:8)=char(245)
+weekdays(5)(9:9)=char(222)
+weekdays(6)(1:1)=char(211)
+weekdays(6)(2:2)=char(220)
+weekdays(6)(3:3)=char(226)
+weekdays(6)(4:4)=char(226)
+weekdays(6)(5:5)=char(225)
+weekdays(6)(6:6)=char(244)
+weekdays(6)(7:7)=char(239)
+weekdays(7)(1:1)=char(202)
+weekdays(7)(2:2)=char(245)
+weekdays(7)(3:3)=char(241)
+weekdays(7)(4:4)=char(233)
+weekdays(7)(5:5)=char(225)
+weekdays(7)(6:6)=char(234)
+weekdays(7)(7:7)=char(222)
+months(1)(1:1)=char(201)
+months(1)(2:2)=char(225)
+months(1)(3:3)=char(237)
+months(1)(4:4)=char(239)
+months(1)(5:5)=char(245)
+months(1)(6:6)=char(220)
+months(1)(7:7)=char(241)
+months(1)(8:8)=char(233)
+months(1)(9:9)=char(239)
+months(1)(10:10)=char(242)
+months(2)(1:1)=char(214)
+months(2)(2:2)=char(229)
+months(2)(3:3)=char(226)
+months(2)(4:4)=char(241)
+months(2)(5:5)=char(239)
+months(2)(6:6)=char(245)
+months(2)(7:7)=char(220)
+months(2)(8:8)=char(241)
+months(2)(9:9)=char(233)
+months(2)(10:10)=char(239)
+months(2)(11:11)=char(242)
+months(3)(1:1)=char(204)
+months(3)(2:2)=char(220)
+months(3)(3:3)=char(241)
+months(3)(4:4)=char(244)
+months(3)(5:5)=char(233)
+months(3)(6:6)=char(239)
+months(3)(7:7)=char(242)
+months(4)(1:1)=char(193)
+months(4)(2:2)=char(240)
+months(4)(3:3)=char(241)
+months(4)(4:4)=char(223)
+months(4)(5:5)=char(235)
+months(4)(6:6)=char(233)
+months(4)(7:7)=char(239)
+months(4)(8:8)=char(242)
+months(5)(1:1)=char(204)
+months(5)(2:2)=char(220)
+months(5)(3:3)=char(233)
+months(5)(4:4)=char(239)
+months(5)(5:5)=char(242)
+months(6)(1:1)=char(201)
+months(6)(2:2)=char(239)
+months(6)(3:3)=char(253)
+months(6)(4:4)=char(237)
+months(6)(5:5)=char(233)
+months(6)(6:6)=char(239)
+months(6)(7:7)=char(242)
+months(7)(1:1)=char(201)
+months(7)(2:2)=char(239)
+months(7)(3:3)=char(253)
+months(7)(4:4)=char(235)
+months(7)(5:5)=char(233)
+months(7)(6:6)=char(239)
+months(7)(7:7)=char(242)
+months(8)(1:1)=char(193)
+months(8)(2:2)=char(253)
+months(8)(3:3)=char(227)
+months(8)(4:4)=char(239)
+months(8)(5:5)=char(245)
+months(8)(6:6)=char(243)
+months(8)(7:7)=char(244)
+months(8)(8:8)=char(239)
+months(8)(9:9)=char(242)
+months(9)(1:1)=char(211)
+months(9)(2:2)=char(229)
+months(9)(3:3)=char(240)
+months(9)(4:4)=char(244)
+months(9)(5:5)=char(221)
+months(9)(6:6)=char(236)
+months(9)(7:7)=char(226)
+months(9)(8:8)=char(241)
+months(9)(9:9)=char(233)
+months(9)(10:10)=char(239)
+months(9)(11:11)=char(242)
+months(10)(1:1)=char(207)
+months(10)(2:2)=char(234)
+months(10)(3:3)=char(244)
+months(10)(4:4)=char(254)
+months(10)(5:5)=char(226)
+months(10)(6:6)=char(241)
+months(10)(7:7)=char(233)
+months(10)(8:8)=char(239)
+months(10)(9:9)=char(242)
+months(11)(1:1)=char(205)
+months(11)(2:2)=char(239)
+months(11)(3:3)=char(221)
+months(11)(4:4)=char(236)
+months(11)(5:5)=char(226)
+months(11)(6:6)=char(241)
+months(11)(7:7)=char(233)
+months(11)(8:8)=char(239)
+months(11)(9:9)=char(242)
+months(12)(1:1)=char(196)
+months(12)(2:2)=char(229)
+months(12)(3:3)=char(234)
+months(12)(4:4)=char(221)
+months(12)(5:5)=char(236)
+months(12)(6:6)=char(226)
+months(12)(7:7)=char(241)
+months(12)(8:8)=char(233)
+months(12)(9:9)=char(239)
+months(12)(10:10)=char(242)
+weekdays_abbr(1)(1:1)=char(196)
+weekdays_abbr(1)(2:2)=char(229)
+weekdays_abbr(1)(3:3)=char(245)
+weekdays_abbr(2)(1:1)=char(212)
+weekdays_abbr(2)(2:2)=char(241)
+weekdays_abbr(2)(3:3)=char(233)
+weekdays_abbr(3)(1:1)=char(212)
+weekdays_abbr(3)(2:2)=char(229)
+weekdays_abbr(3)(3:3)=char(244)
+weekdays_abbr(4)(1:1)=char(208)
+weekdays_abbr(4)(2:2)=char(229)
+weekdays_abbr(4)(3:3)=char(236)
+weekdays_abbr(5)(1:1)=char(208)
+weekdays_abbr(5)(2:2)=char(225)
+weekdays_abbr(5)(3:3)=char(241)
+weekdays_abbr(6)(1:1)=char(211)
+weekdays_abbr(6)(2:2)=char(225)
+weekdays_abbr(6)(3:3)=char(226)
+weekdays_abbr(7)(1:1)=char(202)
+weekdays_abbr(7)(2:2)=char(245)
+weekdays_abbr(7)(3:3)=char(241)
+months_abbr(1)(1:1)=char(201)
+months_abbr(1)(2:2)=char(225)
+months_abbr(1)(3:3)=char(237)
+months_abbr(2)(1:1)=char(214)
+months_abbr(2)(2:2)=char(229)
+months_abbr(2)(3:3)=char(226)
+months_abbr(3)(1:1)=char(204)
+months_abbr(3)(2:2)=char(225)
+months_abbr(3)(3:3)=char(241)
+months_abbr(4)(1:1)=char(193)
+months_abbr(4)(2:2)=char(240)
+months_abbr(4)(3:3)=char(241)
+months_abbr(5)(1:1)=char(204)
+months_abbr(5)(2:2)=char(225)
+months_abbr(5)(3:3)=char(250)
+months_abbr(6)(1:1)=char(201)
+months_abbr(6)(2:2)=char(239)
+months_abbr(6)(3:3)=char(245)
+months_abbr(6)(4:4)=char(237)
+months_abbr(7)(1:1)=char(201)
+months_abbr(7)(2:2)=char(239)
+months_abbr(7)(3:3)=char(245)
+months_abbr(7)(4:4)=char(235)
+months_abbr(8)(1:1)=char(193)
+months_abbr(8)(2:2)=char(245)
+months_abbr(8)(3:3)=char(227)
+months_abbr(9)(1:1)=char(211)
+months_abbr(9)(2:2)=char(229)
+months_abbr(9)(3:3)=char(240)
+months_abbr(10)(1:1)=char(207)
+months_abbr(10)(2:2)=char(234)
+months_abbr(10)(3:3)=char(244)
+months_abbr(11)(1:1)=char(205)
+months_abbr(11)(2:2)=char(239)
+months_abbr(11)(3:3)=char(229)
+months_abbr(12)(1:1)=char(196)
+months_abbr(12)(2:2)=char(229)
+months_abbr(12)(3:3)=char(234)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_greek
+
+
+subroutine locale_hebrew()
+! LANG=hebrew
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "     ","     ","     ","     ","     ","   ","     "]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "       ","         ","         ","         ","        ","   ","         "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "   ","   ","   ","   ","   ","   ", &
+& "   ","   ","   ","   ","   ","   " ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "     ","      ","   ","     ","   ","    ", &
+& "    ","      ","      ","       ","      ","     " ]
+weekdays(1)(1:1)=char(233)
+weekdays(1)(2:2)=char(229)
+weekdays(1)(3:3)=char(237)
+weekdays(1)(4:4)=char(160)
+weekdays(1)(5:5)=char(249)
+weekdays(1)(6:6)=char(240)
+weekdays(1)(7:7)=char(233)
+weekdays(2)(1:1)=char(233)
+weekdays(2)(2:2)=char(229)
+weekdays(2)(3:3)=char(237)
+weekdays(2)(4:4)=char(160)
+weekdays(2)(5:5)=char(249)
+weekdays(2)(6:6)=char(236)
+weekdays(2)(7:7)=char(233)
+weekdays(2)(8:8)=char(249)
+weekdays(2)(9:9)=char(233)
+weekdays(3)(1:1)=char(233)
+weekdays(3)(2:2)=char(229)
+weekdays(3)(3:3)=char(237)
+weekdays(3)(4:4)=char(160)
+weekdays(3)(5:5)=char(248)
+weekdays(3)(6:6)=char(225)
+weekdays(3)(7:7)=char(233)
+weekdays(3)(8:8)=char(242)
+weekdays(3)(9:9)=char(233)
+weekdays(4)(1:1)=char(233)
+weekdays(4)(2:2)=char(229)
+weekdays(4)(3:3)=char(237)
+weekdays(4)(4:4)=char(160)
+weekdays(4)(5:5)=char(231)
+weekdays(4)(6:6)=char(238)
+weekdays(4)(7:7)=char(233)
+weekdays(4)(8:8)=char(249)
+weekdays(4)(9:9)=char(233)
+weekdays(5)(1:1)=char(233)
+weekdays(5)(2:2)=char(229)
+weekdays(5)(3:3)=char(237)
+weekdays(5)(4:4)=char(160)
+weekdays(5)(5:5)=char(249)
+weekdays(5)(6:6)=char(233)
+weekdays(5)(7:7)=char(249)
+weekdays(5)(8:8)=char(233)
+weekdays(6)(1:1)=char(249)
+weekdays(6)(2:2)=char(225)
+weekdays(6)(3:3)=char(250)
+weekdays(7)(1:1)=char(233)
+weekdays(7)(2:2)=char(229)
+weekdays(7)(3:3)=char(237)
+weekdays(7)(4:4)=char(160)
+weekdays(7)(5:5)=char(248)
+weekdays(7)(6:6)=char(224)
+weekdays(7)(7:7)=char(249)
+weekdays(7)(8:8)=char(229)
+weekdays(7)(9:9)=char(239)
+months(1)(1:1)=char(233)
+months(1)(2:2)=char(240)
+months(1)(3:3)=char(229)
+months(1)(4:4)=char(224)
+months(1)(5:5)=char(248)
+months(2)(1:1)=char(244)
+months(2)(2:2)=char(225)
+months(2)(3:3)=char(248)
+months(2)(4:4)=char(229)
+months(2)(5:5)=char(224)
+months(2)(6:6)=char(248)
+months(3)(1:1)=char(238)
+months(3)(2:2)=char(248)
+months(3)(3:3)=char(245)
+months(4)(1:1)=char(224)
+months(4)(2:2)=char(244)
+months(4)(3:3)=char(248)
+months(4)(4:4)=char(233)
+months(4)(5:5)=char(236)
+months(5)(1:1)=char(238)
+months(5)(2:2)=char(224)
+months(5)(3:3)=char(233)
+months(6)(1:1)=char(233)
+months(6)(2:2)=char(229)
+months(6)(3:3)=char(240)
+months(6)(4:4)=char(233)
+months(7)(1:1)=char(233)
+months(7)(2:2)=char(229)
+months(7)(3:3)=char(236)
+months(7)(4:4)=char(233)
+months(8)(1:1)=char(224)
+months(8)(2:2)=char(229)
+months(8)(3:3)=char(226)
+months(8)(4:4)=char(229)
+months(8)(5:5)=char(241)
+months(8)(6:6)=char(232)
+months(9)(1:1)=char(241)
+months(9)(2:2)=char(244)
+months(9)(3:3)=char(232)
+months(9)(4:4)=char(238)
+months(9)(5:5)=char(225)
+months(9)(6:6)=char(248)
+months(10)(1:1)=char(224)
+months(10)(2:2)=char(229)
+months(10)(3:3)=char(247)
+months(10)(4:4)=char(232)
+months(10)(5:5)=char(229)
+months(10)(6:6)=char(225)
+months(10)(7:7)=char(248)
+months(11)(1:1)=char(240)
+months(11)(2:2)=char(229)
+months(11)(3:3)=char(225)
+months(11)(4:4)=char(238)
+months(11)(5:5)=char(225)
+months(11)(6:6)=char(248)
+months(12)(1:1)=char(227)
+months(12)(2:2)=char(246)
+months(12)(3:3)=char(238)
+months(12)(4:4)=char(225)
+months(12)(5:5)=char(248)
+weekdays_abbr(1)(1:1)=char(233)
+weekdays_abbr(1)(2:2)=char(229)
+weekdays_abbr(1)(3:3)=char(237)
+weekdays_abbr(1)(4:4)=char(160)
+weekdays_abbr(1)(5:5)=char(225)
+weekdays_abbr(2)(1:1)=char(233)
+weekdays_abbr(2)(2:2)=char(229)
+weekdays_abbr(2)(3:3)=char(237)
+weekdays_abbr(2)(4:4)=char(160)
+weekdays_abbr(2)(5:5)=char(226)
+weekdays_abbr(3)(1:1)=char(233)
+weekdays_abbr(3)(2:2)=char(229)
+weekdays_abbr(3)(3:3)=char(237)
+weekdays_abbr(3)(4:4)=char(160)
+weekdays_abbr(3)(5:5)=char(227)
+weekdays_abbr(4)(1:1)=char(233)
+weekdays_abbr(4)(2:2)=char(229)
+weekdays_abbr(4)(3:3)=char(237)
+weekdays_abbr(4)(4:4)=char(160)
+weekdays_abbr(4)(5:5)=char(228)
+weekdays_abbr(5)(1:1)=char(233)
+weekdays_abbr(5)(2:2)=char(229)
+weekdays_abbr(5)(3:3)=char(237)
+weekdays_abbr(5)(4:4)=char(160)
+weekdays_abbr(5)(5:5)=char(229)
+weekdays_abbr(6)(1:1)=char(249)
+weekdays_abbr(6)(2:2)=char(225)
+weekdays_abbr(6)(3:3)=char(250)
+weekdays_abbr(7)(1:1)=char(233)
+weekdays_abbr(7)(2:2)=char(229)
+weekdays_abbr(7)(3:3)=char(237)
+weekdays_abbr(7)(4:4)=char(160)
+weekdays_abbr(7)(5:5)=char(224)
+months_abbr(1)(1:1)=char(233)
+months_abbr(1)(2:2)=char(240)
+months_abbr(1)(3:3)=char(229)
+months_abbr(2)(1:1)=char(244)
+months_abbr(2)(2:2)=char(225)
+months_abbr(2)(3:3)=char(248)
+months_abbr(3)(1:1)=char(238)
+months_abbr(3)(2:2)=char(248)
+months_abbr(3)(3:3)=char(245)
+months_abbr(4)(1:1)=char(224)
+months_abbr(4)(2:2)=char(244)
+months_abbr(4)(3:3)=char(248)
+months_abbr(5)(1:1)=char(238)
+months_abbr(5)(2:2)=char(224)
+months_abbr(5)(3:3)=char(233)
+months_abbr(6)(1:1)=char(233)
+months_abbr(6)(2:2)=char(229)
+months_abbr(6)(3:3)=char(240)
+months_abbr(7)(1:1)=char(233)
+months_abbr(7)(2:2)=char(229)
+months_abbr(7)(3:3)=char(236)
+months_abbr(8)(1:1)=char(224)
+months_abbr(8)(2:2)=char(229)
+months_abbr(8)(3:3)=char(226)
+months_abbr(9)(1:1)=char(241)
+months_abbr(9)(2:2)=char(244)
+months_abbr(9)(3:3)=char(232)
+months_abbr(10)(1:1)=char(224)
+months_abbr(10)(2:2)=char(229)
+months_abbr(10)(3:3)=char(247)
+months_abbr(11)(1:1)=char(240)
+months_abbr(11)(2:2)=char(229)
+months_abbr(11)(3:3)=char(225)
+months_abbr(12)(1:1)=char(227)
+months_abbr(12)(2:2)=char(246)
+months_abbr(12)(3:3)=char(238)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_hebrew
+
+
+subroutine locale_hrvatski()
+! LANG=hrvatski
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "pon","uto","sri"," et","pet","sub","ned"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "ponedjeljak","utorak","srijeda"," etvrtak","petak","subota","nedjelja"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "sij","vlj","o u","tra","svi","lip", &
+& "srp","kol","ruj","lis","stu","pro" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "sije anj","velja a","o ujak","travanj","svibanj","lipanj", &
+& "srpanj","kolovoz","rujan","listopad","studeni","prosinac" ]
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+weekdays(4)(1:1)=char(232)
+months(1)(5:5)=char(232)
+months(2)(6:6)=char(232)
+months(3)(2:2)=char(190)
+weekdays_abbr(4)(1:1)=char(232)
+months_abbr(3)(2:2)=char(190)
+
+end subroutine locale_hrvatski
+
+
+subroutine locale_hungarian()
+! LANG=hungarian
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "H","K","Sze","Cs","P","Szo","V"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "h tf ","kedd","szerda","cs t rt k","p ntek","szombat","vas rnap"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan.","febr.","m rc."," pr.","m j.","j n.", &
+& "j l.","aug.","szept.","okt.","nov.","dec." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "janu r","febru r","m rcius"," prilis","m jus","j nius", &
+& "j lius","augusztus","szeptember","okt ber","november","december" ]
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+weekdays(1)(2:2)=char(233)
+weekdays(1)(5:5)=char(245)
+weekdays(4)(3:3)=char(252)
+weekdays(4)(5:5)=char(246)
+weekdays(4)(8:8)=char(246)
+weekdays(5)(2:2)=char(233)
+weekdays(7)(4:4)=char(225)
+months(1)(5:5)=char(225)
+months(2)(6:6)=char(225)
+months(3)(2:2)=char(225)
+months(4)(1:1)=char(225)
+months(5)(2:2)=char(225)
+months(6)(2:2)=char(250)
+months(7)(2:2)=char(250)
+months(10)(4:4)=char(243)
+ ! ASCII weekdays_abbr
+months_abbr(3)(2:2)=char(225)
+months_abbr(4)(1:1)=char(225)
+months_abbr(5)(2:2)=char(225)
+months_abbr(6)(2:2)=char(250)
+months_abbr(7)(2:2)=char(250)
+end subroutine locale_hungarian
+
+
+subroutine locale_icelandic()
+! LANG=icelandic
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "m n."," ri.","mi .","fim.","f s.","lau.","sun."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "m nudagur"," ri judagur","mi vikudagur","fimmtudagur","f studagur","laugardagur","sunnudagur"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan.","feb.","mar.","apr.","ma ","j n.", &
+& "j l."," g .","sep.","okt.","n v.","des." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "jan ar","febr ar","mars","apr l","ma ","j n ", &
+& "j l "," g st","september","okt ber","n vember","desember" ]
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+weekdays(1)(2:2)=char(225)
+weekdays(2)(1:1)=char(254)
+weekdays(2)(4:4)=char(240)
+weekdays(3)(3:3)=char(240)
+weekdays(5)(2:2)=char(246)
+months(1)(4:4)=char(250)
+months(2)(5:5)=char(250)
+months(4)(4:4)=char(237)
+months(5)(3:3)=char(237)
+months(6)(2:2)=char(250)
+months(6)(4:4)=char(237)
+months(7)(2:2)=char(250)
+months(7)(4:4)=char(237)
+months(8)(1:1)=char(225)
+months(8)(3:3)=char(250)
+months(10)(4:4)=char(243)
+months(11)(2:2)=char(243)
+weekdays_abbr(1)(2:2)=char(225)
+weekdays_abbr(2)(1:1)=char(254)
+weekdays_abbr(3)(3:3)=char(240)
+weekdays_abbr(5)(2:2)=char(246)
+months_abbr(5)(3:3)=char(237)
+months_abbr(6)(2:2)=char(250)
+months_abbr(7)(2:2)=char(250)
+months_abbr(8)(1:1)=char(225)
+months_abbr(8)(3:3)=char(250)
+months_abbr(11)(2:2)=char(243)
+end subroutine locale_icelandic
+
+
+subroutine locale_italian()
+! LANG=italian
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "lun","mar","mer","gio","ven","sab","dom"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "luned ","marted ","mercoled ","gioved ","venerd ","sabato","domenica"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "gen","feb","mar","apr","mag","giu", &
+& "lug","ago","set","ott","nov","dic" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "gennaio","febbraio","marzo","aprile","maggio","giugno", &
+& "luglio","agosto","settembre","ottobre","novembre","dicembre" ]
+weekdays(1)(6:6)=char(236)
+weekdays(2)(7:7)=char(236)
+weekdays(3)(9:9)=char(236)
+weekdays(4)(7:7)=char(236)
+weekdays(5)(7:7)=char(236)
+ ! ASCII months
+ ! ASCII weekdays_abbr
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_italian
+
+
+subroutine locale_japanese()
+! LANG=japanese
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "  ","  ","  ","  ","  ","  ","  "]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "      ","      ","      ","      ","      ","      ","      "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "1  ","2  ","3  ","4  ","5  ","6  ", &
+& "7  ","8  ","9  ","10  ","11  ","12  " ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "1  ","2  ","3  ","4  ","5  ","6  ", &
+& "7  ","8  ","9  ","10  ","11  ","12  " ]
+weekdays(1)(1:1)=char(183)
+weekdays(1)(2:2)=char(238)
+weekdays(1)(3:3)=char(205)
+weekdays(1)(4:4)=char(203)
+weekdays(1)(5:5)=char(198)
+weekdays(1)(6:6)=char(252)
+weekdays(2)(1:1)=char(178)
+weekdays(2)(2:2)=char(208)
+weekdays(2)(3:3)=char(205)
+weekdays(2)(4:4)=char(203)
+weekdays(2)(5:5)=char(198)
+weekdays(2)(6:6)=char(252)
+weekdays(3)(1:1)=char(191)
+weekdays(3)(2:2)=char(229)
+weekdays(3)(3:3)=char(205)
+weekdays(3)(4:4)=char(203)
+weekdays(3)(5:5)=char(198)
+weekdays(3)(6:6)=char(252)
+weekdays(4)(1:1)=char(204)
+weekdays(4)(2:2)=char(218)
+weekdays(4)(3:3)=char(205)
+weekdays(4)(4:4)=char(203)
+weekdays(4)(5:5)=char(198)
+weekdays(4)(6:6)=char(252)
+weekdays(5)(1:1)=char(182)
+weekdays(5)(2:2)=char(226)
+weekdays(5)(3:3)=char(205)
+weekdays(5)(4:4)=char(203)
+weekdays(5)(5:5)=char(198)
+weekdays(5)(6:6)=char(252)
+weekdays(6)(1:1)=char(197)
+weekdays(6)(2:2)=char(218)
+weekdays(6)(3:3)=char(205)
+weekdays(6)(4:4)=char(203)
+weekdays(6)(5:5)=char(198)
+weekdays(6)(6:6)=char(252)
+weekdays(7)(1:1)=char(198)
+weekdays(7)(2:2)=char(252)
+weekdays(7)(3:3)=char(205)
+weekdays(7)(4:4)=char(203)
+weekdays(7)(5:5)=char(198)
+weekdays(7)(6:6)=char(252)
+months(1)(2:2)=char(183)
+months(1)(3:3)=char(238)
+months(2)(2:2)=char(183)
+months(2)(3:3)=char(238)
+months(3)(2:2)=char(183)
+months(3)(3:3)=char(238)
+months(4)(2:2)=char(183)
+months(4)(3:3)=char(238)
+months(5)(2:2)=char(183)
+months(5)(3:3)=char(238)
+months(6)(2:2)=char(183)
+months(6)(3:3)=char(238)
+months(7)(2:2)=char(183)
+months(7)(3:3)=char(238)
+months(8)(2:2)=char(183)
+months(8)(3:3)=char(238)
+months(9)(2:2)=char(183)
+months(9)(3:3)=char(238)
+months(10)(3:3)=char(183)
+months(10)(4:4)=char(238)
+months(11)(3:3)=char(183)
+months(11)(4:4)=char(238)
+months(12)(3:3)=char(183)
+months(12)(4:4)=char(238)
+weekdays_abbr(1)(1:1)=char(183)
+weekdays_abbr(1)(2:2)=char(238)
+weekdays_abbr(2)(1:1)=char(178)
+weekdays_abbr(2)(2:2)=char(208)
+weekdays_abbr(3)(1:1)=char(191)
+weekdays_abbr(3)(2:2)=char(229)
+weekdays_abbr(4)(1:1)=char(204)
+weekdays_abbr(4)(2:2)=char(218)
+weekdays_abbr(5)(1:1)=char(182)
+weekdays_abbr(5)(2:2)=char(226)
+weekdays_abbr(6)(1:1)=char(197)
+weekdays_abbr(6)(2:2)=char(218)
+weekdays_abbr(7)(1:1)=char(198)
+weekdays_abbr(7)(2:2)=char(252)
+months_abbr(1)(2:2)=char(183)
+months_abbr(1)(3:3)=char(238)
+months_abbr(2)(2:2)=char(183)
+months_abbr(2)(3:3)=char(238)
+months_abbr(3)(2:2)=char(183)
+months_abbr(3)(3:3)=char(238)
+months_abbr(4)(2:2)=char(183)
+months_abbr(4)(3:3)=char(238)
+months_abbr(5)(2:2)=char(183)
+months_abbr(5)(3:3)=char(238)
+months_abbr(6)(2:2)=char(183)
+months_abbr(6)(3:3)=char(238)
+months_abbr(7)(2:2)=char(183)
+months_abbr(7)(3:3)=char(238)
+months_abbr(8)(2:2)=char(183)
+months_abbr(8)(3:3)=char(238)
+months_abbr(9)(2:2)=char(183)
+months_abbr(9)(3:3)=char(238)
+months_abbr(10)(3:3)=char(183)
+months_abbr(10)(4:4)=char(238)
+months_abbr(11)(3:3)=char(183)
+months_abbr(11)(4:4)=char(238)
+months_abbr(12)(3:3)=char(183)
+months_abbr(12)(4:4)=char(238)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_japanese
+
+
+subroutine locale_korean()
+! LANG=korean
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "  ","  ","  ","  ","  ","  ","  "]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "      ","      ","      ","      ","      ","      ","      "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "1  ","2  ","3  ","4  ","5  ","6  ", &
+& "7  ","8  ","9  ","10  ","11  ","12  " ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "1  ","2  ","3  ","4  ","5  ","6  ", &
+& "7  ","8  ","9  ","10  ","11  ","12  " ]
+weekdays(1)(1:1)=char(191)
+weekdays(1)(2:2)=char(249)
+weekdays(1)(3:3)=char(191)
+weekdays(1)(4:4)=char(228)
+weekdays(1)(5:5)=char(192)
+weekdays(1)(6:6)=char(207)
+weekdays(2)(1:1)=char(200)
+weekdays(2)(2:2)=char(173)
+weekdays(2)(3:3)=char(191)
+weekdays(2)(4:4)=char(228)
+weekdays(2)(5:5)=char(192)
+weekdays(2)(6:6)=char(207)
+weekdays(3)(1:1)=char(188)
+weekdays(3)(2:2)=char(246)
+weekdays(3)(3:3)=char(191)
+weekdays(3)(4:4)=char(228)
+weekdays(3)(5:5)=char(192)
+weekdays(3)(6:6)=char(207)
+weekdays(4)(1:1)=char(184)
+weekdays(4)(2:2)=char(241)
+weekdays(4)(3:3)=char(191)
+weekdays(4)(4:4)=char(228)
+weekdays(4)(5:5)=char(192)
+weekdays(4)(6:6)=char(207)
+weekdays(5)(1:1)=char(177)
+weekdays(5)(2:2)=char(221)
+weekdays(5)(3:3)=char(191)
+weekdays(5)(4:4)=char(228)
+weekdays(5)(5:5)=char(192)
+weekdays(5)(6:6)=char(207)
+weekdays(6)(1:1)=char(197)
+weekdays(6)(2:2)=char(228)
+weekdays(6)(3:3)=char(191)
+weekdays(6)(4:4)=char(228)
+weekdays(6)(5:5)=char(192)
+weekdays(6)(6:6)=char(207)
+weekdays(7)(1:1)=char(192)
+weekdays(7)(2:2)=char(207)
+weekdays(7)(3:3)=char(191)
+weekdays(7)(4:4)=char(228)
+weekdays(7)(5:5)=char(192)
+weekdays(7)(6:6)=char(207)
+months(1)(2:2)=char(191)
+months(1)(3:3)=char(249)
+months(2)(2:2)=char(191)
+months(2)(3:3)=char(249)
+months(3)(2:2)=char(191)
+months(3)(3:3)=char(249)
+months(4)(2:2)=char(191)
+months(4)(3:3)=char(249)
+months(5)(2:2)=char(191)
+months(5)(3:3)=char(249)
+months(6)(2:2)=char(191)
+months(6)(3:3)=char(249)
+months(7)(2:2)=char(191)
+months(7)(3:3)=char(249)
+months(8)(2:2)=char(191)
+months(8)(3:3)=char(249)
+months(9)(2:2)=char(191)
+months(9)(3:3)=char(249)
+months(10)(3:3)=char(191)
+months(10)(4:4)=char(249)
+months(11)(3:3)=char(191)
+months(11)(4:4)=char(249)
+months(12)(3:3)=char(191)
+months(12)(4:4)=char(249)
+weekdays_abbr(1)(1:1)=char(191)
+weekdays_abbr(1)(2:2)=char(249)
+weekdays_abbr(2)(1:1)=char(200)
+weekdays_abbr(2)(2:2)=char(173)
+weekdays_abbr(3)(1:1)=char(188)
+weekdays_abbr(3)(2:2)=char(246)
+weekdays_abbr(4)(1:1)=char(184)
+weekdays_abbr(4)(2:2)=char(241)
+weekdays_abbr(5)(1:1)=char(177)
+weekdays_abbr(5)(2:2)=char(221)
+weekdays_abbr(6)(1:1)=char(197)
+weekdays_abbr(6)(2:2)=char(228)
+weekdays_abbr(7)(1:1)=char(192)
+weekdays_abbr(7)(2:2)=char(207)
+months_abbr(1)(2:2)=char(191)
+months_abbr(1)(3:3)=char(249)
+months_abbr(2)(2:2)=char(191)
+months_abbr(2)(3:3)=char(249)
+months_abbr(3)(2:2)=char(191)
+months_abbr(3)(3:3)=char(249)
+months_abbr(4)(2:2)=char(191)
+months_abbr(4)(3:3)=char(249)
+months_abbr(5)(2:2)=char(191)
+months_abbr(5)(3:3)=char(249)
+months_abbr(6)(2:2)=char(191)
+months_abbr(6)(3:3)=char(249)
+months_abbr(7)(2:2)=char(191)
+months_abbr(7)(3:3)=char(249)
+months_abbr(8)(2:2)=char(191)
+months_abbr(8)(3:3)=char(249)
+months_abbr(9)(2:2)=char(191)
+months_abbr(9)(3:3)=char(249)
+months_abbr(10)(3:3)=char(191)
+months_abbr(10)(4:4)=char(249)
+months_abbr(11)(3:3)=char(191)
+months_abbr(11)(4:4)=char(249)
+months_abbr(12)(3:3)=char(191)
+months_abbr(12)(4:4)=char(249)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_korean
+
+
+subroutine locale_lithuanian()
+! LANG=lithuanian
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "pr","an","tr","kt","pn"," t","sk"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "pirmadienis","antradienis","tre iadienis","ketvirtadienis","penktadienis"," e tadienis","sekmadienis"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "saus.","vas.","kov.","bal.","geg.","bir .", &
+& "liep.","rugp.","rugs.","spal.","lapkr.","gruod." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "sausis","vasaris","kovas","balandis","gegu  ","bir elis", &
+& "liepa","rugpj tis","rugs jis","spalis","lapkritis","gruodis" ]
+weekdays(3)(4:4)=char(232)
+weekdays(6)(1:1)=char(240)
+weekdays(6)(3:3)=char(240)
+months(5)(5:5)=char(254)
+months(5)(6:6)=char(235)
+months(6)(4:4)=char(254)
+months(8)(6:6)=char(251)
+months(9)(5:5)=char(235)
+weekdays_abbr(6)(1:1)=char(240)
+months_abbr(6)(4:4)=char(254)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_lithuanian
+
+
+subroutine locale_polish()
+! LANG=polish
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "pon.","wt."," r.","czw.","pt.","sob.","niedz."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "poniedzia ek","wtorek"," roda","czwartek","pi tek","sobota","niedziela"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "sty","lut","mar","kwi","maj","cze", &
+& "lip","sie","wrz","pa ","lis","gru" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "stycze ","luty","marzec","kwiecie ","maj","czerwiec", &
+& "lipiec","sierpie ","wrzesie ","pa dziernik","listopad","grudzie " ]
+weekdays(1)(10:10)=char(179)
+weekdays(3)(1:1)=char(182)
+weekdays(5)(3:3)=char(177)
+months(1)(7:7)=char(241)
+months(4)(8:8)=char(241)
+months(8)(8:8)=char(241)
+months(9)(8:8)=char(241)
+months(10)(3:3)=char(188)
+months(12)(8:8)=char(241)
+weekdays_abbr(3)(1:1)=char(182)
+months_abbr(10)(3:3)=char(188)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_polish
+
+
+subroutine locale_portuguese()
+! LANG=portuguese
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "seg","ter","qua","qui","sex","s b","dom"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "segunda-feira","ter a-feira","quarta-feira","quinta-feira","sexta-feira","s bado","domingo"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan","fev","mar","abr","mai","jun", &
+& "jul","ago","set","out","nov","dez" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "janeiro","fevereiro","mar o","abril","maio","junho", &
+& "julho","agosto","setembro","outubro","novembro","dezembro" ]
+weekdays(2)(4:4)=char(231)
+weekdays(6)(2:2)=char(225)
+months(3)(4:4)=char(231)
+weekdays_abbr(6)(2:2)=char(225)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_portuguese
+
+
+subroutine locale_romanian()
+! LANG=romanian
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "lun.","mar.","mie.","joi","vin.","s m.","dum."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "luni","mari","miercuri","joi","vineri","s mb t ","duminic "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "ian.","feb.","mar.","apr.","mai","iun.", &
+& "iul.","aug.","sept.","oct.","nov.","dec." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "ianuarie","februarie","martie","aprilie","mai","iunie", &
+& "iulie","august","septembrie","octombrie","noiembrie","decembrie" ]
+weekdays(6)(2:2)=char(226)
+weekdays(6)(5:5)=char(227)
+weekdays(6)(7:7)=char(227)
+weekdays(7)(8:8)=char(227)
+ ! ASCII months
+weekdays_abbr(6)(2:2)=char(226)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_romanian
+
+
+subroutine locale_slovene()
+! LANG=slovene
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "pon.","tor.","sre."," et.","pet.","sob.","ned."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "ponedeljek","torek","sreda"," etrtek","petek","sobota","nedelja"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jan.","feb.","mar.","apr.","maj","jun.", &
+& "jul.","avg.","sep.","okt.","nov.","dec." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "januar","februar","marec","april","maj","junij", &
+& "julij","avgust","september","oktober","november","december" ]
+weekdays(4)(1:1)=char(232)
+ ! ASCII months
+weekdays_abbr(4)(1:1)=char(232)
+ ! ASCII months_abbr
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_slovene
+
+
+subroutine locale_thai()
+! LANG=thai
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& " ."," ."," .","  ."," ."," .","  ."]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "      ","      ","   ","        ","     ","     ","       "]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& " . ."," . .","  . .","  . ."," . .","  . .", &
+& " . ."," . ."," . ."," . ."," . ."," . ." ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "      ","          ","      ","      ","       ","        ", &
+& "       ","       ","       ","      ","         ","       " ]
+weekdays(1)(1:1)=char(168)
+weekdays(1)(2:2)=char(209)
+weekdays(1)(3:3)=char(185)
+weekdays(1)(4:4)=char(183)
+weekdays(1)(5:5)=char(195)
+weekdays(1)(6:6)=char(236)
+weekdays(2)(1:1)=char(205)
+weekdays(2)(2:2)=char(209)
+weekdays(2)(3:3)=char(167)
+weekdays(2)(4:4)=char(164)
+weekdays(2)(5:5)=char(210)
+weekdays(2)(6:6)=char(195)
+weekdays(3)(1:1)=char(190)
+weekdays(3)(2:2)=char(216)
+weekdays(3)(3:3)=char(184)
+weekdays(4)(1:1)=char(190)
+weekdays(4)(2:2)=char(196)
+weekdays(4)(3:3)=char(203)
+weekdays(4)(4:4)=char(209)
+weekdays(4)(5:5)=char(202)
+weekdays(4)(6:6)=char(186)
+weekdays(4)(7:7)=char(180)
+weekdays(4)(8:8)=char(213)
+weekdays(5)(1:1)=char(200)
+weekdays(5)(2:2)=char(216)
+weekdays(5)(3:3)=char(161)
+weekdays(5)(4:4)=char(195)
+weekdays(5)(5:5)=char(236)
+weekdays(6)(1:1)=char(224)
+weekdays(6)(2:2)=char(202)
+weekdays(6)(3:3)=char(210)
+weekdays(6)(4:4)=char(195)
+weekdays(6)(5:5)=char(236)
+weekdays(7)(1:1)=char(205)
+weekdays(7)(2:2)=char(210)
+weekdays(7)(3:3)=char(183)
+weekdays(7)(4:4)=char(212)
+weekdays(7)(5:5)=char(181)
+weekdays(7)(6:6)=char(194)
+weekdays(7)(7:7)=char(236)
+months(1)(1:1)=char(193)
+months(1)(2:2)=char(161)
+months(1)(3:3)=char(195)
+months(1)(4:4)=char(210)
+months(1)(5:5)=char(164)
+months(1)(6:6)=char(193)
+months(2)(1:1)=char(161)
+months(2)(2:2)=char(216)
+months(2)(3:3)=char(193)
+months(2)(4:4)=char(192)
+months(2)(5:5)=char(210)
+months(2)(6:6)=char(190)
+months(2)(7:7)=char(209)
+months(2)(8:8)=char(185)
+months(2)(9:9)=char(184)
+months(2)(10:10)=char(236)
+months(3)(1:1)=char(193)
+months(3)(2:2)=char(213)
+months(3)(3:3)=char(185)
+months(3)(4:4)=char(210)
+months(3)(5:5)=char(164)
+months(3)(6:6)=char(193)
+months(4)(1:1)=char(224)
+months(4)(2:2)=char(193)
+months(4)(3:3)=char(201)
+months(4)(4:4)=char(210)
+months(4)(5:5)=char(194)
+months(4)(6:6)=char(185)
+months(5)(1:1)=char(190)
+months(5)(2:2)=char(196)
+months(5)(3:3)=char(201)
+months(5)(4:4)=char(192)
+months(5)(5:5)=char(210)
+months(5)(6:6)=char(164)
+months(5)(7:7)=char(193)
+months(6)(1:1)=char(193)
+months(6)(2:2)=char(212)
+months(6)(3:3)=char(182)
+months(6)(4:4)=char(216)
+months(6)(5:5)=char(185)
+months(6)(6:6)=char(210)
+months(6)(7:7)=char(194)
+months(6)(8:8)=char(185)
+months(7)(1:1)=char(161)
+months(7)(2:2)=char(195)
+months(7)(3:3)=char(161)
+months(7)(4:4)=char(174)
+months(7)(5:5)=char(210)
+months(7)(6:6)=char(164)
+months(7)(7:7)=char(193)
+months(8)(1:1)=char(202)
+months(8)(2:2)=char(212)
+months(8)(3:3)=char(167)
+months(8)(4:4)=char(203)
+months(8)(5:5)=char(210)
+months(8)(6:6)=char(164)
+months(8)(7:7)=char(193)
+months(9)(1:1)=char(161)
+months(9)(2:2)=char(209)
+months(9)(3:3)=char(185)
+months(9)(4:4)=char(194)
+months(9)(5:5)=char(210)
+months(9)(6:6)=char(194)
+months(9)(7:7)=char(185)
+months(10)(1:1)=char(181)
+months(10)(2:2)=char(216)
+months(10)(3:3)=char(197)
+months(10)(4:4)=char(210)
+months(10)(5:5)=char(164)
+months(10)(6:6)=char(193)
+months(11)(1:1)=char(190)
+months(11)(2:2)=char(196)
+months(11)(3:3)=char(200)
+months(11)(4:4)=char(168)
+months(11)(5:5)=char(212)
+months(11)(6:6)=char(161)
+months(11)(7:7)=char(210)
+months(11)(8:8)=char(194)
+months(11)(9:9)=char(185)
+months(12)(1:1)=char(184)
+months(12)(2:2)=char(209)
+months(12)(3:3)=char(185)
+months(12)(4:4)=char(199)
+months(12)(5:5)=char(210)
+months(12)(6:6)=char(164)
+months(12)(7:7)=char(193)
+weekdays_abbr(1)(1:1)=char(168)
+weekdays_abbr(2)(1:1)=char(205)
+weekdays_abbr(3)(1:1)=char(190)
+weekdays_abbr(4)(1:1)=char(190)
+weekdays_abbr(4)(2:2)=char(196)
+weekdays_abbr(5)(1:1)=char(200)
+weekdays_abbr(6)(1:1)=char(202)
+weekdays_abbr(7)(1:1)=char(205)
+weekdays_abbr(7)(2:2)=char(210)
+months_abbr(1)(1:1)=char(193)
+months_abbr(1)(3:3)=char(164)
+months_abbr(2)(1:1)=char(161)
+months_abbr(2)(3:3)=char(190)
+months_abbr(3)(1:1)=char(193)
+months_abbr(3)(2:2)=char(213)
+months_abbr(3)(4:4)=char(164)
+months_abbr(4)(1:1)=char(224)
+months_abbr(4)(2:2)=char(193)
+months_abbr(4)(4:4)=char(194)
+months_abbr(5)(1:1)=char(190)
+months_abbr(5)(3:3)=char(164)
+months_abbr(6)(1:1)=char(193)
+months_abbr(6)(2:2)=char(212)
+months_abbr(6)(4:4)=char(194)
+months_abbr(7)(1:1)=char(161)
+months_abbr(7)(3:3)=char(164)
+months_abbr(8)(1:1)=char(202)
+months_abbr(8)(3:3)=char(164)
+months_abbr(9)(1:1)=char(161)
+months_abbr(9)(3:3)=char(194)
+months_abbr(10)(1:1)=char(181)
+months_abbr(10)(3:3)=char(164)
+months_abbr(11)(1:1)=char(190)
+months_abbr(11)(3:3)=char(194)
+months_abbr(12)(1:1)=char(184)
+months_abbr(12)(3:3)=char(164)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_thai
+
+
+subroutine locale_turkish()
+! LANG=turkish
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "Pzt","Sal"," ar","Per","Cum","Cmt","Paz"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "Pazartesi","Sal "," ar amba","Per embe","Cuma","Cumartesi","Pazar"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "Oca"," ub","Mar","Nis","May","Haz", &
+& "Tem","A u","Eyl","Eki","Kas","Ara" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "Ocak"," ubat","Mart","Nisan","May s","Haziran", &
+& "Temmuz","A ustos","Eyl l","Ekim","Kas m","Aral k" ]
+weekdays(2)(4:4)=char(253)
+weekdays(3)(1:1)=char(199)
+weekdays(3)(4:4)=char(254)
+weekdays(4)(4:4)=char(254)
+months(2)(1:1)=char(222)
+months(5)(4:4)=char(253)
+months(8)(2:2)=char(240)
+months(9)(4:4)=char(252)
+months(11)(4:4)=char(253)
+months(12)(5:5)=char(253)
+weekdays_abbr(3)(1:1)=char(199)
+months_abbr(2)(1:1)=char(222)
+months_abbr(8)(2:2)=char(240)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_turkish
+
+
+subroutine locale_POSIX()
+! LANG=POSIX
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "Jan","Feb","Mar","Apr","May","Jun", &
+& "Jul","Aug","Sep","Oct","Nov","Dec" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "January","February","March","April","May","June", &
+& "July","August","September","October","November","December" ]
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_POSIX
+
+
+subroutine locale_eesti()
+! LANG=eesti
+! AM= PM=
+character(len=20),save :: weekdays_abbr(7)=[character(len=20) :: &
+& "E","T","K","N","R","L","P"]
+character(len=20),save :: weekdays(7)=[character(len=20) :: &
+& "esmasp ev","teisip ev","kolmap ev","neljap ev","reede","laup ev","p hap ev"]
+character(len=20),save :: months_abbr(12)=[character(len=20) :: &
+& "jaan","veebr","m rts","apr","mai","juuni", &
+& "juuli","aug","sept","okt","nov","dets" ]
+character(len=20),save :: months(12)=[character(len=20) :: &
+& "jaanuar","veebruar","m rts","aprill","mai","juuni", &
+& "juuli","august","september","oktoober","november","detsember" ]
+weekdays(1)(7:7)=char(228)
+weekdays(2)(7:7)=char(228)
+weekdays(3)(7:7)=char(228)
+weekdays(4)(7:7)=char(228)
+weekdays(6)(5:5)=char(228)
+weekdays(7)(2:2)=char(252)
+weekdays(7)(6:6)=char(228)
+months(3)(2:2)=char(228)
+ ! ASCII weekdays_abbr
+months_abbr(3)(2:2)=char(228)
+   call locale("user",months,weekdays,months_abbr,weekdays_abbr)
+end subroutine locale_eesti

@@ -164,10 +164,6 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
    <td>%julian() </td>
    <td> Converts date array to Julian Date </td>
 </tr>
-
-<tr><th colspan="3">DAY OF WEEK               </th></tr>
-<tr><td><a href="dow.3m_time.html"> dow(dat,[WEEKDAY],[DAY],IERR)  </a></td><td>%weekday() </td><td> Convert date array to day of the week as number(Mon=1) and name</td></tr>
-
 <tr><th colspan="3">WEEK OF YEAR              </th></tr>
 <tr>
    <td><a href="d2w.3m_time.html"> d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME) </a></td>
@@ -209,6 +205,13 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <tr><td><a href="v2mo.3m_time.html"> v2mo(month_number) result(MONTH_NAME)   </a></td><td>&nbsp;      </td><td> given month number return month name</td></tr>
 <tr><td><a href="mo2d.3m_time.html"> mo2d(month_name,year)   result(DAT)          </a></td><td>&nbsp;      </td><td> return date array for
 first day of given month name in specified year</td></tr>
+
+<tr><th colspan="3">DAY OF WEEK               </th></tr>
+<tr><td><a href="dow.3m_time.html"> dow(dat,[WEEKDAY],[DAY],IERR)  </a></td><td>%weekday() </td><td> Convert date array to day of the week as number(Mon=1) and name</td></tr>
+
+<tr><th colspan="3">LOCALE                    </th></tr>
+<tr><td><a href="locale.3m_time.html"> locale(name,month_names,weekday_names,month_names_abbr,weekday_names_abbr,IERR)  </a></td><td>&nbsp; </td><td> basic ASCII locale definition</td></tr>
+
 
 <tr><th colspan="3">ASTROLOGICAL                        </th></tr>
 <tr><td><a href="easter.3m_time.html"> easter(year,dat) </a></td><td>&nbsp; </td><td> calculate month and day Easter falls on for given year </td></tr>
@@ -360,7 +363,7 @@ and all uppercase is an alphanumeric string:
 
   month          %M     07
   MONTH          %L     July
-  Month|mth      %l     Jul
+  Month|Mth      %l     Jul
 
   day            %D     27
   DAY            %d     27th

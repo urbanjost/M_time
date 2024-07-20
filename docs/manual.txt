@@ -14,6 +14,7 @@ fmtdate_usage (3m_time) - [M_time:DATE_PRINTING] display macros recognized by fm
 guessdate (3m_time)  - [M_time:READING_DATES] reads in a date, in various formats (LICENSE:MIT)
 j2d (3m_time)	     - [M_time:JULIAN] given a JED (Julian Ephemeris Date) returns a date-time array DAT. (LICENSE:MIT)
 julian_to_date (3m_time) - [M_time:JULIAN] converts a JED(Julian Ephemeris Date) to a DAT date-time array. (LICENSE:MIT)
+locale (3m_time)     - [M_time:DATE_PRINTING] allow for selecting languages to represent month and weekday names with (LICENSE:MIT)
 M_time (3m_time)     - [M_time::INTRO] Fortran module for manipulating and presenting time and date values as defined in ISO 8601:1988 (LICENSE:MIT)
 M_time__oop (3m_time) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm) (LICENSE:MIT)
 mo2d (3m_time)	     - [M_time:MONTH_NAME] given month name return DAT date-time array for beginning of that month in specified year (LICENSE:MIT)
@@ -83,7 +84,7 @@ LICENSE
 
 
 
-				 July 18, 2024		  month.1.man(1m_time)
+				 July 19, 2024		  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -141,7 +142,7 @@ LICENSE
 
 
 
-				 July 18, 2024		  today.1.man(1m_time)
+				 July 19, 2024		  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -209,7 +210,7 @@ LICENSE
 
 
 
-				 July 18, 2024	       sec2days.1.man(1m_time)
+				 July 19, 2024	       sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -292,7 +293,7 @@ LICENSE
 
 
 
-				 July 18, 2024	       days2sec.1.man(1m_time)
+				 July 19, 2024	       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -349,7 +350,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  d2j(3m_time)
+				 July 19, 2024			  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -409,7 +410,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  d2u(3m_time)
+				 July 19, 2024			  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -548,7 +549,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  d2w(3m_time)
+				 July 19, 2024			  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -629,7 +630,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  dow(3m_time)
+				 July 19, 2024			  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -703,7 +704,7 @@ EXAMPLE
 
 
 
-				 July 18, 2024		       easter(3m_time)
+				 July 19, 2024		       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -764,7 +765,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		      fmtdate(3m_time)
+				 July 19, 2024		      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -932,7 +933,7 @@ EXAMPLE
      string values:
 
 	MONTH	       %L  July
-	Month|mth      %l  Jul
+	Month|Mth      %l  Jul
 	WEEKDAY        %W  Thursday
 	Weekday|wkday  %w  Thu
 	DAY	       %d  7th
@@ -954,7 +955,62 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		fmtdate_usage(3m_time)
+				 July 19, 2024		fmtdate_usage(3m_time)
+mo2v(3m_time)							 mo2v(3m_time)
+
+
+
+NAME
+  mo2v(3f) - [M_time:MONTH_NAME] given month name return month number (1-12)
+  of that month (LICENSE:MIT)
+
+
+SYNOPSIS
+  elemental function mo2v(month_name) result(imonth)
+
+       character(len=*),intent(in):: month_name ! month name
+       integer			  :: imonth	! month number
+
+
+DESCRIPTION
+  Given a string representing the name or abbreviation of a Gregorian Calendar
+  month return a number representing the position of the month in the calendar
+  starting with 1 for January and ending with 12 for December.
+
+OPTIONS
+  month_name
+    name or abbreviation of month. Case is ignored.
+
+RETURNS
+  imonth
+    month number returned. If the name is not recognized a -1 is returned.
+
+EXAMPLE
+  Sample program:
+
+      program demo_mo2v
+      use M_time, only : mo2v
+      implicit none
+	 write(*,*)mo2v("April")
+	 write(*,*)mo2v('Apr')
+	 write(*,*)mo2v('sexember')
+	 write(*,*)mo2v('unknown')  ! returns -1
+      end program demo_mo2v
+
+  results:
+
+	>  4
+	>  4
+	> -1
+	> -1
+
+
+AUTHOR
+  John S. Urban, 2015
+
+LICENSE
+   MIT
+				 July 19, 2024			 mo2v(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -1022,7 +1078,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		moon_fullness(3m_time)
+				 July 19, 2024		moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1080,7 +1136,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  now(3m_time)
+				 July 19, 2024			  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1148,7 +1204,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  o2d(3m_time)
+				 July 19, 2024			  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1191,7 +1247,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024	      ordinal_seconds(3m_time)
+				 July 19, 2024	      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1250,7 +1306,7 @@ EXAMPLE
 
 
 
-				 July 18, 2024	      ordinal_to_date(3m_time)
+				 July 19, 2024	      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1335,7 +1391,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		phase_of_moon(3m_time)
+				 July 19, 2024		phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1417,7 +1473,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		     sec2days(3m_time)
+				 July 19, 2024		     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1487,7 +1543,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		 system_sleep(3m_time)
+				 July 19, 2024		 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1557,7 +1613,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  u2d(3m_time)
+				 July 19, 2024			  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1634,7 +1690,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		 unix_to_date(3m_time)
+				 July 19, 2024		 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1700,7 +1756,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			 v2mo(3m_time)
+				 July 19, 2024			 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1922,7 +1978,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  w2d(3m_time)
+				 July 19, 2024			  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -2013,7 +2069,7 @@ EXAMPLE
 
 LICENSE
    MIT
-				 July 18, 2024		    guessdate(3m_time)
+				 July 19, 2024		    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -2076,7 +2132,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  j2d(3m_time)
+				 July 19, 2024			  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2153,7 +2209,135 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024	       julian_to_date(3m_time)
+				 July 19, 2024	       julian_to_date(3m_time)
+locale(3m_time) 					       locale(3m_time)
+
+
+
+NAME
+  locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to
+  represent month and weekday names with (LICENSE:MIT)
+
+
+SYNOPSIS
+  subroutine locale(name,month_names,weekday_names, & &
+  month_names_abbr,weekday_names_abbr,IERR)
+
+    character(len=*),intent(in)
+      :: name
+
+    character(len=*),intent(in),optional
+      :: month_names(12)
+
+    character(len=*),intent(in),optional
+      :: month_names_abbr(12)
+
+    character(len=*),intent(in),optional
+      :: weekday_names(7)
+
+    character(len=*),intent(in),optional
+      :: weekday_names_abbr(7)
+
+    integer,intent(out)
+      :: ierr
+
+DESCRIPTION
+  given a pre-defined locale name or strings to substitute for month names and
+  weekday names provide some basic support for non-POSIX labels in date
+  representation.
+
+  The parameters are default character types and so may be limited to the
+  basic ASCII character set, but are typically limited to the extended ASCII
+  set.
+
+  This is only a basic attempt to support internationalization and currently
+  just supports basic substitution of the default POSIX names with the
+  alternate strings. As support for UTF-8 grows among Fortran compilers
+  something more robust will hopefully emerge to provide full
+  internationalization of the date representations.
+
+OPTIONS
+  name
+    predefined name or reserved name "user"
+
+  month_names
+    12 month names
+
+  month_names_abbr
+    12 month name abbreviations
+
+  weekday_names
+    7 weekday names
+
+  weekday_names_abbr
+    7 weekday name abbreviations
+
+  ierr
+    if non-zero an error occurred
+
+  The NAME parameter may be a pre-defined name or the special name "user".
+  The current pre-defined names are
+
+     'bokmal','catalan','czech','dansk'/'danish','deutsch'/'german','dutch',
+     'eesti'/'estonian','english','finnish','french','galego'/'galician',
+     'hrvatski'/'croation','hungarian','icelandic','italian','korean',
+     'lithuanian','norwegian','nynorsk','polish','portuguese','romanian',
+     'slovak','slovene'/'slovenian','spanish','swedish','turkish'
+
+  These non-ISO-8859 character sets are defined in terms of ISO-8859 but will
+  not work on most platforms
+
+     'greek', 'russian','thai', 'hebrew','japanese'
+
+  The remaining reserved names take special actions
+
+    •  POSIX load POSIX names
+
+    •  LANGUAGE use value of environment variable LANGUAGE
+
+    •  user placeholder indicating to expect at least one of the optional
+       values to be set
+
+    •  reset,ISO-8601 reset back to initial defaults
+
+    •  show print user-defined values to stdout
+
+    •  chars dump characters from chars([(i,i=0,255)])
+
+EXAMPLE
+  Sample program:
+
+      program demo_locale
+      use M_time, only : locale, now
+      implicit none
+	 call locale('POSIX')
+	 write(*,*)now()
+	 call locale('french')
+	 write(*,*)now()
+	 call mine()
+	 write(*,*)now()
+      contains
+      subroutine mine()
+      character(len=*),parameter :: months(12)=[ character(len=9) :: &
+      &'JANUARY','FEBRUARY','MARCH    ','APRIL	','MAY	   ','JUNE    ', &
+      &'JULY   ','AUGUST  ','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
+      character(len=*),parameter :: weekdays(7)=[character(len=9) :: &
+      &'MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']
+      character(len=3),parameter :: short_months(12)=months(:)(1:3)
+      character(len=3),parameter :: short_weekdays(7)=weekdays(:)(1:3)
+      integer :: ierr
+	call locale('user',months,short_months,weekdays,short_weekdays,ierr)
+      end subroutine mine
+      end program demo_locale
+
+  Results:
+
+AUTHOR
+  John S. Urban, 2015
+
+LICENSE
+   MIT
+				 July 19, 2024		       locale(3m_time)
 untitled()							    untitled()
 
 
@@ -2234,10 +2418,6 @@ untitled()							    untitled()
     Convert Julian Date to date array date_to_julian(dat,JULIAN,IERR) or
     d2j(dat) result(JULIAN) %julian() Converts date array to Julian Date
 
-   DAY OF WEEK
-  dow(dat,[WEEKDAY],[DAY],IERR) %weekday() Convert date array to day of the
-  week as number(Mon=1) and name
-
    WEEK OF YEAR
   d2w(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)
     calculate iso-8601 Week- numerically and as string yyyy-Www-d
@@ -2277,6 +2457,16 @@ untitled()							    untitled()
 
   mo2d(month_name,year) result(DAT)
     return date array for first day of given month name in specified year
+
+   DAY OF WEEK
+  dow(dat,[WEEKDAY],[DAY],IERR) %weekday() Convert date array to day of the
+  week as number(Mon=1) and name
+
+   LOCALE
+  locale(name,month_names,weekday_names,month_names_abbr,weekday_names_ab
+
+  br,IERR)
+    basic ASCII locale definition
 
    ASTROLOGICAL
   easter(year,dat)
@@ -2427,7 +2617,7 @@ untitled()							    untitled()
 
       month	     %M     07
       MONTH	     %L     July
-      Month|mth      %l     Jul
+      Month|Mth      %l     Jul
 
       day	     %D     27
       DAY	     %d     27th
@@ -2638,7 +2828,7 @@ untitled()							    untitled()
 
 
 
-				 July 18, 2024			    untitled()
+				 July 19, 2024			    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -3045,7 +3235,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		  M_time__oop(3m_time)
+				 July 19, 2024		  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3103,62 +3293,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			 mo2d(3m_time)
-mo2v(3m_time)							 mo2v(3m_time)
-
-
-
-NAME
-  mo2v(3f) - [M_time:MONTH_NAME] given month name return month number (1-12)
-  of that month (LICENSE:MIT)
-
-
-SYNOPSIS
-  elemental function mo2v(month_name) result(imonth)
-
-       character(len=*),intent(in):: month_name ! month name
-       integer			  :: imonth	! month number
-
-
-DESCRIPTION
-  Given a string representing the name or abbreviation of a Gregorian Calendar
-  month return a number representing the position of the month in the calendar
-  starting with 1 for January and ending with 12 for December.
-
-OPTIONS
-  month_name
-    name or abbreviation of month. Case is ignored.
-
-RETURNS
-  imonth
-    month number returned. If the name is not recognized a -1 is returned.
-
-EXAMPLE
-  Sample program:
-
-      program demo_mo2v
-      use M_time, only : mo2v
-      implicit none
-	 write(*,*)mo2v("April")
-	 write(*,*)mo2v('Apr')
-	 write(*,*)mo2v('sexember')
-	 write(*,*)mo2v('unknown')  ! returns -1
-      end program demo_mo2v
-
-  results:
-
-	>  4
-	>  4
-	> -1
-	> -1
-
-
-AUTHOR
-  John S. Urban, 2015
-
-LICENSE
-   MIT
-				 July 18, 2024			 mo2v(3m_time)
+				 July 19, 2024			 mo2d(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3228,7 +3363,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024	       date_to_julian(3m_time)
+				 July 19, 2024	       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3293,7 +3428,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		 date_to_unix(3m_time)
+				 July 19, 2024		 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3398,7 +3533,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		     days2sec(3m_time)
+				 July 19, 2024		     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3476,7 +3611,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024			  d2o(3m_time)
+				 July 19, 2024			  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3539,4 +3674,4 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 18, 2024		    box_month(3m_time)
+				 July 19, 2024		    box_month(3m_time)

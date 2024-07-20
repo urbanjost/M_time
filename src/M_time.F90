@@ -4,7 +4,7 @@
 module M_time
 use M_time__duplicate
 use, intrinsic :: iso_fortran_env, only : int64
-use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT
+use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT, stdout=>OUTPUT_UNIT,stdin=>INPUT_UNIT
 implicit none !(external,type)
 
 ! ident_1="@(#) M_time M_time(3f) date and time function module"
@@ -48,6 +48,8 @@ private
    public mo2v           !(month_name) result(MONTH_NUMBER)       ! given month name return month number
    public v2mo           !(month_number,short) result(MONTH_NAME) ! given month number return month name
    public mo2d           !(month_name,year) result(DAT)           ! given month name and year return date array for 1st day of month
+! LOCALE
+   public locale         !(locale_name,mths,wkds,mths_abbr,wkds_abbr,ierr)  ! user-specified strings to use for month and weekday
 ! ASTROLOGICAL
    public easter         !(year,dat)                          ! calculate month and day Easter falls on for given year
    public moon_fullness  !(dat) result(FULLNESS)              ! percentage of moon phase from new to full
@@ -78,17 +80,21 @@ real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seco
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),parameter   :: gen='(*(g0,1x))'
 !-----------------------------------------------------------------------------------------------------------------------------------
-character(len=:),save,allocatable :: M_time_weekday_names(:)
-character(len=:),save,allocatable :: M_time_month_names(:)
-character(len=:),save,allocatable :: M_time_weekday_names_abbr(:)
-character(len=:),save,allocatable :: M_time_month_names_abbr(:)
+character(len=:),save,allocatable,public :: M_time_weekday_names(:)
+character(len=:),save,allocatable,public :: M_time_month_names(:)
+character(len=:),save,allocatable,public :: M_time_weekday_names_abbr(:)
+character(len=:),save,allocatable,public :: M_time_month_names_abbr(:)
 !-----------------------------------------------------------------------------------------------------------------------------------
 character(len=*),parameter   :: G_month_names(12)=[                               &
    &'January  ', 'February ', 'March    ', 'April    ', 'May      ', 'June     ', &
    &'July     ', 'August   ', 'September', 'October  ', 'November ', 'December ']
+
 character(len=3),parameter   :: G_month_names_abbr(12)=G_month_names(:)(1:3)
+
 character(len=*),parameter   :: G_weekday_names(7)=[character(len=9) :: &
    & 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ]
+
+character(len=3),parameter   :: G_weekday_names_abbr(7)=G_weekday_names(:)(1:3)
 !-----------------------------------------------------------------------------------------------------------------------------------
 interface w2d
    module procedure w2d_numeric
@@ -1498,11 +1504,16 @@ real(kind=realtime),save             :: unixtime_last
          case('W'); call dow(valloc,weekday,day,ierr)                     ! Return the name of the day of the week
                     write(text(iout:),'(a)')day
          !=====================================================================================
+         !jsujsu
          case('w'); call dow(valloc,weekday,day,ierr)                     ! Return the first abbreviation of the day of the week
-                    if(allocated(M_time_weekday_names_abbr))then
-                       text(iout:)=M_time_weekday_names_abbr(weekday)
+                    if(ierr.ne.0)then
+                       text(iout:)='ERROR'
                     else
-                       write(text(iout:),'(A)')G_weekday_names(weekday)(1:3)
+                       if(allocated(M_time_weekday_names_abbr))then
+                          text(iout:)=trim(M_time_weekday_names_abbr(weekday))
+                       else
+                          write(text(iout:),'(A)')trim(G_weekday_names_abbr(weekday))
+                       endif
                     endif
          !=====================================================================================
          case('x'); write(text(iout:),'(I3.3)')valloc(8)                  ! the milliseconds of the second, in the range 0 to 999
@@ -1698,7 +1709,7 @@ end function fmtdate
 !!    string values:
 !!
 !!       MONTH          %L  July
-!!       Month|mth      %l  Jul
+!!       Month|Mth      %l  Jul
 !!       WEEKDAY        %W  Thursday
 !!       Weekday|wkday  %w  Thu
 !!       DAY            %d  7th
@@ -1834,7 +1845,7 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%b   ordinal         %%O  %O                                 ',&
 &'%b   weekday         %%u  %u                                 ',&
 &'%b   MONTH           %%L  July                               ',&
-&'%b   Month|mth       %%l  Jul                                ',&
+&'%b   Month|Mth       %%l  Jul                                ',&
 &'%b   DAY             %%d  7th                                ',&
 &'%b   HOUR            %%H  10                                 ',&
 &'%b   GOOD            %%N  AM                                 ',&
@@ -2331,13 +2342,13 @@ logical                               :: short_
                   day='error'
                else
                   select case(iweekday)
-                  case(1:7)   ;day = M_time_weekday_names_abbr(iweekday)
+                  case(1:7)   ;day = trim(M_time_weekday_names_abbr(iweekday))
                   case default;day = 'error'
                   end select
                endif
             else
                select case(iweekday)
-               case(1:7)   ;day = G_weekday_names(iweekday)(1:3)
+               case(1:7)   ;day = trim(G_weekday_names_abbr(iweekday))
                case default;day = 'error'
                end select
             endif
@@ -3661,6 +3672,263 @@ logical                           :: negative
    endif
 
 end function days2sec
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!! locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to represent
+!!              month and weekday names with
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    subroutine locale(name,month_names,weekday_names, &
+!!                    & month_names_abbr,weekday_names_abbr,IERR)
+!!
+!!     character(len=*),intent(in)           :: name
+!!     character(len=*),intent(in),optional  :: month_names(12)
+!!     character(len=*),intent(in),optional  :: month_names_abbr(12)
+!!     character(len=*),intent(in),optional  :: weekday_names(7)
+!!     character(len=*),intent(in),optional  :: weekday_names_abbr(7)
+!!     integer,intent(out)                   :: ierr
+!!
+!!##DESCRIPTION
+!!   given a pre-defined locale name or strings to substitute for month names
+!!   and weekday names provide some basic support for non-POSIX labels in
+!!   date representation.
+!!
+!!   The parameters are default character types and so may be limited to the
+!!   basic ASCII character set, but are typically limited to the extended
+!!   ASCII set.
+!!
+!!   This is only a basic attempt to support internationalization and
+!!   currently just supports basic substitution of the default POSIX names
+!!   with the alternate strings. As support for UTF-8 grows among Fortran
+!!   compilers something more robust will hopefully emerge to provide full
+!!   internationalization of the date representations.
+!!
+!!##OPTIONS
+!!   name               predefined name or reserved name "user"
+!!   month_names        12 month names
+!!   month_names_abbr   12 month name abbreviations
+!!   weekday_names       7 weekday names
+!!   weekday_names_abbr  7 weekday name abbreviations
+!!   ierr               if non-zero an error occurred
+!!
+!! The NAME parameter may be a pre-defined name or the special name "user".
+!! The current pre-defined names are
+!!
+!!    'bokmal','catalan','czech','dansk'/'danish','deutsch'/'german','dutch',
+!!    'eesti'/'estonian','english','finnish','french','galego'/'galician',
+!!    'hrvatski'/'croation','hungarian','icelandic','italian','korean',
+!!    'lithuanian','norwegian','nynorsk','polish','portuguese','romanian',
+!!    'slovak','slovene'/'slovenian','spanish','swedish','turkish'
+!!
+!! These non-ISO-8859 character sets are defined in terms of ISO-8859 but will
+!! not work on most platforms
+!!
+!!    'greek', 'russian','thai', 'hebrew','japanese'
+!!
+!! The remaining reserved names take special actions
+!!
+!!    o POSIX            load POSIX names
+!!    o LANGUAGE         use value of environment variable LANGUAGE
+!!    o user             placeholder indicating to expect at least one of the
+!!                       optional values to be set
+!!    o reset,ISO-8601   reset back to initial defaults
+!!
+!!    o show    print user-defined values to stdout
+!!    o chars   dump characters from chars([(i,i=0,255)])
+!!
+!!##EXAMPLE
+!!
+!!    Sample program:
+!!
+!!     program demo_locale
+!!     use M_time, only : locale, now
+!!     implicit none
+!!        call locale('POSIX')
+!!        write(*,*)now()
+!!        call locale('french')
+!!        write(*,*)now()
+!!        call mine()
+!!        write(*,*)now()
+!!     contains
+!!     subroutine mine()
+!!     character(len=*),parameter :: months(12)=[ character(len=9) :: &
+!!     &'JANUARY','FEBRUARY','MARCH    ','APRIL  ','MAY     ','JUNE    ', &
+!!     &'JULY   ','AUGUST  ','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
+!!     character(len=*),parameter :: weekdays(7)=[character(len=9) :: &
+!!     &'MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']
+!!     character(len=3),parameter :: short_months(12)=months(:)(1:3)
+!!     character(len=3),parameter :: short_weekdays(7)=weekdays(:)(1:3)
+!!     integer :: ierr
+!!       call locale('user',months,short_months,weekdays,short_weekdays,ierr)
+!!     end subroutine mine
+!!     end program demo_locale
+!!
+!!    Results:
+!!
+!!##AUTHOR
+!!    John S. Urban, 2015
+!!
+!!##LICENSE
+!!    MIT
+subroutine locale(name,month_names,weekday_names,month_names_abbr,weekday_names_abbr,IERR)
+character(len=*),intent(in)           :: name
+character(len=*),intent(in),optional  :: month_names(12)
+character(len=*),intent(in),optional  :: month_names_abbr(12)
+character(len=*),intent(in),optional  :: weekday_names(7)
+character(len=*),intent(in),optional  :: weekday_names_abbr(7)
+integer,intent(out),optional          :: ierr
+integer                               :: i
+character(len=:),allocatable          :: name_
+   name_=lower(name)
+   if(name_.eq.'language')then
+      name_=lower(get_env('LANGUAGE',''))
+   endif
+   select case(name_)
+   case('posix','english','en_us');      call  locale_POSIX()
+   case('deutsch','german','de_de');     call  locale_deutsch()
+   case('slovak');               call  locale_slovak()
+   case('czech');                call  locale_czech()
+   case('spanish');              call  locale_spanish()
+   case('slovene','slovenian');  call  locale_slovene()
+   case('dansk','danish');       call  locale_dansk()
+   case('galego','galician');    call  locale_galego()
+   case('eesti','estonian');     call  locale_eesti()
+   case('hrvatski','croation');  call  locale_hrvatski()
+   case('dutch');                call  locale_dutch()
+   case('finnish');              call  locale_finnish()
+   case('icelandic');            call  locale_icelandic()
+   case('hungarian');            call  locale_hungarian()
+   case('swedish');              call  locale_swedish()
+   case('korean');               call  locale_korean()
+   case('nynorsk');              call  locale_nynorsk()
+   case('turkish');              call  locale_turkish()
+   case('romanian');             call  locale_romanian()
+   case('portuguese');           call  locale_portuguese()
+   case('polish');               call  locale_polish()
+   case('lithuanian');           call  locale_lithuanian()
+   case('catalan');              call  locale_catalan()
+   case('italian');              call  locale_italian()
+   case('french','fr_fr');               call  locale_french()
+   case('bokmal');               call  locale_bokmal()
+   case('norwegian');            call  locale_norwegian()
+
+   case('greek');                call  locale_greek()
+   case('russian');              call  locale_russian()
+   case('thai');                 call  locale_thai()
+   case('hebrew');               call  locale_hebrew()
+   case('japanese');             call  locale_japanese()
+
+   case('iso-8601')
+      M_time_month_names=G_month_names
+      M_time_month_names_abbr=G_month_names_abbr
+      M_time_weekday_names=G_weekday_names
+      M_time_weekday_names_abbr=G_weekday_names_abbr
+   case('reset')
+      if(allocated( M_time_month_names))        deallocate(M_time_month_names)
+      if(allocated( M_time_month_names_abbr))   deallocate(M_time_month_names_abbr)
+      if(allocated( M_time_weekday_names))      deallocate(M_time_weekday_names)
+      if(allocated( M_time_weekday_names_abbr)) deallocate(M_time_weekday_names_abbr)
+   case('user','')
+   case('chars')
+      do i=0,255
+         write(stdout,gen)i,char(i)
+      enddo
+   case('show')
+      call printit('Month Names',               M_time_month_names )
+      call printit('Month Names abbreviated',   M_time_month_names_abbr )
+      call printit('Weekday Names',             M_time_weekday_names )
+      call printit('Weekday Names abbreviated', M_time_weekday_names_abbr )
+   end select
+
+   if(present( month_names        )) M_time_month_names        = month_names
+   if(present( month_names_abbr   )) M_time_month_names_abbr   = month_names_abbr
+   if(present( weekday_names      )) M_time_weekday_names      = weekday_names
+   if(present( weekday_names_abbr )) M_time_weekday_names_abbr = weekday_names_abbr
+
+   if(present(ierr))  then
+      ierr=0
+   endif
+contains
+
+subroutine printit(header,strs)
+character(len=*),parameter   :: fmt="(*('""',g0,'""':,','))"
+character(len=*),intent(in) :: header
+character(len=:),allocatable,intent(in) :: strs(:)
+integer                                 :: i
+   if(allocated(strs))then
+      write(stdout,fmt)header,(trim(strs(i)),i=1,size(strs))
+   else
+      select case(header)
+      case('Month Names')
+         if(allocated(M_time_month_names))then
+            write(stdout,fmt) header,(trim(M_time_month_names(i)),i=1,size(M_time_month_names))
+         else
+            write(stdout,fmt) header,(trim(G_month_names(i)),i=1,size(G_month_names)),"POSIX"
+         endif
+      case('Month Names abbreviated')
+         if(allocated(M_time_month_names_abbr))then
+            write(stdout,fmt) header,(trim(M_time_month_names_abbr(i)),i=1,size(M_time_month_names_abbr))
+         else
+            write(stdout,fmt) header,(trim(G_month_names_abbr(i)),i=1,size(G_month_names_abbr)),"POSIX"
+         endif
+      case('Weekday Names')
+         if(allocated(M_time_weekday_names))then
+            write(stdout,fmt) header,(trim(M_time_weekday_names(i)),i=1,size(M_time_weekday_names))
+         else
+            write(stdout,fmt) header,(trim(G_weekday_names(i)),i=1,size(G_weekday_names)),"POSIX"
+         endif
+      case('Weekday Names abbreviated')
+         if(allocated(M_time_weekday_names_abbr))then
+            write(stdout,fmt) header,(trim(M_time_weekday_names_abbr(i)),i=1,size(M_time_weekday_names_abbr))
+         else
+            write(stdout,fmt) header,(trim(G_weekday_names_abbr(i)),i=1,size(G_weekday_names_abbr)),"POSIX"
+         endif
+      end select
+   endif
+end subroutine printit
+
+end subroutine locale
+!-----------------------------------------------------------------------------------------------------------------------------------
+include "locale.ffinc"
+!-----------------------------------------------------------------------------------------------------------------------------------
+function get_env(name,default) result(value)
+! a function that makes calling get_environment_variable(3) simple
+implicit none
+character(len=*),intent(in)          :: name
+character(len=*),intent(in),optional :: default
+character(len=:),allocatable         :: value
+integer                              :: howbig
+integer                              :: stat
+integer                              :: length
+   length=0
+   value=''
+   if(name.ne.'')then
+      call get_environment_variable( name, &
+      & length=howbig,status=stat,trim_name=.true.)
+      select case (stat)
+      case (1)
+         !print *, name, " is not defined in the environment. Strange..."
+         value=''
+      case (2)
+         !print *, "This processor does not support environment variables. Boooh!"
+         value=''
+      case default
+         ! make string of sufficient size to hold value
+         if(allocated(value))deallocate(value)
+         allocate(character(len=max(howbig,1)) :: value)
+         ! get value
+         call get_environment_variable( &
+         & name,value,status=stat,trim_name=.true.)
+         if(stat.ne.0)value=''
+      end select
+   endif
+   if(value.eq.''.and.present(default))value=default
+end function get_env
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
