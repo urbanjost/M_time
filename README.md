@@ -71,6 +71,7 @@ programs are included in the package.
 ### Printing Dates
 + **[fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)** ! Convert date array to string using format
 + **[fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)** ! display macros recognized by fmtdate
++ **[locale](https://urbanjost.github.io/M_time/locale.3m_time.html)(name,mnths,wkdays,mnths_short,wkdays_short)** ! allow substitute month and weekday names
 + **[now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW)** ! return string representing current time given format
 + **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
 ### Printing Durations
