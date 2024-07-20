@@ -176,7 +176,7 @@ the built-in help text for the formatting options is as simple as
    alternate substitutions occurs.
 
    If the format is composed entirely of one of the following
-   keywords they are equivalent to the following macro representations:
+   keywords they are equivalent to the following macro strings:
 ```text
        "iso-8601",
        "iso"        ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:26:04-04:00
