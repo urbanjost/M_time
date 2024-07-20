@@ -78,13 +78,6 @@
                  <td><p>pure function adjustc(string[,length])</p><a href="../proc/adjustc.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
-                 <td><a href='../proc/box_month.html'>box_month</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>box_month(3f) uses a year and month from a date array to populate
-   a small character array with a calendar representing the month.</p><a href="../proc/box_month.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
                  <td><a href='../proc/compact.html'>compact</a></td>
                  <td><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></td>
                  <td>Function</td>
@@ -93,119 +86,26 @@
    whitespace is removed.</p><a href="../proc/compact.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
-                 <td><a href='../proc/d2j.html'>d2j</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given DAT date-time array returns Julian Date</p><a href="../proc/d2j.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/d2o.html'>d2o</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given a date in the form of a &ldquo;DAT&rdquo; array return the Ordinal Day,
-   (ie. &ldquo;the day of the year&rdquo;).</p><a href="../proc/d2o.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/d2u.html'>d2u</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Converts a DAT date-time array to a Unix Epoch Time value. Typically
-   mathematical operations such as sums, sorting and comparison are
-   performed with simple UET numeric values, and then they are converted
-   back.</p><a href="../proc/d2u.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/d2w.html'>d2w</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Given a &ldquo;DAT&rdquo; array defining a date and time, return the ISO-8601
-   Week in two formats &ndash; as three integer values defining the ISO year,
-   week of year and weekday; and as a string of the form &ldquo;yyyy-Www-d&rdquo;.</p><a href="../proc/d2w.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
                  <td><a href='../interface/date_time.html'>date_time</a></td>
                  <td><a href='../module/m_time__oop.html'>M_time__oop</a></td>
                  <td>Interface</td>
                  <td></td>
                </tr>
 			   <tr>
-                 <td><a href='../proc/date_to_julian.html'>date_to_julian</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Converts a DAT date-time array to a Unix Epoch Time (UET) value.
-   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.</p><a href="../proc/date_to_julian.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/date_to_unix.html'>date_to_unix</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Converts a DAT date-time array to a UET (Unix Epoch Time).</p><a href="../proc/date_to_unix.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/days2sec.html'>days2sec</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given a string representing a duration of the form
-   [-][[[dd-]hh:]mm:]ss or [NNd][NNh][NNm[]NNs][NNw]
-   return a value representing seconds.</p><a href="../proc/days2sec.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/dow.html'>dow</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Given a date array DAT
-   return the day of the week as a number and a name, Mon=1.</p><a href="../proc/dow.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/easter.html'>Easter</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>subroutine easter(year,dat)</p><a href="../proc/easter.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/fmtdate.html'>fmtdate</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>The fmtdate(3f) procedure lets you reformat a DAT array in
-   many common formats using a special string containing macro names
-   beginning with &lsquo;%&rsquo;. To see the allowable macros call or see the
-   fmtdate_usage(3f) routine.</p><a href="../proc/fmtdate.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/fmtdate_usage.html'>fmtdate_usage</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>The fmtdate_usage(3f) subroutine displays the formatting options
-   available for use in procedures such as fmtdate(3f) and now(3f).
-   It is typically used to produce up-to-date help text in commands
-   that use the M_time(3fm) module, so that the formatting information
-   only needs maintained in one place (this routine) and is easily
-   displayed so users can quickly obtain a description of the formatting
-   macros.</p><a href="../proc/fmtdate_usage.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/guessdate.html'>guessdate</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Read in strings and except for looking for month names remove
-   non-numeric characters and try to convert a string assumed to represent
-   a date to a date-time array.</p><a href="../proc/guessdate.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
                  <td><a href='../proc/help_usage.html'>help_usage</a></td>
-                 <td><a href='../program/month_exe.html'>month_exe</a></td>
+                 <td><a href='../program/demo_sec2days~2.html'>demo_sec2days</a></td>
                  <td>Subroutine</td>
                  <td></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/help_usage~2.html'>help_usage</a></td>
-                 <td><a href='../program/demo_sec2days.html'>demo_sec2days</a></td>
+                 <td><a href='../program/demo_days2sec~2.html'>demo_days2sec</a></td>
                  <td>Subroutine</td>
                  <td></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/help_usage~3.html'>help_usage</a></td>
-                 <td><a href='../program/demo_days2sec.html'>demo_days2sec</a></td>
+                 <td><a href='../program/month_exe.html'>month_exe</a></td>
                  <td>Subroutine</td>
                  <td></td>
                </tr>
@@ -217,46 +117,33 @@
                </tr>
 			   <tr>
                  <td><a href='../proc/help_version.html'>help_version</a></td>
-                 <td><a href='../program/month_exe.html'>month_exe</a></td>
-                 <td>Subroutine</td>
-                 <td><a href="../proc/help_version.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/help_version~2.html'>help_version</a></td>
                  <td><a href='../program/display_date.html'>display_date</a></td>
                  <td>Subroutine</td>
                  <td></td>
                </tr>
 			   <tr>
-                 <td><a href='../proc/help_version~3.html'>help_version</a></td>
-                 <td><a href='../program/demo_sec2days.html'>demo_sec2days</a></td>
+                 <td><a href='../proc/help_version~2.html'>help_version</a></td>
+                 <td><a href='../program/demo_sec2days~2.html'>demo_sec2days</a></td>
                  <td>Subroutine</td>
-                 <td><p>usage</p><a href="../proc/help_version~3.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+                 <td><p>usage</p><a href="../proc/help_version~2.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/help_version~3.html'>help_version</a></td>
+                 <td><a href='../program/demo_days2sec~2.html'>demo_days2sec</a></td>
+                 <td>Subroutine</td>
+                 <td><p>Usage</p><a href="../proc/help_version~3.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/help_version~4.html'>help_version</a></td>
-                 <td><a href='../program/demo_days2sec.html'>demo_days2sec</a></td>
+                 <td><a href='../program/month_exe.html'>month_exe</a></td>
                  <td>Subroutine</td>
-                 <td><p>Usage</p><a href="../proc/help_version~4.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+                 <td><a href="../proc/help_version~4.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/help_version~5.html'>help_version</a></td>
                  <td><a href='../program/today.html'>today</a></td>
                  <td>Subroutine</td>
                  <td><a href="../proc/help_version~5.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/j2d.html'>j2d</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Converts a Julian Ephemeris Date to a DAT date-time array.</p><a href="../proc/j2d.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/julian_to_date.html'>julian_to_date</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Converts a Unix Epoch Time (UET) value to a DAT date-time array.
-   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.</p><a href="../proc/julian_to_date.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/lower.html'>lower</a></td>
@@ -274,61 +161,10 @@
                  <td></td>
                </tr>
 			   <tr>
-                 <td><a href='../proc/mo2d.html'>mo2d</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given a Common Calendar month name, return the date as a &ldquo;DAT&rdquo; array
-   for the 1st day of the month. An optional year that defaults to the
-   current year may be specified.</p><a href="../proc/mo2d.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/mo2v.html'>mo2v</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given a string representing the name or abbreviation of a Gregorian
-   Calendar month return a number representing the position of the
-   month in the calendar starting with 1 for January and ending with
-   12 for December.</p><a href="../proc/mo2v.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/moon_fullness.html'>moon_fullness</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>function moon_fullness(dat)</p><a href="../proc/moon_fullness.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/now.html'>now</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>The now(3f) function is a call to the fmtdate(3f) function using the
-   current date and time. That is, it is a convenient way to print the
-   current date and time.</p><a href="../proc/now.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/o2d.html'>o2d</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given an Ordinal day of the year return a date in the form of a
-   &ldquo;DAT&rdquo; array.</p><a href="../proc/o2d.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/ordinal_seconds.html'>ordinal_seconds</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Return number of seconds since beginning of current year.</p><a href="../proc/ordinal_seconds.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/ordinal_to_date.html'>ordinal_to_date</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
+                 <td><a href='../proc/mine.html'>mine</a></td>
+                 <td><a href='../program/demo_locale.html'>demo_locale</a></td>
                  <td>Subroutine</td>
-                 <td><p>When given a valid year, YYYY, and day of the year, DDD, returns the
-   date as a DAT date array</p><a href="../proc/ordinal_to_date.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/phase_of_moon.html'>phase_of_moon</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>function phase_of_moon(dat)</p><a href="../proc/phase_of_moon.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+                 <td></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/printit.html'>printit</a></td>
@@ -347,12 +183,6 @@
                  <td><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></td>
                  <td>Function</td>
                  <td><p>This function converts a string to a DOUBLEPRECISION numeric value.</p><a href="../proc/s2v.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/sec2days.html'>sec2days</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given a number of seconds convert it to a string of the form</p><a href="../proc/sec2days.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/showme.html'>showme</a></td>
@@ -391,14 +221,6 @@
                  <td><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></td>
                  <td>Subroutine</td>
                  <td><p>Globally substitute one substring for another in string.</p><a href="../proc/substitute.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/system_sleep.html'>system_sleep</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>The system_sleep(3f) routine uses the intrinsic ISO_C_BINDING
-   interface to call the C sleep(3c) procedure or usleep(3c)
-   routine.</p><a href="../proc/system_sleep.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/test_box_month.html'>test_box_month</a></td>
@@ -491,6 +313,12 @@
                  <td></td>
                </tr>
 			   <tr>
+                 <td><a href='../proc/test_locale.html'>test_locale</a></td>
+                 <td><a href='../program/runtest.html'>runtest</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
                  <td><a href='../proc/test_mo2d.html'>test_mo2d</a></td>
                  <td><a href='../program/runtest.html'>runtest</a></td>
                  <td>Subroutine</td>
@@ -575,22 +403,22 @@
                  <td></td>
                </tr>
 			   <tr>
+                 <td><a href='../proc/to_upper_extended_ascii.html'>to_upper_extended_ascii</a></td>
+                 <td><a href='../program/runtest.html'>runtest</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/to_upper_extended_ascii~2.html'>to_upper_extended_ascii</a></td>
+                 <td><a href='../program/testit~2.html'>testit</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
+               </tr>
+			   <tr>
                  <td><a href='../proc/transliterate.html'>transliterate</a></td>
                  <td><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></td>
                  <td>Function</td>
                  <td><p>Translate, squeeze, and/or delete characters from the input string.</p><a href="../proc/transliterate.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/u2d.html'>u2d</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given Unix Epoch Time returns DAT date-time array</p><a href="../proc/u2d.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
-                 <td><a href='../proc/unix_to_date.html'>unix_to_date</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Subroutine</td>
-                 <td><p>Converts a Unix Epoch Time (UET) to a DAT date-time array.</p><a href="../proc/unix_to_date.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/upper.html'>upper</a></td>
@@ -606,21 +434,8 @@
                  <td></td>
                </tr>
 			   <tr>
-                 <td><a href='../proc/v2mo.html'>v2mo</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
-                 <td>Function</td>
-                 <td><p>Given a Common Calendar month number, return the name of the month
-   as a string.</p><a href="../proc/v2mo.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
-               </tr>
-			   <tr>
                  <td><a href='../interface/v2s.html'>v2s</a></td>
                  <td><a href='../module/m_time__duplicate.html'>M_time__duplicate</a></td>
-                 <td>Interface</td>
-                 <td></td>
-               </tr>
-			   <tr>
-                 <td><a href='../interface/w2d.html'>w2d</a></td>
-                 <td><a href='../module/m_time.html'>M_time</a></td>
                  <td>Interface</td>
                  <td></td>
                </tr>
@@ -643,7 +458,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-07-16 11:12              </p>
+ on 2024-07-20 02:05              </p>
           </div>
         </div>
         <br>

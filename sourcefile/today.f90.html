@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 1.3% of total for source files.">48 statements</a>
+                 title=" 1.9% of total for source files.">49 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -266,31 +266,32 @@
 <a id="ln-111" name="ln-111" href="#ln-111"></a><span class="s1">&#39;@(#)DESCRIPTION:    output current time for uses such as file suffixes.&gt;&#39;</span><span class="p">,&amp;</span>
 <a id="ln-112" name="ln-112" href="#ln-112"></a><span class="s1">&#39;@(#)VERSION:        1.0, 2009, 1.0.1 2024&gt;&#39;</span><span class="p">,&amp;</span>
 <a id="ln-113" name="ln-113" href="#ln-113"></a><span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
-<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="s1">&#39;@(#)COMPILED:       2024-07-07 14:14:51 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="s1">&#39;@(#)COMPILED:       2024-07-19 20:06:44 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
 <a id="ln-115" name="ln-115" href="#ln-115"></a><span class="s1">&#39;&#39;</span><span class="p">]</span>
 <a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
 <a id="ln-118" name="ln-118" href="#ln-118"></a><span class="k">endif</span>
 <a id="ln-119" name="ln-119" href="#ln-119"></a><span class="k">end subroutine </span><span class="n">help_version</span>
 <a id="ln-120" name="ln-120" href="#ln-120"></a><span class="k">subroutine </span><span class="n">main</span><span class="p">()</span>
-<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate_usage</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate_usage</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span>
 <a id="ln-122" name="ln-122" href="#ln-122"></a><span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="w"> </span><span class="n">lget</span><span class="p">,</span><span class="w"> </span><span class="n">sget</span><span class="w">                    </span><span class="c">! add command-line parser module</span>
 <a id="ln-123" name="ln-123" href="#ln-123"></a>
 <a id="ln-124" name="ln-124" href="#ln-124"></a><span class="c">! ident_1=&quot;@(#) today(1f) output current time for uses such as file suffixes.&quot;</span>
 <a id="ln-125" name="ln-125" href="#ln-125"></a>
 <a id="ln-126" name="ln-126" href="#ln-126"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">options</span>
-<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="k">   call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;today&#39;</span><span class="p">,</span><span class="s1">&#39;-help .F. -version .F. -test .F.&#39;</span><span class="p">)</span><span class="w">    </span><span class="c">! define command arguments,default values and crack command line</span>
-<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_help&#39;</span><span class="p">))</span><span class="w">                         </span><span class="c">! if -help option is present, display help text and exit</span>
-<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_version&#39;</span><span class="p">))</span><span class="w">                    </span><span class="c">! if -version option is present, display version text and exit</span>
-<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_test&#39;</span><span class="p">))</span><span class="k">then</span><span class="w">                                  </span><span class="c">! special option to list date format documentation</span>
-<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">()</span><span class="w">                                     </span><span class="c">! see all formatting options</span>
-<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">   </span><span class="k">else</span>
-<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="k">      options</span><span class="o">=</span><span class="w"> </span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;today_oo&#39;</span><span class="p">)</span><span class="w">                                </span><span class="c">! get -oo STRING</span>
-<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="k">options</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">options</span><span class="o">=</span><span class="s1">&#39;Y-M-D&#39;</span><span class="w">                         </span><span class="c">! if options are blank set a default</span>
-<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="k">options</span><span class="p">)</span><span class="w">                               </span><span class="c">! display current date using format from command line</span>
-<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">   </span><span class="k">endif</span>
-<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="k">end subroutine </span><span class="n">main</span>
-<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="k">end program </span><span class="n">today</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="k">   call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">)</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;today&#39;</span><span class="p">,</span><span class="s1">&#39;-help .F. -version .F. -test .F.&#39;</span><span class="p">)</span><span class="w">    </span><span class="c">! define command arguments,default values and crack command line</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_help&#39;</span><span class="p">))</span><span class="w">                         </span><span class="c">! if -help option is present, display help text and exit</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_version&#39;</span><span class="p">))</span><span class="w">                    </span><span class="c">! if -version option is present, display version text and exit</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_test&#39;</span><span class="p">))</span><span class="k">then</span><span class="w">                                  </span><span class="c">! special option to list date format documentation</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">()</span><span class="w">                                     </span><span class="c">! see all formatting options</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">   </span><span class="k">else</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="k">      options</span><span class="o">=</span><span class="w"> </span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;today_oo&#39;</span><span class="p">)</span><span class="w">                                </span><span class="c">! get -oo STRING</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="k">options</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">options</span><span class="o">=</span><span class="s1">&#39;Y-M-D&#39;</span><span class="w">                         </span><span class="c">! if options are blank set a default</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="k">options</span><span class="p">)</span><span class="w">                               </span><span class="c">! display current date using format from command line</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">   </span><span class="k">endif</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="k">end subroutine </span><span class="n">main</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="k">end program </span><span class="n">today</span>
 </pre></div>
 
       </section>
@@ -312,7 +313,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-07-16 11:12              </p>
+ on 2024-07-20 02:05              </p>
           </div>
         </div>
         <br>

@@ -10,6 +10,7 @@ use M_time,  only: &
              ordinal_to_date, realtime, sec2days, w2d,            moon_fullness,   &
              phase_of_moon,   u2d,      j2d,      d2j,            box_month,       &
              mo2d,            v2mo,                               unix_to_date
+use M_time, only : locale
 implicit none
 integer :: dat(8)
 integer :: ierr
@@ -48,6 +49,9 @@ call unit_test_start('easter         ',SAME//'Determine month and day Easter fal
 call test_easter()
 !!call unit_test_start('ephemeris      ',SAME//'ephemeris position of planets for adjusting an equatorial telescope'//SAMEEND)
 !!call test_ephemeris()
+call unit_test_start('locale        ',SAME//'select language for month and weekday names'//SAMEEND)
+call test_locale()
+
 call unit_test_start('fmtdate        ',SAME//'given date array return date as string using format'//SAMEEND)
 call test_fmtdate()
 call unit_test_start('fmtdate_usage  ',SAME//'display macros recognized by fmtdate(3f)'//SAMEEND)
@@ -88,6 +92,22 @@ call test_w2d()
 call unit_test_stop('M_time tests completed')
 
 contains
+!===================================================================================================================================
+subroutine to_upper_extended_ascii()
+character(len=:),allocatable :: month_names(:), weekday_names(:), month_names_abbr(:), weekday_names_abbr(:)
+
+month_names = [ character(len=9) :: &
+& 'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER' ]
+
+weekday_names = [ character(len=10) :: &
+& 'MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY', 'SATURDAY','SUNDAY' ]
+
+month_names_abbr= month_names(:)(1:3)
+weekday_names_abbr= weekday_names(:)(1:3)
+
+call locale('user', month_names, weekday_names, month_names_abbr, weekday_names_abbr )
+
+end subroutine to_upper_extended_ascii
 !===================================================================================================================================
 #ifndef _WIN32
 
@@ -320,18 +340,18 @@ character(len=40)            :: readme
 end subroutine test_o2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_v2mo
-call unit_test('v2mo',v2mo(1) == 'January',    msg='January')
-call unit_test('v2mo',v2mo(2) == 'February',   msg='February')
-call unit_test('v2mo',v2mo(3) == 'March',      msg='March')
-call unit_test('v2mo',v2mo(4) == 'April',      msg='April')
-call unit_test('v2mo',v2mo(5) == 'May',        msg='May')
-call unit_test('v2mo',v2mo(6) == 'June',       msg='June')
-call unit_test('v2mo',v2mo(7) == 'July',       msg='July')
-call unit_test('v2mo',v2mo(8) == 'August',     msg='August')
-call unit_test('v2mo',v2mo(9) == 'September',  msg='September')
-call unit_test('v2mo',v2mo(10) == 'October',   msg='October')
-call unit_test('v2mo',v2mo(11) == 'November',  msg='November')
-call unit_test('v2mo',v2mo(12) == 'December',  msg='December')
+call  unit_test('v2mo',v2mo(1)   ==  'January',    'January',    v2mo(1)   )
+call  unit_test('v2mo',v2mo(2)   ==  'February',   'February',   v2mo(2)   )
+call  unit_test('v2mo',v2mo(3)   ==  'March',      'March',      v2mo(3)   )
+call  unit_test('v2mo',v2mo(4)   ==  'April',      'April',      v2mo(4)   )
+call  unit_test('v2mo',v2mo(5)   ==  'May',        'May',        v2mo(5)   )
+call  unit_test('v2mo',v2mo(6)   ==  'June',       'June',       v2mo(6)   )
+call  unit_test('v2mo',v2mo(7)   ==  'July',       'July',       v2mo(7)   )
+call  unit_test('v2mo',v2mo(8)   ==  'August',     'August',     v2mo(8)   )
+call  unit_test('v2mo',v2mo(9)   ==  'September',  'September',  v2mo(9)   )
+call  unit_test('v2mo',v2mo(10)  ==  'October',    'October',    v2mo(10)  )
+call  unit_test('v2mo',v2mo(11)  ==  'November',   'November',   v2mo(11)  )
+call  unit_test('v2mo',v2mo(12)  ==  'December',   'December',   v2mo(12)  )
 call unit_test_end('v2mo')
 end subroutine test_v2mo
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -367,7 +387,7 @@ call unit_test('mo2v', mo2v('Sept')       ==   9   ,msg='Check September')
 call unit_test('mo2v', mo2v('Oct')        ==   10  ,msg='Check October')
 call unit_test('mo2v', mo2v('Nov')        ==   11  ,msg='Check November')
 call unit_test('mo2v', mo2v('December')   ==   12  ,msg='Check December')
-call unit_test('mo2v', mo2v('jax')        ==   1   ,msg='Check "jax"')
+call unit_test('mo2v', mo2v('jax')        ==  -1   ,msg='Check "jax"')
 call unit_test('mo2v', mo2v('ja')         ==   1   ,msg='Check "ja"')
 call unit_test('mo2v', mo2v('j')          ==  -1   ,msg='Check "j"')
 call unit_test('mo2v', mo2v('')           ==  -1   ,msg='Check ""')
@@ -380,6 +400,104 @@ subroutine test_now
 call unit_test_end('now')
 end subroutine test_now
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+subroutine test_locale()
+integer          :: dat(8)     ! input date array
+integer          :: weekday
+character(len=9) :: day
+integer          :: ierr
+character(len=:),allocatable :: month_names(:), weekday_names(:), month_names_abbreviated(:), weekday_names_abbreviated(:)
+real(kind=realtime) :: julian
+character(len=:),allocatable   :: expected
+character(len=:),allocatable   :: returned
+
+call to_upper_extended_ascii()
+
+dat = [1957, 3, 2,-240, 2,0,0,0]
+
+expected='|MAR|MARCH|SAT|SATURDAY|'
+returned=fmtdate(dat,'|%l|%L|%w|%W|')
+call unit_test('locale',returned.eq.expected,'macros: expected',expected,'returned',returned)
+
+expected='|MARCH|MAR|MAR|SAT|SAT|SATURDAY|'
+returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|')
+call unit_test('locale',returned.eq.expected,'keywords: expected',expected,'returned',returned)
+
+! go forward one day
+call date_to_julian(dat,julian,ierr)
+julian=julian+1
+dat=j2d(julian)
+
+expected='|MAR|MARCH|SUN|SUNDAY|'
+returned=fmtdate(dat,'|%l|%L|%w|%W|')
+call unit_test('locale',returned.eq.expected,'macros: expected',expected,'returned',returned)
+
+expected='|MARCH|MAR|MAR|SUN|SUN|SUNDAY|'
+returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|')
+call unit_test('locale',returned.eq.expected,'keywords: expected',expected,'returned',returned)
+
+call  unit_test('locale',  v2mo(1)  == 'JANUARY',   'JANUARY',   'expected  JANUARY    got', v2mo(1)  )
+call  unit_test('locale',  v2mo(2)  == 'FEBRUARY',  'FEBRUARY',  'expected  FEBRUARY   got', v2mo(2)  )
+call  unit_test('locale',  v2mo(3)  == 'MARCH',     'MARCH',     'expected  MARCH      got', v2mo(3)  )
+call  unit_test('locale',  v2mo(4)  == 'APRIL',     'APRIL',     'expected  APRIL      got', v2mo(4)  )
+call  unit_test('locale',  v2mo(5)  == 'MAY',       'MAY',       'expected  MAY        got', v2mo(5)  )
+call  unit_test('locale',  v2mo(6)  == 'JUNE',      'JUNE',      'expected  JUNE       got', v2mo(6)  )
+call  unit_test('locale',  v2mo(7)  == 'JULY',      'JULY',      'expected  JULY       got', v2mo(7)  )
+call  unit_test('locale',  v2mo(8)  == 'AUGUST',    'AUGUST',    'expected  AUGUST     got', v2mo(8)  )
+call  unit_test('locale',  v2mo(9)  == 'SEPTEMBER', 'SEPTEMBER', 'expected  SEPTEMBER  got', v2mo(9)  )
+call  unit_test('locale',  v2mo(10) == 'OCTOBER',   'OCTOBER',   'expected  OCTOBER    got', v2mo(10) )
+call  unit_test('locale',  v2mo(11) == 'NOVEMBER',  'NOVEMBER',  'expected  NOVEMBER   got', v2mo(11) )
+call  unit_test('locale',  v2mo(12) == 'DECEMBER',  'DECEMBER',  'expected  DECEMBER   got', v2mo(12) )
+
+call date_and_time(values=dat)
+dat=[1957,3,2,dat(4),12,0,0,0]
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'SATURDAY'.and.weekday == 6,'expected SATURDAY,6 got ',day,weekday)
+
+dat(3)=dat(3)+1 ! next day
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'SUNDAY'.and.weekday == 7,'expected SUNDAY,7 got ',day,weekday)
+
+dat(3)=dat(3)+1 ! next day
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'MONDAY'.and.weekday == 1,'expected MONDAY,1 got ',day,weekday)
+
+dat(3)=dat(3)+1 ! next day
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'TUESDAY'.and.weekday == 2,'expected TUESDAY,2 got ',day,weekday)
+
+dat(3)=dat(3)+1 ! next day
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'WEDNESDAY'.and.weekday == 3,'expected WEDNESDAY,3 got ',day,weekday)
+
+dat(3)=dat(3)+1 ! next day
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'THURSDAY'.and.weekday == 4,'expected THURSDAY,4 got ',day,weekday)
+
+dat(3)=dat(3)+1 ! next day
+call dow(dat, weekday, day, ierr)
+call unit_test('locale',day == 'FRIDAY'.and.weekday == 5,'expected FRIDAY,5 got ',day,weekday)
+
+
+if(unit_test_level > 0)then
+   call locale('show')
+endif
+call locale('reset')
+if(unit_test_level > 0)then
+   call locale('show')
+endif
+
+dat=[1957, 3, 2,-240, 2,0,0,0]
+expected='|Mar|March|Sat|Saturday|'
+returned=fmtdate(dat,'|%l|%L|%w|%W|')
+call unit_test('locale',returned.eq.expected,'after reset macros: expected',expected,'returned',returned)
+
+expected='|March|Mar|Mar|Sat|Sat|Saturday|'
+returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|')
+call unit_test('locale',returned.eq.expected,'after reset keywords: expected',expected,'returned',returned)
+
+call unit_test_end('locale')
+end subroutine test_locale
+!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_fmtdate
 character(len=80)              :: date1
 character(len=80)              :: date2
@@ -388,6 +506,9 @@ character(len=132)             :: comment
 character(len=372),allocatable :: line(:)
 integer                        :: dat(8)
 integer                        :: i
+real(kind=realtime)            :: julian
+character(len=:),allocatable   :: expected
+character(len=:),allocatable   :: returned
 ! the data file with dates to read and expected answers and comments
 line=[ character(len=372) :: &
 & ' "Sat 1 Jan 2005",  "2005-01-01", "2004-W53-6", " " ', &
@@ -421,6 +542,15 @@ do i=1,size(line)-1
    ! convert DAT to ISO week date, all generated dates should match ISO week date
    call unit_test('fmtdate',fmtdate(dat,"%I") == iso_week_date, msg=iso_week_date)
 enddo
+
+dat=[1957, 3, 2,-240, 2,0,0,0]
+expected='|Mar|March|Sat|Saturday|'
+returned=fmtdate(dat,'|%l|%L|%w|%W|')
+call unit_test('fmtdate',returned.eq.expected,'macros: expected',expected,'returned',returned)
+
+expected='|March|Mar|Mar|Sat|Sat|Saturday|'
+returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|')
+call unit_test('fmtdate',returned.eq.expected,'keywords: expected',expected,'returned',returned)
 
 call unit_test_end('fmtdate')
 
@@ -480,8 +610,35 @@ integer          :: weekday
 character(len=9) :: day
 integer          :: ierr
 call date_and_time(values=dat)
-call dow([1957,3,2,dat(4),12,0,0,0], weekday, day, ierr)
-call unit_test('dow',day == 'Saturday'.and.weekday == 6,msg='Saturday')
+dat=[1957,3,2,dat(4),12,0,0,0]
+
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Saturday'.and.weekday == 6,' expected Saturday,6 and got ',day,weekday)
+
+dat(3)=dat(3)+1
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Sunday'.and.weekday == 7,' expected Sunday,7 and got ',day,weekday)
+
+dat(3)=dat(3)+1
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Monday'.and.weekday == 1,' expected Monday,1 and got ',day,weekday)
+
+dat(3)=dat(3)+1
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Tuesday'.and.weekday == 2,' expected Tuesday,2 and got ',day,weekday)
+
+dat(3)=dat(3)+1
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Wednesday'.and.weekday == 3,' expected Wednesday,3 and got ',day,weekday)
+
+dat(3)=dat(3)+1
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Thursday'.and.weekday == 4,' expected Thursday,4 and got ',day,weekday)
+
+dat(3)=dat(3)+1
+call dow(dat, weekday, day, ierr)
+call unit_test('dow',day == 'Friday'.and.weekday == 5,' expected Friday,5 and got ',day,weekday)
+
 call unit_test_end('dow')
 end subroutine test_dow
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -543,7 +700,7 @@ if(unit_test_level > 0)then
    write(*,'(a)')calendar
    write(*,'(a)')mnth
 endif
-call unit_test('box_month',all(calendar == mnth),msg='July 2016')
+call unit_test('box_month',all(calendar == mnth),'July 2016')
 call unit_test_end('box_month')
 end subroutine test_box_month
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -582,28 +739,34 @@ end subroutine test_d2j
 subroutine test_j2d
 real(kind=realtime)          :: juliandate
 character(len=:),allocatable :: expected
+character(len=:),allocatable :: resulted
+integer                      :: dat(8)
 
    juliandate=2457589.129d0                 ! set sample Julian Date
 
    expected='2016-07-19 11:05:45'
-   call unit_test('j2d',fmtdate(j2d(juliandate),'year-month-day hour:minute:second') == expected, &
-   & juliandate,'==> EXPECTED ',expected,' GOT ',fmtdate(j2d(juliandate),'year-month-day hour:minute:second'))
+   dat=j2d(juliandate)
+   resulted=fmtdate(dat,'year-month-day hour:minute:second')
+   call unit_test('j2d',resulted == expected, juliandate,'==> EXPECTED ',expected,' GOT ',resulted)
 
    ! go back one day
    expected='2016-07-18 11:05:45'
-   call unit_test('j2d',fmtdate(j2d(juliandate-1.0d0),'year-month-day hour:minute:second') == expected, &
-   & juliandate,'==> EXPECTED ',expected,' GOT ',fmtdate(j2d(juliandate-1.0d0),'year-month-day hour:minute:second'))
+   dat=j2d(juliandate-1.0d0)
+   resulted=fmtdate(dat,'year-month-day hour:minute:second')
+   call unit_test('j2d',resulted == expected, juliandate,'==> EXPECTED ',expected,' GOT ',resulted)
 
    ! go forward one day
    expected='2016-07-20 11:05:45'
-   call unit_test('j2d',fmtdate(j2d(juliandate+1.0d0),'year-month-day hour:minute:second') == expected, &
-   & juliandate,'==> EXPECTED ',expected,' GOT ',fmtdate(j2d(juliandate+1.0d0),'year-month-day hour:minute:second'))
+   dat=j2d(juliandate+1.0d0)
+   resulted=fmtdate(dat,'year-month-day hour:minute:second')
+   call unit_test('j2d',resulted == expected, juliandate,'==> EXPECTED ',expected,' GOT ',resulted)
 
 call unit_test_end('j2d')
 
 end subroutine test_j2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 subroutine test_d2u()
+integer,parameter :: aday(*)= [2017,03,29,-240,01,46,47,0]
 
 !  Note that time zones are usually -HHMM or -HH:MM and not MM, which is what the DAT array uses
 !  Comparing to Unix date(1) command:
@@ -614,7 +777,7 @@ subroutine test_d2u()
 !    date --date "Wed Mar 29 01:46:47 UTC-4:00 2017" +%s ! 1490766407
 
    ! nint() changed to int(anint() to avoid gfortran OpenBSD bug on i386
-   call unit_test('d2u',int(anint(d2u([2017,03,29,-240,01,46,47,0]))) == 1490766407,d2u([2017,03,29,-240,01,46,47,0]) )
+   call unit_test('d2u',int(anint(d2u(aday))) == 1490766407,d2u(aday) )
 
    call unit_test_end('d2u')
 
@@ -629,7 +792,7 @@ integer :: utime
    re=u2d(1490766407)
    call unit_test('u2d',all(re == ex),&
    & 'EXPECTED',1490766407, &
-   & 'GOT',d2u([2017,03,29,-240,01,46,47,0]) )
+   & 'GOT',d2u(ex) )
 call unit_test_end('u2d')
 end subroutine test_u2d
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
@@ -811,3 +974,4 @@ character(len=10):: name
 end subroutine showme
 !TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 end program runtest
+!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
