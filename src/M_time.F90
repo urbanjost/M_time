@@ -3678,13 +3678,13 @@ end function days2sec
 !>
 !!##NAME
 !! locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to represent
-!!              month and weekday names with
+!!              month and weekday names
 !!    (LICENSE:MIT)
 !!
 !!##SYNOPSIS
 !!
 !!    subroutine locale(name,month_names,weekday_names, &
-!!                    & month_names_abbr,weekday_names_abbr,IERR)
+!!    & month_names_abbr,weekday_names_abbr,IERR)
 !!
 !!     character(len=*),intent(in)           :: name
 !!     character(len=*),intent(in),optional  :: month_names(12)
@@ -3709,11 +3709,13 @@ end function days2sec
 !!   internationalization of the date representations.
 !!
 !!##OPTIONS
-!!   name               predefined name or reserved name "user"
+!!   name   predefined name or reserved name "user"
+!!
 !!   month_names        12 month names
-!!   month_names_abbr   12 month name abbreviations
 !!   weekday_names       7 weekday names
+!!   month_names_abbr   12 month name abbreviations
 !!   weekday_names_abbr  7 weekday name abbreviations
+!!
 !!   ierr               if non-zero an error occurred
 !!
 !! The NAME parameter may be a pre-defined name or the special name "user".

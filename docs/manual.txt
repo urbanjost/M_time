@@ -14,7 +14,7 @@ fmtdate_usage (3m_time) - [M_time:DATE_PRINTING] display macros recognized by fm
 guessdate (3m_time)  - [M_time:READING_DATES] reads in a date, in various formats (LICENSE:MIT)
 j2d (3m_time)	     - [M_time:JULIAN] given a JED (Julian Ephemeris Date) returns a date-time array DAT. (LICENSE:MIT)
 julian_to_date (3m_time) - [M_time:JULIAN] converts a JED(Julian Ephemeris Date) to a DAT date-time array. (LICENSE:MIT)
-locale (3m_time)     - [M_time:DATE_PRINTING] allow for selecting languages to represent month and weekday names with (LICENSE:MIT)
+locale (3m_time)     - [M_time:DATE_PRINTING] allow for selecting languages to represent month and weekday names (LICENSE:MIT)
 M_time (3m_time)     - [M_time::INTRO] Fortran module for manipulating and presenting time and date values as defined in ISO 8601:1988 (LICENSE:MIT)
 M_time__oop (3m_time) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm) (LICENSE:MIT)
 mo2d (3m_time)	     - [M_time:MONTH_NAME] given month name return DAT date-time array for beginning of that month in specified year (LICENSE:MIT)
@@ -2216,30 +2216,20 @@ locale(3m_time) 					       locale(3m_time)
 
 NAME
   locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to
-  represent month and weekday names with (LICENSE:MIT)
+  represent month and weekday names (LICENSE:MIT)
 
 
 SYNOPSIS
   subroutine locale(name,month_names,weekday_names, & &
   month_names_abbr,weekday_names_abbr,IERR)
 
-    character(len=*),intent(in)
-      :: name
+      character(len=*),intent(in)	    :: name
+      character(len=*),intent(in),optional  :: month_names(12)
+      character(len=*),intent(in),optional  :: month_names_abbr(12)
+      character(len=*),intent(in),optional  :: weekday_names(7)
+      character(len=*),intent(in),optional  :: weekday_names_abbr(7)
+      integer,intent(out)		    :: ierr
 
-    character(len=*),intent(in),optional
-      :: month_names(12)
-
-    character(len=*),intent(in),optional
-      :: month_names_abbr(12)
-
-    character(len=*),intent(in),optional
-      :: weekday_names(7)
-
-    character(len=*),intent(in),optional
-      :: weekday_names_abbr(7)
-
-    integer,intent(out)
-      :: ierr
 
 DESCRIPTION
   given a pre-defined locale name or strings to substitute for month names and
@@ -2263,11 +2253,11 @@ OPTIONS
   month_names
     12 month names
 
-  month_names_abbr
-    12 month name abbreviations
-
   weekday_names
     7 weekday names
+
+  month_names_abbr
+    12 month name abbreviations
 
   weekday_names_abbr
     7 weekday name abbreviations
