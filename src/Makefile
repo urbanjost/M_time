@@ -24,21 +24,22 @@ CC := cc
 CFLAGS := -O
 FC := gfortran
 LDFLAGS :=
+F90FLAGS := -I../include
 F90 := gfortran
 #
 # You can either ignore it, or disable the "may be used uninitialized"
 # warnings with -Wno-maybe-uninitialized or compile with optimizations
 # (-O1 and more).
 gfortran:
-	$(MAKE) F90=gfortran F90FLAGS='-g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized' all
+	$(MAKE) F90=gfortran F90FLAGS='-I../include -g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized' all
 nvfortran:
-	$(MAKE) F90=nvfortran F90FLAGS='-Minform=inform -Mbackslash -traceback' all
+	$(MAKE) F90=nvfortran F90FLAGS='-I../include -Minform=inform -Mbackslash -traceback' all
 ifort:
-	$(MAKE) F90=ifort F90FLAGS='-warn all -traceback -diag-disable=10448' all
+	$(MAKE) F90=ifort F90FLAGS='-I../include -warn all -traceback -diag-disable=10448' all
 ifx:
-	$(MAKE) F90=ifx F90FLAGS='-warn all -traceback' all
+	$(MAKE) F90=ifx F90FLAGS='-I../include -warn all -traceback' all
 nagfor:
-	$(MAKE) F90=nagfor F90FLAGS='-C' all
+	$(MAKE) F90=nagfor F90FLAGS='-I../include -C' all
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 all: $(PROG) $(CPROG)
 	@echo "That's all folks!"

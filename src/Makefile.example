@@ -32,11 +32,11 @@ AR=bld
 ARFLAGS=rv
 AR=ar
 ARFLAGS=rU
-CF90FLAGS  = -Iinc
+CF90FLAGS  = -Iinc -I../include
 LD=ld
 RANLIB=ranlib
 
-INC = -I$$HERE_DIR/inc -I$$HERE_DIR/../inc -I$$HERE/inc -I$$HERE -I$$HERE_DIR -I$$HERE/../inc $(LIBINC) $$INCHOMEUSH
+INC = -I$$HERE_DIR/inc -I$$HERE_DIR/../inc -I$$HERE_DIR/../include -I$$HERE/inc -I$$HERE -I$$HERE_DIR -I$$HERE/../inc $(LIBINC) $$INCHOMEUSH
 
 CC=gcc
 #CCFLAGS =  -I/usr/include -I/usr/X11R6/include $(CCOPTS) -g CCFLAGS =  -I/usr/include -I/usr/include/X11 $(CCOPTS) -g    
