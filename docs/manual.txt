@@ -14,7 +14,7 @@ fmtdate_usage (3m_time) - [M_time:DATE_PRINTING] display macros recognized by fm
 guessdate (3m_time)  - [M_time:READING_DATES] reads in a date, in various formats (LICENSE:MIT)
 j2d (3m_time)	     - [M_time:JULIAN] given a JED (Julian Ephemeris Date) returns a date-time array DAT. (LICENSE:MIT)
 julian_to_date (3m_time) - [M_time:JULIAN] converts a JED(Julian Ephemeris Date) to a DAT date-time array. (LICENSE:MIT)
-locale (3m_time)     - [M_time:DATE_PRINTING] allow for selecting languages to represent month and weekday names with (LICENSE:MIT)
+locale (3m_time)     - [M_time:DATE_PRINTING] allow for selecting languages to represent month and weekday names (LICENSE:MIT)
 M_time (3m_time)     - [M_time::INTRO] Fortran module for manipulating and presenting time and date values as defined in ISO 8601:1988 (LICENSE:MIT)
 M_time__oop (3m_time) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm) (LICENSE:MIT)
 mo2d (3m_time)	     - [M_time:MONTH_NAME] given month name return DAT date-time array for beginning of that month in specified year (LICENSE:MIT)
@@ -84,7 +84,7 @@ LICENSE
 
 
 
-				 July 19, 2024		  month.1.man(1m_time)
+				August 31, 2024 	  month.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -142,7 +142,7 @@ LICENSE
 
 
 
-				 July 19, 2024		  today.1.man(1m_time)
+				August 31, 2024 	  today.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 
@@ -210,7 +210,7 @@ LICENSE
 
 
 
-				 July 19, 2024	       sec2days.1.man(1m_time)
+				August 31, 2024        sec2days.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -293,7 +293,7 @@ LICENSE
 
 
 
-				 July 19, 2024	       days2sec.1.man(1m_time)
+				August 31, 2024        days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -350,7 +350,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  d2j(3m_time)
+				August 31, 2024 		  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -410,7 +410,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  d2u(3m_time)
+				August 31, 2024 		  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -549,7 +549,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  d2w(3m_time)
+				August 31, 2024 		  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -562,11 +562,11 @@ NAME
 SYNOPSIS
   subroutine dow(values, weekday, day, ierr, short)
 
-      integer,intent(in) :: values(8)
-      integer,intent(out),optional :: weekday
+      integer,intent(in)		    :: values(8)
+      integer,intent(out),optional	    :: weekday
       character(len=*),intent(out),optional :: day
-      integer,intent(out),optional :: ierr
-      logical,intent(in),optional :: short
+      integer,intent(out),optional	    :: ierr
+      logical,intent(in),optional	    :: short
 
 
 DESCRIPTION
@@ -630,7 +630,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  dow(3m_time)
+				August 31, 2024 		  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -704,7 +704,7 @@ EXAMPLE
 
 
 
-				 July 19, 2024		       easter(3m_time)
+				August 31, 2024 	       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -765,7 +765,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		      fmtdate(3m_time)
+				August 31, 2024 	      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -955,7 +955,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		fmtdate_usage(3m_time)
+				August 31, 2024 	fmtdate_usage(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -1010,7 +1010,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			 mo2v(3m_time)
+				August 31, 2024 		 mo2v(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -1022,8 +1022,8 @@ NAME
 SYNOPSIS
   function moon_fullness(dat)
 
-     integer,intent(in) 	   :: dat(8)
-     integer			   :: moon_fullness
+     integer,intent(in) :: dat(8)
+     integer		:: moon_fullness
 
 
 DESCRIPTION
@@ -1078,7 +1078,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		moon_fullness(3m_time)
+				August 31, 2024 	moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1136,7 +1136,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  now(3m_time)
+				August 31, 2024 		  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1204,7 +1204,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  o2d(3m_time)
+				August 31, 2024 		  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1247,7 +1247,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024	      ordinal_seconds(3m_time)
+				August 31, 2024       ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1284,9 +1284,9 @@ EXAMPLE
       program demo_ordinal_to_date
       use M_time, only : ordinal_to_date
       implicit none
-      INTEGER		 :: yyyy, ddd, mm, dd, yy
-      integer		 :: dat(8)
-      integer		 :: ios
+      integer :: yyyy, ddd, mm, dd, yy
+      integer :: dat(8)
+      integer :: ios
 	INFINITE: do
 	   write(*,'(a)',advance='no')&
 	   & 'Enter year YYYY and ordinal day of year DD '
@@ -1306,7 +1306,7 @@ EXAMPLE
 
 
 
-				 July 19, 2024	      ordinal_to_date(3m_time)
+				August 31, 2024       ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1391,7 +1391,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		phase_of_moon(3m_time)
+				August 31, 2024 	phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1473,7 +1473,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		     sec2days(3m_time)
+				August 31, 2024 	     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1543,7 +1543,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		 system_sleep(3m_time)
+				August 31, 2024 	 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1613,7 +1613,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  u2d(3m_time)
+				August 31, 2024 		  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1690,7 +1690,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		 unix_to_date(3m_time)
+				August 31, 2024 	 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1756,7 +1756,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			 v2mo(3m_time)
+				August 31, 2024 		 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1978,7 +1978,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  w2d(3m_time)
+				August 31, 2024 		  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -2069,7 +2069,7 @@ EXAMPLE
 
 LICENSE
    MIT
-				 July 19, 2024		    guessdate(3m_time)
+				August 31, 2024 	    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
@@ -2109,9 +2109,9 @@ EXAMPLE
       program demo_j2d
       use M_time, only : j2d, d2j, fmtdate, realtime
       implicit none
-      integer,parameter :: dp=kind(0.0d0)
+      integer,parameter   :: dp=kind(0.0d0)
       real(kind=realtime) :: today
-      integer :: dat(8)
+      integer		  :: dat(8)
 	 call date_and_time(values=dat) ! get the date using intrinsic
 	 today=d2j(dat) 		 ! convert today to Julian Date
 	 write(*,*)'Today=',fmtdate(j2d(today))
@@ -2132,7 +2132,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  j2d(3m_time)
+				August 31, 2024 		  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
@@ -2180,10 +2180,10 @@ EXAMPLE
        program demo_julian_to_date
        use M_time, only : julian_to_date, fmtdate, realtime
        implicit none
-       integer,parameter :: dp=kind(0.0d0)
-       real(kind=realtime)     :: juliandate
-       integer		       :: dat(8)
-       integer		       :: ierr
+       integer,parameter   :: dp=kind(0.0d0)
+       real(kind=realtime) :: juliandate
+       integer		   :: dat(8)
+       integer		   :: ierr
 	  ! set sample Julian Date
 	  juliandate=2457589.129_dp
 	  ! create DAT array for this date
@@ -2209,37 +2209,27 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024	       julian_to_date(3m_time)
+				August 31, 2024        julian_to_date(3m_time)
 locale(3m_time) 					       locale(3m_time)
 
 
 
 NAME
   locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to
-  represent month and weekday names with (LICENSE:MIT)
+  represent month and weekday names (LICENSE:MIT)
 
 
 SYNOPSIS
   subroutine locale(name,month_names,weekday_names, & &
   month_names_abbr,weekday_names_abbr,IERR)
 
-    character(len=*),intent(in)
-      :: name
+      character(len=*),intent(in)	    :: name
+      character(len=*),intent(in),optional  :: month_names(12)
+      character(len=*),intent(in),optional  :: month_names_abbr(12)
+      character(len=*),intent(in),optional  :: weekday_names(7)
+      character(len=*),intent(in),optional  :: weekday_names_abbr(7)
+      integer,intent(out)		    :: ierr
 
-    character(len=*),intent(in),optional
-      :: month_names(12)
-
-    character(len=*),intent(in),optional
-      :: month_names_abbr(12)
-
-    character(len=*),intent(in),optional
-      :: weekday_names(7)
-
-    character(len=*),intent(in),optional
-      :: weekday_names_abbr(7)
-
-    integer,intent(out)
-      :: ierr
 
 DESCRIPTION
   given a pre-defined locale name or strings to substitute for month names and
@@ -2263,11 +2253,11 @@ OPTIONS
   month_names
     12 month names
 
-  month_names_abbr
-    12 month name abbreviations
-
   weekday_names
     7 weekday names
+
+  month_names_abbr
+    12 month name abbreviations
 
   weekday_names_abbr
     7 weekday name abbreviations
@@ -2337,7 +2327,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		       locale(3m_time)
+				August 31, 2024 	       locale(3m_time)
 untitled()							    untitled()
 
 
@@ -2828,7 +2818,7 @@ untitled()							    untitled()
 
 
 
-				 July 19, 2024			    untitled()
+				August 31, 2024 		    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -3235,7 +3225,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		  M_time__oop(3m_time)
+				August 31, 2024 	  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3293,7 +3283,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			 mo2d(3m_time)
+				August 31, 2024 		 mo2d(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3363,7 +3353,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024	       date_to_julian(3m_time)
+				August 31, 2024        date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3428,7 +3418,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		 date_to_unix(3m_time)
+				August 31, 2024 	 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3441,8 +3431,8 @@ NAME
 SYNOPSIS
   elemental impure function days2sec(str) result(time)
 
-      character(len=*),intent(in)	:: str
-      real(kind=realtime)		:: time
+      character(len=*),intent(in) :: str
+      real(kind=realtime)	  :: time
 
 
 DESCRIPTION
@@ -3533,7 +3523,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		     days2sec(3m_time)
+				August 31, 2024 	     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3611,7 +3601,7 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024			  d2o(3m_time)
+				August 31, 2024 		  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3624,8 +3614,8 @@ NAME
 SYNOPSIS
   subroutine box_month(dat,calen)
 
-      integer,intent(in)    :: dat(8)
-      character(len=21)     :: calen(8)
+      integer,intent(in) :: dat(8)
+      character(len=21)  :: calen(8)
 
 
 DESCRIPTION
@@ -3674,4 +3664,4 @@ AUTHOR
 
 LICENSE
    MIT
-				 July 19, 2024		    box_month(3m_time)
+				August 31, 2024 	    box_month(3m_time)

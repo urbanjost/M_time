@@ -30,6 +30,7 @@ LIBNAME=M_time
 # platform-specific values you will probably change
 CC := cc
 CFLAGS := -O
+F90FLAGS := -I../include -O
 AR=ar
 ARFLAGS=rU
 RANLIB = ranlib
@@ -39,28 +40,28 @@ RANLIB = ranlib
 # (-O1 and more).
 gfortran: FC=gfortran
 gfortran: INSTALL=./lib/$(FC)
-gfortran: FFLAGS := -g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized -J $(INSTALL) -I $(INSTALL)
+gfortran: FFLAGS := -I../include -g -O -Wall -std=f2018 -Wextra -Wno-maybe-uninitialized -Wno-uninitialized -J $(INSTALL) -I $(INSTALL)
 gfortran: LDFLAGS :=
 gfortran: all
         @echo built with $(FC)
 
 nvfortran: FC=nvfortran
 nvfortran: INSTALL=./lib/$(FC)
-nvfortran: FFLAGS := -Minform=inform -Mbackslash -traceback -J $(INSTALL) -I $(INSTALL)
+nvfortran: FFLAGS := -I../include -Minform=inform -Mbackslash -traceback -J $(INSTALL) -I $(INSTALL)
 gfortran: LDFLAGS :=
 nvfortran: all
         @echo built with $(FC)
 
 ifort: FC=ifort
 ifort: INSTALL=./lib/$(FC)
-ifort: FFLAGS := -warn all -traceback -O -module $(INSTALL) -I $(INSTALL)
+ifort: FFLAGS := -I../include -warn all -traceback -O -module $(INSTALL) -I $(INSTALL)
 ifort: LDFLAGS :=
 ifort: all
         @echo built with $(FC)
 
 ifx: FC=ifx
 ifx: INSTALL=./lib/$(FC)
-ifx: FFLAGS := -warn all -traceback -O -module $(INSTALL) -I $(INSTALL)
+ifx: FFLAGS := -I../include -warn all -traceback -O -module $(INSTALL) -I $(INSTALL)
 ifx: LDFLAGS :=
 ifx: all
         @echo built with $(FC)

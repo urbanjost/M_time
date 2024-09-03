@@ -71,7 +71,7 @@ programs are included in the package.
 ### Printing Dates
 + **[fmtdate](https://urbanjost.github.io/M_time/fmtdate.3m_time.html)(dat,format) result (TIMESTR)** ! Convert date array to string using format
 + **[fmtdate_usage](https://urbanjost.github.io/M_time/fmtdate_usage.3m_time.html)(indent)** ! display macros recognized by fmtdate
-+ **[locale](https://urbanjost.github.io/M_time/locale.3m_time.html)(name,mnths,wkdays,mnths_short,wkdays_short)** ! allow substitute month and weekday names
++ **[locale](https://urbanjost.github.io/M_time/locale.3m_time.html)(name,mths,wks,mths,short,wks_short,ierr)** ! allow substituting other strings for month and week names, including predefined sets for languages representable in extended ASCII.
 + **[now](https://urbanjost.github.io/M_time/now.3m_time.html)(format) result (NOW)** ! return string representing current time given format
 + **[box_month](https://urbanjost.github.io/M_time/box_month.3m_time.html)(dat,CALEN)** ! print specified month into character array
 ### Printing Durations
@@ -177,7 +177,7 @@ the built-in help text for the formatting options is as simple as
    alternate substitutions occurs.
 
    If the format is composed entirely of one of the following
-   keywords they are equivalent to the following macro strings:
+   keywords the following substitutions occur:
 ```text
        "iso-8601",
        "iso"        ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:26:04-04:00
@@ -232,8 +232,9 @@ the built-in help text for the formatting options is as simple as
    is a macro is assumed to have an implied percent in front
    of it. For example:
 ```text
-       Y-M-D h:m:s ==> %Y-%M-%D %h:%m:%s ==> 2022-10-20 19:26:04
+       YMDhms ==> %Y%M%D%h%m%s ==> 20221020192604
 ```
+
 ---
 ![docs](docs/images/docs.gif)
 ---
@@ -400,10 +401,8 @@ but GMT is no longer precisely defined by the scientific community.
 
 ## Limitations
 
-Like most Civilian Calendar tools M_time does not account internally
-for leap seconds; which is a POSIX-compliant behavior.
-
-M_time is _not_ a high-precision library that accounts for such as
+Like most collections of date and time procedures M_time is _not_ a
+high- precision library that accounts internally for leap seconds and
 relativistic effects.
 
 M_time(3f) is intended for use in the recent era and is not appropriate
