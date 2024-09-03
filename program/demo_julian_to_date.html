@@ -114,10 +114,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-dat~7">dat</a>
-            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-dp~3">dp</a>
-            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-ierr~4">ierr</a>
-            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-juliandate">juliandate</a>
+            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-dat~4">dat</a>
+            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-dp">dp</a>
+            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-ierr~9">ierr</a>
+            <a class="list-group-item" href="../program/demo_julian_to_date.html#variable-juliandate~2">juliandate</a>
         </div>
       </div>
     </div>
@@ -183,7 +183,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~7"></span>
+              <span class="anchor" id="variable-dat~4"></span>
               integer
             </td>
             <td>
@@ -199,7 +199,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~3"></span>
+              <span class="anchor" id="variable-dp"></span>
               integer,
             </td>
             <td>
@@ -215,7 +215,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~4"></span>
+              <span class="anchor" id="variable-ierr~9"></span>
               integer
             </td>
             <td>
@@ -231,7 +231,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-juliandate"></span>
+              <span class="anchor" id="variable-juliandate~2"></span>
               real(kind=realtime)
             </td>
             <td>
@@ -264,10 +264,10 @@ parameter
     <div class="hl codehilite"><pre><span></span><span class="w">       </span><span class="k">program </span><span class="n">demo_julian_to_date</span>
 <span class="w">       </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">julian_to_date</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span>
 <span class="w">       </span><span class="k">implicit none</span>
-<span class="k">       </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
-<span class="w">       </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">juliandate</span>
-<span class="w">       </span><span class="kt">integer</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="w">       </span><span class="kt">integer</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
+<span class="k">       </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
+<span class="w">       </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">juliandate</span>
+<span class="w">       </span><span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">       </span><span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
 <span class="w">          </span><span class="c">! set sample Julian Date</span>
 <span class="w">          </span><span class="n">juliandate</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129_dp</span>
 <span class="w">          </span><span class="c">! create DAT array for this date</span>
@@ -302,7 +302,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-07-20 02:26              </p>
+ on 2024-09-03 00:10              </p>
           </div>
         </div>
         <br>
