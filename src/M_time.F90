@@ -120,8 +120,14 @@ end interface w2d
 !!     integer,intent(out)              :: ierr
 !!
 !!##DESCRIPTION
-!!   Converts a DAT date-time array to a Unix Epoch Time (UET) value.
-!!   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
+!!   Converts a DAT date-time array to a Julian Date value.
+!!
+!!   Julian Ephemeris dates (abbreviated JED) are simply a continuous count
+!!   of days and fractions since noon Universal Time on January 1, 4713
+!!   BC (on the Julian calendar). Julian dates are widely used as time
+!!   variables within astronomical software. Typically, a 64-bit floating
+!!   point (double precision) variable can represent an epoch expressed as
+!!   a Julian date to about 20 microsecond precision.
 !!
 !!##OPTIONS
 !!    dat   Integer array holding a "DAT" array, similar in structure
@@ -239,20 +245,25 @@ end subroutine date_to_julian
 !!     integer,intent(out)            :: ierr
 !!
 !!##DESCRIPTION
-!!   Converts a Unix Epoch Time (UET) value to a DAT date-time array.
-!!   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
+!!   Converts a Julian Ephemeris Date(JED or JD) value to a DAT date-time
+!!   array.
+!!
+!!   Julian Ephemeris dates are simply a continuous count of days and
+!!   fractions since noon Universal Time on January 1, 4713 BC (on the
+!!   Julian calendar). Julian dates are widely used as time variables
+!!   within astronomical software. Typically, a 64-bit floating point
+!!   (double precision) variable can represent an epoch expressed as a
+!!   Julian date to about 20 microsecond precision.
 !!
 !!##OPTIONS
 !!     julian  Julian Date (days)
+!!
+!!##RETURNS
 !!     dat     Integer array holding a "DAT" array, similar in structure
 !!             to the array returned by the intrinsic DATE_AND_TIME(3f):
 !!
 !!              dat=[ year,month,day,timezone,hour,&
 !!               & minutes,seconds,milliseconds]
-!!
-!!##RETURNS
-!!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
-!!              January 1st, 1970, UTC.
 !!
 !!    ierr      Error code. If 0 no error occurred.
 !!
@@ -1504,7 +1515,6 @@ real(kind=realtime),save             :: unixtime_last
          case('W'); call dow(valloc,weekday,day,ierr)                     ! Return the name of the day of the week
                     write(text(iout:),'(a)')day
          !=====================================================================================
-         !jsujsu
          case('w'); call dow(valloc,weekday,day,ierr)                     ! Return the first abbreviation of the day of the week
                     if(ierr.ne.0)then
                        text(iout:)='ERROR'
@@ -2974,7 +2984,10 @@ end subroutine box_month
 !!
 !!              If not present, use current time.
 !!##RETURNS
-!!    julian    The Julian Date.
+!!    julian    The Julian Date. Julian dates (abbreviated JED or JD)
+!!              are simply a continuous count of days and fractions since
+!!              noon Universal Time on January 1, 4713 BC (on the Julian
+!!              calendar).
 !!
 !!##EXAMPLE
 !!
