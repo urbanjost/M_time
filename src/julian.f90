@@ -7,5 +7,5 @@ integer                     ::  ierr
 real(kind=dp)               ::  time              
 call date_and_time(values=dat)
 call date_to_julian(dat,time,ierr)
-write(*, '(f0.3)' ) time
+write(*, '(f0.7)' ) time
 end program julian_time
