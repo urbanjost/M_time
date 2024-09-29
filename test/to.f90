@@ -1,12 +1,21 @@
 program testit
+use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT
 use M_time, only : now, locale
+
    call to_upper_extended_ascii()
+
    call locale('chars')
+
    call locale('show')
+
    call locale('fr_FR')
+
    call locale('show')
+
    call locale('reset')
-   write(*,*)now('help')
+   ! recursive I/O is currently non-standard
+   write(stderr,*)now('help')
+
    write(*,*)now('%L %l %d %N %w %W')
 
 contains
