@@ -18,6 +18,7 @@ In addition, it can manipulate or read many other date representations ...
   * days of the week
   * ISO-8601 week numbers
   * month and weekday names
+  * (limited) internationalization
 
 __Julian__ and __Unix Epoch Dates__ are particularly useful for
 manipulating dates in simple numeric expressions. They are numbers with
