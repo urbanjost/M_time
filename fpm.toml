@@ -34,64 +34,97 @@ homepage = "https://github.com/urbanjost/M_time.git"
    source-dir="test/"
    main="test_suite_M_time.F90"
    [test.dependencies]
-   M_framework    = { git = "https://github.com/urbanjost/M_framework.git" }
+   #M_framework    = { git = "https://github.com/urbanjost/M_framework.git" }
    #M_framework = {namespace = "GPF"}
    # ln -f -s $HOME/github/GLINKS GLINKS
-   #M_framework  = { path = "GLINKS/M_framework" }
+   M_framework  = { path = "GLINKS/M_framework" }
 
 [[executable]]
    name="now"
    source-dir="app/"
    main="now.f90"
    [executable.dependencies]
-   M_kracken95  = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   #M_kracken95  = { git = "https://github.com/urbanjost/M_kracken95.git" }
    #M_kracken95  = { namespace = "GPF" }
+   M_kracken95  = { path = "GLINKS/M_kracken95" }
    #M_strings    = { namespace = "GPF" }
-   #M_kracken95  = { path = "GLINKS/M_kracken95" }
-   #M_strings    = { path = "GLINKS/M_strings" }
+   #M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   M_strings    = { path = "GLINKS/M_strings" }
 
 [[executable]]
    name="sec2days"
    source-dir="app/"
    main="sec2days.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   #M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+   #M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
    #M_kracken95  = { namespace = "GPF" }
    #M_strings    = { namespace = "GPF" }
-   #M_kracken95  = { path = "GLINKS/M_kracken95" }
-   #M_strings    = { path = "GLINKS/M_strings" }
+   M_kracken95  = { path = "GLINKS/M_kracken95" }
+   M_strings    = { path = "GLINKS/M_strings" }
 
 [[executable]]
    name="days2sec"
    source-dir="app/"
    main="days2sec.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   #M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+   #M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
    #M_kracken95  = { namespace = "GPF" }
    #M_strings    = { namespace = "GPF" }
-   #M_kracken95  = { path = "GLINKS/M_kracken95" }
-   #M_strings    = { path = "GLINKS/M_strings" }
+   M_kracken95  = { path = "GLINKS/M_kracken95" }
+   M_strings    = { path = "GLINKS/M_strings" }
 
 [[executable]]
    name="month"
    source-dir="app/"
    main="month.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
-   M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   #M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+   #M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
    #M_kracken95  = { namespace = "GPF" }
    #M_strings    = { namespace = "GPF" }
-   #M_kracken95  = { path = "GLINKS/M_kracken95" }
-   #M_strings    = { path = "GLINKS/M_strings" }
+   M_kracken95  = { path = "GLINKS/M_kracken95" }
+   M_strings    = { path = "GLINKS/M_strings" }
 
 [[executable]]
    name="today"
    source-dir="app/"
    main="today.f90"
    [executable.dependencies]
-   M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
+   #M_kracken95    = { git = "https://github.com/urbanjost/M_kracken95.git" }
    #M_kracken95  = { namespace = "GPF" }
-   #M_kracken95  = { path = "GLINKS/M_kracken95" }
+   M_kracken95  = { path = "GLINKS/M_kracken95" }
+
+[[executable]]
+   name="paws"
+   source-dir="app/"
+   main="paws.f90"
+   [executable.dependencies]
+   #M_kracken    = { git = "https://github.com/urbanjost/M_kracken.git" }
+   #M_kracken  = { namespace = "GPF" }
+   M_kracken  = { path = "GLINKS/M_kracken" }
+
+[[executable]]
+   name="ttee"
+   source-dir="app/"
+   main="ttee.f90"
+   [executable.dependencies]
+   #M_kracken    = { git = "https://github.com/urbanjost/M_kracken.git" }
+   #M_kracken  = { namespace = "GPF" }
+   M_kracken  = { path = "GLINKS/M_kracken" }
+   #M_strings    = { namespace = "GPF" }
+   #M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   M_strings    = { path = "GLINKS/M_strings" }
+
+[[executable]]
+   name="howlong"
+   source-dir="app/"
+   main="howlong.f90"
+   [executable.dependencies]
+   #M_CLI2    = { git = "https://github.com/urbanjost/M_CLI2.git" }
+   #M_CLI2  = { namespace = "GPF" }
+   M_CLI2  = { path = "GLINKS/M_CLI2" }
+   #M_strings    = { namespace = "GPF" }
+   #M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   M_strings    = { path = "GLINKS/M_strings" }

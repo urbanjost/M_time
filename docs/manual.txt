@@ -12,8 +12,9 @@ easter (3m_time)     - [M_time:ASTROLOGICAL] calculate date for Easter given a y
 fmtdate (3m_time)    - [M_time:DATE_PRINTING] given DAT date-time array return date as string using specified format (LICENSE:MIT)
 fmtdate_usage (3m_time) - [M_time:DATE_PRINTING] display macros recognized by fmtdate(3f) and now(3f) (LICENSE:MIT)
 guessdate (3m_time)  - [M_time:READING_DATES] reads in a date, in various formats (LICENSE:MIT)
-j2d (3m_time)	     - [M_time:JULIAN] given a JED (Julian Ephemeris Date) returns a date-time array DAT. (LICENSE:MIT)
-julian_to_date (3m_time) - [M_time:JULIAN] converts a JED(Julian Ephemeris Date) to a DAT date-time array. (LICENSE:MIT)
+howlong (1)	     - display wallclock time taken to execute a system command
+j2d (3m_time)	     - [M_time:JULIAN] given a JD (Julian Date) returns a date-time array DAT. (LICENSE:MIT)
+julian_to_date (3m_time) - [M_time:JULIAN] converts a JD(Julian Date) to a DAT date-time array. (LICENSE:MIT)
 locale (3m_time)     - [M_time:DATE_PRINTING] allow for selecting languages to represent month and weekday names (LICENSE:MIT)
 M_time (3m_time)     - [M_time::INTRO] Fortran module for manipulating and presenting time and date values as defined in ISO 8601:1988 (LICENSE:MIT)
 M_time__oop (3m_time) - [M_time::INTRO::OOPS] OOP interface for M_time(3fm) (LICENSE:MIT)
@@ -25,8 +26,9 @@ now (3m_time)	     - [M_time:DATE_PRINTING] return string representing current t
 o2d (3m_time)	     - [M_time:ORDINAL_DAY] converts Ordinal day to DAT date-time array (LICENSE:MIT)
 ordinal_seconds (3m_time) - [M_time:ORDINAL_DAY] seconds since beginning of year (LICENSE:MIT)
 ordinal_to_date (3m_time) - [M_time:ORDINAL_DAY] when given a valid year and day of the year returns the DAT array for the date (LICENSE:MIT)
+paws (1)	     - [TIME] pause until specified time or for specified duration (LICENSE:PD)
 phase_of_moon (3m_time) - [M_time:ASTROLOGICAL] return name for phase of moon for given date (LICENSE:MIT)
-sec2days (1)	     - [TIME] Convert seconds to string of form dd-hh:mm:ss (LICENSE:PD)
+sec2days (1)	     - [TIME] Convert durations of time to string of form dd-hh:mm:ss (LICENSE:PD)
 sec2days (3m_time)   - [M_time:DURATION] convert seconds to string of form dd-hh:mm:ss (LICENSE:MIT)
 system_sleep (3m_time) - [M_time:C_INTERFACE] call C sleep(3c) or usleep(3c) procedure (LICENSE:MIT)
 today (1)	     - [TIME] output current time for uses such as file suffixes. (LICENSE:PD)
@@ -34,47 +36,205 @@ u2d (3m_time)	     - [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT date-
 unix_to_date (3m_time) - [M_time:UNIX_EPOCH] converts Unix Epoch Time to DAT date-time array (LICENSE:MIT)
 v2mo (3m_time)	     - [M_time:MONTH_NAME] returns the month name of a Common month number (LICENSE:MIT)
 w2d (3m_time)	     - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601 numeric Week values or from string "yyyy-Www-d" (LICENSE:MIT)
-month.1.man(1m_time)					  month.1.man(1m_time)
+howlong.1.man(1m_time)					howlong.1.man(1m_time)
+
+
+
+	      help_text=[ CHARACTER(LEN=128) :: &
+
+NAME
+  howlong(1) - display wallclock time taken to execute a system command
+
+
+SYNOPIS
+  howlong SYSTEM_COMMAND
+
+     or
+
+  howlong --help|--version
+
+DESCRIPTION
+  Perhaps the simplest performance metric is to just measure the wallclock
+  time taken by a program. This could literally be measured using a
+  conventional clock or stopwatch. This is difficult to automate!  So
+  typically a command like the GNU/Linux or Unix command time(1) is used.
+
+  Commands such as time(1) often provide more than wallclock times too. But
+  lets construct a wallclock timing tool of our own using standard Fortran
+  (not even the ISO_C_Binding interface will be called upon) that will measure
+  the run time of a command.
+
+  Once passed a command to time on the command line, it will then run the
+  command and report the wallclock time use by the program, and echo the
+  command.
+
+  Next we provide a simple program that calls the routine(s) of interest
+  enough times to get useful timing information and time it.
+
+  So lets say we compiled up the test program using two different sets of
+  compiler options:
+
+      f90 little_test.f90 -O0 -o little_test0
+      f90 little_test.f90 -O3 -o little_test3
+
+  Now to run the programs via our timing utility only takes a few commands:
+
+      howlong ./little_test0
+      Wallclock: 0-00:00:25.461 :command: ./little_test0
+      howlong ./little_test3
+      Wallclock: 0-00:00:10.274 :command: ./little_test3
+
+
+SAMPLE SUBJECT PROGRAM
+  An uninstrumented test program for timing :
+
+     program little_test
+     use,intrinsic :: iso_fortran_env, only : int8
+     implicit none
+     character(len=*),parameter 	    :: original = "abcdxyz ZXYDCBA _!@"
+     integer,parameter			    :: how_many_times = 100000000
+     character(len=:),volatile,allocatable  :: t
+     integer				    :: i
+	do i=1,how_many_times
+	  t=upper(original)
+	  t=lower(original)
+	enddo
+     contains
+     function upper(str) result(translated)
+     integer(kind=int8), parameter :: &
+     & ascii_diff = abs(iachar('A',kind=int8) - iachar('a',kind=int8))
+     character(*), intent(in) :: str
+     integer :: i
+     character(len=len(str)) :: translated
+
+	translated=str
+	do i = 1, len(str)
+	  select case(str(i:i))
+	    case("a":"z")
+	      translated(i:i) = achar(iachar(str(i:i))-ascii_diff)
+	  end select
+	enddo
+     end function upper
+
+     function lower(str) result(translated)
+     integer(kind=int8), parameter :: &
+     & ascii_diff = abs(iachar('A',kind=int8) - iachar('a',kind=int8))
+     character(*), intent(in) :: str
+     integer :: i
+     character(len=len(str)) :: translated
+
+	translated=str
+	do i = 1, len(str)
+	  select case(str(i:i))
+	    case("A":"Z")
+	      translated(i:i) = achar(iachar(str(i:i))+ascii_diff)
+	  end select
+	enddo
+     end function lower
+
+     end program little_test
+
+
+FOOTNOTES
+  Note that in many HPC environments programs are often run via a job
+  scheduler like Slurm, LSF, PBS, Torque, ... . In these environments there
+  are usually account records of each job that provide resource usage
+  statistics.
+
+OPTIONS
+  --help
+    display this help and exit
+
+  --version
+    output version information and exit
+
+EXAMPLE
+  howlong ./myprogram
+
+SEE ALSO
+  gprof(1), gcov(1)
+
+
+
+			      September 28, 2024	howlong.1.man(1m_time)
+paws.1.man(1m_time)					   paws.1.man(1m_time)
 
 
 
 NAME
-  month(1f) - [TIME] display a calendar (LICENSE:PD)
+  paws(1f) - [TIME] pause until specified time or for specified duration
+  (LICENSE:PD)
 
 
 SYNOPSIS
-  month [[ -year] NNNN] [ -month NN|month_name]
+  paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ -msg message][ -cmd command][
+  -repeat TIMES[ -fmt ]]|...  [ -uet|-jd|-dat|[ -date|-until]] paws
+  --version|--help
 
 DESCRIPTION
-  month(1) displays a simple calendar. If no arguments are specified, the
-  current year is displayed.
+  Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours, mm
+  minutes and ss.xxx seconds convert it to seconds. Then, pause for that many
+  seconds. Alternatively, pause until specified date has passed.  If no
+  duration is specified wait until a carriage return is entered.
 
 OPTIONS
-  -month NN
-    Display single month output. The month is numeric (1-12) or a month name
-    or blank. If blank the current month is assumed.
+  dd-hh:mm:ss
+    Given a string representing a duration of time in the following forms:
 
-  -year NNNN
-    Select the year to display. A year starts on Jan 1st.
+		     dd-hh:mm:ss[.xx]
+			hh:mm:ss[.xx]
+			   mm:ss[.xx]
+			      ss[.xx]
+			or
+		     xx[.yy]SUFFIX
 
-  -help
-    Display help text and exit.
+  convert it to seconds and pause for that amount of time.  Suffix may be s
+  for seconds, m for minutes, h for hours, or d for days.
 
-  -version
-    Display version information and exit.
+  -date|-until
+    wait until the specified date has passed (before starting optional pause).
+    See guessdate(3f) for syntax allowed for the date.
 
-EXAMPLES
-  month -month 12
+  -uet
+    wait until the specified Unix Epoch Time has passed
 
-	 >    December 2015
-	 >Mo Tu We Th Fr Sa Su
-	 >    1  2  3  4  5  6
-	 > 7  8  9 10 11 12 13
-	 >14 15 16 17 18 19 20
-	 >21 22 23 24 25 26 27
-	 >28 29 30 31
+  -jd
+    wait until the specified Julian Date has passed
 
-  month -month April # month names may be given instead of numbers
+  -dat
+    wait until the specified date vector has passed (year month day timezone
+    hour minutes seconds milliseconds)
+
+  -repeat NNN
+    The duration is repeated NNN times with the date displayed at the end of
+    each pause.
+
+  --msg
+    message to display before pausing
+
+  --cmd
+    command to execute after a pause
+
+  --fmt
+    date format (see fmtdate(3f) for details)
+
+  --help
+    display this help and exit
+
+  --version
+    output version information and exit
+
+  For more information on the format of the dates, see the now(1) command.
+
+EXAMPLE
+  Typical usage:
+
+     paws 2:00:00	       # pause for two hours
+     paws 3600		       # pause one hour
+     paws 0.10		       # pause one tenth of a second
+     paws 1 -repeat 60	       # pause sixty seconds, display the date each second
+     paws -until 23:59:59      # pause until midnight
+     paws 15:00 -date 23:59:59 # pause till midnight then an additional 15 minutes
 
 AUTHOR
   John S. Urban
@@ -84,7 +244,75 @@ LICENSE
 
 
 
-				August 31, 2024 	  month.1.man(1m_time)
+			      September 28, 2024	   paws.1.man(1m_time)
+sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
+
+
+
+NAME
+  sec2days(1f) - [TIME] Convert durations of time to string of form dd-
+  hh:mm:ss (LICENSE:PD)
+
+
+SYNOPSIS
+  sec2days nnnn[.xxx] [ -crop]| --version| --help
+
+DESCRIPTION
+  Given a numeric string representing seconds or labeled units of time convert
+  it to a string of the form
+
+	dd-hh:mm:ss
+
+  where dd is days, hh hours, mm minutes and ss seconds.
+
+OPTIONS
+  nnnn[.xxx]
+    Defaults to number of seconds to convert to string of
+
+    form dd-hh:mm:ss.
+      nnnn may be interspersed with unit codes d,h,m,s. Spaces, commas and
+      case are ignored. Allowed aliases for the unit codes are
+
+		     d	days and day
+		     h	hours,hour,hrs, and hr
+		     m	minutes,minute and min
+		     s	seconds,second and sec
+
+
+  -crop
+    trim leading zero values from output
+
+  -radix
+    character used as decimal separator
+
+  --help
+    display this help and exit
+
+  --version
+    output version information and exit
+
+EXAMPLE
+  usage
+
+     sec2days 129860
+     1-12:04:20
+     sec2days 1d2h3m4s
+     1-02:03:04
+     sec2days 1.0 days 2 hours 3 minutes 4 seconds
+     1-02:03:04
+     sec2days 1.5d
+     1-12:00:00
+
+
+AUTHOR
+  John S. Urban
+
+LICENSE
+  Public Domain
+
+
+
+			      September 28, 2024       sec2days.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 
@@ -142,65 +370,48 @@ LICENSE
 
 
 
-				August 31, 2024 	  today.1.man(1m_time)
-sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
+			      September 28, 2024	  today.1.man(1m_time)
+month.1.man(1m_time)					  month.1.man(1m_time)
 
 
 
 NAME
-  sec2days(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss
-  (LICENSE:PD)
+  month(1f) - [TIME] display a calendar (LICENSE:PD)
 
 
 SYNOPSIS
-  sec2days nnnn[.xxx] [ -crop]| --version| --help
+  month [[ -year] NNNN] [ -month NN|month_name]
 
 DESCRIPTION
-  Given a numeric string representing seconds convert it to a string of the
-  form
-
-	dd-hh:mm:ss
-
-  where dd is days, hh hours, mm minutes and ss seconds.
+  month(1) displays a simple calendar. If no arguments are specified, the
+  current year is displayed.
 
 OPTIONS
-  nnnn[.xxx]
-    number of seconds to convert to string of form dd-hh:mm:ss.  nnnn may be
-    interspersed with unit codes d,h,m,s. Spaces, commas and case are ignored.
-    Allowed aliases for the unit codes are
+  -month NN
+    Display single month output. The month is numeric (1-12) or a month name
+    or blank. If blank the current month is assumed.
 
-    d days and day
+  -year NNNN
+    Select the year to display. A year starts on Jan 1st.
 
-    h hours,hour,hrs, and hr
+  -help
+    Display help text and exit.
 
-    m minutes,minute and min
+  -version
+    Display version information and exit.
 
-    s seconds,second and sec
+EXAMPLES
+  month -month 12
 
-  -crop
-    trim leading zero values from output
+	 >    December 2015
+	 >Mo Tu We Th Fr Sa Su
+	 >    1  2  3  4  5  6
+	 > 7  8  9 10 11 12 13
+	 >14 15 16 17 18 19 20
+	 >21 22 23 24 25 26 27
+	 >28 29 30 31
 
-  -radix
-    character used as decimal separator
-
-  --help
-    display this help and exit
-
-  --version
-    output version information and exit
-
-EXAMPLE
-  usage
-
-     sec2days 129860
-     1-12:04:20
-     sec2days 1d2h3m4s
-     1-02:03:04
-     sec2days 1.0 days 2 hours 3 minutes 4 seconds
-     1-02:03:04
-     sec2days 1.5d
-     1-12:00:00
-
+  month -month April # month names may be given instead of numbers
 
 AUTHOR
   John S. Urban
@@ -210,7 +421,7 @@ LICENSE
 
 
 
-				August 31, 2024        sec2days.1.man(1m_time)
+			      September 28, 2024	  month.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 
@@ -220,7 +431,12 @@ NAME
 
 
 SYNOPSIS
-  days2sec dd-hh:mm:ss | --version| --help days2sec NNdNNhNNmNNs
+  Forms:
+
+      days2sec dd-hh:mm:ss
+      days2sec NNdNNhNNmNNs
+      days2sec --version| --help
+
 
 DESCRIPTION
   Given a duration in the form dd-hh:mm:ss where dd is days, hh hours, mm
@@ -293,7 +509,7 @@ LICENSE
 
 
 
-				August 31, 2024        days2sec.1.man(1m_time)
+			      September 28, 2024       days2sec.1.man(1m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 
@@ -325,7 +541,9 @@ OPTIONS
 
 RETURNS
   julian
-    The Julian Date.
+    The Julian Date. Julian dates (abbreviated JD) are simply a continuous
+    count of days and fractions since noon Universal Time on January 1, 4713
+    BC (on the Julian calendar).
 
 EXAMPLE
   Sample program:
@@ -350,7 +568,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  d2j(3m_time)
+			      September 28, 2024		  d2j(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 
@@ -410,7 +628,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  d2u(3m_time)
+			      September 28, 2024		  d2u(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 
@@ -549,7 +767,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  d2w(3m_time)
+			      September 28, 2024		  d2w(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 
@@ -630,7 +848,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  dow(3m_time)
+			      September 28, 2024		  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 
@@ -704,7 +922,7 @@ EXAMPLE
 
 
 
-				August 31, 2024 	       easter(3m_time)
+			      September 28, 2024	       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 
@@ -765,7 +983,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	      fmtdate(3m_time)
+			      September 28, 2024	      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 
@@ -955,7 +1173,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	fmtdate_usage(3m_time)
+			      September 28, 2024	fmtdate_usage(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 
@@ -1010,7 +1228,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		 mo2v(3m_time)
+			      September 28, 2024		 mo2v(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 
@@ -1078,7 +1296,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	moon_fullness(3m_time)
+			      September 28, 2024	moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 
@@ -1136,7 +1354,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  now(3m_time)
+			      September 28, 2024		  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 
@@ -1204,7 +1422,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  o2d(3m_time)
+			      September 28, 2024		  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 
@@ -1247,7 +1465,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024       ordinal_seconds(3m_time)
+			      September 28, 2024      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 
@@ -1306,7 +1524,7 @@ EXAMPLE
 
 
 
-				August 31, 2024       ordinal_to_date(3m_time)
+			      September 28, 2024      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 
@@ -1391,7 +1609,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	phase_of_moon(3m_time)
+			      September 28, 2024	phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 
@@ -1473,7 +1691,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	     sec2days(3m_time)
+			      September 28, 2024	     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 
@@ -1543,7 +1761,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	 system_sleep(3m_time)
+			      September 28, 2024	 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 
@@ -1613,7 +1831,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  u2d(3m_time)
+			      September 28, 2024		  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 
@@ -1690,7 +1908,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	 unix_to_date(3m_time)
+			      September 28, 2024	 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 
@@ -1756,7 +1974,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		 v2mo(3m_time)
+			      September 28, 2024		 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 
@@ -1978,7 +2196,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  w2d(3m_time)
+			      September 28, 2024		  w2d(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 
@@ -2069,14 +2287,14 @@ EXAMPLE
 
 LICENSE
    MIT
-				August 31, 2024 	    guessdate(3m_time)
+			      September 28, 2024	    guessdate(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 
 
 NAME
-  j2d(3f) - [M_time:JULIAN] given a JED (Julian Ephemeris Date) returns a
-  date-time array DAT.	(LICENSE:MIT)
+  j2d(3f) - [M_time:JULIAN] given a JD (Julian Date) returns a date-time array
+  DAT.	(LICENSE:MIT)
 
 
 SYNOPSIS
@@ -2087,12 +2305,12 @@ SYNOPSIS
 
 
 DESCRIPTION
-  Converts a Julian Ephemeris Date to a DAT date-time array.
+  Converts a Julian Date to a DAT date-time array.
 
 OPTIONS
   julian
-    A Julian Ephemeris Date (JED) is the number of days since noon (not
-    midnight) on January 1st, 4713 BC.	If not present, use current time.
+    A Julian Date (JD) is the number of days since noon (not midnight) on
+    January 1st, 4713 BC.  If not present, use current time.
 
 RETURNS
   dat
@@ -2132,14 +2350,14 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  j2d(3m_time)
+			      September 28, 2024		  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 
 
 NAME
-  julian_to_date(3f) - [M_time:JULIAN] converts a JED(Julian Ephemeris Date)
-  to a DAT date-time array.  (LICENSE:MIT)
+  julian_to_date(3f) - [M_time:JULIAN] converts a JD(Julian Date) to a DAT
+  date-time array.  (LICENSE:MIT)
 
 
 SYNOPSIS
@@ -2151,13 +2369,19 @@ SYNOPSIS
 
 
 DESCRIPTION
-  Converts a Unix Epoch Time (UET) value to a DAT date-time array.  UET is the
-  number of seconds since 00:00 on January 1st, 1970, UTC.
+  Converts a Julian Date(JD) value to a DAT date-time array.
+
+  Julian dates are simply a continuous count of days and fractions since noon
+  Universal Time on January 1, 4713 BC (on the Julian calendar). Julian dates
+  are widely used as time variables within astronomical software. Typically, a
+  64-bit floating point (double precision) variable can represent an epoch
+  expressed as a Julian date to about 20 microsecond precision.
 
 OPTIONS
   julian
     Julian Date (days)
 
+RETURNS
   dat
     Integer array holding a "DAT" array, similar in structure to the array
     returned by the intrinsic DATE_AND_TIME(3f):
@@ -2165,11 +2389,6 @@ OPTIONS
 	       dat=[ year,month,day,timezone,hour,&
 		& minutes,seconds,milliseconds]
 
-
-RETURNS
-  unixtime
-    The "Unix Epoch" time, or the number of seconds since 00:00:00 on January
-    1st, 1970, UTC.
 
   ierr
     Error code. If 0 no error occurred.
@@ -2209,7 +2428,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024        julian_to_date(3m_time)
+			      September 28, 2024       julian_to_date(3m_time)
 locale(3m_time) 					       locale(3m_time)
 
 
@@ -2327,7 +2546,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	       locale(3m_time)
+			      September 28, 2024	       locale(3m_time)
 untitled()							    untitled()
 
 
@@ -2484,10 +2703,10 @@ untitled()							    untitled()
     Call sleep(3c) or usleep(3c)
 
    FORMATTING OPTIONS IN FMTDATE
-  You can easily use Julian Ephemeris Dates and Unix Epoch Times to add and
-  subtract times from dates or to calculate the interval between dates. But
-  JEDs and UETs and even the Gregorian Calendar arrays in the DAT arrays are
-  not the way we typically describe a date on the Civilian Calendar. So the
+  You can easily use Julian Dates and Unix Epoch Times to add and subtract
+  times from dates or to calculate the interval between dates. But JEDs and
+  UETs and even the Gregorian Calendar arrays in the DAT arrays are not the
+  way we typically describe a date on the Civilian Calendar. So the
   fmtdate(3f) routine lets us print a DAT array in a variety of familiar
   styles.
 
@@ -2516,7 +2735,7 @@ untitled()							    untitled()
      Conversions:
 	  %E -- Unix Epoch time 			  1469669062.5129952
 	  %e -- integer value of Unix Epoch time	  1469669063
-	  %J -- Julian	date				  2457597.559
+	  %J -- Julian date				  2457597.559
 	  %j -- integer value of Julian Date(Julian Day)  2457597
 	  %O -- Ordinal day (day of year)		  209
 	  %o -- whole days since Unix Epoch date	  17009
@@ -2740,8 +2959,8 @@ untitled()							    untitled()
   Unix Epoch Time (UET) is defined as the number of seconds since 00:00:00 on
   January 1st. 1970, UTC.
 
-  A JED is defined as a Julian Ephemeris Date. JED days start at noon (not at
-  midnight). 4713-01-01 BC at noon is defined as JED 0.0.
+  A JD is defined as a Julian Date. JD days start at noon (not at midnight).
+  4713-01-01 BC at noon is defined as JD 0.0.
 
   If you are not familiar with them, in this context Julian Dates and Unix
   Epoch Times are scalar numbers that allow for easy computations using dates
@@ -2818,7 +3037,7 @@ untitled()							    untitled()
 
 
 
-				August 31, 2024 		    untitled()
+			      September 28, 2024		    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 
@@ -3225,7 +3444,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	  M_time__oop(3m_time)
+			      September 28, 2024	  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 
@@ -3283,7 +3502,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		 mo2d(3m_time)
+			      September 28, 2024		 mo2d(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 
@@ -3302,8 +3521,14 @@ SYNOPSIS
 
 
 DESCRIPTION
-  Converts a DAT date-time array to a Unix Epoch Time (UET) value.  UET is the
-  number of seconds since 00:00 on January 1st, 1970, UTC.
+  Converts a DAT date-time array to a Julian Date value.
+
+  Julian Dates (abbreviated JD) are simply a continuous count of days and
+  fractions since noon Universal Time on January 1, 4713 BC (on the Julian
+  calendar). Julian dates are widely used as time variables within
+  astronomical software. Typically, a 64-bit floating point (double precision)
+  variable can represent an epoch expressed as a Julian date to about 20
+  microsecond precision.
 
 OPTIONS
   dat
@@ -3316,8 +3541,8 @@ OPTIONS
 
 RETURNS
   juliandate
-    A Julian Ephemeris Date (JED) is the number of days since noon (not
-    midnight) on January 1st, 4713 BC.
+    A Julian Date (JD) is the number of days since noon (not midnight) on
+    January 1st, 4713 BC.
 
   ierr
     Error code. If 0 no error occurred.
@@ -3353,7 +3578,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024        date_to_julian(3m_time)
+			      September 28, 2024       date_to_julian(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 
@@ -3418,7 +3643,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	 date_to_unix(3m_time)
+			      September 28, 2024	 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 
@@ -3523,7 +3748,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	     days2sec(3m_time)
+			      September 28, 2024	     days2sec(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 
@@ -3601,7 +3826,7 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 		  d2o(3m_time)
+			      September 28, 2024		  d2o(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 
@@ -3664,4 +3889,4 @@ AUTHOR
 
 LICENSE
    MIT
-				August 31, 2024 	    box_month(3m_time)
+			      September 28, 2024	    box_month(3m_time)

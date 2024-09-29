@@ -381,8 +381,8 @@ if the partners to information exchange agree.
 **Unix Epoch Time (UET)** is defined as the number of seconds since
 00:00:00 on January 1st. 1970, UTC.
 
-A **JED** is defined as a **Julian Ephemeris Date**. JED days start at
-noon (not at midnight). 4713-01-01 BC at noon is defined as JED 0.0.
+A **JD** is defined as a **Julian Date**. JD days start at
+noon (not at midnight). 4713-01-01 BC at noon is defined as JD 0.0.
 
 If you are not familiar with them, in this context Julian Dates and Unix
 Epoch Times are scalar numbers that allow for easy computations using

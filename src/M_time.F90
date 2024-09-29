@@ -120,8 +120,14 @@ end interface w2d
 !!     integer,intent(out)              :: ierr
 !!
 !!##DESCRIPTION
-!!   Converts a DAT date-time array to a Unix Epoch Time (UET) value.
-!!   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
+!!   Converts a DAT date-time array to a Julian Date value.
+!!
+!!   Julian Dates (abbreviated JD) are simply a continuous count
+!!   of days and fractions since noon Universal Time on January 1, 4713
+!!   BC (on the Julian calendar). Julian dates are widely used as time
+!!   variables within astronomical software. Typically, a 64-bit floating
+!!   point (double precision) variable can represent an epoch expressed as
+!!   a Julian date to about 20 microsecond precision.
 !!
 !!##OPTIONS
 !!    dat   Integer array holding a "DAT" array, similar in structure
@@ -131,7 +137,7 @@ end interface w2d
 !!               & minutes,seconds,milliseconds]
 !!
 !!##RETURNS
-!!    juliandate  A Julian Ephemeris Date (JED) is the number of days since
+!!    juliandate  A Julian Date (JD) is the number of days since
 !!                noon (not midnight) on January 1st, 4713 BC.
 !!
 !!    ierr        Error code. If 0 no error occurred.
@@ -226,8 +232,8 @@ end subroutine date_to_julian
 !===================================================================================================================================
 !>
 !!##NAME
-!!    julian_to_date(3f) - [M_time:JULIAN] converts a JED(Julian Ephemeris
-!!    Date) to a DAT date-time array.
+!!    julian_to_date(3f) - [M_time:JULIAN] converts a JD(Julian Date)
+!!    to a DAT date-time array.
 !!    (LICENSE:MIT)
 !!
 !!##SYNOPSIS
@@ -239,20 +245,25 @@ end subroutine date_to_julian
 !!     integer,intent(out)            :: ierr
 !!
 !!##DESCRIPTION
-!!   Converts a Unix Epoch Time (UET) value to a DAT date-time array.
-!!   UET is the number of seconds since 00:00 on January 1st, 1970, UTC.
+!!   Converts a Julian Date(JD) value to a DAT date-time
+!!   array.
+!!
+!!   Julian dates are simply a continuous count of days and
+!!   fractions since noon Universal Time on January 1, 4713 BC (on the
+!!   Julian calendar). Julian dates are widely used as time variables
+!!   within astronomical software. Typically, a 64-bit floating point
+!!   (double precision) variable can represent an epoch expressed as a
+!!   Julian date to about 20 microsecond precision.
 !!
 !!##OPTIONS
 !!     julian  Julian Date (days)
+!!
+!!##RETURNS
 !!     dat     Integer array holding a "DAT" array, similar in structure
 !!             to the array returned by the intrinsic DATE_AND_TIME(3f):
 !!
 !!              dat=[ year,month,day,timezone,hour,&
 !!               & minutes,seconds,milliseconds]
-!!
-!!##RETURNS
-!!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
-!!              January 1st, 1970, UTC.
 !!
 !!    ierr      Error code. If 0 no error occurred.
 !!
@@ -1504,7 +1515,6 @@ real(kind=realtime),save             :: unixtime_last
          case('W'); call dow(valloc,weekday,day,ierr)                     ! Return the name of the day of the week
                     write(text(iout:),'(a)')day
          !=====================================================================================
-         !jsujsu
          case('w'); call dow(valloc,weekday,day,ierr)                     ! Return the first abbreviation of the day of the week
                     if(ierr.ne.0)then
                        text(iout:)='ERROR'
@@ -2974,7 +2984,10 @@ end subroutine box_month
 !!
 !!              If not present, use current time.
 !!##RETURNS
-!!    julian    The Julian Date.
+!!    julian    The Julian Date. Julian dates (abbreviated JD)
+!!              are simply a continuous count of days and fractions since
+!!              noon Universal Time on January 1, 4713 BC (on the Julian
+!!              calendar).
 !!
 !!##EXAMPLE
 !!
@@ -3021,7 +3034,7 @@ end function d2j
 !===================================================================================================================================
 !>
 !!##NAME
-!!    j2d(3f) - [M_time:JULIAN] given a JED (Julian Ephemeris Date) returns a
+!!    j2d(3f) - [M_time:JULIAN] given a JD (Julian Date) returns a
 !!    date-time array DAT.
 !!    (LICENSE:MIT)
 !!
@@ -3033,10 +3046,10 @@ end function d2j
 !!     integer                                 :: dat(8)
 !!
 !!##DESCRIPTION
-!!   Converts a Julian Ephemeris Date to a DAT date-time array.
+!!   Converts a Julian Date to a DAT date-time array.
 !!
 !!##OPTIONS
-!!    julian  A Julian Ephemeris Date (JED) is the number of days since
+!!    julian  A Julian Date (JD) is the number of days since
 !!            noon (not midnight) on January 1st, 4713 BC.
 !!            If not present, use current time.
 !!
