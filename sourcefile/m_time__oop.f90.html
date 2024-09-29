@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="11.2% of total for source files.">288 statements</a>
+                 title=" 9.7% of total for source files.">288 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -657,7 +657,7 @@
 <a id="ln-502" name="ln-502" href="#ln-502"></a><span class="c">! with the same name as the derived type they&#39;re supposed to construct.</span>
 <a id="ln-503" name="ln-503" href="#ln-503"></a><span class="k">interface </span><span class="n">date_time</span>
 <a id="ln-504" name="ln-504" href="#ln-504"></a><span class="w">   </span><span class="k">module procedure </span><span class="n">construct_from_dat</span>
-<a id="ln-505" name="ln-505" href="#ln-505"></a><span class="w">   </span><span class="c">!-!module procedure construct_from_jed</span>
+<a id="ln-505" name="ln-505" href="#ln-505"></a><span class="w">   </span><span class="c">!-!module procedure construct_from_jd</span>
 <a id="ln-506" name="ln-506" href="#ln-506"></a><span class="w">   </span><span class="c">!-!module procedure construct_from_uet</span>
 <a id="ln-507" name="ln-507" href="#ln-507"></a><span class="k">end interface </span><span class="n">date_time</span>
 <a id="ln-508" name="ln-508" href="#ln-508"></a><span class="c">!===================================================================================================================================</span>
@@ -691,14 +691,14 @@
 <a id="ln-536" name="ln-536" href="#ln-536"></a><span class="w">   </span><span class="n">construct_from_dat</span><span class="p">%</span><span class="n">millisecond</span><span class="o">=</span><span class="n">datlocal</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <a id="ln-537" name="ln-537" href="#ln-537"></a><span class="k">end function </span><span class="n">construct_from_dat</span>
 <a id="ln-538" name="ln-538" href="#ln-538"></a><span class="c">!===================================================================================================================================</span>
-<a id="ln-539" name="ln-539" href="#ln-539"></a><span class="k">function </span><span class="n">construct_from_jed</span><span class="p">(</span><span class="n">jed</span><span class="p">)</span>
+<a id="ln-539" name="ln-539" href="#ln-539"></a><span class="k">function </span><span class="n">construct_from_jd</span><span class="p">(</span><span class="n">jd</span><span class="p">)</span>
 <a id="ln-540" name="ln-540" href="#ln-540"></a>
-<a id="ln-541" name="ln-541" href="#ln-541"></a><span class="c">! ident_2=&quot;@(#) M_time construct_from_jed(3f) construct TYPE(DATE_TIME) with REAL Julian JED date-time value&quot;</span>
+<a id="ln-541" name="ln-541" href="#ln-541"></a><span class="c">! ident_2=&quot;@(#) M_time construct_from_jd(3f) construct TYPE(DATE_TIME) with REAL Julian JD date-time value&quot;</span>
 <a id="ln-542" name="ln-542" href="#ln-542"></a>
-<a id="ln-543" name="ln-543" href="#ln-543"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">jed</span>
-<a id="ln-544" name="ln-544" href="#ln-544"></a><span class="k">type</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">construct_from_jed</span>
-<a id="ln-545" name="ln-545" href="#ln-545"></a><span class="w">   </span><span class="n">construct_from_jed</span><span class="o">=</span><span class="n">construct_from_dat</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">jed</span><span class="p">))</span>
-<a id="ln-546" name="ln-546" href="#ln-546"></a><span class="k">end function </span><span class="n">construct_from_jed</span>
+<a id="ln-543" name="ln-543" href="#ln-543"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">jd</span>
+<a id="ln-544" name="ln-544" href="#ln-544"></a><span class="k">type</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">construct_from_jd</span>
+<a id="ln-545" name="ln-545" href="#ln-545"></a><span class="w">   </span><span class="n">construct_from_jd</span><span class="o">=</span><span class="n">construct_from_dat</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">jd</span><span class="p">))</span>
+<a id="ln-546" name="ln-546" href="#ln-546"></a><span class="k">end function </span><span class="n">construct_from_jd</span>
 <a id="ln-547" name="ln-547" href="#ln-547"></a><span class="c">!===================================================================================================================================</span>
 <a id="ln-548" name="ln-548" href="#ln-548"></a><span class="k">function </span><span class="n">construct_from_uet</span><span class="p">(</span><span class="n">uet</span><span class="p">)</span>
 <a id="ln-549" name="ln-549" href="#ln-549"></a>
@@ -996,7 +996,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-09-27 22:29              </p>
+ on 2024-09-29 04:30              </p>
           </div>
         </div>
         <br>

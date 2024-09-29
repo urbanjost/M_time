@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 3.4% of total for programs.">50 statements</a>
+                 title=" 2.6% of total for programs.">50 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -114,8 +114,8 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_sec2days~2.html#variable-ident~12">ident</a>
-            <a class="list-group-item" href="../program/demo_sec2days~2.html#variable-line~5">line</a>
+            <a class="list-group-item" href="../program/demo_sec2days~2.html#variable-ident~4">ident</a>
+            <a class="list-group-item" href="../program/demo_sec2days~2.html#variable-line~2">line</a>
             <a class="list-group-item" href="../program/demo_sec2days~2.html#variable-radix">radix</a>
             <a class="list-group-item" href="../program/demo_sec2days~2.html#variable-strlocal">strlocal</a>
         </div>
@@ -139,8 +139,8 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_sec2days~2.html#proc-help_usage~4">help_usage</a>
-            <a class="list-group-item" href="../program/demo_sec2days~2.html#proc-help_version~5">help_version</a>
+            <a class="list-group-item" href="../program/demo_sec2days~2.html#proc-help_usage~2">help_usage</a>
+            <a class="list-group-item" href="../program/demo_sec2days~2.html#proc-help_version~2">help_version</a>
         </div>
       </div>
     </div>
@@ -171,9 +171,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">M_kracken95</li>
                   <li class="list-inline-item">M_time</li>
                   <li class="list-inline-item">M_strings</li>
+                  <li class="list-inline-item">M_kracken95</li>
               </ul>
             </li>
         </ul>
@@ -197,7 +197,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~12"></span>
+              <span class="anchor" id="variable-ident~4"></span>
               character(len=*),
             </td>
             <td>
@@ -213,7 +213,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-line~5"></span>
+              <span class="anchor" id="variable-line~2"></span>
               character(len=IPvalue)
             </td>
             <td>
@@ -274,7 +274,7 @@ parameter
     <section>
     <h2>Subroutines</h2>
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-help_usage~4"></span> <h3> subroutine <a href='../proc/help_usage~4.html'>help_usage</a>(l_help)  
+    <div class="card-header codesum"><span class="anchor" id="proc-help_usage~2"></span> <h3> subroutine <a href='../proc/help_usage~2.html'>help_usage</a>(l_help)  
 </h3></div>
     <div class="card-body">
           
@@ -293,7 +293,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-l_help~4"></span>
+              <span class="anchor" id="variable-l_help~2"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -314,11 +314,11 @@ parameter
   </div>
 
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-help_version~5"></span> <h3> subroutine <a href='../proc/help_version~5.html'>help_version</a>(l_version)  
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version~2"></span> <h3> subroutine <a href='../proc/help_version~2.html'>help_version</a>(l_version)  
 </h3></div>
     <div class="card-body">
           
-  <p>usage</p><a href="../proc/help_version~5.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>usage</p><a href="../proc/help_version~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -333,7 +333,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-l_version~5"></span>
+              <span class="anchor" id="variable-l_version~2"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -390,25 +390,26 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   sec2days(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days(1f) - [TIME] Convert durations of time to string of form dd-hh:mm:ss&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   sec2days nnnn[.xxx] [ -crop]| --version| --help                              &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Given a numeric string representing seconds convert it to a string           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   of the form                                                                  &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Given a numeric string representing seconds or labeled units of time         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   convert it to a string of the form                                           &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;      dd-hh:mm:ss                                                               &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   where dd is days, hh hours, mm minutes and ss seconds.                       &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   nnnn[.xxx]  number of seconds to convert to string of form dd-hh:mm:ss.      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;               nnnn may be interspersed with unit codes d,h,m,s. Spaces,        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;               commas and case are ignored. Allowed aliases for the unit        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;               codes are                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   nnnn[.xxx]  Defaults to number of seconds to convert to string of            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               form dd-hh:mm:ss.  nnnn may be interspersed with unit            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               codes d,h,m,s. Spaces, commas and case are ignored. Allowed      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               aliases for the unit codes are                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                 d  days and day                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                 h  hours,hour,hrs, and hr                                      &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                 m  minutes,minute and min                                      &#39;</span><span class="p">,&amp;</span>
@@ -442,7 +443,7 @@ parameter
 <span class="k">end subroutine </span><span class="n">help_usage</span>
 <span class="c">!&gt;</span>
 <span class="c">!!##NAME</span>
-<span class="c">!!    sec2days(1f) - [TIME] Convert seconds to string of form dd-hh:mm:ss</span>
+<span class="c">!!    sec2days(1f) - [TIME] Convert durations of time to string of form dd-hh:mm:ss</span>
 <span class="c">!!    (LICENSE:PD)</span>
 <span class="c">!!</span>
 <span class="c">!!##SYNOPSIS</span>
@@ -450,18 +451,19 @@ parameter
 <span class="c">!!    sec2days nnnn[.xxx] [ -crop]| --version| --help</span>
 <span class="c">!!</span>
 <span class="c">!!##DESCRIPTION</span>
-<span class="c">!!    Given a numeric string representing seconds convert it to a string</span>
-<span class="c">!!    of the form</span>
+<span class="c">!!    Given a numeric string representing seconds or labeled units of time</span>
+<span class="c">!!    convert it to a string of the form</span>
 <span class="c">!!</span>
 <span class="c">!!       dd-hh:mm:ss</span>
 <span class="c">!!</span>
 <span class="c">!!    where dd is days, hh hours, mm minutes and ss seconds.</span>
 <span class="c">!!</span>
 <span class="c">!!##OPTIONS</span>
-<span class="c">!!    nnnn[.xxx]  number of seconds to convert to string of form dd-hh:mm:ss.</span>
-<span class="c">!!                nnnn may be interspersed with unit codes d,h,m,s. Spaces,</span>
-<span class="c">!!                commas and case are ignored. Allowed aliases for the unit</span>
-<span class="c">!!                codes are</span>
+<span class="c">!!    nnnn[.xxx]  Defaults to number of seconds to convert to string of</span>
+<span class="c">!!                form dd-hh:mm:ss.  nnnn may be interspersed with unit</span>
+<span class="c">!!                codes d,h,m,s. Spaces, commas and case are ignored. Allowed</span>
+<span class="c">!!                aliases for the unit codes are</span>
+<span class="c">!!</span>
 <span class="c">!!                  d  days and day</span>
 <span class="c">!!                  h  hours,hour,hrs, and hr</span>
 <span class="c">!!                  m  minutes,minute and min</span>
@@ -508,7 +510,7 @@ parameter
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       2024-08-31 23:22:11 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2024-09-28 21:50:16 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -537,7 +539,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-09-27 22:29              </p>
+ on 2024-09-29 04:30              </p>
           </div>
         </div>
         <br>

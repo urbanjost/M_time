@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 4.8% of total for programs.">71 statements</a>
+                 title=" 3.8% of total for programs.">71 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -114,10 +114,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/display_date.html#variable-dat~7">dat</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-duration">duration</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ident~9">ident</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ierr~9">ierr</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-dat~24">dat</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-duration~2">duration</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ident~12">ident</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ierr~15">ierr</a>
             <a class="list-group-item" href="../program/display_date.html#variable-inums~2">inums</a>
             <a class="list-group-item" href="../program/display_date.html#variable-output">output</a>
             <a class="list-group-item" href="../program/display_date.html#variable-rdat">rdat</a>
@@ -142,7 +142,7 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/display_date.html#proc-help_version~4">help_version</a>
+            <a class="list-group-item" href="../program/display_date.html#proc-help_version~5">help_version</a>
             <a class="list-group-item" href="../program/display_date.html#proc-usage">usage</a>
         </div>
       </div>
@@ -174,9 +174,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">m_strings</li>
-                  <li class="list-inline-item">M_kracken95</li>
                   <li class="list-inline-item">M_time</li>
+                  <li class="list-inline-item">M_kracken95</li>
+                  <li class="list-inline-item">m_strings</li>
               </ul>
             </li>
         </ul>
@@ -200,7 +200,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~7"></span>
+              <span class="anchor" id="variable-dat~24"></span>
               integer
             </td>
             <td>
@@ -216,7 +216,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-duration"></span>
+              <span class="anchor" id="variable-duration~2"></span>
               real(kind=realtime)
             </td>
             <td>
@@ -232,7 +232,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~9"></span>
+              <span class="anchor" id="variable-ident~12"></span>
               character(len=*),
             </td>
             <td>
@@ -248,7 +248,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~9"></span>
+              <span class="anchor" id="variable-ierr~15"></span>
               integer
             </td>
             <td>
@@ -325,7 +325,7 @@ parameter
     <section>
     <h2>Subroutines</h2>
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-help_version~4"></span> <h3> subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)  
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version~5"></span> <h3> subroutine <a href='../proc/help_version~5.html'>help_version</a>(l_version)  
 </h3></div>
     <div class="card-body">
           
@@ -344,7 +344,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-l_version~4"></span>
+              <span class="anchor" id="variable-l_version~5"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -396,7 +396,7 @@ parameter
 <span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="p">,</span><span class="w"> </span><span class="n">inums</span>
 <span class="w">   </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">)</span>
 <span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
-<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span><span class="s1">&#39; -help .F. -version .F. -dat -date -jed -uet -test .false. -delta&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">! crack command line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span><span class="s1">&#39; -help .F. -version .F. -dat -date -jd -uet -test .false. -delta&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">! crack command line</span>
 <span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;now_version&#39;</span><span class="p">))</span><span class="w">                                    </span><span class="c">! display version number if --version is present</span>
 <span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
 <span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;now_help&#39;</span><span class="p">))</span><span class="k">then</span><span class="w">                                        </span><span class="c">! display help text and exit if --help is present</span>
@@ -411,8 +411,8 @@ parameter
 <span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
 <span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to UET number, convert to dat</span>
-<span class="w">   </span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_jed&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
-<span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_jed&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to JED number, convert to dat</span>
+<span class="w">   </span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_jd&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_jd&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to JD number, convert to dat</span>
 <span class="w">   </span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_dat&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">()</span><span class="w">                                                    </span><span class="c">! initialize DAT with current date and time to get time zone</span>
 <span class="w">      </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dat</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="w">                              </span><span class="c">! default is Jan 1st in current year and timezone 00:00:00</span>
@@ -453,7 +453,7 @@ parameter
 <span class="p">&amp;</span><span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now [Format [ -date date_str|-ued Unix_time|-jed Julian_Date|-dat date_vector]&#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;  now [Format [ -date date_str|-ued Unix_time|-jd Julian_Date|-dat date_vector] &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;      [ -delta dd-hh:mm:ss]]|--help |--version|-test]                           &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
@@ -483,8 +483,8 @@ parameter
 <span class="p">&amp;</span><span class="s1">&#39;      is then adjusted using any -delta value and then printed using            &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;      the specified format.                                                     &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -jed Julian_Date  :                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      When present a value is used as the Julian Ephemeris Date.                &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   -jd Julian_Date  :                                                           &#39;</span><span class="p">,&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;      When present a value is used as the Julian Date.                          &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;   -delta dd-hh:mm:ss  :                                                        &#39;</span><span class="p">,&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;      Add the specified duration to the date.                                   &#39;</span><span class="p">,&amp;</span>
@@ -586,7 +586,7 @@ parameter
 <span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       2024-08-31 23:22:11 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2024-09-28 21:50:16 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -615,7 +615,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-09-27 22:29              </p>
+ on 2024-09-29 04:30              </p>
           </div>
         </div>
         <br>
