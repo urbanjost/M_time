@@ -688,16 +688,25 @@ end function d2o
 !!     program demo_ordinal_seconds
 !!     use M_time, only : ordinal_seconds
 !!     implicit none
-!!     character(len=1) :: paws
-!!     integer          :: ios
-!!     integer          :: istart, iend
-!!     istart=ordinal_seconds()
-!!     write(*,'(a)',advance='no')'now pause. Enter return to continue ...'
-!!     read(*,'(a)',iostat=ios) paws
-!!     iend=ordinal_seconds()
-!!     write(*,*)'that took ',iend-istart,'seconds'
-!!     write(*,*)istart,iend
+!!     character(len=*),parameter :: gen='(*(g0))'
+!!     integer          :: i, ios, istart, iend
+!!     real,volatile    :: x
+!!     istart = ordinal_seconds()
+!!     x = 0.0
+!!     do i = 1, 1000000000
+!!        x = x+sqrt(real(i))
+!!     enddo
+!!     print gen, 'x=',x
+!!     iend = ordinal_seconds()
+!!     print gen, 'that took ',iend-istart,' seconds'
+!!     print gen, iend,'-',istart,'=',iend-istart
 !!     end program demo_ordinal_seconds
+!!
+!!    Results:
+!!
+!!     > x=0.549755814E+12
+!!     > that took 4 seconds
+!!     > 23659912-23659908=4
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
@@ -748,22 +757,30 @@ end function ordinal_seconds
 !!     implicit none
 !!     integer :: yyyy, ddd, mm, dd, yy
 !!     integer :: dat(8)
-!!     integer :: ios
-!!       INFINITE: do
-!!          write(*,'(a)',advance='no')&
-!!          & 'Enter year YYYY and ordinal day of year DD '
-!!          read(*,*,iostat=ios)yyyy,ddd
-!!          if(ios/=0)exit INFINITE
+!!     integer :: i, iostat
+!!     character(len=:),allocatable :: fakefile(:)
+!!       fakefile=[character(len=80) :: ' 2024 273 ','2024 001']
+!!       do i=1,size(fakefile)
+!!          ! Enter year YYYY and ordinal day of year DD
+!!          read(fakefile(i),*,iostat=iostat)yyyy,ddd
+!!          if(iostat/=0)exit
 !!          ! recover month and day from year and day number.
 !!          call ordinal_to_date(yyyy, ddd, dat)
 !!          yy=dat(1)
 !!          mm=dat(2)
 !!          dd=dat(3)
-!!          write(*,'(*(g0))')'For Year ',yyyy,' and Ordinal day ',ddd,  &
-!!          &         ' Month is ',mm,' and Day of Month is ',dd, &
-!!          &         ' and Year is ',yy
-!!        enddo INFINITE
+!!          write(*,'(*(g0))')'For Year ',yyyy,' and Ordinal day ',ddd
+!!          write(*,'(*(g0))')' Month is ',mm,' and Day of Month is ',dd, &
+!!          & ' and Year is ',yy
+!!       enddo
 !!     end program demo_ordinal_to_date
+!!
+!!    Result:
+!!
+!!     > For Year 2024 and Ordinal day 273
+!!     > Month is 9 and Day of Month is 29 and Year is 2024
+!!     > For Year 2024 and Ordinal day 1
+!!     > Month is 1 and Day of Month is 1 and Year is 2024
 subroutine ordinal_to_date(yyyy,ddd,dat)
 !x!use M_time, only : d2j,j2d, realtime
 
@@ -3784,6 +3801,10 @@ end function days2sec
 !!     end program demo_locale
 !!
 !!    Results:
+!!
+!!     Sunday, September 29th, 2024 7:55:00 PM UTC-04:00
+!!     dimanche, septembre 29th, 2024 7:55:00 PM UTC-04:00
+!!     JUL, SEPTEMBER 29th, 2024 7:55:00 PM UTC-04:00
 !!
 !!##AUTHOR
 !!    John S. Urban, 2015
