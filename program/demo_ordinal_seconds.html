@@ -114,11 +114,11 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-gen~3">gen</a>
-            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-i~22">i</a>
-            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-iend~4">iend</a>
+            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-gen~2">gen</a>
+            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-i~14">i</a>
+            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-iend">iend</a>
             <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-ios~2">ios</a>
-            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-istart~2">istart</a>
+            <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-istart">istart</a>
             <a class="list-group-item" href="../program/demo_ordinal_seconds.html#variable-x">x</a>
         </div>
       </div>
@@ -185,7 +185,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-gen~3"></span>
+              <span class="anchor" id="variable-gen~2"></span>
               character(len=*),
             </td>
             <td>
@@ -201,7 +201,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~22"></span>
+              <span class="anchor" id="variable-i~14"></span>
               integer
             </td>
             <td>
@@ -217,7 +217,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iend~4"></span>
+              <span class="anchor" id="variable-iend"></span>
               integer
             </td>
             <td>
@@ -249,7 +249,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-istart~2"></span>
+              <span class="anchor" id="variable-istart"></span>
               integer
             </td>
             <td>
@@ -295,22 +295,22 @@ parameter
 
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">program </span><span class="n">demo_ordinal_seconds</span>
-<span class="w">    </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ordinal_seconds</span>
-<span class="w">    </span><span class="k">implicit none</span>
-<span class="k">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gen</span><span class="o">=</span><span class="s1">&#39;(*(g0))&#39;</span>
-<span class="w">    </span><span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="p">,</span><span class="w"> </span><span class="n">istart</span><span class="p">,</span><span class="w"> </span><span class="n">iend</span>
-<span class="w">    </span><span class="kt">real</span><span class="p">,</span><span class="k">volatile</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
-<span class="w">    </span><span class="n">istart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ordinal_seconds</span><span class="p">()</span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1000000000</span>
-<span class="w">       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">+</span><span class="nb">sqrt</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-<span class="w">    </span><span class="k">enddo</span>
-<span class="k">    print </span><span class="n">gen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;x=&#39;</span><span class="p">,</span><span class="n">x</span>
-<span class="w">    </span><span class="n">iend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ordinal_seconds</span><span class="p">()</span>
-<span class="w">    </span><span class="k">print </span><span class="n">gen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;that took &#39;</span><span class="p">,</span><span class="n">iend</span><span class="o">-</span><span class="n">istart</span><span class="p">,</span><span class="s1">&#39; seconds&#39;</span>
-<span class="w">    </span><span class="k">print </span><span class="n">gen</span><span class="p">,</span><span class="w"> </span><span class="n">iend</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">istart</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">iend</span><span class="o">-</span><span class="n">istart</span>
-<span class="w">    </span><span class="k">end program </span><span class="n">demo_ordinal_seconds</span>
+    <div class="hl codehilite"><pre><span></span><span class="w">      </span><span class="k">program </span><span class="n">demo_ordinal_seconds</span>
+<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ordinal_seconds</span>
+<span class="w">      </span><span class="k">implicit none</span>
+<span class="k">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">gen</span><span class="o">=</span><span class="s1">&#39;(*(g0))&#39;</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="p">,</span><span class="w"> </span><span class="n">istart</span><span class="p">,</span><span class="w"> </span><span class="n">iend</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">,</span><span class="k">volatile</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span>
+<span class="w">      </span><span class="n">istart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ordinal_seconds</span><span class="p">()</span>
+<span class="w">      </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1000000000</span>
+<span class="w">         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">+</span><span class="nb">sqrt</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="w">      </span><span class="k">enddo</span>
+<span class="k">      print </span><span class="n">gen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;x=&#39;</span><span class="p">,</span><span class="n">x</span>
+<span class="w">      </span><span class="n">iend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ordinal_seconds</span><span class="p">()</span>
+<span class="w">      </span><span class="k">print </span><span class="n">gen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;that took &#39;</span><span class="p">,</span><span class="n">iend</span><span class="o">-</span><span class="n">istart</span><span class="p">,</span><span class="s1">&#39; seconds&#39;</span>
+<span class="w">      </span><span class="k">print </span><span class="n">gen</span><span class="p">,</span><span class="w"> </span><span class="n">iend</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">istart</span><span class="p">,</span><span class="s1">&#39;=&#39;</span><span class="p">,</span><span class="n">iend</span><span class="o">-</span><span class="n">istart</span>
+<span class="w">      </span><span class="k">end program </span><span class="n">demo_ordinal_seconds</span>
 </pre></div>
 
     </section>
@@ -333,7 +333,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-09-30 00:38              </p>
+ on 2024-10-03 05:18              </p>
           </div>
         </div>
         <br>

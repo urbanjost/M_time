@@ -114,11 +114,11 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/display_date.html#variable-dat~13">dat</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-duration">duration</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ident~15">ident</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ierr~13">ierr</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-inums~2">inums</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-dat~44">dat</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-duration~2">duration</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ident~13">ident</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ierr~14">ierr</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-inums">inums</a>
             <a class="list-group-item" href="../program/display_date.html#variable-output">output</a>
             <a class="list-group-item" href="../program/display_date.html#variable-rdat">rdat</a>
         </div>
@@ -143,7 +143,7 @@
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../program/display_date.html#proc-help_version~6">help_version</a>
-            <a class="list-group-item" href="../program/display_date.html#proc-usage">usage</a>
+            <a class="list-group-item" href="../program/display_date.html#proc-usage~2">usage</a>
         </div>
       </div>
     </div>
@@ -174,9 +174,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">M_time</li>
                   <li class="list-inline-item">m_strings</li>
                   <li class="list-inline-item">M_kracken95</li>
+                  <li class="list-inline-item">M_time</li>
               </ul>
             </li>
         </ul>
@@ -200,7 +200,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~13"></span>
+              <span class="anchor" id="variable-dat~44"></span>
               integer
             </td>
             <td>
@@ -216,7 +216,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-duration"></span>
+              <span class="anchor" id="variable-duration~2"></span>
               real(kind=realtime)
             </td>
             <td>
@@ -232,7 +232,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~15"></span>
+              <span class="anchor" id="variable-ident~13"></span>
               character(len=*),
             </td>
             <td>
@@ -248,7 +248,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~13"></span>
+              <span class="anchor" id="variable-ierr~14"></span>
               integer
             </td>
             <td>
@@ -264,7 +264,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-inums~2"></span>
+              <span class="anchor" id="variable-inums"></span>
               integer
             </td>
             <td>
@@ -365,7 +365,7 @@ parameter
   </div>
 
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-usage"></span> <h3> subroutine <a href='../proc/usage.html'>usage</a>()  
+    <div class="card-header codesum"><span class="anchor" id="proc-usage~2"></span> <h3> subroutine <a href='../proc/usage~2.html'>usage</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -586,7 +586,7 @@ parameter
 <span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       2024-09-28 21:50:16 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2024-10-02 10:05:18 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -615,7 +615,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-09-30 00:38              </p>
+ on 2024-10-03 05:18              </p>
           </div>
         </div>
         <br>
