@@ -6,9 +6,19 @@ list of notable changes including records of change such as bug fixes,
 new features, changes, and relevant notifications.
 
 ---
+**2025-01-25**  John S. Urban  <https://github.com/urbanjost>
+
+Sun 25 Jan 2025 16:30:44 EST
+### :green: ADD:
+     - added support for Modified Julian Dates (MJD) 
+     - added support for Basedate and Seconds (BAS),
+       which is MJD using a two-valued type composed of
+       an integer baseday a 64-bit offset from the date
+       in seconds.
+---
 **2022-11-17**  John S. Urban  <https://github.com/urbanjost>
 
-Thu 17 Nov 2022 11:49:28 AM EST
+Thu 17 Nov 2022 11:49:28 EST
 ### :red: FIX:
      - corrected DOW() round-off error encountered on i386
        32-bit platform
