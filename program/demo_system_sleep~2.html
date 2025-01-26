@@ -75,19 +75,19 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.7% of total for programs.">16 statements</a>
+                 title=" 5.6% of total for programs.">134 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/demo_system_sleep.f90"> Source File</a>
+              <a href="../src/paws.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/demo_system_sleep.f90.html'>demo_system_sleep.f90</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/paws.f90.html'>paws.f90</a></li>
             <li class="breadcrumb-item active" aria-current="page">demo_system_sleep</li>
           </ol>
         </nav>
@@ -114,7 +114,21 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-i~32">i</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-cmd">cmd</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-cpaws">cpaws</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-cstat">cstat</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-dat~14">dat</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-delay_value">delay_value</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-i~10">i</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-ident~7">ident</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-ios">ios</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-itimes">itimes</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-msg">msg</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-once">once</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-sstat">sstat</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-time_format">time_format</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-until">until</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#variable-until_value">until_value</a>
         </div>
       </div>
     </div>
@@ -129,7 +143,19 @@
   
   
   
-  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#proc-help_usage~3">help_usage</a>
+            <a class="list-group-item" href="../program/demo_system_sleep~2.html#proc-help_version~3">help_version</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -157,6 +183,7 @@
             <li class="list-group-item">
               <ul class="list-inline">
                   <li class="list-inline-item">M_time</li>
+                  <li class="list-inline-item">M_kracken</li>
               </ul>
             </li>
         </ul>
@@ -180,7 +207,87 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~32"></span>
+              <span class="anchor" id="variable-cmd"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>cmd</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cpaws"></span>
+              character(len=1)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cpaws</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-cstat"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>cstat</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dat~14"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dat</strong>(8)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-delay_value"></span>
+              real(kind=realtime)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>delay_value</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-i~10"></span>
               integer
             </td>
             <td>
@@ -188,6 +295,150 @@
             </td>
             <td>::</td>
             <td><strong>i</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ident~7"></span>
+              character(len=*),
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>ident</strong></td>
+<td> =</td>
+                <td>&#34;@(#)paws(1):pause until specified time or for specified duration&#34;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ios"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ios</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-itimes"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>itimes</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-msg"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>msg</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-once"></span>
+              logical
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>once</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sstat"></span>
+              character(len=256)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sstat</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time_format"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>time_format</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-until"></span>
+              logical
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>until</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-until_value"></span>
+              real(kind=realtime)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>until_value</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -206,30 +457,381 @@
     
 
 
+    <section>
+    <h2>Subroutines</h2>
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_usage~3"></span> <h3> subroutine <a href='../proc/help_usage~3.html'>help_usage</a>(l_help)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_help~3"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_help</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version~3"></span> <h3> subroutine <a href='../proc/help_version~3.html'>help_version</a>(l_version)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Typical usage:</p><a href="../proc/help_version~3.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_version~3"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_version</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+    </section>    
     
 
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">      </span><span class="k">program </span><span class="n">demo_system_sleep</span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">system_sleep</span><span class="p">,</span><span class="w"> </span><span class="n">now</span>
-<span class="w">      </span><span class="k">implicit none</span>
-<span class="k">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s2">&quot;Time before integer call is: &quot;</span><span class="p">,</span><span class="n">now</span><span class="p">()</span>
-<span class="w">         </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s2">&quot;Time after integer call is: &quot;</span><span class="p">,</span><span class="n">now</span><span class="p">()</span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s2">&quot;Time before real call is: &quot;</span><span class="p">,</span><span class="n">now</span><span class="p">()</span>
-<span class="w">         </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s2">&quot;Time after real call is: &quot;</span><span class="p">,</span><span class="n">now</span><span class="p">()</span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s2">&quot;Time before loop is: &quot;</span><span class="p">,</span><span class="n">now</span><span class="p">()</span>
-<span class="w">         </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span>
-<span class="w">            </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="mf">4.0</span><span class="o">/</span><span class="mi">100</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="w">         </span><span class="k">enddo</span>
-<span class="k">         write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s2">&quot;Time after loop is: &quot;</span><span class="p">,</span><span class="n">now</span><span class="p">()</span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">      </span><span class="k">end program </span><span class="n">demo_system_sleep</span>
+    <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">demo_system_sleep</span>
+<span class="k">use </span><span class="n">M_kracken</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="w"> </span><span class="n">sget</span><span class="p">,</span><span class="w"> </span><span class="n">lget</span><span class="p">,</span><span class="w"> </span><span class="n">dget</span><span class="p">,</span><span class="w"> </span><span class="n">igets</span><span class="p">,</span><span class="w"> </span><span class="n">iget</span>
+<span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">days2sec</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span><span class="p">,</span><span class="w"> </span><span class="n">u2d</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">,</span><span class="w"> </span><span class="n">j2d</span><span class="p">,</span><span class="w"> </span><span class="n">system_sleep</span><span class="p">,</span><span class="w"> </span><span class="n">guessdate</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)paws(1):pause until specified time or for specified duration&quot;</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">until_value</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">delay_value</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">itimes</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ios</span>
+<span class="kt">logical</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">until</span>
+<span class="kt">logical</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">once</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">time_format</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">msg</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cmd</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">cpaws</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">cstat</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">sstat</span>
+
+<span class="w">                                                             </span><span class="c">! parse command line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;paws&#39;</span><span class="p">,</span><span class="s1">&#39; -oo -debug .f. -cmd -msg -uet -jd -dat -date -until -repeat 0 -fmt -help .F. -version .F.&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;paws_help&#39;</span><span class="p">))</span><span class="w">                        </span><span class="c">! display help information and stop if true</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;paws_version&#39;</span><span class="p">))</span><span class="w">                   </span><span class="c">! display version information and stop if true</span>
+<span class="w">   </span><span class="n">until</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">   </span><span class="n">until_value</span><span class="o">=</span><span class="mf">0.0</span>
+<span class="c">!===================================================================================================================================</span>
+<span class="w">                                                             </span><span class="c">! delay until specified date has passed using various date descriptions</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_uet&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">until_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0d0</span><span class="p">,</span><span class="w"> </span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;paws_uet&#39;</span><span class="p">)</span><span class="o">-</span><span class="n">d2u</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;paws_debug&#39;</span><span class="p">))</span><span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;UET ...........&#39;</span><span class="p">,</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;paws_uet&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;d2u ...........&#39;</span><span class="p">,</span><span class="n">d2u</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;until_value ...&#39;</span><span class="p">,</span><span class="n">until_value</span>
+<span class="w">         </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">until_value</span><span class="p">))</span>
+<span class="w">         </span><span class="n">until</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">      </span><span class="k">endif</span>
+<span class="k">   endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_jd&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">until_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0d0</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">(</span><span class="n">j2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;paws_jd&#39;</span><span class="p">)))</span><span class="o">-</span><span class="n">d2u</span><span class="p">()</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">until_value</span><span class="p">))</span>
+<span class="w">      </span><span class="n">until</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">   </span><span class="k">endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_dat&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">igets</span><span class="p">(</span><span class="s1">&#39;paws_dat&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="n">until_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="o">-</span><span class="n">d2u</span><span class="p">())</span>
+<span class="w">      </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">until_value</span><span class="p">))</span>
+<span class="w">      </span><span class="n">until</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">   </span><span class="k">endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_date&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      call </span><span class="n">guessdate</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_date&#39;</span><span class="p">),</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;pausing till &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">      </span><span class="n">until_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="o">-</span><span class="n">d2u</span><span class="p">())</span>
+<span class="w">      </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">until_value</span><span class="p">))</span>
+<span class="w">      </span><span class="n">until</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">   </span><span class="k">endif</span>
+
+<span class="k">   if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_until&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      call </span><span class="n">guessdate</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_until&#39;</span><span class="p">),</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;pausing till &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">      </span><span class="n">until_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">,</span><span class="w"> </span><span class="n">d2u</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="o">-</span><span class="n">d2u</span><span class="p">())</span>
+<span class="w">      </span><span class="k">call </span><span class="n">system_sleep</span><span class="p">(</span><span class="nb">nint</span><span class="p">(</span><span class="n">until_value</span><span class="p">))</span>
+<span class="w">      </span><span class="n">until</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">   </span><span class="k">endif</span>
+<span class="c">!===================================================================================================================================</span>
+<span class="w">   </span><span class="c">! determine value of cyclical pause duration</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_oo&#39;</span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">delay_value</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="mf">0.0d0</span><span class="p">,</span><span class="w"> </span><span class="n">days2sec</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_oo&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">else</span>
+<span class="k">      </span><span class="n">delay_value</span><span class="o">=</span><span class="mf">0.0</span>
+<span class="w">   </span><span class="k">endif</span>
+<span class="c">!===================================================================================================================================</span>
+<span class="w">   </span><span class="n">itimes</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;paws_repeat&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">itimes</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">once</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">      </span><span class="n">itimes</span><span class="o">=</span><span class="mi">1</span>
+<span class="w">   </span><span class="k">else</span>
+<span class="k">      </span><span class="n">once</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">   </span><span class="k">endif</span>
+
+<span class="k">   </span><span class="n">time_format</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_fmt&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">msg</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_msg&#39;</span><span class="p">))</span>
+<span class="w">   </span><span class="n">cmd</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;paws_cmd&#39;</span><span class="p">))</span>
+<span class="c">!===================================================================================================================================</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;paws_debug&#39;</span><span class="p">))</span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;cmd ...........; &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;msg ...........; &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;time_format ...; &#39;</span><span class="p">,</span><span class="nb">trim</span><span class="p">(</span><span class="n">time_format</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;delay_value ...;&#39;</span><span class="p">,</span><span class="n">delay_value</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;until .........;&#39;</span><span class="p">,</span><span class="n">until</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;until_value ...;&#39;</span><span class="p">,</span><span class="n">until_value</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;once ..........;&#39;</span><span class="p">,</span><span class="n">once</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;itimes ........;&#39;</span><span class="p">,</span><span class="n">itimes</span>
+<span class="w">   </span><span class="k">endif</span>
+<span class="c">!===================================================================================================================================</span>
+<span class="w">   </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="n">itimes</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">msg</span>
+<span class="w">      </span><span class="k">endif</span>
+
+<span class="k">      if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">once</span><span class="p">)</span><span class="k">then</span>
+<span class="k">         write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(i0.3,1x,a)&#39;</span><span class="p">)</span><span class="n">i</span><span class="p">,</span><span class="n">now</span><span class="p">(</span><span class="n">time_format</span><span class="p">)</span>
+<span class="w">      </span><span class="k">endif</span>
+
+<span class="k">      if</span><span class="p">(</span><span class="n">cmd</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">         call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="n">cmdstat</span><span class="o">=</span><span class="n">cstat</span><span class="p">,</span><span class="n">cmdmsg</span><span class="o">=</span><span class="n">sstat</span><span class="p">)</span>
+<span class="w">      </span><span class="k">endif</span>
+
+<span class="k">      if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">until</span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="n">delay_value</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">      </span><span class="c">! no pause time specified. Prompt and read from stdin</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(&quot;continue...&quot;)&#39;</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s2">&quot;no&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">read</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="n">iostat</span><span class="o">=</span><span class="n">ios</span><span class="p">)</span><span class="w"> </span><span class="n">cpaws</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">         call </span><span class="n">system_sleep</span><span class="p">(</span><span class="n">delay_value</span><span class="p">)</span>
+<span class="w">      </span><span class="k">endif</span>
+
+<span class="k">   enddo</span>
+
+<span class="k">   if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="n">once</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(i0.3,1x,a)&#39;</span><span class="p">)</span><span class="n">i</span><span class="p">,</span><span class="n">now</span><span class="p">(</span><span class="n">time_format</span><span class="p">)</span>
+<span class="w">   </span><span class="k">endif</span>
+<span class="k">contains</span>
+<span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_help</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   paws(1f) - [TIME] pause until specified time or for specified duration       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ -msg message][ -cmd command][ -repeat TIMES[ -fmt ]]|...&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   [ -uet|-jd|-dat|[ -date|-until]]                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   paws --version|--help                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours,     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   mm minutes and ss.xxx seconds convert it to seconds. Then, pause for that    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   many seconds. Alternatively, pause until specified date has passed.          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   If no duration is specified wait until a carriage return is entered.         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   dd-hh:mm:ss   Given a string representing a duration of time in the          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 following forms:                                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   dd-hh:mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                      hh:mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                         mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                            ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                      or                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   xx[.yy]SUFFIX                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 convert it to seconds and pause for that amount of time.       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 Suffix may be s for seconds, m for minutes, h for hours,       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 or d for days.                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -date|-until  wait until the specified date has passed (before starting      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 optional pause). See guessdate(3f) for syntax allowed for      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 the date.                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -uet          wait until the specified Unix Epoch Time has passed            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -jd           wait until the specified Julian Date has passed                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -dat          wait until the specified date vector has passed                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 (year month day timezone hour minutes seconds milliseconds)    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -repeat NNN   The duration is repeated NNN times with the date displayed     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 at the end of each pause.                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --msg         message to display before pausing                              &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --cmd         command to execute after a pause                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --fmt         date format (see fmtdate(3f) for details)                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --help        display this help and exit                                     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --version     output version information and exit                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   For more information on the format of the dates, see the now(1) command.     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39; Typical usage:                                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  paws 2:00:00              # pause for two hours                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  paws 3600                 # pause one hour                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  paws 0.10                 # pause one tenth of a second                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  paws 1 -repeat 60         # pause sixty seconds, displaying date each second  &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  paws -until 23:59:59      # pause until midnight                              &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes  &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --help was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_usage</span>
+<span class="c">!&gt;</span>
+<span class="c">!!##NAME</span>
+<span class="c">!!    paws(1f) - [TIME] pause until specified time or for specified duration</span>
+<span class="c">!!    (LICENSE:PD)</span>
+<span class="c">!!</span>
+<span class="c">!!##SYNOPSIS</span>
+<span class="c">!!</span>
+<span class="c">!!    paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ -msg message][ -cmd command][ -repeat TIMES[ -fmt ]]|...</span>
+<span class="c">!!    [ -uet|-jd|-dat|[ -date|-until]]</span>
+<span class="c">!!    paws --version|--help</span>
+<span class="c">!!</span>
+<span class="c">!!##DESCRIPTION</span>
+<span class="c">!!    Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours,</span>
+<span class="c">!!    mm minutes and ss.xxx seconds convert it to seconds. Then, pause for that</span>
+<span class="c">!!    many seconds. Alternatively, pause until specified date has passed.</span>
+<span class="c">!!    If no duration is specified wait until a carriage return is entered.</span>
+<span class="c">!!</span>
+<span class="c">!!##OPTIONS</span>
+<span class="c">!!    dd-hh:mm:ss   Given a string representing a duration of time in the</span>
+<span class="c">!!                  following forms:</span>
+<span class="c">!!</span>
+<span class="c">!!                    dd-hh:mm:ss[.xx]</span>
+<span class="c">!!                       hh:mm:ss[.xx]</span>
+<span class="c">!!                          mm:ss[.xx]</span>
+<span class="c">!!                             ss[.xx]</span>
+<span class="c">!!                       or</span>
+<span class="c">!!                    xx[.yy]SUFFIX</span>
+<span class="c">!!</span>
+<span class="c">!!                  convert it to seconds and pause for that amount of time.</span>
+<span class="c">!!                  Suffix may be s for seconds, m for minutes, h for hours,</span>
+<span class="c">!!                  or d for days.</span>
+<span class="c">!!    -date|-until  wait until the specified date has passed (before starting</span>
+<span class="c">!!                  optional pause). See guessdate(3f) for syntax allowed for</span>
+<span class="c">!!                  the date.</span>
+<span class="c">!!    -uet          wait until the specified Unix Epoch Time has passed</span>
+<span class="c">!!    -jd           wait until the specified Julian Date has passed</span>
+<span class="c">!!    -dat          wait until the specified date vector has passed</span>
+<span class="c">!!                  (year month day timezone hour minutes seconds milliseconds)</span>
+<span class="c">!!    -repeat NNN   The duration is repeated NNN times with the date displayed</span>
+<span class="c">!!                  at the end of each pause.</span>
+<span class="c">!!    --msg         message to display before pausing</span>
+<span class="c">!!    --cmd         command to execute after a pause</span>
+<span class="c">!!    --fmt         date format (see fmtdate(3f) for details)</span>
+<span class="c">!!    --help        display this help and exit</span>
+<span class="c">!!    --version     output version information and exit</span>
+<span class="c">!!</span>
+<span class="c">!!    For more information on the format of the dates, see the now(1) command.</span>
+<span class="c">!!</span>
+<span class="c">!!##EXAMPLES</span>
+<span class="c">!!</span>
+<span class="c">!!  Typical usage:</span>
+<span class="c">!!</span>
+<span class="c">!!   paws 2:00:00              # pause for two hours</span>
+<span class="c">!!   paws 3600                 # pause one hour</span>
+<span class="c">!!   paws 0.10                 # pause one tenth of a second</span>
+<span class="c">!!   paws 1 -repeat 60         # pause sixty seconds, displaying date each second</span>
+<span class="c">!!   paws -until 23:59:59      # pause until midnight</span>
+<span class="c">!!   paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes</span>
+<span class="c">!!##AUTHOR</span>
+<span class="c">!!    John S. Urban</span>
+<span class="c">!!##LICENSE</span>
+<span class="c">!!    Public Domain</span>
+<span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_version</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)PROGRAM:        paws(1f)&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)DESCRIPTION:    pause until specified time or for specified duration&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 20160731&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2025-01-26 10:34:47 UTC-300&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_version</span>
+
+<span class="k">end program </span><span class="n">demo_system_sleep</span>
 </pre></div>
 
     </section>
@@ -252,7 +854,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-01-26 15:58 +0000             </p>
+ on 2025-01-26 16:09 +0000             </p>
           </div>
         </div>
         <br>
