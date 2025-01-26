@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="30.2% of total for programs.">619 statements</a>
+                 title="34.8% of total for programs.">839 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -114,10 +114,13 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/runtest.html#variable-f">F</a>
             <a class="list-group-item" href="../program/runtest.html#variable-same">SAME</a>
             <a class="list-group-item" href="../program/runtest.html#variable-sameend">SAMEEND</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-t">T</a>
             <a class="list-group-item" href="../program/runtest.html#variable-dat~14">dat</a>
-            <a class="list-group-item" href="../program/runtest.html#variable-ierr~5">ierr</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-dp~5">dp</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-ierr~8">ierr</a>
         </div>
       </div>
     </div>
@@ -152,12 +155,18 @@
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../program/runtest.html#proc-put_environment_variable">put_environment_variable</a>
             <a class="list-group-item" href="../program/runtest.html#proc-showme">showme</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_b2d">test_b2d</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_bas_to_date">test_bas_to_date</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_box_month">test_box_month</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_d2b">test_d2b</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_d2j">test_d2j</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_d2m">test_d2m</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_d2o">test_d2o</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_d2u">test_d2u</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_d2w">test_d2w</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_date_to_bas">test_date_to_bas</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_date_to_julian">test_date_to_julian</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_date_to_modified_julian">test_date_to_modified_julian</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_date_to_unix">test_date_to_unix</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_days2sec">test_days2sec</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_dow">test_dow</a>
@@ -168,8 +177,10 @@
             <a class="list-group-item" href="../program/runtest.html#proc-test_j2d">test_j2d</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_julian_to_date">test_julian_to_date</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_locale">test_locale</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_m2d">test_m2d</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_mo2d">test_mo2d</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_mo2v">test_mo2v</a>
+            <a class="list-group-item" href="../program/runtest.html#proc-test_modified_julian_to_date">test_modified_julian_to_date</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_moon_fullness">test_moon_fullness</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_now">test_now</a>
             <a class="list-group-item" href="../program/runtest.html#proc-test_now_ex">test_now_ex</a>
@@ -213,8 +224,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
                   <li class="list-inline-item">M_framework__verify</li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
                   <li class="list-inline-item">M_time</li>
               </ul>
             </li>
@@ -239,6 +251,22 @@ call test_ephemeris()</p>
 <th></th><th scope="col">Initial</th>        <th scope="col"></th>
     </thead>
     <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f"></span>
+              logical,
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>F</strong></td>
+<td> =</td>
+                <td>.false.</td>
+            <td>
+                
+            </td>
+        </tr>
         <tr>
             <td>
               <span class="anchor" id="variable-same"></span>
@@ -273,6 +301,22 @@ parameter
         </tr>
         <tr>
             <td>
+              <span class="anchor" id="variable-t"></span>
+              logical,
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>T</strong></td>
+<td> =</td>
+                <td>.true.</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
               <span class="anchor" id="variable-dat~14"></span>
               integer
             </td>
@@ -289,7 +333,23 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~5"></span>
+              <span class="anchor" id="variable-dp~5"></span>
+              integer,
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>dp</strong></td>
+<td> =</td>
+                <td>kind(0.0d0)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~8"></span>
               integer
             </td>
             <td>
@@ -478,6 +538,32 @@ parameter
   </div>
 
       <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_b2d"></span> <h3> subroutine <a href='../proc/test_b2d.html'>test_b2d</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_bas_to_date"></span> <h3> subroutine <a href='../proc/test_bas_to_date.html'>test_bas_to_date</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-test_box_month"></span> <h3> subroutine <a href='../proc/test_box_month.html'>test_box_month</a>()  
 </h3></div>
     <div class="card-body">
@@ -491,7 +577,33 @@ parameter
   </div>
 
       <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_d2b"></span> <h3> subroutine <a href='../proc/test_d2b.html'>test_d2b</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-test_d2j"></span> <h3> subroutine <a href='../proc/test_d2j.html'>test_d2j</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_d2m"></span> <h3> subroutine <a href='../proc/test_d2m.html'>test_d2m</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -543,7 +655,33 @@ parameter
   </div>
 
       <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_date_to_bas"></span> <h3> subroutine <a href='../proc/test_date_to_bas.html'>test_date_to_bas</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-test_date_to_julian"></span> <h3> subroutine <a href='../proc/test_date_to_julian.html'>test_date_to_julian</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_date_to_modified_julian"></span> <h3> subroutine <a href='../proc/test_date_to_modified_julian.html'>test_date_to_modified_julian</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -686,6 +824,19 @@ parameter
   </div>
 
       <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_m2d"></span> <h3> subroutine <a href='../proc/test_m2d.html'>test_m2d</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-test_mo2d"></span> <h3> subroutine <a href='../proc/test_mo2d.html'>test_mo2d</a>()  
 </h3></div>
     <div class="card-body">
@@ -700,6 +851,19 @@ parameter
 
       <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-test_mo2v"></span> <h3> subroutine <a href='../proc/test_mo2v.html'>test_mo2v</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-test_modified_julian_to_date"></span> <h3> subroutine <a href='../proc/test_modified_julian_to_date.html'>test_modified_julian_to_date</a>()  
 </h3></div>
     <div class="card-body">
           
@@ -887,22 +1051,45 @@ parameter
     <h2 id="src">Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">runtest</span>
 <span class="k">use</span><span class="p">,</span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">iso_c_binding</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="kt">c_int</span><span class="p">,</span><span class="w"> </span><span class="kt">c_char</span><span class="p">,</span><span class="w"> </span><span class="nb">c_null_char</span>
-<span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_test</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_end</span>
+<span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">stdout</span><span class="o">=&gt;</span><span class="n">OUTPUT_UNIT</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=&gt;</span><span class="n">ERROR_UNIT</span>
+<span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_test</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_end</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_mode</span>
 <span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_test_start</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_msg</span><span class="p">,</span><span class="w"> </span><span class="n">unit_test_level</span>
 <span class="k">use </span><span class="n">M_framework__verify</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">unit_test_stop</span>
 <span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">             </span><span class="n">d2o</span><span class="p">,</span><span class="w">             </span><span class="n">d2u</span><span class="p">,</span><span class="w">      </span><span class="n">d2w</span><span class="p">,</span><span class="w">      </span><span class="n">date_to_julian</span><span class="p">,</span><span class="w"> </span><span class="n">date_to_unix</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
-<span class="w">             </span><span class="n">days2sec</span><span class="p">,</span><span class="w">        </span><span class="n">dow</span><span class="p">,</span><span class="w">      </span><span class="n">easter</span><span class="p">,</span><span class="w">   </span><span class="n">fmtdate</span><span class="p">,</span><span class="w">        </span><span class="n">guessdate</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
-<span class="w">             </span><span class="n">julian_to_date</span><span class="p">,</span><span class="w">  </span><span class="n">mo2v</span><span class="p">,</span><span class="w">     </span><span class="n">now</span><span class="p">,</span><span class="w">      </span><span class="n">o2d</span><span class="p">,</span><span class="w">            </span><span class="n">ordinal_seconds</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">             </span><span class="n">ordinal_to_date</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span><span class="p">,</span><span class="w"> </span><span class="n">sec2days</span><span class="p">,</span><span class="w"> </span><span class="n">w2d</span><span class="p">,</span><span class="w">            </span><span class="n">moon_fullness</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
-<span class="w">             </span><span class="n">phase_of_moon</span><span class="p">,</span><span class="w">   </span><span class="n">u2d</span><span class="p">,</span><span class="w">      </span><span class="n">j2d</span><span class="p">,</span><span class="w">      </span><span class="n">d2j</span><span class="p">,</span><span class="w">            </span><span class="n">box_month</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
-<span class="w">             </span><span class="n">mo2d</span><span class="p">,</span><span class="w">            </span><span class="n">v2mo</span><span class="p">,</span><span class="w">                               </span><span class="n">unix_to_date</span>
+<span class="w">      </span><span class="n">dow</span><span class="p">,</span><span class="w">                      </span><span class="n">guessdate</span><span class="p">,</span><span class="w">                                      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">mo2v</span><span class="p">,</span><span class="w">                     </span><span class="n">now</span><span class="p">,</span><span class="w">          </span><span class="n">ordinal_seconds</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">realtime</span><span class="p">,</span><span class="w">                 </span><span class="n">BAStime</span><span class="p">,</span><span class="w">                                        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">fmtdate</span><span class="p">,</span><span class="w">                  </span><span class="n">box_month</span><span class="p">,</span><span class="w">                                      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">days2sec</span><span class="p">,</span><span class="w">                 </span><span class="n">sec2days</span><span class="p">,</span><span class="w">                                       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">phase_of_moon</span><span class="p">,</span><span class="w">            </span><span class="n">moon_fullness</span><span class="p">,</span><span class="w">            </span><span class="n">easter</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">ordinal_to_date</span><span class="p">,</span><span class="w">                                    </span><span class="n">o2d</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">unix_to_date</span><span class="p">,</span><span class="w">             </span><span class="n">date_to_unix</span><span class="p">,</span><span class="w">             </span><span class="n">u2d</span><span class="p">,</span><span class="w">          </span><span class="n">d2u</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">julian_to_date</span><span class="p">,</span><span class="w">           </span><span class="n">date_to_julian</span><span class="p">,</span><span class="w">           </span><span class="n">j2d</span><span class="p">,</span><span class="w">          </span><span class="n">d2j</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">modified_julian_to_date</span><span class="p">,</span><span class="w">  </span><span class="n">date_to_modified_julian</span><span class="p">,</span><span class="w">  </span><span class="n">m2d</span><span class="p">,</span><span class="w">          </span><span class="n">d2m</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">bas_to_date</span><span class="p">,</span><span class="w">              </span><span class="n">date_to_bas</span><span class="p">,</span><span class="w">              </span><span class="n">b2d</span><span class="p">,</span><span class="w">          </span><span class="n">d2b</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">                                                          </span><span class="n">w2d</span><span class="p">,</span><span class="w">          </span><span class="n">d2w</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">                                                                        </span><span class="n">d2o</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">                                                         </span><span class="n">mo2d</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="n">v2mo</span>
 <span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">locale</span>
 <span class="k">implicit none</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SAME</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c">! &#39;-library libGPF -section 3 -description &quot;&#39;</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">SAMEEND</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c">! &#39;&quot;&#39;</span>
+<span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">T</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="w"> </span><span class="n">F</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">unit_test_mode</span><span class="p">(</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">keep_going</span><span class="o">=</span><span class="n">T</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">luns</span><span class="o">=</span><span class="p">[</span><span class="n">stdout</span><span class="p">],</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">command</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">brief</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">match</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">interactive</span><span class="o">=</span><span class="n">F</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">CMDLINE</span><span class="o">=</span><span class="n">T</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="n">debug</span><span class="o">=</span><span class="n">F</span><span class="p">)</span>
 
 <span class="n">unit_test_level</span><span class="o">=</span><span class="mi">0</span>
 
@@ -914,8 +1101,6 @@ parameter
 
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;box_month      &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;print specified month into character array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_box_month</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2j            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert date array to Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
-<span class="k">call </span><span class="n">test_d2j</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2o            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts date-time array to Ordinal day&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_d2o</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;ordinal_seconds&#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;seconds since begiing of year&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
@@ -924,8 +1109,6 @@ parameter
 <span class="k">call </span><span class="n">test_d2u</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2w            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Calculate iso-8601 Week-numbering year date yyyy-Www-d&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_d2w</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_julian &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Proleptic Gregorian date array to Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
-<span class="k">call </span><span class="n">test_date_to_julian</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_unix   &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts date array to Unix Time (UT starts at 0000 on 1 Jan. 1970, UTC)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_date_to_unix</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;days2sec       &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;converts string D-HH:MM:SS to seconds from small to large&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
@@ -945,10 +1128,34 @@ parameter
 <span class="k">call </span><span class="n">test_fmtdate_usage</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;guessdate      &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Reads in a date, in various formats&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_guessdate</span><span class="p">()</span>
-<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;j2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Julian Date to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
-<span class="k">call </span><span class="n">test_j2d</span><span class="p">()</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;julian_to_date &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Julian Date to (year, month, day, hour, minute, second)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_julian_to_date</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;j2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Julian Date to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_j2d</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_julian &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Proleptic Gregorian date array to Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_date_to_julian</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2j            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert date array to Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_d2j</span><span class="p">()</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;modified_julian_to_date&#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Modified Julian Date to (year,month,day,hour,minute,second)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_modified_julian_to_date</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;m2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Modified Julian Date to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_m2d</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Proleptic Gregorian date array to Modified Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_date_to_julian</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2m            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert date array to Modified Julian Date&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_d2m</span><span class="p">()</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;bas_to_date    &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Baseday and Seconds to (year, month, day, hour, minute, second)&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_bas_to_date</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;b2d            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert Baseday and Seconds to date array&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_b2d</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;date_to_bas    &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Converts Proleptic Gregorian date array to Baseday and Seconds&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_date_to_bas</span><span class="p">()</span>
+<span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;d2b            &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;Convert date array to Baseday and Seconds&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
+<span class="k">call </span><span class="n">test_d2b</span><span class="p">()</span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;mo2d           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;return date array for beginning of given month name in specified year&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
 <span class="k">call </span><span class="n">test_mo2d</span><span class="p">()</span>
 <span class="k">call </span><span class="n">unit_test_start</span><span class="p">(</span><span class="s1">&#39;mo2v           &#39;</span><span class="p">,</span><span class="n">SAME</span><span class="o">//</span><span class="s1">&#39;given month as name return month number (1-12) of that month&#39;</span><span class="o">//</span><span class="n">SAMEEND</span><span class="p">)</span>
@@ -1102,16 +1309,77 @@ parameter
 <span class="w">   </span><span class="k">call </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go back one day</span>
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
 <span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
-<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
 
 <span class="w">   </span><span class="k">call </span><span class="n">julian_to_date</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go forward one day</span>
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
 <span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
-<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">juliandate</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
 
 <span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;julian_to_date&#39;</span><span class="p">)</span>
 
 <span class="k">end subroutine </span><span class="n">test_julian_to_date</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_d2j</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">julian</span><span class="o">-</span><span class="mi">244058</span><span class="mf">7.5d0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.00001</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1969  8:00(2440587.5)&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2449719</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1995 12:00(2449719)&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450010</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Oct 19th, 1995 12:00(2450010)&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450083</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1995 12:00(2450083)&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450084</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1996 12:00(2450084)&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450449</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31th, 1996 12:00(2450449)&quot;</span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_d2j</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_j2d</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">juliandate</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">resulted</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">juliandate</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="w">                 </span><span class="c">! set sample Julian Date</span>
+
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! go back one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! go forward one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_j2d</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
 <span class="k">subroutine </span><span class="n">test_date_to_unix</span>
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">unixtime</span>
@@ -1274,10 +1542,10 @@ parameter
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;Oct&#39;</span><span class="p">)</span><span class="w">        </span><span class="o">==</span><span class="w">   </span><span class="mi">10</span><span class="w">  </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check October&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;Nov&#39;</span><span class="p">)</span><span class="w">        </span><span class="o">==</span><span class="w">   </span><span class="mi">11</span><span class="w">  </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check November&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;December&#39;</span><span class="p">)</span><span class="w">   </span><span class="o">==</span><span class="w">   </span><span class="mi">12</span><span class="w">  </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check December&#39;</span><span class="p">)</span>
-<span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;jax&#39;</span><span class="p">)</span><span class="w">        </span><span class="o">==</span><span class="w">  </span><span class="o">-</span><span class="mi">1</span><span class="w">   </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check &quot;jax&quot;&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;ja&#39;</span><span class="p">)</span><span class="w">         </span><span class="o">==</span><span class="w">   </span><span class="mi">1</span><span class="w">   </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check &quot;ja&quot;&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;j&#39;</span><span class="p">)</span><span class="w">          </span><span class="o">==</span><span class="w">  </span><span class="o">-</span><span class="mi">1</span><span class="w">   </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check &quot;j&quot;&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w">           </span><span class="o">==</span><span class="w">  </span><span class="o">-</span><span class="mi">1</span><span class="w">   </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check &quot;&quot;&#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">(</span><span class="s1">&#39;jax&#39;</span><span class="p">)</span><span class="w">        </span><span class="o">==</span><span class="w">  </span><span class="o">-</span><span class="mi">1</span><span class="w">   </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Check &quot;jax&quot;&#39;</span><span class="p">)</span>
 
 <span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;mo2v&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">! assume if got here passed checks</span>
 
@@ -1292,7 +1560,6 @@ parameter
 <span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">weekday</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">day</span>
 <span class="kt">integer</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">month_names</span><span class="p">(:),</span><span class="w"> </span><span class="n">weekday_names</span><span class="p">(:),</span><span class="w"> </span><span class="n">month_names_abbreviated</span><span class="p">(:),</span><span class="w"> </span><span class="n">weekday_names_abbreviated</span><span class="p">(:)</span>
 <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">returned</span>
@@ -1393,7 +1660,6 @@ parameter
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">372</span><span class="p">),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="p">(:)</span>
 <span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
-<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">returned</span>
 <span class="c">! the data file with dates to read and expected answers and comments</span>
@@ -1591,67 +1857,6 @@ parameter
 <span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;box_month&#39;</span><span class="p">)</span>
 <span class="k">end subroutine </span><span class="n">test_box_month</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_d2j</span>
-<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">julian</span>
-<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">julian</span><span class="o">-</span><span class="mi">244058</span><span class="mf">7.5d0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.00001</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1969  8:00(2440587.5)&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2449719</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1995 12:00(2449719)&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450010</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Oct 19th, 1995 12:00(2450010)&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450083</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1995 12:00(2450083)&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450084</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1996 12:00(2450084)&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">   </span><span class="n">julian</span><span class="o">=</span><span class="n">d2j</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">julian</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450449</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31th, 1996 12:00(2450449)&quot;</span><span class="p">)</span>
-
-<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;d2j&#39;</span><span class="p">)</span>
-
-<span class="k">end subroutine </span><span class="n">test_d2j</span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
-<span class="k">subroutine </span><span class="n">test_j2d</span>
-<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">juliandate</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">resulted</span>
-<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">juliandate</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="w">                 </span><span class="c">! set sample Julian Date</span>
-
-<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span>
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="p">)</span>
-<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
-
-<span class="w">   </span><span class="c">! go back one day</span>
-<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">)</span>
-<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
-
-<span class="w">   </span><span class="c">! go forward one day</span>
-<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
-<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">)</span>
-<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
-
-<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">)</span>
-
-<span class="k">end subroutine </span><span class="n">test_j2d</span>
-<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
 <span class="k">subroutine </span><span class="n">test_d2u</span><span class="p">()</span>
 <span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">aday</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2017</span><span class="p">,</span><span class="mi">03</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">01</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">47</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 
@@ -1719,6 +1924,8 @@ parameter
 <span class="w">   </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">302400</span><span class="p">,</span><span class="s1">&#39;got&#39;</span><span class="p">,</span><span class="mi">0</span><span class="o">+</span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="s1">&#39;4d-12h&#39;</span><span class="p">)))</span>
 <span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;days2sec&#39;</span><span class="p">,</span><span class="mi">0</span><span class="o">+</span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="s1">&#39; 3  d  1 2   h           &#39;</span><span class="p">))</span><span class="w">  </span><span class="o">==</span><span class="w">  </span><span class="mi">302400</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">   </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">302400</span><span class="p">,</span><span class="s1">&#39;got&#39;</span><span class="p">,</span><span class="mi">0</span><span class="o">+</span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="s1">&#39;3 d 1 s  h&#39;</span><span class="p">)))</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;days2sec&#39;</span><span class="p">,</span><span class="mi">0</span><span class="o">+</span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="s1">&#39; 3h10&#39;&#39;20&quot;&#39;</span><span class="p">))</span><span class="w">  </span><span class="o">==</span><span class="w">  </span><span class="mi">11420</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">   </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="mi">11420</span><span class="p">,</span><span class="s1">&#39;got&#39;</span><span class="p">,</span><span class="mi">0</span><span class="o">+</span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="s1">&#39;3 h 10&#39;&#39;20&quot;&#39;</span><span class="p">)))</span>
 
 <span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;days2sec&#39;</span><span class="p">)</span>
 
@@ -1860,6 +2067,299 @@ parameter
 <span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2w&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="p">,</span><span class="n">iyear</span><span class="p">,</span><span class="n">iweek</span><span class="p">,</span><span class="n">iweekday</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">string</span><span class="p">)</span>
 <span class="k">end subroutine </span><span class="n">showme</span>
 <span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_date_to_modified_julian</span><span class="p">()</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span>
+<span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
+<span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conv</span><span class="o">=</span><span class="mi">240000</span><span class="mf">0.5_realtime</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">mjd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">mjd</span><span class="o">-</span><span class="mi">244058</span><span class="mf">7.5d0</span><span class="o">-</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.00001</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1969  8:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">mjd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2449719</span><span class="o">-</span><span class="n">conv</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">mjd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450010</span><span class="o">-</span><span class="n">conv</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Oct 19th, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">mjd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450083</span><span class="o">-</span><span class="n">conv</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">mjd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450084</span><span class="o">-</span><span class="n">conv</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">mjd</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450449</span><span class="o">-</span><span class="n">conv</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31th, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;date_to_modified_julian&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_date_to_modified_julian</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_modified_julian_to_date</span><span class="p">()</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conv</span><span class="o">=</span><span class="mi">240000</span><span class="mf">0.5_realtime</span>
+
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="o">-</span><span class="n">conv</span><span class="w">            </span><span class="c">! set sample Modified Julian Date</span>
+<span class="w">   </span><span class="k">call </span><span class="n">modified_julian_to_date</span><span class="p">(</span><span class="n">mjd</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! create DAT array for this date</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;modified_julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mjd</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">modified_julian_to_date</span><span class="p">(</span><span class="n">mjd</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go back one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;modified_julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mjd</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">modified_julian_to_date</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go forward one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;modified_julian_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mjd</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;modified_julian_to_date&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_modified_julian_to_date</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_d2m</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span><span class="w"> </span>
+<span class="kt">integer</span><span class="w">                       </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conv</span><span class="o">=</span><span class="mi">240000</span><span class="mf">0.5_realtime</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">mjd</span><span class="o">-</span><span class="p">(</span><span class="mi">244058</span><span class="mf">7.5d0</span><span class="o">-</span><span class="n">conv</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.00001</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1969  8:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">2449719</span><span class="o">-</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">2450010</span><span class="o">-</span><span class="n">conv</span><span class="p">),</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Oct 19th, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">2450083</span><span class="o">-</span><span class="n">conv</span><span class="p">),</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">2450084</span><span class="o">-</span><span class="n">conv</span><span class="p">),</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">2450449</span><span class="o">-</span><span class="n">conv</span><span class="p">),</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31th, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;d2m&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_d2m</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_m2d</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">resulted</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">240000</span><span class="mf">0.5_realtime</span><span class="w">                </span><span class="c">! set sample Modified Julian Date</span>
+
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">m2d</span><span class="p">(</span><span class="n">mjd</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;m2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">mjd</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! go back one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">m2d</span><span class="p">(</span><span class="n">mjd</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;m2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">mjd</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! go forward one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">m2d</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;m2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">mjd</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;m2d&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_m2d</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_date_to_bas</span><span class="p">()</span>
+<span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">)</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">bas</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span>
+<span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
+<span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conv</span><span class="o">=</span><span class="mi">240000</span><span class="mf">0.5_realtime</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_bas</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">bas</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">mjd</span><span class="o">-</span><span class="p">(</span><span class="mi">244058</span><span class="mf">7.5d0</span><span class="o">-</span><span class="n">conv</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.00001</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1969  8:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_bas</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">bas</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2449719</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_bas</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">bas</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450010</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Oct 19th, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_bas</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">bas</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450083</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_bas</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">bas</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450084</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="k">call </span><span class="n">date_to_bas</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="p">,</span><span class="n">bas</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450449</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31th, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;date_to_bas&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_date_to_bas</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_bas_to_date</span><span class="p">()</span>
+<span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">)</span><span class="w">                </span><span class="kd">::</span><span class="w"> </span><span class="n">bas</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conv</span><span class="o">=</span><span class="mi">240000</span><span class="mf">0.5_realtime</span>
+
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="o">-</span><span class="n">conv</span><span class="w">         </span><span class="c">! set sample Modified Julian Date</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">BAStime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">),</span><span class="nb">mod</span><span class="p">(</span><span class="n">mjd</span><span class="p">,</span><span class="mf">1.0d0</span><span class="p">)</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0_realtime</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">bas_to_date</span><span class="p">(</span><span class="n">bas</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! create DAT array for this date</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;bas_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mjd</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">bas_to_date</span><span class="p">(</span><span class="n">bas</span><span class="o">-</span><span class="mi">8640</span><span class="mf">0.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go back one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;bas_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mjd</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">bas_to_date</span><span class="p">(</span><span class="n">bas</span><span class="o">+</span><span class="mi">8640</span><span class="mf">0.0d0</span><span class="p">,</span><span class="n">dat</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! go forward one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;bas_to_date&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">mjd</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;bas_to_date&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_bas_to_date</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_d2b</span>
+<span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">)</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">bas</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span><span class="w"> </span>
+<span class="kt">integer</span><span class="w">                       </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conv</span><span class="o">=</span><span class="mi">240000</span><span class="mf">0.5_realtime</span>
+<span class="c">!                            Modified Julian Dates</span>
+<span class="c">!</span>
+<span class="c">!   To use this table, add the day-of-month to the tabulated entry.</span>
+<span class="c">!   For example, 30 Jan 2000 = MJD 51573.</span>
+<span class="c">! __________________________________________________________________</span>
+<span class="c">!  2000  2001  2002  2003  2004  2005  2006  2007  2008  2009</span>
+<span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="mi">2000</span><span class="p">:</span><span class="mi">2009</span><span class="p">)</span><span class="o">=</span><span class="nb">reshape</span><span class="p">([</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w"> </span><span class="mi">51543</span><span class="p">,</span><span class="mi">51909</span><span class="p">,</span><span class="mi">52274</span><span class="p">,</span><span class="mi">52639</span><span class="p">,</span><span class="mi">53004</span><span class="p">,</span><span class="mi">53370</span><span class="p">,</span><span class="mi">53735</span><span class="p">,</span><span class="mi">54100</span><span class="p">,</span><span class="mi">54465</span><span class="p">,</span><span class="mi">54831</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Jan</span>
+<span class="w"> </span><span class="mi">51574</span><span class="p">,</span><span class="mi">51940</span><span class="p">,</span><span class="mi">52305</span><span class="p">,</span><span class="mi">52670</span><span class="p">,</span><span class="mi">53035</span><span class="p">,</span><span class="mi">53401</span><span class="p">,</span><span class="mi">53766</span><span class="p">,</span><span class="mi">54131</span><span class="p">,</span><span class="mi">54496</span><span class="p">,</span><span class="mi">54862</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Feb</span>
+<span class="w"> </span><span class="mi">51603</span><span class="p">,</span><span class="mi">51968</span><span class="p">,</span><span class="mi">52333</span><span class="p">,</span><span class="mi">52698</span><span class="p">,</span><span class="mi">53064</span><span class="p">,</span><span class="mi">53429</span><span class="p">,</span><span class="mi">53794</span><span class="p">,</span><span class="mi">54159</span><span class="p">,</span><span class="mi">54525</span><span class="p">,</span><span class="mi">54890</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Mar</span>
+<span class="w"> </span><span class="mi">51634</span><span class="p">,</span><span class="mi">51999</span><span class="p">,</span><span class="mi">52364</span><span class="p">,</span><span class="mi">52729</span><span class="p">,</span><span class="mi">53095</span><span class="p">,</span><span class="mi">53460</span><span class="p">,</span><span class="mi">53825</span><span class="p">,</span><span class="mi">54190</span><span class="p">,</span><span class="mi">54556</span><span class="p">,</span><span class="mi">54921</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Apr</span>
+<span class="w"> </span><span class="mi">51664</span><span class="p">,</span><span class="mi">52029</span><span class="p">,</span><span class="mi">52394</span><span class="p">,</span><span class="mi">52759</span><span class="p">,</span><span class="mi">53125</span><span class="p">,</span><span class="mi">53490</span><span class="p">,</span><span class="mi">53855</span><span class="p">,</span><span class="mi">54220</span><span class="p">,</span><span class="mi">54586</span><span class="p">,</span><span class="mi">54951</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! May</span>
+<span class="w"> </span><span class="mi">51695</span><span class="p">,</span><span class="mi">52060</span><span class="p">,</span><span class="mi">52425</span><span class="p">,</span><span class="mi">52790</span><span class="p">,</span><span class="mi">53156</span><span class="p">,</span><span class="mi">53521</span><span class="p">,</span><span class="mi">53886</span><span class="p">,</span><span class="mi">54251</span><span class="p">,</span><span class="mi">54617</span><span class="p">,</span><span class="mi">54982</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Jun</span>
+<span class="w"> </span><span class="mi">51725</span><span class="p">,</span><span class="mi">52090</span><span class="p">,</span><span class="mi">52455</span><span class="p">,</span><span class="mi">52820</span><span class="p">,</span><span class="mi">53186</span><span class="p">,</span><span class="mi">53551</span><span class="p">,</span><span class="mi">53916</span><span class="p">,</span><span class="mi">54281</span><span class="p">,</span><span class="mi">54647</span><span class="p">,</span><span class="mi">55012</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Jul</span>
+<span class="w"> </span><span class="mi">51756</span><span class="p">,</span><span class="mi">52121</span><span class="p">,</span><span class="mi">52486</span><span class="p">,</span><span class="mi">52851</span><span class="p">,</span><span class="mi">53217</span><span class="p">,</span><span class="mi">53582</span><span class="p">,</span><span class="mi">53947</span><span class="p">,</span><span class="mi">54312</span><span class="p">,</span><span class="mi">54678</span><span class="p">,</span><span class="mi">55043</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Aug</span>
+<span class="w"> </span><span class="mi">51787</span><span class="p">,</span><span class="mi">52152</span><span class="p">,</span><span class="mi">52517</span><span class="p">,</span><span class="mi">52882</span><span class="p">,</span><span class="mi">53248</span><span class="p">,</span><span class="mi">53613</span><span class="p">,</span><span class="mi">53978</span><span class="p">,</span><span class="mi">54343</span><span class="p">,</span><span class="mi">54709</span><span class="p">,</span><span class="mi">55074</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Sep</span>
+<span class="w"> </span><span class="mi">51817</span><span class="p">,</span><span class="mi">52182</span><span class="p">,</span><span class="mi">52547</span><span class="p">,</span><span class="mi">52912</span><span class="p">,</span><span class="mi">53278</span><span class="p">,</span><span class="mi">53643</span><span class="p">,</span><span class="mi">54008</span><span class="p">,</span><span class="mi">54373</span><span class="p">,</span><span class="mi">54739</span><span class="p">,</span><span class="mi">55104</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Oct</span>
+<span class="w"> </span><span class="mi">51848</span><span class="p">,</span><span class="mi">52213</span><span class="p">,</span><span class="mi">52578</span><span class="p">,</span><span class="mi">52943</span><span class="p">,</span><span class="mi">53309</span><span class="p">,</span><span class="mi">53674</span><span class="p">,</span><span class="mi">54039</span><span class="p">,</span><span class="mi">54404</span><span class="p">,</span><span class="mi">54770</span><span class="p">,</span><span class="mi">55135</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="c">! Nov</span>
+<span class="w"> </span><span class="mi">51878</span><span class="p">,</span><span class="mi">52243</span><span class="p">,</span><span class="mi">52608</span><span class="p">,</span><span class="mi">52973</span><span class="p">,</span><span class="mi">53339</span><span class="p">,</span><span class="mi">53704</span><span class="p">,</span><span class="mi">54069</span><span class="p">,</span><span class="mi">54434</span><span class="p">,</span><span class="mi">54800</span><span class="p">,</span><span class="mi">55165</span><span class="p">],&amp;</span><span class="w"> </span><span class="c">! Dec</span>
+<span class="w"> </span><span class="nb">shape</span><span class="o">=</span><span class="nb">shape</span><span class="p">(</span><span class="k">array</span><span class="p">),</span><span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="n">year</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1970</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="nb">abs</span><span class="p">(</span><span class="n">mjd</span><span class="o">-</span><span class="p">(</span><span class="mi">244058</span><span class="mf">7.5d0</span><span class="o">-</span><span class="n">conv</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.00001</span><span class="w"> </span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1969  8:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2449719</span><span class="p">,</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450010</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Oct 19th, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450083</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31st, 1995 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450084</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Jan  1st, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="p">)</span>
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="o">+</span><span class="n">bas</span><span class="p">%</span><span class="n">secs</span><span class="o">/</span><span class="mi">8640</span><span class="mf">0.0_realtime</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="o">+</span><span class="n">conv</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2450449</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Dec 31th, 1996 12:00&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="k">do </span><span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span>
+<span class="w">      </span><span class="k">do </span><span class="n">year</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2009</span>
+<span class="w">         </span><span class="c">!dat=[ year,month,day,timezone,hour,minutes,seconds,milliseconds]</span>
+<span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">         </span><span class="n">bas</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">bas</span><span class="p">%</span><span class="n">base_day</span><span class="p">)</span>
+<span class="w">      </span><span class="k">enddo</span>
+<span class="k">   enddo</span>
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;d2b&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_d2b</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
+<span class="k">subroutine </span><span class="n">test_b2d</span>
+<span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">)</span><span class="w">                </span><span class="kd">::</span><span class="w"> </span><span class="n">bas</span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">mjd</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expected</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">resulted</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">mjd</span><span class="o">=</span><span class="mi">245758</span><span class="mf">9.129d0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">240000</span><span class="mf">0.5_realtime</span><span class="w">                </span><span class="c">! set sample Modified Julian Date</span>
+<span class="w">   </span><span class="n">bas</span><span class="o">=</span><span class="n">BAStime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">mjd</span><span class="p">),</span><span class="nb">mod</span><span class="p">(</span><span class="n">mjd</span><span class="p">,</span><span class="mf">1.0d0</span><span class="p">)</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0_realtime</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-19 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">b2d</span><span class="p">(</span><span class="n">bas</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;b2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">mjd</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! go back one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">b2d</span><span class="p">(</span><span class="n">bas</span><span class="o">-</span><span class="mi">8640</span><span class="mf">0.0d0</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;b2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">mjd</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="w">   </span><span class="c">! go forward one day</span>
+<span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">b2d</span><span class="p">(</span><span class="n">bas</span><span class="o">+</span><span class="mi">8640</span><span class="mf">0.0d0</span><span class="p">)</span>
+<span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;b2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">mjd</span><span class="o">+</span><span class="mf">1.0</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;b2d&#39;</span><span class="p">)</span>
+
+<span class="k">end subroutine </span><span class="n">test_b2d</span>
+<span class="c">!TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT</span>
 <span class="k">end program </span><span class="n">runtest</span>
 </pre></div>
 
@@ -1876,14 +2376,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2024 
+ was developed by John S. Urban<br>              &copy; 2025 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-10-03 05:18              </p>
+ on 2025-01-26 15:58 +0000             </p>
           </div>
         </div>
         <br>

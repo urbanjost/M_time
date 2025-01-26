@@ -95,7 +95,8 @@ website:
 <p>M_time(3f) can be used to display Civilian Calendar dates in many formats.</p>
 <p>In addition, it can manipulate or read many other date representations &hellip;</p>
 <ul>
-<li>Julian Dates</li>
+<li>Julian and Modified Julian Dates</li>
+<li>Baseday and Seconds Dates</li>
 <li>Unix Epoch Dates</li>
 <li>High-level date formatting</li>
 <li>Ordinal days of the year</li>
@@ -139,6 +140,20 @@ programs are included in the package.</p>
 <li><strong><a href="https://urbanjost.github.io/M_time/date_to_julian.3m_time.html">date_to_julian</a>(dat,JULIAN,IERR)</strong> ! Convert date array to Julian Date</li>
 <li><strong><a href="https://urbanjost.github.io/M_time/d2j.3m_time.html">d2j</a>(dat) result (JULIAN)</strong>    ! Convert date array to Julian Date</li>
 <li><strong><a href="https://urbanjost.github.io/M_time/j2d.3m_time.html">j2d</a>(julian) result (DAT)</strong>    ! Convert Julian Date to date array</li>
+</ul>
+<h3 id="modified-julian">Modified Julian</h3>
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/modified_julian_to_date.3m_time.html">modified_julian_to_date</a>(modified_julian,DAT,IERR)</strong> ! Convert Modified Julian Date to date array</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/date_to_modified_julian.3m_time.html">date_to_modified_julian</a>(dat,MODIFIED_JULIAN,IERR)</strong> ! Convert date array to Modified Julian Date</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/d2m.3m_time.html">d2m</a>(dat) result (MODIFIED_JULIAN)</strong>    ! Convert date array to Modified Julian Date</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/m2d.3m_time.html">m2d</a>(modified_julian) result (DAT)</strong>    ! Convert Modiied Julian Date to date array</li>
+</ul>
+<h3 id="baseday-and-seconds">Baseday and Seconds</h3>
+<ul>
+<li><strong><a href="https://urbanjost.github.io/M_time/bas_to_date.3m_time.html">bas_to_date</a>(bas,DAT,IERR)</strong> ! Convert Baseday and Seconds to date array</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/date_to_bas.3m_time.html">date_to_bas</a>(dat,bas,IERR)</strong> ! Convert date array to Baseday and Seconds type</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/d2b.3m_time.html">d2b</a>(dat) result (bas)</strong>    ! Convert date array to Baseday and Seconds</li>
+<li><strong><a href="https://urbanjost.github.io/M_time/b2d.3m_time.html">b2d</a>(bas) result (DAT)</strong>    ! Convert Baseday and Seconds to date array</li>
 </ul>
 <h3 id="day-of-week">Day of Week</h3>
 <ul>
@@ -476,6 +491,33 @@ dates (to go back one day just subtract one from a Julian Date, for
 example). Since these values are generally not considered intelligible,
 routines are included to convert between these scalar values and the
 date array so human-readable results can be obtained.</p>
+<p><strong>Modified Julian Date (MJD)</strong> measures days (and fractional days) since
+the start of 17 Nov 1858 CE in Universal Time (UTC). Julian Date (JD)
+measures days (and fractional days) since noon on 1 January, 4713 BCE
+in Universal Time (UTC).</p>
+<div class="codehilite"><pre><span></span><code>Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+</code></pre></div>
+
+<p>In this module the MJD date and time is stored internally as a structure
+named MJDtime, containing the number of days since the beginning of the
+MJD Epoch as an integer and a double representing the seconds offset
+from the start of this day.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">type</span><span class="w"> </span><span class="nx">MJDtime</span>
+<span class="w"> </span><span class="nx">integer</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">base_day</span><span class="w">     </span><span class="p">!</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">days</span><span class="w"> </span><span class="nx">since</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">MJD</span><span class="w"> </span><span class="nx">Epoch</span><span class="w"> </span><span class="nx">date</span>
+<span class="w"> </span><span class="nx">double</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="nx">time_sec</span><span class="w">     </span><span class="p">!</span><span class="w"> </span><span class="nx">seconds</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">base_day</span>
+<span class="nx">end</span><span class="w"> </span><span class="k">type</span><span class="w"> </span><span class="nx">MJDtime</span>
+</code></pre></div>
+
+<p>This allows for storing a date at a higher precision that the other
+formats used by the library, although sometimes that lower precision
+is limited primarily by the definition (ie. the milliseconds in a DAT
+could be smaller units). </p>
+<p>MJD starts at 00:00:00 so truncating the fractional component of MJD
+always gives the same day whatever the time of day (unlike JD).</p>
+<p>The seconds offset may take any double-precision value, so that any
+date/time may be expressed in terms of an offset from the same MJD
+day. The seconds field thus may exceed a single day, and may also be
+negative.</p>
 <p><strong>Coordinated Universal Time</strong> (French: Temps universel coordonn&rsquo;e),
 abbreviated as <strong>UTC</strong>, is the primary time standard by which the world
 regulates clocks and time. It is within about 1 second of mean solar
@@ -556,7 +598,7 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
           <div class="col-xs-6 col-sm-3">
             <div>
               <h3>Source Files</h3>
-              <ul><li><a href='sourcefile/days2sec.f90.html'>days2sec.f90</a></li><li><a href='sourcefile/demo_box_month.f90.html'>demo_box_month.f90</a></li><li><a href='sourcefile/demo_d2j.f90.html'>demo_d2j.f90</a></li><li><a href='sourcefile/demo_d2o.f90.html'>demo_d2o.f90</a></li><li><a href='sourcefile/demo_d2u.f90.html'>demo_d2u.f90</a></li><li><a href='sourcefile/demo_d2w.f90.html'>demo_d2w.f90</a></li><li><a href='sourcefile/demo_date_to_julian.f90.html'>demo_date_to_julian.f90</a></li><li><a href='sourcefile/demo_date_to_unix.f90.html'>demo_date_to_unix.f90</a></li><li><a href='sourcefile/demo_days2sec.f90.html'>demo_days2sec.f90</a></li><li><a href='sourcefile/demo_dow.f90.html'>demo_dow.f90</a></li></ul>
+              <ul><li><a href='sourcefile/days2sec.f90.html'>days2sec.f90</a></li><li><a href='sourcefile/demo_b2d.f90.html'>demo_b2d.f90</a></li><li><a href='sourcefile/demo_bas_to_date.f90.html'>demo_bas_to_date.f90</a></li><li><a href='sourcefile/demo_box_month.f90.html'>demo_box_month.f90</a></li><li><a href='sourcefile/demo_d2b.f90.html'>demo_d2b.f90</a></li><li><a href='sourcefile/demo_d2j.f90.html'>demo_d2j.f90</a></li><li><a href='sourcefile/demo_d2m.f90.html'>demo_d2m.f90</a></li><li><a href='sourcefile/demo_d2o.f90.html'>demo_d2o.f90</a></li><li><a href='sourcefile/demo_d2u.f90.html'>demo_d2u.f90</a></li><li><a href='sourcefile/demo_d2w.f90.html'>demo_d2w.f90</a></li></ul>
             </div>
             <div>
               <ul>
@@ -606,14 +648,14 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2024 
+ was developed by John S. Urban<br>              &copy; 2025 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-10-03 05:18              </p>
+ on 2025-01-26 15:58 +0000             </p>
           </div>
         </div>
         <br>

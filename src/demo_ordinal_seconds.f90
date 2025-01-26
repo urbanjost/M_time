@@ -2,7 +2,7 @@
       use M_time, only : ordinal_seconds
       implicit none
       character(len=*),parameter :: gen='(*(g0))'
-      integer          :: i, ios, istart, iend
+      integer          :: i, istart, iend
       real,volatile    :: x
       istart = ordinal_seconds()
       x = 0.0

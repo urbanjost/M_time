@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.7% of total for source files.">23 statements</a>
+                 title=" 0.7% of total for source files.">24 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -155,36 +155,37 @@
         <h2><span class="anchor" id="src"></span>Source Code</h2>
         <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="k">program </span><span class="n">test_a_A_format</span>
 <a id="ln-2" name="ln-2" href="#ln-2"></a><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">fmtdate</span><span class="p">,</span><span class="w"> </span><span class="n">u2d</span><span class="p">,</span><span class="w"> </span><span class="n">days2sec</span>
-<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="k">implicit none</span>
-<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">wp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
-<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">datnow</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">datstart</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span>
-<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
-<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! %a -- Time since now as d-hh:mm:ss   %a  100-22:59:01</span>
-<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! %A -- Time since now as seconds      %A  23423008.543</span>
-<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="w">   </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">datnow</span><span class="p">)</span>
-<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">   </span><span class="n">datstart</span><span class="o">=</span><span class="n">u2d</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="ln-13" name="ln-13" href="#ln-13"></a>
-<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="w">   </span><span class="c">! compare Linux Epoch time to age of now from beginning of Epoch,</span>
-<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">   </span><span class="c">! which should be the same value</span>
-<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">datnow</span><span class="p">,</span><span class="s2">&quot;%e&quot;</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">datstart</span><span class="p">,</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
-<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">a</span><span class="p">,</span><span class="n">b</span>
-<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">nint</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;FAILED: %A test:&#39;</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="n">a</span>
-<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">      </span><span class="k">stop </span><span class="mi">1</span>
-<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">   </span><span class="k">endif</span>
-<a id="ln-22" name="ln-22" href="#ln-22"></a>
-<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="w">   </span><span class="c">! get same thing in D-hh:mm:ss format and then convert that</span>
-<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="w">   </span><span class="c">! to seconds using days2sec(3f) and should get same result</span>
-<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">datstart</span><span class="p">,</span><span class="s2">&quot;%a&quot;</span><span class="p">)</span>
-<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then </span>
-<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;FAILED: a% test:&#39;</span><span class="p">,</span><span class="n">days2sec</span><span class="p">(</span><span class="n">string</span><span class="p">),</span><span class="n">b</span><span class="p">,</span><span class="n">days2sec</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">-</span><span class="n">b</span>
-<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">      </span><span class="k">stop </span><span class="mi">2</span>
-<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">   </span><span class="k">endif</span>
-<a id="ln-30" name="ln-30" href="#ln-30"></a>
-<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="k">   stop</span><span class="w"> </span><span class="s1">&#39;PASSED: tested %a and %A&#39;</span>
-<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="k">end program </span><span class="n">test_a_A_format</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">stdout</span><span class="o">=&gt;</span><span class="n">OUTPUT_UNIT</span><span class="p">,</span><span class="w"> </span><span class="n">stderr</span><span class="o">=&gt;</span><span class="n">ERROR_UNIT</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="k">implicit none</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">wp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">datnow</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">datstart</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="n">b</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">string</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! %a -- Time since now as d-hh:mm:ss   %a  100-22:59:01</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! %A -- Time since now as seconds      %A  23423008.543</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="w">   </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">datnow</span><span class="p">)</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="w">   </span><span class="n">datstart</span><span class="o">=</span><span class="n">u2d</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="w">   </span><span class="c">! compare Linux Epoch time to age of now from beginning of Epoch,</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">   </span><span class="c">! which should be the same value</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">datnow</span><span class="p">,</span><span class="s2">&quot;%e&quot;</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">datstart</span><span class="p">,</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="w">   </span><span class="k">read</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">a</span><span class="p">,</span><span class="n">b</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">nint</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="p">).</span><span class="n">ne</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;FAILED: %A test:&#39;</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">-</span><span class="n">a</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="w">      </span><span class="k">stop </span><span class="mi">1</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">   </span><span class="k">endif</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="w">   </span><span class="c">! get same thing in D-hh:mm:ss format and then convert that</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="w">   </span><span class="c">! to seconds using days2sec(3f) and should get same result</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="w">   </span><span class="n">string</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">datstart</span><span class="p">,</span><span class="s2">&quot;%a&quot;</span><span class="p">)</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">nint</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then </span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;FAILED: a% test:&#39;</span><span class="p">,</span><span class="n">days2sec</span><span class="p">(</span><span class="n">string</span><span class="p">),</span><span class="n">b</span><span class="p">,</span><span class="n">days2sec</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">-</span><span class="n">b</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">      </span><span class="k">stop </span><span class="mi">2</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">   </span><span class="k">endif</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="k">   stop</span><span class="w"> </span><span class="s1">&#39;PASSED: tested %a and %A&#39;</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="k">end program </span><span class="n">test_a_A_format</span>
 </pre></div>
 
       </section>
@@ -199,14 +200,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2024 
+ was developed by John S. Urban<br>              &copy; 2025 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-10-03 05:18              </p>
+ on 2025-01-26 15:58 +0000             </p>
           </div>
         </div>
         <br>

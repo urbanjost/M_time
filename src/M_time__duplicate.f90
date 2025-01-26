@@ -257,7 +257,7 @@ end subroutine substitute
 !!   lower cases of the work bench. The less often needed, capitalized,
 !!   majuscule letters, ended up in the harder to reach upper cases.
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample program:
 !!
@@ -353,7 +353,7 @@ end function upper
 !!    lower cases of the work bench. The less often needed, capitalized,
 !!    majuscule letters, ended up in the harder to reach upper cases.
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample program:
 !!
@@ -639,7 +639,7 @@ end function compact
 !!##RETURNS
 !!     s2v
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample Program:
 !!
@@ -1050,7 +1050,7 @@ integer                       :: imax                   ! length of longest toke
 !!       IERR     error flag (0=no error, else column number string starts
 !!                at that error occurred on).
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!  Sample Program:
 !!
@@ -1318,7 +1318,7 @@ END FUNCTION transliterate
 !!##RETURNS
 !!    OUTSTR  returned string representing input value,
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample Program:
 !!
@@ -1453,7 +1453,7 @@ end function l2s
 !!               23 characters long; or what is required by optional FMT if longer.
 !!       ILEN    position of last non-blank character in returned string; optional.
 !!       IERR    If not zero, error occurred; optional.
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample program:
 !!
@@ -1684,7 +1684,7 @@ end subroutine trimzeros
 !!##RETURNS
 !!       VALU   numeric value returned. May be INTEGER, REAL, or DOUBLEPRECISION.
 !!       IERR   error flag (0 == no error)
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample Program:
 !!
@@ -1862,7 +1862,7 @@ end subroutine a2d
 !!    basein   base of input string; either 0 or from 2 to 36.
 !!    out10    output value in base 10
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!    Sample program:
 !!

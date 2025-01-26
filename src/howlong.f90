@@ -238,7 +238,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '   --help      display this help and exit                                    ',&
 '   --version   output version information and exit                           ',&
 '                                                                             ',&
-'EXAMPLE                                                                      ',&
+'EXAMPLES                                                                     ',&
 '    howlong ./myprogram                                                      ',&
 '                                                                             ',&
 'SEE ALSO                                                                     ',&

@@ -76,7 +76,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 1.4% of total for procedures.">20 statements</a>
+                 title=" 1.2% of total for procedures.">20 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -116,9 +116,9 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/test_j2d.html#variable-dat~29">dat</a>
-            <a class="list-group-item" href="../proc/test_j2d.html#variable-expected~5">expected</a>
-            <a class="list-group-item" href="../proc/test_j2d.html#variable-juliandate~3">juliandate</a>
+            <a class="list-group-item" href="../proc/test_j2d.html#variable-dat~18">dat</a>
+            <a class="list-group-item" href="../proc/test_j2d.html#variable-expected~2">expected</a>
+            <a class="list-group-item" href="../proc/test_j2d.html#variable-juliandate~4">juliandate</a>
             <a class="list-group-item" href="../proc/test_j2d.html#variable-resulted">resulted</a>
         </div>
       </div>
@@ -181,7 +181,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~29"></span>
+              <span class="anchor" id="variable-dat~18"></span>
               integer,
             </td>
               <td>public</td>
@@ -198,7 +198,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-expected~5"></span>
+              <span class="anchor" id="variable-expected~2"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -215,7 +215,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-juliandate~3"></span>
+              <span class="anchor" id="variable-juliandate~4"></span>
               real(kind=realtime),
             </td>
               <td>public</td>
@@ -280,13 +280,13 @@
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-18 11:05:45&#39;</span>
 <span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="o">-</span><span class="mf">1.0d0</span><span class="p">)</span>
 <span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
 
 <span class="w">   </span><span class="c">! go forward one day</span>
 <span class="w">   </span><span class="n">expected</span><span class="o">=</span><span class="s1">&#39;2016-07-20 11:05:45&#39;</span>
 <span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">juliandate</span><span class="o">+</span><span class="mf">1.0d0</span><span class="p">)</span>
 <span class="w">   </span><span class="n">resulted</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;year-month-day hour:minute:second&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">,</span><span class="n">resulted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">expected</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;==&gt; EXPECTED &#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39; GOT &#39;</span><span class="p">,</span><span class="n">resulted</span><span class="p">)</span>
 
 <span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;j2d&#39;</span><span class="p">)</span>
 
@@ -307,14 +307,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2024 
+ was developed by John S. Urban<br>              &copy; 2025 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-10-03 05:18              </p>
+ on 2025-01-26 15:58 +0000             </p>
           </div>
         </div>
         <br>
