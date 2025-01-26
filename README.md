@@ -414,29 +414,29 @@ in Universal Time (UTC).
 
     Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
 
-In this module the MJD date and time is stored internally as a structure
-named MJDtime, containing the number of days since the beginning of the
-MJD Epoch as an integer and a double representing the seconds offset
-from the start of this day.
 
-    type MJDtime
+**Baseday and Seconds** is a variant of **MJD**.  The MJD date and time
+is stored internally as a structure named BAStime, containing the number
+of days since the beginning of the MJD Epoch as an integer and a double
+representing the seconds offset from the start of this day.
+
+    type BAStime
      integer :: base_day     ! number of days since the MJD Epoch date
      double  :: time_sec     ! seconds from start of base_day
-    end type MJDtime
+    end type BAStime
 
 This allows for storing a date at a higher precision that the other
 formats used by the library, although sometimes that lower precision
 is limited primarily by the definition (ie. the milliseconds in a DAT
-could be smaller units). 
+could be smaller units).
 
-MJD starts at 00:00:00 so truncating the fractional component of MJD
+MJD starts at 00:00:00 so truncating the fractional component of BAS
 always gives the same day whatever the time of day (unlike JD).
 
 The seconds offset may take any double-precision value, so that any
-date/time may be expressed in terms of an offset from the same MJD
+date/time may be expressed in terms of an offset from the same base
 day. The seconds field thus may exceed a single day, and may also be
 negative.
-
 
 **Coordinated Universal Time** (French: Temps universel coordonn'e),
 abbreviated as **UTC**, is the primary time standard by which the world
