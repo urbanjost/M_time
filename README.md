@@ -65,7 +65,7 @@ programs are included in the package.
 + **[modified_julian_to_date](https://urbanjost.github.io/M_time/modified_julian_to_date.3m_time.html)(modified_julian,DAT,IERR)** ! Convert Modified Julian Date to date array
 + **[date_to_modified_julian](https://urbanjost.github.io/M_time/date_to_modified_julian.3m_time.html)(dat,MODIFIED_JULIAN,IERR)** ! Convert date array to Modified Julian Date
 + **[d2m](https://urbanjost.github.io/M_time/d2m.3m_time.html)(dat) result (MODIFIED_JULIAN)**    ! Convert date array to Modified Julian Date
-+ **[m2d](https://urbanjost.github.io/M_time/m2d.3m_time.html)(modified_julian) result (DAT)**    ! Convert Modiied Julian Date to date array
++ **[m2d](https://urbanjost.github.io/M_time/m2d.3m_time.html)(modified_julian) result (DAT)**    ! Convert Modified Julian Date to date array
 
 ### Baseday and Seconds
 + **[bas_to_date](https://urbanjost.github.io/M_time/bas_to_date.3m_time.html)(bas,DAT,IERR)** ! Convert Baseday and Seconds to date array
