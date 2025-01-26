@@ -74,7 +74,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '   --help         display this help and exit                                    ',&
 '   --version      output version information and exit                           ',&
 '                                                                                ',&
-'EXAMPLE                                                                         ',&
+'EXAMPLES                                                                        ',&
 '  Usage                                                                         ',&
 '                                                                                ',&
 '    days2sec 1-12:04:20                                                         ',&
@@ -151,7 +151,7 @@ end subroutine help_usage
 !!    --help         display this help and exit
 !!    --version      output version information and exit
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
 !!   Usage
 !!
@@ -190,7 +190,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       2024-10-02 10:05:18 UTC-240>',&
+'@(#)COMPILED:       2025-01-26 10:34:47 UTC-300>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop

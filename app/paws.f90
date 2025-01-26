@@ -179,15 +179,15 @@ help_text=[ CHARACTER(LEN=128) :: &
 '                                                                                ',&
 '   For more information on the format of the dates, see the now(1) command.     ',&
 '                                                                                ',&
-'EXAMPLE                                                                         ',&
-'  Typical usage:                                                                ',&
+'EXAMPLES                                                                        ',&
+' Typical usage:                                                                 ',&
 '                                                                                ',&
-'   paws 2:00:00              # pause for two hours                              ',&
-'   paws 3600                 # pause one hour                                   ',&
-'   paws 0.10                 # pause one tenth of a second                      ',&
-'   paws 1 -repeat 60         # pause sixty seconds, display the date each second',&
-'   paws -until 23:59:59      # pause until midnight                             ',&
-'   paws 15:00 -date 23:59:59 # pause till midnight then an additional 15 minutes',&
+'  paws 2:00:00              # pause for two hours                               ',&
+'  paws 3600                 # pause one hour                                    ',&
+'  paws 0.10                 # pause one tenth of a second                       ',&
+'  paws 1 -repeat 60         # pause sixty seconds, displaying date each second  ',&
+'  paws -until 23:59:59      # pause until midnight                              ',&
+'  paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes  ',&
 'AUTHOR                                                                          ',&
 '   John S. Urban                                                                ',&
 'LICENSE                                                                         ',&
@@ -245,16 +245,16 @@ end subroutine help_usage
 !!
 !!    For more information on the format of the dates, see the now(1) command.
 !!
-!!##EXAMPLE
+!!##EXAMPLES
 !!
-!!   Typical usage:
+!!  Typical usage:
 !!
-!!    paws 2:00:00              # pause for two hours
-!!    paws 3600                 # pause one hour
-!!    paws 0.10                 # pause one tenth of a second
-!!    paws 1 -repeat 60         # pause sixty seconds, display the date each second
-!!    paws -until 23:59:59      # pause until midnight
-!!    paws 15:00 -date 23:59:59 # pause till midnight then an additional 15 minutes
+!!   paws 2:00:00              # pause for two hours
+!!   paws 3600                 # pause one hour
+!!   paws 0.10                 # pause one tenth of a second
+!!   paws 1 -repeat 60         # pause sixty seconds, displaying date each second
+!!   paws -until 23:59:59      # pause until midnight
+!!   paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes
 !!##AUTHOR
 !!    John S. Urban
 !!##LICENSE
@@ -278,7 +278,7 @@ help_text=[ CHARACTER(LEN=128) :: &
 '@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html>',&
 '@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.>',&
 '@(#)                There is NO WARRANTY, to the extent permitted by law.>',&
-'@(#)COMPILED:       2024-10-02 10:05:18 UTC-240>',&
+'@(#)COMPILED:       2025-01-26 10:34:47 UTC-300>',&
 '']
    WRITE(*,'(a)')(trim(help_text(i)(5:len_trim(help_text(i))-1)),i=1,size(help_text))
    stop ! if --version was specified, stop

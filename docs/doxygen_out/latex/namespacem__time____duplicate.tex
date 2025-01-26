@@ -128,7 +128,7 @@ works with any g-\/format input, including integer, real, and exponential. If th
 
 if an error occurs in the R\+E\+AD, I\+O\+S\+T\+AT is returned in I\+E\+RR and value is set to zero. if no error occurs, I\+E\+RR=0. \hypertarget{namespacem__time____duplicate_autotoc_md102}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time____duplicate_autotoc_md102}
 C\+H\+A\+RS input string to read numeric value from \hypertarget{namespacem__time____duplicate_autotoc_md103}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time____duplicate_autotoc_md103}
-V\+A\+LU numeric value returned. May be I\+N\+T\+E\+G\+ER, R\+E\+AL, or D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON. I\+E\+RR error flag (0 == no error) \hypertarget{namespacem__time____duplicate_autotoc_md104}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md104}
+V\+A\+LU numeric value returned. May be I\+N\+T\+E\+G\+ER, R\+E\+AL, or D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON. I\+E\+RR error flag (0 == no error) \hypertarget{namespacem__time____duplicate_autotoc_md104}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md104}
 \begin{DoxyVerb}Sample Program:
 
  program demo_string_to_value
@@ -266,7 +266,7 @@ v2s(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbox{]} return numeric st
 \hypertarget{namespacem__time____duplicate_autotoc_md78}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time____duplicate_autotoc_md78}
 v2s(3f) returns a representation of a numeric value as a string when given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the strings using internal W\+R\+I\+T\+E() statements. Trailing zeros are removed from non-\/zero values, and the string is left-\/justified.\hypertarget{namespacem__time____duplicate_autotoc_md79}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time____duplicate_autotoc_md79}
 V\+A\+L\+UE input value to be converted to a string F\+MT format can be explicitly given, but is limited to generating a string of eighty or less characters.\hypertarget{namespacem__time____duplicate_autotoc_md80}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time____duplicate_autotoc_md80}
-O\+U\+T\+S\+TR returned string representing input value,\hypertarget{namespacem__time____duplicate_autotoc_md81}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md81}
+O\+U\+T\+S\+TR returned string representing input value,\hypertarget{namespacem__time____duplicate_autotoc_md81}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md81}
 \begin{DoxyVerb}Sample Program:
 
  program demo_v2s
@@ -317,7 +317,7 @@ decodebase(3f) -\/ \mbox{[}M\+\_\+strings\+:B\+A\+SE\mbox{]} convert whole numbe
 Convert a numeric string representing a whole number in base B\+A\+S\+E\+IN to base 10. The function returns F\+A\+L\+SE if B\+A\+S\+E\+IN is not in the range \mbox{[}2..36\mbox{]} or if string S\+T\+R\+I\+NG contains invalid characters in base B\+A\+S\+E\+IN or if result O\+U\+T10 is too big
 
 The letters A,B,...,Z represent 10,11,...,36 in the base $>$ 10.\hypertarget{namespacem__time____duplicate_autotoc_md110}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time____duplicate_autotoc_md110}
-string input string. It represents a whole number in the base specified by B\+A\+S\+E\+IN unless B\+A\+S\+E\+IN is set to zero. When B\+A\+S\+E\+IN is zero S\+T\+R\+I\+NG is assumed to be of the form B\+A\+S\+E\+::\+V\+A\+L\+UE where B\+A\+SE represents the function normally provided by B\+A\+S\+E\+IN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10\hypertarget{namespacem__time____duplicate_autotoc_md111}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md111}
+string input string. It represents a whole number in the base specified by B\+A\+S\+E\+IN unless B\+A\+S\+E\+IN is set to zero. When B\+A\+S\+E\+IN is zero S\+T\+R\+I\+NG is assumed to be of the form B\+A\+S\+E\+::\+V\+A\+L\+UE where B\+A\+SE represents the function normally provided by B\+A\+S\+E\+IN. basein base of input string; either 0 or from 2 to 36. out10 output value in base 10\hypertarget{namespacem__time____duplicate_autotoc_md111}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md111}
 \begin{DoxyVerb}Sample program:
 
  program demo_decodebase
@@ -423,7 +423,7 @@ lower(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to lowe
 lower(string) returns a copy of the input string with all characters converted to miniscule over the specified range, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to miniscule.\hypertarget{namespacem__time____duplicate_autotoc_md19}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time____duplicate_autotoc_md19}
 str string to convert to miniscule begin optional starting position in \char`\"{}str\char`\"{} to begin converting to miniscule end optional ending position in \char`\"{}str\char`\"{} to stop converting to miniscule\hypertarget{namespacem__time____duplicate_autotoc_md20}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time____duplicate_autotoc_md20}
 lower copy of the input string with all characters converted to miniscule over optionally specified range.\hypertarget{namespacem__time____duplicate_autotoc_md21}{}\doxysubsubsection{T\+R\+I\+V\+IA}\label{namespacem__time____duplicate_autotoc_md21}
-The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time____duplicate_autotoc_md22}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md22}
+The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time____duplicate_autotoc_md22}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md22}
 \begin{DoxyVerb}Sample program:
 
  program demo_lower
@@ -493,7 +493,7 @@ The intrinsics I\+N\+T(3f), R\+E\+A\+L(3f), and D\+B\+L\+E(3f) are also extended
           returned on error by default.
 \end{DoxyVerb}
  \hypertarget{namespacem__time____duplicate_autotoc_md47}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time____duplicate_autotoc_md47}
-s2v\hypertarget{namespacem__time____duplicate_autotoc_md48}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md48}
+s2v\hypertarget{namespacem__time____duplicate_autotoc_md48}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md48}
 \begin{DoxyVerb}Sample Program:
 
  program demo_s2v
@@ -754,7 +754,7 @@ This routine can take a string representing a series of numbers and convert it t
    IERR     error flag (0=no error, else column number string starts
             at that error occurred on).
 \end{DoxyVerb}
-\hypertarget{namespacem__time____duplicate_autotoc_md65}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md65}
+\hypertarget{namespacem__time____duplicate_autotoc_md65}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md65}
 Sample Program\+: \begin{DoxyVerb} program demo_string_to_values
   use M_strings, only : string_to_values
   character(len=80)  :: s=' 10 20e3;3.45 -400.3e-2;1234; 5678 '
@@ -971,7 +971,7 @@ upper(3f) -\/ \mbox{[}M\+\_\+strings\+:C\+A\+SE\mbox{]} changes a string to uppe
 upper(string) returns a copy of the input string with all characters converted in the optionally specified range to uppercase, assuming A\+S\+C\+II character sets are being used. If no range is specified the entire string is converted to uppercase.\hypertarget{namespacem__time____duplicate_autotoc_md10}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time____duplicate_autotoc_md10}
 str string to convert to uppercase begin optional starting position in \char`\"{}str\char`\"{} to begin converting to uppercase end optional ending position in \char`\"{}str\char`\"{} to stop converting to uppercase\hypertarget{namespacem__time____duplicate_autotoc_md11}{}\doxysubsubsection{R\+E\+S\+U\+L\+TS}\label{namespacem__time____duplicate_autotoc_md11}
 upper copy of the input string with all characters converted to uppercase over optionally specified range.\hypertarget{namespacem__time____duplicate_autotoc_md12}{}\doxysubsubsection{T\+R\+I\+V\+IA}\label{namespacem__time____duplicate_autotoc_md12}
-The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time____duplicate_autotoc_md13}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md13}
+The terms \char`\"{}uppercase\char`\"{} and \char`\"{}lowercase\char`\"{} date back to the early days of the mechanical printing press. Individual metal alloy casts of each needed letter, or punctuation symbol, were meticulously added to a press block, by hand, before rolling out copies of a page. These metal casts were stored and organized in wooden cases. The more often needed miniscule letters were placed closer to hand, in the lower cases of the work bench. The less often needed, capitalized, majuscule letters, ended up in the harder to reach upper cases.\hypertarget{namespacem__time____duplicate_autotoc_md13}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md13}
 \begin{DoxyVerb}Sample program:
 
  program demo_upper
@@ -1028,7 +1028,7 @@ value\+\_\+to\+\_\+string(3f) -\/ \mbox{[}M\+\_\+strings\+:N\+U\+M\+E\+R\+IC\mbo
  \hypertarget{namespacem__time____duplicate_autotoc_md86}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time____duplicate_autotoc_md86}
 value\+\_\+to\+\_\+string(3f) returns a numeric representation of a numeric value in a string given a numeric value of type R\+E\+AL, D\+O\+U\+B\+L\+E\+P\+R\+E\+C\+I\+S\+I\+ON, I\+N\+T\+E\+G\+ER or L\+O\+G\+I\+C\+AL. It creates the string using internal writes. It then removes trailing zeros from non-\/zero values, and left-\/justifies the string.\hypertarget{namespacem__time____duplicate_autotoc_md87}{}\doxysubsubsection{O\+P\+T\+I\+O\+NS}\label{namespacem__time____duplicate_autotoc_md87}
 V\+A\+L\+UE input value to be converted to a string F\+MT You may specify a specific format that produces a string up to the length of C\+H\+A\+RS; optional. T\+R\+I\+MZ If a format is supplied the default is not to try to trim trailing zeros. Set T\+R\+I\+MZ to .true. to trim zeros from a string assumed to represent a simple numeric value.\hypertarget{namespacem__time____duplicate_autotoc_md88}{}\doxysubsubsection{R\+E\+T\+U\+R\+NS}\label{namespacem__time____duplicate_autotoc_md88}
-C\+H\+A\+RS returned string representing input value, must be at least 23 characters long; or what is required by optional F\+MT if longer. I\+L\+EN position of last non-\/blank character in returned string; optional. I\+E\+RR If not zero, error occurred; optional. \hypertarget{namespacem__time____duplicate_autotoc_md89}{}\doxysubsubsection{E\+X\+A\+M\+P\+LE}\label{namespacem__time____duplicate_autotoc_md89}
+C\+H\+A\+RS returned string representing input value, must be at least 23 characters long; or what is required by optional F\+MT if longer. I\+L\+EN position of last non-\/blank character in returned string; optional. I\+E\+RR If not zero, error occurred; optional. \hypertarget{namespacem__time____duplicate_autotoc_md89}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____duplicate_autotoc_md89}
 \begin{DoxyVerb}Sample program:
 
   program demo_value_to_string

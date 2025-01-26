@@ -139,7 +139,7 @@ SYNOPSIS</h2>
 DESCRIPTION</h2>
 <p>An object-oriented interface to the M_time module. The following example program demonstrates and documents the interface</p>
 <h2><a class="anchor" id="autotoc_md117"></a>
-EXAMPLE</h2>
+EXAMPLES</h2>
 <p>sample program</p>
 <p>program demo_M_time__oop ! ! This is an example using the object-oriented class/type model ! This is essentially the same functionality as the procedures ! in the procedural module M_time(3fm), but allows for Object ! Oriented syntax: ! use M_time__oop,only : <a class="el" href="structm__time____oop_1_1date__time.html">date_time</a> ! The type includes the operators ... ! operator(+) ! operator(-) ! operator(&gt;) ! operator(&lt;) ! operator(&lt;=) ! operator(&gt;=) ! operator(==) ! operator(/=) implicit none integer,parameter :: dp=kind(0.0d0) integer :: dat(8) TYPE(date_time) :: event TYPE(date_time) :: otherdate TYPE(date_time) :: answer</p>
 <p>character(len=*),parameter :: iso_fmt='Y-M-DTh:m:s.xz' ! DIFFERENT INITIALIZATION STYLES ! (Still debating on how best to do this) write(*,*) write(*,'(a)')'Various initialization styles'</p>

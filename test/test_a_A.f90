@@ -1,5 +1,6 @@
 program test_a_A_format
 use M_time, only : fmtdate, u2d, days2sec
+use, intrinsic :: iso_fortran_env, only : stdout=>OUTPUT_UNIT, stderr=>ERROR_UNIT
 implicit none
 integer,parameter :: wp=kind(0.0d0)
 integer :: datnow(8)

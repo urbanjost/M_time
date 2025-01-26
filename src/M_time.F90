@@ -2,8 +2,12 @@
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 module M_time
+!>
+!! AUTHOR:    John S. Urban
+!!##VERSION:   2.0 2022-01-16
+!! REFERENCE: From Wikipedia, the free encyclopedia 2015-12-19
 use M_time__duplicate
-use, intrinsic :: iso_fortran_env, only : int64
+use, intrinsic :: iso_fortran_env, only : int8, int16, int32, int64, real32, real64
 use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT, stdout=>OUTPUT_UNIT,stdin=>INPUT_UNIT
 implicit none !(external,type)
 
@@ -25,6 +29,16 @@ private
    public date_to_julian !(dat,JULIAN,IERR)                   ! Convert date array to Julian Date
    public d2j            !(dat) result(JULIAN)                ! Convert date array to Julian Date
    public j2d            !(julian) result(DAT)                ! Convert Julian Date to date array
+! MODIFIED JULIAN
+   public modified_julian_to_date !(julian,DAT,IERR)          ! Convert Modified Julian Date to date array
+   public date_to_modified_julian !(dat,JULIAN,IERR)          ! Convert date array to Modified Julian Date
+   public d2m            !(dat) result(MODIFIED_JULIAN)       ! Convert date array to Modified Julian Date
+   public m2d            !(modified_julian) result(DAT)       ! Convert Modified Julian Date to date array
+! BASEDAY AND SECONDS
+   public bas_to_date    !(bas,DAT,IERR)                      ! Convert Baseday And Seconds to date array
+   public date_to_bas    !(dat,BAS,IERR)                      ! Convert date array to Baseday And Seconds
+   public d2b            !(dat) result(BAS)                   ! Convert date array to Baseday And Seconds
+   public b2d            !(bas) result(DAT)                   ! Convert Baseday And Seconds to date array
 ! DAY OF WEEK
    public dow            !(dat,[WEEKDAY],[DAY],IERR)          ! Convert date array to day of the week as number(Mon=1) and name
 ! WEEK OF YEAR
@@ -43,7 +57,7 @@ private
    public box_month      !(dat,CALEN)                         ! print specified month into character array
 ! PRINTING DURATIONS
    public sec2days       !(seconds) result(dhms)              ! converts seconds to string D-HH:MM:SS
-   public days2sec       !(str) result(seconds)               ! converts string D-HH:MM:SS to seconds from small to large
+   public days2sec       !(str) result(seconds)               ! converts string D-HH:MM:SS or dNNhNNmNNssNN to seconds
 ! MONTH NAME
    public mo2v           !(month_name) result(MONTH_NUMBER)       ! given month name return month number
    public v2mo           !(month_number,short) result(MONTH_NAME) ! given month number return month name
@@ -100,6 +114,39 @@ interface w2d
    module procedure w2d_numeric
    module procedure w2d_string
 end interface w2d
+!-----------------------------------------------------------------------------------------------------------------------------------
+type BAStime
+      ! COMPONENTS:
+      integer           :: base_day ! number of days since the MJD Epoch date
+      real(kind=real64) :: secs     ! seconds from start of base_day
+   contains
+      ! METHODS:
+      !   procedure         :: datout => dt2d_
+      !   procedure         :: epoch  => epoch_
+      !   procedure         :: julian => julian_
+      !   procedure         :: ordinal
+      !   procedure         :: weekday
+      !   procedure         :: format
+      !   procedure         :: delta
+      !   procedure         :: init => init_dt
+      !DECLARATION OF OVERLOADED OPERATORS FOR TYPE(BAStime)
+
+      procedure,public  :: plus_BAS;   generic :: operator(+) => plus_BAS
+      procedure,public  :: minus_BAS;  generic :: operator(-) => minus_BAS   ! returns a new BAStime
+
+      !   procedure,private :: eq; generic           :: operator(==) => eq
+      !   procedure,private :: lt; generic           :: operator(<)  => lt
+      !   procedure,private :: gt; generic           :: operator(>)  => gt
+      !   procedure,private :: ge; generic           :: operator(>=) => ge
+      !   procedure,private :: le; generic           :: operator(<=) => le
+      !   procedure,private :: ne; generic           :: operator(/=) => ne
+      !-! procedure,private :: construct_from_dat; generic :: assignment(=)  => construct_from_dat
+
+end type BAStime
+
+public BAStime
+public plus_BAS
+public minus_BAS
 !-----------------------------------------------------------------------------------------------------------------------------------
  contains
 !===================================================================================================================================
@@ -174,11 +221,7 @@ end interface w2d
 !!##LICENSE
 !!    MIT
 subroutine date_to_julian(dat,julian,ierr)
-!-----------------------------------------------------------------------------------------------------------------------------------
-!>
-!! AUTHOR:    John S. Urban
-!!##VERSION:   2.0 2022-01-16
-!! REFERENCE: From Wikipedia, the free encyclopedia 2015-12-19
+
 ! * There is no year zero
 ! * Julian Date must be non-negative
 ! * Julian Date starts at noon; while Civil Calendar date starts at midnight
@@ -218,7 +261,7 @@ integer                          :: A, Y, M, JDN
 !  Staring from a Gregorian calendar date
    JDN=day + (153*M+2)/5 + 365*Y + Y/4 - Y/100 + Y/400 - 32045  !  with integer truncation
 !  Finding the Julian Calendar date given the JDN (Julian day number) and time of day
-   julian=JDN + dble(hour-12)/24.0_dp + dble(minute)/1440.0_dp + second/86400.0_dp
+   julian=JDN + real(hour-12,kind=real64)/24.0_dp + real(minute,kind=real64)/1440.0_dp + second/86400.0_dp
 !-----------------------------------------------------------------------------------------------------------------------------------
    if(julian<0.0_dp) then                  ! Julian Day must be non-negative
       ierr=1
@@ -326,8 +369,8 @@ integer                        :: jalpha,ja,jb,jc,jd,je,ijul
    endif
    tz=get_timezone()
 
-   ijul=idint(julian)                           ! Integral Julian Date
-   second=sngl((julian-dble(ijul))*secday)      ! Seconds from beginning of Jul. Day
+   ijul=int(julian)                             ! Integral Julian Date
+   second=sngl((julian-real(ijul,kind=real64))*secday)      ! Seconds from beginning of Jul. Day
    second=second+(tz*60)
 
    if(second>=(secday/2.0_dp)) then           ! In next calendar day
@@ -343,20 +386,20 @@ integer                        :: jalpha,ja,jb,jc,jd,je,ijul
    endif
 
    minute=int(second/60.0_dp)                   ! Integral minutes from beginning of day
-   second=second-dble(minute*60)                ! Seconds from beginning of minute
+   second=second-real(minute*60,kind=real64)                ! Seconds from beginning of minute
    hour=minute/60                               ! Integral hours from beginning of day
    minute=minute-hour*60                        ! Integral minutes from beginning of hour
 
    !---------------------------------------------
-   jalpha=idint((dble(ijul-1867216)-0.25_dp)/36524.25_dp) ! Correction for Gregorian Calendar
-   ja=ijul+1+jalpha-idint(0.25_dp*dble(jalpha))
+   jalpha=int((real(ijul-1867216,kind=real64)-0.25_dp)/36524.25_dp) ! Correction for Gregorian Calendar
+   ja=ijul+1+jalpha-int(0.25_dp*real(jalpha,kind=real64))
    !---------------------------------------------
 
    jb=ja+1524
-   jc=idint(6680.0_dp+(dble(jb-2439870)-122.1_dp)/365.25_dp)
-   jd=365*jc+idint(0.25_dp*dble(jc))
-   je=idint(dble(jb-jd)/30.6001_dp)
-   day=jb-jd-idint(30.6001_dp*dble(je))
+   jc=int(6680.0_dp+(real(jb-2439870,kind=real64)-122.1_dp)/365.25_dp)
+   jd=365*jc+int(0.25_dp*real(jc,kind=real64))
+   je=int(real(jb-jd,kind=real64)/30.6001_dp)
+   day=jb-jd-int(30.6001_dp*real(je,kind=real64))
    month=je-1
 
    if(month>12)then
@@ -547,8 +590,8 @@ logical,save             :: first=.TRUE.
 integer,parameter        :: ref(8)=[1970,1,1,0,0,0,0,0]
 !  Notice that the value UNIXTIME can be any of several types ( INTEGER,REAL,REAL(KIND=REALTIME))
    select type(unixtime)
-   type is (integer);             local_unixtime=dble(unixtime)
-   type is (real);                local_unixtime=dble(unixtime)  ! typically not precise enough for UET values.
+   type is (integer);             local_unixtime=real(unixtime,kind=real64)
+   type is (real);                local_unixtime=real(unixtime,kind=real64)  ! typically not precise enough for UET values.
    type is (real(kind=realtime)); local_unixtime=unixtime
    end select
 !-----------------------------------------------------------------------------------------------------------------------------------
@@ -689,7 +732,7 @@ end function d2o
 !!     use M_time, only : ordinal_seconds
 !!     implicit none
 !!     character(len=*),parameter :: gen='(*(g0))'
-!!     integer          :: i, ios, istart, iend
+!!     integer          :: i, istart, iend
 !!     real,volatile    :: x
 !!     istart = ordinal_seconds()
 !!     x = 0.0
@@ -1308,8 +1351,10 @@ logical                              :: keyword   ! flag that previous character
 logical,save                         :: since=.FALSE.
 real(kind=realtime)                  :: cputime
 real(kind=realtime)                  :: julian
+real(kind=realtime)                  :: modified_julian
 real(kind=realtime)                  :: unixtime
 real(kind=realtime),save             :: unixtime_last
+type(BAStime)                        :: bas
 
    valloc=values
    if(present(format))then
@@ -1392,7 +1437,7 @@ real(kind=realtime),save             :: unixtime_last
          if(index(xxxx,'%')==0)then            ! if no % characters change every char to %char if a format macro letter
             do i=65,122
              select case(achar(i))
-             case('A','B':'E','H':'J','L':'Q','S','T','U','W','Y','Z','a','b':'e','h':'m','n','o':'q','s':'u','w','x','z')
+             case('A','B':'E','F','H':'J','L':'Q','S','T','U','W','Y','Z','a','b':'e','f','h':'m','n','o':'q','s':'u','w','x','z')
                  call substitute(xxxx,achar(i),'%'//achar(i))
              end select
             enddo
@@ -1450,6 +1495,18 @@ real(kind=realtime),save             :: unixtime_last
          !=====================================================================================
          case('E'); call date_to_unix(valloc,unixtime,ierr)               ! Unix Epoch time in seconds
                     write(text(iout:),'(G0)')unixtime
+         !=====================================================================================
+         case('f'); call date_to_modified_julian(valloc,modified_julian,ierr)  ! integer Modified Julian Day (truncated to integer)
+                    write(text(iout:),'(I0)')int(modified_julian)
+         !=====================================================================================
+         case('F'); call date_to_modified_julian(valloc,modified_julian,ierr)  ! Modified Julian Date
+                    write(text(iout:),'(g0)')modified_julian
+         !=====================================================================================
+         case('g'); call date_to_bas(valloc,bas,ierr)                     ! integer Baseday and Seconds (truncated to integer)
+                    write(text(iout:),'(I0)')bas%base_day
+         !=====================================================================================
+         case('G'); call date_to_bas(valloc,bas,ierr)                     ! Baseday and Seconds
+                    write(text(iout:),'("(",g0,",",g0,")")')bas%base_day,bas%secs
          !=====================================================================================
          case('h'); write(text(iout:),'(I2.2)')valloc(5)                  ! the hour of the day, in the range of 0 to 23
          !=====================================================================================
@@ -1626,6 +1683,10 @@ end function fmtdate
 !!     Conversions:
 !!         %E -- Unix Epoch time                           1469804048.5220029
 !!         %e -- integer value of Unix Epoch time          1469804049
+!!         %F -- Modified Julian  date                     57599.121
+!!         %f -- integer value of Modified Julian Date     57599
+!!         %G -- Baseday and Seconds                       (57599,40223.12139393)
+!!         %g -- integer value of Baseday and Seconds      57599
 !!         %J -- Julian  date                              2457599.121
 !!         %j -- integer value of Julian Date(Julian Day)  2457599
 !!         %O -- Ordinal day (day of year)                 211
@@ -1792,6 +1853,10 @@ usage=[ CHARACTER(LEN=128) :: &
 &'%bConversions:                                               ',&
 &'     %%E -- Unix Epoch time                           %E     ',&
 &'     %%e -- integer value of Unix Epoch time          %e     ',&
+&'     %%F -- Modified Julian date                      %F     ',&
+&'     %%f -- integer value of Modified Julian Date     %f     ',&
+&'     %%G -- Baseday and Seconds                       %G     ',&
+&'     %%g -- integer value of Baseday and Seconds      %g     ',&
 &'     %%J -- Julian  date                              %J     ',&
 &'     %%j -- integer value of Julian Date(Julian Day)  %j     ',&
 &'     %%O -- Ordinal day (day of year)                 %O     ',&
@@ -2350,9 +2415,9 @@ logical                               :: short_
       ierr_local=-2
    else
       ! Julian Day is in Z time zone and starts at noon so add 1/2 day; and add time zone
-      !iweekday = mod(int((julian+dble(values(4)/60.0_dp/24.0_dp)+0.5_dp)+1.0_dp), 7)
+      !iweekday = mod(int((julian+real(values(4)/60.0_dp/24.0_dp,kind=real64)+0.5_dp)+1.0_dp), 7)
       ! REAL nint() changed to int(anint()) added to avoid bug in OpenBSD gfortran on i386
-      iweekday = mod(int(anint(julian+dble(values(4)/60.0_dp/24.0_dp)))+1, 7)
+      iweekday = mod(int(anint(julian+real(values(4)/60.0_dp/24.0_dp,kind=real64)))+1, 7)
       iweekday = iweekday +1  ! change range from 0 to 6 to 1 to 7
       iweekday = mod(iweekday+5,7)+1  ! change from Sunday=1 to Monday=1
 
@@ -3280,6 +3345,940 @@ end function u2d
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
+!>
+!!##NAME
+!!    date_to_modified_julian(3f) - [M_time:MODIFIED_JULIAN] converts DAT
+!!    date-time array to Modified Julian Date
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    subroutine date_to_modified_julian(dat,modified_juliandate,ierr)
+!!
+!!     integer,intent(in)              :: dat(8)
+!!     real(kind=realtime),intent(out) :: modified_juliandate
+!!     integer,intent(out)             :: ierr
+!!
+!!##DESCRIPTION
+!!    Converts a DAT date-time array to a Modified Julian Date type. Simply
+!!
+!!    Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+!!
+!!    Modified Julian Date (MJD) measures days (and fractional days) since
+!!    the start of 17 Nov 1858 CE in Universal Time (UTC).
+!!
+!!    MJD starts at midnight (00:00:00) so truncating the fractional
+!!    component of MJD always gives the same Civil Calendard day whatever
+!!    the time of day (unlike JD).
+!!
+!!##OPTIONS
+!!    dat   Integer array holding a "DAT" array, similar in structure
+!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!           dat=[ year,month,day,timezone,hour,&
+!!               & minutes,seconds,milliseconds]
+!!
+!!##RETURNS
+!!    modified_juliandate  A Modified Julian Date (MJD) measures days
+!!                         (and fractional days) since the start of 17 Nov
+!!                         1858 CE in Universal Time (UTC).
+!!
+!!    ierr        Error code. If 0 no error occurred.
+!!
+!!##EXAMPLE
+!!
+!!   Sample Program:
+!!
+!!     program demo_date_to_modified_julian
+!!     use M_time, only : date_to_modified_julian
+!!     use M_time, only : date_to_julian, realtime
+!!     implicit none
+!!     integer                    :: dat(8)
+!!     real(kind=realtime)        :: modified_juliandate
+!!     real(kind=realtime)        :: juliandate
+!!     integer                    :: ierr
+!!     character(len=*),parameter :: g='(*(g0,1x))'
+!!        !
+!!        ! generate DAT array
+!!        call date_and_time(values=dat)
+!!        !
+!!        ! show DAT array
+!!        write(*,'("Today is:",*(i0:,":"))')dat
+!!        !
+!!        ! convert DAT to Julian Date
+!!        call date_to_julian(dat,juliandate,ierr)
+!!        write(*,g) 'Expecting:', juliandate - 2400000.5_realtime
+!!        !
+!!        ! convert DAT to Modified Julian Date
+!!        call date_to_modified_julian(dat,modified_juliandate,ierr)
+!!        write(*,g)'Modified Julian Date is ', modified_juliandate
+!!
+!!     end program demo_date_to_modified_julian
+!!
+!!   Results:
+!!
+!!     > Today is:2025:1:26:-300:1:5:31:721
+!!     > Expecting: 60701.253839362878
+!!     > Modified Julian Date is  60701.253839362878
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+subroutine date_to_modified_julian(dat,modified_julian,ierr)
+!-----------------------------------------------------------------------------------------------------------------------------------
+! * There is no year zero
+! * Modified Julian Date must be non-negative
+!-----------------------------------------------------------------------------------------------------------------------------------
+
+! ident_26="@(#) M_time date_to_modified_julian(3f) Converts proleptic Gregorian DAT date-time array to Modified Julian Date"
+
+integer,intent(in)              :: dat(8)          ! array like returned by DATE_AND_TIME(3f)
+real(kind=realtime),intent(out) :: modified_julian ! Modified Julian Date (non-negative)
+integer,intent(out)             :: ierr            ! Error return: 0 =successful,-1=invalid year,-2=invalid month,-3=invalid day
+                                                   ! -4=invalid date (29th Feb, non leap-year)
+integer                    :: year, month, day, utc, hour, minute
+real(kind=realtime)        :: second
+real(kind=realtime)        :: julian
+
+   year   = dat(1)                            ! Year
+   month  = dat(2)                            ! Month
+   day    = dat(3)                            ! Day
+   utc    = dat(4)*60                         ! Delta from UTC, convert from minutes to seconds
+   hour   = dat(5)                            ! Hour
+   minute = dat(6)                            ! Minute
+   second = dat(7)-utc+dat(8)/1000.0_dp       ! Second   ; with correction for time zone and milliseconds
+
+   modified_julian = real(-HUGE(99999),kind=real64) ! the date if an error occurs and IERR is < 0
+
+   if(year==0 .or. year < -4713) then
+      ierr=-1
+      return
+   endif
+   ierr=0
+   call date_to_julian(dat,julian,ierr)
+   if(ierr.eq.0)then
+      modified_julian=julian-2400000.5_realtime
+   endif
+!-----------------------------------------------------------------------------------------------------------------------------------
+end subroutine date_to_modified_julian
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    modified_julian_to_date(3f) - [M_time:MODIFIED_JULIAN] converts a
+!!    MJD(Modified Julian Date) to a DAT date-time array.
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    subroutine modified_julian_to_date(modified_julian,dat,ierr)
+!!
+!!     real(kind=realtime),intent(in) :: modified_julian
+!!     integer,intent(out)            :: dat(8)
+!!     integer,intent(out)            :: ierr
+!!
+!!##DESCRIPTION
+!! Converts a Modified Julian Date(MJD) value to a DAT date-time
+!! array.
+!!
+!! Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+!!
+!! Modified Julian Date (MJD) measures days (and fractional days) since
+!! the start of 17 Nov 1858 CE in Universal Time (UTC). Julian Date (JD)
+!! measures days (and fractional days) since noon on 1 January, 4713 BCE
+!! in Universal Time (UTC).
+!!
+!! MJD starts at midnight (00:00:00) so truncating the fractional component
+!! of MJD always gives the same Civil Calendar day whatever the time of day
+!! (unlike JD).
+!!
+!!##OPTIONS
+!!    modified_julian  A Modified Julian Date (MJD) measures days
+!!                     (and fractional days) since the start of 17 Nov
+!!                     1858 CE in Universal Time (UTC).
+!!
+!!##RETURNS
+!!     dat     Integer array holding a "DAT" array, similar in structure
+!!             to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!              dat=[ year,month,day,timezone,hour,&
+!!               & minutes,seconds,milliseconds]
+!!
+!!    ierr      Error code. If 0 no error occurred.
+!!
+!!##EXAMPLE
+!!
+!!     Sample program:
+!!
+!!      program demo_modified_julian_to_date
+!!      use M_time, only : modified_julian_to_date, fmtdate, realtime
+!!      implicit none
+!!      integer,parameter   :: dp=kind(0.0d0)
+!!      real(kind=realtime) :: modified_juliandate, tomorrow, yesterday
+!!      integer             :: dat(8)
+!!      integer             :: ierr
+!!         ! set sample Modified Julian Date
+!!         modified_juliandate=60700.503682349771_dp
+!!         ! create DAT array for this date
+!!         call modified_julian_to_date(modified_juliandate,dat,ierr)
+!!         write(*,*)'Sample Date=',fmtdate(dat)
+!!         !
+!!         ! go back one day
+!!         yesterday= modified_juliandate-1.0
+!!         call modified_julian_to_date(yesterday,dat,ierr)
+!!         write(*,*)'Day Before =',fmtdate(dat)
+!!         !
+!!         ! go forward one day
+!!         tomorrow= modified_juliandate+1
+!!         call modified_julian_to_date(tomorrow,dat,ierr)
+!!         write(*,*)'Day After  =',fmtdate(dat)
+!!         !
+!!      end program demo_modified_julian_to_date
+!!
+!!     Results:
+!!
+!!      >  Sample Date=Saturday, January 25th, 2025 7:05:18 AM UTC-05:00
+!!      >  Day Before =Friday, January 24th, 2025 7:05:18 AM UTC-05:00
+!!      >  Day After  =Sunday, January 26th, 2025 7:05:18 AM UTC-05:00
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+subroutine modified_julian_to_date(modified_julian,dat,ierr)
+
+! ident_27="@(#) M_time modified_julian_to_date(3f) Converts Modified Julian Date to DAT date-time array"
+
+real(kind=realtime),intent(in) :: modified_julian
+integer,intent(out)            :: dat(8)
+integer,intent(out)            :: ierr              ! 0 for successful execution, otherwise 1
+real(kind=realtime)            :: julian
+
+   julian=modified_julian + 2400000.5_realtime
+   call julian_to_date(julian,dat,ierr)
+
+end subroutine modified_julian_to_date
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    d2m(3f) - [M_time:MODIFIED_JULIAN] given DAT date-time array returns
+!!    Modified Julian Date
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    function d2m(dat) result(julian)
+!!
+!!     integer,intent(in)  :: dat(8)
+!!     real(kind=realtime) :: modified_julian
+!!
+!!##DESCRIPTION
+!!   Given DAT date-time array returns Modified Julian Date
+!!
+!!##OPTIONS
+!!    dat       Integer array holding a "DAT" array, similar in structure
+!!              to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!                 dat=[ year,month,day,timezone,hour,&
+!!                  & minutes,seconds,milliseconds]
+!!
+!!              If not present, use current time.
+!!##RETURNS
+!!    modified_juliandate  A Modified Julian Date (MJD) measures days
+!!                         (and fractional days) since the start of 17 Nov
+!!                         1858 CE in Universal Time (UTC).
+!!
+!!##EXAMPLE
+!!
+!!    Sample program:
+!!
+!!     program demo_d2m
+!!     use M_time, only : d2m, realtime
+!!     implicit none
+!!     integer :: dat(8)
+!!        call date_and_time(values=dat)
+!!        write(*,'(" Today is:",*(i0:,":"))')dat
+!!        write(*,*)'Modified Julian Date is ',d2m(dat)
+!!     end program demo_d2m
+!!
+!!    Results:
+!!
+!!     >  Today is:2025:1:26:-300:1:7:49:295
+!!     >  Modified Julian Date is    60701.255431655329
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+function d2m(dat) result(modified_julian)
+
+! ident_28="@(#) M_time d2m(3f) Given DAT date-time array returns Julian Date"
+
+integer,intent(in),optional :: dat(8)
+real(kind=realtime)         :: modified_julian
+integer                     :: ierr
+integer                     :: dat_local(8)
+
+   if(present(dat))then                      ! if dat array is present use value contained in it
+      call date_to_modified_julian(dat,modified_julian,ierr)
+   else                                      ! if dat array is not present create one containing current time
+      dat_local=getnow()
+      call date_to_modified_julian(dat_local,modified_julian,ierr)
+   endif
+
+end function d2m
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    m2d(3f) - [M_time:MODIFIED_JULIAN] given a MJD (Modified Julian Date)
+!!    returns a date-time array DAT.
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    function m2d(modified_julian) result(dat)
+!!
+!!     real(kind=realtime),intent(in),optional :: modified_julian
+!!     integer                                 :: dat(8)
+!!
+!!##DESCRIPTION
+!!   Converts a Modified Julian Date to a DAT date-time array.
+!!
+!!##OPTIONS
+!!    modified_juliandate  A Modified Julian Date (MJD) measures days
+!!                         (and fractional days) since the start of 17 Nov
+!!                         1858 CE in Universal Time (UTC).
+!!                         If not present, use current time.
+!!
+!!##RETURNS
+!!    dat   Integer array holding a "DAT" array, similar in structure
+!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!                 dat=[ year,month,day,timezone,hour,&
+!!                  & minutes,seconds,milliseconds]
+!!
+!!##EXAMPLE
+!!
+!!    Sample program:
+!!
+!!     program demo_m2d
+!!     use M_time, only : m2d, d2m, fmtdate, realtime
+!!     implicit none
+!!     integer,parameter   :: dp=kind(0.0d0)
+!!     real(kind=realtime) :: today
+!!     integer             :: dat(8)
+!!        call date_and_time(values=dat) ! get the date using intrinsic
+!!        today=d2m(dat)                  ! convert today to Julian Date
+!!        write(*,*)'Today=',fmtdate(m2d(today))
+!!        ! math is easy with Julian Days and Julian Dates
+!!        write(*,*)'Yesterday=',fmtdate(m2d(today-1.0_dp))
+!!        write(*,*)'Tomorrow=',fmtdate(m2d(today+1.0_dp))
+!!     end program demo_m2d
+!!
+!!    Results:
+!!
+!!     >  Today=Sunday, January 26th, 2025 1:08:25 AM UTC-05:00
+!!     >  Yesterday=Saturday, January 25th, 2025 1:08:25 AM UTC-05:00
+!!     >  Tomorrow=Monday, January 27th, 2025 1:08:25 AM UTC-05:00
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+function m2d(modified_julian) result(dat)
+
+! ident_29="@(#) M_time m2d(3f) Given Modified Julian Date returns DAT date-time array"
+
+real(kind=realtime),intent(in) :: modified_julian
+integer                        :: dat(8)
+integer                        :: ierr
+   call modified_julian_to_date(modified_julian,dat,ierr)
+end function m2d
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    date_to_bas(3f) - [M_time:BAS] converts DAT
+!!    date-time array to Baseday and Seconds
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    subroutine date_to_bas(dat,bas,ierr)
+!!
+!!     integer,intent(in)        :: dat(8)
+!!     type(BAStime),intent(out) :: bas
+!!     integer,intent(out)       :: ierr
+!!
+!!##DESCRIPTION
+!!    Converts a DAT date-time array to a Baseday and Seconds type.
+!!
+!!    In this module the BAS date and time is stored internally as a structure
+!!    named BAStime, containing the number of days since the beginning of the
+!!    MJD Epoch and a double representing the seconds offset from the start
+!!    of this day.
+!!
+!!    type BAStime
+!!       integer :: base_day     ! number of days since the MJD Epoch date
+!!       real(kind=real64) :: secs ! seconds from start of base_day
+!!    end type BAStime
+!!
+!!
+!!    Modified Julian Date (MJD) measures days (and fractional days) since
+!!    the start of 17 Nov 1858 CE in Universal Time (UTC). Put another way
+!!
+!!        Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+!!
+!!
+!!    This allows for storing a date at a higher precision that the other
+!!    formats used by the library, although sometimes that lower precision
+!!    is limited primarily by the definition (ie. the milliseconds in a DAT
+!!    could be smaller units).
+!!
+!!    BAS (and MJD) starts at midnight (00:00:00) so truncating the
+!!    fractional component of BAS always gives the same Civil Calendar day
+!!    whatever the time of day (unlike JD).
+!!
+!!    The seconds offset may take any double-precision value, so that any
+!!    date/time may be expressed in terms of an offset from the same MJD
+!!    day. The seconds field thus may exceed a single day, and may also be
+!!    negative. Note that in floating-point math larger numbers will have
+!!    a wider spacing between representable values, possibly decreasing
+!!    the precision of results.
+!!
+!!##OPTIONS
+!!    dat   Integer array holding a "DAT" array, similar in structure
+!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!           dat=[ year,month,day,timezone,hour,&
+!!               & minutes,seconds,milliseconds]
+!!
+!!##RETURNS
+!!    bas         A Baseday and Seconds variable representing the date
+!!                and time found in the DAT array
+!!    ierr        Error code. If 0 no error occurred.
+!!
+!!##EXAMPLE
+!!
+!!   Sample Program:
+!!
+!!     program demo_date_to_bas
+!!     use M_time, only : date_to_bas, realtime, BAStime
+!!     use M_time, only : date_to_julian
+!!     implicit none
+!!     integer                    :: dat(8)
+!!     type(BAStime)              :: bas
+!!     real(kind=realtime)        :: juliandate
+!!     integer                    :: ierr
+!!     character(len=*),parameter :: g='(*(g0,1x))'
+!!        !
+!!        write(*,g)'date_to_bas:'
+!!        ! generate DAT array
+!!        call date_and_time(values=dat)
+!!        !
+!!        ! show DAT array
+!!        write(*,'("Today is:",*(i0:,":"))')dat
+!!        !
+!!        ! convert DAT to Julian
+!!        call date_to_julian(dat,juliandate,ierr)
+!!        ! show as Modified Julian Date
+!!        write(*,g) 'Expecting Modified Julian Date:', &
+!!        & juliandate - 2400000.5_realtime
+!!        !
+!!        ! convert DAT to BAS
+!!        call date_to_bas(dat,bas,ierr)
+!!        write(*,g)'Baseday and Seconds is ', bas
+!!        write(*,g)'converted to Modified Julian Date:', &
+!!        & bas%base_day +  bas%secs/86400.0d0
+!!
+!!     end program demo_date_to_bas
+!!
+!!    Results:
+!!
+!!     > date_to_bas:
+!!     > Today is:2025:1:26:-300:1:9:0:914
+!!     > Expecting Modified Julian Date: 60701.256260578521
+!!     > Baseday and Seconds is  60701 22140.913984179497
+!!     > converted to Modified Julian Date: 60701.256260578521
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+subroutine date_to_bas(dat,bas,ierr)
+!-----------------------------------------------------------------------------------------------------------------------------------
+! * There is no year zero
+! * Modified Julian Date must be non-negative
+!-----------------------------------------------------------------------------------------------------------------------------------
+
+! ident_30="@(#) M_time date_to_bas(3f) Converts proleptic Gregorian DAT date-time array to Baseday and Seconds"
+
+integer,intent(in)         :: dat(8)        ! array like returned by DATE_AND_TIME(3f)
+type(BAStime),intent(out)  :: bas           ! Baseday and Seconds (non-negative)
+integer,intent(out)        :: ierr          ! Error return: 0 =successful execution,-1=invalid year,-2=invalid month,-3=invalid day
+                                            ! -4=invalid date (29th Feb, non leap-year)
+integer                    :: year, month, day, utc, hour, minute
+real(kind=realtime)        :: second
+real(kind=realtime)        :: julian
+
+   year   = dat(1)                          ! Year
+   month  = dat(2)                          ! Month
+   day    = dat(3)                          ! Day
+   utc    = dat(4)*60                       ! Delta from UTC, convert from minutes to seconds
+   hour   = dat(5)                          ! Hour
+   minute = dat(6)                          ! Minute
+   second = dat(7)-utc+dat(8)/1000.0_dp     ! Second   ; with correction for time zone and milliseconds
+
+   bas = BAStime(-HUGE(99999),real(-HUGE(99999),kind=real64)) ! the date if an error occurs and IERR is < 0
+
+   if(year==0 .or. year < -4713) then
+      ierr=-1
+      return
+   endif
+   ierr=0
+   call date_to_julian(dat,julian,ierr)
+   if(ierr.eq.0)then
+      bas%base_day=int(julian-2400000.5_realtime)
+      ! convert remaining fraction of a day to seconds
+      bas%secs=mod(julian-2400000.5_realtime,1.0_realtime)*86400
+   elseif(julian < 0.0_dp) then  ! Julian Day must be non-negative
+      ierr=1
+   else
+      ierr=0
+   endif
+!-----------------------------------------------------------------------------------------------------------------------------------
+end subroutine date_to_bas
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    bas_to_date(3f) - [M_time:BAS] converts a
+!!    BAS(Baseday and Seconds) to a DAT date-time array.
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    subroutine bas_to_date(bas,dat,ierr)
+!!
+!!     type(BAStime),intent(in) :: bas
+!!     integer,intent(out)      :: dat(8)
+!!     integer,intent(out)      :: ierr
+!!
+!!##DESCRIPTION
+!! Converts a Baseday and Seconds(BAS) value to a DAT date-time
+!! array.
+!!
+!! In this module the MJD date and time is stored internally as a structure
+!! named BAStime, containing the number of days since the beginning of the
+!! MJD Epoch and a double representing the seconds offset from the start
+!! of this day.
+!!
+!!     type BAStime
+!!      integer :: base_day ! number of days since the MJD Epoch date
+!!      real(kind=real64) :: secs ! seconds from start of base_day
+!!     end type BAStime
+!!
+!! A Modified Julian Date (MJD) measures days (and fractional days) since
+!! the start of 17 Nov 1858 CE in Universal Time (UTC).
+!!
+!! A Julian Date (JD) measures days (and fractional days) since noon on 1
+!! January, 4713 BCE in Universal Time (UTC).
+!!
+!! That is,
+!!
+!!     Julian Date (MJD) = Julian Date (JD) - 2400000.5
+!!
+!!
+!! Using a structure allows for storing a date at a higher precision
+!! that other formats used by the library, although sometimes that lower
+!! precision is limited primarily by the definition (ie. the milliseconds
+!! in a DAT could be smaller units).
+!!
+!! MJD starts at midnight (00:00:00) so truncating the fractional component
+!! of MJD always gives the same Civil Calendar day whatever the time of day
+!! (unlike JD).
+!!
+!! The seconds offset may take any double-precision value, so that any
+!! date/time may be expressed in terms of an offset from the same MJD
+!! day. The seconds field thus may exceed a single day, and may also be
+!! negative.
+!!
+!!##OPTIONS
+!!    bas  A Baseday and Seconds (BAS) measures days
+!!         since the start of 17 Nov 1858 CE in Universal Time (UTC) and
+!!         contains an offset value in seconds from that base date.
+!!
+!!##RETURNS
+!!     dat     Integer array holding a "DAT" array, similar in structure
+!!             to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!              dat=[ year,month,day,timezone,hour,&
+!!               & minutes,seconds,milliseconds]
+!!
+!!    ierr      Error code. If 0 no error occurred.
+!!
+!!##EXAMPLE
+!!
+!!    Sample program:
+!!
+!!      program demo_bas_to_date
+!!      use M_time, only : bas_to_date, fmtdate, realtime, BAStime
+!!      implicit none
+!!      integer,parameter          :: dp=kind(0.0d0)
+!!      type(BAStime)              :: bas, tomorrow, yesterday
+!!      integer                    :: dat(8)
+!!      integer                    :: ierr
+!!      character(len=*),parameter :: g='(*(g0,1x))'
+!!         write(*,g)'bas_to_date:'
+!!         ! set sample Baseday and Seconds date
+!!         bas=BAStime( 60700, 0.213682349771_dp)
+!!         ! create DAT array for this date
+!!         call bas_to_date(bas,dat,ierr)
+!!         write(*,g)'Sample Date=',fmtdate(dat)
+!!         !
+!!         write(*,g)'add and subtract days from base_day:'
+!!         ! go back one day
+!!         yesterday= BAStime(bas%base_day-1,bas%secs)
+!!         call bas_to_date(yesterday,dat,ierr)
+!!         write(*,g)'Day Before =',fmtdate(dat)
+!!         !
+!!         ! go forward one day
+!!         tomorrow= BAStime(bas%base_day+1,bas%secs)
+!!         call bas_to_date(tomorrow,dat,ierr)
+!!         write(*,g)'Day After  =',fmtdate(dat)
+!!
+!!         write(*,g)'add and subtract seconds from BAS:'
+!!         ! go back one day
+!!         yesterday=bas-86400
+!!         call bas_to_date(yesterday,dat,ierr)
+!!         write(*,g)'Day Before =',fmtdate(dat)
+!!         !
+!!         ! go forward one day
+!!         yesterday=bas+86400
+!!         call bas_to_date(tomorrow,dat,ierr)
+!!         write(*,g)'Day After  =',fmtdate(dat)
+!!         !
+!!      end program demo_bas_to_date
+!!
+!!    Results:
+!!
+!!     > bas_to_date:
+!!     > Sample Date= Friday, January 24th, 2025 7:00:00 PM UTC-05:00
+!!     > add and subtract days from base_day:
+!!     > Day Before = Thursday, January 23rd, 2025 7:00:00 PM UTC-05:00
+!!     > Day After  = Saturday, January 25th, 2025 7:00:00 PM UTC-05:00
+!!     > add and subtract seconds from BAS:
+!!     > Day Before = Thursday, January 23rd, 2025 7:00:00 PM UTC-05:00
+!!     > Day After  = Saturday, January 25th, 2025 7:00:00 PM UTC-05:00
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+subroutine bas_to_date(bas,dat,ierr)
+
+! ident_31="@(#) M_time bas_to_date(3f) Converts Baseday and Seconds to DAT date-time array"
+
+type(BAStime),intent(in) :: bas               ! Baseday and Seconds
+integer,intent(out)      :: dat(8)
+integer,intent(out)      :: ierr              ! 0 for successful execution, otherwise 1
+real(kind=realtime)      :: julian
+
+   julian=bas%base_day+bas%secs/86400.0_realtime + 2400000.5_realtime
+   call julian_to_date(julian,dat,ierr)
+
+end subroutine bas_to_date
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    d2b(3f) - [M_time:BAS] given DAT date-time array returns Baseday
+!!    and Seconds type
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    function d2b(dat) result(bas)
+!!
+!!     integer,intent(in)  :: dat(8)
+!!     type(BAStime) :: bas
+!!
+!!##DESCRIPTION
+!!   Given DAT date-time array returns Baseday and Seconds type
+!!
+!!##OPTIONS
+!!    dat   Integer array holding a "DAT" array, similar in structure
+!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!              dat=[ year,month,day,timezone,hour,&
+!!              & minutes,seconds,milliseconds]
+!!
+!!          If not present, use current time.
+!!##RETURNS
+!!    bas  A Baseday and seconds(MJD) is composed of whole days
+!!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
+!!         and an offset in seconds from the base day.
+!!
+!!##EXAMPLE
+!!
+!!    Sample program:
+!!
+!!     program demo_d2b
+!!     use M_time, only : d2b, BAStime, d2j, d2m
+!!     implicit none
+!!     integer :: dat(8)
+!!     type(BAStime) :: bas
+!!     !                            Modified Julian Dates
+!!     !
+!!     !   To use this table, add the day-of-month to the tabulated entry.
+!!     !   For example, 30 Jan 2000 = MJD 51573.
+!!     ! __________________________________________________________________
+!!     !  2000  2001  2002  2003  2004  2005  2006  2007  2008  2009
+!!     integer,parameter :: array(1:12,2000:2009)=reshape([ &
+!!      51543,51909,52274,52639,53004,53370,53735,54100,54465,54831, & ! Jan
+!!      51574,51940,52305,52670,53035,53401,53766,54131,54496,54862, & ! Feb
+!!      51603,51968,52333,52698,53064,53429,53794,54159,54525,54890, & ! Mar
+!!      51634,51999,52364,52729,53095,53460,53825,54190,54556,54921, & ! Apr
+!!      51664,52029,52394,52759,53125,53490,53855,54220,54586,54951, & ! May
+!!      51695,52060,52425,52790,53156,53521,53886,54251,54617,54982, & ! Jun
+!!      51725,52090,52455,52820,53186,53551,53916,54281,54647,55012, & ! Jul
+!!      51756,52121,52486,52851,53217,53582,53947,54312,54678,55043, & ! Aug
+!!      51787,52152,52517,52882,53248,53613,53978,54343,54709,55074, & ! Sep
+!!      51817,52182,52547,52912,53278,53643,54008,54373,54739,55104, & ! Oct
+!!      51848,52213,52578,52943,53309,53674,54039,54404,54770,55135, & ! Nov
+!!      51878,52243,52608,52973,53339,53704,54069,54434,54800,55165],& ! Dec
+!!      shape=shape(array),order=[2,1])
+!!      integer :: i,j
+!!        call date_and_time(values=dat)
+!!        write(*,'(" Today is:",*(i0:,":"))')dat
+!!        write(*,*)'Baseday and Seconds is',d2b(dat)
+!!        do i=2000,2009
+!!         do j=1,12
+!!          !dat=[ year,month,day,timezone,hour,minutes,seconds,milliseconds]
+!!          dat=[i,j,1,0,0,0,0,0]
+!!          bas=d2b(dat)
+!!          if(array(j,i)+1.ne.bas%base_day)then
+!!             write(*,*)i,j,array(j,i)+1,d2b(dat),d2m(dat),d2j(dat)-2400000.5
+!!          endif
+!!         enddo
+!!        enddo
+!!     end program demo_d2b
+!!
+!!    Results:
+!!
+!!     >  Today is:2025:1:26:-300:1:2:14:388
+!!     >  Baseday and Seconds is 60701 21734.387965500355
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+function d2b(dat) result(bas)
+
+! ident_32="@(#) M_time d2b(3f) Given DAT date-time array returns Basedate and Seconds"
+
+integer,intent(in),optional :: dat(8)
+type(BAStime)               :: bas
+integer                     :: ierr
+integer                     :: dat_local(8)
+
+   if(present(dat))then                      ! if dat array is present use value contained in it
+      call date_to_bas(dat,bas,ierr)
+   else                                      ! if dat array is not present create one containing current time
+      dat_local=getnow()
+      call date_to_bas(dat_local,bas,ierr)
+   endif
+
+end function d2b
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+!>
+!!##NAME
+!!    b2d(3f) - [M_time:BAS] given a BAS (Baseday and Seconds)
+!!    returns a date-time array DAT.
+!!    (LICENSE:MIT)
+!!
+!!##SYNOPSIS
+!!
+!!    function b2d(bas) result(dat)
+!!
+!!     type(BAStime),intent(in),optional :: bas
+!!     integer                           :: dat(8)
+!!
+!!##DESCRIPTION
+!!   Converts a Baseday and Seconds (BAS) to a DAT date-time array.
+!!
+!!##OPTIONS
+!!    bas  A Baseday and seconds(MJD) is composed of whole days
+!!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
+!!         and an offset in seconds from the base day.  If not present,
+!!         use current time.
+!!
+!!##RETURNS
+!!    dat   Integer array holding a "DAT" array, similar in structure
+!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+!!
+!!                 dat=[ year,month,day,timezone,hour,&
+!!                  & minutes,seconds,milliseconds]
+!!
+!!##EXAMPLE
+!!
+!!    Sample program:
+!!
+!!     program demo_b2d
+!!     use M_time, only : b2d, d2b, fmtdate, realtime, BAStime
+!!     !BAStime includes operator(+), operator(-)
+!!     implicit none
+!!     integer,parameter :: dp=kind(0.0d0)
+!!     type(BAStime)     :: today
+!!     type(BAStime)     :: aday
+!!     type(BAStime)     :: newday
+!!     integer           :: dat(8)
+!!     character(len=*),parameter :: g='(*(g0,1x))'
+!!
+!!        write(*,g)'b2d:'
+!!        call date_and_time(values=dat) ! get the date using intrinsic
+!!        today=d2b(dat)                 ! convert DAT to BAS
+!!        write(*,g)'Today=',fmtdate(b2d(today))
+!!        ! math is easy with Julian Days and Julian Dates
+!!
+!!        write(*,g)'Yesterday=',fmtdate(b2d(today+BAStime(-1,0.0_dp)))
+!!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+BAStime(+1,0.0_dp)))
+!!
+!!        write(*,g)'Yesterday=',fmtdate(b2d(today+BAStime(0,-86400.0_dp)))
+!!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+BAStime(0,+86400.0_dp)))
+!!
+!!        aday=BAStime(1,0.0_dp)
+!!        write(*,g)'Yesterday=',fmtdate(b2d(today-aday))
+!!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+aday))
+!!
+!!        newday=today-aday
+!!        write(*,g)'Yesterday=',fmtdate(b2d(newday))
+!!        newday=today+aday
+!!        write(*,g)'Yesterday=',fmtdate(b2d(newday))
+!!     end program demo_b2d
+!!
+!! Results:
+!!
+!!  > b2d:
+!!  > Today= Sunday, January 26th, 2025 1:13:26 AM UTC-05:00
+!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!!  > Yesterday= Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!!
+!!##AUTHOR
+!!    John S. Urban, 2025
+!!
+!!##LICENSE
+!!    MIT
+function b2d(bas) result(dat)
+
+! ident_33="@(#) M_time b2d(3f) Given Baseday and Seconds (BAS) returns DAT date-time array"
+
+type(BAStime),intent(in) :: bas
+integer                  :: dat(8)
+integer                  :: ierr
+   call bas_to_date(bas,dat,ierr)
+end function b2d
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+! FUNCTIONS FOR DEFINING OVERLOADED OPERATORS
+!===================================================================================================================================
+impure function minus_BAS(self,valuein) result (answer)
+
+! ident_34="@(#) M_time minus_BAS(3f) subtract derived type BAStime object and BAStime or number"
+
+class(BAStime),intent(in)  :: self
+class(*),intent(in)        :: valuein
+type(BAStime)              :: answer
+   answer=delta_MJD(self,valuein,-1)
+end function minus_BAS
+!===================================================================================================================================
+impure function plus_BAS(self,valuein) result (answer)
+
+! ident_35="@(#) M_time plus_BAS(3f) add derived type BAStime object and BAStime or number"
+
+class(BAStime),intent(in)  :: self
+class(*),intent(in)        :: valuein
+type(BAStime)              :: answer
+   answer=delta_MJD(self,valuein,+1)
+end function plus_BAS
+!===================================================================================================================================
+impure elemental function delta_MJD(self,valuein,op) result (answer)
+
+! ident_36="@(#) M_time delta_MJD(3f) add derived type BAStime object and BAStime"
+
+class(BAStime),intent(in)  :: self
+class(*),intent(in)        :: valuein
+integer,intent(in)         :: op
+type(BAStime)              :: mjdin
+type(BAStime)              :: answer
+real(kind=dp)              :: secs
+integer                    :: idays
+integer                    :: idays_in_secs
+
+   mjdin=anyscalar_to_mjd(valuein)
+   idays = self%base_day+op*mjdin%base_day
+   secs = self%secs+op*mjdin%secs
+   if(abs(secs).ge.86400)then
+      idays_in_secs=int(secs/86400.0_dp)
+      secs=secs-idays_in_secs*86400.0_dp
+      idays=idays+idays_in_secs
+   endif
+   answer=BAStime(idays,secs)
+
+end function delta_MJD
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
+impure elemental function anyscalar_to_mjd(valuein) result(mjd_out)
+
+! ident_37="@(#) M_time anyscalar_to_mjd(3f) convert integer or real parameter of almost any intrinsc kind to BAStime"
+
+class(*),intent(in)       :: valuein
+type(BAStime)             :: mjd_out
+real(kind=real64)         :: rval
+   select type(valuein)
+   type is (BAStime);              mjd_out=valuein
+   type is (integer(kind=int8));   mjd_out=BAStime(0,real(valuein,kind=real64))
+   type is (integer(kind=int16));  mjd_out=BAStime(0,real(valuein,kind=real64))
+   type is (integer(kind=int32));  mjd_out=BAStime(0,real(valuein,kind=real64))
+   type is (integer(kind=int64));  mjd_out=BAStime(0,real(valuein,kind=real64))
+   type is (real(kind=real32));    mjd_out=BAStime(0,real(valuein,kind=real64))
+   type is (real(kind=real64));    mjd_out=BAStime(0,valuein)
+   type is (logical);              mjd_out=BAStime(0,merge(0.0d0,1.0d0,valuein))
+   type is (character(len=*));     read(valuein,*) rval
+                                   mjd_out=BAStime(0,rval)
+   class default
+     stop '*M_time::anyscalar_to_double: unknown type'
+   end select
+end function anyscalar_to_mjd
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
 function get_timezone() result(tz)
 integer :: tz
 integer :: timezone(8)
@@ -3370,7 +4369,7 @@ end function get_timezone
 function sec2days(seconds,crop) result(dhms)
 use, intrinsic :: iso_fortran_env, only : int64
 
-! ident_26="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
+! ident_38="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
 
 ! on this platform, (select_int_kind(i),i=1,100) returns
 ! 1:2=1 ,3:4=2 ,5:9=4 ,10:18= 8 ,19:38=16 ,39:=-1
@@ -3402,7 +4401,7 @@ doubleprecision                :: dtime
    type is (character(len=*))
 
       ! note _ is removed from input strings to allow use of _ every three digits in a number as sometimes seen in Java, perl, ...
-      strlocal=compact(lower(transliterate(seconds," _',",'')),'')//'                '   ! add whitespace to make room for spaces
+      strlocal=compact(lower(transliterate(seconds," _,",'')),'')//'                '   ! add whitespace to make room for spaces
 
       call substitute(strlocal,'days','d')                      ! from long names to short names substitute common aliases for units
       call substitute(strlocal,'day','d')
@@ -3413,10 +4412,12 @@ doubleprecision                :: dtime
       call substitute(strlocal,'minutes','m')
       call substitute(strlocal,'minute','m')
       call substitute(strlocal,'min','m')
+      call substitute(strlocal,'''','m')
       call substitute(strlocal,'seconds','s')
       call substitute(strlocal,'second','s')
       call substitute(strlocal,'secs','s')
       call substitute(strlocal,'sec','s')
+      call substitute(strlocal,'"','s')
       call substitute(strlocal,'weeks','w')
       call substitute(strlocal,'week','w')
       call substitute(strlocal,'wks','w')
@@ -3502,7 +4503,7 @@ end function sec2days
 !>
 !!##NAME
 !!    days2sec(3f) - [M_time:DURATION] convert string of form
-!!    [[-]dd-]hh:mm:ss.nn to seconds
+!!    [[-]dd-]hh:mm:ss.nn or dNNhNNmNNsNN to seconds
 !!    (LICENSE:MIT)
 !!
 !!##SYNOPSIS
@@ -3542,11 +4543,11 @@ end function sec2days
 !!
 !!        [NNd][NNh][NNm][NNs][NNw]
 !!
-!!          d -  days,day
-!!          m -  minutes,minute,min,mins
-!!          h -  hours,hour,hr,hrs
-!!          s -  seconds,second,sec,secs
-!!          w -  week, weeks, wk, wks
+!!          d   -  days,day
+!!          h   -  hours,hour,hr,hrs
+!!          m,' -  minutes,minute,min,mins
+!!          s," -  seconds,second,sec,secs
+!!          w   -  week, weeks, wk, wks
 !!
 !!   The numeric values may represent floating point numbers.
 !!
@@ -3554,6 +4555,7 @@ end function sec2days
 !!
 !!##OPTIONS
 !!       str   string of the general form dd-hh:mm:ss.nn
+!!             or [NNd][NNh][NNm][NNs][NNw]
 !!##RETURNS
 !!       time  the number of seconds represented by the input string
 !!
@@ -3602,7 +4604,7 @@ end function sec2days
 !!    MIT
 elemental impure function days2sec(str) result(time)
 
-! ident_27="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
+! ident_39="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
 character(len=*),intent(in)    :: str
 real(kind=realtime)            :: time
@@ -3620,14 +4622,15 @@ integer                        :: i, icount, iwords, ilast
 logical                        :: negative
 
    time=0.0_dp
-   strlocal=compact(str,'')                              ! remove whitespace
-   strlocal=transliterate(strlocal,"_',",'')             ! remove single quotes,underscores sometimes used in numbers
-   strlocal=lower(strlocal)//repeat(' ',len(strlocal))   ! change to lowercase and add whitespace to make room for spaces
+   strlocal=compact(str,'')                             ! remove whitespace
+   time=0.0_dp
+   strlocal=transliterate(strlocal,"_,",'')             ! remove underscores and commas sometimes used in numbers
+   strlocal=lower(strlocal)//repeat(' ',len(strlocal))  ! change to lowercase and add whitespace to make room for spaces
 
    if(len(strlocal)==0)then
       time=0.0_dp
-   elseif(scan(strlocal,'smhdw')/=0)then               ! unit code values not DD-HH:MM:SS either plain number or unit numbers
-      call substitute(strlocal,'days','d')               ! from long names to short names substitute common aliases for units
+   elseif(scan(strlocal,'wdshm"''')/=0)then             ! unit code values not DD-HH:MM:SS either plain number or unit numbers
+      call substitute(strlocal,'days','d')              ! from long names to short names substitute common aliases for units
       call substitute(strlocal,'day','d')
       call substitute(strlocal,'hours','h')
       call substitute(strlocal,'hour','h')
@@ -3637,10 +4640,12 @@ logical                        :: negative
       call substitute(strlocal,'minute','m')
       call substitute(strlocal,'mins','m')
       call substitute(strlocal,'min','m')
+      call substitute(strlocal,'''','m')
       call substitute(strlocal,'seconds','s')
       call substitute(strlocal,'second','s')
       call substitute(strlocal,'secs','s')
       call substitute(strlocal,'sec','s')
+      call substitute(strlocal,'"','s')
       call substitute(strlocal,'weeks','w')
       call substitute(strlocal,'week','w')
       call substitute(strlocal,'wks','w')
@@ -3716,12 +4721,12 @@ end function days2sec
 !!    subroutine locale(name,month_names,weekday_names, &
 !!    & month_names_abbr,weekday_names_abbr,IERR)
 !!
-!!     character(len=*),intent(in)           :: name
-!!     character(len=*),intent(in),optional  :: month_names(12)
-!!     character(len=*),intent(in),optional  :: month_names_abbr(12)
-!!     character(len=*),intent(in),optional  :: weekday_names(7)
-!!     character(len=*),intent(in),optional  :: weekday_names_abbr(7)
-!!     integer,intent(out)                   :: ierr
+!!     character(len=*),intent(in)          :: name
+!!     character(len=*),intent(in),optional :: month_names(12)
+!!     character(len=*),intent(in),optional :: month_names_abbr(12)
+!!     character(len=*),intent(in),optional :: weekday_names(7)
+!!     character(len=*),intent(in),optional :: weekday_names_abbr(7)
+!!     integer,intent(out)                  :: ierr
 !!
 !!##DESCRIPTION
 !!   given a pre-defined locale name or strings to substitute for month names
@@ -3812,14 +4817,14 @@ end function days2sec
 !!##LICENSE
 !!    MIT
 subroutine locale(name,month_names,weekday_names,month_names_abbr,weekday_names_abbr,IERR)
-character(len=*),intent(in)           :: name
-character(len=*),intent(in),optional  :: month_names(12)
-character(len=*),intent(in),optional  :: month_names_abbr(12)
-character(len=*),intent(in),optional  :: weekday_names(7)
-character(len=*),intent(in),optional  :: weekday_names_abbr(7)
-integer,intent(out),optional          :: ierr
-integer                               :: i
-character(len=:),allocatable          :: name_
+character(len=*),intent(in)          :: name
+character(len=*),intent(in),optional :: month_names(12)
+character(len=*),intent(in),optional :: month_names_abbr(12)
+character(len=*),intent(in),optional :: weekday_names(7)
+character(len=*),intent(in),optional :: weekday_names_abbr(7)
+integer,intent(out),optional         :: ierr
+integer                              :: i
+character(len=:),allocatable         :: name_
    name_=lower(name)
    if(name_.eq.'language')then
       name_=lower(get_env('LANGUAGE',''))
@@ -5727,7 +6732,7 @@ end function get_env
 !!   use M_time, only : phase_of_moon
 !!   use M_time, only : moon_fullness
 !!   implicit none
-!!   integer             :: dat(8)
+!!   integer :: dat(8)
 !!    ! generate DAT array
 !!    call date_and_time(values=dat)
 !!    ! show DAT array
@@ -5753,7 +6758,7 @@ end function get_env
 !!    MIT
 function phase_of_moon(dat)
 
-! ident_28="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
+! ident_40="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
 
 integer,intent(in)            :: dat(8)
 character(len=:),allocatable  :: phase_of_moon
@@ -5818,7 +6823,7 @@ end function phase_of_moon
 !!     use M_time, only : phase_of_moon
 !!     use M_time, only : moon_fullness
 !!     implicit none
-!!     integer             :: dat(8)
+!!     integer :: dat(8)
 !!        ! generate DAT array
 !!        call date_and_time(values=dat)
 !!        ! show DAT array
@@ -5845,7 +6850,7 @@ end function phase_of_moon
 !!    MIT
 function moon_fullness(dat)
 
-! ident_29="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
+! ident_41="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
 
 integer,intent(in)            :: dat(8)
 integer                       :: moon_fullness
@@ -5854,10 +6859,10 @@ real(kind=realtime),parameter :: syndonic_month=29.530588853_realtime  ! average
 integer,parameter             :: reference(*)= [2000,1,6,0,18,14,0,0]  ! new moon of January 2000 was January 6, 18:14 UTC.
 real(kind=realtime)           :: days_into_cycle
 
-days_into_cycle = mod(d2j(dat)-d2j(reference) , syndonic_month)      ! number of days into lunar cycle
-if(days_into_cycle<0)days_into_cycle=days_into_cycle+syndonic_month ! correct for input date being before reference date
+days_into_cycle = mod(d2j(dat)-d2j(reference) , syndonic_month)        ! number of days into lunar cycle
+if(days_into_cycle<0)days_into_cycle=days_into_cycle+syndonic_month    ! correct for input date being before reference date
 
-if(days_into_cycle<=syndonic_month/2.0_realtime)then                 ! if waxing from new to full report as 0% to 100%
+if(days_into_cycle<=syndonic_month/2.0_realtime)then                   ! if waxing from new to full report as 0% to 100%
    moon_fullness=int((days_into_cycle/syndonic_month)*200.0_realtime+0.5_realtime)
 else                                                                   ! if waning from full to new report as -99% to -1%
    moon_fullness=-(200-int((days_into_cycle/syndonic_month)*200.0_realtime))
@@ -5876,8 +6881,8 @@ end function moon_fullness
 !!
 !!   subroutine easter(year,dat)
 !!
-!!     integer, intent(in)   :: year
-!!     integer, intent(out)  :: dat
+!!     integer, intent(in)  :: year
+!!     integer, intent(out) :: dat
 !!
 !!##DESCRIPTION
 !!   The Date of Easter (Sunday)
@@ -5942,12 +6947,12 @@ end function moon_fullness
 !!   Latest revision 8 April 2002
 SUBROUTINE Easter(year, dat)
 
-! ident_30="@(#) M_time easter(3f) calculate date for Easter given a year"
+! ident_42="@(#) M_time easter(3f) calculate date for Easter given a year"
 
-integer,intent(in)    :: year
-integer,intent(out)   :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
-integer               :: day, month
-integer               :: c, i, j, k, l, n
+integer,intent(in)  :: year
+integer,intent(out) :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
+integer             :: day, month
+integer             :: c, i, j, k, l, n
 
    c = year / 100
    n = year - 19 * ( year / 19 )
@@ -6054,12 +7059,12 @@ end subroutine Easter
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 subroutine system_sleep(seconds)
-use,intrinsic                 :: iso_c_binding, only: c_int
+use,intrinsic       :: iso_c_binding, only: c_int
 
-! ident_31="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
+! ident_43="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
 
-class(*),intent(in)           :: seconds
-integer(kind=c_int)           :: cint
+class(*),intent(in) :: seconds
+integer(kind=c_int) :: cint
    select type(seconds)
    type is (integer);             cint=seconds                    ; call call_sleep(cint)
    type is (real);                cint=nint(seconds*1000000.0_dp) ; call call_usleep(cint)
@@ -6072,7 +7077,7 @@ end SUBROUTINE system_sleep
 subroutine call_sleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
 
-! ident_32="@(#) M_time call_sleep(3fp) call sleep(3c)"
+! ident_44="@(#) M_time call_sleep(3fp) call sleep(3c)"
 
 integer(kind=c_int),intent(in)  :: wait_seconds
 integer(kind=c_int)             :: how_long
@@ -6092,7 +7097,7 @@ end subroutine call_sleep
 !===================================================================================================================================
 subroutine call_usleep(milliseconds)
 
-! ident_33="@(#) M_time call_usleep(3fp) call usleep(3c)"
+! ident_45="@(#) M_time call_usleep(3fp) call usleep(3c)"
 
 use,intrinsic                   :: iso_c_binding, only: c_int
 integer(kind=c_int),intent(in)  :: milliseconds
@@ -6113,7 +7118,7 @@ end subroutine call_usleep
 !==================================================================================================================================!
 function getnow() result(dat)
 
-! ident_34="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
+! ident_46="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
 integer :: dat(8)
    call date_and_time(values=dat)
@@ -6136,6 +7141,9 @@ end function getnow
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 end module M_time
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================

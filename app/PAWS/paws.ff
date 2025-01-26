@@ -195,15 +195,15 @@ OPTIONS
 
    For more information on the format of the dates, see the now(1) command.
 
-EXAMPLE
-  Typical usage:
+EXAMPLES
+ Typical usage:
 
-   paws 2:00:00              # pause for two hours
-   paws 3600                 # pause one hour
-   paws 0.10                 # pause one tenth of a second
-   paws 1 -repeat 60         # pause sixty seconds, display the date each second
-   paws -until 23:59:59      # pause until midnight
-   paws 15:00 -date 23:59:59 # pause till midnight then an additional 15 minutes
+  paws 2:00:00              # pause for two hours
+  paws 3600                 # pause one hour
+  paws 0.10                 # pause one tenth of a second
+  paws 1 -repeat 60         # pause sixty seconds, displaying date each second
+  paws -until 23:59:59      # pause until midnight
+  paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes
 AUTHOR
    John S. Urban
 LICENSE

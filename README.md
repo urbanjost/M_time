@@ -11,7 +11,8 @@ M_time(3f) can be used to display Civilian Calendar dates in many formats.
 
 In addition, it can manipulate or read many other date representations ...
 
-  * Julian Dates
+  * Julian and Modified Julian Dates
+  * Baseday and Seconds Dates
   * Unix Epoch Dates
   * High-level date formatting
   * Ordinal days of the year
@@ -59,6 +60,19 @@ programs are included in the package.
 + **[date_to_julian](https://urbanjost.github.io/M_time/date_to_julian.3m_time.html)(dat,JULIAN,IERR)** ! Convert date array to Julian Date
 + **[d2j](https://urbanjost.github.io/M_time/d2j.3m_time.html)(dat) result (JULIAN)**    ! Convert date array to Julian Date
 + **[j2d](https://urbanjost.github.io/M_time/j2d.3m_time.html)(julian) result (DAT)**    ! Convert Julian Date to date array
+
+### Modified Julian
++ **[modified_julian_to_date](https://urbanjost.github.io/M_time/modified_julian_to_date.3m_time.html)(modified_julian,DAT,IERR)** ! Convert Modified Julian Date to date array
++ **[date_to_modified_julian](https://urbanjost.github.io/M_time/date_to_modified_julian.3m_time.html)(dat,MODIFIED_JULIAN,IERR)** ! Convert date array to Modified Julian Date
++ **[d2m](https://urbanjost.github.io/M_time/d2m.3m_time.html)(dat) result (MODIFIED_JULIAN)**    ! Convert date array to Modified Julian Date
++ **[m2d](https://urbanjost.github.io/M_time/m2d.3m_time.html)(modified_julian) result (DAT)**    ! Convert Modiied Julian Date to date array
+
+### Baseday and Seconds
++ **[bas_to_date](https://urbanjost.github.io/M_time/bas_to_date.3m_time.html)(bas,DAT,IERR)** ! Convert Baseday and Seconds to date array
++ **[date_to_bas](https://urbanjost.github.io/M_time/date_to_bas.3m_time.html)(dat,bas,IERR)** ! Convert date array to Baseday and Seconds type
++ **[d2b](https://urbanjost.github.io/M_time/d2b.3m_time.html)(dat) result (bas)**    ! Convert date array to Baseday and Seconds
++ **[b2d](https://urbanjost.github.io/M_time/b2d.3m_time.html)(bas) result (DAT)**    ! Convert Baseday and Seconds to date array
+
 ### Day of Week
 + **[dow](https://urbanjost.github.io/M_time/dow.3m_time.html)(dat,[WEEKDAY],[DAY],IERR)** ! Convert date array to day of the week as number and name
 ### Week of Year
@@ -391,6 +405,38 @@ dates (to go back one day just subtract one from a Julian Date, for
 example). Since these values are generally not considered intelligible,
 routines are included to convert between these scalar values and the
 date array so human-readable results can be obtained.
+
+
+**Modified Julian Date (MJD)** measures days (and fractional days) since
+the start of 17 Nov 1858 CE in Universal Time (UTC). Julian Date (JD)
+measures days (and fractional days) since noon on 1 January, 4713 BCE
+in Universal Time (UTC).
+
+    Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+
+In this module the MJD date and time is stored internally as a structure
+named MJDtime, containing the number of days since the beginning of the
+MJD Epoch as an integer and a double representing the seconds offset
+from the start of this day.
+
+    type MJDtime
+     integer :: base_day     ! number of days since the MJD Epoch date
+     double  :: time_sec     ! seconds from start of base_day
+    end type MJDtime
+
+This allows for storing a date at a higher precision that the other
+formats used by the library, although sometimes that lower precision
+is limited primarily by the definition (ie. the milliseconds in a DAT
+could be smaller units). 
+
+MJD starts at 00:00:00 so truncating the fractional component of MJD
+always gives the same day whatever the time of day (unlike JD).
+
+The seconds offset may take any double-precision value, so that any
+date/time may be expressed in terms of an offset from the same MJD
+day. The seconds field thus may exceed a single day, and may also be
+negative.
+
 
 **Coordinated Universal Time** (French: Temps universel coordonn'e),
 abbreviated as **UTC**, is the primary time standard by which the world
