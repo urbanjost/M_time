@@ -2,11 +2,13 @@
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 module M_time
-!>
-!! AUTHOR:    John S. Urban
-!!##VERSION:   2.0 2022-01-16
-!! REFERENCE: From Wikipedia, the free encyclopedia 2015-12-19
-use M_time__duplicate
+! 
+! AUTHOR:    John S. Urban
+! VERSION:   2.0 2022-01-16
+! REFERENCE: From Wikipedia, the free encyclopedia 2015-12-1
+use M_strings, only : upper, lower,  substitute, split, adjustc
+use M_strings, only : string_to_values, s2v, v2s
+use M_strings, only : compact, transliterate
 use, intrinsic :: iso_fortran_env, only : int8, int16, int32, int64, real32, real64
 use, intrinsic :: iso_fortran_env, only : stderr=>ERROR_UNIT, stdout=>OUTPUT_UNIT,stdin=>INPUT_UNIT
 implicit none !(external,type)
@@ -121,105 +123,106 @@ type BAStime
       real(kind=real64) :: secs     ! seconds from start of base_day
    contains
       ! METHODS:
-      !   procedure         :: datout => dt2d_
-      !   procedure         :: epoch  => epoch_
-      !   procedure         :: julian => julian_
-      !   procedure         :: ordinal
-      !   procedure         :: weekday
-      !   procedure         :: format
-      !   procedure         :: delta
-      !   procedure         :: init => init_dt
+      procedure  :: reduce => bas_reduce
+      procedure  :: format => bas_format
+      !   procedure  :: datout => dt2d_
+      !   procedure  :: epoch  => epoch_
+      !   procedure  :: julian => julian_
+      !   procedure  :: ordinal
+      !   procedure  :: delta
+      !   procedure  :: init => init_dt
       !DECLARATION OF OVERLOADED OPERATORS FOR TYPE(BAStime)
-
-      procedure,public  :: plus_BAS;   generic :: operator(+) => plus_BAS
-      procedure,public  :: minus_BAS;  generic :: operator(-) => minus_BAS   ! returns a new BAStime
-
-      !   procedure,private :: eq; generic           :: operator(==) => eq
-      !   procedure,private :: lt; generic           :: operator(<)  => lt
-      !   procedure,private :: gt; generic           :: operator(>)  => gt
-      !   procedure,private :: ge; generic           :: operator(>=) => ge
-      !   procedure,private :: le; generic           :: operator(<=) => le
-      !   procedure,private :: ne; generic           :: operator(/=) => ne
+      procedure,public  :: bas_plus;  generic :: operator(+)  => bas_plus
+      procedure,public  :: bas_minus; generic :: operator(-)  => bas_minus
+      procedure,public  :: bas_multiply; generic :: operator(*)  => bas_multiply
+      procedure,public  :: bas_divide;   generic :: operator(/)  => bas_divide
+      procedure,private :: bas_eq;    generic :: operator(==) => bas_eq
+      procedure,private :: bas_lt;    generic :: operator(<)  => bas_lt
+      procedure,private :: bas_gt;    generic :: operator(>)  => bas_gt
+      procedure,private :: bas_ge;    generic :: operator(>=) => bas_ge
+      procedure,private :: bas_le;    generic :: operator(<=) => bas_le
+      procedure,private :: bas_ne;    generic :: operator(/=) => bas_ne
       !-! procedure,private :: construct_from_dat; generic :: assignment(=)  => construct_from_dat
 
 end type BAStime
 
 public BAStime
-public plus_BAS
-public minus_BAS
+public bas_plus
+public bas_minus
+public bas_multiply
+public bas_divide
+public bas_format
 !-----------------------------------------------------------------------------------------------------------------------------------
  contains
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    date_to_julian(3f) - [M_time:JULIAN] converts DAT date-time array to
-!!    Julian Date
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine date_to_julian(dat,juliandate,ierr)
-!!
-!!     integer,intent(in)               :: dat(8)
-!!     real(kind=realtime),intent(out)  :: juliandate
-!!     integer,intent(out)              :: ierr
-!!
-!!##DESCRIPTION
-!!   Converts a DAT date-time array to a Julian Date value.
-!!
-!!   Julian Dates (abbreviated JD) are simply a continuous count
-!!   of days and fractions since noon Universal Time on January 1, 4713
-!!   BC (on the Julian calendar). Julian dates are widely used as time
-!!   variables within astronomical software. Typically, a 64-bit floating
-!!   point (double precision) variable can represent an epoch expressed as
-!!   a Julian date to about 20 microsecond precision.
-!!
-!!##OPTIONS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!           dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!##RETURNS
-!!    juliandate  A Julian Date (JD) is the number of days since
-!!                noon (not midnight) on January 1st, 4713 BC.
-!!
-!!    ierr        Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!    Sample Program:
-!!
-!!     program demo_date_to_julian
-!!     use M_time, only : date_to_julian,realtime
-!!     implicit none
-!!     integer             :: dat(8)
-!!     real(kind=realtime) :: juliandate
-!!     integer             :: ierr
-!!        ! generate DAT array
-!!        call date_and_time(values=dat)
-!!        ! show DAT array
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        ! convert DAT to Julian Date
-!!        call date_to_julian(dat,juliandate,ierr)
-!!        write(*,*)'Julian Date is ',juliandate
-!!        write(*,*)'ierr is ',ierr
-!!     end program demo_date_to_julian
-!!
-!!    results:
-!!
-!!     Today is:2016:7:19:-240:11:3:13:821
-!!     Julian Date is    2457589.1272432986
-!!     ierr is            0
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    date_to_julian(3f) - [M_time:JULIAN] converts DAT date-time array to
+!    Julian Date
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine date_to_julian(dat,juliandate,ierr)
+! 
+!     integer,intent(in)               :: dat(8)
+!     real(kind=realtime),intent(out)  :: juliandate
+!     integer,intent(out)              :: ierr
+! 
+! DESCRIPTION
+!   Converts a DAT date-time array to a Julian Date value.
+! 
+!   Julian Dates (abbreviated JD) are simply a continuous count
+!   of days and fractions since noon Universal Time on January 1, 4713
+!   BC (on the Julian calendar). Julian dates are widely used as time
+!   variables within astronomical software. Typically, a 64-bit floating
+!   point (double precision) variable can represent an epoch expressed as
+!   a Julian date to about 20 microsecond precision.
+! 
+! OPTIONS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!           dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+! RETURNS
+!    juliandate  A Julian Date (JD) is the number of days since
+!                noon (not midnight) on January 1st, 4713 BC.
+! 
+!    ierr        Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!    Sample Program:
+! 
+!     program demo_date_to_julian
+!     use M_time, only : date_to_julian,realtime
+!     implicit none
+!     integer             :: dat(8)
+!     real(kind=realtime) :: juliandate
+!     integer             :: ierr
+!        ! generate DAT array
+!        call date_and_time(values=dat)
+!        ! show DAT array
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        ! convert DAT to Julian Date
+!        call date_to_julian(dat,juliandate,ierr)
+!        write(*,*)'Julian Date is ',juliandate
+!        write(*,*)'ierr is ',ierr
+!     end program demo_date_to_julian
+! 
+!    results:
+! 
+!     Today is:2016:7:19:-240:11:3:13:821
+!     Julian Date is    2457589.1272432986
+!     ierr is            0
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 subroutine date_to_julian(dat,julian,ierr)
 
 ! * There is no year zero
@@ -273,78 +276,76 @@ end subroutine date_to_julian
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    julian_to_date(3f) - [M_time:JULIAN] converts a JD(Julian Date)
-!!    to a DAT date-time array.
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine julian_to_date(julian,dat,ierr)
-!!
-!!     real(kind=realtime),intent(in) :: julian
-!!     integer,intent(out)            :: dat(8)
-!!     integer,intent(out)            :: ierr
-!!
-!!##DESCRIPTION
-!!   Converts a Julian Date(JD) value to a DAT date-time
-!!   array.
-!!
-!!   Julian dates are simply a continuous count of days and
-!!   fractions since noon Universal Time on January 1, 4713 BC (on the
-!!   Julian calendar). Julian dates are widely used as time variables
-!!   within astronomical software. Typically, a 64-bit floating point
-!!   (double precision) variable can represent an epoch expressed as a
-!!   Julian date to about 20 microsecond precision.
-!!
-!!##OPTIONS
-!!     julian  Julian Date (days)
-!!
-!!##RETURNS
-!!     dat     Integer array holding a "DAT" array, similar in structure
-!!             to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!    ierr      Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!     Sample program:
-!!
-!!      program demo_julian_to_date
-!!      use M_time, only : julian_to_date, fmtdate, realtime
-!!      implicit none
-!!      integer,parameter   :: dp=kind(0.0d0)
-!!      real(kind=realtime) :: juliandate
-!!      integer             :: dat(8)
-!!      integer             :: ierr
-!!         ! set sample Julian Date
-!!         juliandate=2457589.129_dp
-!!         ! create DAT array for this date
-!!         call julian_to_date(juliandate,dat,ierr)
-!!         write(*,*)'Sample Date=',fmtdate(dat)
-!!         ! go back one day
-!!         call julian_to_date(juliandate-1.0_dp,dat,ierr)
-!!         write(*,*)'Day Before =',fmtdate(dat)
-!!         ! go forward one day
-!!         call julian_to_date(juliandate+1.0_dp,dat,ierr)
-!!         write(*,*)'Day After  =',fmtdate(dat)
-!!      end program demo_julian_to_date
-!!
-!!     Results:
-!!
-!!      Sample Date=Tuesday, July 19th, 2016 11:05:45 AM UTC-04:00
-!!      Day Before =Monday, July 18th, 2016 11:05:45 AM UTC-04:00
-!!      Day After  =Wednesday, July 20th, 2016 11:05:45 AM UTC-04:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    julian_to_date(3f) - [M_time:JULIAN] converts a JD(Julian Date)
+!    to a DAT date-time array.
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine julian_to_date(julian,dat,ierr)
+! 
+!     real(kind=realtime),intent(in) :: julian
+!     integer,intent(out)            :: dat(8)
+!     integer,intent(out)            :: ierr
+! 
+! DESCRIPTION
+!   Converts a Julian Date(JD) value to a DAT date-time
+!   array.
+! 
+!   Julian dates are simply a continuous count of days and
+!   fractions since noon Universal Time on January 1, 4713 BC (on the
+!   Julian calendar). Julian dates are widely used as time variables
+!   within astronomical software. Typically, a 64-bit floating point
+!   (double precision) variable can represent an epoch expressed as a
+!   Julian date to about 20 microsecond precision.
+! 
+! OPTIONS
+!     julian  Julian Date (days)
+! 
+! RETURNS
+!     dat     Integer array holding a "DAT" array, similar in structure
+!             to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+!    ierr      Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!     Sample program:
+! 
+!      program demo_julian_to_date
+!      use M_time, only : julian_to_date, fmtdate, realtime
+!      implicit none
+!      integer,parameter   :: dp=kind(0.0d0)
+!      real(kind=realtime) :: juliandate
+!      integer             :: dat(8)
+!      integer             :: ierr
+!         ! set sample Julian Date
+!         juliandate=2457589.129_dp
+!         ! create DAT array for this date
+!         call julian_to_date(juliandate,dat,ierr)
+!         write(*,*)'Sample Date=',fmtdate(dat)
+!         ! go back one day
+!         call julian_to_date(juliandate-1.0_dp,dat,ierr)
+!         write(*,*)'Day Before =',fmtdate(dat)
+!         ! go forward one day
+!         call julian_to_date(juliandate+1.0_dp,dat,ierr)
+!         write(*,*)'Day After  =',fmtdate(dat)
+!      end program demo_julian_to_date
+! 
+!     Results:
+! 
+!      Sample Date=Tuesday, July 19th, 2016 11:05:45 AM UTC-04:00
+!      Day Before =Monday, July 18th, 2016 11:05:45 AM UTC-04:00
+!      Day After  =Wednesday, July 20th, 2016 11:05:45 AM UTC-04:00
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 subroutine julian_to_date(julian,dat,ierr)
 
 ! ident_3="@(#) M_time julian_to_date(3f) Converts Julian Date to DAT date-time array"
@@ -422,63 +423,61 @@ end subroutine julian_to_date
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    date_to_unix(3f) - [M_time:UNIX_EPOCH] converts DAT date-time array to Unix
-!!    Epoch Time
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine date_to_unix(dat,unixtime,ierr)
-!!
-!!     integer,intent(in)               :: dat(8)
-!!     real(kind=realtime),intent(out)  :: unixtime
-!!     integer,intent(out)              :: ierr
-!!
-!!##DESCRIPTION
-!!   Converts a DAT date-time array to a UET (Unix Epoch Time).
-!!
-!!##OPTIONS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!##RETURNS
-!!    unixtime  The "Unix Epoch" time, or the number of seconds since
-!!              00:00:00 on January 1st, 1970, UTC.
-!!
-!!    ierr      Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!     Sample program:
-!!
-!!      program demo_date_to_unix
-!!      use M_time, only : date_to_unix, realtime
-!!      implicit none
-!!      integer             :: dat(8)
-!!      real(kind=realtime) :: unixtime
-!!      integer             :: ierr
-!!         call date_and_time(values=dat)
-!!         write(*,'(" Today is:",*(i0:,":"))')dat
-!!         call date_to_unix(dat,unixtime,ierr)
-!!         write(*,*)'Unix Epoch time is ',unixtime
-!!         write(*,*)'ierr is ',ierr
-!!      end program demo_date_to_unix
-!!
-!!     results:
-!!
-!!      Today is:2016:7:18:-240:23:44:20:434
-!!      Unix Epoch time is    1468899860.4340105
-!!      ierr is            0
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    date_to_unix(3f) - [M_time:UNIX_EPOCH] converts DAT date-time array to Unix
+!    Epoch Time
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine date_to_unix(dat,unixtime,ierr)
+! 
+!     integer,intent(in)               :: dat(8)
+!     real(kind=realtime),intent(out)  :: unixtime
+!     integer,intent(out)              :: ierr
+! 
+! DESCRIPTION
+!   Converts a DAT date-time array to a UET (Unix Epoch Time).
+! 
+! OPTIONS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! RETURNS
+!    unixtime  The "Unix Epoch" time, or the number of seconds since
+!              00:00:00 on January 1st, 1970, UTC.
+! 
+!    ierr      Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!     Sample program:
+! 
+!      program demo_date_to_unix
+!      use M_time, only : date_to_unix, realtime
+!      implicit none
+!      integer             :: dat(8)
+!      real(kind=realtime) :: unixtime
+!      integer             :: ierr
+!         call date_and_time(values=dat)
+!         write(*,'(" Today is:",*(i0:,":"))')dat
+!         call date_to_unix(dat,unixtime,ierr)
+!         write(*,*)'Unix Epoch time is ',unixtime
+!         write(*,*)'ierr is ',ierr
+!      end program demo_date_to_unix
+! 
+!     results:
+! 
+!      Today is:2016:7:18:-240:23:44:20:434
+!      Unix Epoch time is    1468899860.4340105
+!      ierr is            0
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 subroutine date_to_unix(dat,unixtime,ierr)
 
 ! ident_4="@(#) M_time date_to_unix(3f) Convert DAT date-time array to Unix Epoch Time"
@@ -504,78 +503,76 @@ end subroutine date_to_unix
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    unix_to_date(3f) - [M_time:UNIX_EPOCH] converts Unix Epoch Time to
-!!    DAT date-time
-!!    array
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine unix_to_date(unixtime,dat,ierr)
-!!
-!!     real(kind=realtime),intent(in) :: unixtime
-!!     integer,intent(out)            :: dat(8)
-!!     integer,intent(out)            :: ierr
-!!
-!!##DESCRIPTION
-!!   Converts a Unix Epoch Time (UET) to a DAT date-time array.
-!!
-!!##OPTIONS
-!!
-!!    unixtime  The "Unix Epoch" time, or the number of seconds since
-!!              00:00:00 on January 1st, 1970, UTC; of type
-!!              real(kind=realtime).
-!!
-!!##RETURNS
-!!     dat      Integer array holding a "DAT" array, similar in structure
-!!              to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!               dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!    ierr      Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!     Sample program:
-!!
-!!      program demo_unix_to_date
-!!      use M_time, only : unix_to_date, u2d, fmtdate, realtime
-!!      implicit none
-!!      integer,parameter :: dp=kind(0.0d0)
-!!      real(kind=realtime)           :: unixtime
-!!      ! seconds in a day
-!!      real(kind=realtime),parameter :: DAY=86400.0_dp
-!!      integer                       :: dat(8)
-!!      integer                       :: ierr
-!!         ! sample Unix Epoch time
-!!         unixtime=1468939038.4639933_dp
-!!         ! create DAT array for today
-!!         call unix_to_date(unixtime,dat,ierr)
-!!         write(*,*)'Sample Date=',fmtdate(dat)
-!!         ! go back one day
-!!         call unix_to_date(unixtime-DAY,dat,ierr)
-!!         ! subtract day and print
-!!         write(*,*)'Day Before =',fmtdate(dat)
-!!         ! go forward one day
-!!         call unix_to_date(unixtime+DAY,dat,ierr)
-!!         ! add day print
-!!         write(*,*)'Day After  =',fmtdate(dat)
-!!      end program demo_unix_to_date
-!!
-!!    Results:
-!!
-!!     Sample Date=Tuesday, July 19th, 2016 10:37:18 AM
-!!     Day Before =Monday, July 18th, 2016 10:37:18 AM
-!!     Day After  =Wednesday, July 20th, 2016 10:37:18 AM
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    unix_to_date(3f) - [M_time:UNIX_EPOCH] converts Unix Epoch Time to
+!    DAT date-time
+!    array
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine unix_to_date(unixtime,dat,ierr)
+! 
+!     real(kind=realtime),intent(in) :: unixtime
+!     integer,intent(out)            :: dat(8)
+!     integer,intent(out)            :: ierr
+! 
+! DESCRIPTION
+!   Converts a Unix Epoch Time (UET) to a DAT date-time array.
+! 
+! OPTIONS
+! 
+!    unixtime  The "Unix Epoch" time, or the number of seconds since
+!              00:00:00 on January 1st, 1970, UTC; of type
+!              real(kind=realtime).
+! 
+! RETURNS
+!     dat      Integer array holding a "DAT" array, similar in structure
+!              to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!               dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+!    ierr      Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!     Sample program:
+! 
+!      program demo_unix_to_date
+!      use M_time, only : unix_to_date, u2d, fmtdate, realtime
+!      implicit none
+!      integer,parameter :: dp=kind(0.0d0)
+!      real(kind=realtime)           :: unixtime
+!      ! seconds in a day
+!      real(kind=realtime),parameter :: DAY=86400.0_dp
+!      integer                       :: dat(8)
+!      integer                       :: ierr
+!         ! sample Unix Epoch time
+!         unixtime=1468939038.4639933_dp
+!         ! create DAT array for today
+!         call unix_to_date(unixtime,dat,ierr)
+!         write(*,*)'Sample Date=',fmtdate(dat)
+!         ! go back one day
+!         call unix_to_date(unixtime-DAY,dat,ierr)
+!         ! subtract day and print
+!         write(*,*)'Day Before =',fmtdate(dat)
+!         ! go forward one day
+!         call unix_to_date(unixtime+DAY,dat,ierr)
+!         ! add day print
+!         write(*,*)'Day After  =',fmtdate(dat)
+!      end program demo_unix_to_date
+! 
+!    Results:
+! 
+!     Sample Date=Tuesday, July 19th, 2016 10:37:18 AM
+!     Day Before =Monday, July 18th, 2016 10:37:18 AM
+!     Day After  =Wednesday, July 20th, 2016 10:37:18 AM
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 subroutine unix_to_date(unixtime,dat,ierr)
 
 ! ident_5="@(#) M_time unix_to_date(3f) Converts Unix Time to DAT date-time array"
@@ -608,77 +605,75 @@ end subroutine unix_to_date
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    d2o(3f) - [M_time:ORDINAL_DAY] converts DAT date-time array to Ordinal day
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function d2o(dat) result(ordinal)
-!!
-!!     integer,intent(in),optional :: dat(8)
-!!     integer                     :: ordinal
-!!
-!!##DESCRIPTION
-!!   Given a date in the form of a "DAT" array return the Ordinal Day,
-!!   (ie. "the day of the year").
-!!
-!!##OPTIONS
-!!     dat  Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!##RETURNS
-!!     ordinal  The day of the year calculated for the given input date,
-!!              where Jan 1st=1.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_d2o
-!!     use M_time, only : d2o
-!!     implicit none
-!!     integer :: dat(8)
-!!        call date_and_time(values=dat)
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        write(*,*)'Day of year is:',d2o(dat)
-!!
-!!        ! year,month,day,timezone,hour,minute,seconds,milliseconds
-!!        dat=[2020,12,31,-240,12,0,0,0]
-!!        write(*,*)dat(1),' Days in year is:',d2o(dat)
-!!
-!!        dat=[2021,12,31,-240,12,0,0,0]
-!!        write(*,*)dat(1),' Days in year is:',d2o(dat)
-!!
-!!        dat=[2022,12,31,-240,12,0,0,0]
-!!        write(*,*)dat(1),' Days in year is:',d2o(dat)
-!!
-!!        dat=[2023,12,31,-240,12,0,0,0]
-!!        write(*,*)dat(1),' Days in year is:',d2o(dat)
-!!
-!!        dat=[2024,12,31,-240,12,0,0,0]
-!!        write(*,*)dat(1),' Days in year is:',d2o(dat)
-!!
-!!     end program demo_d2o
-!!
-!!    results:
-!!
-!!     Today is:2016:7:19:-240:20:1:19:829
-!!     Day of year is:         201
-!!            2020  Days in year is:         366
-!!            2021  Days in year is:         365
-!!            2022  Days in year is:         365
-!!            2023  Days in year is:         365
-!!            2024  Days in year is:         366
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    d2o(3f) - [M_time:ORDINAL_DAY] converts DAT date-time array to Ordinal day
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function d2o(dat) result(ordinal)
+! 
+!     integer,intent(in),optional :: dat(8)
+!     integer                     :: ordinal
+! 
+! DESCRIPTION
+!   Given a date in the form of a "DAT" array return the Ordinal Day,
+!   (ie. "the day of the year").
+! 
+! OPTIONS
+!     dat  Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! RETURNS
+!     ordinal  The day of the year calculated for the given input date,
+!              where Jan 1st=1.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_d2o
+!     use M_time, only : d2o
+!     implicit none
+!     integer :: dat(8)
+!        call date_and_time(values=dat)
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        write(*,*)'Day of year is:',d2o(dat)
+! 
+!        ! year,month,day,timezone,hour,minute,seconds,milliseconds
+!        dat=[2020,12,31,-240,12,0,0,0]
+!        write(*,*)dat(1),' Days in year is:',d2o(dat)
+! 
+!        dat=[2021,12,31,-240,12,0,0,0]
+!        write(*,*)dat(1),' Days in year is:',d2o(dat)
+! 
+!        dat=[2022,12,31,-240,12,0,0,0]
+!        write(*,*)dat(1),' Days in year is:',d2o(dat)
+! 
+!        dat=[2023,12,31,-240,12,0,0,0]
+!        write(*,*)dat(1),' Days in year is:',d2o(dat)
+! 
+!        dat=[2024,12,31,-240,12,0,0,0]
+!        write(*,*)dat(1),' Days in year is:',d2o(dat)
+! 
+!     end program demo_d2o
+! 
+!    results:
+! 
+!     Today is:2016:7:19:-240:20:1:19:829
+!     Day of year is:         201
+!            2020  Days in year is:         366
+!            2021  Days in year is:         365
+!            2022  Days in year is:         365
+!            2023  Days in year is:         365
+!            2024  Days in year is:         366
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function d2o(dat) result(ordinal)
 
 ! ident_6="@(#) M_time d2o(3f) Converts DAT date-time array to Ordinal day"
@@ -709,53 +704,51 @@ end function d2o
 !==================================================================================================================================!
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !==================================================================================================================================!
-!>
-!!##NAME
-!!    ordinal_seconds(3f) - [M_time:ORDINAL_DAY] seconds since beginning of year
-!!    (LICENSE:MIT)
-!!##SYNOPSIS
-!!
-!!    function ordinal_seconds()
-!!
-!!     integer :: ordinal_seconds
-!!##DESCRIPTION
-!!   Return number of seconds since beginning of current year.
-!!
-!!   Before using this routine consider the consequences if the application
-!!   is running at the moment a new year begins.
-!!
-!!##EXAMPLE
-!!
-!!    sample program
-!!
-!!     program demo_ordinal_seconds
-!!     use M_time, only : ordinal_seconds
-!!     implicit none
-!!     character(len=*),parameter :: gen='(*(g0))'
-!!     integer          :: i, istart, iend
-!!     real,volatile    :: x
-!!     istart = ordinal_seconds()
-!!     x = 0.0
-!!     do i = 1, 1000000000
-!!        x = x+sqrt(real(i))
-!!     enddo
-!!     print gen, 'x=',x
-!!     iend = ordinal_seconds()
-!!     print gen, 'that took ',iend-istart,' seconds'
-!!     print gen, iend,'-',istart,'=',iend-istart
-!!     end program demo_ordinal_seconds
-!!
-!!    Results:
-!!
-!!     > x=0.549755814E+12
-!!     > that took 4 seconds
-!!     > 23659912-23659908=4
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    ordinal_seconds(3f) - [M_time:ORDINAL_DAY] seconds since beginning of year
+!    (LICENSE:MIT)
+! SYNOPSIS
+!    function ordinal_seconds()
+! 
+!     integer :: ordinal_seconds
+! DESCRIPTION
+!   Return number of seconds since beginning of current year.
+! 
+!   Before using this routine consider the consequences if the application
+!   is running at the moment a new year begins.
+! 
+! EXAMPLE
+!    sample program
+! 
+!     program demo_ordinal_seconds
+!     use M_time, only : ordinal_seconds
+!     implicit none
+!     character(len=*),parameter :: gen='(*(g0))'
+!     integer          :: i, istart, iend
+!     real,volatile    :: x
+!     istart = ordinal_seconds()
+!     x = 0.0
+!     do i = 1, 1000000000
+!        x = x+sqrt(real(i))
+!     enddo
+!     print gen, 'x=',x
+!     iend = ordinal_seconds()
+!     print gen, 'that took ',iend-istart,' seconds'
+!     print gen, iend,'-',istart,'=',iend-istart
+!     end program demo_ordinal_seconds
+! 
+!    Results:
+! 
+!     > x=0.549755814E+12
+!     > that took 4 seconds
+!     > 23659912-23659908=4
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 integer function ordinal_seconds()
 
 ! ident_7="@(#) M_time ordinal_seconds(3f) seconds since beginning of year"
@@ -771,59 +764,57 @@ end function ordinal_seconds
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    ordinal_to_date(3f) - [M_time:ORDINAL_DAY] when given a valid year and
-!!    day of the year returns the DAT array for the date
-!!    (LICENSE:MIT)
-!!##SYNOPSIS
-!!
-!!      subroutine ordinal_to_date(yyyy, ddd, dat)
-!!
-!!       integer, intent(in)   :: yyyy
-!!       integer, intent(in)   :: ddd
-!!       integer, intent(out)  :: dat
-!!##DESCRIPTION
-!!   When given a valid year, YYYY, and day of the year, DDD, returns the
-!!   date as a DAT date array
-!!##OPTIONS
-!!       yyyy  known year
-!!       ddd   known ordinal day of the year
-!!##RETURNS
-!!       dat   DAT array describing the date
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_ordinal_to_date
-!!     use M_time, only : ordinal_to_date
-!!     implicit none
-!!     integer :: yyyy, ddd, mm, dd, yy
-!!     integer :: dat(8)
-!!     integer :: i, iostat
-!!     character(len=:),allocatable :: fakefile(:)
-!!       fakefile=[character(len=80) :: ' 2024 273 ','2024 001']
-!!       do i=1,size(fakefile)
-!!          ! Enter year YYYY and ordinal day of year DD
-!!          read(fakefile(i),*,iostat=iostat)yyyy,ddd
-!!          if(iostat/=0)exit
-!!          ! recover month and day from year and day number.
-!!          call ordinal_to_date(yyyy, ddd, dat)
-!!          yy=dat(1)
-!!          mm=dat(2)
-!!          dd=dat(3)
-!!          write(*,'(*(g0))')'For Year ',yyyy,' and Ordinal day ',ddd
-!!          write(*,'(*(g0))')' Month is ',mm,' and Day of Month is ',dd, &
-!!          & ' and Year is ',yy
-!!       enddo
-!!     end program demo_ordinal_to_date
-!!
-!!    Result:
-!!
-!!     > For Year 2024 and Ordinal day 273
-!!     > Month is 9 and Day of Month is 29 and Year is 2024
-!!     > For Year 2024 and Ordinal day 1
-!!     > Month is 1 and Day of Month is 1 and Year is 2024
+! 
+! NAME
+!    ordinal_to_date(3f) - [M_time:ORDINAL_DAY] when given a valid year and
+!    day of the year returns the DAT array for the date
+!    (LICENSE:MIT)
+! SYNOPSIS
+!      subroutine ordinal_to_date(yyyy, ddd, dat)
+! 
+!       integer, intent(in)   :: yyyy
+!       integer, intent(in)   :: ddd
+!       integer, intent(out)  :: dat
+! DESCRIPTION
+!   When given a valid year, YYYY, and day of the year, DDD, returns the
+!   date as a DAT date array
+! OPTIONS
+!       yyyy  known year
+!       ddd   known ordinal day of the year
+! RETURNS
+!       dat   DAT array describing the date
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_ordinal_to_date
+!     use M_time, only : ordinal_to_date
+!     implicit none
+!     integer :: yyyy, ddd, mm, dd, yy
+!     integer :: dat(8)
+!     integer :: i, iostat
+!     character(len=:),allocatable :: fakefile(:)
+!       fakefile=[character(len=80) :: ' 2024 273 ','2024 001']
+!       do i=1,size(fakefile)
+!          ! Enter year YYYY and ordinal day of year DD
+!          read(fakefile(i),*,iostat=iostat)yyyy,ddd
+!          if(iostat/=0)exit
+!          ! recover month and day from year and day number.
+!          call ordinal_to_date(yyyy, ddd, dat)
+!          yy=dat(1)
+!          mm=dat(2)
+!          dd=dat(3)
+!          write(*,'(*(g0))')'For Year ',yyyy,' and Ordinal day ',ddd
+!          write(*,'(*(g0))')' Month is ',mm,' and Day of Month is ',dd, &
+!          & ' and Year is ',yy
+!       enddo
+!     end program demo_ordinal_to_date
+! 
+!    Result:
+! 
+!     > For Year 2024 and Ordinal day 273
+!     > Month is 9 and Day of Month is 29 and Year is 2024
+!     > For Year 2024 and Ordinal day 1
+!     > Month is 1 and Day of Month is 1 and Year is 2024
 subroutine ordinal_to_date(yyyy,ddd,dat)
 !x!use M_time, only : d2j,j2d, realtime
 
@@ -841,68 +832,66 @@ end subroutine ordinal_to_date
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    o2d(3f) - [M_time:ORDINAL_DAY] converts Ordinal day to DAT date-time array
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function o2d(ordinal,[year]) result(dat)
-!!
-!!     integer,intent(in) :: ordinal  ! the day of the year
-!!     integer,optional   :: year     ! year
-!!     integer            :: dat(8)   ! date time array
-!!
-!!##DESCRIPTION
-!!   Given an Ordinal day of the year return a date in the form of a
-!!   "DAT" array.
-!!
-!!##OPTIONS
-!!     ordinal  The day of the year for the given year, where Jan 1st=1.
-!!
-!!     year     An optional year for the ordinal day. If not present the
-!!              current year is assumed.
-!!
-!!##RETURNS
-!!     dat   Integer array holding a "DAT" array, similar in structure
-!!           to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!           The timezone value is from the current time on the current
-!!           platform.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_o2d
-!!     use M_time, only : o2d,fmtdate
-!!     implicit none
-!!     integer :: year
-!!        do year=2004,2008
-!!           write(*,'(*(g0))')&
-!!           & '100th day of ',year,' is ',fmtdate(o2d(100,year))
-!!        enddo
-!!        write(*,'(*(g0))')'100th day of this year is ',fmtdate(o2d(100))
-!!     end program demo_o2d
-!!
-!!    Results:
-!!
-!!     > 100th day of 2004 is Friday, April 9th, 2004 12:00:00 AM UTC-05:00
-!!     > 100th day of 2005 is Sunday, April 10th, 2005 12:00:00 AM UTC-05:00
-!!     > 100th day of 2006 is Monday, April 10th, 2006 12:00:00 AM UTC-05:00
-!!     > 100th day of 2007 is Tuesday, April 10th, 2007 12:00:00 AM UTC-05:00
-!!     > 100th day of 2008 is Wednesday, April 9th, 2008 12:00:00 AM UTC-05:00
-!!     > 100th day of this year is Monday, April 10th, 2023 12:00:00 AM UTC-05:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    o2d(3f) - [M_time:ORDINAL_DAY] converts Ordinal day to DAT date-time array
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function o2d(ordinal,[year]) result(dat)
+! 
+!     integer,intent(in) :: ordinal  ! the day of the year
+!     integer,optional   :: year     ! year
+!     integer            :: dat(8)   ! date time array
+! 
+! DESCRIPTION
+!   Given an Ordinal day of the year return a date in the form of a
+!   "DAT" array.
+! 
+! OPTIONS
+!     ordinal  The day of the year for the given year, where Jan 1st=1.
+! 
+!     year     An optional year for the ordinal day. If not present the
+!              current year is assumed.
+! 
+! RETURNS
+!     dat   Integer array holding a "DAT" array, similar in structure
+!           to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+!           The timezone value is from the current time on the current
+!           platform.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_o2d
+!     use M_time, only : o2d,fmtdate
+!     implicit none
+!     integer :: year
+!        do year=2004,2008
+!           write(*,'(*(g0))')&
+!           & '100th day of ',year,' is ',fmtdate(o2d(100,year))
+!        enddo
+!        write(*,'(*(g0))')'100th day of this year is ',fmtdate(o2d(100))
+!     end program demo_o2d
+! 
+!    Results:
+! 
+!     > 100th day of 2004 is Friday, April 9th, 2004 12:00:00 AM UTC-05:00
+!     > 100th day of 2005 is Sunday, April 10th, 2005 12:00:00 AM UTC-05:00
+!     > 100th day of 2006 is Monday, April 10th, 2006 12:00:00 AM UTC-05:00
+!     > 100th day of 2007 is Tuesday, April 10th, 2007 12:00:00 AM UTC-05:00
+!     > 100th day of 2008 is Wednesday, April 9th, 2008 12:00:00 AM UTC-05:00
+!     > 100th day of this year is Monday, April 10th, 2023 12:00:00 AM UTC-05:00
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function o2d(ordinal,year) result(dat)
 
 ! ident_9="@(#) M_time o2d(3f) Converts ordinal day to DAT date-time array"
@@ -929,63 +918,61 @@ end function o2d
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    v2mo(3f) - [M_time:MONTH_NAME] returns the month name of a Common
-!!    month number
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function v2mo(imonth,short) result(month_name)
-!!
-!!     integer,intent(in)           :: imonth      ! month number (1-12)
-!!     character(len=:),allocatable :: month_name  ! month name
-!!     logical,intent(in),optional  :: short
-!!
-!!##DESCRIPTION
-!!   Given a Common Calendar month number, return the name of the month
-!!   as a string.
-!!
-!!##OPTIONS
-!!    imonth      Common month number (1-12). If out of the allowable range
-!!                the month name returned will be 'UNKNOWN'.
-!!    short       Flag whether to return short or long name
-!!##RETURNS
-!!    month_name  A string representing a month name or the word 'UNKNOWN'
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_v2mo
-!!     use M_time, only : v2mo
-!!     implicit none
-!!     integer :: i
-!!        write(*,*)(v2mo(i),i=1,13)
-!!     end program demo_v2mo
-!!
-!!    results:
-!!
-!!     January
-!!     February
-!!     March
-!!     April
-!!     May
-!!     June
-!!     July
-!!     August
-!!     September
-!!     October
-!!     November
-!!     December
-!!     UNKNOWN.
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    v2mo(3f) - [M_time:MONTH_NAME] returns the month name of a Common
+!    month number
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function v2mo(imonth,short) result(month_name)
+! 
+!     integer,intent(in)           :: imonth      ! month number (1-12)
+!     character(len=:),allocatable :: month_name  ! month name
+!     logical,intent(in),optional  :: short
+! 
+! DESCRIPTION
+!   Given a Common Calendar month number, return the name of the month
+!   as a string.
+! 
+! OPTIONS
+!    imonth      Common month number (1-12). If out of the allowable range
+!                the month name returned will be 'UNKNOWN'.
+!    short       Flag whether to return short or long name
+! RETURNS
+!    month_name  A string representing a month name or the word 'UNKNOWN'
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_v2mo
+!     use M_time, only : v2mo
+!     implicit none
+!     integer :: i
+!        write(*,*)(v2mo(i),i=1,13)
+!     end program demo_v2mo
+! 
+!    results:
+! 
+!     January
+!     February
+!     March
+!     April
+!     May
+!     June
+!     July
+!     August
+!     September
+!     October
+!     November
+!     December
+!     UNKNOWN.
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MIT
 function v2mo(imonth,short) result(month_name)
 
 ! ident_10="@(#) M_time v2mo(3f) returns the month name of a Common month number"
@@ -1042,54 +1029,52 @@ end function v2mo
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    mo2d(3f) - [M_time:MONTH_NAME] given month name return DAT date-time
-!!    array for beginning of that month in specified year
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!       function mo2d(month_name,year) result(dat)
-!!
-!!        character(len=*),intent(in) :: month_name
-!!        integer,intent(in),optional :: year
-!!        integer                     :: dat(8)
-!!
-!!##DESCRIPTION
-!!   Given a Common Calendar month name, return the date as a "DAT" array
-!!   for the 1st day of the month. An optional year that defaults to the
-!!   current year may be specified.
-!!
-!!##OPTIONS
-!!    month_name  A string representing a Common Calendar month name.
-!!    year        Optional year. Defaults to current year
-!!##RETURNS
-!!    dat         An integer array that has the same structure as the array
-!!                returned by the Fortran intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_mo2d
-!!     use M_time, only : mo2d
-!!     implicit none
-!!        write(*,'("MARCH:",*(i0:,":"))')mo2d('March')
-!!     end program demo_mo2d
-!!
-!!    Results:
-!!
-!!          > MARCH:2016:3:1:-240:0:0:0:0
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    mo2d(3f) - [M_time:MONTH_NAME] given month name return DAT date-time
+!    array for beginning of that month in specified year
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!       function mo2d(month_name,year) result(dat)
+! 
+!        character(len=*),intent(in) :: month_name
+!        integer,intent(in),optional :: year
+!        integer                     :: dat(8)
+! 
+! DESCRIPTION
+!   Given a Common Calendar month name, return the date as a "DAT" array
+!   for the 1st day of the month. An optional year that defaults to the
+!   current year may be specified.
+! 
+! OPTIONS
+!    month_name  A string representing a Common Calendar month name.
+!    year        Optional year. Defaults to current year
+! RETURNS
+!    dat         An integer array that has the same structure as the array
+!                returned by the Fortran intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_mo2d
+!     use M_time, only : mo2d
+!     implicit none
+!        write(*,'("MARCH:",*(i0:,":"))')mo2d('March')
+!     end program demo_mo2d
+! 
+!    Results:
+! 
+!          > MARCH:2016:3:1:-240:0:0:0:0
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function mo2d(month_name,year) result(dat)
 
 ! ident_11="@(#) M_time mo2d(3f) month name to DAT date-time array for 1st of that month in specified year"
@@ -1115,56 +1100,54 @@ end function mo2d
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    mo2v(3f) - [M_time:MONTH_NAME] given month name return month number
-!!    (1-12) of that month
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    elemental function mo2v(month_name) result(imonth)
-!!
-!!      character(len=*),intent(in):: month_name ! month name
-!!      integer                    :: imonth     ! month number
-!!
-!!##DESCRIPTION
-!!   Given a string representing the name or abbreviation of a Gregorian
-!!   Calendar month return a number representing the position of the
-!!   month in the calendar starting with 1 for January and ending with
-!!   12 for December.
-!!
-!!##OPTIONS
-!!    month_name  name or abbreviation of month. Case is ignored.
-!!##RETURNS
-!!    imonth      month number returned. If the name is not recognized a -1
-!!                is returned.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_mo2v
-!!     use M_time, only : mo2v
-!!     implicit none
-!!        write(*,*)mo2v("April")
-!!        write(*,*)mo2v('Apr')
-!!        write(*,*)mo2v('sexember')
-!!        write(*,*)mo2v('unknown')  ! returns -1
-!!     end program demo_mo2v
-!!
-!!    results:
-!!
-!!       >  4
-!!       >  4
-!!       > -1
-!!       > -1
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    mo2v(3f) - [M_time:MONTH_NAME] given month name return month number
+!    (1-12) of that month
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    elemental function mo2v(month_name) result(imonth)
+! 
+!      character(len=*),intent(in):: month_name ! month name
+!      integer                    :: imonth     ! month number
+! 
+! DESCRIPTION
+!   Given a string representing the name or abbreviation of a Gregorian
+!   Calendar month return a number representing the position of the
+!   month in the calendar starting with 1 for January and ending with
+!   12 for December.
+! 
+! OPTIONS
+!    month_name  name or abbreviation of month. Case is ignored.
+! RETURNS
+!    imonth      month number returned. If the name is not recognized a -1
+!                is returned.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_mo2v
+!     use M_time, only : mo2v
+!     implicit none
+!        write(*,*)mo2v("April")
+!        write(*,*)mo2v('Apr')
+!        write(*,*)mo2v('sexember')
+!        write(*,*)mo2v('unknown')  ! returns -1
+!     end program demo_mo2v
+! 
+!    results:
+! 
+!       >  4
+!       >  4
+!       > -1
+!       > -1
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 elemental impure function mo2v(month_name) result(imonth)
 
 ! ident_12="@(#) M_time mo2v(3f) given month name return month number (1-12) of that month"
@@ -1196,59 +1179,57 @@ end function mo2v
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    now(3f) - [M_time:DATE_PRINTING] return string representing current
-!!    time given one of many formats to present with
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function now(format) result(timestr)
-!!
-!!     character(len=*),intent(in)     :: format  ! input format string
-!!     character(len=:),allocatable    :: timestr ! formatted date
-!!
-!!##DESCRIPTION
-!!   The now(3f) function is a call to the fmtdate(3f) function using the
-!!   current date and time. That is, it is a convenient way to print the
-!!   current date and time.
-!!
-!!##OPTIONS
-!!     format      string describing how to format the current date and time.
-!!                 For a complete description of the formatting macros
-!!                 supported see fmtdate_usage(3f).
-!!##RETURNS
-!!     timestr     formatted output string representing date
-!!
-!!##EXAMPLE
-!!
-!!    Sample Program:
-!!
-!!     program demo_now
-!!     use M_time, only : now
-!!     implicit none
-!!        write(*,*)now("The current date is &
-!!           &year/month/day hour:minute:second timezone")
-!!        write(*,*)now("The current date is &
-!!           &WEEKDAY at HOUR GOOD, MONTH DAY, year")
-!!        write(*,*)now("The current date is &
-!!           &%w, %l %d, %Y %H:%m:%s %N")
-!!        write(*,*)now("iso")
-!!     end program demo_now
-!! ```
-!! Results:
-!!
-!!  >  The current date is 2024/06/28 14:56:36 -0400
-!!  >  The current date is Friday at 2 PM, June 28th, 2024
-!!  >  The current date is Fri, Jun 28th, 2024 2:56:36 PM
-!!  >  2024-06-28T14:56:36-04:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    now(3f) - [M_time:DATE_PRINTING] return string representing current
+!    time given one of many formats to present with
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function now(format) result(timestr)
+! 
+!     character(len=*),intent(in)     :: format  ! input format string
+!     character(len=:),allocatable    :: timestr ! formatted date
+! 
+! DESCRIPTION
+!   The now(3f) function is a call to the fmtdate(3f) function using the
+!   current date and time. That is, it is a convenient way to print the
+!   current date and time.
+! 
+! OPTIONS
+!     format      string describing how to format the current date and time.
+!                 For a complete description of the formatting macros
+!                 supported see fmtdate_usage(3f).
+! RETURNS
+!     timestr     formatted output string representing date
+! 
+! EXAMPLE
+!    Sample Program:
+! 
+!     program demo_now
+!     use M_time, only : now
+!     implicit none
+!        write(*,*)now("The current date is &
+!           &year/month/day hour:minute:second timezone")
+!        write(*,*)now("The current date is &
+!           &WEEKDAY at HOUR GOOD, MONTH DAY, year")
+!        write(*,*)now("The current date is &
+!           &%w, %l %d, %Y %H:%m:%s %N")
+!        write(*,*)now("iso")
+!     end program demo_now
+! ```
+! Results:
+! 
+!  >  The current date is 2024/06/28 14:56:36 -0400
+!  >  The current date is Friday at 2 PM, June 28th, 2024
+!  >  The current date is Fri, Jun 28th, 2024 2:56:36 PM
+!  >  2024-06-28T14:56:36-04:00
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function now(format)
 
 ! ident_13="@(#) M_time now(3f) return string representing current time given format"
@@ -1268,60 +1249,58 @@ end function now
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    fmtdate(3f) - [M_time:DATE_PRINTING] given DAT date-time array return
-!!    date as string using specified format
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function fmtdate(values,format) result(timestr)
-!!
-!!     integer,dimension(8),intent(in)      :: values
-!!     character(len=*),intent(in),optional :: format
-!!     character(len=:),allocatable         :: timestr
-!!
-!!##DESCRIPTION
-!!   The fmtdate(3f) procedure lets you reformat a DAT array in
-!!   many common formats using a special string containing macro names
-!!   beginning with '%'. To see the allowable macros call or see the
-!!   fmtdate_usage(3f) routine.
-!!
-!!##OPTIONS
-!!     values   date in a "DAT" array, which is the same format as
-!!              the values returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!     format   string describing how to format the "DAT" array.
-!!              For a complete description of the formatting macros
-!!              supported see fmtdate_usage(3f).
-!!##RETURNS
-!!     timestr  formatted output string representing date
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_fmtdate
-!!     use M_time, only : fmtdate
-!!     implicit none
-!!     integer :: dat(8)
-!!        call date_and_time(values=dat)
-!!        write(*,*)fmtdate(dat,"current date: %w, %l %d, %Y %H:%m:%s %N")
-!!     end program demo_fmtdate
-!!
-!!    results:
-!!
-!!       The current date is Sun, Jul 17th, 2016 01:21:35 PM
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015-12-19
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    fmtdate(3f) - [M_time:DATE_PRINTING] given DAT date-time array return
+!    date as string using specified format
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function fmtdate(values,format) result(timestr)
+! 
+!     integer,dimension(8),intent(in)      :: values
+!     character(len=*),intent(in),optional :: format
+!     character(len=:),allocatable         :: timestr
+! 
+! DESCRIPTION
+!   The fmtdate(3f) procedure lets you reformat a DAT array in
+!   many common formats using a special string containing macro names
+!   beginning with '%'. To see the allowable macros call or see the
+!   fmtdate_usage(3f) routine.
+! 
+! OPTIONS
+!     values   date in a "DAT" array, which is the same format as
+!              the values returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+!     format   string describing how to format the "DAT" array.
+!              For a complete description of the formatting macros
+!              supported see fmtdate_usage(3f).
+! RETURNS
+!     timestr  formatted output string representing date
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_fmtdate
+!     use M_time, only : fmtdate
+!     implicit none
+!     integer :: dat(8)
+!        call date_and_time(values=dat)
+!        write(*,*)fmtdate(dat,"current date: %w, %l %d, %Y %H:%m:%s %N")
+!     end program demo_fmtdate
+! 
+!    results:
+! 
+!       The current date is Sun, Jul 17th, 2016 01:21:35 PM
+! 
+! AUTHOR
+!    John S. Urban, 2015-12-19
+! 
+! LICENSE
+!    MI
 function fmtdate(values,format) result(timestr)
 
 ! ident_14="@(#) M_time fmtdate(3f) given DAT date-time array return date as string using format"
@@ -1625,199 +1604,197 @@ end function fmtdate
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    fmtdate_usage(3f) - [M_time:DATE_PRINTING] display macros recognized
-!!    by fmtdate(3f) and now(3f)
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine fmtdate_usage(indent)
-!!
-!!     integer,intent(in),optional      :: indent
-!!
-!!##DESCRIPTION
-!!
-!!   The fmtdate_usage(3f) subroutine displays the formatting options
-!!   available for use in procedures such as fmtdate(3f) and now(3f).
-!!   It is typically used to produce up-to-date help text in commands
-!!   that use the M_time(3fm) module, so that the formatting information
-!!   only needs maintained in one place (this routine) and is easily
-!!   displayed so users can quickly obtain a description of the formatting
-!!   macros.
-!!
-!!##OPTIONS
-!!     indent      how many spaces to prefix the output with, so that
-!!                 calling programs can position the output. Default
-!!                 for this optional parameter is three (3).
-!!
-!!##EXAMPLE
-!!
-!!    Sample Program:
-!!
-!!     program demo_fmtdate_usage
-!!     use M_time, only : fmtdate_usage
-!!     implicit none
-!!        call fmtdate_usage() ! see all formatting options
-!!     end program demo_fmtdate_usage
-!!
-!!    results (actually call the routine to ensure this is up to date):
-!!
-!!     Description                                        Example
-!!
-!!     Base time array:
-!!     (1) %Y -- year, yyyy                                2016
-!!     (2) %M -- month of year, 01 to 12                   07
-!!     (3) %D -- day of month, 01 to 31                    29
-!!         %d -- day of month, with suffix (1st, 2nd,...)  29th
-!!     (4) %Z -- minutes from UTC                          -0240m
-!!         %z -- -+hh:mm from UTC                          -04:00
-!!         %T -- -+hhmm  from UTC                          -0400
-!!     (5) %h -- hours, 00 to 23                           10
-!!         %H -- hour (1 to 12, or twelve-hour clock)      10
-!!         %N -- midnight< AM <=noon; noon<= PM <midnight  AM
-!!     (6) %m -- minutes, 00 to 59                         54
-!!     (7) %s -- sec, 00 to 59                             08
-!!     (8) %x -- milliseconds 000 to 999                   521
-!!     Conversions:
-!!         %E -- Unix Epoch time                           1469804048.5220029
-!!         %e -- integer value of Unix Epoch time          1469804049
-!!         %F -- Modified Julian  date                     57599.121
-!!         %f -- integer value of Modified Julian Date     57599
-!!         %G -- Baseday and Seconds                       (57599,40223.12139393)
-!!         %g -- integer value of Baseday and Seconds      57599
-!!         %J -- Julian  date                              2457599.121
-!!         %j -- integer value of Julian Date(Julian Day)  2457599
-!!         %O -- Ordinal day (day of year)                 211
-!!         %o -- Whole days since Unix Epoch date          17011
-!!         %U -- day of week, 1..7 Sunday=1                6
-!!         %u -- day of week, 1..7 Monday=1                5
-!!         %i -- ISO week of year 1..53                    30
-!!         %I -- iso-8601 week-numbering date(yyyy-Www-d)  2016-W30-5
-!!      Names:
-!!         %l -- abbreviated month name                    Jul
-!!         %L -- full month name                           July
-!!         %w -- first three characters of weekday         Fri
-!!         %W -- weekday name                              Friday
-!!         %p -- phase of moon                             New
-!!         %P -- percent of way from new to full moon      -1%
-!!      Literals:
-!!         %% -- a literal %                               %
-!!         %t -- tab character
-!!         %b -- blank character
-!!         %B -- exclamation(bang) character
-!!         %n -- new line (system dependent)
-!!         %q -- single quote (apostrophe)
-!!         %Q -- double quote
-!!      Duration:
-!!         %a -- Time since now as d-h:m:s               1-12:34:30
-!!         %A -- TIme since now as seconds               12810.4500
-!!      Program timing:
-!!         %c -- CPU_TIME(3f) output                     .21875000000000000
-!!         %C -- number of times this routine is used    1
-!!         %S -- seconds since last use of this format   .0000000000000000
-!!         %k -- time in seconds from SYSTEM_CLOCK(3f)   723258.812
-!!         %K -- time in clicks from SYSTEM_CLOCK(3f)    723258812
-!!   Help:
-!!         %? -- call fmtdate_usage
-!!
-!!    If no percent (%) is found in the format one of several
-!!    alternate substitutions occurs.
-!!
-!!    If the format is composed entirely of one of the following
-!!    keywords the following substitutions occur:
-!!
-!!      "iso-8601",
-!!      "iso"           ==> %Y-%M-%DT%h:%m:%s%z
-!!      "iso-8601W",
-!!      "isoweek"       ==> %I 2016-W30-5
-!!      "sql"           ==> "%Y-%M-%D %h:%m:%s.%x"
-!!      "sqlday"        ==> "%Y-%M-%D"
-!!      "dash"          ==> %Y-%M-%D
-!!      "sqltime"       ==> "%h:%m:%s.%x"
-!!      "rfc-2822"      ==> %w, %D %l %Y %h:%m:%s %T
-!!      "rfc-3339"      ==> %Y-%M-%DT%h:%m:%s%z
-!!      "date"          ==> %w %l %D %h:%m:%s UTC%z %Y
-!!      "short"         ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
-!!      "long"," "      ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
-!!      "suffix"        ==> %Y%D%M%h%m%s
-!!      "formal"        ==> The %d of %L %Y
-!!      "lord"          ==> the %d day of %L in the year of our Lord %Y
-!!      "easter"        ==> FOR THE YEAR OF THE CURRENT DATE:
-!!                       Easter day: the %d day of %L in the year of our Lord %Y
-!!      "all"           ==> A SAMPLE OF DATE FORMATS
-!!      "usage|help|?"  ==> %?
-!!
-!!   Examples of single keywords
-!!
-!!    iso-8601
-!!    iso       : 2024-06-29T08:56:48-04:00
-!!    iso-8601W
-!!    isoweek   : 2024-W26-6
-!!    sql       : "2024-06-29 08:56:48.750"
-!!    sqlday    : "2024-06-29"
-!!    dash      : 2024-06-29
-!!    sqltime   : 08:56:48.833
-!!    rfc-2822  : Sat, 29 Jun 2024 08:56:48 -0400
-!!    rfc-3339  : 2024-06-29T08:56:48-04:00
-!!    date      : Sat Jun 29 08:56:48 UTC-04:00 2024
-!!    short     : Sat, Jun 29th, 2024 8:56:48 AM UTC-04:00
-!!    long      : Saturday, June 29th, 2024 8:56:48 AM UTC-04:00
-!!    suffix    : 20242906085648
-!!    formal    : The 29th of June 2024
-!!    lord      : the 29th day of June in the year of our Lord 2024
-!!    easter    : Easter day: the 31st day of March in the year of our Lord 2024
-!!    all       : Civil Calendar: Saturday June 29th
-!!                Civil Date: 2024-06-29 08:56:49 -04:00
-!!                Julian Date: 2460491.0394568751
-!!                Unix Epoch Time: 1719665809.0740056
-!!                Day Of Year: 181
-!!                ISO-8601 week: 2024-W26-6
-!!
-!!    otherwise the following words are replaced with the most
-!!    common macros:
-!!
-!!    numeric values:
-!!
-!!       year     %Y  2016
-!!       month    %M  07
-!!       day      %D  29
-!!       hour     %h  10
-!!       minute   %m  54
-!!       second   %s  08
-!!       timezone %T  0400
-!!
-!!       epoch    %e  1469804049
-!!       julian   %j  2457599
-!!       ordinal  %O  211
-!!       weekday  %u  5
-!!       age      %A  13238944.3030
-!!
-!!    string values:
-!!
-!!       MONTH          %L  July
-!!       Month|Mth      %l  Jul
-!!       WEEKDAY        %W  Thursday
-!!       Weekday|wkday  %w  Thu
-!!       DAY            %d  7th
-!!       TIMEZONE       %z  -04:00
-!!       Timezone       %Z  -240m
-!!       GOOD           %N  AM
-!!       HOUR           %H  10
-!!       AGE            %a  1200-10:30:40
-!!
-!!    If none of these keywords are found then every letter that
-!!    is a macro is assumed to have an implied percent in front
-!!    of it. For example:
-!!
-!!       YMDhms ==> %Y%M%D%h%m%s ==> 20160729105408
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015-10-24
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    fmtdate_usage(3f) - [M_time:DATE_PRINTING] display macros recognized
+!    by fmtdate(3f) and now(3f)
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine fmtdate_usage(indent)
+! 
+!     integer,intent(in),optional      :: indent
+! 
+! DESCRIPTION
+! 
+!   The fmtdate_usage(3f) subroutine displays the formatting options
+!   available for use in procedures such as fmtdate(3f) and now(3f).
+!   It is typically used to produce up-to-date help text in commands
+!   that use the M_time(3fm) module, so that the formatting information
+!   only needs maintained in one place (this routine) and is easily
+!   displayed so users can quickly obtain a description of the formatting
+!   macros.
+! 
+! OPTIONS
+!     indent      how many spaces to prefix the output with, so that
+!                 calling programs can position the output. Default
+!                 for this optional parameter is three (3).
+! 
+! EXAMPLE
+!    Sample Program:
+! 
+!     program demo_fmtdate_usage
+!     use M_time, only : fmtdate_usage
+!     implicit none
+!        call fmtdate_usage() ! see all formatting options
+!     end program demo_fmtdate_usage
+! 
+!    results (actually call the routine to ensure this is up to date):
+! 
+!     Description                                        Example
+! 
+!     Base time array:
+!     (1) %Y -- year, yyyy                                2016
+!     (2) %M -- month of year, 01 to 12                   07
+!     (3) %D -- day of month, 01 to 31                    29
+!         %d -- day of month, with suffix (1st, 2nd,...)  29th
+!     (4) %Z -- minutes from UTC                          -0240m
+!         %z -- -+hh:mm from UTC                          -04:00
+!         %T -- -+hhmm  from UTC                          -0400
+!     (5) %h -- hours, 00 to 23                           10
+!         %H -- hour (1 to 12, or twelve-hour clock)      10
+!         %N -- midnight< AM <=noon; noon<= PM <midnight  AM
+!     (6) %m -- minutes, 00 to 59                         54
+!     (7) %s -- sec, 00 to 59                             08
+!     (8) %x -- milliseconds 000 to 999                   521
+!     Conversions:
+!         %E -- Unix Epoch time                           1469804048.5220029
+!         %e -- integer value of Unix Epoch time          1469804049
+!         %F -- Modified Julian  date                     57599.121
+!         %f -- integer value of Modified Julian Date     57599
+!         %G -- Baseday and Seconds                       (57599,40223.12139393)
+!         %g -- integer value of Baseday and Seconds      57599
+!         %J -- Julian  date                              2457599.121
+!         %j -- integer value of Julian Date(Julian Day)  2457599
+!         %O -- Ordinal day (day of year)                 211
+!         %o -- Whole days since Unix Epoch date          17011
+!         %U -- day of week, 1..7 Sunday=1                6
+!         %u -- day of week, 1..7 Monday=1                5
+!         %i -- ISO week of year 1..53                    30
+!         %I -- iso-8601 week-numbering date(yyyy-Www-d)  2016-W30-5
+!      Names:
+!         %l -- abbreviated month name                    Jul
+!         %L -- full month name                           July
+!         %w -- first three characters of weekday         Fri
+!         %W -- weekday name                              Friday
+!         %p -- phase of moon                             New
+!         %P -- percent of way from new to full moon      -1%
+!      Literals:
+!         %% -- a literal %                               %
+!         %t -- tab character
+!         %b -- blank character
+!         %B -- exclamation(bang) character
+!         %n -- new line (system dependent)
+!         %q -- single quote (apostrophe)
+!         %Q -- double quote
+!      Duration:
+!         %a -- Time since now as d-h:m:s               1-12:34:30
+!         %A -- TIme since now as seconds               12810.4500
+!      Program timing:
+!         %c -- CPU_TIME(3f) output                     .21875000000000000
+!         %C -- number of times this routine is used    1
+!         %S -- seconds since last use of this format   .0000000000000000
+!         %k -- time in seconds from SYSTEM_CLOCK(3f)   723258.812
+!         %K -- time in clicks from SYSTEM_CLOCK(3f)    723258812
+!   Help:
+!         %? -- call fmtdate_usage
+! 
+!    If no percent (%) is found in the format one of several
+!    alternate substitutions occurs.
+! 
+!    If the format is composed entirely of one of the following
+!    keywords the following substitutions occur:
+! 
+!      "iso-8601",
+!      "iso"           ==> %Y-%M-%DT%h:%m:%s%z
+!      "iso-8601W",
+!      "isoweek"       ==> %I 2016-W30-5
+!      "sql"           ==> "%Y-%M-%D %h:%m:%s.%x"
+!      "sqlday"        ==> "%Y-%M-%D"
+!      "dash"          ==> %Y-%M-%D
+!      "sqltime"       ==> "%h:%m:%s.%x"
+!      "rfc-2822"      ==> %w, %D %l %Y %h:%m:%s %T
+!      "rfc-3339"      ==> %Y-%M-%DT%h:%m:%s%z
+!      "date"          ==> %w %l %D %h:%m:%s UTC%z %Y
+!      "short"         ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
+!      "long"," "      ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
+!      "suffix"        ==> %Y%D%M%h%m%s
+!      "formal"        ==> The %d of %L %Y
+!      "lord"          ==> the %d day of %L in the year of our Lord %Y
+!      "easter"        ==> FOR THE YEAR OF THE CURRENT DATE:
+!                       Easter day: the %d day of %L in the year of our Lord %Y
+!      "all"           ==> A SAMPLE OF DATE FORMATS
+!      "usage|help|?"  ==> %?
+! 
+!   Examples of single keywords
+! 
+!    iso-8601
+!    iso       : 2024-06-29T08:56:48-04:00
+!    iso-8601W
+!    isoweek   : 2024-W26-6
+!    sql       : "2024-06-29 08:56:48.750"
+!    sqlday    : "2024-06-29"
+!    dash      : 2024-06-29
+!    sqltime   : 08:56:48.833
+!    rfc-2822  : Sat, 29 Jun 2024 08:56:48 -0400
+!    rfc-3339  : 2024-06-29T08:56:48-04:00
+!    date      : Sat Jun 29 08:56:48 UTC-04:00 2024
+!    short     : Sat, Jun 29th, 2024 8:56:48 AM UTC-04:00
+!    long      : Saturday, June 29th, 2024 8:56:48 AM UTC-04:00
+!    suffix    : 20242906085648
+!    formal    : The 29th of June 2024
+!    lord      : the 29th day of June in the year of our Lord 2024
+!    easter    : Easter day: the 31st day of March in the year of our Lord 2024
+!    all       : Civil Calendar: Saturday June 29th
+!                Civil Date: 2024-06-29 08:56:49 -04:00
+!                Julian Date: 2460491.0394568751
+!                Unix Epoch Time: 1719665809.0740056
+!                Day Of Year: 181
+!                ISO-8601 week: 2024-W26-6
+! 
+!    otherwise the following words are replaced with the most
+!    common macros:
+! 
+!    numeric values:
+! 
+!       year     %Y  2016
+!       month    %M  07
+!       day      %D  29
+!       hour     %h  10
+!       minute   %m  54
+!       second   %s  08
+!       timezone %T  0400
+! 
+!       epoch    %e  1469804049
+!       julian   %j  2457599
+!       ordinal  %O  211
+!       weekday  %u  5
+!       age      %A  13238944.3030
+! 
+!    string values:
+! 
+!       MONTH          %L  July
+!       Month|Mth      %l  Jul
+!       WEEKDAY        %W  Thursday
+!       Weekday|wkday  %w  Thu
+!       DAY            %d  7th
+!       TIMEZONE       %z  -04:00
+!       Timezone       %Z  -240m
+!       GOOD           %N  AM
+!       HOUR           %H  10
+!       AGE            %a  1200-10:30:40
+! 
+!    If none of these keywords are found then every letter that
+!    is a macro is assumed to have an implied percent in front
+!    of it. For example:
+! 
+!       YMDhms ==> %Y%M%D%h%m%s ==> 20160729105408
+! 
+! AUTHOR
+!    John S. Urban, 2015-10-24
+! 
+! LICENSE
+!    MI
 subroutine fmtdate_usage(indent)
 
 ! ident_15="@(#) M_time fmtdate_usage(3f) display macros recognized by fmtdate(3f)"
@@ -1965,91 +1942,89 @@ end subroutine fmtdate_usage
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    guessdate(3f) - [M_time:READING_DATES] reads in a date, in various formats
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine guessdate(anot,dat)
-!!
-!!     character(len=*),intent(in) :: anot
-!!     integer,intent(out)         :: dat(8)
-!!
-!!##DESCRIPTION
-!!
-!!   Read in strings and except for looking for month names remove
-!!   non-numeric characters and try to convert a string assumed to represent
-!!   a date to a date-time array.
-!!
-!!   Years should always be expressed as four-digit numbers, and except for
-!!   the special format yyyy-mm-dd the day should come after the year. Named
-!!   months are preferred. If ambiguous the order is assumed to be day -
-!!   month - year. Times are assumed to be of the form HH:MM:SS
-!!
-!!   It is planned that this routine will be superseded. As an alternative,
-!!   a C routine exists in the standard C libraries that allows for
-!!   expansive features when reading dates that can be called via the
-!!   ISO_C_BINDING interface.
-!!
-!!##OPTIONS
-!!    anot  A string assumed to represent a date including a year, month
-!!          and day.
-!!
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_guessdate
-!!     use M_time, only : guessdate, fmtdate
-!!     implicit none
-!!     character(len=20),allocatable :: datestrings(:)
-!!     character(len=:),allocatable  :: answer
-!!     integer                       :: dat(8)
-!!     integer                       :: i
-!!        datestrings=[ &
-!!        & 'January 9th, 2001   ',&
-!!        & ' Tue Jul 19 2016    ',&
-!!        & ' 21/12/2016         ',&
-!!        & ' 4th of Jul 2004    ' ]
-!!        do i=1,size(datestrings)
-!!           write(*,'(a)')repeat('-',80)
-!!           write(*,*)'TRYING ',datestrings(i)
-!!           call guessdate(datestrings(i),dat)
-!!           write(*,*)'DAT ARRAY ',dat
-!!           answer=fmtdate(dat)
-!!           write(*,*)'FOR '//datestrings(i)//' GOT '//trim(answer)
-!!        enddo
-!!     end program demo_guessdate
-!!
-!!    results:
-!!
-!!     ---------------------------------------------------------------------
-!!     TRYING January 9th, 2001
-!!     DAT ARRAY         2001  1  9   -240    0   0   0    0
-!!     FOR January 9th, 2001  GOT Tuesday, January 9th, 2001 12:00:00 AM
-!!     ---------------------------------------------------------------------
-!!     TRYING  Tue Jul 19 2016
-!!     DAT ARRAY         2016  7  19  -240    0   0   0    0
-!!     FOR  Tue Jul 19 2016   GOT Tuesday, July 19th, 2016 12:00:00 AM
-!!     ---------------------------------------------------------------------
-!!     TRYING  21/12/2016
-!!     DAT ARRAY         2016  12 21  -240    0   0   0    0
-!!     FOR  21/12/2016        GOT Wednesday, December 21st, 2016 12:00:00 AM
-!!     ---------------------------------------------------------------------
-!!     TRYING  4th of Jul 2004
-!!     DAT ARRAY         2004  7  4   -240    0   0   0    0
-!!     FOR  4th of Jul 2004   GOT Sunday, July 4th, 2004 12:00:00 AM
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    guessdate(3f) - [M_time:READING_DATES] reads in a date, in various formats
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine guessdate(anot,dat)
+! 
+!     character(len=*),intent(in) :: anot
+!     integer,intent(out)         :: dat(8)
+! 
+! DESCRIPTION
+! 
+!   Read in strings and except for looking for month names remove
+!   non-numeric characters and try to convert a string assumed to represent
+!   a date to a date-time array.
+! 
+!   Years should always be expressed as four-digit numbers, and except for
+!   the special format yyyy-mm-dd the day should come after the year. Named
+!   months are preferred. If ambiguous the order is assumed to be day -
+!   month - year. Times are assumed to be of the form HH:MM:SS
+! 
+!   It is planned that this routine will be superseded. As an alternative,
+!   a C routine exists in the standard C libraries that allows for
+!   expansive features when reading dates that can be called via the
+!   ISO_C_BINDING interface.
+! 
+! OPTIONS
+!    anot  A string assumed to represent a date including a year, month
+!          and day.
+! 
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_guessdate
+!     use M_time, only : guessdate, fmtdate
+!     implicit none
+!     character(len=20),allocatable :: datestrings(:)
+!     character(len=:),allocatable  :: answer
+!     integer                       :: dat(8)
+!     integer                       :: i
+!        datestrings=[ &
+!        & 'January 9th, 2001   ',&
+!        & ' Tue Jul 19 2016    ',&
+!        & ' 21/12/2016         ',&
+!        & ' 4th of Jul 2004    ' ]
+!        do i=1,size(datestrings)
+!           write(*,'(a)')repeat('-',80)
+!           write(*,*)'TRYING ',datestrings(i)
+!           call guessdate(datestrings(i),dat)
+!           write(*,*)'DAT ARRAY ',dat
+!           answer=fmtdate(dat)
+!           write(*,*)'FOR '//datestrings(i)//' GOT '//trim(answer)
+!        enddo
+!     end program demo_guessdate
+! 
+!    results:
+! 
+!     ---------------------------------------------------------------------
+!     TRYING January 9th, 2001
+!     DAT ARRAY         2001  1  9   -240    0   0   0    0
+!     FOR January 9th, 2001  GOT Tuesday, January 9th, 2001 12:00:00 AM
+!     ---------------------------------------------------------------------
+!     TRYING  Tue Jul 19 2016
+!     DAT ARRAY         2016  7  19  -240    0   0   0    0
+!     FOR  Tue Jul 19 2016   GOT Tuesday, July 19th, 2016 12:00:00 AM
+!     ---------------------------------------------------------------------
+!     TRYING  21/12/2016
+!     DAT ARRAY         2016  12 21  -240    0   0   0    0
+!     FOR  21/12/2016        GOT Wednesday, December 21st, 2016 12:00:00 AM
+!     ---------------------------------------------------------------------
+!     TRYING  4th of Jul 2004
+!     DAT ARRAY         2004  7  4   -240    0   0   0    0
+!     FOR  4th of Jul 2004   GOT Sunday, July 4th, 2004 12:00:00 AM
+! 
+! LICENSE
+!    MI
 subroutine guessdate(datestring,dat,ier)
 
 ! ident_16="@(#) M_time guessdate(3f) Guess format of a date string to create a DAT date-time array"
@@ -2319,78 +2294,76 @@ end subroutine guessdate
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    dow(3f) - [M_time:DAY_OF_WEEK] given a date-time array DAT return
-!!    the day of the week
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine dow(values, weekday, day, ierr, short)
-!!
-!!     integer,intent(in)                    :: values(8)
-!!     integer,intent(out),optional          :: weekday
-!!     character(len=*),intent(out),optional :: day
-!!     integer,intent(out),optional          :: ierr
-!!     logical,intent(in),optional           :: short
-!!
-!!##DESCRIPTION
-!!   Given a date array DAT
-!!   return the day of the week as a number and a name, Mon=1.
-!!
-!!##OPTIONS
-!!    values   "DAT" array (an integer array of the same format as
-!!             the array returned by the intrinsic DATE_AND_TIME(3f))
-!!             describing the date to be used to calculate the day
-!!             of the week.
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!##RETURNS
-!!    weekday  The numeric day of the week, starting with Monday=1.
-!!             Optional.
-!!    day      The name of the day of the week.
-!!             Optional.
-!!    ierr     Error code
-!!
-!!             o [ 0] correct
-!!             o [-1] invalid input date
-!!             o [-2] neither day nor weekday
-!!               return values were requested.
-!!
-!!             If the error code is not returned and an error occurs,
-!!             the program is stopped.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_dow
-!!     use M_time, only : dow
-!!     implicit none
-!!     integer          :: dat(8)     ! input date array
-!!     integer          :: weekday
-!!     character(len=9) :: day
-!!     integer          :: ierr
-!!       call date_and_time(values=dat)
-!!       call dow(dat, weekday, day, ierr)
-!!       write(*,'(a,i0)')'weekday=',weekday
-!!       write(*,'(a,a)')'day=',trim(day)
-!!       write(*,'(a,i0)')'ierr=',ierr
-!!     end program demo_dow
-!!
-!!    results:
-!!
-!!     weekday=1
-!!     day=Monday
-!!     ierr=0
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015-12-19
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    dow(3f) - [M_time:DAY_OF_WEEK] given a date-time array DAT return
+!    the day of the week
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine dow(values, weekday, day, ierr, short)
+! 
+!     integer,intent(in)                    :: values(8)
+!     integer,intent(out),optional          :: weekday
+!     character(len=*),intent(out),optional :: day
+!     integer,intent(out),optional          :: ierr
+!     logical,intent(in),optional           :: short
+! 
+! DESCRIPTION
+!   Given a date array DAT
+!   return the day of the week as a number and a name, Mon=1.
+! 
+! OPTIONS
+!    values   "DAT" array (an integer array of the same format as
+!             the array returned by the intrinsic DATE_AND_TIME(3f))
+!             describing the date to be used to calculate the day
+!             of the week.
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! RETURNS
+!    weekday  The numeric day of the week, starting with Monday=1.
+!             Optional.
+!    day      The name of the day of the week.
+!             Optional.
+!    ierr     Error code
+! 
+!             o [ 0] correct
+!             o [-1] invalid input date
+!             o [-2] neither day nor weekday
+!               return values were requested.
+! 
+!             If the error code is not returned and an error occurs,
+!             the program is stopped.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_dow
+!     use M_time, only : dow
+!     implicit none
+!     integer          :: dat(8)     ! input date array
+!     integer          :: weekday
+!     character(len=9) :: day
+!     integer          :: ierr
+!       call date_and_time(values=dat)
+!       call dow(dat, weekday, day, ierr)
+!       write(*,'(a,i0)')'weekday=',weekday
+!       write(*,'(a,a)')'day=',trim(day)
+!       write(*,'(a,i0)')'ierr=',ierr
+!     end program demo_dow
+! 
+!    results:
+! 
+!     weekday=1
+!     day=Monday
+!     ierr=0
+! 
+! AUTHOR
+!    John S. Urban, 2015-12-19
+! 
+! LICENSE
+!    MI
 subroutine dow(values, weekday, day, ierr, short)
 
 ! ident_17="@(#) M_time dow(3f) Given DAT date-time array return the day of the week"
@@ -2481,126 +2454,124 @@ end subroutine dow
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week, both
-!!    numerically and as a string of the form "yyyy-Wmm-d" given a DAT
-!!    date-time array
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
-!!
-!!     integer,intent(in)              :: dat(8)     ! input date array
-!!     integer,intent(out)             :: iso_year, iso_week, iso_weekday
-!!     character(len=10),intent(out)   :: iso_name
-!!
-!!##DESCRIPTION
-!!   Given a "DAT" array defining a date and time, return the ISO-8601
-!!   Week in two formats -- as three integer values defining the ISO year,
-!!   week of year and weekday; and as a string of the form "yyyy-Www-d".
-!!
-!!##OPTIONS
-!!    dat          "DAT" array (an integer array of the same format as
-!!                 the array returned by the intrinsic DATE_AND_TIME(3f))
-!!                 describing the date,
-!!
-!!                     dat=[ year,month,day,timezone,hour,&
-!!                      & minutes,seconds,milliseconds]
-!!##RETURNS
-!!    iso_year     ISO-8601 year number for the given date
-!!    iso_week     ISO-8601 week number for the given date
-!!    iso_weekday  ISO-8601 weekday number for the given date
-!!    iso_name     ISO-8601 Week string for the data in the form "yyyy-Www-d".
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_d2w
-!!     use M_time, only : d2w
-!!     implicit none
-!!     integer           :: dat(8)     ! input date array
-!!     integer           :: iso_year, iso_week, iso_weekday
-!!     character(len=10) :: iso_name
-!!        call date_and_time(values=dat)
-!!        call d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
-!!        write(*,'("ISO-8601 Week:   ",a)')iso_name
-!!        write(*,'(a,i0)')'ISO-8601 year    ',iso_year
-!!        write(*,'(a,i0)')'ISO-8601 week    ',iso_week
-!!        write(*,'(a,i0)')'ISO-8601 weekday ',iso_weekday
-!!     end program demo_d2w
-!!
-!!    results:
-!!
-!!     ISO-8601 Week:   2016-W29-1
-!!     ISO-8601 year    2016
-!!     ISO-8601 week    29
-!!     ISO-8601 weekday 1
-!!
-!!##DEFINITION
-!!   The ISO-8601 date and time standard was issued by the International
-!!   Organization for Standardization (ISO). It is used (mainly) in
-!!   government and business for fiscal years, as well as in timekeeping.
-!!   The system specifies a week year atop the Gregorian calendar by defining
-!!   a notation for ordinal weeks of the year.
-!!
-!!   o An ISO week-numbering year (also called ISO year informally) has 52
-!!     or 53 full weeks. That is 364 or 371 days instead of the usual 365
-!!     or 366 days.
-!!   o The extra week is referred to here as a leap week, although ISO-8601
-!!     does not use this term.  Weeks start with Monday.
-!!   o The first week of a year is the week that contains the first Thursday
-!!     of the year (and, hence, always contains 4 January).  ISO week year
-!!     numbering therefore slightly deviates from the Gregorian for some days
-!!     close to January 1st.
-!!
-!!##CALCULATION
-!!   The ISO-8601 week number of any date can be calculated, given its
-!!   ordinal date (i.e. position within the year) and its day of the week.
-!!
-!!##METHOD
-!!     Using ISO weekday numbers (running from 1 for Monday to 7 for Sunday),
-!!     subtract the weekday from the ordinal date, then add 10. Divide the
-!!     result by 7. Ignore the remainder; the quotient equals the week
-!!     number. If the week number thus obtained equals 0, it means that
-!!     the given date belongs to the preceding (week-based) year. If a
-!!     week number of 53 is obtained, one must check that the date is not
-!!     actually in week 1 of the following year.
-!!
-!!     These two statements are assumed true when correcting the dates
-!!     around January 1st:
-!!
-!!     o The number of weeks in a given year is equal to the corresponding
-!!       week number of 28 December.
-!!     o January 4th is always in the first week.
-!!
-!!##ISO_NAME
-!!   Week date representations are in the format YYYYWww-D.
-!!
-!!     o [YYYY] indicates the ISO week-numbering year which is slightly
-!!       different from the traditional Gregorian calendar year.
-!!     o [Www] is the week number prefixed by the letter W, from W01
-!!       through W53.
-!!     o [D] is the weekday number, from 1 through 7, beginning with Monday
-!!       and ending with Sunday.
-!!
-!!   For example, the Gregorian date 31 December 2006 corresponds to the
-!!   Sunday of the 52nd week of 2006, and is written
-!!
-!!     2006-W52-7 (extended form)
-!!     or
-!!     2006W527 (compact form).
-!!
-!!##REFERENCE
-!!    From Wikipedia, the free encyclopedia 2015-12-19
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015-12-19
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    d2w(3f) - [M_time:WEEK_OF_YEAR] calculate iso-8601 Week, both
+!    numerically and as a string of the form "yyyy-Wmm-d" given a DAT
+!    date-time array
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
+! 
+!     integer,intent(in)              :: dat(8)     ! input date array
+!     integer,intent(out)             :: iso_year, iso_week, iso_weekday
+!     character(len=10),intent(out)   :: iso_name
+! 
+! DESCRIPTION
+!   Given a "DAT" array defining a date and time, return the ISO-8601
+!   Week in two formats -- as three integer values defining the ISO year,
+!   week of year and weekday; and as a string of the form "yyyy-Www-d".
+! 
+! OPTIONS
+!    dat          "DAT" array (an integer array of the same format as
+!                 the array returned by the intrinsic DATE_AND_TIME(3f))
+!                 describing the date,
+! 
+!                     dat=[ year,month,day,timezone,hour,&
+!                      & minutes,seconds,milliseconds]
+! RETURNS
+!    iso_year     ISO-8601 year number for the given date
+!    iso_week     ISO-8601 week number for the given date
+!    iso_weekday  ISO-8601 weekday number for the given date
+!    iso_name     ISO-8601 Week string for the data in the form "yyyy-Www-d".
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_d2w
+!     use M_time, only : d2w
+!     implicit none
+!     integer           :: dat(8)     ! input date array
+!     integer           :: iso_year, iso_week, iso_weekday
+!     character(len=10) :: iso_name
+!        call date_and_time(values=dat)
+!        call d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
+!        write(*,'("ISO-8601 Week:   ",a)')iso_name
+!        write(*,'(a,i0)')'ISO-8601 year    ',iso_year
+!        write(*,'(a,i0)')'ISO-8601 week    ',iso_week
+!        write(*,'(a,i0)')'ISO-8601 weekday ',iso_weekday
+!     end program demo_d2w
+! 
+!    results:
+! 
+!     ISO-8601 Week:   2016-W29-1
+!     ISO-8601 year    2016
+!     ISO-8601 week    29
+!     ISO-8601 weekday 1
+! 
+! DEFINITION
+!   The ISO-8601 date and time standard was issued by the International
+!   Organization for Standardization (ISO). It is used (mainly) in
+!   government and business for fiscal years, as well as in timekeeping.
+!   The system specifies a week year atop the Gregorian calendar by defining
+!   a notation for ordinal weeks of the year.
+! 
+!   o An ISO week-numbering year (also called ISO year informally) has 52
+!     or 53 full weeks. That is 364 or 371 days instead of the usual 365
+!     or 366 days.
+!   o The extra week is referred to here as a leap week, although ISO-8601
+!     does not use this term.  Weeks start with Monday.
+!   o The first week of a year is the week that contains the first Thursday
+!     of the year (and, hence, always contains 4 January).  ISO week year
+!     numbering therefore slightly deviates from the Gregorian for some days
+!     close to January 1st.
+! 
+! CALCULATION
+!   The ISO-8601 week number of any date can be calculated, given its
+!   ordinal date (i.e. position within the year) and its day of the week.
+! 
+! METHOD
+!     Using ISO weekday numbers (running from 1 for Monday to 7 for Sunday),
+!     subtract the weekday from the ordinal date, then add 10. Divide the
+!     result by 7. Ignore the remainder; the quotient equals the week
+!     number. If the week number thus obtained equals 0, it means that
+!     the given date belongs to the preceding (week-based) year. If a
+!     week number of 53 is obtained, one must check that the date is not
+!     actually in week 1 of the following year.
+! 
+!     These two statements are assumed true when correcting the dates
+!     around January 1st:
+! 
+!     o The number of weeks in a given year is equal to the corresponding
+!       week number of 28 December.
+!     o January 4th is always in the first week.
+! 
+! ISO_NAME
+!   Week date representations are in the format YYYYWww-D.
+! 
+!     o [YYYY] indicates the ISO week-numbering year which is slightly
+!       different from the traditional Gregorian calendar year.
+!     o [Www] is the week number prefixed by the letter W, from W01
+!       through W53.
+!     o [D] is the weekday number, from 1 through 7, beginning with Monday
+!       and ending with Sunday.
+! 
+!   For example, the Gregorian date 31 December 2006 corresponds to the
+!   Sunday of the 52nd week of 2006, and is written
+! 
+!     2006-W52-7 (extended form)
+!     or
+!     2006W527 (compact form).
+! 
+! REFERENCE
+!    From Wikipedia, the free encyclopedia 2015-12-19
+! 
+! AUTHOR
+!    John S. Urban, 2015-12-19
+! 
+! LICENSE
+!    MIT
 subroutine d2w(dat,iso_year,iso_week,iso_weekday,iso_name)
 
 ! ident_18="@(#) M_time d2w(3f) DAT date-time array to iso-8601 Week-numbering year date yyyy-Www-d"
@@ -2647,220 +2618,218 @@ end subroutine d2w
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    w2d(3f) - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601
-!!    numeric Week values or from string "yyyy-Www-d"
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    either
-!!
-!!       subroutine w2d(iso_year,iso_week,iso_weekday,dat)
-!!
-!!        integer,intent(in)      :: iso_year, iso_week, iso_weekday
-!!        integer,intent(out)     :: dat(8)     ! output date array
-!!
-!!    or
-!!
-!!       subroutine w2d(iso_week,dat,ierr)
-!!
-!!        character(len=*),intent(in)  :: iso8601_week
-!!        integer,intent(out)          :: dat(8)     ! output date array
-!!        integer,intent(out),optional :: ierr
-!!
-!!##DESCRIPTION
-!!   Given an ISO-8601 week return a "DAT" array defining a date and time,
-!!   The ISO-8601 is supplied as three integer values defining the ISO
-!!   year, week of year and weekday.
-!!
-!!##OPTIONS
-!!    iso_year      ISO-8601 year number for the given date
-!!    iso_week      ISO-8601 week number for the given date.
-!!                  Valid values are from 1 to 53.
-!!    iso_weekday   ISO-8601 weekday number for the given date.
-!!                  Valid values are from 1 to 7, where 1 is Monday.
-!!
-!!    iso8601_week  ISO-8601 Week string for the data in the form
-!!                  "yyyy-Www-D", "yyyyWwwD", "yyyy-Www", and "yyyyWww"
-!!                  where yyyy is the year, ww is the iso_week, and D is
-!!                  the weekday.
-!!
-!!##RETURNS
-!!    dat          "DAT" array (an integer array of the same format as
-!!                 the array returned by the intrinsic DATE_AND_TIME(3f))
-!!                 describing the date to be used
-!!
-!!                     dat=[ year,month,day,timezone,hour,&
-!!                      & minutes,seconds,milliseconds]
-!!
-!!    ierr         optional error code result. If non-zero an error occurred.
-!!                 If an error occurs and IERR is not present the program
-!!                 terminates.
-!!##NOTES
-!!
-!!   If D is omitted 1 is returned although this does not appear in the
-!!   iso-8601 standard at the current time.
-!!
-!!   The returned dat array is currently always assumed to have the local
-!!   timezone. This might be changed to always assume ZULU time.
-!!
-!!##EXAMPLE
-!!
-!!
-!!  Sample program:
-!!
-!!     program demo_w2d
-!!     use M_time, only : w2d, fmtdate
-!!     implicit none
-!!       write(*,'(a)')&
-!!       & 'Given Monday 29 December 2008 is written "2009-W01-1"'
-!!       call printit(2009,1,1)
-!!       write(*,'(a)')&
-!!       & 'Given Sunday 3 January 2010 is written "2009-W53-7"'
-!!       call printit(2009,53,7)
-!!       write(*,'(a)')&
-!!       & 'Given the Gregorian date Sun 31 December 2006 &
-!!       &is written 2006-W52-7'
-!!       call printit(2006,52,7)
-!!       write(*,'(a)')&
-!!       & 'Given 27 September 2008 is 2008-W39-6'
-!!       call printit(2008,39,6)
-!!
-!!       string : block
-!!          character(len=*),parameter :: array(4)=[character(len=80) ::  &
-!!          & '2008-W39-6', '2008W396', '2008-W39', '2008W39' ]
-!!          integer  :: dat(8)
-!!          integer  :: i
-!!          do i=1,size(array)
-!!             write(*,'(a)')&
-!!             & 'Given string '//array(i)
-!!             call w2d(array(i),dat)
-!!             write(*,'(a,i0)')'RESULT:          '
-!!             write(*,'(a,*(i0:,","))')'   DAT array        ',dat
-!!             write(*,'(a,/,67("="))')'    '//fmtdate(dat,'long')
-!!          enddo
-!!       endblock string
-!!     contains
-!!     subroutine printit(iso_year,iso_week,iso_weekday)
-!!     ! ISO-8601 Week: 2016-W29-1
-!!     integer  :: iso_year, iso_week, iso_weekday
-!!     ! input date array
-!!     integer  :: dat(8)
-!!      call w2d(iso_year,iso_week,iso_weekday,dat)
-!!      write(*,'(a,i0)')'GIVEN:           '
-!!      write(*,'(a,i0)')'ISO-8601 year    ',iso_year
-!!      write(*,'(a,i0)')'ISO-8601 week    ',iso_week
-!!      write(*,'(a,i0)')'ISO-8601 weekday ',iso_weekday
-!!      write(*,'(a,i0)')'RESULT:          '
-!!      write(*,'(a,*(i0:,","))')'   DAT array        ',dat
-!!      write(*,'(a,/,67("="))')'    '//fmtdate(dat,'long')
-!!     end subroutine printit
-!!    end program demo_w2d
-!!
-!!  Results:
-!!
-!!     Given Monday 29 December 2008 is written "2009-W01-1"
-!!     GIVEN:
-!!     ISO-8601 year    2009
-!!     ISO-8601 week    1
-!!     ISO-8601 weekday 1
-!!     RESULT:
-!!        DAT array        2008,12,29,-240,0,0,0,0
-!!         Monday, December 29th, 2008 12:00:00 AM UTC-04:00
-!!     =========================================================
-!!     Given Sunday 3 January 2010 is written "2009-W53-7"
-!!     GIVEN:
-!!     ISO-8601 year    2009
-!!     ISO-8601 week    53
-!!     ISO-8601 weekday 7
-!!     RESULT:
-!!        DAT array        2010,1,3,-240,0,0,0,0
-!!         Sunday, January 3rd, 2010 12:00:00 AM UTC-04:00
-!!     =========================================================
-!!     Given the Gregorian date Sun 31 December 2006 is written 2006-W52-7
-!!     GIVEN:
-!!     ISO-8601 year    2006
-!!     ISO-8601 week    52
-!!     ISO-8601 weekday 7
-!!     RESULT:
-!!        DAT array        2006,12,31,-240,0,0,0,0
-!!         Sunday, December 31st, 2006 12:00:00 AM UTC-04:00
-!!     =========================================================
-!!     Given 27 September 2008 is 2008-W39-6
-!!     GIVEN:
-!!     ISO-8601 year    2008
-!!     ISO-8601 week    39
-!!     ISO-8601 weekday 6
-!!     RESULT:
-!!        DAT array        2008,9,27,-240,0,0,0,0
-!!         Saturday, September 27th, 2008 12:00:00 AM UTC-04:00
-!!     =========================================================
-!!
-!!##DEFINITION
-!!   The ISO-8601 date and time standard was issued by the International
-!!   Organization for Standardization (ISO). It is used (mainly) in
-!!   government and business for fiscal years, as well as in timekeeping.
-!!   The system specifies a week year atop the Gregorian calendar by
-!!   defining a notation for ordinal weeks of the year.
-!!
-!!   An ISO week-numbering year (also called ISO year informally) has
-!!   52 or 53 full weeks. That is 364 or 371 days instead of the usual
-!!   365 or 366 days. The extra week is referred to here as a leap week,
-!!   although ISO-8601 does not use this term. Weeks start with Monday.
-!!   The first week of a year is the week that contains the first Thursday
-!!   of the year (and, hence, always contains 4 January). ISO week year
-!!   numbering therefore slightly deviates from the Gregorian for some
-!!   days close to January 1st.
-!!
-!!##METHOD
-!!     Calculating a date given the year, week number and weekday
-!!
-!!     This method requires that one know the weekday of 4 January of the
-!!     year in question. Add 3 to the number of this weekday, giving a
-!!     correction to be used for dates within this year.
-!!
-!!     Method: Multiply the week number by 7, then add the weekday. From
-!!     this sum subtract the correction for the year. The result is the
-!!     ordinal date, which can be converted into a calendar date.  If the
-!!     ordinal date thus obtained is zero or negative, the date belongs to
-!!     the previous calendar year; if greater than the number of days in
-!!     the year, to the following year.
-!!
-!!     Example: year 2008, week 39, Saturday (day 6)
-!!     Correction for 2008: 5 + 3 = 8
-!!     (39 x 7) + 6 = 279
-!!     279 - 8 = 271
-!!     Ordinal day 271 of a leap year is day 271 - 244 = 27 September
-!!     Result: 27 September 2008
-!!
-!!##ISO_NAME
-!!   Week date representations are in the format YYYY-Www ,YYYYWww,
-!!   YYYY-Www-D or YYYYWwwD
-!!
-!!     o [YYYY] indicates the ISO week-numbering year which is slightly
-!!       different from the traditional Gregorian calendar year.
-!!     o [Www] is the week number prefixed by the letter W, from W01
-!!       through W53.
-!!     o [D] is the weekday number, from 1 through 7, beginning with Monday
-!!       and ending with Sunday.
-!!
-!!   For example, the Gregorian date 31 December 2006 corresponds to the
-!!   Sunday of the 52nd week of 2006, and is written
-!!
-!!     2006-W52-7 (extended form)
-!!     or
-!!     2006W527 (compact form).
-!!
-!!##REFERENCE
-!!    From Wikipedia, the free encyclopedia 2016-08-08
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    w2d(3f) - [M_time:WEEK_OF_YEAR] calculate DAT date-time array from iso-8601
+!    numeric Week values or from string "yyyy-Www-d"
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    either
+! 
+!       subroutine w2d(iso_year,iso_week,iso_weekday,dat)
+! 
+!        integer,intent(in)      :: iso_year, iso_week, iso_weekday
+!        integer,intent(out)     :: dat(8)     ! output date array
+! 
+!    or
+! 
+!       subroutine w2d(iso_week,dat,ierr)
+! 
+!        character(len=*),intent(in)  :: iso8601_week
+!        integer,intent(out)          :: dat(8)     ! output date array
+!        integer,intent(out),optional :: ierr
+! 
+! DESCRIPTION
+!   Given an ISO-8601 week return a "DAT" array defining a date and time,
+!   The ISO-8601 is supplied as three integer values defining the ISO
+!   year, week of year and weekday.
+! 
+! OPTIONS
+!    iso_year      ISO-8601 year number for the given date
+!    iso_week      ISO-8601 week number for the given date.
+!                  Valid values are from 1 to 53.
+!    iso_weekday   ISO-8601 weekday number for the given date.
+!                  Valid values are from 1 to 7, where 1 is Monday.
+! 
+!    iso8601_week  ISO-8601 Week string for the data in the form
+!                  "yyyy-Www-D", "yyyyWwwD", "yyyy-Www", and "yyyyWww"
+!                  where yyyy is the year, ww is the iso_week, and D is
+!                  the weekday.
+! 
+! RETURNS
+!    dat          "DAT" array (an integer array of the same format as
+!                 the array returned by the intrinsic DATE_AND_TIME(3f))
+!                 describing the date to be used
+! 
+!                     dat=[ year,month,day,timezone,hour,&
+!                      & minutes,seconds,milliseconds]
+! 
+!    ierr         optional error code result. If non-zero an error occurred.
+!                 If an error occurs and IERR is not present the program
+!                 terminates.
+! NOTES
+! 
+!   If D is omitted 1 is returned although this does not appear in the
+!   iso-8601 standard at the current time.
+! 
+!   The returned dat array is currently always assumed to have the local
+!   timezone. This might be changed to always assume ZULU time.
+! 
+! EXAMPLE
+! 
+!  Sample program:
+! 
+!     program demo_w2d
+!     use M_time, only : w2d, fmtdate
+!     implicit none
+!       write(*,'(a)')&
+!       & 'Given Monday 29 December 2008 is written "2009-W01-1"'
+!       call printit(2009,1,1)
+!       write(*,'(a)')&
+!       & 'Given Sunday 3 January 2010 is written "2009-W53-7"'
+!       call printit(2009,53,7)
+!       write(*,'(a)')&
+!       & 'Given the Gregorian date Sun 31 December 2006 &
+!       &is written 2006-W52-7'
+!       call printit(2006,52,7)
+!       write(*,'(a)')&
+!       & 'Given 27 September 2008 is 2008-W39-6'
+!       call printit(2008,39,6)
+! 
+!       string : block
+!          character(len=*),parameter :: array(4)=[character(len=80) ::  &
+!          & '2008-W39-6', '2008W396', '2008-W39', '2008W39' ]
+!          integer  :: dat(8)
+!          integer  :: i
+!          do i=1,size(array)
+!             write(*,'(a)')&
+!             & 'Given string '//array(i)
+!             call w2d(array(i),dat)
+!             write(*,'(a,i0)')'RESULT:          '
+!             write(*,'(a,*(i0:,","))')'   DAT array        ',dat
+!             write(*,'(a,/,67("="))')'    '//fmtdate(dat,'long')
+!          enddo
+!       endblock string
+!     contains
+!     subroutine printit(iso_year,iso_week,iso_weekday)
+!     ! ISO-8601 Week: 2016-W29-1
+!     integer  :: iso_year, iso_week, iso_weekday
+!     ! input date array
+!     integer  :: dat(8)
+!      call w2d(iso_year,iso_week,iso_weekday,dat)
+!      write(*,'(a,i0)')'GIVEN:           '
+!      write(*,'(a,i0)')'ISO-8601 year    ',iso_year
+!      write(*,'(a,i0)')'ISO-8601 week    ',iso_week
+!      write(*,'(a,i0)')'ISO-8601 weekday ',iso_weekday
+!      write(*,'(a,i0)')'RESULT:          '
+!      write(*,'(a,*(i0:,","))')'   DAT array        ',dat
+!      write(*,'(a,/,67("="))')'    '//fmtdate(dat,'long')
+!     end subroutine printit
+!    end program demo_w2d
+! 
+!  Results:
+! 
+!     Given Monday 29 December 2008 is written "2009-W01-1"
+!     GIVEN:
+!     ISO-8601 year    2009
+!     ISO-8601 week    1
+!     ISO-8601 weekday 1
+!     RESULT:
+!        DAT array        2008,12,29,-240,0,0,0,0
+!         Monday, December 29th, 2008 12:00:00 AM UTC-04:00
+!     =========================================================
+!     Given Sunday 3 January 2010 is written "2009-W53-7"
+!     GIVEN:
+!     ISO-8601 year    2009
+!     ISO-8601 week    53
+!     ISO-8601 weekday 7
+!     RESULT:
+!        DAT array        2010,1,3,-240,0,0,0,0
+!         Sunday, January 3rd, 2010 12:00:00 AM UTC-04:00
+!     =========================================================
+!     Given the Gregorian date Sun 31 December 2006 is written 2006-W52-7
+!     GIVEN:
+!     ISO-8601 year    2006
+!     ISO-8601 week    52
+!     ISO-8601 weekday 7
+!     RESULT:
+!        DAT array        2006,12,31,-240,0,0,0,0
+!         Sunday, December 31st, 2006 12:00:00 AM UTC-04:00
+!     =========================================================
+!     Given 27 September 2008 is 2008-W39-6
+!     GIVEN:
+!     ISO-8601 year    2008
+!     ISO-8601 week    39
+!     ISO-8601 weekday 6
+!     RESULT:
+!        DAT array        2008,9,27,-240,0,0,0,0
+!         Saturday, September 27th, 2008 12:00:00 AM UTC-04:00
+!     =========================================================
+! 
+! DEFINITION
+!   The ISO-8601 date and time standard was issued by the International
+!   Organization for Standardization (ISO). It is used (mainly) in
+!   government and business for fiscal years, as well as in timekeeping.
+!   The system specifies a week year atop the Gregorian calendar by
+!   defining a notation for ordinal weeks of the year.
+! 
+!   An ISO week-numbering year (also called ISO year informally) has
+!   52 or 53 full weeks. That is 364 or 371 days instead of the usual
+!   365 or 366 days. The extra week is referred to here as a leap week,
+!   although ISO-8601 does not use this term. Weeks start with Monday.
+!   The first week of a year is the week that contains the first Thursday
+!   of the year (and, hence, always contains 4 January). ISO week year
+!   numbering therefore slightly deviates from the Gregorian for some
+!   days close to January 1st.
+! 
+! METHOD
+!     Calculating a date given the year, week number and weekday
+! 
+!     This method requires that one know the weekday of 4 January of the
+!     year in question. Add 3 to the number of this weekday, giving a
+!     correction to be used for dates within this year.
+! 
+!     Method: Multiply the week number by 7, then add the weekday. From
+!     this sum subtract the correction for the year. The result is the
+!     ordinal date, which can be converted into a calendar date.  If the
+!     ordinal date thus obtained is zero or negative, the date belongs to
+!     the previous calendar year; if greater than the number of days in
+!     the year, to the following year.
+! 
+!     Example: year 2008, week 39, Saturday (day 6)
+!     Correction for 2008: 5 + 3 = 8
+!     (39 x 7) + 6 = 279
+!     279 - 8 = 271
+!     Ordinal day 271 of a leap year is day 271 - 244 = 27 September
+!     Result: 27 September 2008
+! 
+! ISO_NAME
+!   Week date representations are in the format YYYY-Www ,YYYYWww,
+!   YYYY-Www-D or YYYYWwwD
+! 
+!     o [YYYY] indicates the ISO week-numbering year which is slightly
+!       different from the traditional Gregorian calendar year.
+!     o [Www] is the week number prefixed by the letter W, from W01
+!       through W53.
+!     o [D] is the weekday number, from 1 through 7, beginning with Monday
+!       and ending with Sunday.
+! 
+!   For example, the Gregorian date 31 December 2006 corresponds to the
+!   Sunday of the 52nd week of 2006, and is written
+! 
+!     2006-W52-7 (extended form)
+!     or
+!     2006W527 (compact form).
+! 
+! REFERENCE
+!    From Wikipedia, the free encyclopedia 2016-08-08
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MIT
 !-----------------------------------------------------------------------------------------------------------------------------------
 subroutine w2d_numeric(iso_year,iso_week,iso_weekday,dat)
 
@@ -2944,64 +2913,62 @@ end subroutine w2d_string
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    box_month(3f) - [M_time:DATE_PRINTING] create specified month in a
-!!    character array
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine box_month(dat,calen)
-!!
-!!     integer,intent(in) :: dat(8)
-!!     character(len=21)  :: calen(8)
-!!
-!!##DESCRIPTION
-!!   box_month(3f) uses a year and month from a date array to populate
-!!   a small character array with a calendar representing the month.
-!!
-!!##OPTIONS
-!!    dat  "DAT" array (an integer array of the same format as
-!!          the array returned by the intrinsic DATE_AND_TIME(3f))
-!!          describing the date to be used to specify what calendar
-!!          month to produce.
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!##RETURNS
-!!    calen  returned character array holding a display of the
-!!           specified month
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_box_month
-!!     use M_time, only : box_month
-!!     implicit none
-!!     integer           :: dat(8)
-!!     character(len=21) :: calendar(8)
-!!        call date_and_time(values=dat)
-!!        call box_month(dat,calendar)
-!!        write(*,'(a)')calendar
-!!     end program demo_box_month
-!!
-!!    results:
-!!
-!!      >     July 2016
-!!      >Mo Tu We Th Fr Sa Su
-!!      >             1  2  3
-!!      > 4  5  6  7  8  9 10
-!!      >11 12 13 14 15 16 17
-!!      >18 19 20 21 22 23 24
-!!      >25 26 27 28 29 30 31
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    box_month(3f) - [M_time:DATE_PRINTING] create specified month in a
+!    character array
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine box_month(dat,calen)
+! 
+!     integer,intent(in) :: dat(8)
+!     character(len=21)  :: calen(8)
+! 
+! DESCRIPTION
+!   box_month(3f) uses a year and month from a date array to populate
+!   a small character array with a calendar representing the month.
+! 
+! OPTIONS
+!    dat  "DAT" array (an integer array of the same format as
+!          the array returned by the intrinsic DATE_AND_TIME(3f))
+!          describing the date to be used to specify what calendar
+!          month to produce.
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! RETURNS
+!    calen  returned character array holding a display of the
+!           specified month
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_box_month
+!     use M_time, only : box_month
+!     implicit none
+!     integer           :: dat(8)
+!     character(len=21) :: calendar(8)
+!        call date_and_time(values=dat)
+!        call box_month(dat,calendar)
+!        write(*,'(a)')calendar
+!     end program demo_box_month
+! 
+!    results:
+! 
+!      >     July 2016
+!      >Mo Tu We Th Fr Sa Su
+!      >             1  2  3
+!      > 4  5  6  7  8  9 10
+!      >11 12 13 14 15 16 17
+!      >18 19 20 21 22 23 24
+!      >25 26 27 28 29 30 31
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 subroutine box_month(dat,calen)
 
 ! ident_21="@(#) M_time box_month(3f) generate month specified by DAT date-time array in character array"
@@ -3042,58 +3009,56 @@ end subroutine box_month
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    d2j(3f) - [M_time:JULIAN] given DAT date-time array returns Julian Date
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function d2j(dat) result(julian)
-!!
-!!     integer,intent(in)  :: dat(8)
-!!     real(kind=realtime) :: julian
-!!
-!!##DESCRIPTION
-!!   Given DAT date-time array returns Julian Date
-!!
-!!##OPTIONS
-!!    dat       Integer array holding a "DAT" array, similar in structure
-!!              to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!              If not present, use current time.
-!!##RETURNS
-!!    julian    The Julian Date. Julian dates (abbreviated JD)
-!!              are simply a continuous count of days and fractions since
-!!              noon Universal Time on January 1, 4713 BC (on the Julian
-!!              calendar).
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_d2j
-!!     use M_time, only : d2j
-!!     implicit none
-!!     integer :: dat(8)
-!!        call date_and_time(values=dat)
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        write(*,*)'Julian Date is ',d2j(dat)
-!!     end program demo_d2j
-!!
-!!    results:
-!!
-!!     Today is:2016:7:19:-240:2:11:50:885
-!!     Julian Date is    2457588.7582278359
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    d2j(3f) - [M_time:JULIAN] given DAT date-time array returns Julian Date
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function d2j(dat) result(julian)
+! 
+!     integer,intent(in)  :: dat(8)
+!     real(kind=realtime) :: julian
+! 
+! DESCRIPTION
+!   Given DAT date-time array returns Julian Date
+! 
+! OPTIONS
+!    dat       Integer array holding a "DAT" array, similar in structure
+!              to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+!              If not present, use current time.
+! RETURNS
+!    julian    The Julian Date. Julian dates (abbreviated JD)
+!              are simply a continuous count of days and fractions since
+!              noon Universal Time on January 1, 4713 BC (on the Julian
+!              calendar).
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_d2j
+!     use M_time, only : d2j
+!     implicit none
+!     integer :: dat(8)
+!        call date_and_time(values=dat)
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        write(*,*)'Julian Date is ',d2j(dat)
+!     end program demo_d2j
+! 
+!    results:
+! 
+!     Today is:2016:7:19:-240:2:11:50:885
+!     Julian Date is    2457588.7582278359
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function d2j(dat) result(julian)
 
 ! ident_22="@(#) M_time d2j(3f) Given DAT date-time array returns Julian Date"
@@ -3114,63 +3079,61 @@ end function d2j
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    j2d(3f) - [M_time:JULIAN] given a JD (Julian Date) returns a
-!!    date-time array DAT.
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function j2d(julian) result(dat)
-!!
-!!     real(kind=realtime),intent(in),optional :: julian
-!!     integer                                 :: dat(8)
-!!
-!!##DESCRIPTION
-!!   Converts a Julian Date to a DAT date-time array.
-!!
-!!##OPTIONS
-!!    julian  A Julian Date (JD) is the number of days since
-!!            noon (not midnight) on January 1st, 4713 BC.
-!!            If not present, use current time.
-!!
-!!##RETURNS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_j2d
-!!     use M_time, only : j2d, d2j, fmtdate, realtime
-!!     implicit none
-!!     integer,parameter   :: dp=kind(0.0d0)
-!!     real(kind=realtime) :: today
-!!     integer             :: dat(8)
-!!        call date_and_time(values=dat) ! get the date using intrinsic
-!!        today=d2j(dat)                  ! convert today to Julian Date
-!!        write(*,*)'Today=',fmtdate(j2d(today))
-!!        ! math is easy with Julian Days and Julian Dates
-!!        write(*,*)'Yesterday=',fmtdate(j2d(today-1.0_dp))
-!!        write(*,*)'Tomorrow=',fmtdate(j2d(today+1.0_dp))
-!!     end program demo_j2d
-!!
-!!    results:
-!!
-!!     Today=Tuesday, July 19th, 2016 08:48:20 AM
-!!     Yesterday=Monday, July 18th, 2016 08:48:20 AM
-!!     Tomorrow=Wednesday, July 20th, 2016 08:48:20 AM
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    j2d(3f) - [M_time:JULIAN] given a JD (Julian Date) returns a
+!    date-time array DAT.
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function j2d(julian) result(dat)
+! 
+!     real(kind=realtime),intent(in),optional :: julian
+!     integer                                 :: dat(8)
+! 
+! DESCRIPTION
+!   Converts a Julian Date to a DAT date-time array.
+! 
+! OPTIONS
+!    julian  A Julian Date (JD) is the number of days since
+!            noon (not midnight) on January 1st, 4713 BC.
+!            If not present, use current time.
+! 
+! RETURNS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_j2d
+!     use M_time, only : j2d, d2j, fmtdate, realtime
+!     implicit none
+!     integer,parameter   :: dp=kind(0.0d0)
+!     real(kind=realtime) :: today
+!     integer             :: dat(8)
+!        call date_and_time(values=dat) ! get the date using intrinsic
+!        today=d2j(dat)                  ! convert today to Julian Date
+!        write(*,*)'Today=',fmtdate(j2d(today))
+!        ! math is easy with Julian Days and Julian Dates
+!        write(*,*)'Yesterday=',fmtdate(j2d(today-1.0_dp))
+!        write(*,*)'Tomorrow=',fmtdate(j2d(today+1.0_dp))
+!     end program demo_j2d
+! 
+!    results:
+! 
+!     Today=Tuesday, July 19th, 2016 08:48:20 AM
+!     Yesterday=Monday, July 18th, 2016 08:48:20 AM
+!     Tomorrow=Wednesday, July 20th, 2016 08:48:20 AM
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function j2d(julian) result(dat)
 
 ! ident_23="@(#) M_time j2d(3f) Given Julian Date returns DAT date-time array"
@@ -3183,61 +3146,59 @@ end function j2d
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    d2u(3f) - [M_time:UNIX_EPOCH] given DAT date-time array returns Unix
-!!    Epoch Time (UET starts at 0000 on 1 Jan. 1970, UTC)
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function d2u(dat) result(unixtime)
-!!
-!!       integer,intent(in),optional :: dat(8)
-!!       real(kind=realtime)         :: unixtime
-!!
-!!##DESCRIPTION
-!!   Converts a DAT date-time array to a Unix Epoch Time value. Typically
-!!   mathematical operations such as sums, sorting and comparison are
-!!   performed with simple UET numeric values, and then they are converted
-!!   back.
-!!
-!!##OPTIONS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!          If not present the current time is used
-!!
-!!##RETURNS
-!!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
-!!              January 1st, 1970, UTC.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_d2u
-!!     use M_time, only : d2u
-!!     implicit none
-!!     integer           :: dat(8)
-!!        call date_and_time(values=dat)
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        write(*,*)'Unix Epoch time is ',d2u(dat)
-!!     end program demo_d2u
-!!
-!!    results:
-!!
-!!     Today is:2016:7:19:-240:2:0:48:561
-!!     Unix Epoch time is    1468908048.5610321
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    d2u(3f) - [M_time:UNIX_EPOCH] given DAT date-time array returns Unix
+!    Epoch Time (UET starts at 0000 on 1 Jan. 1970, UTC)
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function d2u(dat) result(unixtime)
+! 
+!       integer,intent(in),optional :: dat(8)
+!       real(kind=realtime)         :: unixtime
+! 
+! DESCRIPTION
+!   Converts a DAT date-time array to a Unix Epoch Time value. Typically
+!   mathematical operations such as sums, sorting and comparison are
+!   performed with simple UET numeric values, and then they are converted
+!   back.
+! 
+! OPTIONS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+!          If not present the current time is used
+! 
+! RETURNS
+!    unixtime  The "Unix Epoch" time, or the number of seconds since 00:00:00 on
+!              January 1st, 1970, UTC.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_d2u
+!     use M_time, only : d2u
+!     implicit none
+!     integer           :: dat(8)
+!        call date_and_time(values=dat)
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        write(*,*)'Unix Epoch time is ',d2u(dat)
+!     end program demo_d2u
+! 
+!    results:
+! 
+!     Today is:2016:7:19:-240:2:0:48:561
+!     Unix Epoch time is    1468908048.5610321
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function d2u(dat) result(unixtime)
 
 ! ident_24="@(#) M_time d2u(3f) Given DAT date-time array returns Unix Epoch time"
@@ -3256,70 +3217,68 @@ end function d2u
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    u2d(3f) - [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT
-!!    date-time array
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function u2d(unixtime) result(dat)
-!!
-!!     class(*),intent(in),optional      :: unixtime
-!!     ! integer
-!!     ! real
-!!     ! real(kind=realtime)
-!!
-!!     integer                           :: dat(8)
-!!
-!!##DESCRIPTION
-!!   Given Unix Epoch Time returns DAT date-time array
-!!
-!!##OPTIONS
-!!    unixtime  The "Unix Epoch" time, or the number of seconds since
-!!              00:00:00 on January 1st, 1970, UTC. If not present, use
-!!              current time.
-!!
-!!##RETURNS
-!!    dat       Integer array holding a "DAT" array, similar in structure
-!!              to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_u2d
-!!     use M_time, only : u2d, d2u, fmtdate, realtime
-!!     implicit none
-!!     integer,parameter :: dp=kind(0.0d0)
-!!     real(kind=realtime) :: today
-!!     integer :: dat(8)
-!!        ! get the date using intrinsic
-!!        call date_and_time(values=dat)
-!!        ! convert today to Julian Date
-!!        today=d2u(dat)
-!!        write(*,*)'Today=',fmtdate(u2d(today))
-!!        ! subtract day
-!!        write(*,*)'Yesterday=',fmtdate(u2d(today-86400.0_dp))
-!!        ! add day
-!!        write(*,*)'Tomorrow=',fmtdate(u2d(today+86400.0_dp))
-!!     end program demo_u2d
-!!
-!!    results:
-!!
-!!     Today=Tuesday, July 19th, 2016 11:10:08 AM
-!!     Yesterday=Monday, July 18th, 2016 11:10:08 AM
-!!     Tomorrow=Wednesday, July 20th, 2016 11:10:08 AM
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    u2d(3f) - [M_time:UNIX_EPOCH] given Unix Epoch Time returns DAT
+!    date-time array
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function u2d(unixtime) result(dat)
+! 
+!     class(*),intent(in),optional      :: unixtime
+!     ! integer
+!     ! real
+!     ! real(kind=realtime)
+! 
+!     integer                           :: dat(8)
+! 
+! DESCRIPTION
+!   Given Unix Epoch Time returns DAT date-time array
+! 
+! OPTIONS
+!    unixtime  The "Unix Epoch" time, or the number of seconds since
+!              00:00:00 on January 1st, 1970, UTC. If not present, use
+!              current time.
+! 
+! RETURNS
+!    dat       Integer array holding a "DAT" array, similar in structure
+!              to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_u2d
+!     use M_time, only : u2d, d2u, fmtdate, realtime
+!     implicit none
+!     integer,parameter :: dp=kind(0.0d0)
+!     real(kind=realtime) :: today
+!     integer :: dat(8)
+!        ! get the date using intrinsic
+!        call date_and_time(values=dat)
+!        ! convert today to Julian Date
+!        today=d2u(dat)
+!        write(*,*)'Today=',fmtdate(u2d(today))
+!        ! subtract day
+!        write(*,*)'Yesterday=',fmtdate(u2d(today-86400.0_dp))
+!        ! add day
+!        write(*,*)'Tomorrow=',fmtdate(u2d(today+86400.0_dp))
+!     end program demo_u2d
+! 
+!    results:
+! 
+!     Today=Tuesday, July 19th, 2016 11:10:08 AM
+!     Yesterday=Monday, July 18th, 2016 11:10:08 AM
+!     Tomorrow=Wednesday, July 20th, 2016 11:10:08 AM
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function u2d(unixtime) result(dat)
 
 ! ident_25="@(#) M_time u2d(3f) Given Unix Epoch Time returns DAT date-time array"
@@ -3345,87 +3304,85 @@ end function u2d
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    date_to_modified_julian(3f) - [M_time:MODIFIED_JULIAN] converts DAT
-!!    date-time array to Modified Julian Date
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine date_to_modified_julian(dat,modified_juliandate,ierr)
-!!
-!!     integer,intent(in)              :: dat(8)
-!!     real(kind=realtime),intent(out) :: modified_juliandate
-!!     integer,intent(out)             :: ierr
-!!
-!!##DESCRIPTION
-!!    Converts a DAT date-time array to a Modified Julian Date type. Simply
-!!
-!!    Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
-!!
-!!    Modified Julian Date (MJD) measures days (and fractional days) since
-!!    the start of 17 Nov 1858 CE in Universal Time (UTC).
-!!
-!!    MJD starts at midnight (00:00:00) so truncating the fractional
-!!    component of MJD always gives the same Civil Calendard day whatever
-!!    the time of day (unlike JD).
-!!
-!!##OPTIONS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!           dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!##RETURNS
-!!    modified_juliandate  A Modified Julian Date (MJD) measures days
-!!                         (and fractional days) since the start of 17 Nov
-!!                         1858 CE in Universal Time (UTC).
-!!
-!!    ierr        Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!   Sample Program:
-!!
-!!     program demo_date_to_modified_julian
-!!     use M_time, only : date_to_modified_julian
-!!     use M_time, only : date_to_julian, realtime
-!!     implicit none
-!!     integer                    :: dat(8)
-!!     real(kind=realtime)        :: modified_juliandate
-!!     real(kind=realtime)        :: juliandate
-!!     integer                    :: ierr
-!!     character(len=*),parameter :: g='(*(g0,1x))'
-!!        !
-!!        ! generate DAT array
-!!        call date_and_time(values=dat)
-!!        !
-!!        ! show DAT array
-!!        write(*,'("Today is:",*(i0:,":"))')dat
-!!        !
-!!        ! convert DAT to Julian Date
-!!        call date_to_julian(dat,juliandate,ierr)
-!!        write(*,g) 'Expecting:', juliandate - 2400000.5_realtime
-!!        !
-!!        ! convert DAT to Modified Julian Date
-!!        call date_to_modified_julian(dat,modified_juliandate,ierr)
-!!        write(*,g)'Modified Julian Date is ', modified_juliandate
-!!
-!!     end program demo_date_to_modified_julian
-!!
-!!   Results:
-!!
-!!     > Today is:2025:1:26:-300:1:5:31:721
-!!     > Expecting: 60701.253839362878
-!!     > Modified Julian Date is  60701.253839362878
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    date_to_modified_julian(3f) - [M_time:MODIFIED_JULIAN] converts DAT
+!    date-time array to Modified Julian Date
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine date_to_modified_julian(dat,modified_juliandate,ierr)
+! 
+!     integer,intent(in)              :: dat(8)
+!     real(kind=realtime),intent(out) :: modified_juliandate
+!     integer,intent(out)             :: ierr
+! 
+! DESCRIPTION
+!    Converts a DAT date-time array to a Modified Julian Date type. Simply
+! 
+!    Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+! 
+!    Modified Julian Date (MJD) measures days (and fractional days) since
+!    the start of 17 Nov 1858 CE in Universal Time (UTC).
+! 
+!    MJD starts at midnight (00:00:00) so truncating the fractional
+!    component of MJD always gives the same Civil Calendard day whatever
+!    the time of day (unlike JD).
+! 
+! OPTIONS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!           dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+! RETURNS
+!    modified_juliandate  A Modified Julian Date (MJD) measures days
+!                         (and fractional days) since the start of 17 Nov
+!                         1858 CE in Universal Time (UTC).
+! 
+!    ierr        Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!   Sample Program:
+! 
+!     program demo_date_to_modified_julian
+!     use M_time, only : date_to_modified_julian
+!     use M_time, only : date_to_julian, realtime
+!     implicit none
+!     integer                    :: dat(8)
+!     real(kind=realtime)        :: modified_juliandate
+!     real(kind=realtime)        :: juliandate
+!     integer                    :: ierr
+!     character(len=*),parameter :: g='(*(g0,1x))'
+!        !
+!        ! generate DAT array
+!        call date_and_time(values=dat)
+!        !
+!        ! show DAT array
+!        write(*,'("Today is:",*(i0:,":"))')dat
+!        !
+!        ! convert DAT to Julian Date
+!        call date_to_julian(dat,juliandate,ierr)
+!        write(*,g) 'Expecting:', juliandate - 2400000.5_realtime
+!        !
+!        ! convert DAT to Modified Julian Date
+!        call date_to_modified_julian(dat,modified_juliandate,ierr)
+!        write(*,g)'Modified Julian Date is ', modified_juliandate
+! 
+!     end program demo_date_to_modified_julian
+! 
+!   Results:
+! 
+!     > Today is:2025:1:26:-300:1:5:31:721
+!     > Expecting: 60701.253839362878
+!     > Modified Julian Date is  60701.253839362878
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 subroutine date_to_modified_julian(dat,modified_julian,ierr)
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! * There is no year zero
@@ -3466,89 +3423,87 @@ end subroutine date_to_modified_julian
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    modified_julian_to_date(3f) - [M_time:MODIFIED_JULIAN] converts a
-!!    MJD(Modified Julian Date) to a DAT date-time array.
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine modified_julian_to_date(modified_julian,dat,ierr)
-!!
-!!     real(kind=realtime),intent(in) :: modified_julian
-!!     integer,intent(out)            :: dat(8)
-!!     integer,intent(out)            :: ierr
-!!
-!!##DESCRIPTION
-!! Converts a Modified Julian Date(MJD) value to a DAT date-time
-!! array.
-!!
-!! Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
-!!
-!! Modified Julian Date (MJD) measures days (and fractional days) since
-!! the start of 17 Nov 1858 CE in Universal Time (UTC). Julian Date (JD)
-!! measures days (and fractional days) since noon on 1 January, 4713 BCE
-!! in Universal Time (UTC).
-!!
-!! MJD starts at midnight (00:00:00) so truncating the fractional component
-!! of MJD always gives the same Civil Calendar day whatever the time of day
-!! (unlike JD).
-!!
-!!##OPTIONS
-!!    modified_julian  A Modified Julian Date (MJD) measures days
-!!                     (and fractional days) since the start of 17 Nov
-!!                     1858 CE in Universal Time (UTC).
-!!
-!!##RETURNS
-!!     dat     Integer array holding a "DAT" array, similar in structure
-!!             to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!    ierr      Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!     Sample program:
-!!
-!!      program demo_modified_julian_to_date
-!!      use M_time, only : modified_julian_to_date, fmtdate, realtime
-!!      implicit none
-!!      integer,parameter   :: dp=kind(0.0d0)
-!!      real(kind=realtime) :: modified_juliandate, tomorrow, yesterday
-!!      integer             :: dat(8)
-!!      integer             :: ierr
-!!         ! set sample Modified Julian Date
-!!         modified_juliandate=60700.503682349771_dp
-!!         ! create DAT array for this date
-!!         call modified_julian_to_date(modified_juliandate,dat,ierr)
-!!         write(*,*)'Sample Date=',fmtdate(dat)
-!!         !
-!!         ! go back one day
-!!         yesterday= modified_juliandate-1.0
-!!         call modified_julian_to_date(yesterday,dat,ierr)
-!!         write(*,*)'Day Before =',fmtdate(dat)
-!!         !
-!!         ! go forward one day
-!!         tomorrow= modified_juliandate+1
-!!         call modified_julian_to_date(tomorrow,dat,ierr)
-!!         write(*,*)'Day After  =',fmtdate(dat)
-!!         !
-!!      end program demo_modified_julian_to_date
-!!
-!!     Results:
-!!
-!!      >  Sample Date=Saturday, January 25th, 2025 7:05:18 AM UTC-05:00
-!!      >  Day Before =Friday, January 24th, 2025 7:05:18 AM UTC-05:00
-!!      >  Day After  =Sunday, January 26th, 2025 7:05:18 AM UTC-05:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    modified_julian_to_date(3f) - [M_time:MODIFIED_JULIAN] converts a
+!    MJD(Modified Julian Date) to a DAT date-time array.
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine modified_julian_to_date(modified_julian,dat,ierr)
+! 
+!     real(kind=realtime),intent(in) :: modified_julian
+!     integer,intent(out)            :: dat(8)
+!     integer,intent(out)            :: ierr
+! 
+! DESCRIPTION
+! Converts a Modified Julian Date(MJD) value to a DAT date-time
+! array.
+! 
+! Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+! 
+! Modified Julian Date (MJD) measures days (and fractional days) since
+! the start of 17 Nov 1858 CE in Universal Time (UTC). Julian Date (JD)
+! measures days (and fractional days) since noon on 1 January, 4713 BCE
+! in Universal Time (UTC).
+! 
+! MJD starts at midnight (00:00:00) so truncating the fractional component
+! of MJD always gives the same Civil Calendar day whatever the time of day
+! (unlike JD).
+! 
+! OPTIONS
+!    modified_julian  A Modified Julian Date (MJD) measures days
+!                     (and fractional days) since the start of 17 Nov
+!                     1858 CE in Universal Time (UTC).
+! 
+! RETURNS
+!     dat     Integer array holding a "DAT" array, similar in structure
+!             to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+!    ierr      Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!     Sample program:
+! 
+!      program demo_modified_julian_to_date
+!      use M_time, only : modified_julian_to_date, fmtdate, realtime
+!      implicit none
+!      integer,parameter   :: dp=kind(0.0d0)
+!      real(kind=realtime) :: modified_juliandate, tomorrow, yesterday
+!      integer             :: dat(8)
+!      integer             :: ierr
+!         ! set sample Modified Julian Date
+!         modified_juliandate=60700.503682349771_dp
+!         ! create DAT array for this date
+!         call modified_julian_to_date(modified_juliandate,dat,ierr)
+!         write(*,*)'Sample Date=',fmtdate(dat)
+!         !
+!         ! go back one day
+!         yesterday= modified_juliandate-1.0
+!         call modified_julian_to_date(yesterday,dat,ierr)
+!         write(*,*)'Day Before =',fmtdate(dat)
+!         !
+!         ! go forward one day
+!         tomorrow= modified_juliandate+1
+!         call modified_julian_to_date(tomorrow,dat,ierr)
+!         write(*,*)'Day After  =',fmtdate(dat)
+!         !
+!      end program demo_modified_julian_to_date
+! 
+!     Results:
+! 
+!      >  Sample Date=Saturday, January 25th, 2025 7:05:18 AM UTC-05:00
+!      >  Day Before =Friday, January 24th, 2025 7:05:18 AM UTC-05:00
+!      >  Day After  =Sunday, January 26th, 2025 7:05:18 AM UTC-05:00
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 subroutine modified_julian_to_date(modified_julian,dat,ierr)
 
 ! ident_27="@(#) M_time modified_julian_to_date(3f) Converts Modified Julian Date to DAT date-time array"
@@ -3565,58 +3520,56 @@ end subroutine modified_julian_to_date
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    d2m(3f) - [M_time:MODIFIED_JULIAN] given DAT date-time array returns
-!!    Modified Julian Date
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function d2m(dat) result(julian)
-!!
-!!     integer,intent(in)  :: dat(8)
-!!     real(kind=realtime) :: modified_julian
-!!
-!!##DESCRIPTION
-!!   Given DAT date-time array returns Modified Julian Date
-!!
-!!##OPTIONS
-!!    dat       Integer array holding a "DAT" array, similar in structure
-!!              to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!              If not present, use current time.
-!!##RETURNS
-!!    modified_juliandate  A Modified Julian Date (MJD) measures days
-!!                         (and fractional days) since the start of 17 Nov
-!!                         1858 CE in Universal Time (UTC).
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_d2m
-!!     use M_time, only : d2m, realtime
-!!     implicit none
-!!     integer :: dat(8)
-!!        call date_and_time(values=dat)
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        write(*,*)'Modified Julian Date is ',d2m(dat)
-!!     end program demo_d2m
-!!
-!!    Results:
-!!
-!!     >  Today is:2025:1:26:-300:1:7:49:295
-!!     >  Modified Julian Date is    60701.255431655329
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    d2m(3f) - [M_time:MODIFIED_JULIAN] given DAT date-time array returns
+!    Modified Julian Date
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function d2m(dat) result(julian)
+! 
+!     integer,intent(in)  :: dat(8)
+!     real(kind=realtime) :: modified_julian
+! 
+! DESCRIPTION
+!   Given DAT date-time array returns Modified Julian Date
+! 
+! OPTIONS
+!    dat       Integer array holding a "DAT" array, similar in structure
+!              to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+!              If not present, use current time.
+! RETURNS
+!    modified_juliandate  A Modified Julian Date (MJD) measures days
+!                         (and fractional days) since the start of 17 Nov
+!                         1858 CE in Universal Time (UTC).
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_d2m
+!     use M_time, only : d2m, realtime
+!     implicit none
+!     integer :: dat(8)
+!        call date_and_time(values=dat)
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        write(*,*)'Modified Julian Date is ',d2m(dat)
+!     end program demo_d2m
+! 
+!    Results:
+! 
+!     >  Today is:2025:1:26:-300:1:7:49:295
+!     >  Modified Julian Date is    60701.255431655329
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 function d2m(dat) result(modified_julian)
 
 ! ident_28="@(#) M_time d2m(3f) Given DAT date-time array returns Julian Date"
@@ -3637,64 +3590,62 @@ end function d2m
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    m2d(3f) - [M_time:MODIFIED_JULIAN] given a MJD (Modified Julian Date)
-!!    returns a date-time array DAT.
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function m2d(modified_julian) result(dat)
-!!
-!!     real(kind=realtime),intent(in),optional :: modified_julian
-!!     integer                                 :: dat(8)
-!!
-!!##DESCRIPTION
-!!   Converts a Modified Julian Date to a DAT date-time array.
-!!
-!!##OPTIONS
-!!    modified_juliandate  A Modified Julian Date (MJD) measures days
-!!                         (and fractional days) since the start of 17 Nov
-!!                         1858 CE in Universal Time (UTC).
-!!                         If not present, use current time.
-!!
-!!##RETURNS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_m2d
-!!     use M_time, only : m2d, d2m, fmtdate, realtime
-!!     implicit none
-!!     integer,parameter   :: dp=kind(0.0d0)
-!!     real(kind=realtime) :: today
-!!     integer             :: dat(8)
-!!        call date_and_time(values=dat) ! get the date using intrinsic
-!!        today=d2m(dat)                  ! convert today to Julian Date
-!!        write(*,*)'Today=',fmtdate(m2d(today))
-!!        ! math is easy with Julian Days and Julian Dates
-!!        write(*,*)'Yesterday=',fmtdate(m2d(today-1.0_dp))
-!!        write(*,*)'Tomorrow=',fmtdate(m2d(today+1.0_dp))
-!!     end program demo_m2d
-!!
-!!    Results:
-!!
-!!     >  Today=Sunday, January 26th, 2025 1:08:25 AM UTC-05:00
-!!     >  Yesterday=Saturday, January 25th, 2025 1:08:25 AM UTC-05:00
-!!     >  Tomorrow=Monday, January 27th, 2025 1:08:25 AM UTC-05:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    m2d(3f) - [M_time:MODIFIED_JULIAN] given a MJD (Modified Julian Date)
+!    returns a date-time array DAT.
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function m2d(modified_julian) result(dat)
+! 
+!     real(kind=realtime),intent(in),optional :: modified_julian
+!     integer                                 :: dat(8)
+! 
+! DESCRIPTION
+!   Converts a Modified Julian Date to a DAT date-time array.
+! 
+! OPTIONS
+!    modified_juliandate  A Modified Julian Date (MJD) measures days
+!                         (and fractional days) since the start of 17 Nov
+!                         1858 CE in Universal Time (UTC).
+!                         If not present, use current time.
+! 
+! RETURNS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_m2d
+!     use M_time, only : m2d, d2m, fmtdate, realtime
+!     implicit none
+!     integer,parameter   :: dp=kind(0.0d0)
+!     real(kind=realtime) :: today
+!     integer             :: dat(8)
+!        call date_and_time(values=dat) ! get the date using intrinsic
+!        today=d2m(dat)                  ! convert today to Julian Date
+!        write(*,*)'Today=',fmtdate(m2d(today))
+!        ! math is easy with Julian Days and Julian Dates
+!        write(*,*)'Yesterday=',fmtdate(m2d(today-1.0_dp))
+!        write(*,*)'Tomorrow=',fmtdate(m2d(today+1.0_dp))
+!     end program demo_m2d
+! 
+!    Results:
+! 
+!     >  Today=Sunday, January 26th, 2025 1:08:25 AM UTC-05:00
+!     >  Yesterday=Saturday, January 25th, 2025 1:08:25 AM UTC-05:00
+!     >  Tomorrow=Monday, January 27th, 2025 1:08:25 AM UTC-05:00
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 function m2d(modified_julian) result(dat)
 
 ! ident_29="@(#) M_time m2d(3f) Given Modified Julian Date returns DAT date-time array"
@@ -3707,116 +3658,114 @@ end function m2d
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    date_to_bas(3f) - [M_time:BAS] converts DAT
-!!    date-time array to Baseday and Seconds
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine date_to_bas(dat,bas,ierr)
-!!
-!!     integer,intent(in)        :: dat(8)
-!!     type(BAStime),intent(out) :: bas
-!!     integer,intent(out)       :: ierr
-!!
-!!##DESCRIPTION
-!!    Converts a DAT date-time array to a Baseday and Seconds type.
-!!
-!!    In this module the BAS date and time is stored internally as a structure
-!!    named BAStime, containing the number of days since the beginning of the
-!!    MJD Epoch and a double representing the seconds offset from the start
-!!    of this day.
-!!
-!!    type BAStime
-!!       integer :: base_day     ! number of days since the MJD Epoch date
-!!       real(kind=real64) :: secs ! seconds from start of base_day
-!!    end type BAStime
-!!
-!!
-!!    Modified Julian Date (MJD) measures days (and fractional days) since
-!!    the start of 17 Nov 1858 CE in Universal Time (UTC). Put another way
-!!
-!!        Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
-!!
-!!
-!!    This allows for storing a date at a higher precision that the other
-!!    formats used by the library, although sometimes that lower precision
-!!    is limited primarily by the definition (ie. the milliseconds in a DAT
-!!    could be smaller units).
-!!
-!!    BAS (and MJD) starts at midnight (00:00:00) so truncating the
-!!    fractional component of BAS always gives the same Civil Calendar day
-!!    whatever the time of day (unlike JD).
-!!
-!!    The seconds offset may take any double-precision value, so that any
-!!    date/time may be expressed in terms of an offset from the same MJD
-!!    day. The seconds field thus may exceed a single day, and may also be
-!!    negative. Note that in floating-point math larger numbers will have
-!!    a wider spacing between representable values, possibly decreasing
-!!    the precision of results.
-!!
-!!##OPTIONS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!           dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!##RETURNS
-!!    bas         A Baseday and Seconds variable representing the date
-!!                and time found in the DAT array
-!!    ierr        Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!   Sample Program:
-!!
-!!     program demo_date_to_bas
-!!     use M_time, only : date_to_bas, realtime, BAStime
-!!     use M_time, only : date_to_julian
-!!     implicit none
-!!     integer                    :: dat(8)
-!!     type(BAStime)              :: bas
-!!     real(kind=realtime)        :: juliandate
-!!     integer                    :: ierr
-!!     character(len=*),parameter :: g='(*(g0,1x))'
-!!        !
-!!        write(*,g)'date_to_bas:'
-!!        ! generate DAT array
-!!        call date_and_time(values=dat)
-!!        !
-!!        ! show DAT array
-!!        write(*,'("Today is:",*(i0:,":"))')dat
-!!        !
-!!        ! convert DAT to Julian
-!!        call date_to_julian(dat,juliandate,ierr)
-!!        ! show as Modified Julian Date
-!!        write(*,g) 'Expecting Modified Julian Date:', &
-!!        & juliandate - 2400000.5_realtime
-!!        !
-!!        ! convert DAT to BAS
-!!        call date_to_bas(dat,bas,ierr)
-!!        write(*,g)'Baseday and Seconds is ', bas
-!!        write(*,g)'converted to Modified Julian Date:', &
-!!        & bas%base_day +  bas%secs/86400.0d0
-!!
-!!     end program demo_date_to_bas
-!!
-!!    Results:
-!!
-!!     > date_to_bas:
-!!     > Today is:2025:1:26:-300:1:9:0:914
-!!     > Expecting Modified Julian Date: 60701.256260578521
-!!     > Baseday and Seconds is  60701 22140.913984179497
-!!     > converted to Modified Julian Date: 60701.256260578521
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    date_to_bas(3f) - [M_time:BAS] converts DAT
+!    date-time array to Baseday and Seconds
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine date_to_bas(dat,bas,ierr)
+! 
+!     integer,intent(in)        :: dat(8)
+!     type(BAStime),intent(out) :: bas
+!     integer,intent(out)       :: ierr
+! 
+! DESCRIPTION
+!    Converts a DAT date-time array to a Baseday and Seconds type.
+! 
+!    In this module the BAS date and time is stored internally as a structure
+!    named BAStime, containing the number of days since the beginning of the
+!    MJD Epoch and a double representing the seconds offset from the start
+!    of this day.
+! 
+!    type BAStime
+!       integer :: base_day     ! number of days since the MJD Epoch date
+!       real(kind=real64) :: secs ! seconds from start of base_day
+!    end type BAStime
+! 
+! 
+!    Modified Julian Date (MJD) measures days (and fractional days) since
+!    the start of 17 Nov 1858 CE in Universal Time (UTC). Put another way
+! 
+!        Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
+! 
+! 
+!    This allows for storing a date at a higher precision that the other
+!    formats used by the library, although sometimes that lower precision
+!    is limited primarily by the definition (ie. the milliseconds in a DAT
+!    could be smaller units).
+! 
+!    BAS (and MJD) starts at midnight (00:00:00) so truncating the
+!    fractional component of BAS always gives the same Civil Calendar day
+!    whatever the time of day (unlike JD).
+! 
+!    The seconds offset may take any double-precision value, so that any
+!    date/time may be expressed in terms of an offset from the same MJD
+!    day. The seconds field thus may exceed a single day, and may also be
+!    negative. Note that in floating-point math larger numbers will have
+!    a wider spacing between representable values, possibly decreasing
+!    the precision of results.
+! 
+! OPTIONS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!           dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+! RETURNS
+!    bas         A Baseday and Seconds variable representing the date
+!                and time found in the DAT array
+!    ierr        Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!   Sample Program:
+! 
+!     program demo_date_to_bas
+!     use M_time, only : date_to_bas, realtime, BAStime
+!     use M_time, only : date_to_julian
+!     implicit none
+!     integer                    :: dat(8)
+!     type(BAStime)              :: bas
+!     real(kind=realtime)        :: juliandate
+!     integer                    :: ierr
+!     character(len=*),parameter :: g='(*(g0,1x))'
+!        !
+!        write(*,g)'date_to_bas:'
+!        ! generate DAT array
+!        call date_and_time(values=dat)
+!        !
+!        ! show DAT array
+!        write(*,'("Today is:",*(i0:,":"))')dat
+!        !
+!        ! convert DAT to Julian
+!        call date_to_julian(dat,juliandate,ierr)
+!        ! show as Modified Julian Date
+!        write(*,g) 'Expecting Modified Julian Date:', &
+!        & juliandate - 2400000.5_realtime
+!        !
+!        ! convert DAT to BAS
+!        call date_to_bas(dat,bas,ierr)
+!        write(*,g)'Baseday and Seconds is ', bas
+!        write(*,g)'converted to Modified Julian Date:', &
+!        & bas%base_day +  bas%secs/86400.0d0
+! 
+!     end program demo_date_to_bas
+! 
+!    Results:
+! 
+!     > date_to_bas:
+!     > Today is:2025:1:26:-300:1:9:0:914
+!     > Expecting Modified Julian Date: 60701.256260578521
+!     > Baseday and Seconds is  60701 22140.913984179497
+!     > converted to Modified Julian Date: 60701.256260578521
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 subroutine date_to_bas(dat,bas,ierr)
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! * There is no year zero
@@ -3863,132 +3812,130 @@ end subroutine date_to_bas
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    bas_to_date(3f) - [M_time:BAS] converts a
-!!    BAS(Baseday and Seconds) to a DAT date-time array.
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine bas_to_date(bas,dat,ierr)
-!!
-!!     type(BAStime),intent(in) :: bas
-!!     integer,intent(out)      :: dat(8)
-!!     integer,intent(out)      :: ierr
-!!
-!!##DESCRIPTION
-!! Converts a Baseday and Seconds(BAS) value to a DAT date-time
-!! array.
-!!
-!! In this module the MJD date and time is stored internally as a structure
-!! named BAStime, containing the number of days since the beginning of the
-!! MJD Epoch and a double representing the seconds offset from the start
-!! of this day.
-!!
-!!     type BAStime
-!!      integer :: base_day ! number of days since the MJD Epoch date
-!!      real(kind=real64) :: secs ! seconds from start of base_day
-!!     end type BAStime
-!!
-!! A Modified Julian Date (MJD) measures days (and fractional days) since
-!! the start of 17 Nov 1858 CE in Universal Time (UTC).
-!!
-!! A Julian Date (JD) measures days (and fractional days) since noon on 1
-!! January, 4713 BCE in Universal Time (UTC).
-!!
-!! That is,
-!!
-!!     Julian Date (MJD) = Julian Date (JD) - 2400000.5
-!!
-!!
-!! Using a structure allows for storing a date at a higher precision
-!! that other formats used by the library, although sometimes that lower
-!! precision is limited primarily by the definition (ie. the milliseconds
-!! in a DAT could be smaller units).
-!!
-!! MJD starts at midnight (00:00:00) so truncating the fractional component
-!! of MJD always gives the same Civil Calendar day whatever the time of day
-!! (unlike JD).
-!!
-!! The seconds offset may take any double-precision value, so that any
-!! date/time may be expressed in terms of an offset from the same MJD
-!! day. The seconds field thus may exceed a single day, and may also be
-!! negative.
-!!
-!!##OPTIONS
-!!    bas  A Baseday and Seconds (BAS) measures days
-!!         since the start of 17 Nov 1858 CE in Universal Time (UTC) and
-!!         contains an offset value in seconds from that base date.
-!!
-!!##RETURNS
-!!     dat     Integer array holding a "DAT" array, similar in structure
-!!             to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!               & minutes,seconds,milliseconds]
-!!
-!!    ierr      Error code. If 0 no error occurred.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!      program demo_bas_to_date
-!!      use M_time, only : bas_to_date, fmtdate, realtime, BAStime
-!!      implicit none
-!!      integer,parameter          :: dp=kind(0.0d0)
-!!      type(BAStime)              :: bas, tomorrow, yesterday
-!!      integer                    :: dat(8)
-!!      integer                    :: ierr
-!!      character(len=*),parameter :: g='(*(g0,1x))'
-!!         write(*,g)'bas_to_date:'
-!!         ! set sample Baseday and Seconds date
-!!         bas=BAStime( 60700, 0.213682349771_dp)
-!!         ! create DAT array for this date
-!!         call bas_to_date(bas,dat,ierr)
-!!         write(*,g)'Sample Date=',fmtdate(dat)
-!!         !
-!!         write(*,g)'add and subtract days from base_day:'
-!!         ! go back one day
-!!         yesterday= BAStime(bas%base_day-1,bas%secs)
-!!         call bas_to_date(yesterday,dat,ierr)
-!!         write(*,g)'Day Before =',fmtdate(dat)
-!!         !
-!!         ! go forward one day
-!!         tomorrow= BAStime(bas%base_day+1,bas%secs)
-!!         call bas_to_date(tomorrow,dat,ierr)
-!!         write(*,g)'Day After  =',fmtdate(dat)
-!!
-!!         write(*,g)'add and subtract seconds from BAS:'
-!!         ! go back one day
-!!         yesterday=bas-86400
-!!         call bas_to_date(yesterday,dat,ierr)
-!!         write(*,g)'Day Before =',fmtdate(dat)
-!!         !
-!!         ! go forward one day
-!!         yesterday=bas+86400
-!!         call bas_to_date(tomorrow,dat,ierr)
-!!         write(*,g)'Day After  =',fmtdate(dat)
-!!         !
-!!      end program demo_bas_to_date
-!!
-!!    Results:
-!!
-!!     > bas_to_date:
-!!     > Sample Date= Friday, January 24th, 2025 7:00:00 PM UTC-05:00
-!!     > add and subtract days from base_day:
-!!     > Day Before = Thursday, January 23rd, 2025 7:00:00 PM UTC-05:00
-!!     > Day After  = Saturday, January 25th, 2025 7:00:00 PM UTC-05:00
-!!     > add and subtract seconds from BAS:
-!!     > Day Before = Thursday, January 23rd, 2025 7:00:00 PM UTC-05:00
-!!     > Day After  = Saturday, January 25th, 2025 7:00:00 PM UTC-05:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    bas_to_date(3f) - [M_time:BAS] converts a
+!    BAS(Baseday and Seconds) to a DAT date-time array.
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine bas_to_date(bas,dat,ierr)
+! 
+!     type(BAStime),intent(in) :: bas
+!     integer,intent(out)      :: dat(8)
+!     integer,intent(out)      :: ierr
+! 
+! DESCRIPTION
+! Converts a Baseday and Seconds(BAS) value to a DAT date-time
+! array.
+! 
+! In this module the MJD date and time is stored internally as a structure
+! named BAStime, containing the number of days since the beginning of the
+! MJD Epoch and a double representing the seconds offset from the start
+! of this day.
+! 
+!     type BAStime
+!      integer :: base_day ! number of days since the MJD Epoch date
+!      real(kind=real64) :: secs ! seconds from start of base_day
+!     end type BAStime
+! 
+! A Modified Julian Date (MJD) measures days (and fractional days) since
+! the start of 17 Nov 1858 CE in Universal Time (UTC).
+! 
+! A Julian Date (JD) measures days (and fractional days) since noon on 1
+! January, 4713 BCE in Universal Time (UTC).
+! 
+! That is,
+! 
+!     Julian Date (MJD) = Julian Date (JD) - 2400000.5
+! 
+! 
+! Using a structure allows for storing a date at a higher precision
+! that other formats used by the library, although sometimes that lower
+! precision is limited primarily by the definition (ie. the milliseconds
+! in a DAT could be smaller units).
+! 
+! MJD starts at midnight (00:00:00) so truncating the fractional component
+! of MJD always gives the same Civil Calendar day whatever the time of day
+! (unlike JD).
+! 
+! The seconds offset may take any double-precision value, so that any
+! date/time may be expressed in terms of an offset from the same MJD
+! day. The seconds field thus may exceed a single day, and may also be
+! negative.
+! 
+! OPTIONS
+!    bas  A Baseday and Seconds (BAS) measures days
+!         since the start of 17 Nov 1858 CE in Universal Time (UTC) and
+!         contains an offset value in seconds from that base date.
+! 
+! RETURNS
+!     dat     Integer array holding a "DAT" array, similar in structure
+!             to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!               & minutes,seconds,milliseconds]
+! 
+!    ierr      Error code. If 0 no error occurred.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!      program demo_bas_to_date
+!      use M_time, only : bas_to_date, fmtdate, realtime, BAStime
+!      implicit none
+!      integer,parameter          :: dp=kind(0.0d0)
+!      type(BAStime)              :: bas, tomorrow, yesterday
+!      integer                    :: dat(8)
+!      integer                    :: ierr
+!      character(len=*),parameter :: g='(*(g0,1x))'
+!         write(*,g)'bas_to_date:'
+!         ! set sample Baseday and Seconds date
+!         bas=BAStime( 60700, 0.213682349771_dp)
+!         ! create DAT array for this date
+!         call bas_to_date(bas,dat,ierr)
+!         write(*,g)'Sample Date=',fmtdate(dat)
+!         !
+!         write(*,g)'add and subtract days from base_day:'
+!         ! go back one day
+!         yesterday= BAStime(bas%base_day-1,bas%secs)
+!         call bas_to_date(yesterday,dat,ierr)
+!         write(*,g)'Day Before =',fmtdate(dat)
+!         !
+!         ! go forward one day
+!         tomorrow= BAStime(bas%base_day+1,bas%secs)
+!         call bas_to_date(tomorrow,dat,ierr)
+!         write(*,g)'Day After  =',fmtdate(dat)
+! 
+!         write(*,g)'add and subtract seconds from BAS:'
+!         ! go back one day
+!         yesterday=bas-86400
+!         call bas_to_date(yesterday,dat,ierr)
+!         write(*,g)'Day Before =',fmtdate(dat)
+!         !
+!         ! go forward one day
+!         yesterday=bas+86400
+!         call bas_to_date(tomorrow,dat,ierr)
+!         write(*,g)'Day After  =',fmtdate(dat)
+!         !
+!      end program demo_bas_to_date
+! 
+!    Results:
+! 
+!     > bas_to_date:
+!     > Sample Date= Friday, January 24th, 2025 7:00:00 PM UTC-05:00
+!     > add and subtract days from base_day:
+!     > Day Before = Thursday, January 23rd, 2025 7:00:00 PM UTC-05:00
+!     > Day After  = Saturday, January 25th, 2025 7:00:00 PM UTC-05:00
+!     > add and subtract seconds from BAS:
+!     > Day Before = Thursday, January 23rd, 2025 7:00:00 PM UTC-05:00
+!     > Day After  = Saturday, January 25th, 2025 7:00:00 PM UTC-05:00
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 subroutine bas_to_date(bas,dat,ierr)
 
 ! ident_31="@(#) M_time bas_to_date(3f) Converts Baseday and Seconds to DAT date-time array"
@@ -4005,90 +3952,88 @@ end subroutine bas_to_date
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    d2b(3f) - [M_time:BAS] given DAT date-time array returns Baseday
-!!    and Seconds type
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function d2b(dat) result(bas)
-!!
-!!     integer,intent(in)  :: dat(8)
-!!     type(BAStime) :: bas
-!!
-!!##DESCRIPTION
-!!   Given DAT date-time array returns Baseday and Seconds type
-!!
-!!##OPTIONS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!              dat=[ year,month,day,timezone,hour,&
-!!              & minutes,seconds,milliseconds]
-!!
-!!          If not present, use current time.
-!!##RETURNS
-!!    bas  A Baseday and seconds(MJD) is composed of whole days
-!!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
-!!         and an offset in seconds from the base day.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_d2b
-!!     use M_time, only : d2b, BAStime, d2j, d2m
-!!     implicit none
-!!     integer :: dat(8)
-!!     type(BAStime) :: bas
-!!     !                            Modified Julian Dates
-!!     !
-!!     !   To use this table, add the day-of-month to the tabulated entry.
-!!     !   For example, 30 Jan 2000 = MJD 51573.
-!!     ! __________________________________________________________________
-!!     !  2000  2001  2002  2003  2004  2005  2006  2007  2008  2009
-!!     integer,parameter :: array(1:12,2000:2009)=reshape([ &
-!!      51543,51909,52274,52639,53004,53370,53735,54100,54465,54831, & ! Jan
-!!      51574,51940,52305,52670,53035,53401,53766,54131,54496,54862, & ! Feb
-!!      51603,51968,52333,52698,53064,53429,53794,54159,54525,54890, & ! Mar
-!!      51634,51999,52364,52729,53095,53460,53825,54190,54556,54921, & ! Apr
-!!      51664,52029,52394,52759,53125,53490,53855,54220,54586,54951, & ! May
-!!      51695,52060,52425,52790,53156,53521,53886,54251,54617,54982, & ! Jun
-!!      51725,52090,52455,52820,53186,53551,53916,54281,54647,55012, & ! Jul
-!!      51756,52121,52486,52851,53217,53582,53947,54312,54678,55043, & ! Aug
-!!      51787,52152,52517,52882,53248,53613,53978,54343,54709,55074, & ! Sep
-!!      51817,52182,52547,52912,53278,53643,54008,54373,54739,55104, & ! Oct
-!!      51848,52213,52578,52943,53309,53674,54039,54404,54770,55135, & ! Nov
-!!      51878,52243,52608,52973,53339,53704,54069,54434,54800,55165],& ! Dec
-!!      shape=shape(array),order=[2,1])
-!!      integer :: i,j
-!!        call date_and_time(values=dat)
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        write(*,*)'Baseday and Seconds is',d2b(dat)
-!!        do i=2000,2009
-!!         do j=1,12
-!!          !dat=[ year,month,day,timezone,hour,minutes,seconds,milliseconds]
-!!          dat=[i,j,1,0,0,0,0,0]
-!!          bas=d2b(dat)
-!!          if(array(j,i)+1.ne.bas%base_day)then
-!!             write(*,*)i,j,array(j,i)+1,d2b(dat),d2m(dat),d2j(dat)-2400000.5
-!!          endif
-!!         enddo
-!!        enddo
-!!     end program demo_d2b
-!!
-!!    Results:
-!!
-!!     >  Today is:2025:1:26:-300:1:2:14:388
-!!     >  Baseday and Seconds is 60701 21734.387965500355
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    d2b(3f) - [M_time:BAS] given DAT date-time array returns Baseday
+!    and Seconds type
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function d2b(dat) result(bas)
+! 
+!     integer,intent(in)  :: dat(8)
+!     type(BAStime) :: bas
+! 
+! DESCRIPTION
+!   Given DAT date-time array returns Baseday and Seconds type
+! 
+! OPTIONS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!              dat=[ year,month,day,timezone,hour,&
+!              & minutes,seconds,milliseconds]
+! 
+!          If not present, use current time.
+! RETURNS
+!    bas  A Baseday and seconds(MJD) is composed of whole days
+!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
+!         and an offset in seconds from the base day.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_d2b
+!     use M_time, only : d2b, BAStime, d2j, d2m
+!     implicit none
+!     integer :: dat(8)
+!     type(BAStime) :: bas
+!     !                            Modified Julian Dates
+!     !
+!     !   To use this table, add the day-of-month to the tabulated entry.
+!     !   For example, 30 Jan 2000 = MJD 51573.
+!     ! __________________________________________________________________
+!     !  2000  2001  2002  2003  2004  2005  2006  2007  2008  2009
+!     integer,parameter :: array(1:12,2000:2009)=reshape([ &
+!      51543,51909,52274,52639,53004,53370,53735,54100,54465,54831, & ! Jan
+!      51574,51940,52305,52670,53035,53401,53766,54131,54496,54862, & ! Feb
+!      51603,51968,52333,52698,53064,53429,53794,54159,54525,54890, & ! Mar
+!      51634,51999,52364,52729,53095,53460,53825,54190,54556,54921, & ! Apr
+!      51664,52029,52394,52759,53125,53490,53855,54220,54586,54951, & ! May
+!      51695,52060,52425,52790,53156,53521,53886,54251,54617,54982, & ! Jun
+!      51725,52090,52455,52820,53186,53551,53916,54281,54647,55012, & ! Jul
+!      51756,52121,52486,52851,53217,53582,53947,54312,54678,55043, & ! Aug
+!      51787,52152,52517,52882,53248,53613,53978,54343,54709,55074, & ! Sep
+!      51817,52182,52547,52912,53278,53643,54008,54373,54739,55104, & ! Oct
+!      51848,52213,52578,52943,53309,53674,54039,54404,54770,55135, & ! Nov
+!      51878,52243,52608,52973,53339,53704,54069,54434,54800,55165],& ! Dec
+!      shape=shape(array),order=[2,1])
+!      integer :: i,j
+!        call date_and_time(values=dat)
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        write(*,*)'Baseday and Seconds is',d2b(dat)
+!        do i=2000,2009
+!         do j=1,12
+!          !dat=[ year,month,day,timezone,hour,minutes,seconds,milliseconds]
+!          dat=[i,j,1,0,0,0,0,0]
+!          bas=d2b(dat)
+!          if(array(j,i)+1.ne.bas%base_day)then
+!             write(*,*)i,j,array(j,i)+1,d2b(dat),d2m(dat),d2j(dat)-2400000.5
+!          endif
+!         enddo
+!        enddo
+!     end program demo_d2b
+! 
+!    Results:
+! 
+!     >  Today is:2025:1:26:-300:1:2:14:388
+!     >  Baseday and Seconds is 60701 21734.387965500355
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 function d2b(dat) result(bas)
 
 ! ident_32="@(#) M_time d2b(3f) Given DAT date-time array returns Basedate and Seconds"
@@ -4109,90 +4054,97 @@ end function d2b
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    b2d(3f) - [M_time:BAS] given a BAS (Baseday and Seconds)
-!!    returns a date-time array DAT.
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function b2d(bas) result(dat)
-!!
-!!     type(BAStime),intent(in),optional :: bas
-!!     integer                           :: dat(8)
-!!
-!!##DESCRIPTION
-!!   Converts a Baseday and Seconds (BAS) to a DAT date-time array.
-!!
-!!##OPTIONS
-!!    bas  A Baseday and seconds(MJD) is composed of whole days
-!!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
-!!         and an offset in seconds from the base day.  If not present,
-!!         use current time.
-!!
-!!##RETURNS
-!!    dat   Integer array holding a "DAT" array, similar in structure
-!!          to the array returned by the intrinsic DATE_AND_TIME(3f):
-!!
-!!                 dat=[ year,month,day,timezone,hour,&
-!!                  & minutes,seconds,milliseconds]
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_b2d
-!!     use M_time, only : b2d, d2b, fmtdate, realtime, BAStime
-!!     !BAStime includes operator(+), operator(-)
-!!     implicit none
-!!     integer,parameter :: dp=kind(0.0d0)
-!!     type(BAStime)     :: today
-!!     type(BAStime)     :: aday
-!!     type(BAStime)     :: newday
-!!     integer           :: dat(8)
-!!     character(len=*),parameter :: g='(*(g0,1x))'
-!!
-!!        write(*,g)'b2d:'
-!!        call date_and_time(values=dat) ! get the date using intrinsic
-!!        today=d2b(dat)                 ! convert DAT to BAS
-!!        write(*,g)'Today=',fmtdate(b2d(today))
-!!        ! math is easy with Julian Days and Julian Dates
-!!
-!!        write(*,g)'Yesterday=',fmtdate(b2d(today+BAStime(-1,0.0_dp)))
-!!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+BAStime(+1,0.0_dp)))
-!!
-!!        write(*,g)'Yesterday=',fmtdate(b2d(today+BAStime(0,-86400.0_dp)))
-!!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+BAStime(0,+86400.0_dp)))
-!!
-!!        aday=BAStime(1,0.0_dp)
-!!        write(*,g)'Yesterday=',fmtdate(b2d(today-aday))
-!!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+aday))
-!!
-!!        newday=today-aday
-!!        write(*,g)'Yesterday=',fmtdate(b2d(newday))
-!!        newday=today+aday
-!!        write(*,g)'Yesterday=',fmtdate(b2d(newday))
-!!     end program demo_b2d
-!!
-!! Results:
-!!
-!!  > b2d:
-!!  > Today= Sunday, January 26th, 2025 1:13:26 AM UTC-05:00
-!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
-!!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
-!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
-!!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
-!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
-!!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
-!!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
-!!  > Yesterday= Monday, January 27th, 2025 1:13:26 AM UTC-05:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2025
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    b2d(3f) - [M_time:BAS] given a BAS (Baseday and Seconds)
+!    returns a date-time array DAT.
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function b2d(bas) result(dat)
+! 
+!     type(BAStime),intent(in),optional :: bas
+!     integer                           :: dat(8)
+! 
+! DESCRIPTION
+!   Converts a Baseday and Seconds (BAS) to a DAT date-time array.
+! 
+! OPTIONS
+!    bas  A Baseday and seconds(MJD) is composed of whole days
+!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
+!         and an offset in seconds from the base day.  If not present,
+!         use current time.
+! 
+! RETURNS
+!    dat   Integer array holding a "DAT" array, similar in structure
+!          to the array returned by the intrinsic DATE_AND_TIME(3f):
+! 
+!                 dat=[ year,month,day,timezone,hour,&
+!                  & minutes,seconds,milliseconds]
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_b2d
+!     use M_time, only : b2d, d2b, fmtdate, realtime, BAStime
+!     !BAStime includes operator(+), operator(-)
+!     implicit none
+!     integer,parameter :: dp=kind(0.0d0)
+!     type(BAStime)     :: today
+!     type(BAStime)     :: aday
+!     type(BAStime)     :: newday, yesterday, tomorrow
+!     integer           :: dat(8)
+!     character(len=*),parameter :: g='(*(g0,1x))'
+! 
+!        write(*,g)'b2d:'
+!        call date_and_time(values=dat) ! get the date using intrinsic
+!        today=d2b(dat)                 ! convert DAT to BAS
+!        aday=BAStime(1,0.0_dp)         ! a value of one day
+!        write(*,g)'Today=',fmtdate(b2d(today))
+! 
+!        write(*,g)'BAStime +- BAStime'
+!        write(*,g)'Yesterday=',fmtdate(b2d(today+BAStime(-1,0.0_dp)))
+!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+BAStime(+1,0.0_dp)))
+! 
+!        write(*,g)'Yesterday=',fmtdate(b2d(today+BAStime(0,-86400.0_dp)))
+!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+BAStime(0,+86400.0_dp)))
+! 
+!        write(*,g)'Yesterday=',fmtdate(b2d(today-aday))
+!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+aday))
+! 
+!        yeserday=today-aday
+!        write(*,g)'Yesterday=',fmtdate(b2d(yeserday))
+!        tomorrow=today+aday
+!        write(*,g)'Tomorrow=',fmtdate(b2d(tomorrow))
+! 
+!        write(*,g)'BAStime +- value_in_seconds'
+!        write(*,g)'Yesterday=',fmtdate(b2d(today-86400))
+!        write(*,g)'Tomorrow= ',fmtdate(b2d(today+86400))
+! 
+!        write(*,g)'BAStime comparisons'
+!        newday=today+aday/2
+!        write(*,g) (today+86400/2).eq.newday
+! 
+!     end program demo_b2d
+! 
+! Results:
+! 
+!  > b2d:
+!  > Today= Sunday, January 26th, 2025 1:13:26 AM UTC-05:00
+!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!  > Tomorrow=  Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+!  > Yesterday= Saturday, January 25th, 2025 1:13:26 AM UTC-05:00
+!  > Yesterday= Monday, January 27th, 2025 1:13:26 AM UTC-05:00
+! 
+! AUTHOR
+!    John S. Urban, 2025
+! 
+! LICENSE
+!    MI
 function b2d(bas) result(dat)
 
 ! ident_33="@(#) M_time b2d(3f) Given Baseday and Seconds (BAS) returns DAT date-time array"
@@ -4206,30 +4158,74 @@ end function b2d
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 ! FUNCTIONS FOR DEFINING OVERLOADED OPERATORS
-!===================================================================================================================================
-impure function minus_BAS(self,valuein) result (answer)
 
-! ident_34="@(#) M_time minus_BAS(3f) subtract derived type BAStime object and BAStime or number"
+! ident_34="@(#) M_time eq(3f) compare or change derived type BAStime objects (eq lt gt le ge ne + -)"
+
+! These functions are privately used to define the methods that TYPE(BAStime) will support
+!===================================================================================================================================
+impure function bas_minus(self,valuein) result (answer)
+
+! ident_35="@(#) M_time bas_minus(3f) subtract derived type BAStime object and BAStime or number"
 
 class(BAStime),intent(in)  :: self
 class(*),intent(in)        :: valuein
 type(BAStime)              :: answer
    answer=delta_MJD(self,valuein,-1)
-end function minus_BAS
+end function bas_minus
 !===================================================================================================================================
-impure function plus_BAS(self,valuein) result (answer)
+impure function bas_plus(self,valuein) result (answer)
 
-! ident_35="@(#) M_time plus_BAS(3f) add derived type BAStime object and BAStime or number"
+! ident_36="@(#) M_time bas_plus(3f) add derived type BAStime object and BAStime or number"
 
 class(BAStime),intent(in)  :: self
 class(*),intent(in)        :: valuein
 type(BAStime)              :: answer
    answer=delta_MJD(self,valuein,+1)
-end function plus_BAS
+end function bas_plus
+!===================================================================================================================================
+impure function bas_multiply(self,valuein) result (answer)
+
+! ident_37="@(#) M_time bas_multiply(3f) multiply derived type BAStime object and BAStime or number"
+
+class(BAStime),intent(in)  :: self
+class(*),intent(in)        :: valuein
+type(BAStime)              :: mjd_in
+type(BAStime)              :: answer
+real(kind=dp)              :: secs1,secs2
+! not sure what multiply should mean, but this could reduce accuracy
+
+   mjd_in=anyscalar_to_mjd(valuein)
+   ! assuming mjd_in is small
+   secs1=86400*self%base_day+self%secs
+   secs2=86400*mjd_in%base_day+mjd_in%secs
+   answer=BAStime(0,secs1*secs2)
+   answer=bas_reduce(answer)
+
+end function bas_multiply
+!===================================================================================================================================
+impure function bas_divide(self,valuein) result (answer)
+
+! ident_38="@(#) M_time bas_divide(3f) divide derived type BAStime object and BAStime or number"
+
+class(BAStime),intent(in)  :: self
+class(*),intent(in)        :: valuein
+type(BAStime)              :: mjd_in
+type(BAStime)              :: answer
+real(kind=dp)              :: secs1,secs2
+! not sure what divide should mean, but this could reduce accuracy
+
+   mjd_in=anyscalar_to_mjd(valuein)
+   ! assuming mjd_in is small
+   secs1=86400*self%base_day+self%secs
+   secs2=86400*mjd_in%base_day+mjd_in%secs
+   answer=BAStime(0,secs1/secs2)
+   answer=bas_reduce(answer)
+
+end function bas_divide
 !===================================================================================================================================
 impure elemental function delta_MJD(self,valuein,op) result (answer)
 
-! ident_36="@(#) M_time delta_MJD(3f) add derived type BAStime object and BAStime"
+! ident_39="@(#) M_time delta_MJD(3f) add derived type BAStime object and BAStime value"
 
 class(BAStime),intent(in)  :: self
 class(*),intent(in)        :: valuein
@@ -4252,11 +4248,109 @@ integer                    :: idays_in_secs
 
 end function delta_MJD
 !===================================================================================================================================
+function bas_format(self,fmt) result (string)
+
+! ident_40="@(#) M_time bas_format(3f) convert derived type BAStime to formatted string"
+
+class(BAStime),intent(in)             :: self
+character(len=*),intent(in),optional  :: fmt
+character(len=:),allocatable          :: string
+   string=fmtdate(b2d(self),fmt)
+end function bas_format
+!===================================================================================================================================
+logical function bas_eq(self,other)
+class(BAStime),intent(in)   :: self
+type(BAStime),intent(in)    :: other
+type(BAStime)               :: a, b
+   a=bas_reduce(self)
+   b=bas_reduce(other)
+   bas_eq= a%base_day == b%base_day .and. a%secs == b%secs
+end function bas_eq
+
+logical function bas_lt(self,other)
+class(BAStime),intent(in)   :: self
+type(BAStime),intent(in)    :: other
+type(BAStime)               :: a, b
+   a=bas_reduce(self)
+   b=bas_reduce(other)
+   if (a%base_day == b%base_day)then
+      bas_lt = a%secs < b%secs
+   else
+      bas_lt = a%base_day < b%base_day
+   endif
+end function bas_lt
+
+logical function bas_gt(self,other)
+class(BAStime),intent(in)   :: self
+type(BAStime),intent(in)    :: other
+type(BAStime)               :: a, b
+   a=bas_reduce(self)
+   b=bas_reduce(other)
+   if (a%base_day == b%base_day)then
+      bas_gt = a%secs > b%secs
+   else
+      bas_gt = a%base_day > b%base_day
+   endif
+end function bas_gt
+
+logical function bas_le(self,other)
+class(BAStime),intent(in)   :: self
+type(BAStime),intent(in)    :: other
+type(BAStime)               :: a, b
+   a=bas_reduce(self)
+   b=bas_reduce(other)
+   if (a%base_day == b%base_day)then
+      bas_le = a%secs <= b%secs
+   else
+      bas_le = a%base_day <= b%base_day
+   endif
+end function bas_le
+
+logical function bas_ge(self,other)
+class(BAStime),intent(in)   :: self
+type(BAStime),intent(in)    :: other
+type(BAStime)               :: a, b
+   a=bas_reduce(self)
+   b=bas_reduce(other)
+   if (a%base_day == b%base_day)then
+      bas_ge = a%secs >= b%secs
+   else
+      bas_ge = a%base_day >= b%base_day
+   endif
+end function bas_ge
+
+logical function bas_ne(self,other)
+class(BAStime),intent(in)   :: self
+type(BAStime),intent(in)    :: other
+type(BAStime)               :: a, b
+   a=bas_reduce(self)
+   b=bas_reduce(other)
+   if (a%base_day == b%base_day)then
+      bas_ne = a%secs /= b%secs
+   else
+      bas_ne = a%base_day /= b%base_day
+   endif
+end function bas_ne
+!===================================================================================================================================
+function bas_reduce(self)
+class(BAStime),intent(in) :: self
+type(BAStime)             :: bas_reduce
+
+! ident_41="@(#) M_time bas_reduce(3f) reduce seconds to less than one day"
+
+   if(abs(self%secs).ge.86400)then
+      bas_reduce%base_day=self%base_day+int(self%secs/86400)
+      bas_reduce%secs=mod(self%secs,86400.0_real64)
+   else
+      bas_reduce=self
+   endif
+end function bas_reduce
+!===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 impure elemental function anyscalar_to_mjd(valuein) result(mjd_out)
 
-! ident_37="@(#) M_time anyscalar_to_mjd(3f) convert integer or real parameter of almost any intrinsc kind to BAStime"
+! ident_42="@(#) M_time anyscalar_to_mjd(3f) convert integer or real parameter of almost any intrinsc kind to BAStime"
 
 class(*),intent(in)       :: valuein
 type(BAStime)             :: mjd_out
@@ -4292,84 +4386,82 @@ end function get_timezone
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    sec2days(3f) - [M_time:DURATION] convert seconds to string of form
-!!    dd-hh:mm:ss
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    function sec2days(seconds,crop) result(dhms)
-!!
-!!     real(kind=realtime),intent(in) :: seconds
-!!       or
-!!     integer,intent(in)             :: seconds
-!!       or
-!!     real,intent(in)                :: seconds
-!!       or
-!!     character(len=*)               :: seconds
-!!
-!!     logical,intent(in),optional    :: crop
-!!     character(len=:),allocatable   :: dhms
-!!
-!!##DESCRIPTION
-!!   Given a number of seconds convert it to a string of the form
-!!
-!!       dd-hh:mm:ss
-!!
-!!   where dd is days, hh hours, mm minutes and ss seconds.
-!!
-!!##OPTIONS
-!!    seconds    number of seconds to convert to string of form dd-hh:mm:ss. May
-!!               be of type INTEGER, REAL, REAL(KIND=REALTIME), or CHARACTER.
-!!
-!!               CHARACTER strings may be of the form
-!!               [NNd][NNh][NNm][NNs][NNw]. Case,spaces and underscores are
-!!               ignored. Allowed aliases for d,h,m, and s units are
-!!
-!!                   d -  days,day
-!!                   m -  minutes,minute,min
-!!                   h -  hours,hour,hrs,hr
-!!                   s -  seconds,second,sec
-!!
-!!               The numeric values may represent floating point numbers.
-!!
-!!    crop       if .true., remove leading zero day values or day and hour values.
-!!               Optional, defaults to .false. .
-!!##RETURNS
-!!    dmhs       the returned string of form [d:h:]m:s
-!!
-!!##EXAMPLE
-!!
-!!    Sample Program:
-!!
-!!     program demo_sec2days
-!!     use M_time, only : sec2days
-!!     implicit none
-!!     integer,parameter :: dp=kind(0.0d0)
-!!        write(*,*)sec2days(129860)
-!!        write(*,*)sec2days(80000.0_dp)
-!!        write(*,*)sec2days(80000.0,crop=.true.)
-!!        write(*,*)sec2days('1 day 2.0hr 100 min 300.0seconds')
-!!     end program demo_sec2days
-!!
-!!    results:
-!!
-!!     1-12:04:20
-!!     0-22:13:20
-!!     22:13:20
-!!     1-03:45:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    sec2days(3f) - [M_time:DURATION] convert seconds to string of form
+!    dd-hh:mm:ss
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    function sec2days(seconds,crop) result(dhms)
+! 
+!     real(kind=realtime),intent(in) :: seconds
+!       or
+!     integer,intent(in)             :: seconds
+!       or
+!     real,intent(in)                :: seconds
+!       or
+!     character(len=*)               :: seconds
+! 
+!     logical,intent(in),optional    :: crop
+!     character(len=:),allocatable   :: dhms
+! 
+! DESCRIPTION
+!   Given a number of seconds convert it to a string of the form
+! 
+!       dd-hh:mm:ss
+! 
+!   where dd is days, hh hours, mm minutes and ss seconds.
+! 
+! OPTIONS
+!    seconds    number of seconds to convert to string of form dd-hh:mm:ss. May
+!               be of type INTEGER, REAL, REAL(KIND=REALTIME), or CHARACTER.
+! 
+!               CHARACTER strings may be of the form
+!               [NNd][NNh][NNm][NNs][NNw]. Case,spaces and underscores are
+!               ignored. Allowed aliases for d,h,m, and s units are
+! 
+!                   d -  days,day
+!                   m -  minutes,minute,min
+!                   h -  hours,hour,hrs,hr
+!                   s -  seconds,second,sec
+! 
+!               The numeric values may represent floating point numbers.
+! 
+!    crop       if .true., remove leading zero day values or day and hour values.
+!               Optional, defaults to .false. .
+! RETURNS
+!    dmhs       the returned string of form [d:h:]m:s
+! 
+! EXAMPLE
+!    Sample Program:
+! 
+!     program demo_sec2days
+!     use M_time, only : sec2days
+!     implicit none
+!     integer,parameter :: dp=kind(0.0d0)
+!        write(*,*)sec2days(129860)
+!        write(*,*)sec2days(80000.0_dp)
+!        write(*,*)sec2days(80000.0,crop=.true.)
+!        write(*,*)sec2days('1 day 2.0hr 100 min 300.0seconds')
+!     end program demo_sec2days
+! 
+!    results:
+! 
+!     1-12:04:20
+!     0-22:13:20
+!     22:13:20
+!     1-03:45:00
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function sec2days(seconds,crop) result(dhms)
 use, intrinsic :: iso_fortran_env, only : int64
 
-! ident_38="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
+! ident_43="@(#) M_time sec2days(3f) converts seconds or string of form IId JJh KKm LLs to string showing days of form D-HH MM SS"
 
 ! on this platform, (select_int_kind(i),i=1,100) returns
 ! 1:2=1 ,3:4=2 ,5:9=4 ,10:18= 8 ,19:38=16 ,39:=-1
@@ -4500,111 +4592,109 @@ end function sec2days
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    days2sec(3f) - [M_time:DURATION] convert string of form
-!!    [[-]dd-]hh:mm:ss.nn or dNNhNNmNNsNN to seconds
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    elemental impure function days2sec(str) result(time)
-!!
-!!     character(len=*),intent(in) :: str
-!!     real(kind=realtime)         :: time
-!!
-!!##DESCRIPTION
-!!   Given a string representing a duration of the form
-!!   [-][[[dd-]hh:]mm:]ss or [NNd][NNh][NNm[]NNs][NNw]
-!!   return a value representing seconds.
-!!
-!!   If "dd-" is present, units for the numbers are assumed to
-!!   proceed from day to hour to minute to second. But if no
-!!   day is present, the units are assumed to proceed from second
-!!   to minutes to hour from left to right. That is ...
-!!
-!!         [-]dd-hh:mm:ss
-!!         [-]dd-hh:mm
-!!         [-]dd-hh
-!!
-!!         hh:mm:ss
-!!         mm:ss
-!!         ss
-!!
-!!         Where dd is days, hh hours, mm minutes and ss seconds.
-!!
-!!   A decimal fraction is supported on the seconds (Actually,
-!!   any of the numeric values may represent positive floating
-!!   point numbers). Spaces are ignored.
-!!
-!!   Simple numeric values may also be used with unit suffixes; where
-!!   s,m,h, or d represents seconds, minutes, hours or days and w
-!!   represents a week. Allowed aliases for w,d,h,m, and s units are
-!!
-!!        [NNd][NNh][NNm][NNs][NNw]
-!!
-!!          d   -  days,day
-!!          h   -  hours,hour,hr,hrs
-!!          m,' -  minutes,minute,min,mins
-!!          s," -  seconds,second,sec,secs
-!!          w   -  week, weeks, wk, wks
-!!
-!!   The numeric values may represent floating point numbers.
-!!
-!!   Spaces, commas and case are ignored.
-!!
-!!##OPTIONS
-!!       str   string of the general form dd-hh:mm:ss.nn
-!!             or [NNd][NNh][NNm][NNs][NNw]
-!!##RETURNS
-!!       time  the number of seconds represented by the input string
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_days2sec
-!!     use M_time, only : days2sec
-!!     implicit none
-!!        write(*,*)days2sec('1-12:04:20')
-!!        write(*,*)'one second ',days2sec('1')
-!!        write(*,*)'one minute ',days2sec('1:00')
-!!        write(*,*)'one hour ',days2sec('1:00:00')
-!!        write(*,*)'one day ',days2sec('1-00:00:00')
-!!        write(*,*)nint(days2sec(' 1-12:04:20              ')) == 129860
-!!        write(*,*)nint(days2sec(' 1.5 days                ')) == 129600
-!!        write(*,*)nint(days2sec(' 1.5 days 4hrs 30minutes ')) == 145800
-!!        write(*,*)nint(days2sec(' 1.5d                    ')) == 129600
-!!        write(*,*)nint(days2sec(' 1d2h3m4s                ')) == 93784
-!!        ! duplicates
-!!        write(*,*)nint(days2sec(' 1d1d1d                  ')) == 259200
-!!        ! negative values
-!!        write(*,*)nint(days2sec(' 4d-12h                  ')) == 302400
-!!     end program demo_days2sec
-!!
-!!    Results:
-!!
-!!     > 129860.00000000000
-!!     > one second    1.0000000000000000
-!!     > one minute    60.000000000000000
-!!     > one hour    3600.0000000000000
-!!     > one day    86400.000000000000
-!!     > T
-!!     > T
-!!     > T
-!!     > T
-!!     > T
-!!     > T
-!!     > T
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    days2sec(3f) - [M_time:DURATION] convert string of form
+!    [[-]dd-]hh:mm:ss.nn or dNNhNNmNNsNN to seconds
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    elemental impure function days2sec(str) result(time)
+! 
+!     character(len=*),intent(in) :: str
+!     real(kind=realtime)         :: time
+! 
+! DESCRIPTION
+!   Given a string representing a duration of the form
+!   [-][[[dd-]hh:]mm:]ss or [NNd][NNh][NNm[]NNs][NNw]
+!   return a value representing seconds.
+! 
+!   If "dd-" is present, units for the numbers are assumed to
+!   proceed from day to hour to minute to second. But if no
+!   day is present, the units are assumed to proceed from second
+!   to minutes to hour from left to right. That is ...
+! 
+!         [-]dd-hh:mm:ss
+!         [-]dd-hh:mm
+!         [-]dd-hh
+! 
+!         hh:mm:ss
+!         mm:ss
+!         ss
+! 
+!         Where dd is days, hh hours, mm minutes and ss seconds.
+! 
+!   A decimal fraction is supported on the seconds (Actually,
+!   any of the numeric values may represent positive floating
+!   point numbers). Spaces are ignored.
+! 
+!   Simple numeric values may also be used with unit suffixes; where
+!   s,m,h, or d represents seconds, minutes, hours or days and w
+!   represents a week. Allowed aliases for w,d,h,m, and s units are
+! 
+!        [NNd][NNh][NNm][NNs][NNw]
+! 
+!          d   -  days,day
+!          h   -  hours,hour,hr,hrs
+!          m,' -  minutes,minute,min,mins
+!          s," -  seconds,second,sec,secs
+!          w   -  week, weeks, wk, wks
+! 
+!   The numeric values may represent floating point numbers.
+! 
+!   Spaces, commas and case are ignored.
+! 
+! OPTIONS
+!       str   string of the general form dd-hh:mm:ss.nn
+!             or [NNd][NNh][NNm][NNs][NNw]
+! RETURNS
+!       time  the number of seconds represented by the input string
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_days2sec
+!     use M_time, only : days2sec
+!     implicit none
+!        write(*,*)days2sec('1-12:04:20')
+!        write(*,*)'one second ',days2sec('1')
+!        write(*,*)'one minute ',days2sec('1:00')
+!        write(*,*)'one hour ',days2sec('1:00:00')
+!        write(*,*)'one day ',days2sec('1-00:00:00')
+!        write(*,*)nint(days2sec(' 1-12:04:20              ')) == 129860
+!        write(*,*)nint(days2sec(' 1.5 days                ')) == 129600
+!        write(*,*)nint(days2sec(' 1.5 days 4hrs 30minutes ')) == 145800
+!        write(*,*)nint(days2sec(' 1.5d                    ')) == 129600
+!        write(*,*)nint(days2sec(' 1d2h3m4s                ')) == 93784
+!        ! duplicates
+!        write(*,*)nint(days2sec(' 1d1d1d                  ')) == 259200
+!        ! negative values
+!        write(*,*)nint(days2sec(' 4d-12h                  ')) == 302400
+!     end program demo_days2sec
+! 
+!    Results:
+! 
+!     > 129860.00000000000
+!     > one second    1.0000000000000000
+!     > one minute    60.000000000000000
+!     > one hour    3600.0000000000000
+!     > one day    86400.000000000000
+!     > T
+!     > T
+!     > T
+!     > T
+!     > T
+!     > T
+!     > T
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 elemental impure function days2sec(str) result(time)
 
-! ident_39="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
+! ident_44="@(#) M_time days2sec(3f) convert string [[-]dd-]hh mm ss.nn to seconds or string IId JJh KKm LLs to seconds"
 
 character(len=*),intent(in)    :: str
 real(kind=realtime)            :: time
@@ -4710,112 +4800,110 @@ end function days2sec
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!! locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to represent
-!!              month and weekday names
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!    subroutine locale(name,month_names,weekday_names, &
-!!    & month_names_abbr,weekday_names_abbr,IERR)
-!!
-!!     character(len=*),intent(in)          :: name
-!!     character(len=*),intent(in),optional :: month_names(12)
-!!     character(len=*),intent(in),optional :: month_names_abbr(12)
-!!     character(len=*),intent(in),optional :: weekday_names(7)
-!!     character(len=*),intent(in),optional :: weekday_names_abbr(7)
-!!     integer,intent(out)                  :: ierr
-!!
-!!##DESCRIPTION
-!!   given a pre-defined locale name or strings to substitute for month names
-!!   and weekday names provide some basic support for non-POSIX labels in
-!!   date representation.
-!!
-!!   The parameters are default character types and so may be limited to the
-!!   basic ASCII character set, but are typically limited to the extended
-!!   ASCII set.
-!!
-!!   This is only a basic attempt to support internationalization and
-!!   currently just supports basic substitution of the default POSIX names
-!!   with the alternate strings. As support for UTF-8 grows among Fortran
-!!   compilers something more robust will hopefully emerge to provide full
-!!   internationalization of the date representations.
-!!
-!!##OPTIONS
-!!   name   predefined name or reserved name "user"
-!!
-!!   month_names        12 month names
-!!   weekday_names       7 weekday names
-!!   month_names_abbr   12 month name abbreviations
-!!   weekday_names_abbr  7 weekday name abbreviations
-!!
-!!   ierr               if non-zero an error occurred
-!!
-!! The NAME parameter may be a pre-defined name or the special name "user".
-!! The current pre-defined names are
-!!
-!!    'bokmal','catalan','czech','dansk'/'danish','deutsch'/'german','dutch',
-!!    'eesti'/'estonian','english','finnish','french','galego'/'galician',
-!!    'hrvatski'/'croation','hungarian','icelandic','italian','korean',
-!!    'lithuanian','norwegian','nynorsk','polish','portuguese','romanian',
-!!    'slovak','slovene'/'slovenian','spanish','swedish','turkish'
-!!
-!! These non-ISO-8859 character sets are defined in terms of ISO-8859 but will
-!! not work on most platforms
-!!
-!!    'greek', 'russian','thai', 'hebrew','japanese'
-!!
-!! The remaining reserved names take special actions
-!!
-!!    o POSIX            load POSIX names
-!!    o LANGUAGE         use value of environment variable LANGUAGE
-!!    o user             placeholder indicating to expect at least one of the
-!!                       optional values to be set
-!!    o reset,ISO-8601   reset back to initial defaults
-!!
-!!    o show    print user-defined values to stdout
-!!    o chars   dump characters from chars([(i,i=0,255)])
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_locale
-!!     use M_time, only : locale, now
-!!     implicit none
-!!        call locale('POSIX')
-!!        write(*,*)now()
-!!        call locale('french')
-!!        write(*,*)now()
-!!        call mine()
-!!        write(*,*)now()
-!!     contains
-!!     subroutine mine()
-!!     character(len=*),parameter :: months(12)=[ character(len=9) :: &
-!!     &'JANUARY','FEBRUARY','MARCH    ','APRIL  ','MAY     ','JUNE    ', &
-!!     &'JULY   ','AUGUST  ','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
-!!     character(len=*),parameter :: weekdays(7)=[character(len=9) :: &
-!!     &'MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']
-!!     character(len=3),parameter :: short_months(12)=months(:)(1:3)
-!!     character(len=3),parameter :: short_weekdays(7)=weekdays(:)(1:3)
-!!     integer :: ierr
-!!       call locale('user',months,short_months,weekdays,short_weekdays,ierr)
-!!     end subroutine mine
-!!     end program demo_locale
-!!
-!!    Results:
-!!
-!!     Sunday, September 29th, 2024 7:55:00 PM UTC-04:00
-!!     dimanche, septembre 29th, 2024 7:55:00 PM UTC-04:00
-!!     JUL, SEPTEMBER 29th, 2024 7:55:00 PM UTC-04:00
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+! locale(3f) - [M_time:DATE_PRINTING] allow for selecting languages to represent
+!              month and weekday names
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!    subroutine locale(name,month_names,weekday_names, &
+!    & month_names_abbr,weekday_names_abbr,IERR)
+! 
+!     character(len=*),intent(in)          :: name
+!     character(len=*),intent(in),optional :: month_names(12)
+!     character(len=*),intent(in),optional :: month_names_abbr(12)
+!     character(len=*),intent(in),optional :: weekday_names(7)
+!     character(len=*),intent(in),optional :: weekday_names_abbr(7)
+!     integer,intent(out)                  :: ierr
+! 
+! DESCRIPTION
+!   given a pre-defined locale name or strings to substitute for month names
+!   and weekday names provide some basic support for non-POSIX labels in
+!   date representation.
+! 
+!   The parameters are default character types and so may be limited to the
+!   basic ASCII character set, but are typically limited to the extended
+!   ASCII set.
+! 
+!   This is only a basic attempt to support internationalization and
+!   currently just supports basic substitution of the default POSIX names
+!   with the alternate strings. As support for UTF-8 grows among Fortran
+!   compilers something more robust will hopefully emerge to provide full
+!   internationalization of the date representations.
+! 
+! OPTIONS
+!   name   predefined name or reserved name "user"
+! 
+!   month_names        12 month names
+!   weekday_names       7 weekday names
+!   month_names_abbr   12 month name abbreviations
+!   weekday_names_abbr  7 weekday name abbreviations
+! 
+!   ierr               if non-zero an error occurred
+! 
+! The NAME parameter may be a pre-defined name or the special name "user".
+! The current pre-defined names are
+! 
+!    'bokmal','catalan','czech','dansk'/'danish','deutsch'/'german','dutch',
+!    'eesti'/'estonian','english','finnish','french','galego'/'galician',
+!    'hrvatski'/'croation','hungarian','icelandic','italian','korean',
+!    'lithuanian','norwegian','nynorsk','polish','portuguese','romanian',
+!    'slovak','slovene'/'slovenian','spanish','swedish','turkish'
+! 
+! These non-ISO-8859 character sets are defined in terms of ISO-8859 but will
+! not work on most platforms
+! 
+!    'greek', 'russian','thai', 'hebrew','japanese'
+! 
+! The remaining reserved names take special actions
+! 
+!    o POSIX            load POSIX names
+!    o LANGUAGE         use value of environment variable LANGUAGE
+!    o user             placeholder indicating to expect at least one of the
+!                       optional values to be set
+!    o reset,ISO-8601   reset back to initial defaults
+! 
+!    o show    print user-defined values to stdout
+!    o chars   dump characters from chars([(i,i=0,255)])
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_locale
+!     use M_time, only : locale, now
+!     implicit none
+!        call locale('POSIX')
+!        write(*,*)now()
+!        call locale('french')
+!        write(*,*)now()
+!        call mine()
+!        write(*,*)now()
+!     contains
+!     subroutine mine()
+!     character(len=*),parameter :: months(12)=[ character(len=9) :: &
+!     &'JANUARY','FEBRUARY','MARCH    ','APRIL  ','MAY     ','JUNE    ', &
+!     &'JULY   ','AUGUST  ','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
+!     character(len=*),parameter :: weekdays(7)=[character(len=9) :: &
+!     &'MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']
+!     character(len=3),parameter :: short_months(12)=months(:)(1:3)
+!     character(len=3),parameter :: short_weekdays(7)=weekdays(:)(1:3)
+!     integer :: ierr
+!       call locale('user',months,short_months,weekdays,short_weekdays,ierr)
+!     end subroutine mine
+!     end program demo_locale
+! 
+!    Results:
+! 
+!     Sunday, September 29th, 2024 7:55:00 PM UTC-04:00
+!     dimanche, septembre 29th, 2024 7:55:00 PM UTC-04:00
+!     JUL, SEPTEMBER 29th, 2024 7:55:00 PM UTC-04:00
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 subroutine locale(name,month_names,weekday_names,month_names_abbr,weekday_names_abbr,IERR)
 character(len=*),intent(in)          :: name
 character(len=*),intent(in),optional :: month_names(12)
@@ -6682,83 +6770,81 @@ end function get_env
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!     phase_of_moon(3f) - [M_time:ASTROLOGICAL] return name for phase of
-!!     moon for given date
-!!     (LICENSE:MIT)
-!!##SYNOPSIS
-!!
-!!   function phase_of_moon(dat)
-!!
-!!    integer,intent(in)            :: dat(8)
-!!    character(len=:),allocatable  :: phase_of_moon
-!!
-!!##DESCRIPTION
-!!   Phases Of The Moon
-!!
-!!   This procedure is used to support the %p field descriptor for the
-!!   fmtdate(3f) routine.
-!!
-!!   The moon circles the earth every 29.530588853 days on average, so pick a
-!!   starting point and count. A new moon occurred at Julian date 2451550.1
-!!   (January 6, 2000, 18:14 UTC). Then it is easy to count the number of
-!!   days since the last new moon. This is an approximate calculation.
-!!
-!!   There are eight generally recognized phases of the moon in common use
-!!
-!!    o new or dark
-!!    o waxing crescent
-!!    o first quarter
-!!    o waxing gibbous
-!!    o full
-!!    o waning gibbous
-!!    o last quarter
-!!    o waning crescent
-!!
-!!   To calculate the phase of the moon simply divide the days since the
-!!   last new moon by eight and select the appropriate phase.
-!!
-!!   Note that technically the four states (new, first quarter, full, third
-!!   quarter) are events not phases. That is to say, the moon is technically
-!!   only new for an instant.
-!!
-!!##EXAMPLES
-!!
-!!  Sample:
-!!
-!!   program demo_phase_of_moon
-!!   use M_time, only : now
-!!   use M_time, only : phase_of_moon
-!!   use M_time, only : moon_fullness
-!!   implicit none
-!!   integer :: dat(8)
-!!    ! generate DAT array
-!!    call date_and_time(values=dat)
-!!    ! show DAT array
-!!    write(*,'(" Today is:",*(i0:,":"))')dat
-!!    ! the %p and %P fields are supported by fmtdate(3f)
-!!    write(*,*)&
-!!    & now('The phase of the moon is %p, with a fullness of %P')
-!!    write(*,'(1x,*(a))',advance='no')&
-!!    & 'The phase of the moon is ',trim( phase_of_moon(dat)),','
-!!    write(*,'(1x,a,i0,a)')'with a fullness of ',moon_fullness(dat),'%'
-!!   end program demo_phase_of_moon
-!!
-!!  Sample output:
-!!
-!!     Today is:2018:11:3:-240:20:18:44:245
-!!     The phase of the moon is Waning crescent, with a fullness of -30%
-!!     The phase of the moon is Waning crescent, with a fullness of -30%
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!     phase_of_moon(3f) - [M_time:ASTROLOGICAL] return name for phase of
+!     moon for given date
+!     (LICENSE:MIT)
+! SYNOPSIS
+!   function phase_of_moon(dat)
+! 
+!    integer,intent(in)            :: dat(8)
+!    character(len=:),allocatable  :: phase_of_moon
+! 
+! DESCRIPTION
+!   Phases Of The Moon
+! 
+!   This procedure is used to support the %p field descriptor for the
+!   fmtdate(3f) routine.
+! 
+!   The moon circles the earth every 29.530588853 days on average, so pick a
+!   starting point and count. A new moon occurred at Julian date 2451550.1
+!   (January 6, 2000, 18:14 UTC). Then it is easy to count the number of
+!   days since the last new moon. This is an approximate calculation.
+! 
+!   There are eight generally recognized phases of the moon in common use
+! 
+!    o new or dark
+!    o waxing crescent
+!    o first quarter
+!    o waxing gibbous
+!    o full
+!    o waning gibbous
+!    o last quarter
+!    o waning crescent
+! 
+!   To calculate the phase of the moon simply divide the days since the
+!   last new moon by eight and select the appropriate phase.
+! 
+!   Note that technically the four states (new, first quarter, full, third
+!   quarter) are events not phases. That is to say, the moon is technically
+!   only new for an instant.
+! 
+! EXAMPLES
+!  Sample:
+! 
+!   program demo_phase_of_moon
+!   use M_time, only : now
+!   use M_time, only : phase_of_moon
+!   use M_time, only : moon_fullness
+!   implicit none
+!   integer :: dat(8)
+!    ! generate DAT array
+!    call date_and_time(values=dat)
+!    ! show DAT array
+!    write(*,'(" Today is:",*(i0:,":"))')dat
+!    ! the %p and %P fields are supported by fmtdate(3f)
+!    write(*,*)&
+!    & now('The phase of the moon is %p, with a fullness of %P')
+!    write(*,'(1x,*(a))',advance='no')&
+!    & 'The phase of the moon is ',trim( phase_of_moon(dat)),','
+!    write(*,'(1x,a,i0,a)')'with a fullness of ',moon_fullness(dat),'%'
+!   end program demo_phase_of_moon
+! 
+!  Sample output:
+! 
+!     Today is:2018:11:3:-240:20:18:44:245
+!     The phase of the moon is Waning crescent, with a fullness of -30%
+!     The phase of the moon is Waning crescent, with a fullness of -30%
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function phase_of_moon(dat)
 
-! ident_40="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
+! ident_45="@(#) M_time phase_of_moon(3f) return name for phase of moon for given date"
 
 integer,intent(in)            :: dat(8)
 character(len=:),allocatable  :: phase_of_moon
@@ -6783,74 +6869,72 @@ end function phase_of_moon
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!     moon_fullness(3f) - [M_time:ASTROLOGICAL] return percentage of moon phase
-!!     from new to full
-!!     (LICENSE:MIT)
-!!##SYNOPSIS
-!!
-!!   function moon_fullness(dat)
-!!
-!!    integer,intent(in) :: dat(8)
-!!    integer            :: moon_fullness
-!!
-!!##DESCRIPTION
-!!
-!!   This procedure is used to support the %P field descriptor for the
-!!   fmtdate(3f) routine.
-!!
-!!   The moon circles the earth every 29.530588853 days on average, so pick
-!!   a starting point and count. A new moon occurred at January 6, 2000,
-!!   18:14 UTC. Then it is easy to count the number of days since the last
-!!   new moon. This is an approximate calculation.
-!!
-!!##OPTIONS
-!!
-!!    dat    DAT Date array describing input date
-!!
-!!##RESULTS
-!!
-!!    moon_fullness  0 is a new or dark moon, 100 is a full moon, + for waxing
-!!                   and - for waning.
-!!
-!!##EXAMPLES
-!!
-!!    Sample:
-!!
-!!     program demo_moon_fullness
-!!     use M_time, only : now
-!!     use M_time, only : phase_of_moon
-!!     use M_time, only : moon_fullness
-!!     implicit none
-!!     integer :: dat(8)
-!!        ! generate DAT array
-!!        call date_and_time(values=dat)
-!!        ! show DAT array
-!!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        ! the %p and %P fields are supported by fmtdate(3f)
-!!        write(*,*)&
-!!        &now('The phase of the moon is %p, with a fullness of %P')
-!!        write(*,'(1x,*(a))',advance='no')&
-!!        &'The phase of the moon is ',trim( phase_of_moon(dat)),','
-!!        write(*,'(1x,a,i0,a)')&
-!!        &'with a fullness of ', moon_fullness(dat),'%'
-!!     end program demo_moon_fullness
-!!
-!!    Sample output:
-!!
-!!      Today is:2018:11:3:-240:20:18:44:245
-!!      The phase of the moon is Waning crescent, with a fullness of -30%
-!!      The phase of the moon is Waning crescent, with a fullness of -30%
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!     moon_fullness(3f) - [M_time:ASTROLOGICAL] return percentage of moon phase
+!     from new to full
+!     (LICENSE:MIT)
+! SYNOPSIS
+!   function moon_fullness(dat)
+! 
+!    integer,intent(in) :: dat(8)
+!    integer            :: moon_fullness
+! 
+! DESCRIPTION
+! 
+!   This procedure is used to support the %P field descriptor for the
+!   fmtdate(3f) routine.
+! 
+!   The moon circles the earth every 29.530588853 days on average, so pick
+!   a starting point and count. A new moon occurred at January 6, 2000,
+!   18:14 UTC. Then it is easy to count the number of days since the last
+!   new moon. This is an approximate calculation.
+! 
+! OPTIONS
+! 
+!    dat    DAT Date array describing input date
+! 
+! RESULTS
+! 
+!    moon_fullness  0 is a new or dark moon, 100 is a full moon, + for waxing
+!                   and - for waning.
+! 
+! EXAMPLES
+!    Sample:
+! 
+!     program demo_moon_fullness
+!     use M_time, only : now
+!     use M_time, only : phase_of_moon
+!     use M_time, only : moon_fullness
+!     implicit none
+!     integer :: dat(8)
+!        ! generate DAT array
+!        call date_and_time(values=dat)
+!        ! show DAT array
+!        write(*,'(" Today is:",*(i0:,":"))')dat
+!        ! the %p and %P fields are supported by fmtdate(3f)
+!        write(*,*)&
+!        &now('The phase of the moon is %p, with a fullness of %P')
+!        write(*,'(1x,*(a))',advance='no')&
+!        &'The phase of the moon is ',trim( phase_of_moon(dat)),','
+!        write(*,'(1x,a,i0,a)')&
+!        &'with a fullness of ', moon_fullness(dat),'%'
+!     end program demo_moon_fullness
+! 
+!    Sample output:
+! 
+!      Today is:2018:11:3:-240:20:18:44:245
+!      The phase of the moon is Waning crescent, with a fullness of -30%
+!      The phase of the moon is Waning crescent, with a fullness of -30%
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 function moon_fullness(dat)
 
-! ident_41="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
+! ident_46="@(#) M_time moon_fullness(3f) return percentage of moon phase from new to full"
 
 integer,intent(in)            :: dat(8)
 integer                       :: moon_fullness
@@ -6872,82 +6956,80 @@ end function moon_fullness
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    easter(3f) - [M_time:ASTROLOGICAL] calculate date for Easter given a year
-!!    (LICENSE:MIT)
-!!
-!!##SYNOPSIS
-!!
-!!   subroutine easter(year,dat)
-!!
-!!     integer, intent(in)  :: year
-!!     integer, intent(out) :: dat
-!!
-!!##DESCRIPTION
-!!   The Date of Easter (Sunday)
-!!
-!!   The algorithm is due to J.-M. Oudin (1940) and is reprinted
-!!   in the Explanatory Supplement to the Astronomical Almanac,
-!!   ed. P. K. Seidelmann (1992). See Chapter 12, "Calendars", by
-!!   L. E. Doggett.
-!!
-!!   The following are dates of Easter from 1980 to 2024:
-!!
-!!        1980  April  6        1995  April 16        2010  April  4
-!!        1981  April 19        1996  April  7        2011  April 24
-!!        1982  April 11        1997  March 30        2012  April  8
-!!        1983  April  3        1998  April 12        2013  March 31
-!!        1984  April 22        1999  April  4        2014  April 20
-!!        1985  April  7        2000  April 23        2015  April  5
-!!        1986  March 30        2001  April 15        2016  March 27
-!!        1987  April 19        2002  March 31        2017  April 16
-!!        1988  April  3        2003  April 20        2018  April  1
-!!        1989  March 26        2004  April 11        2019  April 21
-!!        1990  April 15        2005  March 27        2020  April 12
-!!        1991  March 31        2006  April 16        2021  April  4
-!!        1992  April 19        2007  April  8        2022  April 17
-!!        1993  April 11        2008  March 23        2023  April  9
-!!        1994  April  3        2009  April 12        2024  March 31
-!!
-!!   N.B. The date of Easter for the Eastern Orthodox Church may be different.
-!!
-!!##OPTIONS
-!!      year    Year for which to calculate day that Easter falls on
-!!##RESULTS
-!!      dat     Date array for noon on Easter for the specified year
-!!
-!!##EXAMPLE
-!!
-!!
-!!    Sample program:
-!!
-!!     program demo_easter
-!!     use M_time, only : easter, fmtdate
-!!     implicit none
-!!     integer :: year
-!!     integer :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
-!!       call date_and_time(values=dat)  ! get current year
-!!       year=dat(1)
-!!       call easter(year, dat)
-!!       write(*,*)fmtdate(dat,&
-!!       "Easter day: the %d day of %L in the year of our Lord %Y")
-!!     end program demo_easter
-!!
-!!    Sample output:
-!!
-!!     Easter day: the 16th day of April in the year of our Lord 2017
-!>
-!!
-!!   U.S. Naval Observatory Astronomical Applications Department
-!!
-!!   This code assembled by Alan Miller
-!!   Reference web site:
-!!   http://aa.usno.navy.mil/faq/docs/easter.html
-!!   Latest revision 8 April 2002
+! 
+! NAME
+!    easter(3f) - [M_time:ASTROLOGICAL] calculate date for Easter given a year
+!    (LICENSE:MIT)
+! 
+! SYNOPSIS
+!   subroutine easter(year,dat)
+! 
+!     integer, intent(in)  :: year
+!     integer, intent(out) :: dat
+! 
+! DESCRIPTION
+!   The Date of Easter (Sunday)
+! 
+!   The algorithm is due to J.-M. Oudin (1940) and is reprinted
+!   in the Explanatory Supplement to the Astronomical Almanac,
+!   ed. P. K. Seidelmann (1992). See Chapter 12, "Calendars", by
+!   L. E. Doggett.
+! 
+!   The following are dates of Easter from 1980 to 2024:
+! 
+!        1980  April  6        1995  April 16        2010  April  4
+!        1981  April 19        1996  April  7        2011  April 24
+!        1982  April 11        1997  March 30        2012  April  8
+!        1983  April  3        1998  April 12        2013  March 31
+!        1984  April 22        1999  April  4        2014  April 20
+!        1985  April  7        2000  April 23        2015  April  5
+!        1986  March 30        2001  April 15        2016  March 27
+!        1987  April 19        2002  March 31        2017  April 16
+!        1988  April  3        2003  April 20        2018  April  1
+!        1989  March 26        2004  April 11        2019  April 21
+!        1990  April 15        2005  March 27        2020  April 12
+!        1991  March 31        2006  April 16        2021  April  4
+!        1992  April 19        2007  April  8        2022  April 17
+!        1993  April 11        2008  March 23        2023  April  9
+!        1994  April  3        2009  April 12        2024  March 31
+! 
+!   N.B. The date of Easter for the Eastern Orthodox Church may be different.
+! 
+! OPTIONS
+!      year    Year for which to calculate day that Easter falls on
+! RESULTS
+!      dat     Date array for noon on Easter for the specified year
+! 
+! EXAMPLE
+! 
+!    Sample program:
+! 
+!     program demo_easter
+!     use M_time, only : easter, fmtdate
+!     implicit none
+!     integer :: year
+!     integer :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
+!       call date_and_time(values=dat)  ! get current year
+!       year=dat(1)
+!       call easter(year, dat)
+!       write(*,*)fmtdate(dat,&
+!       "Easter day: the %d day of %L in the year of our Lord %Y")
+!     end program demo_easter
+! 
+!    Sample output:
+! 
+!     Easter day: the 16th day of April in the year of our Lord 2017
+! 
+! 
+!   U.S. Naval Observatory Astronomical Applications Department
+! 
+!   This code assembled by Alan Miller
+!   Reference web site:
+!   http://aa.usno.navy.mil/faq/docs/easter.html
+!   Latest revision 8 April 200
 SUBROUTINE Easter(year, dat)
 
-! ident_42="@(#) M_time easter(3f) calculate date for Easter given a year"
+! ident_47="@(#) M_time easter(3f) calculate date for Easter given a year"
 
 integer,intent(in)  :: year
 integer,intent(out) :: dat(8) ! year,month,day,tz,hour,minute,second,millisecond
@@ -6988,80 +7070,78 @@ end subroutine Easter
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
-!>
-!!##NAME
-!!    system_sleep(3f) - [M_time:C_INTERFACE] call C sleep(3c) or usleep(3c)
-!!    procedure
-!!    (LICENSE:MIT)
-!!##SYNOPSIS
-!!
-!!    subroutine system_sleep(wait_seconds)
-!!
-!!       integer,intent(in)  :: wait_seconds
-!!          or
-!!       real,intent(in)  :: wait_seconds
-!!
-!!##DESCRIPTION
-!!   The system_sleep(3f) routine uses the intrinsic ISO_C_BINDING
-!!   interface to call the C sleep(3c) procedure or usleep(3c)
-!!   routine.
-!!
-!!##OPTIONS
-!!    wait_seconds  integer,real or doubleprecision number of seconds for
-!!                  process to sleep.
-!!
-!!##EXAMPLE
-!!
-!!    Sample program:
-!!
-!!     program demo_system_sleep
-!!     use M_time, only : system_sleep, now
-!!     implicit none
-!!     integer :: i
-!!        !
-!!        write(*,'(a)')"Time before integer call is: ",now()
-!!        call system_sleep(4)
-!!        write(*,'(a)')"Time after integer call is: ",now()
-!!        !
-!!        write(*,'(a)')"Time before real call is: ",now()
-!!        call system_sleep(4.0)
-!!        write(*,'(a)')"Time after real call is: ",now()
-!!        !
-!!        write(*,'(a)')"Time before loop is: ",now()
-!!        do i=1,1000
-!!           call system_sleep(4.0/1000.0)
-!!        enddo
-!!        write(*,'(a)')"Time after loop is: ",now()
-!!        !
-!!     end program demo_system_sleep
-!!
-!!  results
-!!
-!!      Time before integer call is:
-!!      Sunday, July 17th, 2016 2:29:45 AM UTC-0240
-!!      Time after integer call is:
-!!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
-!!      Time before real call is:
-!!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
-!!      Time after real call is:
-!!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
-!!      Time before loop is:
-!!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
-!!      Time after loop is:
-!!      Sunday, July 17th, 2016 2:30:09 AM UTC-0240
-!!
-!!##AUTHOR
-!!    John S. Urban, 2015
-!!
-!!##LICENSE
-!!    MIT
+! 
+! NAME
+!    system_sleep(3f) - [M_time:C_INTERFACE] call C sleep(3c) or usleep(3c)
+!    procedure
+!    (LICENSE:MIT)
+! SYNOPSIS
+!    subroutine system_sleep(wait_seconds)
+! 
+!       integer,intent(in)  :: wait_seconds
+!          or
+!       real,intent(in)  :: wait_seconds
+! 
+! DESCRIPTION
+!   The system_sleep(3f) routine uses the intrinsic ISO_C_BINDING
+!   interface to call the C sleep(3c) procedure or usleep(3c)
+!   routine.
+! 
+! OPTIONS
+!    wait_seconds  integer,real or doubleprecision number of seconds for
+!                  process to sleep.
+! 
+! EXAMPLE
+!    Sample program:
+! 
+!     program demo_system_sleep
+!     use M_time, only : system_sleep, now
+!     implicit none
+!     integer :: i
+!        !
+!        write(*,'(a)')"Time before integer call is: ",now()
+!        call system_sleep(4)
+!        write(*,'(a)')"Time after integer call is: ",now()
+!        !
+!        write(*,'(a)')"Time before real call is: ",now()
+!        call system_sleep(4.0)
+!        write(*,'(a)')"Time after real call is: ",now()
+!        !
+!        write(*,'(a)')"Time before loop is: ",now()
+!        do i=1,1000
+!           call system_sleep(4.0/1000.0)
+!        enddo
+!        write(*,'(a)')"Time after loop is: ",now()
+!        !
+!     end program demo_system_sleep
+! 
+!  results
+! 
+!      Time before integer call is:
+!      Sunday, July 17th, 2016 2:29:45 AM UTC-0240
+!      Time after integer call is:
+!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
+!      Time before real call is:
+!      Sunday, July 17th, 2016 2:29:49 AM UTC-0240
+!      Time after real call is:
+!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
+!      Time before loop is:
+!      Sunday, July 17th, 2016 2:29:53 AM UTC-0240
+!      Time after loop is:
+!      Sunday, July 17th, 2016 2:30:09 AM UTC-0240
+! 
+! AUTHOR
+!    John S. Urban, 2015
+! 
+! LICENSE
+!    MI
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 subroutine system_sleep(seconds)
 use,intrinsic       :: iso_c_binding, only: c_int
 
-! ident_43="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
+! ident_48="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
 
 class(*),intent(in) :: seconds
 integer(kind=c_int) :: cint
@@ -7077,7 +7157,7 @@ end SUBROUTINE system_sleep
 subroutine call_sleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
 
-! ident_44="@(#) M_time call_sleep(3fp) call sleep(3c)"
+! ident_49="@(#) M_time call_sleep(3fp) call sleep(3c)"
 
 integer(kind=c_int),intent(in)  :: wait_seconds
 integer(kind=c_int)             :: how_long
@@ -7097,7 +7177,7 @@ end subroutine call_sleep
 !===================================================================================================================================
 subroutine call_usleep(milliseconds)
 
-! ident_45="@(#) M_time call_usleep(3fp) call usleep(3c)"
+! ident_50="@(#) M_time call_usleep(3fp) call usleep(3c)"
 
 use,intrinsic                   :: iso_c_binding, only: c_int
 integer(kind=c_int),intent(in)  :: milliseconds
@@ -7118,7 +7198,7 @@ end subroutine call_usleep
 !==================================================================================================================================!
 function getnow() result(dat)
 
-! ident_46="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
+! ident_51="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
 integer :: dat(8)
    call date_and_time(values=dat)
@@ -7144,6 +7224,16 @@ end module M_time
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
+! M_time calls now_ex as a regular procedure to prevent a dependency loop
+function now_ex(format)
+use M_time, only: now
+
+! ident_52="@(#) M_time now_ex(3f) use of now(3f) outside of a module"
+
+character(len=*),intent(in),optional :: format
+character(len=:),allocatable         :: now_ex
+   now_ex=now(format)
+end function now_ex
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
