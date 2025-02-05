@@ -41,8 +41,8 @@ messages.
 In addition to conventional Civilian Calendar dates, the module supports
 the ISO-8601 standard.
 
-Both a procedural and OOP (Object Oriented Programming) interface are
-provided.
+Procedural, Functional, and OOP (Object Oriented Programming) interfaces
+are provided.
 
 Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
