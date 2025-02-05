@@ -115,7 +115,6 @@ real(kind=realtime),public,parameter :: dt_hour=3600.0_dp     ! one hour in seco
 real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours in seconds
 real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
 ```
--->
 ## Example
 A simple program that formats the current time as desired, and displays
 the built-in help text for the formatting options is as simple as
