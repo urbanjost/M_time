@@ -126,6 +126,12 @@ the built-in help text for the formatting options is as simple as
        write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N") ! % macros
        write(*,*)now("year-month-day") ! or, if macros not found then keywords
        write(*,*)now("Y-M-D h:m:s")    ! and if that is not found, abbreviations
+       call locale('french')
+       write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
+       call locale('slovak')
+       write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
+       call locale('spanish')
+       write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
 
       ! built-in usage descriptions can be displayed as well
        call fmtdate_usage() ! see all formatting options
@@ -133,9 +139,12 @@ the built-in help text for the formatting options is as simple as
 ```
 
 ```text
-   The current date is Thu, Oct 20th, 2022 7:26:04 PM
-   2022-10-20
-   2022-10-20 19:26:04
+    The current date is Wed, Feb 5th, 2025 8:57:07 AM
+    2025-02-05
+    2025-02-05 08:57:07
+    mercredi, février 05, 2025 08:57:07
+    streda, február 05, 2025 08:57:07
+    miércoles, febrero 05, 2025 08:57:07
 ```
 ```text
      Description                                        Example
