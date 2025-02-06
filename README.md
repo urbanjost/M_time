@@ -7,14 +7,14 @@
 
 ## Description
 
-M_time(3f) can be used to display Civilian Calendar dates in many formats.
+M_time(3f) displays Civilian Calendar dates in many formats.
 
-In addition, it can manipulate or read many other date representations ...
+In addition to high-level date formatting, it can manipulate or read
+many other date representations ...
 
   * Julian and Modified Julian Dates
   * Baseday and Seconds Dates
   * Unix Epoch Dates
-  * High-level date formatting
   * Ordinal days of the year
   * days of the week
   * ISO-8601 week numbers
@@ -46,7 +46,7 @@ are provided.
 
 Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
-programs are included in the package.
+programs for each procedure are included in the package.
 
 ## Procedures
 
@@ -120,7 +120,7 @@ A simple program that formats the current time as desired, and displays
 the built-in help text for the formatting options is as simple as
 ```fortran
       program demo_now
-      use M_time, only : now, fmtdate_usage
+      use M_time, only : now
       implicit none
        write(*,*)now("The current date is %w, %l %d, %Y %H:%m:%s %N") ! % macros
        write(*,*)now("year-month-day") ! or, if macros not found then keywords
@@ -132,8 +132,6 @@ the built-in help text for the formatting options is as simple as
        call locale('spanish')
        write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
 
-      ! built-in usage descriptions can be displayed as well
-       call fmtdate_usage() ! see all formatting options
       end program demo_now
 ```
 
@@ -144,6 +142,14 @@ the built-in help text for the formatting options is as simple as
     mercredi, février 05, 2025 08:57:07
     streda, február 05, 2025 08:57:07
     miércoles, febrero 05, 2025 08:57:07
+```
+```fortran
+      program builtin_macrohelp
+      use M_time, only : fmtdate_usage
+      implicit none
+      ! built-in usage descriptions can be displayed as well
+       call fmtdate_usage() ! see all formatting options
+      end program builtin_macrohelp
 ```
 ```text
      Description                                        Example
