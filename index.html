@@ -92,13 +92,13 @@ website:
 <h2 id="name">Name</h2>
 <p>M_time - Fortran module for manipulating and presenting time and date values</p>
 <h2 id="description">Description</h2>
-<p>M_time(3f) can be used to display Civilian Calendar dates in many formats.</p>
-<p>In addition, it can manipulate or read many other date representations &hellip;</p>
+<p>M_time(3f) displays Civilian Calendar dates in many formats.</p>
+<p>In addition to high-level date formatting, it can manipulate or read
+many other date representations &hellip;</p>
 <ul>
 <li>Julian and Modified Julian Dates</li>
 <li>Baseday and Seconds Dates</li>
 <li>Unix Epoch Dates</li>
-<li>High-level date formatting</li>
 <li>Ordinal days of the year</li>
 <li>days of the week</li>
 <li>ISO-8601 week numbers</li>
@@ -125,7 +125,7 @@ the ISO-8601 standard.</p>
 are provided.</p>
 <p>Each routine is accompanied by a man(1) page which includes a sample
 program for that procedure. An HTML manual, the source, and example
-programs are included in the package.</p>
+programs for each procedure are included in the package.</p>
 <h2 id="procedures">Procedures</h2>
 <h3 id="epoch-time-ut-starts-at-0000-on-1-jan-1970">Epoch Time (UT starts at 0000 on 1 Jan. 1970)</h3>
 <ul>
@@ -217,7 +217,7 @@ programs are included in the package.</p>
 <p>A simple program that formats the current time as desired, and displays
 the built-in help text for the formatting options is as simple as</p>
 <div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="k">program </span><span class="n">demo_now</span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate_usage</span>
+<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span>
 <span class="w">      </span><span class="k">implicit none</span>
 <span class="k">       write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is %w, %l %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span><span class="w"> </span><span class="c">! % macros</span>
 <span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;year-month-day&quot;</span><span class="p">)</span><span class="w"> </span><span class="c">! or, if macros not found then keywords</span>
@@ -229,8 +229,6 @@ the built-in help text for the formatting options is as simple as</p>
 <span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">)</span>
 <span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span><span class="w"> </span>
 
-<span class="w">      </span><span class="c">! built-in usage descriptions can be displayed as well</span>
-<span class="w">       </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">()</span><span class="w"> </span><span class="c">! see all formatting options</span>
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_now</span>
 </code></pre></div>
 
@@ -240,6 +238,14 @@ the built-in help text for the formatting options is as simple as</p>
     mercredi, février 05, 2025 08:57:07
     streda, február 05, 2025 08:57:07
     miércoles, febrero 05, 2025 08:57:07
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="k">program </span><span class="n">builtin_macrohelp</span>
+<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">fmtdate_usage</span>
+<span class="w">      </span><span class="k">implicit none</span>
+<span class="w">      </span><span class="c">! built-in usage descriptions can be displayed as well</span>
+<span class="w">       </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">()</span><span class="w"> </span><span class="c">! see all formatting options</span>
+<span class="w">      </span><span class="k">end program </span><span class="n">builtin_macrohelp</span>
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code>     Description                                        Example
@@ -663,7 +669,7 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-02-05 14:16 +0000             </p>
+ on 2025-02-06 04:37 +0000             </p>
           </div>
         </div>
         <br>
