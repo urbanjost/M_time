@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.3% of total for programs.">8 statements</a>
+                 title=" 0.6% of total for programs.">15 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -167,15 +167,27 @@
     <section>
     <h2 id="src">Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="w">      </span><span class="k">program </span><span class="n">demo_now</span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span>
+<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span>
 <span class="w">      </span><span class="k">implicit none</span>
-<span class="k">         write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is &amp;</span>
-<span class="s2">            &amp;year/month/day hour:minute:second timezone&quot;</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is &amp;</span>
-<span class="s2">            &amp;WEEKDAY at HOUR GOOD, MONTH DAY, year&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! MACROS</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is &amp;</span>
 <span class="s2">            &amp;%w, %l %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! If macros are not found substitute values for KEYWORDS</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is &amp;</span>
+<span class="s2">            &amp;year/month/day hour:minute:second timezone&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is &amp;</span>
+<span class="s2">            &amp;longweekday at HOUR GOOD, longmonth shortday, year&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! including some HIGH-LEVEL KEYWORDS</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;iso&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! and if no keywords are found, ABBREVIATED MACROS</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;Y-M-D h:m:s&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! and basic INTERNATIONALIZATION is available</span>
+<span class="w">         </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;french&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;slovak&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_now</span>
 </pre></div>
 
@@ -199,7 +211,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-02-06 04:37 +0000             </p>
+ on 2025-02-20 06:47 +0000             </p>
           </div>
         </div>
         <br>

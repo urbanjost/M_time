@@ -75,7 +75,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="34.5% of total for programs.">839 statements</a>
+                 title="34.5% of total for programs.">842 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -118,9 +118,9 @@
             <a class="list-group-item" href="../program/runtest.html#variable-same">SAME</a>
             <a class="list-group-item" href="../program/runtest.html#variable-sameend">SAMEEND</a>
             <a class="list-group-item" href="../program/runtest.html#variable-t">T</a>
-            <a class="list-group-item" href="../program/runtest.html#variable-dat~25">dat</a>
-            <a class="list-group-item" href="../program/runtest.html#variable-dp~8">dp</a>
-            <a class="list-group-item" href="../program/runtest.html#variable-ierr~9">ierr</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-dat~5">dat</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-dp~2">dp</a>
+            <a class="list-group-item" href="../program/runtest.html#variable-ierr~2">ierr</a>
         </div>
       </div>
     </div>
@@ -224,8 +224,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">M_framework__verify</li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
+                  <li class="list-inline-item">M_framework__verify</li>
                   <li class="list-inline-item">M_time</li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
               </ul>
@@ -317,7 +317,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~25"></span>
+              <span class="anchor" id="variable-dat~5"></span>
               integer
             </td>
             <td>
@@ -333,7 +333,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~8"></span>
+              <span class="anchor" id="variable-dp~2"></span>
               integer,
             </td>
             <td>
@@ -349,7 +349,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~9"></span>
+              <span class="anchor" id="variable-ierr~2"></span>
               integer
             </td>
             <td>
@@ -396,7 +396,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-string~2"></span>
+              <span class="anchor" id="variable-string"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -517,7 +517,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-string~3"></span>
+              <span class="anchor" id="variable-string~2"></span>
               character(len=*)
             </td>
 <td></td>
@@ -1645,8 +1645,8 @@ parameter
 <span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|%l|%L|%w|%W|&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;locale&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;after reset macros: expected&#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;returned&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">)</span>
 
-<span class="n">expected</span><span class="o">=</span><span class="s1">&#39;|March|Mar|Mar|Sat|Sat|Saturday|&#39;</span>
-<span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|&#39;</span><span class="p">)</span>
+<span class="n">expected</span><span class="o">=</span><span class="s1">&#39;|March|Mar|Mar|Sat|Sat|Saturday|Sat|Saturday|Mar|March&#39;</span>
+<span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|shortweekday|longweekday|shortmonth|longmonth&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;locale&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;after reset keywords: expected&#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;returned&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">)</span>
 
 <span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;locale&#39;</span><span class="p">)</span>
@@ -1701,9 +1701,13 @@ parameter
 <span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|%l|%L|%w|%W|&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;macros: expected&#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;returned&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">)</span>
 
-<span class="n">expected</span><span class="o">=</span><span class="s1">&#39;|March|Mar|Mar|Sat|Sat|Saturday|&#39;</span>
-<span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|&#39;</span><span class="p">)</span>
+<span class="n">expected</span><span class="o">=</span><span class="s1">&#39;|March|Mar|Mar|Sat|Sat|Saturday|Sat|Saturday&#39;</span>
+<span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|shortweekday|longweekday&#39;</span><span class="p">)</span>
 <span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;keywords: expected&#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;returned&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">)</span>
+
+<span class="n">expected</span><span class="o">=</span><span class="s1">&#39;|2nd|second|02|&#39;</span>
+<span class="n">returned</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;|shortday|longday|day|&#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;macros: expected&#39;</span><span class="p">,</span><span class="n">expected</span><span class="p">,</span><span class="s1">&#39;returned&#39;</span><span class="p">,</span><span class="n">returned</span><span class="p">)</span>
 
 <span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;fmtdate&#39;</span><span class="p">)</span>
 
@@ -2383,7 +2387,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-02-06 04:37 +0000             </p>
+ on 2025-02-20 06:47 +0000             </p>
           </div>
         </div>
         <br>

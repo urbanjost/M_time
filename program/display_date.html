@@ -114,11 +114,11 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/display_date.html#variable-dat~13">dat</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-duration">duration</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ident~6">ident</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-ierr~6">ierr</a>
-            <a class="list-group-item" href="../program/display_date.html#variable-inums">inums</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-dat~53">dat</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-duration~2">duration</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ident~9">ident</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ierr~26">ierr</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-inums~2">inums</a>
             <a class="list-group-item" href="../program/display_date.html#variable-output">output</a>
             <a class="list-group-item" href="../program/display_date.html#variable-rdat">rdat</a>
         </div>
@@ -142,7 +142,7 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/display_date.html#proc-help_version~3">help_version</a>
+            <a class="list-group-item" href="../program/display_date.html#proc-help_version~4">help_version</a>
             <a class="list-group-item" href="../program/display_date.html#proc-usage">usage</a>
         </div>
       </div>
@@ -175,8 +175,8 @@
             <li class="list-group-item">
               <ul class="list-inline">
                   <li class="list-inline-item">m_strings</li>
-                  <li class="list-inline-item">M_time</li>
                   <li class="list-inline-item">M_kracken95</li>
+                  <li class="list-inline-item">M_time</li>
               </ul>
             </li>
         </ul>
@@ -200,7 +200,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~13"></span>
+              <span class="anchor" id="variable-dat~53"></span>
               integer
             </td>
             <td>
@@ -216,7 +216,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-duration"></span>
+              <span class="anchor" id="variable-duration~2"></span>
               real(kind=realtime)
             </td>
             <td>
@@ -232,7 +232,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~6"></span>
+              <span class="anchor" id="variable-ident~9"></span>
               character(len=*),
             </td>
             <td>
@@ -248,7 +248,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~6"></span>
+              <span class="anchor" id="variable-ierr~26"></span>
               integer
             </td>
             <td>
@@ -264,7 +264,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-inums"></span>
+              <span class="anchor" id="variable-inums~2"></span>
               integer
             </td>
             <td>
@@ -325,7 +325,7 @@ parameter
     <section>
     <h2>Subroutines</h2>
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-help_version~3"></span> <h3> subroutine <a href='../proc/help_version~3.html'>help_version</a>(l_version)  
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version~4"></span> <h3> subroutine <a href='../proc/help_version~4.html'>help_version</a>(l_version)  
 </h3></div>
     <div class="card-body">
           
@@ -344,7 +344,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-l_version~3"></span>
+              <span class="anchor" id="variable-l_version~4"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -586,7 +586,7 @@ parameter
 <span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       2025-01-26 10:34:47 UTC-300&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2025-02-19 16:50:09 UTC-300&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
 <span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
@@ -615,7 +615,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-02-06 04:37 +0000             </p>
+ on 2025-02-20 06:47 +0000             </p>
           </div>
         </div>
         <br>
