@@ -20,6 +20,8 @@ real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time____oop_a
 \item 
 character(len=\+:) function, allocatable, private \mbox{\hyperlink{namespacem__time____oop_a00fe9081f1e093560184d942a8785b60}{format}} (self, fmt)
 \item 
+real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa}{mjd\+\_\+}} (self)
+\item 
 real(kind=realtime) function, private \mbox{\hyperlink{namespacem__time____oop_a8338cac57213766af60b447ea4a9feff}{julian\+\_\+}} (self)
 \item 
 integer function, private \mbox{\hyperlink{namespacem__time____oop_a4cd900571a58e76cbe239f0843fbcd98}{ordinal}} (self)
@@ -66,7 +68,7 @@ mydateyear mydatemonth mydateday mydatetz mydatehour mydateminute mydatesecond m
 
 call mydateinit()
 
-mydateformat(\textquotesingle{}\textquotesingle{}) mydateordinal() mydateweekday() mydateepoch() mydatejulian() dat=mydatedatout() mydatedelta(year=NN, month=NN, day=NN, tz=NN, hour=NN, minute=NN, second=NN, millisecond=NN, week=NN, duration=\textquotesingle{}D\+D-\/\+HH\+:MM\+:S\+S.\+XX\textquotesingle{})\hypertarget{namespacem__time____oop_autotoc_md116}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time____oop_autotoc_md116}
+mydateformat(\textquotesingle{}\textquotesingle{}) mydateordinal() mydateweekday() mydateepoch() mydatejulian() mydatemjd() dat=mydatedatout() mydatedelta(year=NN, month=NN, day=NN, tz=NN, hour=NN, minute=NN, second=NN, millisecond=NN, week=NN, duration=\textquotesingle{}D\+D-\/\+HH\+:MM\+:S\+S.\+XX\textquotesingle{})\hypertarget{namespacem__time____oop_autotoc_md116}{}\doxysubsubsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{namespacem__time____oop_autotoc_md116}
 An object-\/oriented interface to the M\+\_\+time module. The following example program demonstrates and documents the interface\hypertarget{namespacem__time____oop_autotoc_md117}{}\doxysubsubsection{E\+X\+A\+M\+P\+L\+ES}\label{namespacem__time____oop_autotoc_md117}
 sample program
 
@@ -94,7 +96,7 @@ otherdate=date\+\_\+time(\mbox{[}1776,7,4\mbox{]}) print $\ast$,\textquotesingle
 
 ! M\+E\+M\+B\+E\+RS ( basic time values are all integers) ! print members of type write($\ast$,101)\textquotesingle{}year Year................... \textquotesingle{},eventyear write($\ast$,101)\textquotesingle{}month Month.................. \textquotesingle{},eventmonth write($\ast$,101)\textquotesingle{}day Day.................... \textquotesingle{},eventday write($\ast$,101)\textquotesingle{}tz Timezone............... \textquotesingle{},eventtz write($\ast$,101)\textquotesingle{}hour Hour................... \textquotesingle{},eventhour write($\ast$,101)\textquotesingle{}minute Minute................. \textquotesingle{},eventminute write($\ast$,101)\textquotesingle{}second Second................. \textquotesingle{},eventsecond write($\ast$,101)\textquotesingle{}millisecond Millisecond............ \textquotesingle{},eventmillisecond
 
-! P\+R\+I\+NT M\+E\+T\+H\+O\+DS OF T\+Y\+PE write($\ast$,$\ast$)\textquotesingle{}Print methods of type(\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E)\textquotesingle{} write($\ast$,101)\textquotesingle{}ordinal Ordinal day of year.... \textquotesingle{}, eventordinal() write($\ast$,101)\textquotesingle{}weekday Weekday................ \textquotesingle{}, eventweekday() 101 format(1x,a,i0) ! D\+O\+U\+B\+LE P\+R\+E\+C\+I\+S\+I\+ON V\+A\+L\+U\+ES E\+A\+S\+I\+LY M\+A\+N\+I\+P\+U\+L\+A\+T\+ED M\+A\+T\+H\+E\+M\+A\+T\+I\+C\+A\+L\+LY write($\ast$,202)\textquotesingle{}epoch Unix epoch time........ \textquotesingle{}, eventepoch() write($\ast$,202)\textquotesingle{}julian Julian date............ \textquotesingle{}, eventjulian() 202 format(1x,a,g0)
+! P\+R\+I\+NT M\+E\+T\+H\+O\+DS OF T\+Y\+PE write($\ast$,$\ast$)\textquotesingle{}Print methods of type(\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E)\textquotesingle{} write($\ast$,101)\textquotesingle{}ordinal Ordinal day of year.... \textquotesingle{}, eventordinal() write($\ast$,101)\textquotesingle{}weekday Weekday................ \textquotesingle{}, eventweekday() 101 format(1x,a,i0) ! D\+O\+U\+B\+LE P\+R\+E\+C\+I\+S\+I\+ON V\+A\+L\+U\+ES E\+A\+S\+I\+LY M\+A\+N\+I\+P\+U\+L\+A\+T\+ED M\+A\+T\+H\+E\+M\+A\+T\+I\+C\+A\+L\+LY write($\ast$,202)\textquotesingle{}epoch Unix epoch time........ \textquotesingle{}, eventepoch() write($\ast$,202)\textquotesingle{}julian Julian date............ \textquotesingle{}, eventjulian() write($\ast$,202)\textquotesingle{}mjd Modiied Julian date.... \textquotesingle{}, eventmjd() 202 format(1x,a,g0)
 
 ! F\+O\+R\+M\+A\+T\+T\+ED S\+T\+R\+I\+N\+GS (many strings possible. ! Takes the same format string as fmtdate(3f)) write($\ast$,$\ast$) write($\ast$,\textquotesingle{}(a)\textquotesingle{})\textquotesingle{} Formatted Strings (format(\char`\"{}\+S\+T\+R\+I\+N\+G\char`\"{}) \& \& -- see fmtdate(3f) for format descriptions\textquotesingle{} ! abbreviated month name l Dec write($\ast$,303)\textquotesingle{}Short month............ \textquotesingle{},\& \& eventformat(\char`\"{}\%l\char`\"{}) ! ! full month name L December write($\ast$,303)\textquotesingle{}Month.................. \textquotesingle{},\& \& eventformat(\char`\"{}\%\+L\char`\"{}) ! ! first three characters of weekday w Sat write($\ast$,303)\textquotesingle{}Short week............. \textquotesingle{},\& \& eventformat(\char`\"{}\%w\char`\"{}) ! ! weekday name W Saturday write($\ast$,303)\textquotesingle{}Week .................. \textquotesingle{},\& \& eventformat(\char`\"{}\%\+W\char`\"{}) ! ! with no percent (\%) characters write($\ast$,303)\textquotesingle{}Calendar Time ......... \textquotesingle{},\& \& eventformat(\char`\"{}\+Y-\/\+M-\/\+D h\+:m\+:s.\+x z\char`\"{}) ! ! keywords with no percent (\%) characters write($\ast$,303)\textquotesingle{}Calendar Time ......... \textquotesingle{},\& \& eventformat(\textquotesingle{}\char`\"{}year-\/month-\/day \&
         \& hour\+:minute\+:second.\+millisecond timezone\char`\"{}\textquotesingle{}) ! write($\ast$,$\ast$)eventformat(\textquotesingle{}Longer format.......... \& \&\char`\"{}\%\+W, \%\+L \%d, \%\+Y \%\+H\+:\%m\+:\%s \%\+N\char`\"{}\textquotesingle{}) ! a nice friendly format ! 303 format(1x,a,\textquotesingle{}\char`\"{}\textquotesingle{},a,\textquotesingle{}\char`\"{}\textquotesingle{})
@@ -137,7 +139,7 @@ Sample output\+:
 
 Various initialization styes D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR format() 1970-\/01-\/01T00\+:00\+:00.\+000+00\+:00 D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR format(\char`\"{}\char`\"{}) 1970-\/01-\/01T00\+:00\+:00.\+000+00\+:00 D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR format(user-\/specified) 1970-\/01-\/01T00\+:00\+:00.\+000+00\+:00 D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR format(\char`\"{}\+U\+S\+A\char`\"{}) Thursday, January 1st, 1970 12\+:00\+:00 AM D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR setting values 1492-\/10-\/12T00\+:00\+:00.\+000+00\+:00 D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR with partial values 2016-\/06-\/11T00\+:00\+:00.\+000+00\+:00 D\+E\+F\+A\+U\+LT C\+O\+N\+S\+T\+R\+U\+C\+T\+OR with values by name 2016-\/06-\/11T21\+:09\+:11.\+500-\/04\+:00 C\+O\+N\+S\+T\+R\+U\+C\+T\+OR with a dat array 1776-\/07-\/04T00\+:00\+:00.\+000+00\+:00 C\+O\+N\+S\+T\+R\+U\+C\+T\+OR with a partial dat array 1776-\/07-\/04T20\+:00\+:00.\+000-\/04\+:00
 
-Print members of type(\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E) E\+V\+E\+NT=2020,10,24,-\/240,21,49,54,105 year Year................... 2020 month Month.................. 10 day Day.................... 24 tz Timezone............... -\/240 hour Hour................... 21 minute Minute................. 49 second Second................. 54 millisecond Millisecond............ 105 Print methods of type(\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E) ordinal Ordinal day of year.... 298 weekday Weekday................ 6 epoch Unix epoch time........ 1603590594.\+1049695 julian Julian date............ 2459147.\+5763206594
+Print members of type(\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E) E\+V\+E\+NT=2020,10,24,-\/240,21,49,54,105 year Year................... 2020 month Month.................. 10 day Day.................... 24 tz Timezone............... -\/240 hour Hour................... 21 minute Minute................. 49 second Second................. 54 millisecond Millisecond............ 105 Print methods of type(\+D\+A\+T\+E\+\_\+\+T\+I\+M\+E) ordinal Ordinal day of year.... 298 weekday Weekday................ 6 epoch Unix epoch time........ 1603590594.\+1049695 julian Julian date............ 2459147.\+5763206594 mjd Modified Julian date... 59147.\+9763206594
 
 Formatted Strings (format(\char`\"{}\+S\+T\+R\+I\+N\+G\char`\"{}) -- see fmtdate(3f) for format descriptions Short month............ \char`\"{}\+Oct\char`\"{} Month.................. \char`\"{}\+October\char`\"{} Short week............. \char`\"{}\+Sat\char`\"{} Week .................. \char`\"{}\+Saturday\char`\"{} Calendar Time ......... \char`\"{}2020-\/10-\/24 21\+:49\+:54.\+105 -\/04\+:00\char`\"{} Calendar Time ......... \char`\"{}\char`\"{}2020-\/10-\/24 21\+:49\+:54.\+105 -\/0400\char`\"{}\char`\"{} Longer format.......... \char`\"{}\+Saturday, October 24th, 2020 9\+:49\+:54 P\+M\char`\"{}
 
@@ -461,6 +463,23 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespacem__time____oop_a52deaa5c6de2fe127e1270b4ee0e25db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa}\label{namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa}} 
+\index{m\_time\_\_oop@{m\_time\_\_oop}!mjd\_@{mjd\_}}
+\index{mjd\_@{mjd\_}!m\_time\_\_oop@{m\_time\_\_oop}}
+\doxysubsubsection{\texorpdfstring{mjd\_()}{mjd\_()}}
+{\footnotesize\ttfamily real(kind=realtime) function, private m\+\_\+time\+\_\+\+\_\+oop\+::mjd\+\_\+ (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structm__time____oop_1_1date__time}{date\+\_\+time}}), intent(in)}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+References dt2d\+\_\+().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{namespacem__time____oop_ac15e90347e732d35aeccbe392c7c6656}\label{namespacem__time____oop_ac15e90347e732d35aeccbe392c7c6656}} 

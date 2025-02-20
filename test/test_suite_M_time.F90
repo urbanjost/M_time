@@ -594,8 +594,8 @@ expected='|Mar|March|Sat|Saturday|'
 returned=fmtdate(dat,'|%l|%L|%w|%W|')
 call unit_test('locale',returned.eq.expected,'after reset macros: expected',expected,'returned',returned)
 
-expected='|March|Mar|Mar|Sat|Sat|Saturday|'
-returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|')
+expected='|March|Mar|Mar|Sat|Sat|Saturday|Sat|Saturday|Mar|March'
+returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|shortweekday|longweekday|shortmonth|longmonth')
 call unit_test('locale',returned.eq.expected,'after reset keywords: expected',expected,'returned',returned)
 
 call unit_test_end('locale')
@@ -650,9 +650,13 @@ expected='|Mar|March|Sat|Saturday|'
 returned=fmtdate(dat,'|%l|%L|%w|%W|')
 call unit_test('fmtdate',returned.eq.expected,'macros: expected',expected,'returned',returned)
 
-expected='|March|Mar|Mar|Sat|Sat|Saturday|'
-returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|')
+expected='|March|Mar|Mar|Sat|Sat|Saturday|Sat|Saturday'
+returned=fmtdate(dat,'|MONTH|Month|Mth|Weekday|wkday|WEEKDAY|shortweekday|longweekday')
 call unit_test('fmtdate',returned.eq.expected,'keywords: expected',expected,'returned',returned)
+
+expected='|2nd|second|02|'
+returned=fmtdate(dat,'|shortday|longday|day|')
+call unit_test('fmtdate',returned.eq.expected,'macros: expected',expected,'returned',returned)
 
 call unit_test_end('fmtdate')
 

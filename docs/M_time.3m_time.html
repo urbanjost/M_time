@@ -219,7 +219,6 @@ a.existingWikiWord[title]{ //border: 1px dashed #BBB; }
 <tr><th colspan="3">ORDINAL DAY               </th></tr>
 <tr><td><a href="d2o.3m_time.html"> d2o(dat) result(ORDINAL)                  </a></td><td>%ordinal() </td><td> given date array return ordinal day of year, Jan 1st=1</td></tr>
 
-
 <tr>
    <td><a href="ordinal_to_date.3m_time.html"> ordinal_to_date(ordinal,year,DAT)  </a>
    </br>or</br>
@@ -248,7 +247,6 @@ first day of given month name in specified year</td></tr>
 
 <tr><th colspan="3">LOCALE                    </th></tr>
 <tr><td><a href="locale.3m_time.html"> locale(name,month_names,weekday_names,month_names_abbr,weekday_names_abbr,IERR)  </a></td><td>&nbsp; </td><td> basic ASCII locale definition</td></tr>
-
 
 <tr><th colspan="3">ASTROLOGICAL                        </th></tr>
 <tr><td><a href="easter.3m_time.html"> easter(year,dat) </a></td><td>&nbsp; </td><td> calculate month and day Easter falls on for given year </td></tr>
@@ -314,7 +312,7 @@ Description                                        Example
       %F -- Modified Julian Date                      60400.559
       %f -- integer value of Modified Julian Date     60400
       %G -- Baseday and Seconds                       (60400,4000.55944412)
-      %g -- integer value of Baseday and Seconds      60400
+      %g -- Baseday seconds                           4000.55944412
       %J -- Julian date                               2457597.559
       %j -- integer value of Julian Date(Julian Day)  2457597
       %O -- Ordinal day (day of year)                 209
@@ -322,7 +320,7 @@ Description                                        Example
       %U -- day of week, 1..7 Sunday=1                4
       %u -- day of week, 1..7 Monday=1                3
       %i -- ISO week of year 1..53                    30
-      %I -- iso-8601 week-numbering date(yyyy-Www-d)  2016-W30-3
+      %I -- iso-8601 week with weekday: (yyyy-Www-d)  2016-W30-3
   Names:
       %l -- abbreviated month name                    Jul
       %L -- full month name                           July
@@ -330,6 +328,7 @@ Description                                        Example
       %W -- weekday name                              Wednesday
       %p -- phase of moon                             New
       %P -- percent of way from new to full moon      -1%
+      %X -- day of month in English                   twenty-first
   Literals:
       %% -- a literal %                               %
       %t -- tab character
@@ -401,44 +400,45 @@ otherwise the following words are replaced with the most common
 macros. For duplicate names the lowercase one is a numeric value string
 and all uppercase is an alphanumeric string:
 
-  String         Macro  Example
-  year           %Y     2016
+  String                      Macro  Example
+  year                        %Y     2016
 
-  month          %M     07
-  MONTH          %L     July
-  Month|Mth      %l     Jul
+  month                       %M     07
+  longmonth|MONTH             %L     July
+  shortmonth|Month|Mth        %l     Jul
 
-  day            %D     27
-  DAY            %d     27th
+  day                         %D     27
+  shortday|DAY                %d     27th
+  longday                     %X     twentyseventh
 
-  hour           %h     21
+  hour                        %h     21
 
-  HOUR           %H     11
-  GOOD           %N     AM
+  goodhour|HOUR               %H     11
+  GOOD                        %N     AM
 
-  minute         %m     24
+  minute                      %m     24
 
-  second         %s     22
+  second                      %s     22
 
-  weekday        %u     3
-  WEEKDAY        %W     Thursday
-  Weekday|wkday  %w     Thu
+  weekday                     %u     3
+  longweekday|WEEKDAY         %W     Thursday
+  shortweekday|Weekday|wkday  %w     Thu
 
-  timezone       %T     -0400   (+-HHMM)
-  TIMEZONE       %z     -04:00  (+-HH:MM)
-  Timezone       %Z     -240m   (+-MMMMm)
+  timezone                    %T     -0400   (+-HHMM)
+  TIMEZONE                    %z     -04:00  (+-HH:MM)
+  Timezone                    %Z     -240m   (+-MMMMm)
 
-  epoch          %e     1469669063
+  epoch                       %e     1469669063
 
-  julian         %j     2457597
-  MJD            %f     57597
+  julian                      %j     2457597
+  MJD                         %f     57597
 
-  ordinal        %O     209
+  ordinal                     %O     209
 
-  age            %A     100-20:30:40
-  AGE            %a     20900.3030
+  age                         %A     100-20:30:40
+  AGE                         %a     20900.3030
 
-  usage|help|?   %?     call fmtdate_usage()
+  usage|help|?                %?     call fmtdate_usage()
 
 If none of these keywords are found then every letter that
 is a macro is assumed to have an implied percent in front

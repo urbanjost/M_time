@@ -15,6 +15,7 @@ many other date representations ...
   * Julian and Modified Julian Dates
   * Baseday and Seconds Dates
   * Unix Epoch Dates
+  * High-level date formatting
   * Ordinal days of the year
   * days of the week
   * ISO-8601 week numbers
@@ -115,6 +116,7 @@ real(kind=realtime),public,parameter :: dt_hour=3600.0_dp     ! one hour in seco
 real(kind=realtime),public,parameter :: dt_day=86400.0_dp     ! 24:00:00 hours in seconds
 real(kind=realtime),public,parameter :: dt_week=dt_day*7.0_dp ! one week in seconds
 ```
+-->
 ## Example
 A simple program that formats the current time as desired, and displays
 the built-in help text for the formatting options is as simple as
@@ -131,7 +133,6 @@ the built-in help text for the formatting options is as simple as
        write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
        call locale('spanish')
        write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
-
       end program demo_now
 ```
 
@@ -143,6 +144,11 @@ the built-in help text for the formatting options is as simple as
     streda, február 05, 2025 08:57:07
     miércoles, febrero 05, 2025 08:57:07
 ```
+
+A built-in description of the macro and keyword substitution rules
+can be called to easily add the information to program help messages
+and documentation.
+
 ```fortran
       program builtin_macrohelp
       use M_time, only : fmtdate_usage
@@ -152,118 +158,130 @@ the built-in help text for the formatting options is as simple as
       end program builtin_macrohelp
 ```
 ```text
-     Description                                        Example
+   Description                                        Example
+   
+   Base time array:
+    1) %Y | year, yyyy                             2025
+    2) %M | month of year, 01 to 12                02
+    3) %D | day of month, 01 to 31                 19
+       %d | day of month with suffix (1st,2nd,...) 19th
+       %K | day of month in English (eg. first)    757554556
+    4) %Z | minutes from UTC                       -0300m
+       %z | -+hh:mm from UTC                       -05:00
+       %T | -+hhmm  from UTC                       -0500
+    5) %h | hours, 00 to 23                        16
+       %H | hour (1 to 12, or twelve-hour clock)   4
+       %N | midnight<AM<=noon; noon<=PM<midnight   PM
+    6) %m | minutes, 00 to 59                      41
+    7) %s | sec, 00 to 59                          53
+    8) %x | milliseconds 000 to 999                150
+   Conversions:
+       %E | Unix Epoch time                        1740001313.1499977
+       %e | integer value of Unix Epoch time       1740001313
+       %F | Modified Julian date                   60725.904087384231
+       %f | integer value of Modified Julian Date  60725
+       %G | Baseday and Seconds                    (60725,78113.151003420353)
+       %g | Baseday seconds                        78113.151003420353
+       %J | Julian  date                           2460726.4040873959
+       %j | integer Julian Date(Julian Day)        2460726
+       %O | Ordinal day (day of year)              050
+       %o | Whole days since Unix Epoch date       20138
+       %U | day of week, 1..7 Sunday=1             4
+       %u | day of week, 1..7 Monday=1             3
+       %i | ISO week of year 1..53                 8
+       %I | iso-8601 week with weekday: yyyy-Www-d 2025-W08-3
+    Names:
+       %l | abbreviated month name                 Feb
+       %L | full month name                        February
+       %w | first three characters of weekday      Wed
+       %W | weekday name                           Wednesday
+       %p | phase of moon                          Last quarter
+       %P | percent of way from new to full moon   -54%
+       %X | day of the month in English            nineteenth
+    Literals:
+       %% | a literal %                             %
+       %t | tab character                          	
+       %b | blank character
+       %B | exclamation(bang) character            !
+       %n | new line (system dependent)            
 
-     Base time array:
-      (1) %Y -- year, yyyy                                2022
-      (2) %M -- month of year, 01 to 12                   10
-      (3) %D -- day of month, 01 to 31                    20
-          %d -- day of month, with suffix (1st, 2nd,...)  20th
-      (4) %Z -- minutes from UTC                          -0240
-          %z -- -+hh:mm from UTC                          -04:00
-          %T -- -+hhmm  from UTC                          -0400
-      (5) %h -- hours, 00 to 23                           19
-          %H -- hour (1 to 12, or twelve-hour clock)      7
-          %N -- midnight< AM <=noon; noon<= PM <midnight  PM
-      (6) %m -- minutes, 00 to 59                         26
-      (7) %s -- sec, 00 to 59                             04
-      (8) %x -- milliseconds 000 to 999                   781
-     Conversions:
-          %E -- Unix Epoch time                           1666308364.780985
-          %e -- integer value of Unix Epoch time          1666308365
-          %J -- Julian  date                              2459873.476444224
-          %j -- integer value of Julian Date(Julian Day)  2459873
-          %O -- Ordinal day (day of year)                 293
-          %o -- Whole days since Unix Epoch date          19285
-          %U -- day of week, 1..7 Sunday=1                5
-          %u -- day of week, 1..7 Monday=1                4
-          %i -- ISO week of year 1..53                    42
-          %I -- iso-8601 week-numbering date(yyyy-Www-d)  2022-W42-4
-      Names:
-          %l -- abbreviated month name                    Oct
-          %L -- full month name                           October
-          %w -- first three characters of weekday         Thu
-          %W -- weekday name                              Thursday
-          %p -- phase of moon                             Waning crescent
-          %P -- percent of way from new to full moon      -30%
-      Literals:
-          %% -- a literal %                               %
-          %t -- tab character
-          %b -- blank character
-          %B -- exclamation(bang) character               !
-          %n -- new line (system dependent)
-
-          %q -- single quote (apostrophe)                 '
-          %Q -- double quote                              "
-      Program timing:
-          %c -- CPU_TIME(3f) output                       .2884000000000000E-01
-          %C -- number of times this routine is used      1
-          %S -- seconds since last use of this format     .000000000000000
-          %k -- time in seconds from SYSTEM_CLOCK(3f)     78632.79
-          %K -- time in clicks from SYSTEM_CLOCK(3f)      786327846
-```
+       %q | single quote (apostrophe)              '
+       %Q | double quote                           "
+    Duration:
+       %a | Time since now as d-hh:mm:ss           0-00:00:00
+       %A | Time since now as seconds              0.0000000000000000
+    Program timing:
+       %c | CPU_TIME(3f) output                    0.45703999999999995E-1
+       %C | number of times this routine is used   1
+       %S | seconds since last use of this format  0.0000000000000000
+       %k | time in seconds from SYSTEM_CLOCK(3f)  757554.562
+       %K | time in clicks from SYSTEM_CLOCK(3f)   757554565
+    Help:
+       %? | call fmtdate_usage()
+   
    If no percent (%) is found in the format one of several
    alternate substitutions occurs.
-
+   
    If the format is composed entirely of one of the following
    keywords the following substitutions occur:
-```text
-       "iso-8601",
-       "iso"        ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:26:04-04:00
-       "iso-8601W",
-       "isoweek"    ==> %I                              2022-W42-4
-       "sql"        ==> "%Y-%M-%D %h:%m:%s.%x"          "2022-10-20 19:26:04.785"
-       "sqlday"     ==> "%Y-%M-%D"                      "2022-10-20"
-       "sqltime"    ==> "%h:%m:%s.%x"                   "19:26:04.785"
-       "rfc-2822"   ==> %w, %D %l %Y %h:%m:%s %T
-                        Thu, 20 Oct 2022 19:26:04 -0400
-       "rfc-3339"   ==> %Y-%M-%DT%h:%m:%s%z             2022-10-20T19:26:04-04:00
-       "date"       ==> %w %l %D %h:%m:%s UTC%z %Y
-                        Thu Oct 20 19:26:04 UTC-04:00 2022
-       "short"      ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
-                        Thu, Oct 20th, 2022 7:26:04 PM UTC-04:00
-       "long"," "   ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
-                        Thursday, October 20th, 2022 7:26:04 PM UTC-04:00
-       "suffix"     ==> %Y%D%M%h%m%s                    20222010192604
-       "formal"     ==> The %d of %L %Y                 The 20th of October 2022
-       "lord"       ==> the %d day of %L in the year of our Lord %Y
-                        the 20th day of October in the year of our Lord 2022
-       "easter"     ==> FOR THE YEAR OF THE CURRENT DATE:
-                          Easter day: the %d day of %L in the year of our Lord %Y
-       "all"        ==> A SAMPLE OF DATE FORMATS
-```
+    iso-8601,
+    iso          ==> %Y-%M-%DT%h:%m:%s%z ==> 2025-02-19T16:41:53-05:00
+    iso-8601W,
+    isoweek      ==> %I ==> 2025-W08-3
+    sql          ==> %Y-%M-%D %h:%m:%s.%x ==> 2025-02-19 16:41:53.158
+    sqlday       ==> %Y-%M-%D ==> 2025-02-19
+    sqltime      ==> %h:%m:%s.%x ==> 16:41:53.159
+    dash         ==> %Y-%M-%D ==> 2025-02-19
+    rfc-2822     ==> %w, %D %l %Y %h:%m:%s %T
+                       Wed, 19 Feb 2025 16:41:53 -0500
+    rfc-3339     ==> %Y-%M-%DT%h:%m:%s%z ==> 2025-02-19T16:41:53-05:00
+    date         ==> %w %l %D %h:%m:%s UTC%z %Y
+                       Wed Feb 19 16:41:53 UTC-05:00 2025
+    short        ==> %w, %l %d, %Y %H:%m:%s %N UTC%z
+                       Wed, Feb 19th, 2025 4:41:53 PM UTC-05:00
+    long," "     ==> %W, %L %d, %Y %H:%m:%s %N UTC%z
+                       Wednesday, February 19th, 2025 4:41:53 PM UTC-05:00
+    suffix       ==> %Y%D%M%h%m%s ==> 20251902164153
+    formal       ==> The %d of %L %Y ==> The 19th of February 2025
+    lord         ==> the %d day of %L in the year of our Lord %Y
+                       the 19th day of February in the year of our Lord 2025
+    easter       ==> FOR THE YEAR OF THE CURRENT DATE:
+                       Easter day: the %d day of %L in the year of our Lord %Y
+    all          ==> A SAMPLE OF DATE FORMATS
+    usage|help|? ==> call fmtdate_usage
    otherwise the following words are replaced with the most
    common macros:
-```text
-        year          %Y  2022
-        month         %M  10
-        day           %D  20
-        timezone      %z  -04:00
-        hour          %h  19
-        minute        %m  26
-        second        %s  04
-        millisecond   %x  787
-        epoch         %e  1666308365
-        julian        %j  2459873
-        ordinal       %O  293
-        weekday       %u  4
-        MONTH         %L  July
-        Month         %l  Jul
-        DAY           %d  7th
-        HOUR          %H  10
-        GOOD          %N  AM
-        Weekday       %w  Thu
-        WEEKDAY       %W  Thursday
-        Timezone      %Z  -240
-        TIMEZONE      %z  -04:00
+      year                        %Y  2025
+      month                       %M  02
+      day                         %D  19
+      timezone                    %z  -05:00
+      hour                        %h  16
+      minute                      %m  41
+      second                      %s  53
+      millisecond                 %x  164
+      epoch                       %e  1740001313
+      julian                      %j  2460726
+      ordinal                     %O  050
+      weekday                     %u  3
+      longmonth|MONTH             %L  February
+      shortmonth|Month|Mth        %l  Feb
+      shortday|DAY                %d  19th
+      longday                     %X  nineteenth
+      goodhour|HOUR               %H  4
+      GOOD                        %N  PM
+      shortweekday|Weekday|wkday  %w  Wed
+      longweekday|WEEKDAY         %W  Wednesday
+      Timezone                    %Z  -0300m
+      TIMEZONE                    %z  -05:00
+      age                         %a  0-00:00:00
+      AGE                         %A  0.0000000000000000
 ```
-   if none of these keywords are found then every letter that
+   If none of these keywords are found then every letter that
    is a macro is assumed to have an implied percent in front
    of it. For example:
 ```text
-       YMDhms ==> %Y%M%D%h%m%s ==> 20221020192604
+      YMDhms ==> %Y%M%D%h%m%s ==> 20250219164153
 ```
-
 ---
 ![docs](docs/images/docs.gif)
 ---
@@ -428,29 +446,32 @@ in Universal Time (UTC).
 
     Modified Julian Date (MJD) = Julian Date (JD) - 2400000.5
 
-
-**Baseday and Seconds** is a variant of **MJD**.  The MJD date and time
-is stored internally as a structure named BAStime, containing the number
-of days since the beginning of the MJD Epoch as an integer and a double
-representing the seconds offset from the start of this day.
-
-    type BAStime
-     integer :: base_day     ! number of days since the MJD Epoch date
-     double  :: time_sec     ! seconds from start of base_day
-    end type BAStime
-
+**Baseday and Seconds (BAS)** dates are an alternate form of the MJD
+(Modified Julian Date) where the date is stored as a structure named
+"_BAStime_", containing the number of days since the beginning of the MJD
+Epoch and a double representing the seconds offset from the start of
+this day.
+```fortran
+   type BAStime
+      integer :: base_day       ! number of days since the MJD Epoch date
+      real(kind=real64) :: secs ! seconds from start of base_day
+   end type BAStime
+```
 This allows for storing a date at a higher precision that the other
 formats used by the library, although sometimes that lower precision
 is limited primarily by the definition (ie. the milliseconds in a DAT
 could be smaller units).
 
-MJD starts at 00:00:00 so truncating the fractional component of BAS
-always gives the same day whatever the time of day (unlike JD).
+BAS (and MJD) starts at midnight (00:00:00) so truncating the
+fractional component of BAS always gives the same Civil Calendar day
+whatever the time of day (unlike JD).
 
 The seconds offset may take any double-precision value, so that any
-date/time may be expressed in terms of an offset from the same base
+date/time may be expressed in terms of an offset from the same MJD
 day. The seconds field thus may exceed a single day, and may also be
-negative.
+negative. Note that in floating-point math larger numbers will have
+a wider spacing between representable values, possibly decreasing
+the precision of results.
 
 **Coordinated Universal Time** (French: Temps universel coordonn'e),
 abbreviated as **UTC**, is the primary time standard by which the world

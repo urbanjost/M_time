@@ -90,6 +90,8 @@ Functions/Subroutines</h2></td></tr>
 <tr class="separator:a78668c9e3f7030899e3ed98778558a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00fe9081f1e093560184d942a8785b60"><td class="memItemLeft" align="right" valign="top">character(len=:) function, allocatable, private&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____oop.html#a00fe9081f1e093560184d942a8785b60">format</a> (self, fmt)</td></tr>
 <tr class="separator:a00fe9081f1e093560184d942a8785b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7139ca49c5f5f0159489ffb4abf54cfa"><td class="memItemLeft" align="right" valign="top">real(kind=realtime) function, private&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____oop.html#a7139ca49c5f5f0159489ffb4abf54cfa">mjd_</a> (self)</td></tr>
+<tr class="separator:a7139ca49c5f5f0159489ffb4abf54cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8338cac57213766af60b447ea4a9feff"><td class="memItemLeft" align="right" valign="top">real(kind=realtime) function, private&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____oop.html#a8338cac57213766af60b447ea4a9feff">julian_</a> (self)</td></tr>
 <tr class="separator:a8338cac57213766af60b447ea4a9feff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cd900571a58e76cbe239f0843fbcd98"><td class="memItemLeft" align="right" valign="top">integer function, private&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacem__time____oop.html#a4cd900571a58e76cbe239f0843fbcd98">ordinal</a> (self)</td></tr>
@@ -134,7 +136,7 @@ SYNOPSIS</h2>
 <p>TYPE(date_time) :: mydate</p>
 <p>mydateyear mydatemonth mydateday mydatetz mydatehour mydateminute mydatesecond mydatemillisecond</p>
 <p>call mydateinit()</p>
-<p>mydateformat('') mydateordinal() mydateweekday() mydateepoch() mydatejulian() dat=mydatedatout() mydatedelta(year=NN, month=NN, day=NN, tz=NN, hour=NN, minute=NN, second=NN, millisecond=NN, week=NN, duration='DD-HH:MM:SS.XX')</p>
+<p>mydateformat('') mydateordinal() mydateweekday() mydateepoch() mydatejulian() mydatemjd() dat=mydatedatout() mydatedelta(year=NN, month=NN, day=NN, tz=NN, hour=NN, minute=NN, second=NN, millisecond=NN, week=NN, duration='DD-HH:MM:SS.XX')</p>
 <h2><a class="anchor" id="autotoc_md116"></a>
 DESCRIPTION</h2>
 <p>An object-oriented interface to the M_time module. The following example program demonstrates and documents the interface</p>
@@ -153,7 +155,7 @@ EXAMPLES</h2>
 <p>! initialize to beginning of Unix Epoch Time call otherdateinit(type="epoch") ! Note ! currently, DATE_TIME DATE array is set to Unix Epoch ! start USING LOCAL TIMEZONE ! whereas default constructor is using default of Unix Epoch ! start using Z time (GMT or UTC time)</p>
 <p>! initialize with a DAT array using INIT, ! compatible with DATE_AND_TIME VALUES(8) call otherdateinit(dat=[1970,1,1,0,0,0,0,0]) ! using INIT with ordered values call otherdateinit(2016,6,11,-300,23,1,0,0) ! using INIT with names call otherdateinit(year=2016,month=6,day=11,&amp; &amp; tz=-300,hour=23,minute=1,second=0,millisecond=0) ! ! take current date and exercise the OOP interface ! initialize to current time using INIT call eventinit() write(*,*) write(*,*)'Print members of type(DATE_TIME)' ! show derived type write(*,404)'EVENT=',event 404 format(1x,a,i0,*(",",i0:))</p>
 <p>! MEMBERS ( basic time values are all integers) ! print members of type write(*,101)'year Year................... ',eventyear write(*,101)'month Month.................. ',eventmonth write(*,101)'day Day.................... ',eventday write(*,101)'tz Timezone............... ',eventtz write(*,101)'hour Hour................... ',eventhour write(*,101)'minute Minute................. ',eventminute write(*,101)'second Second................. ',eventsecond write(*,101)'millisecond Millisecond............ ',eventmillisecond</p>
-<p>! PRINT METHODS OF TYPE write(*,*)'Print methods of type(DATE_TIME)' write(*,101)'ordinal Ordinal day of year.... ', eventordinal() write(*,101)'weekday Weekday................ ', eventweekday() 101 format(1x,a,i0) ! DOUBLE PRECISION VALUES EASILY MANIPULATED MATHEMATICALLY write(*,202)'epoch Unix epoch time........ ', eventepoch() write(*,202)'julian Julian date............ ', eventjulian() 202 format(1x,a,g0)</p>
+<p>! PRINT METHODS OF TYPE write(*,*)'Print methods of type(DATE_TIME)' write(*,101)'ordinal Ordinal day of year.... ', eventordinal() write(*,101)'weekday Weekday................ ', eventweekday() 101 format(1x,a,i0) ! DOUBLE PRECISION VALUES EASILY MANIPULATED MATHEMATICALLY write(*,202)'epoch Unix epoch time........ ', eventepoch() write(*,202)'julian Julian date............ ', eventjulian() write(*,202)'mjd Modiied Julian date.... ', eventmjd() 202 format(1x,a,g0)</p>
 <p>! FORMATTED STRINGS (many strings possible. ! Takes the same format string as fmtdate(3f)) write(*,*) write(*,'(a)')' Formatted Strings (format("STRING") &amp; &amp; &ndash; see fmtdate(3f) for format descriptions' ! abbreviated month name l Dec write(*,303)'Short month............ ',&amp; &amp; eventformat("%l") ! ! full month name L December write(*,303)'Month.................. ',&amp; &amp; eventformat("%L") ! ! first three characters of weekday w Sat write(*,303)'Short week............. ',&amp; &amp; eventformat("%w") ! ! weekday name W Saturday write(*,303)'Week .................. ',&amp; &amp; eventformat("%W") ! ! with no percent (%) characters write(*,303)'Calendar Time ......... ',&amp; &amp; eventformat("Y-M-D h:m:s.x z") ! ! keywords with no percent (%) characters write(*,303)'Calendar Time ......... ',&amp; &amp; eventformat('"year-month-day &amp;
         &amp; hour:minute:second.millisecond timezone"') ! write(*,*)eventformat('Longer format.......... &amp; &amp;"%W, %L %d, %Y %H:%m:%s %N"') ! a nice friendly format ! 303 format(1x,a,'"',a,'"')</p>
 <p>! convert <a class="el" href="structm__time____oop_1_1date__time.html">date_time</a> to integer array ! (maybe to use with module M_TIME base procedures) dat=eventdatout() write(*,*) write(*,404)'DAT=',dat</p>
@@ -176,7 +178,7 @@ EXAMPLES</h2>
 <p>end program demo_M_time__oop</p>
 <p>Sample output:</p>
 <p>Various initialization styes DEFAULT CONSTRUCTOR format() 1970-01-01T00:00:00.000+00:00 DEFAULT CONSTRUCTOR format("") 1970-01-01T00:00:00.000+00:00 DEFAULT CONSTRUCTOR format(user-specified) 1970-01-01T00:00:00.000+00:00 DEFAULT CONSTRUCTOR format("USA") Thursday, January 1st, 1970 12:00:00 AM DEFAULT CONSTRUCTOR setting values 1492-10-12T00:00:00.000+00:00 DEFAULT CONSTRUCTOR with partial values 2016-06-11T00:00:00.000+00:00 DEFAULT CONSTRUCTOR with values by name 2016-06-11T21:09:11.500-04:00 CONSTRUCTOR with a dat array 1776-07-04T00:00:00.000+00:00 CONSTRUCTOR with a partial dat array 1776-07-04T20:00:00.000-04:00</p>
-<p>Print members of type(DATE_TIME) EVENT=2020,10,24,-240,21,49,54,105 year Year................... 2020 month Month.................. 10 day Day.................... 24 tz Timezone............... -240 hour Hour................... 21 minute Minute................. 49 second Second................. 54 millisecond Millisecond............ 105 Print methods of type(DATE_TIME) ordinal Ordinal day of year.... 298 weekday Weekday................ 6 epoch Unix epoch time........ 1603590594.1049695 julian Julian date............ 2459147.5763206594</p>
+<p>Print members of type(DATE_TIME) EVENT=2020,10,24,-240,21,49,54,105 year Year................... 2020 month Month.................. 10 day Day.................... 24 tz Timezone............... -240 hour Hour................... 21 minute Minute................. 49 second Second................. 54 millisecond Millisecond............ 105 Print methods of type(DATE_TIME) ordinal Ordinal day of year.... 298 weekday Weekday................ 6 epoch Unix epoch time........ 1603590594.1049695 julian Julian date............ 2459147.5763206594 mjd Modified Julian date... 59147.9763206594</p>
 <p>Formatted Strings (format("STRING") &ndash; see fmtdate(3f) for format descriptions Short month............ "Oct" Month.................. "October" Short week............. "Sat" Week .................. "Saturday" Calendar Time ......... "2020-10-24 21:49:54.105 -04:00" Calendar Time ......... ""2020-10-24 21:49:54.105 -0400"" Longer format.......... "Saturday, October 24th, 2020 9:49:54 PM"</p>
 <p>DAT=2020,10,24,-240,21,49,54,105 TOMORROW="Sunday, October 25th, 2020 9:49:54 PM" YESTERDAY="Friday, October 23rd, 2020 9:49:54 PM" DIFFERENCE (subtracting one <a class="el" href="structm__time____oop_1_1date__time.html">date_time</a> from another)= -86400.000000000000 </p><blockquote class="doxtable">
 <p>T F F T T F F F T F T T F T F T F T </p>
@@ -436,7 +438,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacem__time____oop_ae2f6193eb354e704e7ac7875ae586373_icgraph.png" border="0" usemap="#namespacem__time____oop_ae2f6193eb354e704e7ac7875ae586373_icgraph" alt=""/></div>
 <map name="namespacem__time____oop_ae2f6193eb354e704e7ac7875ae586373_icgraph" id="namespacem__time____oop_ae2f6193eb354e704e7ac7875ae586373_icgraph">
-<area shape="rect" title=" " alt="" coords="491,385,645,412"/>
+<area shape="rect" title=" " alt="" coords="491,411,645,437"/>
 <area shape="rect" href="namespacem__time____oop.html#a8216b7ca452bd4e66c931b1d46c392de" title=" " alt="" coords="265,5,415,32"/>
 <area shape="rect" href="namespacem__time____oop.html#a78668c9e3f7030899e3ed98778558a99" title=" " alt="" coords="258,56,422,83"/>
 <area shape="rect" href="namespacem__time____oop.html#ab0117f19b0f9db9a457af48d718f4265" title=" " alt="" coords="273,107,407,133"/>
@@ -449,19 +451,20 @@ Here is the caller graph for this function:</div>
 <area shape="rect" href="namespacem__time____oop.html#ae600988ac5cb6d71d24fc15539eef2e4" title=" " alt="" coords="277,461,403,488"/>
 <area shape="rect" href="namespacem__time____oop.html#aae25deafe13cdcfbbe748f40d3731c56" title=" " alt="" coords="261,513,419,554"/>
 <area shape="rect" href="namespacem__time____oop.html#a52deaa5c6de2fe127e1270b4ee0e25db" title=" " alt="" coords="261,578,419,619"/>
-<area shape="rect" href="namespacem__time____oop.html#ac15e90347e732d35aeccbe392c7c6656" title=" " alt="" coords="273,644,407,671"/>
-<area shape="rect" href="namespacem__time____oop.html#a4cd900571a58e76cbe239f0843fbcd98" title=" " alt="" coords="259,695,421,721"/>
-<area shape="rect" href="namespacem__time____oop.html#a4c0664b6b271f77da67b78823f7a69f3" title=" " alt="" coords="237,745,443,772"/>
-<area shape="rect" href="namespacem__time____oop.html#a926e94e5837ffb478546e91cf789df56" title=" " alt="" coords="251,796,429,823"/>
+<area shape="rect" href="namespacem__time____oop.html#a7139ca49c5f5f0159489ffb4abf54cfa" title=" " alt="" coords="265,644,415,671"/>
+<area shape="rect" href="namespacem__time____oop.html#ac15e90347e732d35aeccbe392c7c6656" title=" " alt="" coords="273,695,407,721"/>
+<area shape="rect" href="namespacem__time____oop.html#a4cd900571a58e76cbe239f0843fbcd98" title=" " alt="" coords="259,745,421,772"/>
+<area shape="rect" href="namespacem__time____oop.html#a4c0664b6b271f77da67b78823f7a69f3" title=" " alt="" coords="237,796,443,823"/>
+<area shape="rect" href="namespacem__time____oop.html#a926e94e5837ffb478546e91cf789df56" title=" " alt="" coords="251,847,429,873"/>
 <area shape="rect" href="structm__time____oop_1_1date__time.html#a290ebff6b0eea76d6310241bb079a424" title=" " alt="" coords="5,99,189,141"/>
 <area shape="rect" href="structm__time____oop_1_1date__time.html#ac8ad0e2b8ac2eabddc835b5e00ef9777" title=" " alt="" coords="5,194,189,235"/>
 <area shape="rect" href="structm__time____oop_1_1date__time.html#ad9c71e66c73c7dbde4a9264e6387bcc9" title=" " alt="" coords="5,259,189,301"/>
-<area shape="rect" href="structm__time____oop_1_1date__time.html#a154d7b828b800e5fa104d26022eb07e8" title=" " alt="" coords="5,382,189,423"/>
-<area shape="rect" href="structm__time____oop_1_1date__time.html#a1c988234209be91d71ca1029fae69db7" title=" " alt="" coords="5,447,189,489"/>
-<area shape="rect" href="structm__time____oop_1_1date__time.html#a38d828488db801ea2922d3fbafd10903" title=" " alt="" coords="5,513,189,554"/>
-<area shape="rect" href="structm__time____oop_1_1date__time.html#aa46c007fbb25653b87a6498939a16ec2" title=" " alt="" coords="5,578,189,619"/>
-<area shape="rect" href="structm__time____oop_1_1date__time.html#ae82e8efa15967fdc3ad9617d18f7ce39" title=" " alt="" coords="5,643,189,685"/>
-<area shape="rect" href="structm__time____oop_1_1date__time.html#a30e180123129eefd600586b2bf76f2bf" title=" " alt="" coords="5,738,189,779"/>
+<area shape="rect" href="structm__time____oop_1_1date__time.html#a154d7b828b800e5fa104d26022eb07e8" title=" " alt="" coords="5,386,189,427"/>
+<area shape="rect" href="structm__time____oop_1_1date__time.html#a1c988234209be91d71ca1029fae69db7" title=" " alt="" coords="5,451,189,493"/>
+<area shape="rect" href="structm__time____oop_1_1date__time.html#a38d828488db801ea2922d3fbafd10903" title=" " alt="" coords="5,517,189,558"/>
+<area shape="rect" href="structm__time____oop_1_1date__time.html#aa46c007fbb25653b87a6498939a16ec2" title=" " alt="" coords="5,582,189,623"/>
+<area shape="rect" href="structm__time____oop_1_1date__time.html#ae82e8efa15967fdc3ad9617d18f7ce39" title=" " alt="" coords="5,687,189,729"/>
+<area shape="rect" href="structm__time____oop_1_1date__time.html#a30e180123129eefd600586b2bf76f2bf" title=" " alt="" coords="5,789,189,830"/>
 </map>
 </div>
 
@@ -1079,6 +1082,43 @@ Here is the caller graph for this function:</div>
 <map name="namespacem__time____oop_a52deaa5c6de2fe127e1270b4ee0e25db_icgraph" id="namespacem__time____oop_a52deaa5c6de2fe127e1270b4ee0e25db_icgraph">
 <area shape="rect" title=" " alt="" coords="237,5,396,47"/>
 <area shape="rect" href="structm__time____oop_1_1date__time.html#aa46c007fbb25653b87a6498939a16ec2" title=" " alt="" coords="5,5,189,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7139ca49c5f5f0159489ffb4abf54cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7139ca49c5f5f0159489ffb4abf54cfa">&#9670;&nbsp;</a></span>mjd_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">real(kind=realtime) function, private m_time__oop::mjd_ </td>
+          <td>(</td>
+          <td class="paramtype">class(<a class="el" href="structm__time____oop_1_1date__time.html">date_time</a>), intent(in)&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="namespacem__time____oop.html#ae2f6193eb354e704e7ac7875ae586373">dt2d_()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa_cgraph.png" border="0" usemap="#namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa_cgraph" alt=""/></div>
+<map name="namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa_cgraph" id="namespacem__time____oop_a7139ca49c5f5f0159489ffb4abf54cfa_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect" href="namespacem__time____oop.html#ae2f6193eb354e704e7ac7875ae586373" title=" " alt="" coords="204,5,359,32"/>
 </map>
 </div>
 
