@@ -16,9 +16,8 @@ implicit none !(external,type)
 private
 !-----------------------------------------------------------------------------------------------------------------------------------
 ! version: 6E61627255202E53206E686F4A-2022-03-18
+! version: 25aaf2ab-e76c-45ab-4811-8de9fa78cb69
 !-----------------------------------------------------------------------------------------------------------------------------------
-! UNIT TESTS
-
 ! EPOCH TIME (UT starts at 0000 on 1 Jan. 1970)
    public date_to_unix   !(dat,UNIXTIME,IERR)                 ! Convert date array to Unix Time
    public unix_to_date   !(unixtime,DAT,IERR)                 ! Convert Unix Time to date array
@@ -40,7 +39,7 @@ private
    public d2b            !(dat) result(BAS)                   ! Convert date array to Baseday And Seconds
    public b2d            !(bas) result(DAT)                   ! Convert Baseday And Seconds to date array
 ! DAY OF WEEK
-   public dow            !(dat,[WEEKDAY],[DAY],IERR)          ! Convert date array to day of the week as number(Mon=1) and name
+   public dow            !(dat,[WEEKDAY],[DAY],[IERR],[SHORT])! Convert date array to day of the week as number(Mon=1) and name
 ! WEEK OF YEAR
    public d2w !(dat,ISO_YEAR,ISO_WEEK,ISO_WEEKDAY,ISO_NAME)   ! Calculate iso-8601 Week numerically and as string "yyyy-Www-d"
    public w2d !(iso_year,iso_week,iso_weekday,DAT)            ! given iso-8601 Week-numbering year date yyyy-Www-d calculate date
@@ -2620,9 +2619,9 @@ end subroutine dow
 !!     or 53 full weeks. That is 364 or 371 days instead of the usual 365
 !!     or 366 days.
 !!   o The extra week is referred to here as a leap week, although ISO-8601
-!!     does not use this term.  Weeks start with Monday.
+!!     does not use this term. Weeks start with Monday.
 !!   o The first week of a year is the week that contains the first Thursday
-!!     of the year (and, hence, always contains 4 January).  ISO week year
+!!     of the year (and, hence, always contains 4 January). ISO week year
 !!     numbering therefore slightly deviates from the Gregorian for some days
 !!     close to January 1st.
 !!
@@ -2893,7 +2892,7 @@ end subroutine d2w
 !!
 !!     Method: Multiply the week number by 7, then add the weekday. From
 !!     this sum subtract the correction for the year. The result is the
-!!     ordinal date, which can be converted into a calendar date.  If the
+!!     ordinal date, which can be converted into a calendar date. If the
 !!     ordinal date thus obtained is zero or negative, the date belongs to
 !!     the previous calendar year; if greater than the number of days in
 !!     the year, to the following year.
@@ -4133,11 +4132,15 @@ end subroutine bas_to_date
 !!      integer :: i,j
 !!        call date_and_time(values=dat)
 !!        write(*,'(" Today is:",*(i0:,":"))')dat
-!!        write(*,*)'Baseday and Seconds is',d2b(dat)
+!!        bas=d2b(dat)
+!!        write(*,*)'Baseday and Seconds is',bas
+!!        write(*,*)'Baseday is', bas%base_day ! whole days since the MJD Epoch date
+!!        write(*,*)'Seconds is', bas%secs     ! offset in seconds from start of BASE_DAY
+!!        ! print any date that does not match regression test values
 !!        do i=2000,2009
 !!         do j=1,12
 !!          !dat=[ year,month,day,timezone,hour,minutes,seconds,milliseconds]
-!!          dat=[i,j,1,0,0,0,0,0]
+!!          dat=[i,j,1,0,0,0,0,0]   ! first day of month
 !!          bas=d2b(dat)
 !!          if(array(j,i)+1.ne.bas%base_day)then
 !!             write(*,*)i,j,array(j,i)+1,d2b(dat),d2m(dat),d2j(dat)-2400000.5
@@ -4145,11 +4148,13 @@ end subroutine bas_to_date
 !!         enddo
 !!        enddo
 !!     end program demo_d2b
-!!
-!!    Results:
-!!
-!!     >  Today is:2025:1:26:-300:1:2:14:388
-!!     >  Baseday and Seconds is 60701 21734.387965500355
+!! ```
+!! Results:
+!! ```text
+!!  >  Today is:2025:3:28:-240:12:8:0:42
+!!  >  Baseday and Seconds is       60762   58080.042001605034
+!!  >  Baseday is       60762
+!!  >  Seconds is   58080.042001605034
 !!
 !!##AUTHOR
 !!    John S. Urban, 2025
@@ -4195,7 +4200,7 @@ end function d2b
 !!##OPTIONS
 !!    bas  A Baseday and seconds(MJD) is composed of whole days
 !!         since the start of 17 Nov 1858 CE in Universal Time (UTC)
-!!         and an offset in seconds from the base day.  If not present,
+!!         and an offset in seconds from the base day. If not present,
 !!         use current time.
 !!
 !!##RETURNS

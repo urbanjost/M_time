@@ -47,8 +47,8 @@ homepage = "https://github.com/urbanjost/M_time.git"
    M_kracken95  = { git = "https://github.com/urbanjost/M_kracken95.git" }
    #M_kracken95  = { namespace = "GPF" }
    #M_kracken95  = { path = "GLINKS/M_kracken95" }
-   #M_strings    = { namespace = "GPF" }
    M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   #M_strings    = { namespace = "GPF" }
    #M_strings    = { path = "GLINKS/M_strings" }
 
 [[executable]]
@@ -125,6 +125,6 @@ homepage = "https://github.com/urbanjost/M_time.git"
    M_CLI2    = { git = "https://github.com/urbanjost/M_CLI2.git" }
    #M_CLI2  = { namespace = "GPF" }
    #M_CLI2  = { path = "GLINKS/M_CLI2" }
-   #M_strings    = { namespace = "GPF" }
    M_strings    = { git = "https://github.com/urbanjost/M_strings.git" }
+   #M_strings    = { namespace = "GPF" }
    #M_strings    = { path = "GLINKS/M_strings" }

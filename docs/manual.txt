@@ -157,7 +157,7 @@ EXAMPLES
 SEE ALSO
   gprof(1), gcov(1)
 
-			       February 19, 2025	howlong.1.man(1m_time)
+				March 28, 2025		howlong.1.man(1m_time)
 paws.1.man(1m_time)					   paws.1.man(1m_time)
 
 NAME
@@ -240,7 +240,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-			       February 19, 2025	   paws.1.man(1m_time)
+				March 28, 2025		   paws.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 NAME
@@ -301,7 +301,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-			       February 19, 2025       sec2days.1.man(1m_time)
+				March 28, 2025	       sec2days.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 NAME
@@ -355,7 +355,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-			       February 19, 2025	  today.1.man(1m_time)
+				March 28, 2025		  today.1.man(1m_time)
 month.1.man(1m_time)					  month.1.man(1m_time)
 
 NAME
@@ -401,7 +401,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-			       February 19, 2025	  month.1.man(1m_time)
+				March 28, 2025		  month.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 NAME
@@ -483,7 +483,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-			       February 19, 2025       days2sec.1.man(1m_time)
+				March 28, 2025	       days2sec.1.man(1m_time)
 bas_to_date(3m_time)					  bas_to_date(3m_time)
 
 NAME
@@ -608,7 +608,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	  bas_to_date(3m_time)
+				March 28, 2025		  bas_to_date(3m_time)
 d2b(3m_time)							  d2b(3m_time)
 
 NAME
@@ -671,11 +671,15 @@ EXAMPLE
        integer :: i,j
 	 call date_and_time(values=dat)
 	 write(*,'(" Today is:",*(i0:,":"))')dat
-	 write(*,*)'Baseday and Seconds is',d2b(dat)
+	 bas=d2b(dat)
+	 write(*,*)'Baseday and Seconds is',bas
+	 write(*,*)'Baseday is', bas%base_day ! whole days since the MJD Epoch date
+	 write(*,*)'Seconds is', bas%secs     ! offset in seconds from start of BASE_DAY
+	 ! print any date that does not match regression test values
 	 do i=2000,2009
 	  do j=1,12
 	   !dat=[ year,month,day,timezone,hour,minutes,seconds,milliseconds]
-	   dat=[i,j,1,0,0,0,0,0]
+	   dat=[i,j,1,0,0,0,0,0]   ! first day of month
 	   bas=d2b(dat)
 	   if(array(j,i)+1.ne.bas%base_day)then
 	      write(*,*)i,j,array(j,i)+1,d2b(dat),d2m(dat),d2j(dat)-2400000.5
@@ -683,18 +687,22 @@ EXAMPLE
 	  enddo
 	 enddo
       end program demo_d2b
+  ``` Results: ```text
 
-  Results:
+  > Today is:2025:3:28:-240:12:8:0:42
 
-      >  Today is:2025:1:26:-300:1:2:14:388
-      >  Baseday and Seconds is 60701 21734.387965500355
+    > Baseday and Seconds is	   60762   58080.042001605034
+
+    > Baseday is       60762
+
+    > Seconds is   58080.042001605034
 
 AUTHOR
   John S. Urban, 2025
 
 LICENSE
    MIT
-			       February 19, 2025		  d2b(3m_time)
+				March 28, 2025			  d2b(3m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 NAME
@@ -748,7 +756,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  d2j(3m_time)
+				March 28, 2025			  d2j(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 NAME
@@ -823,16 +831,13 @@ DEFINITION
   •  An ISO week-numbering year (also called ISO year informally) has 52 or 53
      full weeks. That is 364 or 371 days instead of the usual 365 or 366 days.
 
-  •  The extra week is referred to here as a leap week, although ISO-8601
+  •  The extra week is referred to here as a leap week, although ISO-8601 does
+     not use this term. Weeks start with Monday.
 
-     does not use this term.
-       Weeks start with Monday.
-
-  •  The first week of a year is the week that contains the first Thursday
-
-     of the year (and, hence, always contains 4 January).
-       ISO week year numbering therefore slightly deviates from the Gregorian
-       for some days close to January 1st.
+  •  The first week of a year is the week that contains the first Thursday of
+     the year (and, hence, always contains 4 January). ISO week year numbering
+     therefore slightly deviates from the Gregorian for some days close to
+     January 1st.
 
 CALCULATION
   The ISO-8601 week number of any date can be calculated, given its ordinal
@@ -881,7 +886,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  d2w(3m_time)
+				March 28, 2025			  d2w(3m_time)
 date_to_bas(3m_time)					  date_to_bas(3m_time)
 
 NAME
@@ -992,7 +997,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	  date_to_bas(3m_time)
+				March 28, 2025		  date_to_bas(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 NAME
@@ -1062,7 +1067,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025       date_to_julian(3m_time)
+				March 28, 2025	       date_to_julian(3m_time)
 date_to_modified_julian(3m_time)	      date_to_modified_julian(3m_time)
 
 NAME
@@ -1144,7 +1149,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 20date_to_modified_julian(3m_time)
+				March 28, 2025date_to_modified_julian(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 NAME
@@ -1201,7 +1206,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  j2d(3m_time)
+				March 28, 2025			  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 NAME
@@ -1273,7 +1278,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025       julian_to_date(3m_time)
+				March 28, 2025	       julian_to_date(3m_time)
 locale(3m_time) 					       locale(3m_time)
 
 NAME
@@ -1391,7 +1396,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	       locale(3m_time)
+				March 28, 2025		       locale(3m_time)
 m2d(3m_time)							  m2d(3m_time)
 
 NAME
@@ -1449,7 +1454,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  m2d(3m_time)
+				March 28, 2025			  m2d(3m_time)
 untitled()							    untitled()
 
 	      [GPF Home Page]
@@ -1543,7 +1548,7 @@ untitled()							    untitled()
 
   b2d(bas) result(DAT)
     Convert Baseday And Seconds (BAS) to date array date_to_bas(dat,BAS,IERR)
-    or d2m(dat) result(BAS) %nbsp; Converts date array to Baseday And Seconds
+    or d2b(dat) result(BAS) %nbsp; Converts date array to Baseday And Seconds
     date
 
    WEEK OF YEAR
@@ -1587,8 +1592,8 @@ untitled()							    untitled()
     return date array for first day of given month name in specified year
 
    DAY OF WEEK
-  dow(dat,[WEEKDAY],[DAY],IERR) %weekday() Convert date array to day of the
-  week as number(Mon=1) and name
+  dow(dat,[WEEKDAY],[DAY],[IERR],[SHORT]) %weekday() Convert date array to day
+  of the week as number(Mon=1) and name
 
    LOCALE
   locale(name,month_names,weekday_names,month_names_abbr,weekday_names_ab
@@ -2003,7 +2008,7 @@ untitled()							    untitled()
 	    Fortran library is worth a look. It is well tested for
 	    manipulating high-precision dates.
 
-			       February 19, 2025		    untitled()
+				March 28, 2025			    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 NAME
@@ -2409,7 +2414,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	  M_time__oop(3m_time)
+				March 28, 2025		  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 NAME
@@ -2461,7 +2466,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		 mo2d(3m_time)
+				March 28, 2025			 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 NAME
@@ -2511,7 +2516,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		 mo2v(3m_time)
+				March 28, 2025			 mo2v(3m_time)
 modified_julian_to_date(3m_time)	      modified_julian_to_date(3m_time)
 
 NAME
@@ -2594,7 +2599,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 20modified_julian_to_date(3m_time)
+				March 28, 2025modified_julian_to_date(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 NAME
@@ -2658,7 +2663,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	moon_fullness(3m_time)
+				March 28, 2025		moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 NAME
@@ -2727,7 +2732,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  now(3m_time)
+				March 28, 2025			  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 NAME
@@ -2790,7 +2795,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  o2d(3m_time)
+				March 28, 2025			  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 NAME
@@ -2839,7 +2844,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025      ordinal_seconds(3m_time)
+				March 28, 2025	      ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 NAME
@@ -2901,7 +2906,7 @@ EXAMPLE
       > For Year 2024 and Ordinal day 1
       > Month is 1 and Day of Month is 1 and Year is 2024
 
-			       February 19, 2025      ordinal_to_date(3m_time)
+				March 28, 2025	      ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 NAME
@@ -2982,7 +2987,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	phase_of_moon(3m_time)
+				March 28, 2025		phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 NAME
@@ -3059,7 +3064,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	     sec2days(3m_time)
+				March 28, 2025		     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 NAME
@@ -3125,7 +3130,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	 system_sleep(3m_time)
+				March 28, 2025		 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 NAME
@@ -3189,7 +3194,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  u2d(3m_time)
+				March 28, 2025			  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 NAME
@@ -3260,7 +3265,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	 unix_to_date(3m_time)
+				March 28, 2025		 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 NAME
@@ -3321,7 +3326,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		 v2mo(3m_time)
+				March 28, 2025			 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 NAME
@@ -3497,12 +3502,10 @@ METHOD
   used for dates within this year.
 
   Method: Multiply the week number by 7, then add the weekday. From this sum
-  subtract the correction for the year. The result is the
-
-  ordinal date, which can be converted into a calendar date.
-    If the ordinal date thus obtained is zero or negative, the date belongs to
-    the previous calendar year; if greater than the number of days in the
-    year, to the following year.
+  subtract the correction for the year. The result is the ordinal date, which
+  can be converted into a calendar date. If the ordinal date thus obtained is
+  zero or negative, the date belongs to the previous calendar year; if greater
+  than the number of days in the year, to the following year.
 
   Example: year 2008, week 39, Saturday (day 6) Correction for 2008: 5 + 3 = 8
   (39 x 7) + 6 = 279 279 - 8 = 271 Ordinal day 271 of a leap year is day 271 -
@@ -3536,7 +3539,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  w2d(3m_time)
+				March 28, 2025			  w2d(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 NAME
@@ -3596,7 +3599,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	 date_to_unix(3m_time)
+				March 28, 2025		 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 NAME
@@ -3696,7 +3699,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	     days2sec(3m_time)
+				March 28, 2025		     days2sec(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 NAME
@@ -3772,7 +3775,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  dow(3m_time)
+				March 28, 2025			  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 NAME
@@ -3839,7 +3842,7 @@ EXAMPLE
 
       Easter day: the 16th day of April in the year of our Lord 2017
 
-			       February 19, 2025	       easter(3m_time)
+				March 28, 2025		       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 NAME
@@ -3894,7 +3897,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	      fmtdate(3m_time)
+				March 28, 2025		      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 NAME
@@ -4085,7 +4088,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	fmtdate_usage(3m_time)
+				March 28, 2025		fmtdate_usage(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 NAME
@@ -4170,7 +4173,7 @@ EXAMPLE
 
 LICENSE
    MIT
-			       February 19, 2025	    guessdate(3m_time)
+				March 28, 2025		    guessdate(3m_time)
 d2m(3m_time)							  d2m(3m_time)
 
 NAME
@@ -4223,7 +4226,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  d2m(3m_time)
+				March 28, 2025			  d2m(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 NAME
@@ -4296,7 +4299,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  d2o(3m_time)
+				March 28, 2025			  d2o(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 NAME
@@ -4351,7 +4354,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  d2u(3m_time)
+				March 28, 2025			  d2u(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 NAME
@@ -4409,7 +4412,7 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025	    box_month(3m_time)
+				March 28, 2025		    box_month(3m_time)
 b2d(3m_time)							  b2d(3m_time)
 
 NAME
@@ -4428,10 +4431,8 @@ DESCRIPTION
 OPTIONS
   bas
     A Baseday and seconds(MJD) is composed of whole days since the start of 17
-    Nov 1858 CE in Universal Time (UTC)
-
-    and an offset in seconds from the base day.
-      If not present, use current time.
+    Nov 1858 CE in Universal Time (UTC) and an offset in seconds from the base
+    day. If not present, use current time.
 
 RETURNS
   dat
@@ -4532,4 +4533,4 @@ AUTHOR
 
 LICENSE
    MIT
-			       February 19, 2025		  b2d(3m_time)
+				March 28, 2025			  b2d(3m_time)
