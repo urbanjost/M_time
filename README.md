@@ -128,11 +128,11 @@ the built-in help text for the formatting options is as simple as
        write(*,*)now("year-month-day") ! or, if macros not found then keywords
        write(*,*)now("Y-M-D h:m:s")    ! and if that is not found, abbreviations
        call locale('french')
-       write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
+       write(*,*)now("%W, %L %D, %Y %h:%m:%s ")
        call locale('slovak')
-       write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
+       write(*,*)now("%W, %L %D, %Y %h:%m:%s ")
        call locale('spanish')
-       write(*,*)now("%W, %L %D, %Y %h:%m:%s ") 
+       write(*,*)now("%W, %L %D, %Y %h:%m:%s ")
       end program demo_now
 ```
 
@@ -159,7 +159,7 @@ and documentation.
 ```
 ```text
    Description                                        Example
-   
+
    Base time array:
     1) %Y | year, yyyy                             2025
     2) %M | month of year, 01 to 12                02
@@ -200,10 +200,10 @@ and documentation.
        %X | day of the month in English            nineteenth
     Literals:
        %% | a literal %                             %
-       %t | tab character                          	
+       %t | tab character
        %b | blank character
        %B | exclamation(bang) character            !
-       %n | new line (system dependent)            
+       %n | new line (system dependent)
 
        %q | single quote (apostrophe)              '
        %Q | double quote                           "
@@ -218,10 +218,10 @@ and documentation.
        %K | time in clicks from SYSTEM_CLOCK(3f)   757554565
     Help:
        %? | call fmtdate_usage()
-   
+
    If no percent (%) is found in the format one of several
    alternate substitutions occurs.
-   
+
    If the format is composed entirely of one of the following
    keywords the following substitutions occur:
     iso-8601,
@@ -324,14 +324,14 @@ directory and run make(1):
      # change Makefile if not using one of the listed compilers
      # COMPILER_NAME={ifort, nvfortran, or gfortran}
      make $COMPILER_NAME
-
-     # optionally
-     make help # see other developer options
-     make run  # run all the demo programs from the man-pages
 ```
 This will compile the M_time module and optionally build all the example programs from
-the document pages (in the example/ sub-directory) and run the unit tests.
-
+the document pages (in the example/ sub-directory).
+```text
+     # optionally
+     make run  # run all the demo programs from the man-pages
+     make help # see other developer options
+```
 ---
 ![fpm](docs/images/fpm_logo.gif)
 ---
@@ -368,13 +368,13 @@ To download the github repository and build and install with cmake
 
       cd build
       cmake -S ../src -B .
-      
-      # Configure the Build, specifying your preferred compiler (ifort, flang, etc.): 
+
+      # Configure the Build, specifying your preferred compiler (ifort, flang, etc.):
       cmake . -DCMAKE_Fortran_COMPILER=gfortran
-      
+
       # Build the Project:
       cmake --build .
-      
+
       #This creates:
       #
       #    build/lib/libM_time.a (the static library).
@@ -389,26 +389,26 @@ To download the github repository and build and install with cmake
       ls build/include/*.mod
       ls build/test/*
       ls build/example/*
-      
+
       #Optionally Run Tests and Examples:
       for name in ./test/* ./example/*
       do
          $name
       done
-      
+
       #Install (Optional):
-      # This installs the library and module files to the system 
+      # This installs the library and module files to the system
       # (e.g., /usr/local/lib/ and /usr/local/include/).
       cmake --install .
-      
-      # if you have insufficient permissions sudo(1) may be required 
+
+      # if you have insufficient permissions sudo(1) may be required
       # to perform the install
       #sudo cmake --install .
-      
+
       # Verify installation
       ls /usr/local/lib/libM_time.a
       ls /usr/local/include/*.mod
-      
+
       # Cleaning Up: To clean artifacts, remove the build/ directory:
       rm -rf build
 ```
@@ -495,7 +495,6 @@ dates (to go back one day just subtract one from a Julian Date, for
 example). Since these values are generally not considered intelligible,
 routines are included to convert between these scalar values and the
 date array so human-readable results can be obtained.
-
 
 **Modified Julian Date (MJD)** measures days (and fractional days) since
 the start of 17 Nov 1858 CE in Universal Time (UTC). Julian Date (JD)
