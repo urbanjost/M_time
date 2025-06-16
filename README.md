@@ -304,15 +304,13 @@ and documentation.
 - [doxygen output](https://urbanjost.github.io/M_time/doxygen_out/html/index.html).
 - [ford output](https://urbanjost.github.io/M_time/fpm-ford/index.html).
 - [CHANGELOG](docs/CHANGELOG.md)
-
----
-![GNU](docs/images/gnu.gif)
 ---
 ## Download tarball or zip file
 
 - [archive](https://github.com/urbanjost/M_time/releases) files containing released
   versions in tar(1) and zip(1) format.
-
+---
+![GNU](docs/images/gnu.gif)
 ---
 ## Download and Build using gmake
 
