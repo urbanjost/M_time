@@ -240,11 +240,11 @@ the built-in help text for the formatting options is as simple as</p>
 <span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;year-month-day&quot;</span><span class="p">)</span><span class="w"> </span><span class="c">! or, if macros not found then keywords</span>
 <span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;Y-M-D h:m:s&quot;</span><span class="p">)</span><span class="w">    </span><span class="c">! and if that is not found, abbreviations</span>
 <span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;french&#39;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
 <span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;slovak&#39;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
 <span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_now</span>
 </code></pre></div>
 
@@ -309,10 +309,10 @@ and documentation.</p>
        %X | day of the month in English            nineteenth
     Literals:
        %% | a literal %                             %
-       %t | tab character                           
+       %t | tab character
        %b | blank character
        %B | exclamation(bang) character            !
-       %n | new line (system dependent)            
+       %n | new line (system dependent)
 
        %q | single quote (apostrophe)              &#39;
        %Q | double quote                           &quot;
@@ -438,14 +438,15 @@ directory and run make(1):</p>
      # change Makefile if not using one of the listed compilers
      # COMPILER_NAME={ifort, nvfortran, or gfortran}
      make $COMPILER_NAME
-
-     # optionally
-     make help # see other developer options
-     make run  # run all the demo programs from the man-pages
 </code></pre></div>
 
 <p>This will compile the M_time module and optionally build all the example programs from
-the document pages (in the example/ sub-directory) and run the unit tests.</p>
+the document pages (in the example/ sub-directory).</p>
+<div class="codehilite"><pre><span></span><code>     # optionally
+     make run  # run all the demo programs from the man-pages
+     make help # see other developer options
+</code></pre></div>
+
 <hr>
 <h2 id="_3"><img alt="fpm" src="docs/images/fpm_logo.gif"></h2>
 <h2 id="download-and-build-using-fpm">Download and Build using fpm</h2>
@@ -477,7 +478,7 @@ the document pages (in the example/ sub-directory) and run the unit tests.</p>
 <span class="w">      </span><span class="nb">cd</span><span class="w"> </span>build
 <span class="w">      </span>cmake<span class="w"> </span>-S<span class="w"> </span>../src<span class="w"> </span>-B<span class="w"> </span>.
 
-<span class="w">      </span><span class="c1"># Configure the Build, specifying your preferred compiler (ifort, flang, etc.): </span>
+<span class="w">      </span><span class="c1"># Configure the Build, specifying your preferred compiler (ifort, flang, etc.):</span>
 <span class="w">      </span>cmake<span class="w"> </span>.<span class="w"> </span>-DCMAKE_Fortran_COMPILER<span class="o">=</span>gfortran
 
 <span class="w">      </span><span class="c1"># Build the Project:</span>
@@ -505,11 +506,11 @@ the document pages (in the example/ sub-directory) and run the unit tests.</p>
 <span class="w">      </span><span class="k">done</span>
 
 <span class="w">      </span><span class="c1">#Install (Optional):</span>
-<span class="w">      </span><span class="c1"># This installs the library and module files to the system </span>
+<span class="w">      </span><span class="c1"># This installs the library and module files to the system</span>
 <span class="w">      </span><span class="c1"># (e.g., /usr/local/lib/ and /usr/local/include/).</span>
 <span class="w">      </span>cmake<span class="w"> </span>--install<span class="w"> </span>.
 
-<span class="w">      </span><span class="c1"># if you have insufficient permissions sudo(1) may be required </span>
+<span class="w">      </span><span class="c1"># if you have insufficient permissions sudo(1) may be required</span>
 <span class="w">      </span><span class="c1"># to perform the install</span>
 <span class="w">      </span><span class="c1">#sudo cmake --install .</span>
 
@@ -764,7 +765,7 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-16 23:18 +0000             </p>
+ on 2025-06-16 23:26 +0000             </p>
           </div>
         </div>
         <br>
