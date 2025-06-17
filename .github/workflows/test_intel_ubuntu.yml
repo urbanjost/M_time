@@ -48,6 +48,7 @@ jobs:
 
     - name: Install fpm
       run: |
+           source /opt/intel/oneapi/setvars.sh
            echo $PATH
            pwd
            uname -a
@@ -64,6 +65,7 @@ jobs:
         printenv FPM_COMPILER
         printenv OMP_NUM_THREADS
         ulimit -c unlimited -d unlimited -f unlimited -m unlimited -s unlimited -t unlimited -v unlimited -x unlimited
+        source /opt/intel/oneapi/setvars.sh
         fpm test --profile release --compiler ifx
         ls -l
       env:
