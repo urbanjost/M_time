@@ -96,15 +96,15 @@
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/paws.f90"> Source File</a>
+              <a href="../src/ttee.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/paws.f90.html'>paws.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/demo_system_sleep.html'>demo_system_sleep</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/ttee.f90.html'>ttee.f90</a></li>
+                <li class="breadcrumb-item"><a href='../program/ttee.html'>ttee</a></li>
             <li class="breadcrumb-item active" aria-current="page">help_version</li>
           </ol>
         </nav>
@@ -133,10 +133,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/help_version~2.html#variable-help_text~4">help_text</a>
-            <a class="list-group-item" href="../proc/help_version~2.html#variable-i~5">i</a>
-            <a class="list-group-item" href="../proc/help_version~2.html#variable-ident~6">ident</a>
-            <a class="list-group-item" href="../proc/help_version~2.html#variable-stopit~4">stopit</a>
+            <a class="list-group-item" href="../proc/help_version~2.html#variable-help_text~3">help_text</a>
+            <a class="list-group-item" href="../proc/help_version~2.html#variable-i~8">i</a>
+            <a class="list-group-item" href="../proc/help_version~2.html#variable-ident~4">ident</a>
+            <a class="list-group-item" href="../proc/help_version~2.html#variable-stopit~2">stopit</a>
         </div>
       </div>
     </div>
@@ -176,71 +176,6 @@
 </h2>
     
 
-    <h2 id="name">NAME</h2>
-<div class="codehilite"><pre><span></span><code><span class="n">paws</span><span class="p">(</span><span class="mi">1</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">TIME</span><span class="o">]</span><span class="w"> </span><span class="n">pause</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">specified</span><span class="w"> </span><span class="n">duration</span>
-<span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span>
-</code></pre></div>
-
-<h2 id="synopsis">SYNOPSIS</h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">paws</span><span class="w"> </span>[<span class="nv">dd</span><span class="o">-</span><span class="nv">hh</span>:<span class="nv">mm</span>:<span class="nv">ss</span>[.<span class="nv">xxx</span>]<span class="o">|</span><span class="nv">xxx</span>.<span class="nv">yyy</span>[<span class="nv">s</span><span class="o">|</span><span class="nv">m</span><span class="o">|</span><span class="nv">h</span><span class="o">|</span><span class="nv">d</span>]][<span class="w"> </span><span class="o">-</span><span class="nv">msg</span><span class="w"> </span><span class="nv">message</span>][<span class="w"> </span><span class="o">-</span><span class="nv">cmd</span><span class="w"> </span><span class="nv">command</span>][<span class="w"> </span><span class="o">-</span><span class="nv">repeat</span><span class="w"> </span><span class="nv">TIMES</span>[<span class="w"> </span><span class="o">-</span><span class="nv">fmt</span><span class="w"> </span>]]<span class="o">|</span>...
-[<span class="w"> </span><span class="o">-</span><span class="nv">uet</span><span class="o">|-</span><span class="nv">jd</span><span class="o">|-</span><span class="nv">dat</span><span class="o">|</span>[<span class="w"> </span><span class="o">-</span><span class="nv">date</span><span class="o">|-</span><span class="k">until</span>]]
-<span class="nv">paws</span><span class="w"> </span><span class="o">--</span><span class="nv">version</span><span class="o">|--</span><span class="nv">help</span>
-</code></pre></div>
-
-<h2 id="description">DESCRIPTION</h2>
-<div class="codehilite"><pre><span></span><code><span class="nv">Given</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">duration</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">form</span><span class="w"> </span><span class="nv">dd</span><span class="o">-</span><span class="nv">hh</span>:<span class="nv">mm</span>:<span class="nv">ss</span>.<span class="nv">xxx</span><span class="w"> </span><span class="nv">where</span><span class="w"> </span><span class="nv">dd</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">days</span>,<span class="w"> </span><span class="nv">hh</span><span class="w"> </span><span class="nv">hours</span>,
-<span class="nv">mm</span><span class="w"> </span><span class="nv">minutes</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">ss</span>.<span class="nv">xxx</span><span class="w"> </span><span class="nv">seconds</span><span class="w"> </span><span class="nv">convert</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">seconds</span>.<span class="w"> </span><span class="k">Then</span>,<span class="w"> </span><span class="k">pause</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">that</span>
-<span class="nv">many</span><span class="w"> </span><span class="nv">seconds</span>.<span class="w"> </span><span class="nv">Alternatively</span>,<span class="w"> </span><span class="k">pause</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="nv">specified</span><span class="w"> </span><span class="nv">date</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">passed</span>.
-<span class="k">If</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">duration</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">specified</span><span class="w"> </span><span class="k">wait</span><span class="w"> </span><span class="k">until</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">carriage</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">entered</span>.
-</code></pre></div>
-
-<h2 id="options">OPTIONS</h2>
-<div class="codehilite"><pre><span></span><code><span class="n">dd-hh:mm:ss</span>   <span class="n">Given</span> <span class="n">a</span> <span class="n">string</span> <span class="n">representing</span> <span class="n">a</span> <span class="n">duration</span> <span class="nb">of</span> <span class="n">time</span> <span class="nb">in</span> <span class="n">the</span>
-              <span class="n">following</span> <span class="n">forms:</span>
-
-                <span class="n">dd-hh:mm:ss</span>[.<span class="o">xx</span>]
-                   <span class="n">hh:mm:ss</span>[.<span class="o">xx</span>]
-                      <span class="o">mm</span>:<span class="n">ss</span>[.<span class="o">xx</span>]
-                         <span class="n">ss</span>[.<span class="o">xx</span>]
-                   <span class="o">or</span>
-                <span class="o">xx</span>[.<span class="n">yy</span>]<span class="n">SUFFIX</span>
-
-              <span class="n">convert</span> <span class="n">it</span> <span class="nb">to</span> <span class="n">seconds</span> <span class="o">and</span> <span class="n">pause</span> <span class="k">for</span> <span class="n">that</span> <span class="n">amount</span> <span class="nb">of</span> <span class="n">time</span>.
-              <span class="n">Suffix</span> <span class="n">may</span> <span class="n">be</span> <span class="nb">s</span> <span class="k">for</span> <span class="n">seconds</span>, <span class="o">m</span> <span class="k">for</span> <span class="n">minutes</span>, <span class="n">h</span> <span class="k">for</span> <span class="n">hours</span>,
-              <span class="o">or</span> <span class="nb">d</span> <span class="k">for</span> <span class="n">days</span>.
--<span class="n">date</span>|-<span class="n">until</span>  <span class="nb">wait</span> <span class="k">until</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">date</span> <span class="k">has</span> <span class="n">passed</span> (<span class="o">before</span> <span class="n">starting</span>
-              <span class="nb">optional</span> <span class="n">pause</span>). <span class="n">See</span> <span class="n">guessdate</span>(<span class="mi">3</span><span class="n">f</span>) <span class="k">for</span> <span class="n">syntax</span> <span class="nb">allowed</span> <span class="k">for</span>
-              <span class="n">the</span> <span class="n">date</span>.
--<span class="n">uet</span>          <span class="nb">wait</span> <span class="k">until</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">Unix</span> <span class="n">Epoch</span> <span class="n">Time</span> <span class="k">has</span> <span class="n">passed</span>
--<span class="n">jd</span>           <span class="nb">wait</span> <span class="k">until</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">Julian</span> <span class="nb">Date</span> <span class="k">has</span> <span class="n">passed</span>
--<span class="n">dat</span>          <span class="nb">wait</span> <span class="k">until</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">date</span> <span class="n">vector</span> <span class="k">has</span> <span class="n">passed</span>
-              (<span class="nb">year</span> <span class="nb">month</span> <span class="nb">day</span> <span class="nb">timezone</span> <span class="nb">hour</span> <span class="n">minutes</span> <span class="n">seconds</span> <span class="n">milliseconds</span>)
--<span class="n">repeat</span> <span class="n">NNN</span>   <span class="n">The</span> <span class="n">duration</span> <span class="k">is</span> <span class="nb">repeated</span> <span class="n">NNN</span> <span class="n">times</span> <span class="k">with</span> <span class="n">the</span> <span class="n">date</span> <span class="n">displayed</span>
-              <span class="nb">at</span> <span class="n">the</span> <span class="nb">end</span> <span class="nb">of</span> <span class="n">each</span> <span class="n">pause</span>.
---<span class="n">msg</span>         <span class="nb">message</span> <span class="nb">to</span> <span class="n">display</span> <span class="o">before</span> <span class="n">pausing</span>
---<span class="n">cmd</span>         <span class="nb">command</span> <span class="nb">to</span> <span class="n">execute</span> <span class="nb">after</span> <span class="n">a</span> <span class="n">pause</span>
---<span class="n">fmt</span>         <span class="n">date</span> <span class="nb">format</span> (<span class="n">see</span> <span class="n">fmtdate</span>(<span class="mi">3</span><span class="n">f</span>) <span class="k">for</span> <span class="n">details</span>)
---<span class="n">help</span>        <span class="n">display</span> <span class="n">this</span> <span class="n">help</span> <span class="o">and</span> <span class="nb">exit</span>
---<span class="n">version</span>     <span class="n">output</span> <span class="nb">version</span> <span class="n">information</span> <span class="o">and</span> <span class="nb">exit</span>
-
-<span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">on</span> <span class="n">the</span> <span class="nb">format</span> <span class="nb">of</span> <span class="n">the</span> <span class="n">dates</span>, <span class="n">see</span> <span class="n">the</span> <span class="nb">now</span>(<span class="mi">1</span>) <span class="nb">command</span>.
-</code></pre></div>
-
-<h2 id="examples">EXAMPLES</h2>
-<p>Typical usage:</p>
-<p>paws 2:00:00              # pause for two hours
-   paws 3600                 # pause one hour
-   paws 0.10                 # pause one tenth of a second
-   paws 1 -repeat 60         # pause sixty seconds, displaying date each second
-   paws -until 23:59:59      # pause until midnight
-   paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes</p>
-<h2 id="author">AUTHOR</h2>
-<div class="codehilite"><pre><span></span><code>John S. Urban
-</code></pre></div>
-
-<h2 id="license">LICENSE</h2>
-<div class="codehilite"><pre><span></span><code>Public Domain
-</code></pre></div>
 
 
     <h3>Arguments</h3>
@@ -289,7 +224,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-help_text~4"></span>
+              <span class="anchor" id="variable-help_text~3"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -306,7 +241,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~5"></span>
+              <span class="anchor" id="variable-i~8"></span>
               integer,
             </td>
               <td>public</td>
@@ -323,7 +258,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~6"></span>
+              <span class="anchor" id="variable-ident~4"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -340,7 +275,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stopit~4"></span>
+              <span class="anchor" id="variable-stopit~2"></span>
               logical,
             </td>
               <td>public</td>
@@ -382,13 +317,14 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)PROGRAM:        paws(1f)&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)DESCRIPTION:    pause until specified time or for specified duration&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)VERSION:        1.0, 20160731&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)PROGRAM:        ttee(1f)&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)DESCRIPTION:    split stdout to a file with optional timestamp labeling&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2015-09-13&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)LICENSE:        This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
@@ -419,7 +355,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-16 23:26 +0000             </p>
+ on 2025-06-17 00:30 +0000             </p>
           </div>
         </div>
         <br>
