@@ -10,13 +10,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        fc: [ifort]
+        fc: [ifx]
         cc: [icc]
 
     env:
       FC: ${{ matrix.fc }}
       CC: ${{ matrix.cc }}
-      FPM_COMPILER: ifort
+      FPM_COMPILER: ifx
       TZ: UTC+04:00
       APT_PACKAGES: >-
         intel-oneapi-compiler-fortran
@@ -54,7 +54,7 @@ jobs:
            wget https://raw.githubusercontent.com/lockstockandbarrel/mars/main/bootstrap/fpm.F90
            mkdir -p /home/runner/.local/bin tmp
            ulimit -c unlimited -d unlimited -f unlimited -m unlimited -s unlimited -t unlimited -v unlimited -x unlimited
-           ifort fpm.F90 -Itmp -module tmp -o /home/runner/.local/bin/fpm
+           ifx fpm.F90 -Itmp -module tmp -o /home/runner/.local/bin/fpm
            ls -l
            rm -fv *.mod tmp/*.mod
 
@@ -64,7 +64,7 @@ jobs:
         printenv FPM_COMPILER
         printenv OMP_NUM_THREADS
         ulimit -c unlimited -d unlimited -f unlimited -m unlimited -s unlimited -t unlimited -v unlimited -x unlimited
-        fpm test --profile release --compiler ifort
+        fpm test --profile release --compiler ifx
         ls -l
       env:
         OMP_NUM_THREADS: 2,1
