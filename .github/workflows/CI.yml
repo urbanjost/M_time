@@ -68,6 +68,9 @@ jobs:
       - name: Set environment for gfortran
         if: matrix.compiler == 'gfortran'
         run: |
+          echo >_empty.f90
+          gfortran -cpp -dM -E _empty.f90
+          rm -f _empty.f90
           gfortran --version
 
       - name: fpm test (debug)
