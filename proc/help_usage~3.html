@@ -96,15 +96,15 @@
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/month.f90"> Source File</a>
+              <a href="../src/days2sec.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/month.f90.html'>month.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/month_exe.html'>month_exe</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/days2sec.f90.html'>days2sec.f90</a></li>
+                <li class="breadcrumb-item"><a href='../program/demo_days2sec~2.html'>demo_days2sec</a></li>
             <li class="breadcrumb-item active" aria-current="page">help_usage</li>
           </ol>
         </nav>
@@ -133,10 +133,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-help_text~8">help_text</a>
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-i~22">i</a>
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-ident~12">ident</a>
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-stopit~7">stopit</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-help_text~6">help_text</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-i~18">i</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-ident~10">ident</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-stopit~6">stopit</a>
         </div>
       </div>
     </div>
@@ -224,7 +224,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-help_text~8"></span>
+              <span class="anchor" id="variable-help_text~6"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -241,7 +241,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~22"></span>
+              <span class="anchor" id="variable-i~18"></span>
               integer,
             </td>
               <td>public</td>
@@ -258,7 +258,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~12"></span>
+              <span class="anchor" id="variable-ident~10"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -275,7 +275,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stopit~7"></span>
+              <span class="anchor" id="variable-stopit~6"></span>
               logical,
             </td>
               <td>public</td>
@@ -317,37 +317,71 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month(1f) - [TIME] display a calendar                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   days2sec(1f) - [TIME] Convert [[-]dd-][[hh:]mm:]ss to seconds                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month [[ -year] NNNN] [ -month NN|month_name]                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39; Forms:                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec dd-hh:mm:ss                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec NNdNNhNNmNNs                                                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec --version| --help                                                  &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month(1) displays a simple calendar. If no arguments are specified,          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   the current year is displayed.                                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Given a duration in the form dd-hh:mm:ss where dd is days, hh hours,         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   mm minutes and ss seconds convert it to seconds. Many utilities (ps(1),      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   for example) show times in this format to make it more intelligible;         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   but it generally easier to perform math on values represented in             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   seconds.                                                                     &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -month NN   Display single month output. The month is numeric (1-12)         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;               or a month name or blank. If blank the current month is assumed. &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   dd-hh:mm:ss  Given a string representing a duration of time in the           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                following forms:                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -year NNNN  Select the year to display. A year starts on Jan 1st.            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                  dd-hh:mm:ss                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                     hh:mm:ss                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                        mm:ss                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                           ss                                                   &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -help       Display help text and exit.                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -version    Display version information and exit.                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                convert it to seconds.                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                The numeric values may represent floating point numbers.        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                Spaces are ignored.                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    NNdNNhNNmNNs  Simple numeric values may also be used with unit suffixes;    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                  where s,m,h, or d represents seconds, minutes, hours          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                  or days and w represents weeks. Allowed aliases for w,d,h,m, and s units are&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   w -  weeks,week,wk,wks                                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   d -  days,day                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   m -  minutes,minute,min                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   h -  hours,hour,hrs,hr                                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                   s -  seconds,second,sec,secs                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                  The numeric values may represent floating point numbers.      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                  Spaces, commas  and case are ignored.                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --denominator  divide the result by this value. Default is one(1).           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --help         display this help and exit                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --version      output version information and exit                           &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      month -month 12                                                           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;  Usage                                                                         &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;    December 2015                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;Mo Tu We Th Fr Sa Su                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;    1  2  3  4  5  6                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt; 7  8  9 10 11 12 13                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;14 15 16 17 18 19 20                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;21 22 23 24 25 26 27                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;28 29 30 31                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      month -month April # month names may be given instead of numbers          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec 1-12:04:20                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    129860                                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec 1.5 days                                                           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    129600                                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec 1.5 days 4hrs 30minutes                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    145800                                                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec 10s 10S 10s # DUPLICATES WITH UNITS ARE ALLOWED                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    30                                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    days2sec 1 1 1  # SPACES ARE IGNORED                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    111                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;SEE ALSO                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;    sec2days(1)                                                                 &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
@@ -380,7 +414,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-21 00:58 +0000             </p>
+ on 2025-06-22 02:15 +0000             </p>
           </div>
         </div>
         <br>
