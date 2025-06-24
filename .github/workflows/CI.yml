@@ -139,4 +139,4 @@ jobs:
       - name: fpm test (release)
         if: matrix.os == 'windows-latest' && matrix.compiler == 'gfortran'
         run: |
-          fpm test --compiler ${{ matrix.compiler }} --verbose -- --brief
+          fpm test --compiler ${{ matrix.compiler }} --verbose --fflags="-D_WIN32 -O3 -funroll-loops -Wimplicit-interface -fmax-errors=1 -fcoarray=single -fimplicit-none -Werror=implicit-interface -ffree-form" -- --brief
