@@ -72,8 +72,8 @@ jobs:
           echo "end" >_empty.f90
           gfortran -cpp -dM -E _empty.f90
           gfortran --version
-          echo "FPM_FFLAGS='-D_WIN32'" 
-          echo "FPM_FFLAGS='-D_WIN32'" >> $env:GITHUB_ENV
+          echo "FPM_FFLAGS=-D_WIN32" 
+          echo "FPM_FFLAGS=-D_WIN32" >> $env:GITHUB_ENV
 
       - name: Set environment for gfortran and not windows
         if: matrix.compiler == 'gfortran' && matrix.os != 'windows-latest'
@@ -95,7 +95,6 @@ jobs:
         run: |
           echo "end" >_empty.f90
           ifx -E -fpp empty.f90 -dryrun 2>&1 | perl -lne 'print for /-D(\S+)/'
-          ifx /help
           ifx /logo
 
       - name: Set environment for ifx and not windows
