@@ -7351,11 +7351,11 @@ end SUBROUTINE system_sleep
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 #if __COMPILER__ == __INTEL_COMP
-subroutine call_usleep(seconds)
+subroutine call_sleep(seconds)
 USE IFPORT
 integer,intent(in) :: seconds
    CALL SLEEP(seconds)
-end subroutine call_usleep
+end subroutine call_sleep
 #else
 subroutine call_sleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
