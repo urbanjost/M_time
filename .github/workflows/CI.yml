@@ -72,7 +72,6 @@ jobs:
           echo "end" >_empty.f90
           gfortran -cpp -dM -E _empty.f90
           gfortran --version
-          echo "FPM_FFLAGS=-D_WIN32" 
           echo "FPM_FFLAGS=-D_WIN32" >> $env:GITHUB_ENV
 
       - name: Set environment for gfortran and not windows
@@ -113,9 +112,31 @@ jobs:
 # RUN TESTS
 
       - name: fpm test (debug)
+        if: matrix.os != 'windows-latest'
         run: |
           fpm test --compiler ${{ matrix.compiler }} --profile debug --verbose
 
       - name: fpm test (release)
+        if: matrix.os != 'windows-latest'
         run: |
           fpm test --compiler ${{ matrix.compiler }} --profile release -- --brief
+
+      - name: fpm test (debug)
+        if: matrix.os == 'windows-latest && matrix.compiler != 'gfortran'
+        run: |
+          fpm test --compiler ${{ matrix.compiler }} --profile debug --verbose
+
+      - name: fpm test (release)
+        if: matrix.os == 'windows-latest && matrix.compiler != 'gfortran'
+        run: |
+          fpm test --compiler ${{ matrix.compiler }} --profile release -- --brief
+
+      - name: fpm test (debug)
+        if: matrix.os == 'windows-latest && matrix.compiler == 'gfortran'
+        run: |
+          fpm test --compiler ${{ matrix.compiler }} --verbose --fflags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface"
+
+      - name: fpm test (release)
+        if: matrix.os == 'windows-latest && matrix.compiler == 'gfortran'
+        run: |
+          fpm test --compiler ${{ matrix.compiler }} -- --brief
