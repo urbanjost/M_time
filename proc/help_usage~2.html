@@ -96,15 +96,15 @@
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/paws.f90"> Source File</a>
+              <a href="../src/month.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/paws.f90.html'>paws.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/demo_system_sleep~2.html'>demo_system_sleep</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/month.f90.html'>month.f90</a></li>
+                <li class="breadcrumb-item"><a href='../program/month_exe.html'>month_exe</a></li>
             <li class="breadcrumb-item active" aria-current="page">help_usage</li>
           </ol>
         </nav>
@@ -134,8 +134,8 @@
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../proc/help_usage~2.html#variable-help_text~5">help_text</a>
-            <a class="list-group-item" href="../proc/help_usage~2.html#variable-i~13">i</a>
-            <a class="list-group-item" href="../proc/help_usage~2.html#variable-ident~7">ident</a>
+            <a class="list-group-item" href="../proc/help_usage~2.html#variable-i~14">i</a>
+            <a class="list-group-item" href="../proc/help_usage~2.html#variable-ident~8">ident</a>
             <a class="list-group-item" href="../proc/help_usage~2.html#variable-stopit~4">stopit</a>
         </div>
       </div>
@@ -241,7 +241,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~13"></span>
+              <span class="anchor" id="variable-i~14"></span>
               integer,
             </td>
               <td>public</td>
@@ -258,7 +258,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~7"></span>
+              <span class="anchor" id="variable-ident~8"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -317,60 +317,37 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   paws(1f) - [TIME] pause until specified time or for specified duration       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   month(1f) - [TIME] display a calendar                                        &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ -msg message][ -cmd command][ -repeat TIMES[ -fmt ]]|...&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   [ -uet|-jd|-dat|[ -date|-until]]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   paws --version|--help                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   month [[ -year] NNNN] [ -month NN|month_name]                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours,     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   mm minutes and ss.xxx seconds convert it to seconds. Then, pause for that    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   many seconds. Alternatively, pause until specified date has passed.          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   If no duration is specified wait until a carriage return is entered.         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   month(1) displays a simple calendar. If no arguments are specified,          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   the current year is displayed.                                               &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   dd-hh:mm:ss   Given a string representing a duration of time in the          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 following forms:                                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -month NN   Display single month output. The month is numeric (1-12)         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               or a month name or blank. If blank the current month is assumed. &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                   dd-hh:mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                      hh:mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                         mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                            ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                      or                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                   xx[.yy]SUFFIX                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -year NNNN  Select the year to display. A year starts on Jan 1st.            &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 convert it to seconds and pause for that amount of time.       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 Suffix may be s for seconds, m for minutes, h for hours,       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 or d for days.                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -date|-until  wait until the specified date has passed (before starting      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 optional pause). See guessdate(3f) for syntax allowed for      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 the date.                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -uet          wait until the specified Unix Epoch Time has passed            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -jd           wait until the specified Julian Date has passed                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -dat          wait until the specified date vector has passed                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 (year month day timezone hour minutes seconds milliseconds)    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -repeat NNN   The duration is repeated NNN times with the date displayed     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 at the end of each pause.                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --msg         message to display before pausing                              &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --cmd         command to execute after a pause                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --fmt         date format (see fmtdate(3f) for details)                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --help        display this help and exit                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --version     output version information and exit                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   For more information on the format of the dates, see the now(1) command.     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -help       Display help text and exit.                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -version    Display version information and exit.                            &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39; Typical usage:                                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;      month -month 12                                                           &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 2:00:00              # pause for two hours                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 3600                 # pause one hour                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 0.10                 # pause one tenth of a second                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 1 -repeat 60         # pause sixty seconds, displaying date each second  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws -until 23:59:59      # pause until midnight                              &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes  &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;    December 2015                                                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;Mo Tu We Th Fr Sa Su                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;    1  2  3  4  5  6                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt; 7  8  9 10 11 12 13                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;14 15 16 17 18 19 20                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;21 22 23 24 25 26 27                                                    &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;       &gt;28 29 30 31                                                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;      month -month April # month names may be given instead of numbers          &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
@@ -403,7 +380,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-24 08:22 +0000             </p>
+ on 2025-06-24 08:36 +0000             </p>
           </div>
         </div>
         <br>

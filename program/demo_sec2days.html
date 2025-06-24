@@ -90,19 +90,19 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.4% of total for programs.">9 statements</a>
+                 title=" 2.0% of total for programs.">50 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/demo_sec2days.f90"> Source File</a>
+              <a href="../src/sec2days.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/demo_sec2days.f90.html'>demo_sec2days.f90</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/sec2days.f90.html'>sec2days.f90</a></li>
             <li class="breadcrumb-item active" aria-current="page">demo_sec2days</li>
           </ol>
         </nav>
@@ -131,7 +131,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_sec2days.html#variable-dp~2">dp</a>
+            <a class="list-group-item" href="../program/demo_sec2days.html#variable-ident~4">ident</a>
+            <a class="list-group-item" href="../program/demo_sec2days.html#variable-line~4">line</a>
+            <a class="list-group-item" href="../program/demo_sec2days.html#variable-radix">radix</a>
+            <a class="list-group-item" href="../program/demo_sec2days.html#variable-strlocal">strlocal</a>
         </div>
       </div>
     </div>
@@ -146,7 +149,19 @@
   
   
   
-  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/demo_sec2days.html#proc-help_usage">help_usage</a>
+            <a class="list-group-item" href="../program/demo_sec2days.html#proc-help_version~2">help_version</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -174,6 +189,8 @@
             <li class="list-group-item">
               <ul class="list-inline">
                   <li class="list-inline-item">M_time</li>
+                  <li class="list-inline-item">M_strings</li>
+                  <li class="list-inline-item">M_kracken95</li>
               </ul>
             </li>
         </ul>
@@ -197,16 +214,64 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~2"></span>
-              integer,
+              <span class="anchor" id="variable-ident~4"></span>
+              character(len=*),
             </td>
             <td>
 parameter               
             </td>
             <td>::</td>
-            <td><strong>dp</strong></td>
+            <td><strong>ident</strong></td>
 <td> =</td>
-                <td>kind(0.0d0)</td>
+                <td>&#34;@(#)sec2days(1f): convert seconds to string of form dd-hh:mm:ss&#34;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-line~4"></span>
+              character(len=IPvalue)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>line</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-radix"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>radix</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-strlocal"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>strlocal</strong></td>
+                <td></td>
+                <td></td>
             <td>
                 
             </td>
@@ -223,19 +288,252 @@ parameter
     
 
 
+    <section>
+    <h2>Subroutines</h2>
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_usage"></span> <h3> subroutine <a href='../proc/help_usage.html'>help_usage</a>(l_help)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_help"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_help</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version~2"></span> <h3> subroutine <a href='../proc/help_version~2.html'>help_version</a>(l_version)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>usage</p><a href="../proc/help_version~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_version~2"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_version</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+    </section>    
     
 
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">      </span><span class="k">program </span><span class="n">demo_sec2days</span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">sec2days</span>
-<span class="w">      </span><span class="k">implicit none</span>
-<span class="k">      </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dp</span><span class="o">=</span><span class="nb">kind</span><span class="p">(</span><span class="mf">0.0d0</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">129860</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">8000</span><span class="mf">0.0_dp</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">8000</span><span class="mf">0.0</span><span class="p">,</span><span class="n">crop</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">sec2days</span><span class="p">(</span><span class="s1">&#39;1 day 2.0hr 100 min 300.0seconds&#39;</span><span class="p">)</span>
-<span class="w">      </span><span class="k">end program </span><span class="n">demo_sec2days</span>
+    <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">demo_sec2days</span>
+<span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="w"> </span><span class="n">lget</span><span class="p">,</span><span class="w"> </span><span class="n">sget</span><span class="p">,</span><span class="w"> </span><span class="n">IPvalue</span>
+<span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">sec2days</span>
+<span class="k">use </span><span class="n">M_strings</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">substitute</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)sec2days(1f): convert seconds to string of form dd-hh:mm:ss&quot;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">strlocal</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="nb">radix</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">IPvalue</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;sec2days&#39;</span><span class="p">,</span><span class="s1">&#39; -oo -crop .F -radix . -help .F. -version .F.&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">! parse command line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;sec2days_help&#39;</span><span class="p">))</span><span class="w">                                   </span><span class="c">! display help information and stop if true</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;sec2days_version&#39;</span><span class="p">))</span><span class="w">                              </span><span class="c">! display version information and stop if true</span>
+<span class="w">   </span><span class="nb">radix</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;sec2days_radix&#39;</span><span class="p">))</span>
+<span class="w">   </span><span class="n">line</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;sec2days_oo&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">radix</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      call </span><span class="n">substitute</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">substitute</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="nb">radix</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">endif</span>
+<span class="k">   </span><span class="n">strlocal</span><span class="o">=</span><span class="n">sec2days</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;sec2days_crop&#39;</span><span class="p">))</span><span class="w"> </span><span class="c">! get command line option and convert to dd-hh:mm:ss string</span>
+<span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">strlocal</span>
+<span class="k">contains</span>
+<span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_help</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days(1f) - [TIME] Convert durations of time to string of form dd-hh:mm:ss&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days nnnn[.xxx] [ -crop]| --version| --help                              &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Given a numeric string representing seconds or labeled units of time         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   convert it to a string of the form                                           &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;      dd-hh:mm:ss                                                               &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   where dd is days, hh hours, mm minutes and ss seconds.                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   nnnn[.xxx]  Defaults to number of seconds to convert to string of            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               form dd-hh:mm:ss.  nnnn may be interspersed with unit            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               codes d,h,m,s. Spaces, commas and case are ignored. Allowed      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;               aliases for the unit codes are                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 d  days and day                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 h  hours,hour,hrs, and hr                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 m  minutes,minute and min                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                 s  seconds,second and sec                                      &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -crop       trim leading zero values from output                             &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   -radix      character used as decimal separator                              &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --help      display this help and exit                                       &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   --version   output version information and exit                              &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39; usage                                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days 129860                                                              &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   1-12:04:20                                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days 1d2h3m4s                                                            &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   1-02:03:04                                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days 1.0 days 2 hours 3 minutes 4 seconds                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   1-02:03:04                                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   sec2days 1.5d                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   1-12:00:00                                                                   &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --help was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_usage</span>
+<span class="c">!&gt;</span>
+<span class="c">!!##NAME</span>
+<span class="c">!!    sec2days(1f) - [TIME] Convert durations of time to string of form dd-hh:mm:ss</span>
+<span class="c">!!    (LICENSE:PD)</span>
+<span class="c">!!</span>
+<span class="c">!!##SYNOPSIS</span>
+<span class="c">!!</span>
+<span class="c">!!    sec2days nnnn[.xxx] [ -crop]| --version| --help</span>
+<span class="c">!!</span>
+<span class="c">!!##DESCRIPTION</span>
+<span class="c">!!    Given a numeric string representing seconds or labeled units of time</span>
+<span class="c">!!    convert it to a string of the form</span>
+<span class="c">!!</span>
+<span class="c">!!       dd-hh:mm:ss</span>
+<span class="c">!!</span>
+<span class="c">!!    where dd is days, hh hours, mm minutes and ss seconds.</span>
+<span class="c">!!</span>
+<span class="c">!!##OPTIONS</span>
+<span class="c">!!    nnnn[.xxx]  Defaults to number of seconds to convert to string of</span>
+<span class="c">!!                form dd-hh:mm:ss.  nnnn may be interspersed with unit</span>
+<span class="c">!!                codes d,h,m,s. Spaces, commas and case are ignored. Allowed</span>
+<span class="c">!!                aliases for the unit codes are</span>
+<span class="c">!!</span>
+<span class="c">!!                  d  days and day</span>
+<span class="c">!!                  h  hours,hour,hrs, and hr</span>
+<span class="c">!!                  m  minutes,minute and min</span>
+<span class="c">!!                  s  seconds,second and sec</span>
+<span class="c">!!</span>
+<span class="c">!!    -crop       trim leading zero values from output</span>
+<span class="c">!!    -radix      character used as decimal separator</span>
+<span class="c">!!    --help      display this help and exit</span>
+<span class="c">!!    --version   output version information and exit</span>
+<span class="c">!!</span>
+<span class="c">!!##EXAMPLES</span>
+<span class="c">!!</span>
+<span class="c">!!  usage</span>
+<span class="c">!!</span>
+<span class="c">!!    sec2days 129860</span>
+<span class="c">!!    1-12:04:20</span>
+<span class="c">!!    sec2days 1d2h3m4s</span>
+<span class="c">!!    1-02:03:04</span>
+<span class="c">!!    sec2days 1.0 days 2 hours 3 minutes 4 seconds</span>
+<span class="c">!!    1-02:03:04</span>
+<span class="c">!!    sec2days 1.5d</span>
+<span class="c">!!    1-12:00:00</span>
+<span class="c">!!</span>
+<span class="c">!!##AUTHOR</span>
+<span class="c">!!    John S. Urban</span>
+<span class="c">!!##LICENSE</span>
+<span class="c">!!    Public Domain</span>
+<span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_version</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)PROGRAM:        sec2days(1f)&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)DESCRIPTION:    convert seconds to string of form dd-hh:mm:ss&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2016-06-17&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_version</span>
+<span class="k">end program </span><span class="n">demo_sec2days</span>
 </pre></div>
 
     </section>
@@ -258,7 +556,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-24 08:22 +0000             </p>
+ on 2025-06-24 08:36 +0000             </p>
           </div>
         </div>
         <br>
