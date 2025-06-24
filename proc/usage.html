@@ -91,20 +91,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.9% of total for procedures.">15 statements</a>
+                 title=" 0.8% of total for procedures.">13 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/now.f90"> Source File</a>
+              <a href="../src/ttee.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/now.f90.html'>now.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/display_date.html'>display_date</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/ttee.f90.html'>ttee.f90</a></li>
+                <li class="breadcrumb-item"><a href='../program/ttee.html'>ttee</a></li>
             <li class="breadcrumb-item active" aria-current="page">usage</li>
           </ol>
         </nav>
@@ -133,8 +133,7 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/usage.html#variable-i~7">i</a>
-            <a class="list-group-item" href="../proc/usage.html#variable-ident~7">ident</a>
+            <a class="list-group-item" href="../proc/usage.html#variable-i~26">i</a>
             <a class="list-group-item" href="../proc/usage.html#variable-text">text</a>
         </div>
       </div>
@@ -197,7 +196,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~7"></span>
+              <span class="anchor" id="variable-i~26"></span>
               integer,
             </td>
               <td>public</td>
@@ -214,25 +213,8 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~7"></span>
-              character(len=*),
-            </td>
-              <td>public,</td>
-            <td>
-parameter               
-            </td>
-            <td>::</td>
-            <td><strong>ident</strong></td>
-<td> =</td>
-                <td>&#34;@(#)usage(3f,private): writes program help to stdout and exits&#34;</td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
               <span class="anchor" id="variable-text"></span>
-              character(len=80),
+              character(len=132),
             </td>
               <td>public,</td>
             <td>
@@ -262,130 +244,72 @@ parameter
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">usage</span><span class="p">()</span>
-<span class="c">!</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)usage(3f,private): writes program help to stdout and exits&quot;</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">80</span><span class="p">),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">text</span><span class="p">(:)</span>
-<span class="kt">integer</span><span class="w">                       </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
-<span class="c">! NOTE: Without the type specification this constructor would have to specify all of the constants with the same character length.</span>
-<span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="kd">::</span><span class="w">                                               </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   now(1f)  - [TIME] print the date and time                                    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now [Format [ -date date_str|-ued Unix_time|-jd Julian_Date|-dat date_vector] &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      [ -delta dd-hh:mm:ss]]|--help |--version|-test]                           &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   Report the current time or a Fortran date vector in a variety of formats.    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   Julian dates, Unix Epoch time, weekdays, monthnames, ordinal days,           &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   AM/PM and iso-8601 week-numbering are supported by building a format         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   string containing the desired macros.                                        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   Format  :                                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;     This string, containing macro names or keywords, creates the format used   &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;     to print the specified date.                                               &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;     The FORMAT string is expanded using the following macros:                  &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;CALL FMTDATE_USAGE                                                              &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -dat date_vector  :                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      A date vector is eight integers representing a date in the same manner as &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      the Fortran DATE_AND_TIME(3f) function:                                   &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;          yyyy mm dd zone hh mm ss mss                                          &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      only numeric time zones are supported.                                    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      When present, the specified date is used instead of the current time.     &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -uet Unix_Epoch_Time  :                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      When present a value is used as the Unix Epoch Time. This date is         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      is then adjusted using any -delta value and then printed using            &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      the specified format.                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -jd Julian_Date  :                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      When present a value is used as the Julian Date.                          &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -delta dd-hh:mm:ss  :                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      Add the specified duration to the date.                                   &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -date date_str  :                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      The guessdate(3f) routine is used to try to convert a date description    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      to a date vector. For the guess to work, dates must either be in the      &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      form YYYY-MM-DD or the order of numeric values must be &quot;&quot;dd yy yyy&quot;.      &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      Only four-digit years are supported. Month names are preferred over       &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      numeric values. See the guessdate(3f) documentation for further details.  &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   -test :                                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      To list allowed macros use the -test switch.                              &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   When present, the specified date is used instead of the current time.        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39; Sample commands:                                                               &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;    Friday, June 17th, 2016 03:22:53 PM UTC-4:00                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now -delta  1-0:0:0  # Tomorrow                                               &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;    Sunday, June 19th, 2016 11:32:26 AM UTC-4:00                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now -delta -1-0:0:0  # Yesterday                                              &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;    Friday, June 17th, 2016 11:32:43 AM UTC-4:00                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now long -delta  7-0:0:0  # Next week                                         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;    Saturday, June 25th, 2016 11:32:57 AM UTC-04:00                             &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now The date is %Y/%M/%D %h:%m:%s  # user-specified formats using macros      &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;    The date is 2009/08/10 00:33:48                                             &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now Y/M/D h:m:s # user-specified format with no % character                   &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;    2009/08/10 00:33:48                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now year-month-day # user-specified format with no % with long keywords       &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  2016-07-29                                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now -dat 2016 07 23 -240 1 01 00 00  # alternate date                         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  Saturday, July 23rd, 2016 1:01:00 AM UTC-4:00                                 &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now -uet  1469250060                 # alternate Unix Epoch date              &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now -date January 4th, 1999 10:20:30 # try to determine date from description.&#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now YEAR=%Y MONTH=%M DAY=%D          # YEAR=2009 MONTH=08 DAY=10              &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now HOUR=%h MINUTES=%m SECONDS=%s MILLISECONDS=%x                             &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;      HOUR=01 MINUTES=18 SECONDS=44 MILLISECONDS=946                            &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  # double-quotes are tricky (double them) to put in literally in this program: &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now &#39;&#39;&quot;&quot;year-month-day&quot;&quot;,&quot;&quot;hour-minute-second&quot;&quot;&#39;&#39; #  &quot;2017-04-23&quot;,&quot;14-41-09&quot;  &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  # quotes are easier to control using the single-letter macros(use %q and %Q): &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now QY-M-DQ,Qh:m:sQ                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;     &quot;2017-04-23&quot;,&quot;14-41-09&quot;                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  now -test       # Show formatting options, handy way to look up macro names   &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;LIMITS                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  See the M_time module description. Basically, A Gregorian Calendar is         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;  assumed, and Leap Seconds are not specifically accounted for.                 &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;SEE ALSO                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   month(1), sec2days(1), days2sec(1), easter(1), paws(1), today(1), ttee(1)    &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="p">&amp;</span><span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
+    <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">usage</span><span class="p">()</span><span class="w"> </span><span class="c">! &quot;@(#) usage(3f90) writes program help to stdout and exits</span>
+<span class="c">!character(len=132),parameter :: text(:)= [&amp;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">132</span><span class="p">),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">text</span><span class="p">(:)</span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="n">text</span><span class="o">=</span><span class="w"> </span><span class="p">[&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   ttee(1f) - [TIME] write input to stdout and a file with timing info.         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   ttee [[ -o|--output] filename(s)] [ -a|--append] [ --timestamp FLAG]] ...    &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;        [ -fmt FORMAT] [ --help | --version]                                    &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   Read from standard input and write to standard output and files              &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   with an optional timestamp in front of each line.                            &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   -o|--output FILENAME(S)                                                      &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;         specify name of output file(s). If the filenames are first the         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;         keyword -o|--output is optional.                                       &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   -a|--append                                                                  &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;         append to the given output file(s), do not overwrite                   &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   -t|--timestamp FLAG                                                          &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;         which files to add the timestamp to. Default is &quot;all&quot;                  &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;         Allowed values are stdout, output, all, none.                          &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   -fmt FORMAT                                                                  &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;         Change format for timestamp prefix using a call to now(3f).            &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;CALL FMTDATE_USAGE                                                              &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   --help     display this help and exit                                        &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   --version  output version information and exit                               &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;LIMITS                                                                          &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    Program limits:                                                             &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    o  Input line width maximum is 1024 characters.                             &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    o  Maximum length of output filenames is 4098, individual filename is 1024. &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    o  Minimum number of output files is probably at least 90; but is           &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;       system dependent.                                                        &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;   Basic command usage:                                                         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    # write stdout of &quot;program&quot; to ttee.out with a timestamp and stdout         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    program|ttee --output ttee.out --timestamp output|grep -i iteration         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    # write stdout of &quot;program&quot; to log.txt and stdout with a Julian Day         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    program|ttee log.txt -fmt &quot;%J :&quot;                                            &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    2457565.488 :Iteration 1 : Error: 1.20                                      &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    2457565.558 :Iteration 2 : Error: 0.08                                      &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;    2467569.684 :Iteration 3 : Error: 1.2e-3                                    &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;  John S. Urban                                                                 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="s1">&#39;  Public Domain                                                                 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">]</span>
-
-<span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">SIZE</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="w">   </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 <span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;CALL FMTDATE_USAGE&#39;</span><span class="p">)</span>
-<span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="w">   </span><span class="k">case </span><span class="n">default</span>
 <span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="nb">trim</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 <span class="w">   </span><span class="k">end select</span>
 <span class="k">enddo</span>
-
-<span class="k">stop</span>
 <span class="k">end subroutine </span><span class="n">usage</span>
 </pre></div>
 
@@ -410,7 +334,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-24 01:43 +0000             </p>
+ on 2025-06-24 01:47 +0000             </p>
           </div>
         </div>
         <br>
