@@ -122,21 +122,21 @@ jobs:
           fpm test --compiler ${{ matrix.compiler }} --profile release -- --brief
 
       - name: fpm test (debug)
-        if: matrix.os == 'windows-latest && matrix.compiler != 'gfortran'
+        if: matrix.os == 'windows-latest' && matrix.compiler != 'gfortran'
         run: |
           fpm test --compiler ${{ matrix.compiler }} --profile debug --verbose
 
       - name: fpm test (release)
-        if: matrix.os == 'windows-latest && matrix.compiler != 'gfortran'
+        if: matrix.os == 'windows-latest' && matrix.compiler != 'gfortran'
         run: |
           fpm test --compiler ${{ matrix.compiler }} --profile release -- --brief
 
       - name: fpm test (debug)
-        if: matrix.os == 'windows-latest && matrix.compiler == 'gfortran'
+        if: matrix.os == 'windows-latest' && matrix.compiler == 'gfortran'
         run: |
           fpm test --compiler ${{ matrix.compiler }} --verbose --fflags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface"
 
       - name: fpm test (release)
-        if: matrix.os == 'windows-latest && matrix.compiler == 'gfortran'
+        if: matrix.os == 'windows-latest' && matrix.compiler == 'gfortran'
         run: |
           fpm test --compiler ${{ matrix.compiler }} -- --brief
