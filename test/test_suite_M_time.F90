@@ -1,3 +1,7 @@
+#define POSIX
+#ifdef _WIN32
+#   undef POSIX
+#endif
 program runtest
 use,intrinsic :: iso_c_binding, only: c_int, c_char, c_null_char
 use, intrinsic :: iso_fortran_env, only : stdout=>OUTPUT_UNIT, stderr=>ERROR_UNIT
@@ -152,7 +156,7 @@ call locale('user', month_names, weekday_names, month_names_abbr, weekday_names_
 
 end subroutine to_upper_extended_ascii
 !===================================================================================================================================
-#ifndef _WIN32
+#ifdef POSIX
 
 subroutine put_environment_variable(name,value,status)
 

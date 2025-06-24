@@ -18,6 +18,7 @@ homepage = "https://github.com/urbanjost/M_time.git"
    module-naming = true
    # traditional where user can use any module name
    #module-naming = false
+   external-modules = ["ifport"]
 
 # new section with v0.8.0
 [fortran]
