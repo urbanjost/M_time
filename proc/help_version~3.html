@@ -96,15 +96,15 @@
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/ttee.f90"> Source File</a>
+              <a href="../src/sec2days.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/ttee.f90.html'>ttee.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/ttee.html'>ttee</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/sec2days.f90.html'>sec2days.f90</a></li>
+                <li class="breadcrumb-item"><a href='../program/demo_sec2days.html'>demo_sec2days</a></li>
             <li class="breadcrumb-item active" aria-current="page">help_version</li>
           </ol>
         </nav>
@@ -133,10 +133,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/help_version~3.html#variable-help_text~5">help_text</a>
-            <a class="list-group-item" href="../proc/help_version~3.html#variable-i~6">i</a>
-            <a class="list-group-item" href="../proc/help_version~3.html#variable-ident~6">ident</a>
-            <a class="list-group-item" href="../proc/help_version~3.html#variable-stopit~5">stopit</a>
+            <a class="list-group-item" href="../proc/help_version~3.html#variable-help_text~6">help_text</a>
+            <a class="list-group-item" href="../proc/help_version~3.html#variable-i~12">i</a>
+            <a class="list-group-item" href="../proc/help_version~3.html#variable-ident~8">ident</a>
+            <a class="list-group-item" href="../proc/help_version~3.html#variable-stopit~6">stopit</a>
         </div>
       </div>
     </div>
@@ -176,6 +176,60 @@
 </h2>
     
 
+    <h2 id="name">NAME</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">sec2days</span><span class="p">(</span><span class="mi">1</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">TIME</span><span class="o">]</span><span class="w"> </span><span class="nf">Convert</span><span class="w"> </span><span class="n">durations</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">form</span><span class="w"> </span><span class="n">dd</span><span class="o">-</span><span class="nl">hh</span><span class="p">:</span><span class="nl">mm</span><span class="p">:</span><span class="n">ss</span>
+<span class="p">(</span><span class="nl">LICENSE</span><span class="p">:</span><span class="n">PD</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="synopsis">SYNOPSIS</h2>
+<div class="codehilite"><pre><span></span><code>sec2days nnnn[.xxx] [ -crop]| --version| --help
+</code></pre></div>
+
+<h2 id="description">DESCRIPTION</h2>
+<div class="codehilite"><pre><span></span><code>Given a numeric string representing seconds or labeled units of time
+convert it to a string of the form
+
+   dd-hh:mm:ss
+
+where dd is days, hh hours, mm minutes and ss seconds.
+</code></pre></div>
+
+<h2 id="options">OPTIONS</h2>
+<div class="codehilite"><pre><span></span><code><span class="nv">nnnn</span>[.<span class="nv">xxx</span>]<span class="w">  </span><span class="nv">Defaults</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">seconds</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">convert</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">string</span><span class="w"> </span><span class="nv">of</span>
+<span class="w">            </span><span class="nv">form</span><span class="w"> </span><span class="nv">dd</span><span class="o">-</span><span class="nv">hh</span>:<span class="nv">mm</span>:<span class="nv">ss</span>.<span class="w">  </span><span class="nv">nnnn</span><span class="w"> </span><span class="nv">may</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">interspersed</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">unit</span>
+<span class="w">            </span><span class="nv">codes</span><span class="w"> </span><span class="nv">d</span>,<span class="nv">h</span>,<span class="nv">m</span>,<span class="nv">s</span>.<span class="w"> </span><span class="nv">Spaces</span>,<span class="w"> </span><span class="nv">commas</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">case</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">ignored</span>.<span class="w"> </span><span class="nv">Allowed</span>
+<span class="w">            </span><span class="nv">aliases</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">unit</span><span class="w"> </span><span class="nv">codes</span><span class="w"> </span><span class="nv">are</span>
+
+<span class="w">              </span><span class="nv">d</span><span class="w">  </span><span class="nv">days</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">day</span>
+<span class="w">              </span><span class="nv">h</span><span class="w">  </span><span class="nv">hours</span>,<span class="nv">hour</span>,<span class="nv">hrs</span>,<span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">hr</span>
+<span class="w">              </span><span class="nv">m</span><span class="w">  </span><span class="nv">minutes</span>,<span class="nv">minute</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">min</span>
+<span class="w">              </span><span class="nv">s</span><span class="w">  </span><span class="nv">seconds</span>,<span class="nv">second</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">sec</span>
+
+<span class="o">-</span><span class="nv">crop</span><span class="w">       </span><span class="nv">trim</span><span class="w"> </span><span class="nv">leading</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="nv">values</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">output</span>
+<span class="o">-</span><span class="nv">radix</span><span class="w">      </span><span class="nv">character</span><span class="w"> </span><span class="nv">used</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">decimal</span><span class="w"> </span><span class="nv">separator</span>
+<span class="o">--</span><span class="nv">help</span><span class="w">      </span><span class="nv">display</span><span class="w"> </span><span class="nv">this</span><span class="w"> </span><span class="nv">help</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="k">exit</span>
+<span class="o">--</span><span class="nv">version</span><span class="w">   </span><span class="nv">output</span><span class="w"> </span><span class="nv">version</span><span class="w"> </span><span class="nv">information</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="k">exit</span>
+</code></pre></div>
+
+<h2 id="examples">EXAMPLES</h2>
+<p>usage</p>
+<div class="codehilite"><pre><span></span><code>sec2days 129860
+1-12:04:20
+sec2days 1d2h3m4s
+1-02:03:04
+sec2days 1.0 days 2 hours 3 minutes 4 seconds
+1-02:03:04
+sec2days 1.5d
+1-12:00:00
+</code></pre></div>
+
+<h2 id="author">AUTHOR</h2>
+<div class="codehilite"><pre><span></span><code>John S. Urban
+</code></pre></div>
+
+<h2 id="license">LICENSE</h2>
+<div class="codehilite"><pre><span></span><code>Public Domain
+</code></pre></div>
 
 
     <h3>Arguments</h3>
@@ -224,7 +278,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-help_text~5"></span>
+              <span class="anchor" id="variable-help_text~6"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -241,7 +295,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~6"></span>
+              <span class="anchor" id="variable-i~12"></span>
               integer,
             </td>
               <td>public</td>
@@ -258,7 +312,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~6"></span>
+              <span class="anchor" id="variable-ident~8"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -275,7 +329,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stopit~5"></span>
+              <span class="anchor" id="variable-stopit~6"></span>
               logical,
             </td>
               <td>public</td>
@@ -317,14 +371,13 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)PROGRAM:        ttee(1f)&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)DESCRIPTION:    split stdout to a file with optional timestamp labeling&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)VERSION:        1.0, 2015-09-13&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)PROGRAM:        sec2days(1f)&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)DESCRIPTION:    convert seconds to string of form dd-hh:mm:ss&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2016-06-17&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)LICENSE:        This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;&#39;</span><span class="p">]</span>
@@ -355,7 +408,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-24 02:11 +0000             </p>
+ on 2025-06-24 02:23 +0000             </p>
           </div>
         </div>
         <br>
