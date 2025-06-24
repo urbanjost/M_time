@@ -95,6 +95,7 @@ jobs:
           echo "end" >_empty.f90
           ifx -E -fpp empty.f90 -dryrun 2>&1 | perl -lne 'print for /-D(\S+)/'
           #ifx /logo
+          ifx /help
           echo "FPM_FFLAGS=/cpp" >> $env:GITHUB_ENV
 
       - name: Set environment for ifx and not windows
