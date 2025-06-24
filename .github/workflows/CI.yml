@@ -95,7 +95,7 @@ jobs:
           echo "end" >_empty.f90
           ifx -E -fpp empty.f90 -dryrun 2>&1 | perl -lne 'print for /-D(\S+)/'
           #ifx /logo
-          echo "FPM_FFLAGS=\"/cpp\"" >> $env:GITHUB_ENV
+          echo "FPM_FFLAGS=/cpp" >> $env:GITHUB_ENV
 
       - name: Set environment for ifx and not windows
         if: matrix.compiler == 'ifx' &&  matrix.os != 'windows-latest'
