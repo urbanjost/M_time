@@ -67,7 +67,13 @@ jobs:
           echo "FPM_FFLAGS='--no-style-warnings' --cpp" >> $GITHUB_ENV
 
       - name: Set environment for gfortran
-        if: matrix.compiler == 'gfortran'
+        if: matrix.compiler == 'gfortran' && matrix.os == 'windows-latest'
+        run: |
+          echo "end" >_empty.f90
+          gfortran -cpp -dM -E _empty.f90
+          gfortran --version
+          echo "FPM_FFLAGS='-D_WIN32'" >> $GITHUB_ENV
+        if: matrix.compiler == 'gfortran' && matrix.os != 'windows-latest'
         run: |
           echo "end" >_empty.f90
           gfortran -cpp -dM -E _empty.f90
@@ -82,15 +88,19 @@ jobs:
           echo "FPM_FFLAGS='-cpp'" >> $GITHUB_ENV
 
       - name: Set environment for ifx
-        if: matrix.compiler == 'ifx'
+        if: matrix.compiler == 'ifx' &&  matrix.os == 'windows-latest'
         run: |
           echo "end" >_empty.f90
           ifx -E -fpp empty.f90 -dryrun 2>&1 | perl -lne 'print for /-D(\S+)/'
-          ifx --version
+          ifx /version
+        if: matrix.compiler == 'ifx' &&  matrix.os != 'windows-latest'
+        run: |
+          echo "end" >_empty.f90
+          ifx -E -fpp empty.f90 -dryrun 2>&1 | perl -lne 'print for /-D(\S+)/'
+          ifx -version
 
 # OS
-
-      - name: Set environment for ubuntu
+      - name: Set environment for ubuntu 
         if: matrix.os == 'ubuntu-latest'
         run: |
           ulimit -c unlimited -d unlimited -f unlimited -m unlimited -s unlimited -t unlimited -v unlimited -x unlimited
