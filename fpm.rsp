@@ -27,6 +27,9 @@ option test  --target '*' --compiler flang-new
 @test_macos-latest_nvfortran
 option test  --target '*' --compiler nvfortran 
 #------------------------------------------------------------------------------#
+# --flags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
+# --flags="-D_WIN32 -O3 -funroll-loops -Wimplicit-interface -fmax-errors=1 -fcoarray=single -fimplicit-none -Werror=implicit-interface -ffree-form" 
+#------------------------------------------------------------------------------#
 @test_windows-latest_gfortran
 option test  --target '*' --compiler gfortran   --flag="_WIN32"
 @test_windows-latest_ifx
