@@ -60,7 +60,7 @@ option test  --target "*" --compiler ifx        --flag="/fpp" --profile debug
 
 @test_windows-latest_lfortran_debug
 print RESPONSE:  windows-latest  lfortran debug
-option test  --target "*" --compiler lfortran   --flag="_WIN32 --no-style-warnings --cpp"--profile debug
+option test  --target "*" --compiler lfortran   --flag="_WIN32 --no-style-warnings --cpp" --profile debug
 
 @test_windows-latest_flang-new_debug
 print RESPONSE:  windows-latest flang-new debug

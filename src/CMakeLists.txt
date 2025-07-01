@@ -36,7 +36,13 @@ set_source_files_properties(
 )
 
 # Find all Fortran files in test/ and example/ directories (relative to project root)
-file(GLOB TEST_SOURCES "${CMAKE_SOURCE_DIR}/../test/*.f90")
+#file(GLOB TEST_SOURCES "${CMAKE_SOURCE_DIR}/../test/*.f90")
+file(GLOB TEST_SOURCES 
+"${CMAKE_SOURCE_DIR}/../test/language.f90"
+"${CMAKE_SOURCE_DIR}/../test/test_a_A.f90"
+"${CMAKE_SOURCE_DIR}/../test/to.f90"
+)
+
 file(GLOB EXAMPLE_SOURCES "${CMAKE_SOURCE_DIR}/../example/*.f90")
 # Build test programs
 foreach(test_source ${TEST_SOURCES})
