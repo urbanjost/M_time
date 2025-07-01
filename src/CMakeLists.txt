@@ -20,7 +20,7 @@ set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/include)
 
 # Define the library
 add_library(M_time STATIC
-    M_time.f90
+    M_time.F90
     M_time__oop.f90
     M_time__duplicate.f90
 )
@@ -28,6 +28,11 @@ add_library(M_time STATIC
 # Set output directory for the library to build/lib
 set_target_properties(M_time PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${BUILD_DIR}/lib"
+)
+
+set_source_files_properties(
+  "*.F90" "*.f90"
+  PROPERTIES Fortran_PREPROCESS ON
 )
 
 # Find all Fortran files in test/ and example/ directories (relative to project root)

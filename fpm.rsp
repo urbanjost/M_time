@@ -39,10 +39,10 @@ option test  --target '*' --compiler nvfortran --profile debug
 #------------------------------------------------------------------------------#
 @test_windows-latest_gfortran_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler gfortran   --flags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" --profile debug
+option test  --target '*' --compiler gfortran   --flags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
 @test_windows-latest_ifx_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler ifx        --flag="_WIN32"--profile debug
+option test  --target '*' --compiler ifx        --flag="/fpp"--profile debug
 @test_windows-latest_lfortran_debug
 print RESPONSE:  windows-latest 
 option test  --target '*' --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"--profile debug
@@ -78,7 +78,7 @@ option test  --target '*' --compiler nvfortran --profile release
 @test_windows-latest_gfortran_release
 option test  --target '*' --compiler gfortran   --flags="-D_WIN32 -O3 -funroll-loops -Wimplicit-interface -fmax-errors=1 -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
 @test_windows-latest_ifx_release
-option test  --target '*' --compiler ifx        --flag="_WIN32"--profile release
+option test  --target '*' --compiler ifx        --flag="/fpp"--profile release
 @test_windows-latest_lfortran_release
 option test  --target '*' --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"--profile release
 @test_windows-latest_flang-new_release
