@@ -96,15 +96,15 @@
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/days2sec.f90"> Source File</a>
+              <a href="../src/now.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/days2sec.f90.html'>days2sec.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/demo_days2sec.html'>demo_days2sec</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/now.f90.html'>now.f90</a></li>
+                <li class="breadcrumb-item"><a href='../program/display_date.html'>display_date</a></li>
             <li class="breadcrumb-item active" aria-current="page">help_version</li>
           </ol>
         </nav>
@@ -134,9 +134,9 @@
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../proc/help_version~2.html#variable-help_text~4">help_text</a>
-            <a class="list-group-item" href="../proc/help_version~2.html#variable-i~6">i</a>
+            <a class="list-group-item" href="../proc/help_version~2.html#variable-i~22">i</a>
             <a class="list-group-item" href="../proc/help_version~2.html#variable-ident~6">ident</a>
-            <a class="list-group-item" href="../proc/help_version~2.html#variable-stopit~4">stopit</a>
+            <a class="list-group-item" href="../proc/help_version~2.html#variable-stopit~3">stopit</a>
         </div>
       </div>
     </div>
@@ -176,85 +176,6 @@
 </h2>
     
 
-    <h2 id="name">NAME</h2>
-<div class="codehilite"><pre><span></span><code><span class="c">days2sec(1f) </span><span class="nb">-</span><span class="c"> </span><span class="k">[</span><span class="c">TIME</span><span class="k">]</span><span class="c"> Convert </span><span class="k">[[</span><span class="nb">-</span><span class="k">]</span><span class="c">dd</span><span class="nb">-</span><span class="k">][[</span><span class="c">hh:</span><span class="k">]</span><span class="c">mm:</span><span class="k">]</span><span class="c">ss to seconds</span>
-<span class="c">(LICENSE:PD)</span>
-</code></pre></div>
-
-<h2 id="synopsis">SYNOPSIS</h2>
-<p>Forms:</p>
-<div class="codehilite"><pre><span></span><code> days2sec dd-hh:mm:ss
- days2sec NNdNNhNNmNNs
- days2sec --version| --help
-</code></pre></div>
-
-<h2 id="description">DESCRIPTION</h2>
-<div class="codehilite"><pre><span></span><code><span class="nt">Given</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">duration</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">form</span><span class="w"> </span><span class="nt">dd-hh</span><span class="p">:</span><span class="nd">mm</span><span class="p">:</span><span class="nd">ss</span><span class="w"> </span><span class="nt">where</span><span class="w"> </span><span class="nt">dd</span><span class="w"> </span><span class="nt">is</span><span class="w"> </span><span class="nt">days</span><span class="o">,</span><span class="w"> </span><span class="nt">hh</span><span class="w"> </span><span class="nt">hours</span><span class="o">,</span>
-<span class="nt">mm</span><span class="w"> </span><span class="nt">minutes</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">ss</span><span class="w"> </span><span class="nt">seconds</span><span class="w"> </span><span class="nt">convert</span><span class="w"> </span><span class="nt">it</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">seconds</span><span class="o">.</span><span class="w"> </span><span class="nt">Many</span><span class="w"> </span><span class="nt">utilities</span><span class="w"> </span><span class="o">(</span><span class="nt">ps</span><span class="o">(</span><span class="nt">1</span><span class="o">),</span>
-<span class="nt">for</span><span class="w"> </span><span class="nt">example</span><span class="o">)</span><span class="w"> </span><span class="nt">show</span><span class="w"> </span><span class="nt">times</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">this</span><span class="w"> </span><span class="nt">format</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">make</span><span class="w"> </span><span class="nt">it</span><span class="w"> </span><span class="nt">more</span><span class="w"> </span><span class="nt">intelligible</span><span class="o">;</span>
-<span class="nt">but</span><span class="w"> </span><span class="nt">it</span><span class="w"> </span><span class="nt">generally</span><span class="w"> </span><span class="nt">easier</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">perform</span><span class="w"> </span><span class="nt">math</span><span class="w"> </span><span class="nt">on</span><span class="w"> </span><span class="nt">values</span><span class="w"> </span><span class="nt">represented</span><span class="w"> </span><span class="nt">in</span>
-<span class="nt">seconds</span><span class="o">.</span>
-</code></pre></div>
-
-<h2 id="options">OPTIONS</h2>
-<div class="codehilite"><pre><span></span><code><span class="nx">dd</span><span class="o">-</span><span class="nx">hh</span><span class="p">:</span><span class="nx">mm</span><span class="p">:</span><span class="nx">ss</span><span class="w">  </span><span class="nx">Given</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">representing</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span>
-<span class="w">             </span><span class="nx">following</span><span class="w"> </span><span class="nx">forms</span><span class="p">:</span>
-
-<span class="w">               </span><span class="nx">dd</span><span class="o">-</span><span class="nx">hh</span><span class="p">:</span><span class="nx">mm</span><span class="p">:</span><span class="nx">ss</span>
-<span class="w">                  </span><span class="nx">hh</span><span class="p">:</span><span class="nx">mm</span><span class="p">:</span><span class="nx">ss</span>
-<span class="w">                     </span><span class="nx">mm</span><span class="p">:</span><span class="nx">ss</span>
-<span class="w">                        </span><span class="nx">ss</span>
-
-<span class="w">             </span><span class="nx">convert</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">seconds</span><span class="p">.</span>
-
-<span class="w">             </span><span class="nx">The</span><span class="w"> </span><span class="nx">numeric</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="nx">may</span><span class="w"> </span><span class="nx">represent</span><span class="w"> </span><span class="nx">floating</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span>
-
-<span class="w">             </span><span class="nx">Spaces</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">ignored</span><span class="p">.</span>
-
-<span class="w"> </span><span class="nx">NNdNNhNNmNNs</span><span class="w">  </span><span class="nx">Simple</span><span class="w"> </span><span class="nx">numeric</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="nx">may</span><span class="w"> </span><span class="nx">also</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">used</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">unit</span><span class="w"> </span><span class="nx">suffixes</span><span class="p">;</span>
-<span class="w">               </span><span class="k">where</span><span class="w"> </span><span class="nx">s</span><span class="p">,</span><span class="nx">m</span><span class="p">,</span><span class="nx">h</span><span class="p">,</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="nx">represents</span><span class="w"> </span><span class="nx">seconds</span><span class="p">,</span><span class="w"> </span><span class="nx">minutes</span><span class="p">,</span><span class="w"> </span><span class="nx">hours</span>
-<span class="w">               </span><span class="k">or</span><span class="w"> </span><span class="nx">days</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="nx">represents</span><span class="w"> </span><span class="nx">weeks</span><span class="p">.</span><span class="w"> </span><span class="nx">Allowed</span><span class="w"> </span><span class="nx">aliases</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">w</span><span class="p">,</span><span class="nx">d</span><span class="p">,</span><span class="nx">h</span><span class="p">,</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="nx">units</span><span class="w"> </span><span class="nx">are</span>
-
-<span class="w">                </span><span class="nx">w</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="nx">weeks</span><span class="p">,</span><span class="nx">week</span><span class="p">,</span><span class="nx">wk</span><span class="p">,</span><span class="nx">wks</span>
-<span class="w">                </span><span class="nx">d</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="nx">days</span><span class="p">,</span><span class="nx">day</span>
-<span class="w">                </span><span class="nx">m</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="nx">minutes</span><span class="p">,</span><span class="nx">minute</span><span class="p">,</span><span class="nx">min</span>
-<span class="w">                </span><span class="nx">h</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="nx">hours</span><span class="p">,</span><span class="nx">hour</span><span class="p">,</span><span class="nx">hrs</span><span class="p">,</span><span class="nx">hr</span>
-<span class="w">                </span><span class="nx">s</span><span class="w"> </span><span class="o">-</span><span class="w">  </span><span class="nx">seconds</span><span class="p">,</span><span class="nx">second</span><span class="p">,</span><span class="nx">sec</span><span class="p">,</span><span class="nx">secs</span>
-
-<span class="w">               </span><span class="nx">The</span><span class="w"> </span><span class="nx">numeric</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="nx">may</span><span class="w"> </span><span class="nx">represent</span><span class="w"> </span><span class="nx">floating</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span>
-
-<span class="w">               </span><span class="nx">Spaces</span><span class="p">,</span><span class="w"> </span><span class="nx">commas</span><span class="w">  </span><span class="k">and</span><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">ignored</span><span class="p">.</span>
-
-<span class="o">--</span><span class="nx">denominator</span><span class="w">  </span><span class="nx">divide</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">value</span><span class="p">.</span><span class="w"> </span><span class="nx">Default</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">one</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span>
-<span class="o">--</span><span class="nx">help</span><span class="w">         </span><span class="nx">display</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">help</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">exit</span>
-<span class="o">--</span><span class="nx">version</span><span class="w">      </span><span class="nx">output</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="nx">information</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">exit</span>
-</code></pre></div>
-
-<h2 id="examples">EXAMPLES</h2>
-<p>Usage</p>
-<div class="codehilite"><pre><span></span><code> days2sec 1-12:04:20
- 129860
- days2sec 1.5 days
- 129600
- days2sec 1.5 days 4hrs 30minutes
- 145800
- days2sec 10s 10S 10s # DUPLICATES WITH UNITS ARE ALLOWED
- 30
- days2sec 1 1 1  # SPACES ARE IGNORED
- 111
-</code></pre></div>
-
-<h2 id="see-also">SEE ALSO</h2>
-<div class="codehilite"><pre><span></span><code> sec2days(1)
-</code></pre></div>
-
-<h2 id="author">AUTHOR</h2>
-<div class="codehilite"><pre><span></span><code>John S. Urban
-</code></pre></div>
-
-<h2 id="license">LICENSE</h2>
-<div class="codehilite"><pre><span></span><code>Public Domain
-</code></pre></div>
 
 
     <h3>Arguments</h3>
@@ -320,7 +241,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~6"></span>
+              <span class="anchor" id="variable-i~22"></span>
               integer,
             </td>
               <td>public</td>
@@ -354,7 +275,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stopit~4"></span>
+              <span class="anchor" id="variable-stopit~3"></span>
               logical,
             </td>
               <td>public</td>
@@ -396,12 +317,13 @@ parameter
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)PROGRAM:        days2sec(1f)&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)DESCRIPTION:    convert dd-hh:mm:ss string to seconds&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)VERSION:        1.0, 2016-06-17&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)PROGRAM:        now(1f)&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)DESCRIPTION:    Report a date in a variety of formats&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2009&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
+<span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
 <span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
@@ -433,7 +355,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-01 01:33 +0000             </p>
+ on 2025-07-01 04:57 +0000             </p>
           </div>
         </div>
         <br>
