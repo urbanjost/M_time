@@ -39,19 +39,19 @@ option test  --target '*' --compiler nvfortran --profile debug
 #------------------------------------------------------------------------------#
 @test_windows-latest_gfortran_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler gfortran   --flag="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
+option test  --target "*" --compiler gfortran   --flag="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
 @test_windows-latest_ifx_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler ifx        --flag="/fpp"--profile debug
+option test  --target "*" --compiler ifx        --flag="/fpp"--profile debug
 @test_windows-latest_lfortran_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"--profile debug
+option test  --target "*" --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"--profile debug
 @test_windows-latest_flang-new_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler flang-new  --flag="_WIN32"--profile debug
+option test  --target "*" --compiler flang-new  --flag="_WIN32"--profile debug
 @test_windows-latest_nvfortran_debug
 print RESPONSE:  windows-latest 
-option test  --target '*' --compiler nvfortran  --flag="_WIN32"--profile debug
+option test  --target "*" --compiler nvfortran  --flag="_WIN32"--profile debug
 #------------------------------------------------------------------------------#
 @test_ubuntu-latest_gfortran_release
 option test  --target '*' --compiler gfortran --profile release
