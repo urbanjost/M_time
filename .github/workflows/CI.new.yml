@@ -45,10 +45,10 @@ jobs:
           extra-packages: ${{ matrix.extra-packages }}
 
       - name: fpm test (debug)
-        run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }} --profile debug --verbose
+        run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }}_debug --verbose
 
       - name: fpm test (release)
-        run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }} --profile release --verbose -- --brief
+        run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }}_profile -- --brief
 
   test_cmake:
     name: ${{ matrix.os }}_${{ matrix.compiler }}_cmake

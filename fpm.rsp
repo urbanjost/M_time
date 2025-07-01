@@ -5,41 +5,86 @@
 # os: [ubuntu-latest, macos-latest, windows-latest]
 # compiler: [gfortran, ifx, lfortran, flang-new, nvfortran]
 ################################################################################
-@test_ubuntu-latest_gfortran
-option test  --target '*' --compiler gfortran 
-@test_ubuntu-latest_ifx
-option test  --target '*' --compiler ifx 
-@test_ubuntu-latest_lfortran
-option test  --target '*' --compiler lfortran --flag="--no-style-warnings --cpp"
-@test_ubuntu-latest_flang-new
-option test  --target '*' --compiler flang-new 
-@test_ubuntu-latest_nvfortran
-option test  --target '*' --compiler nvfortran 
+@test_ubuntu-latest_gfortran_debug
+print  RESPONSE: ubuntu-latest 
+option test  --target '*' --compiler gfortran --profile debug
+@test_ubuntu-latest_ifx_debug
+print  RESPONSE: ubuntu-latest 
+option test  --target '*' --compiler ifx --profile debug
+@test_ubuntu-latest_lfortran_debug
+print RESPONSE:  ubuntu-latest 
+option test  --target '*' --compiler lfortran --flag="--no-style-warnings --cpp"--profile debug
+@test_ubuntu-latest_flang-new_debug
+print RESPONSE:  ubuntu-latest 
+option test  --target '*' --compiler flang-new --profile debug
+@test_ubuntu-latest_nvfortran_debug
+print RESPONSE:  ubuntu-latest 
+option test  --target '*' --compiler nvfortran --profile debug
 #------------------------------------------------------------------------------#
-@test_macos-latest_gfortran
-option test  --target '*' --compiler gfortran 
-@test_macos-latest_ifx
-option test  --target '*' --compiler ifx 
-@test_macos-latest_lfortran
-option test  --target '*' --compiler lfortran --flag="--no-style-warnings --cpp"
-@test_macos-latest_flang-new
-option test  --target '*' --compiler flang-new 
-@test_macos-latest_nvfortran
-option test  --target '*' --compiler nvfortran 
+@test_macos-latest_gfortran_debug
+print RESPONSE:  macos-latest 
+option test  --target '*' --compiler gfortran --profile debug
+@test_macos-latest_ifx_debug
+print RESPONSE:  macos-latest 
+option test  --target '*' --compiler ifx --profile debug
+@test_macos-latest_lfortran_debug
+print RESPONSE:  macos-latest 
+option test  --target '*' --compiler lfortran --flag="--no-style-warnings --cpp"--profile debug
+@test_macos-latest_flang-new_debug
+print RESPONSE:  macos-latest 
+option test  --target '*' --compiler flang-new --profile debug
+@test_macos-latest_nvfortran_debug
+print RESPONSE:  macos-latest 
+option test  --target '*' --compiler nvfortran --profile debug
 #------------------------------------------------------------------------------#
-# --flags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
-# --flags="-D_WIN32 -O3 -funroll-loops -Wimplicit-interface -fmax-errors=1 -fcoarray=single -fimplicit-none -Werror=implicit-interface -ffree-form" 
+@test_windows-latest_gfortran_debug
+print RESPONSE:  windows-latest 
+option test  --target '*' --compiler gfortran   --flags="-D_WIN32 -Wall -Wextra -fmax-errors=1 -g -fcheck=bounds -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -Werror=implicit-interface" --profile debug
+@test_windows-latest_ifx_debug
+print RESPONSE:  windows-latest 
+option test  --target '*' --compiler ifx        --flag="_WIN32"--profile debug
+@test_windows-latest_lfortran_debug
+print RESPONSE:  windows-latest 
+option test  --target '*' --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"--profile debug
+@test_windows-latest_flang-new_debug
+print RESPONSE:  windows-latest 
+option test  --target '*' --compiler flang-new  --flag="_WIN32"--profile debug
+@test_windows-latest_nvfortran_debug
+print RESPONSE:  windows-latest 
+option test  --target '*' --compiler nvfortran  --flag="_WIN32"--profile debug
 #------------------------------------------------------------------------------#
-@test_windows-latest_gfortran
-option test  --target '*' --compiler gfortran   --flag="_WIN32"
-@test_windows-latest_ifx
-option test  --target '*' --compiler ifx        --flag="_WIN32"
-@test_windows-latest_lfortran
-option test  --target '*' --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"
-@test_windows-latest_flang-new
-option test  --target '*' --compiler flang-new  --flag="_WIN32"
-@test_windows-latest_nvfortran
-option test  --target '*' --compiler nvfortran  --flag="_WIN32"
+@test_ubuntu-latest_gfortran_release
+option test  --target '*' --compiler gfortran --profile release
+@test_ubuntu-latest_ifx_release
+option test  --target '*' --compiler ifx --profile release
+@test_ubuntu-latest_lfortran_release
+option test  --target '*' --compiler lfortran --flag="--no-style-warnings --cpp"--profile release
+@test_ubuntu-latest_flang-new_release
+option test  --target '*' --compiler flang-new --profile release
+@test_ubuntu-latest_nvfortran_release
+option test  --target '*' --compiler nvfortran --profile release
+#------------------------------------------------------------------------------#
+@test_macos-latest_gfortran_release
+option test  --target '*' --compiler gfortran --profile release
+@test_macos-latest_ifx_release
+option test  --target '*' --compiler ifx --profile release
+@test_macos-latest_lfortran_release
+option test  --target '*' --compiler lfortran --flag="--no-style-warnings --cpp"--profile release
+@test_macos-latest_flang-new_release
+option test  --target '*' --compiler flang-new --profile release
+@test_macos-latest_nvfortran_release
+option test  --target '*' --compiler nvfortran --profile release
+#------------------------------------------------------------------------------#
+@test_windows-latest_gfortran_release
+option test  --target '*' --compiler gfortran   --flags="-D_WIN32 -O3 -funroll-loops -Wimplicit-interface -fmax-errors=1 -fcoarray=single -fimplicit-none -Werror=implicit-interface" 
+@test_windows-latest_ifx_release
+option test  --target '*' --compiler ifx        --flag="_WIN32"--profile release
+@test_windows-latest_lfortran_release
+option test  --target '*' --compiler lfortran   --flag="_WIN32" --flag="--no-style-warnings --cpp"--profile release
+@test_windows-latest_flang-new_release
+option test  --target '*' --compiler flang-new  --flag="_WIN32"--profile release
+@test_windows-latest_nvfortran_release
+option test  --target '*' --compiler nvfortran  --flag="_WIN32"--profile release
 #------------------------------------------------------------------------------#
 ################################################################################
 @declare2
