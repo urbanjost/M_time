@@ -48,7 +48,7 @@ jobs:
         run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }}_debug --verbose
 
       - name: fpm test (release)
-        run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }}_profile -- --brief
+        run: fpm @test_${{ matrix.os }}_${{ matrix.compiler }}_release -- --brief
 
   test_cmake:
     name: ${{ matrix.os }}_${{ matrix.compiler }}_cmake
