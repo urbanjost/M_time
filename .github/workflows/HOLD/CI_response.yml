@@ -12,8 +12,8 @@ permissions:
   contents: write
   pull-requests: write
 
-jobs:
 ################################################################################
+jobs:
   test_fpm:
     name: ${{ matrix.os }}_${{ matrix.compiler }}_fpm
     runs-on: ${{ matrix.os }}
