@@ -10,7 +10,7 @@
     <meta name="author" content="John S. Urban" >
     <link rel="icon" href="../favicon.png">
 
-    <title>demo_date_to_modified_julian &ndash; M_time</title>
+    <title>test_id &ndash; M_time</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -80,7 +80,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>demo_date_to_modified_julian      <small>Program</small>
+    <h1>test_id      <small>Program</small>
       
     </h1>
       <div class="container p-2 mb-4 bg-light border rounded-3">
@@ -90,20 +90,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.7% of total for programs.">16 statements</a>
+                 title=" 1.1% of total for programs.">28 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/demo_date_to_modified_julian.f90"> Source File</a>
+              <a href="../src/fid.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/demo_date_to_modified_julian.f90.html'>demo_date_to_modified_julian.f90</a></li>
-            <li class="breadcrumb-item active" aria-current="page">demo_date_to_modified_julian</li>
+                <li class="breadcrumb-item"><a href='../sourcefile/fid.f90.html'>fid.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">test_id</li>
           </ol>
         </nav>
       </div>
@@ -131,11 +131,12 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_date_to_modified_julian.html#variable-dat~58">dat</a>
-            <a class="list-group-item" href="../program/demo_date_to_modified_julian.html#variable-g~4">g</a>
-            <a class="list-group-item" href="../program/demo_date_to_modified_julian.html#variable-ierr~31">ierr</a>
-            <a class="list-group-item" href="../program/demo_date_to_modified_julian.html#variable-juliandate~6">juliandate</a>
-            <a class="list-group-item" href="../program/demo_date_to_modified_julian.html#variable-modified_juliandate~2">modified_juliandate</a>
+            <a class="list-group-item" href="../program/test_id.html#variable-break">break</a>
+            <a class="list-group-item" href="../program/test_id.html#variable-nl">nl</a>
+            <a class="list-group-item" href="../program/test_id.html#variable-options">options</a>
+            <a class="list-group-item" href="../program/test_id.html#variable-start">start</a>
+            <a class="list-group-item" href="../program/test_id.html#variable-version">version</a>
+            <a class="list-group-item" href="../program/test_id.html#variable-where">where</a>
         </div>
       </div>
     </div>
@@ -161,7 +162,7 @@
     <div class="card card-primary">
       <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
-        <a class="list-group-item" href="../program/demo_date_to_modified_julian.html#src">demo_date_to_modified_julian</a>
+        <a class="list-group-item" href="../program/test_id.html#src">test_id</a>
       </div>
     </div>
 
@@ -177,7 +178,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">M_time</li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
               </ul>
             </li>
         </ul>
@@ -201,14 +202,14 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~58"></span>
+              <span class="anchor" id="variable-break"></span>
               integer
             </td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong>dat</strong>(8)</td>
+            <td><strong>break</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -217,30 +218,46 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-g~4"></span>
+              <span class="anchor" id="variable-nl"></span>
               character(len=*),
             </td>
             <td>
 parameter               
             </td>
             <td>::</td>
-            <td><strong>g</strong></td>
+            <td><strong>nl</strong></td>
 <td> =</td>
-                <td>&#39;(*(g0,1x))&#39;</td>
+                <td>new_line(&#39;a&#39;)</td>
             <td>
                 
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~31"></span>
+              <span class="anchor" id="variable-options"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>options</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-start"></span>
               integer
             </td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong>ierr</strong></td>
+            <td><strong>start</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -249,14 +266,14 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-juliandate~6"></span>
-              real(kind=realtime)
+              <span class="anchor" id="variable-version"></span>
+              character(len=:),
             </td>
             <td>
-              
+              allocatable
             </td>
             <td>::</td>
-            <td><strong>juliandate</strong></td>
+            <td><strong>version</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -265,14 +282,14 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-modified_juliandate~2"></span>
-              real(kind=realtime)
+              <span class="anchor" id="variable-where"></span>
+              integer
             </td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong>modified_juliandate</strong></td>
+            <td><strong>where</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -295,31 +312,38 @@ parameter
 
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">      </span><span class="k">program </span><span class="n">demo_date_to_modified_julian</span><span class="w"></span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">date_to_modified_julian</span><span class="w"></span>
-<span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">date_to_julian</span><span class="p">,</span><span class="w"> </span><span class="n">realtime</span><span class="w"></span>
-<span class="w">      </span><span class="k">implicit none</span>
-<span class="k">      </span><span class="kt">integer</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">        </span><span class="kd">::</span><span class="w"> </span><span class="n">modified_juliandate</span><span class="w"></span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">        </span><span class="kd">::</span><span class="w"> </span><span class="n">juliandate</span><span class="w"></span>
-<span class="w">      </span><span class="kt">integer</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="w"></span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">g</span><span class="o">=</span><span class="s1">&#39;(*(g0,1x))&#39;</span><span class="w"></span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! generate DAT array</span>
-<span class="w">         </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! show DAT array</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(&quot;Today is:&quot;,*(i0:,&quot;:&quot;))&#39;</span><span class="p">)</span><span class="n">dat</span><span class="w"></span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! convert DAT to Julian Date</span>
-<span class="w">         </span><span class="k">call </span><span class="n">date_to_julian</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">juliandate</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Expecting:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">juliandate</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">240000</span><span class="mf">0.5_realtime</span><span class="w"></span>
-<span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="c">! convert DAT to Modified Julian Date</span>
-<span class="w">         </span><span class="k">call </span><span class="n">date_to_modified_julian</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">modified_juliandate</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"></span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Modified Julian Date is &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">modified_juliandate</span><span class="w"></span>
-
-<span class="w">      </span><span class="k">end program </span><span class="n">demo_date_to_modified_julian</span><span class="w"></span>
+    <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">test_id</span>
+<span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">compiler_version</span>
+<span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">compiler_options</span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="k">options</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">nl</span><span class="o">=</span><span class="nb">new_line</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="k">where</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">break</span>
+<span class="w">   </span><span class="n">version</span><span class="o">=</span><span class="n">compiler_version</span><span class="p">()</span>
+<span class="w">   </span><span class="k">options</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="n">compiler_options</span><span class="p">()</span>
+<span class="w">   </span><span class="n">start</span><span class="o">=</span><span class="mi">1</span>
+<span class="w">   </span><span class="k">do </span>
+<span class="k">      where</span><span class="o">=</span><span class="nb">index</span><span class="p">(</span><span class="k">options</span><span class="p">(</span><span class="n">start</span><span class="p">:),</span><span class="s1">&#39; -&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="k">where</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
+<span class="k">      </span><span class="n">break</span><span class="o">=</span><span class="k">where</span><span class="o">+</span><span class="n">start</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">      </span><span class="k">options</span><span class="p">(</span><span class="n">break</span><span class="p">:</span><span class="n">break</span><span class="p">)</span><span class="o">=</span><span class="n">nl</span>
+<span class="w">      </span><span class="n">start</span><span class="o">=</span><span class="k">where</span>
+<span class="k">   enddo</span>
+<span class="k">   if</span><span class="p">(</span><span class="n">start</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      do </span>
+<span class="k">         where</span><span class="o">=</span><span class="nb">index</span><span class="p">(</span><span class="k">options</span><span class="p">(</span><span class="n">start</span><span class="p">:),</span><span class="s1">&#39; /&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">if</span><span class="p">(</span><span class="k">where</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span><span class="k">exit</span>
+<span class="k">         </span><span class="n">break</span><span class="o">=</span><span class="k">where</span><span class="o">+</span><span class="n">start</span><span class="o">-</span><span class="mi">1</span>
+<span class="w">         </span><span class="k">options</span><span class="p">(</span><span class="n">break</span><span class="p">:</span><span class="n">break</span><span class="p">)</span><span class="o">=</span><span class="n">nl</span>
+<span class="w">         </span><span class="n">start</span><span class="o">=</span><span class="k">where</span>
+<span class="k">      enddo</span>
+<span class="k">   endif</span>
+<span class="k">   print</span><span class="w"> </span><span class="s1">&#39;(*(1x,a))&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s1">&#39;This file was compiled by &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="n">version</span><span class="p">,</span><span class="n">nl</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="s1">&#39;using the options &#39;</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="k">options</span>
+<span class="k">end program </span><span class="n">test_id</span>
 </pre></div>
 
     </section>
@@ -342,7 +366,7 @@ parameter
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-11 00:33 +0000             </p>
+ on 2025-07-19 19:26 +0000             </p>
           </div>
         </div>
         <br>
