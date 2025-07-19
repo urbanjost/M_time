@@ -412,7 +412,6 @@ To download the github repository and build and install with cmake
       # Cleaning Up: To clean artifacts, remove the build/ directory:
       rm -rf build
 ```
-
 ---
 ![demos](docs/images/demo.gif)
 ---
