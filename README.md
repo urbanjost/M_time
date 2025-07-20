@@ -587,7 +587,5 @@ procedures.
    + [Gregorian Calendar(Wikipedia)](https://en.wikipedia.org/wiki/Gregorian_calendar)
 <!--
    TODO:
-
 http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libraries.html
-
 -->
