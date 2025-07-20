@@ -1,0 +1,642 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Fortran date and time manipulation and presentation">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>display_date &ndash; M_time</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_time </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>display_date      <small>Program</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 2.9% of total for programs.">71 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/now.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/now.f90.html'>now.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">display_date</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/display_date.html#variable-dat~33">dat</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-duration">duration</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ident">ident</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-ierr~13">ierr</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-inums">inums</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-output">output</a>
+            <a class="list-group-item" href="../program/display_date.html#variable-rdat">rdat</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/display_date.html#proc-help_version">help_version</a>
+            <a class="list-group-item" href="../program/display_date.html#proc-usage">usage</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../program/display_date.html#src">display_date</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item">M_kracken95</li>
+                  <li class="list-inline-item">M_time</li>
+                  <li class="list-inline-item">m_strings</li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    
+
+
+    <section>
+    <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dat~33"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dat</strong>(8)</td>
+<td> =</td>
+                <td>0</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-duration"></span>
+              real(kind=realtime)
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>duration</strong></td>
+<td> =</td>
+                <td>0</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ident"></span>
+              character(len=*),
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>ident</strong></td>
+<td> =</td>
+                <td>&#34;@(#)now(1f): writes timestamp using specified syntax&#34;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ierr~13"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ierr</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-inums"></span>
+              integer
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inums</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-output"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>output</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rdat"></span>
+              real
+            </td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>rdat</strong>(8)</td>
+<td> =</td>
+                <td>0</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+    
+
+    
+
+
+    <section>
+    <h2>Subroutines</h2>
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version"></span> <h3> subroutine <a href='../proc/help_version.html'>help_version</a>(l_version)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_version"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_version</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-usage"></span> <h3> subroutine <a href='../proc/usage.html'>usage</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+    </section>    
+    
+
+    <section>
+    <h2 id="src">Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">display_date</span><span class="w"></span>
+<span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="w"> </span><span class="n">lget</span><span class="p">,</span><span class="w"> </span><span class="n">retrev</span><span class="p">,</span><span class="w"> </span><span class="n">sget</span><span class="p">,</span><span class="w"> </span><span class="n">dget</span><span class="w">     </span><span class="c">! command line parameter cracking module</span>
+<span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="n">fmtdate_usage</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">,</span><span class="n">days2sec</span><span class="p">,</span><span class="n">d2u</span><span class="p">,</span><span class="n">u2d</span><span class="p">,</span><span class="n">realtime</span><span class="p">,</span><span class="n">guessdate</span><span class="p">,</span><span class="n">j2d</span><span class="p">,</span><span class="n">locale</span><span class="w"></span>
+<span class="k">use </span><span class="n">m_strings</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">string_to_values</span><span class="p">,</span><span class="w"> </span><span class="n">isdigit</span><span class="p">,</span><span class="w"> </span><span class="n">isspace</span><span class="p">,</span><span class="w"> </span><span class="n">switch</span><span class="w"></span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)now(1f): writes timestamp using specified syntax&quot;</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="kt">real</span><span class="w">                           </span><span class="kd">::</span><span class="w"> </span><span class="n">rdat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">realtime</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">duration</span><span class="o">=</span><span class="mi">0</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">output</span><span class="w"></span>
+<span class="c">!character(len=1),allocatable   :: chars(:)</span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">ierr</span><span class="p">,</span><span class="w"> </span><span class="n">inums</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span><span class="s1">&#39; -help .F. -version .F. -dat -date -jd -uet -test .false. -delta&#39;</span><span class="p">)</span><span class="w">  </span><span class="c">! crack command line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;now_version&#39;</span><span class="p">))</span><span class="w">                                    </span><span class="c">! display version number if --version is present</span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;now_help&#39;</span><span class="p">))</span><span class="k">then</span><span class="w">                                        </span><span class="c">! display help text and exit if --help is present</span>
+<span class="w">      </span><span class="k">call </span><span class="n">usage</span><span class="p">()</span><span class="w"></span>
+<span class="w">      </span><span class="k">stop</span>
+<span class="k">   endif</span><span class="w"></span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;now_test&#39;</span><span class="p">))</span><span class="k">then</span><span class="w">                                        </span><span class="c">! try each format type</span>
+<span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">stop</span>
+<span class="k">   endif</span><span class="w"></span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_uet&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to UET number, convert to dat</span>
+<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_jd&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">j2d</span><span class="p">(</span><span class="n">dget</span><span class="p">(</span><span class="s1">&#39;now_jd&#39;</span><span class="p">))</span><span class="w">                                     </span><span class="c">! convert command option to JD number, convert to dat</span>
+<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_dat&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">()</span><span class="w">                                                    </span><span class="c">! initialize DAT with current date and time to get time zone</span>
+<span class="w">      </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dat</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="w">                              </span><span class="c">! default is Jan 1st in current year and timezone 00:00:00</span>
+<span class="w">      </span><span class="k">call </span><span class="n">string_to_values</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_dat&#39;</span><span class="p">),</span><span class="n">size</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="n">rdat</span><span class="p">,</span><span class="n">inums</span><span class="p">,</span><span class="s1">&#39; ,:/&#39;</span><span class="p">,</span><span class="n">ierr</span><span class="p">)</span><span class="w"> </span><span class="c">! convert string to array and overlay default values</span>
+<span class="w">      </span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">inums</span><span class="p">)</span><span class="o">=</span><span class="nb">nint</span><span class="p">(</span><span class="n">rdat</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">inums</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">      </span><span class="c">! if -date is all integer digits and whitespace and +- and only one - (for UTC value) then use it directly to load a DAT</span>
+<span class="w">      </span><span class="c">!chars=switch(trim(sget(&#39;now_dat&#39;)))</span>
+<span class="w">      </span><span class="c">!if( all(isdigit(chars).or.isspace(chars).or.chars == &#39;-&#39;.or.chars == &#39;+&#39; ) .and. count(chars == &#39;-&#39;) &lt;= 1 )then</span>
+<span class="w">      </span><span class="c">!else</span>
+<span class="w">      </span><span class="c">!   write(*,*)&#39;*now* error: invalid characters in -dat input &#39;//trim(sget(&#39;now_dat&#39;))</span>
+<span class="w">      </span><span class="c">!endif</span>
+
+<span class="w">   </span><span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_date&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                            </span><span class="c">! convert command option to date string and try to guess date</span>
+<span class="w">      </span><span class="k">call </span><span class="n">guessdate</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_date&#39;</span><span class="p">),</span><span class="n">dat</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">else</span><span class="w">                                                            </span><span class="c">! create DAT for current time</span>
+<span class="w">      </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">()</span><span class="w">                                                    </span><span class="c">! current time</span>
+<span class="w">   </span><span class="k">endif</span><span class="w"></span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="n">duration</span><span class="o">=</span><span class="n">days2sec</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_delta&#39;</span><span class="p">))</span><span class="w">                            </span><span class="c">! convert string to duration in seconds</span>
+<span class="w">   </span><span class="n">dat</span><span class="o">=</span><span class="n">u2d</span><span class="p">(</span><span class="n">d2u</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="o">+</span><span class="n">duration</span><span class="p">)</span><span class="w">                                      </span><span class="c">! convert DAT to UET, add duration, place back in DAT</span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="n">output</span><span class="o">=</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;now_oo&#39;</span><span class="p">))</span><span class="w">                              </span><span class="c">! create output string by applying format</span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="nb">trim</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="w">                                      </span><span class="c">! write output</span>
+<span class="c">!- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="k">contains</span><span class="w"></span>
+<span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
+<span class="k">subroutine </span><span class="n">usage</span><span class="p">()</span><span class="w"></span>
+<span class="c">!</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)usage(3f,private): writes program help to stdout and exits&quot;</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">80</span><span class="p">),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">text</span><span class="p">(:)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                       </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="c">! NOTE: Without the type specification this constructor would have to specify all of the constants with the same character length.</span>
+<span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="kd">::</span><span class="w">                                               </span><span class="p">&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   now(1f)  - [TIME] print the date and time                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now [Format [ -date date_str|-ued Unix_time|-jd Julian_Date|-dat date_vector] &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      [ -delta dd-hh:mm:ss]]|--help |--version|-test]                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   Report the current time or a Fortran date vector in a variety of formats.    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   Julian dates, Unix Epoch time, weekdays, monthnames, ordinal days,           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   AM/PM and iso-8601 week-numbering are supported by building a format         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   string containing the desired macros.                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   Format  :                                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;     This string, containing macro names or keywords, creates the format used   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;     to print the specified date.                                               &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;     The FORMAT string is expanded using the following macros:                  &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;CALL FMTDATE_USAGE                                                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   -dat date_vector  :                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      A date vector is eight integers representing a date in the same manner as &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      the Fortran DATE_AND_TIME(3f) function:                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;          yyyy mm dd zone hh mm ss mss                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      only numeric time zones are supported.                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      When present, the specified date is used instead of the current time.     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   -uet Unix_Epoch_Time  :                                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      When present a value is used as the Unix Epoch Time. This date is         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      is then adjusted using any -delta value and then printed using            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      the specified format.                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   -jd Julian_Date  :                                                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      When present a value is used as the Julian Date.                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   -delta dd-hh:mm:ss  :                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      Add the specified duration to the date.                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   -date date_str  :                                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      The guessdate(3f) routine is used to try to convert a date description    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      to a date vector. For the guess to work, dates must either be in the      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      form YYYY-MM-DD or the order of numeric values must be &quot;&quot;dd yy yyy&quot;.      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      Only four-digit years are supported. Month names are preferred over       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      numeric values. See the guessdate(3f) documentation for further details.  &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   -test :                                                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      To list allowed macros use the -test switch.                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   When present, the specified date is used instead of the current time.        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39; Sample commands:                                                               &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now                                                                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;    Friday, June 17th, 2016 03:22:53 PM UTC-4:00                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now -delta  1-0:0:0  # Tomorrow                                               &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;    Sunday, June 19th, 2016 11:32:26 AM UTC-4:00                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now -delta -1-0:0:0  # Yesterday                                              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;    Friday, June 17th, 2016 11:32:43 AM UTC-4:00                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now long -delta  7-0:0:0  # Next week                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;    Saturday, June 25th, 2016 11:32:57 AM UTC-04:00                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now The date is %Y/%M/%D %h:%m:%s  # user-specified formats using macros      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;    The date is 2009/08/10 00:33:48                                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now Y/M/D h:m:s # user-specified format with no % character                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;    2009/08/10 00:33:48                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now year-month-day # user-specified format with no % with long keywords       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  2016-07-29                                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now -dat 2016 07 23 -240 1 01 00 00  # alternate date                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  Saturday, July 23rd, 2016 1:01:00 AM UTC-4:00                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now -uet  1469250060                 # alternate Unix Epoch date              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now -date January 4th, 1999 10:20:30 # try to determine date from description.&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now YEAR=%Y MONTH=%M DAY=%D          # YEAR=2009 MONTH=08 DAY=10              &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now HOUR=%h MINUTES=%m SECONDS=%s MILLISECONDS=%x                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;      HOUR=01 MINUTES=18 SECONDS=44 MILLISECONDS=946                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  # double-quotes are tricky (double them) to put in literally in this program: &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now &#39;&#39;&quot;&quot;year-month-day&quot;&quot;,&quot;&quot;hour-minute-second&quot;&quot;&#39;&#39; #  &quot;2017-04-23&quot;,&quot;14-41-09&quot;  &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  # quotes are easier to control using the single-letter macros(use %q and %Q): &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now QY-M-DQ,Qh:m:sQ                                                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;     &quot;2017-04-23&quot;,&quot;14-41-09&quot;                                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  now -test       # Show formatting options, handy way to look up macro names   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;LIMITS                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  See the M_time module description. Basically, A Gregorian Calendar is         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;  assumed, and Leap Seconds are not specifically accounted for.                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;SEE ALSO                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   month(1), sec2days(1), days2sec(1), easter(1), paws(1), today(1), ttee(1)    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="p">&amp;</span><span class="s1">&#39;                                                                                &#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;CALL FMTDATE_USAGE&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="k">case </span><span class="n">default</span><span class="w"></span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="nb">trim</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="k">end select</span>
+<span class="k">enddo</span>
+
+<span class="k">stop</span>
+<span class="k">end subroutine </span><span class="n">usage</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="w"></span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span><span class="w"></span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_version</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)PROGRAM:        now(1f)&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)DESCRIPTION:    Report a date in a variety of formats&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2009&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)COPYRIGHT:      Copyright (C) 2009 John S. Urban&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_version</span><span class="w"></span>
+<span class="k">end program </span><span class="n">display_date</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_time
+ was developed by John S. Urban<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-07-20 00:34 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

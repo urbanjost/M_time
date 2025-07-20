@@ -1,0 +1,572 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Fortran date and time manipulation and presentation">
+    <meta name="author" content="John S. Urban" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>demo_days2sec &ndash; M_time</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">M_time </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/programs.html">Programs</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>demo_days2sec      <small>Program</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 1.7% of total for programs.">42 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/days2sec.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/days2sec.f90.html'>days2sec.f90</a></li>
+            <li class="breadcrumb-item active" aria-current="page">demo_days2sec</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/demo_days2sec~2.html#variable-ident~14">ident</a>
+            <a class="list-group-item" href="../program/demo_days2sec~2.html#variable-printline">printline</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#subs-0"
+         aria-expanded="false" aria-controls="subs-0">
+         <h4 class="card-header bg-primary text-white">Subroutines</h4>
+      </a>
+      <div id="subs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../program/demo_days2sec~2.html#proc-help_usage~4">help_usage</a>
+            <a class="list-group-item" href="../program/demo_days2sec~2.html#proc-help_version~6">help_version</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../program/demo_days2sec~2.html#src">demo_days2sec</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+        <div class="card mb-4">
+      <h3 class="card-header card-title bg-light">Uses</h3>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <ul class="list-inline">
+                  <li class="list-inline-item">M_kracken95</li>
+                  <li class="list-inline-item">M_time</li>
+                  <li class="list-inline-item">M_strings</li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+    
+
+
+    <section>
+    <h2>Variables</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ident~14"></span>
+              character(len=*),
+            </td>
+            <td>
+parameter               
+            </td>
+            <td>::</td>
+            <td><strong>ident</strong></td>
+<td> =</td>
+                <td>&#34;@(#)days2sec(1): given string of form dd-hh:mm:ss convert to seconds&#34;</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-printline"></span>
+              character(len=:),
+            </td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>printline</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+    
+    
+
+    
+
+
+    <section>
+    <h2>Subroutines</h2>
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_usage~4"></span> <h3> subroutine <a href='../proc/help_usage~4.html'>help_usage</a>(l_help)  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_help~4"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_help</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+      <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version~6"></span> <h3> subroutine <a href='../proc/help_version~6.html'>help_version</a>(l_version)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Forms:</p><a href="../proc/help_version~6.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l_version~6"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>l_version</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+    </section>    
+    
+
+    <section>
+    <h2 id="src">Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="k">program </span><span class="n">demo_days2sec</span><span class="w"></span>
+<span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="w"> </span><span class="n">sget</span><span class="p">,</span><span class="w"> </span><span class="n">lget</span><span class="p">,</span><span class="w"> </span><span class="n">rget</span><span class="w"></span>
+<span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">days2sec</span><span class="w"></span>
+<span class="k">use </span><span class="n">M_strings</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">v2s</span><span class="w"></span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)days2sec(1): given string of form dd-hh:mm:ss convert to seconds&quot;</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">printline</span><span class="w"></span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;days2sec&#39;</span><span class="p">,</span><span class="s1">&#39; -oo -help .F. -version .F. -denominator 1&#39;</span><span class="p">)</span><span class="w">     </span><span class="c">! parse command line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;days2sec_help&#39;</span><span class="p">))</span><span class="w">                                    </span><span class="c">! display help information and stop if true</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;days2sec_version&#39;</span><span class="p">))</span><span class="w">                               </span><span class="c">! display version information and stop if true</span>
+<span class="w">   </span><span class="c">! get value from command line with SGET, convert to seconds with DAYS2SEC, and make into a nicer value string with V2S</span>
+<span class="w">   </span><span class="n">printline</span><span class="o">=</span><span class="n">v2s</span><span class="p">(</span><span class="n">days2sec</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;days2sec_oo&#39;</span><span class="p">))</span><span class="o">/</span><span class="n">rget</span><span class="p">(</span><span class="s1">&#39;days2sec_denominator&#39;</span><span class="p">))</span><span class="w"> </span><span class="c">! not in write statement so error message will print</span>
+<span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">printline</span><span class="w"></span>
+<span class="k">contains</span>
+
+<span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="w"></span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span><span class="w"></span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_help</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   days2sec(1f) - [TIME] Convert [[-]dd-][[hh:]mm:]ss to seconds                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39; Forms:                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec dd-hh:mm:ss                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec NNdNNhNNmNNs                                                       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec --version| --help                                                  &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   Given a duration in the form dd-hh:mm:ss where dd is days, hh hours,         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   mm minutes and ss seconds convert it to seconds. Many utilities (ps(1),      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   for example) show times in this format to make it more intelligible;         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   but it generally easier to perform math on values represented in             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   seconds.                                                                     &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   dd-hh:mm:ss  Given a string representing a duration of time in the           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                following forms:                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                  dd-hh:mm:ss                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                     hh:mm:ss                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                        mm:ss                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                           ss                                                   &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                convert it to seconds.                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                The numeric values may represent floating point numbers.        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                Spaces are ignored.                                             &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    NNdNNhNNmNNs  Simple numeric values may also be used with unit suffixes;    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                  where s,m,h, or d represents seconds, minutes, hours          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                  or days and w represents weeks. Allowed aliases for w,d,h,m, and s units are&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                   w -  weeks,week,wk,wks                                       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                   d -  days,day                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                   m -  minutes,minute,min                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                   h -  hours,hour,hrs,hr                                       &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                   s -  seconds,second,sec,secs                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                  The numeric values may represent floating point numbers.      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                  Spaces, commas  and case are ignored.                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   --denominator  divide the result by this value. Default is one(1).           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   --help         display this help and exit                                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   --version      output version information and exit                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;  Usage                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec 1-12:04:20                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    129860                                                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec 1.5 days                                                           &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    129600                                                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec 1.5 days 4hrs 30minutes                                            &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    145800                                                                      &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec 10s 10S 10s # DUPLICATES WITH UNITS ARE ALLOWED                    &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    30                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    days2sec 1 1 1  # SPACES ARE IGNORED                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    111                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;SEE ALSO                                                                        &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;    sec2days(1)                                                                 &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --help was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_usage</span><span class="w"></span>
+<span class="c">!&gt;</span>
+<span class="c">!!##NAME</span>
+<span class="c">!!    days2sec(1f) - [TIME] Convert [[-]dd-][[hh:]mm:]ss to seconds</span>
+<span class="c">!!    (LICENSE:PD)</span>
+<span class="c">!!</span>
+<span class="c">!!##SYNOPSIS</span>
+<span class="c">!!</span>
+<span class="c">!!  Forms:</span>
+<span class="c">!!</span>
+<span class="c">!!     days2sec dd-hh:mm:ss</span>
+<span class="c">!!     days2sec NNdNNhNNmNNs</span>
+<span class="c">!!     days2sec --version| --help</span>
+<span class="c">!!</span>
+<span class="c">!!##DESCRIPTION</span>
+<span class="c">!!    Given a duration in the form dd-hh:mm:ss where dd is days, hh hours,</span>
+<span class="c">!!    mm minutes and ss seconds convert it to seconds. Many utilities (ps(1),</span>
+<span class="c">!!    for example) show times in this format to make it more intelligible;</span>
+<span class="c">!!    but it generally easier to perform math on values represented in</span>
+<span class="c">!!    seconds.</span>
+<span class="c">!!</span>
+<span class="c">!!##OPTIONS</span>
+<span class="c">!!    dd-hh:mm:ss  Given a string representing a duration of time in the</span>
+<span class="c">!!                 following forms:</span>
+<span class="c">!!</span>
+<span class="c">!!                   dd-hh:mm:ss</span>
+<span class="c">!!                      hh:mm:ss</span>
+<span class="c">!!                         mm:ss</span>
+<span class="c">!!                            ss</span>
+<span class="c">!!</span>
+<span class="c">!!                 convert it to seconds.</span>
+<span class="c">!!</span>
+<span class="c">!!                 The numeric values may represent floating point numbers.</span>
+<span class="c">!!</span>
+<span class="c">!!                 Spaces are ignored.</span>
+<span class="c">!!</span>
+<span class="c">!!     NNdNNhNNmNNs  Simple numeric values may also be used with unit suffixes;</span>
+<span class="c">!!                   where s,m,h, or d represents seconds, minutes, hours</span>
+<span class="c">!!                   or days and w represents weeks. Allowed aliases for w,d,h,m, and s units are</span>
+<span class="c">!!</span>
+<span class="c">!!                    w -  weeks,week,wk,wks</span>
+<span class="c">!!                    d -  days,day</span>
+<span class="c">!!                    m -  minutes,minute,min</span>
+<span class="c">!!                    h -  hours,hour,hrs,hr</span>
+<span class="c">!!                    s -  seconds,second,sec,secs</span>
+<span class="c">!!</span>
+<span class="c">!!                   The numeric values may represent floating point numbers.</span>
+<span class="c">!!</span>
+<span class="c">!!                   Spaces, commas  and case are ignored.</span>
+<span class="c">!!</span>
+<span class="c">!!    --denominator  divide the result by this value. Default is one(1).</span>
+<span class="c">!!    --help         display this help and exit</span>
+<span class="c">!!    --version      output version information and exit</span>
+<span class="c">!!</span>
+<span class="c">!!##EXAMPLES</span>
+<span class="c">!!</span>
+<span class="c">!!   Usage</span>
+<span class="c">!!</span>
+<span class="c">!!     days2sec 1-12:04:20</span>
+<span class="c">!!     129860</span>
+<span class="c">!!     days2sec 1.5 days</span>
+<span class="c">!!     129600</span>
+<span class="c">!!     days2sec 1.5 days 4hrs 30minutes</span>
+<span class="c">!!     145800</span>
+<span class="c">!!     days2sec 10s 10S 10s # DUPLICATES WITH UNITS ARE ALLOWED</span>
+<span class="c">!!     30</span>
+<span class="c">!!     days2sec 1 1 1  # SPACES ARE IGNORED</span>
+<span class="c">!!     111</span>
+<span class="c">!!##SEE ALSO</span>
+<span class="c">!!     sec2days(1)</span>
+<span class="c">!!##AUTHOR</span>
+<span class="c">!!    John S. Urban</span>
+<span class="c">!!##LICENSE</span>
+<span class="c">!!    Public Domain</span>
+<span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="w"></span>
+<span class="k">implicit none</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span><span class="w"></span>
+<span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_version</span><span class="w"></span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span><span class="w"></span>
+<span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"></span>
+<span class="kt">logical</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
+<span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)PROGRAM:        days2sec(1f)&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)DESCRIPTION:    convert dd-hh:mm:ss string to seconds&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)VERSION:        1.0, 2016-06-17&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span><span class="w"></span>
+<span class="s1">&#39;&#39;</span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span><span class="w"></span>
+<span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
+<span class="k">endif</span>
+<span class="k">end subroutine </span><span class="n">help_version</span><span class="w"></span>
+<span class="k">end program </span><span class="n">demo_days2sec</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              M_time
+ was developed by John S. Urban<br>              &copy; 2025 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-07-20 00:34 +0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>
