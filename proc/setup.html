@@ -183,129 +183,129 @@
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">setup</span><span class="p">()</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;help_text=[ CHARACTER(LEN=128) :: &amp;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                   &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;NAME                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  howlong(1) - display wallclock time taken to execute a system command&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SYNOPIS                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  howlong SYSTEM_COMMAND                                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   or                                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  howlong --help|--version                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;DESCRIPTION                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;Perhaps the simplest performance metric is to just measure the         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;wallclock time taken by a program. This could literally be measured    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;using a conventional clock or stopwatch. This is difficult to automate!&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;So typically a command like the GNU/Linux or Unix command time(1) is used.&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;Commands such as time(1)                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;often provide more than wallclock times too. But lets construct a wallclock&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;timing tool of our own using standard Fortran (not even the ISO_C_Binding  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;interface will be called upon) that will measure the run time of a command.&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;Once passed a command to time on the command line, it will then run        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;the command and report the wallclock time use by the program, and echo     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;the command.                                                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;Next we provide a simple program that calls the routine(s) of interest     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;enough times to get useful timing information and time it.                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;So lets say we compiled up the test program using two different sets of    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;compiler options:                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    f90 little_test.f90 -O0 -o little_test0                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    f90 little_test.f90 -O3 -o little_test3                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;Now to run the programs via our timing utility only takes a few commands:  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    howlong ./little_test0                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    Wallclock: 0-00:00:25.461 :command: ./little_test0                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    howlong ./little_test3                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    Wallclock: 0-00:00:10.274 :command: ./little_test3                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SAMPLE SUBJECT PROGRAM                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;An uninstrumented test program for timing :                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   program little_test                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   use,intrinsic :: iso_fortran_env, only : int8                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   implicit none                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   character(len=*),parameter             :: original = &quot;abcdxyz ZXYDCBA _!@&quot;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   integer,parameter                      :: how_many_times = 100000000      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   character(len=:),volatile,allocatable  :: t                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   integer                                :: i                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      do i=1,how_many_times                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        t=upper(original)                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        t=lower(original)                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      enddo                                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   contains                                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   function upper(str) result(translated)                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   integer(kind=int8), parameter :: &amp;                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   &amp; ascii_diff = abs(iachar(&#39;&#39;A&#39;&#39;,kind=int8) - iachar(&#39;&#39;a&#39;&#39;,kind=int8))     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   character(*), intent(in) :: str                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   integer :: i                                                              &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   character(len=len(str)) :: translated                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      translated=str                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      do i = 1, len(str)                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        select case(str(i:i))                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;          case(&quot;a&quot;:&quot;z&quot;)                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;            translated(i:i) = achar(iachar(str(i:i))-ascii_diff)             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        end select                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      enddo                                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   end function upper                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   function lower(str) result(translated)                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   integer(kind=int8), parameter :: &amp;                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   &amp; ascii_diff = abs(iachar(&#39;&#39;A&#39;&#39;,kind=int8) - iachar(&#39;&#39;a&#39;&#39;,kind=int8))     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   character(*), intent(in) :: str                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   integer :: i                                                              &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   character(len=len(str)) :: translated                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      translated=str                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      do i = 1, len(str)                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        select case(str(i:i))                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;          case(&quot;A&quot;:&quot;Z&quot;)                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;            translated(i:i) = achar(iachar(str(i:i))+ascii_diff)             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;        end select                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      enddo                                                                  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   end function lower                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   end program little_test                                                   &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;FOOTNOTES                                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;Note that in many HPC environments programs are often run via a job          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;scheduler like Slurm, LSF, PBS, Torque, ... . In these environments          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;there are usually account records of each job that provide resource          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;usage statistics.                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;OPTIONS                                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --help      display this help and exit                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --version   output version information and exit                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;EXAMPLES                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    howlong ./myprogram                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SEE ALSO                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;    gprof(1), gcov(1)                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="s1">'help_text=[ CHARACTER(LEN=128) :: &amp;'</span><span class="p">,&amp;</span>
+<span class="s1">'                                   '</span><span class="p">,&amp;</span>
+<span class="s1">'NAME                               '</span><span class="p">,&amp;</span>
+<span class="s1">'  howlong(1) - display wallclock time taken to execute a system command'</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'SYNOPIS                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'  howlong SYSTEM_COMMAND                                               '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'   or                                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'  howlong --help|--version                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'DESCRIPTION                                                            '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'Perhaps the simplest performance metric is to just measure the         '</span><span class="p">,&amp;</span>
+<span class="s1">'wallclock time taken by a program. This could literally be measured    '</span><span class="p">,&amp;</span>
+<span class="s1">'using a conventional clock or stopwatch. This is difficult to automate!'</span><span class="p">,&amp;</span>
+<span class="s1">'So typically a command like the GNU/Linux or Unix command time(1) is used.'</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                          '</span><span class="p">,&amp;</span>
+<span class="s1">'Commands such as time(1)                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'often provide more than wallclock times too. But lets construct a wallclock'</span><span class="p">,&amp;</span>
+<span class="s1">'timing tool of our own using standard Fortran (not even the ISO_C_Binding  '</span><span class="p">,&amp;</span>
+<span class="s1">'interface will be called upon) that will measure the run time of a command.'</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'Once passed a command to time on the command line, it will then run        '</span><span class="p">,&amp;</span>
+<span class="s1">'the command and report the wallclock time use by the program, and echo     '</span><span class="p">,&amp;</span>
+<span class="s1">'the command.                                                               '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'Next we provide a simple program that calls the routine(s) of interest     '</span><span class="p">,&amp;</span>
+<span class="s1">'enough times to get useful timing information and time it.                 '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'So lets say we compiled up the test program using two different sets of    '</span><span class="p">,&amp;</span>
+<span class="s1">'compiler options:                                                          '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'    f90 little_test.f90 -O0 -o little_test0                                '</span><span class="p">,&amp;</span>
+<span class="s1">'    f90 little_test.f90 -O3 -o little_test3                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'Now to run the programs via our timing utility only takes a few commands:  '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'    howlong ./little_test0                                                 '</span><span class="p">,&amp;</span>
+<span class="s1">'    Wallclock: 0-00:00:25.461 :command: ./little_test0                     '</span><span class="p">,&amp;</span>
+<span class="s1">'    howlong ./little_test3                                                 '</span><span class="p">,&amp;</span>
+<span class="s1">'    Wallclock: 0-00:00:10.274 :command: ./little_test3                     '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'SAMPLE SUBJECT PROGRAM                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'An uninstrumented test program for timing :                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'   program little_test                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'   use,intrinsic :: iso_fortran_env, only : int8                           '</span><span class="p">,&amp;</span>
+<span class="s1">'   implicit none                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'   character(len=*),parameter             :: original = "abcdxyz ZXYDCBA _!@"'</span><span class="p">,&amp;</span>
+<span class="s1">'   integer,parameter                      :: how_many_times = 100000000      '</span><span class="p">,&amp;</span>
+<span class="s1">'   character(len=:),volatile,allocatable  :: t                               '</span><span class="p">,&amp;</span>
+<span class="s1">'   integer                                :: i                               '</span><span class="p">,&amp;</span>
+<span class="s1">'      do i=1,how_many_times                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'        t=upper(original)                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'        t=lower(original)                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'      enddo                                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'   contains                                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'   function upper(str) result(translated)                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'   integer(kind=int8), parameter :: &amp;                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'   &amp; ascii_diff = abs(iachar(''A'',kind=int8) - iachar(''a'',kind=int8))     '</span><span class="p">,&amp;</span>
+<span class="s1">'   character(*), intent(in) :: str                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'   integer :: i                                                              '</span><span class="p">,&amp;</span>
+<span class="s1">'   character(len=len(str)) :: translated                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'      translated=str                                                         '</span><span class="p">,&amp;</span>
+<span class="s1">'      do i = 1, len(str)                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'        select case(str(i:i))                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'          case("a":"z")                                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'            translated(i:i) = achar(iachar(str(i:i))-ascii_diff)             '</span><span class="p">,&amp;</span>
+<span class="s1">'        end select                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'      enddo                                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'   end function upper                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'   function lower(str) result(translated)                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'   integer(kind=int8), parameter :: &amp;                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'   &amp; ascii_diff = abs(iachar(''A'',kind=int8) - iachar(''a'',kind=int8))     '</span><span class="p">,&amp;</span>
+<span class="s1">'   character(*), intent(in) :: str                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'   integer :: i                                                              '</span><span class="p">,&amp;</span>
+<span class="s1">'   character(len=len(str)) :: translated                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'      translated=str                                                         '</span><span class="p">,&amp;</span>
+<span class="s1">'      do i = 1, len(str)                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'        select case(str(i:i))                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'          case("A":"Z")                                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'            translated(i:i) = achar(iachar(str(i:i))+ascii_diff)             '</span><span class="p">,&amp;</span>
+<span class="s1">'        end select                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'      enddo                                                                  '</span><span class="p">,&amp;</span>
+<span class="s1">'   end function lower                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'   end program little_test                                                   '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'FOOTNOTES                                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'Note that in many HPC environments programs are often run via a job          '</span><span class="p">,&amp;</span>
+<span class="s1">'scheduler like Slurm, LSF, PBS, Torque, ... . In these environments          '</span><span class="p">,&amp;</span>
+<span class="s1">'there are usually account records of each job that provide resource          '</span><span class="p">,&amp;</span>
+<span class="s1">'usage statistics.                                                            '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'OPTIONS                                                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'   --help      display this help and exit                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'   --version   output version information and exit                           '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'EXAMPLES                                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'    howlong ./myprogram                                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'SEE ALSO                                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'    gprof(1), gcov(1)                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">''</span><span class="p">]</span>
 
 <span class="n">version_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;version_text=[ CHARACTER(LEN=128) :: &amp;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)PRODUCT:         GPF (General Purpose Fortran) utilities and examples&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)PROGRAM:         howlong(1)                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)DESCRIPTION:     run a system command and return wallclock time it took to execute&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)VERSION:         1.0.0, 2024-09-28                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)AUTHOR:          John S. Urban                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)HOME PAGE:       https://github.com/urbanjost?tab=repositories                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)LICENSE:         MIT License                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="s1">'version_text=[ CHARACTER(LEN=128) :: &amp;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)PRODUCT:         GPF (General Purpose Fortran) utilities and examples'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)PROGRAM:         howlong(1)                                          '</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)DESCRIPTION:     run a system command and return wallclock time it took to execute'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)VERSION:         1.0.0, 2024-09-28                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)AUTHOR:          John S. Urban                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)HOME PAGE:       https://github.com/urbanjost?tab=repositories                    '</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)LICENSE:         MIT License                                                      '</span><span class="p">,&amp;</span>
+<span class="s1">''</span><span class="p">]</span>
 
 <span class="k">end subroutine </span><span class="n">setup</span>
 </pre></div>
@@ -324,14 +324,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

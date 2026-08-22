@@ -91,7 +91,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 1.0% of total for procedures.">16 statements</a>
+                 title=" 0.9% of total for procedures.">16 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -133,7 +133,7 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/main.html#variable-options~3">options</a>
+            <a class="list-group-item" href="../proc/main.html#variable-options~2">options</a>
         </div>
       </div>
     </div>
@@ -208,7 +208,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-options~3"></span>
+              <span class="anchor" id="variable-options~2"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -243,19 +243,19 @@
 <span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate_usage</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span>
 <span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="w"> </span><span class="n">lget</span><span class="p">,</span><span class="w"> </span><span class="n">sget</span><span class="w">                    </span><span class="c">! add command-line parser module</span>
 
-<span class="c">! ident_1=&quot;@(#) today(1f) output current time for uses such as file suffixes.&quot;</span>
+<span class="c">! ident_1="@(#) today(1f) output current time for uses such as file suffixes."</span>
 
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">options</span>
-<span class="k">   call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;today&#39;</span><span class="p">,</span><span class="s1">&#39;-help .F. -version .F. -test .F.&#39;</span><span class="p">)</span><span class="w">    </span><span class="c">! define command arguments,default values and crack command line</span>
-<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_help&#39;</span><span class="p">))</span><span class="w">                         </span><span class="c">! if -help option is present, display help text and exit</span>
-<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_version&#39;</span><span class="p">))</span><span class="w">                    </span><span class="c">! if -version option is present, display version text and exit</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;today_test&#39;</span><span class="p">))</span><span class="k">then</span><span class="w">                                  </span><span class="c">! special option to list date format documentation</span>
+<span class="k">   call </span><span class="n">locale</span><span class="p">(</span><span class="s1">'LANGUAGE'</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">'today'</span><span class="p">,</span><span class="s1">'-help .F. -version .F. -test .F.'</span><span class="p">)</span><span class="w">    </span><span class="c">! define command arguments,default values and crack command line</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">'today_help'</span><span class="p">))</span><span class="w">                         </span><span class="c">! if -help option is present, display help text and exit</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">'today_version'</span><span class="p">))</span><span class="w">                    </span><span class="c">! if -version option is present, display version text and exit</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">'today_test'</span><span class="p">))</span><span class="k">then</span><span class="w">                                  </span><span class="c">! special option to list date format documentation</span>
 <span class="w">      </span><span class="k">call </span><span class="n">fmtdate_usage</span><span class="p">()</span><span class="w">                                     </span><span class="c">! see all formatting options</span>
 <span class="w">   </span><span class="k">else</span>
-<span class="k">      options</span><span class="o">=</span><span class="w"> </span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;today_oo&#39;</span><span class="p">)</span><span class="w">                                </span><span class="c">! get -oo STRING</span>
-<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="k">options</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">options</span><span class="o">=</span><span class="s1">&#39;Y-M-D&#39;</span><span class="w">                         </span><span class="c">! if options are blank set a default</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="k">options</span><span class="p">)</span><span class="w">                               </span><span class="c">! display current date using format from command line</span>
+<span class="k">      options</span><span class="o">=</span><span class="w"> </span><span class="n">sget</span><span class="p">(</span><span class="s1">'today_oo'</span><span class="p">)</span><span class="w">                                </span><span class="c">! get -oo STRING</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="k">options</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="k">options</span><span class="o">=</span><span class="s1">'Y-M-D'</span><span class="w">                         </span><span class="c">! if options are blank set a default</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="k">options</span><span class="p">)</span><span class="w">                               </span><span class="c">! display current date using format from command line</span>
 <span class="w">   </span><span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">main</span>
 </pre></div>
@@ -274,14 +274,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

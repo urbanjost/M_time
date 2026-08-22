@@ -104,7 +104,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
                 <li class="breadcrumb-item"><a href='../sourcefile/paws.f90.html'>paws.f90</a></li>
-                <li class="breadcrumb-item"><a href='../program/demo_system_sleep.html'>demo_system_sleep</a></li>
+                <li class="breadcrumb-item"><a href='../program/demo_system_sleep~2.html'>demo_system_sleep</a></li>
             <li class="breadcrumb-item active" aria-current="page">help_usage</li>
           </ol>
         </nav>
@@ -133,10 +133,10 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-help_text~7">help_text</a>
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-i~27">i</a>
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-ident~9">ident</a>
-            <a class="list-group-item" href="../proc/help_usage~3.html#variable-stopit~6">stopit</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-help_text~5">help_text</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-i~23">i</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-ident~7">ident</a>
+            <a class="list-group-item" href="../proc/help_usage~3.html#variable-stopit~5">stopit</a>
         </div>
       </div>
     </div>
@@ -224,7 +224,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-help_text~7"></span>
+              <span class="anchor" id="variable-help_text~5"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -241,7 +241,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~27"></span>
+              <span class="anchor" id="variable-i~23"></span>
               integer,
             </td>
               <td>public</td>
@@ -258,7 +258,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~9"></span>
+              <span class="anchor" id="variable-ident~7"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -275,7 +275,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stopit~6"></span>
+              <span class="anchor" id="variable-stopit~5"></span>
               logical,
             </td>
               <td>public</td>
@@ -308,7 +308,7 @@ parameter
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">"@(#)help_usage(3f): prints help information"</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_help</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
@@ -316,67 +316,67 @@ parameter
 <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   paws(1f) - [TIME] pause until specified time or for specified duration       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ -msg message][ -cmd command][ -repeat TIMES[ -fmt ]]|...&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   [ -uet|-jd|-dat|[ -date|-until]]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   paws --version|--help                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours,     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   mm minutes and ss.xxx seconds convert it to seconds. Then, pause for that    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   many seconds. Alternatively, pause until specified date has passed.          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   If no duration is specified wait until a carriage return is entered.         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   dd-hh:mm:ss   Given a string representing a duration of time in the          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 following forms:                                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                   dd-hh:mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                      hh:mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                         mm:ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                            ss[.xx]                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                      or                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                   xx[.yy]SUFFIX                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 convert it to seconds and pause for that amount of time.       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 Suffix may be s for seconds, m for minutes, h for hours,       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 or d for days.                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -date|-until  wait until the specified date has passed (before starting      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 optional pause). See guessdate(3f) for syntax allowed for      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 the date.                                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -uet          wait until the specified Unix Epoch Time has passed            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -jd           wait until the specified Julian Date has passed                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -dat          wait until the specified date vector has passed                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 (year month day timezone hour minutes seconds milliseconds)    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -repeat NNN   The duration is repeated NNN times with the date displayed     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                 at the end of each pause.                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --msg         message to display before pausing                              &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --cmd         command to execute after a pause                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --fmt         date format (see fmtdate(3f) for details)                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --help        display this help and exit                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   --version     output version information and exit                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   For more information on the format of the dates, see the now(1) command.     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39; Typical usage:                                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 2:00:00              # pause for two hours                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 3600                 # pause one hour                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 0.10                 # pause one tenth of a second                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 1 -repeat 60         # pause sixty seconds, displaying date each second  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws -until 23:59:59      # pause until midnight                              &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;  paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes  &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;&#39;</span><span class="p">]</span>
-<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="s1">'NAME                                                                            '</span><span class="p">,&amp;</span>
+<span class="s1">'   paws(1f) - [TIME] pause until specified time or for specified duration       '</span><span class="p">,&amp;</span>
+<span class="s1">'   (LICENSE:PD)                                                                 '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'SYNOPSIS                                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'   paws [dd-hh:mm:ss[.xxx]|xxx.yyy[s|m|h|d]][ -msg message][ -cmd command][ -repeat TIMES[ -fmt ]]|...'</span><span class="p">,&amp;</span>
+<span class="s1">'   [ -uet|-jd|-dat|[ -date|-until]]                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'   paws --version|--help                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'DESCRIPTION                                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'   Given a duration in the form dd-hh:mm:ss.xxx where dd is days, hh hours,     '</span><span class="p">,&amp;</span>
+<span class="s1">'   mm minutes and ss.xxx seconds convert it to seconds. Then, pause for that    '</span><span class="p">,&amp;</span>
+<span class="s1">'   many seconds. Alternatively, pause until specified date has passed.          '</span><span class="p">,&amp;</span>
+<span class="s1">'   If no duration is specified wait until a carriage return is entered.         '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'OPTIONS                                                                         '</span><span class="p">,&amp;</span>
+<span class="s1">'   dd-hh:mm:ss   Given a string representing a duration of time in the          '</span><span class="p">,&amp;</span>
+<span class="s1">'                 following forms:                                               '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                   dd-hh:mm:ss[.xx]                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'                      hh:mm:ss[.xx]                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'                         mm:ss[.xx]                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'                            ss[.xx]                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'                      or                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'                   xx[.yy]SUFFIX                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                 convert it to seconds and pause for that amount of time.       '</span><span class="p">,&amp;</span>
+<span class="s1">'                 Suffix may be s for seconds, m for minutes, h for hours,       '</span><span class="p">,&amp;</span>
+<span class="s1">'                 or d for days.                                                 '</span><span class="p">,&amp;</span>
+<span class="s1">'   -date|-until  wait until the specified date has passed (before starting      '</span><span class="p">,&amp;</span>
+<span class="s1">'                 optional pause). See guessdate(3f) for syntax allowed for      '</span><span class="p">,&amp;</span>
+<span class="s1">'                 the date.                                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'   -uet          wait until the specified Unix Epoch Time has passed            '</span><span class="p">,&amp;</span>
+<span class="s1">'   -jd           wait until the specified Julian Date has passed                '</span><span class="p">,&amp;</span>
+<span class="s1">'   -dat          wait until the specified date vector has passed                '</span><span class="p">,&amp;</span>
+<span class="s1">'                 (year month day timezone hour minutes seconds milliseconds)    '</span><span class="p">,&amp;</span>
+<span class="s1">'   -repeat NNN   The duration is repeated NNN times with the date displayed     '</span><span class="p">,&amp;</span>
+<span class="s1">'                 at the end of each pause.                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'   --msg         message to display before pausing                              '</span><span class="p">,&amp;</span>
+<span class="s1">'   --cmd         command to execute after a pause                               '</span><span class="p">,&amp;</span>
+<span class="s1">'   --fmt         date format (see fmtdate(3f) for details)                      '</span><span class="p">,&amp;</span>
+<span class="s1">'   --help        display this help and exit                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'   --version     output version information and exit                            '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'   For more information on the format of the dates, see the now(1) command.     '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'EXAMPLES                                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">' Typical usage:                                                                 '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'  paws 2:00:00              # pause for two hours                               '</span><span class="p">,&amp;</span>
+<span class="s1">'  paws 3600                 # pause one hour                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'  paws 0.10                 # pause one tenth of a second                       '</span><span class="p">,&amp;</span>
+<span class="s1">'  paws 1 -repeat 60         # pause sixty seconds, displaying date each second  '</span><span class="p">,&amp;</span>
+<span class="s1">'  paws -until 23:59:59      # pause until midnight                              '</span><span class="p">,&amp;</span>
+<span class="s1">'  paws 15:00 -date 23:59:59 # wait till midnight then an additional 15 minutes  '</span><span class="p">,&amp;</span>
+<span class="s1">'AUTHOR                                                                          '</span><span class="p">,&amp;</span>
+<span class="s1">'   John S. Urban                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'LICENSE                                                                         '</span><span class="p">,&amp;</span>
+<span class="s1">'   Public Domain                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">''</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --help was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_usage</span>
@@ -396,14 +396,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

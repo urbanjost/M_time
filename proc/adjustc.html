@@ -91,7 +91,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 1.4% of total for procedures.">23 statements</a>
+                 title=" 1.3% of total for procedures.">23 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -193,14 +193,14 @@ character(len=:),allocatable :: adjustc
  program demo_adjustc
  use M_strings, only : adjustc
  !  using length of the input string
-    write(*,&#39;(a)&#39;)       &#39;================================&#39;
-    write(*,&#39;(a)&#39;)adjustc(&#39;centered string                 &#39;)
-    write(*,&#39;(a)&#39;)adjustc(&#39;                 centered string&#39;)
-    write(*,&#39;(a)&#39;)adjustc(&#39;  centered string               &#39;)
+    write(*,'(a)')       '================================'
+    write(*,'(a)')adjustc('centered string                 ')
+    write(*,'(a)')adjustc('                 centered string')
+    write(*,'(a)')adjustc('  centered string               ')
  !  using explicit output string length
-    write(*,&#39;(a)&#39;)repeat(&#39;=&#39;,50)
-    write(*,&#39;(a)&#39;)adjustc(&#39;this is a centered string&#39;,50)
-    write(*,&#39;(a)&#39;)repeat(&#39;=&#39;,50)
+    write(*,'(a)')repeat('=',50)
+    write(*,'(a)')adjustc('this is a centered string',50)
+    write(*,'(a)')repeat('=',50)
  end program demo_adjustc
 
 Expected output:
@@ -254,7 +254,7 @@ Expected output:
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~3"></span>
+              <span class="anchor" id="variable-length~2"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -293,7 +293,7 @@ Expected output:
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="k">pure function </span><span class="n">adjustc</span><span class="p">(</span><span class="n">string</span><span class="p">,</span><span class="n">length</span><span class="p">)</span>
 
-<span class="c">!character(len=*),parameter::ident_32=&quot;@(#)M_strings::adjustc(3f): center text&quot;</span>
+<span class="c">!character(len=*),parameter::ident_32="@(#)M_strings::adjustc(3f): center text"</span>
 
 <span class="c">!&gt;</span>
 <span class="c">!! PROCEDURE   adjustc(3f)</span>
@@ -317,7 +317,7 @@ Expected output:
 <span class="w">      </span><span class="n">inlen</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 <span class="w">   </span><span class="k">endif</span>
 <span class="k">   allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">inlen</span><span class="p">)</span><span class="kd">::</span><span class="w"> </span><span class="n">adjustc</span><span class="p">)</span><span class="w">    </span><span class="c">! create output at requested length</span>
-<span class="w">   </span><span class="n">adjustc</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">inlen</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="w">                        </span><span class="c">! initialize output string to all blanks</span>
+<span class="w">   </span><span class="n">adjustc</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">inlen</span><span class="p">)</span><span class="o">=</span><span class="s1">' '</span><span class="w">                        </span><span class="c">! initialize output string to all blanks</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="n">ileft</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="n">inlen</span><span class="o">-</span><span class="nb">len_trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">string</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span><span class="w">  </span><span class="c">! find starting point to start input string to center it</span>
 <span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">ileft</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">                          </span><span class="c">! if string will fit centered in output</span>
@@ -342,14 +342,14 @@ Expected output:
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

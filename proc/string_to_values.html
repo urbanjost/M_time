@@ -91,7 +91,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 4.0% of total for procedures.">67 statements</a>
+                 title=" 3.9% of total for procedures.">67 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -201,22 +201,22 @@
 <p>Sample Program:</p>
 <div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="nt">program</span><span class="w"> </span><span class="nt">demo_string_to_values</span>
 <span class="w">    </span><span class="nt">use</span><span class="w"> </span><span class="nt">M_strings</span><span class="o">,</span><span class="w"> </span><span class="nt">only</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nt">string_to_values</span>
-<span class="w">    </span><span class="nt">character</span><span class="o">(</span><span class="nt">len</span><span class="o">=</span><span class="nt">80</span><span class="o">)</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="nt">s</span><span class="o">=</span><span class="s1">&#39; 10 20e3;3.45 -400.3e-2;1234; 5678 &#39;</span>
+<span class="w">    </span><span class="nt">character</span><span class="o">(</span><span class="nt">len</span><span class="o">=</span><span class="nt">80</span><span class="o">)</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="nt">s</span><span class="o">=</span><span class="s1">' 10 20e3;3.45 -400.3e-2;1234; 5678 '</span>
 <span class="w">    </span><span class="nt">integer</span><span class="o">,</span><span class="nt">parameter</span><span class="w">  </span><span class="o">::</span><span class="w"> </span><span class="nt">isz</span><span class="o">=</span><span class="nt">10</span>
 <span class="w">    </span><span class="nt">real</span><span class="w">               </span><span class="o">::</span><span class="w"> </span><span class="nt">array</span><span class="o">(</span><span class="nt">isz</span><span class="o">)</span>
 
-<span class="w">    </span><span class="nt">call</span><span class="w"> </span><span class="nt">string_to_values</span><span class="o">(</span><span class="nt">s</span><span class="o">,</span><span class="nt">10</span><span class="o">,</span><span class="nt">array</span><span class="o">,</span><span class="nt">inums</span><span class="o">,</span><span class="s1">&#39; ;&#39;</span><span class="o">,</span><span class="nt">ierr</span><span class="o">)</span>
+<span class="w">    </span><span class="nt">call</span><span class="w"> </span><span class="nt">string_to_values</span><span class="o">(</span><span class="nt">s</span><span class="o">,</span><span class="nt">10</span><span class="o">,</span><span class="nt">array</span><span class="o">,</span><span class="nt">inums</span><span class="o">,</span><span class="s1">' ;'</span><span class="o">,</span><span class="nt">ierr</span><span class="o">)</span>
 <span class="w">    </span><span class="nt">call</span><span class="w"> </span><span class="nt">reportit</span><span class="o">()</span>
 
-<span class="w">    </span><span class="nt">call</span><span class="w"> </span><span class="nt">string_to_values</span><span class="o">(</span><span class="s1">&#39;10;2.3;3.1416&#39;</span><span class="o">,</span><span class="nt">isz</span><span class="o">,</span><span class="nt">array</span><span class="o">,</span><span class="nt">inums</span><span class="o">,</span><span class="s1">&#39; ;&#39;</span><span class="o">,</span><span class="nt">ierr</span><span class="o">)</span>
+<span class="w">    </span><span class="nt">call</span><span class="w"> </span><span class="nt">string_to_values</span><span class="o">(</span><span class="s1">'10;2.3;3.1416'</span><span class="o">,</span><span class="nt">isz</span><span class="o">,</span><span class="nt">array</span><span class="o">,</span><span class="nt">inums</span><span class="o">,</span><span class="s1">' ;'</span><span class="o">,</span><span class="nt">ierr</span><span class="o">)</span>
 <span class="w">    </span><span class="nt">call</span><span class="w"> </span><span class="nt">reportit</span><span class="o">()</span>
 
 <span class="w">    </span><span class="nt">contains</span>
 <span class="w">       </span><span class="nt">subroutine</span><span class="w"> </span><span class="nt">reportit</span><span class="o">()</span>
-<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">&#39;string_to_values:&#39;</span>
-<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">&#39;input string.............&#39;</span><span class="o">,</span><span class="nt">trim</span><span class="o">(</span><span class="nt">s</span><span class="o">)</span>
-<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">&#39;number of values found...&#39;</span><span class="o">,</span><span class="nt">inums</span>
-<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">&#39;values...................&#39;</span><span class="o">,(</span><span class="nt">array</span><span class="o">(</span><span class="nt">ii</span><span class="o">),</span><span class="nt">ii</span><span class="o">=</span><span class="nt">1</span><span class="o">,</span><span class="nt">inums</span><span class="o">)</span>
+<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">'string_to_values:'</span>
+<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">'input string.............'</span><span class="o">,</span><span class="nt">trim</span><span class="o">(</span><span class="nt">s</span><span class="o">)</span>
+<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">'number of values found...'</span><span class="o">,</span><span class="nt">inums</span>
+<span class="w">          </span><span class="nt">write</span><span class="o">(*,*)</span><span class="s1">'values...................'</span><span class="o">,(</span><span class="nt">array</span><span class="o">(</span><span class="nt">ii</span><span class="o">),</span><span class="nt">ii</span><span class="o">=</span><span class="nt">1</span><span class="o">,</span><span class="nt">inums</span><span class="o">)</span>
 <span class="w">       </span><span class="nt">end</span><span class="w"> </span><span class="nt">subroutine</span><span class="w"> </span><span class="nt">reportit</span>
 <span class="w">   </span><span class="nt">end</span><span class="w"> </span><span class="nt">program</span><span class="w"> </span><span class="nt">demo_string_to_values</span>
 
@@ -254,7 +254,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-line~5"></span>
+              <span class="anchor" id="variable-line~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -329,7 +329,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ierr~21"></span>
+              <span class="anchor" id="variable-ierr~18"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -370,7 +370,7 @@
 <span class="c">!   Quits if encounters any errors in read.</span>
 <span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
 
-<span class="c">!character(len=*),parameter::ident_54=&quot;@(#)M_strings::string_to_values(3f): reads an array of numbers from a numeric string&quot;</span>
+<span class="c">!character(len=*),parameter::ident_54="@(#)M_strings::string_to_values(3f): reads an array of numbers from a numeric string"</span>
 
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">line</span><span class="w">          </span><span class="c">! input string</span>
 <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">iread</span><span class="w">         </span><span class="c">! maximum number of values to try to read into values</span>
@@ -387,8 +387,8 @@
 <span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">delimiters_length</span>
 <span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">      </span><span class="n">delims_local</span><span class="o">=</span><span class="n">delims</span><span class="w">                                 </span><span class="c">! need a mutable copy of the delimiter list</span>
-<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">delims_local</span><span class="o">==</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                          </span><span class="c">! if delimiter list is null or all spaces make it a space</span>
-<span class="w">         </span><span class="n">delims_local</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="w">                                 </span><span class="c">! delimiter is a single space</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">delims_local</span><span class="o">==</span><span class="s1">''</span><span class="p">)</span><span class="k">then</span><span class="w">                          </span><span class="c">! if delimiter list is null or all spaces make it a space</span>
+<span class="w">         </span><span class="n">delims_local</span><span class="o">=</span><span class="s1">' '</span><span class="w">                                 </span><span class="c">! delimiter is a single space</span>
 <span class="w">         </span><span class="n">delimiters_length</span><span class="o">=</span><span class="mi">1</span><span class="w">                        </span><span class="c">! length of delimiter list</span>
 <span class="w">      </span><span class="k">else</span>
 <span class="k">         </span><span class="n">delimiters_length</span><span class="o">=</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">delims</span><span class="p">)</span><span class="w">         </span><span class="c">! length of variable WITH TRAILING WHITESPACE TRIMMED</span>
@@ -406,7 +406,7 @@
 <span class="k">         endif</span>
 <span class="k">      enddo</span>
 <span class="k">      if</span><span class="p">(</span><span class="n">ilen</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="k">then</span><span class="w">                             </span><span class="c">! command was totally composed of delimiters</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="n">gen</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&lt;ERROR&gt;*string_to_values* - blank line passed as a list of numbers&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="n">gen</span><span class="p">)</span><span class="w"> </span><span class="s1">'&lt;ERROR&gt;*string_to_values* - blank line passed as a list of numbers'</span>
 <span class="w">         </span><span class="k">return</span>
 <span class="k">      endif</span>
 <span class="c">!----------------------------------------------------------------------------------------------------------------------------------</span>
@@ -463,14 +463,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

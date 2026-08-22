@@ -91,7 +91,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 6.5% of total for procedures.">108 statements</a>
+                 title=" 6.3% of total for procedures.">108 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -186,7 +186,7 @@
 <span class="kr">ARRAY</span>       <span class="n">Output</span> <span class="n">array</span> <span class="n">of</span> <span class="n">tokens</span>
 
 <span class="n">DELIMITERS</span>  <span class="n">List</span> <span class="n">of</span> <span class="n">delimiter</span> <span class="n">characters</span><span class="p">.</span>
-            <span class="n">The</span> <span class="n">default</span> <span class="n">delimiters</span> <span class="n">are</span> <span class="n">the</span> <span class="s">&quot;whitespace&quot;</span> <span class="n">characters</span>
+            <span class="n">The</span> <span class="n">default</span> <span class="n">delimiters</span> <span class="n">are</span> <span class="n">the</span> <span class="s">"whitespace"</span> <span class="n">characters</span>
             <span class="p">(</span><span class="n">space</span><span class="p">,</span> <span class="n">tab</span><span class="p">,</span><span class="n">new</span> <span class="n">line</span><span class="p">,</span> <span class="n">vertical</span> <span class="n">tab</span><span class="p">,</span> <span class="n">formfeed</span><span class="p">,</span> <span class="n">carriage</span>
             <span class="n">return</span><span class="p">,</span> <span class="n">and</span> <span class="n">null</span><span class="p">).</span> <span class="n">You</span> <span class="n">may</span> <span class="n">specify</span> <span class="n">an</span> <span class="n">alternate</span> <span class="n">set</span> <span class="n">of</span>
             <span class="n">delimiter</span> <span class="n">characters</span><span class="p">.</span>
@@ -199,14 +199,14 @@
 
 <span class="n">ORDER</span> <span class="n">SEQUENTIAL</span><span class="p">|</span><span class="n">REVERSE</span><span class="p">|</span><span class="n">RIGHT</span>  <span class="n">Order</span> <span class="n">of</span> <span class="n">output</span> <span class="n">array</span><span class="p">.</span>
             <span class="n">By</span> <span class="n">default</span> <span class="kr">ARRAY</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">tokens</span> <span class="n">having</span> <span class="n">parsed</span>
-            <span class="n">the</span> <span class="n">INPUT_LINE</span> <span class="n">from</span> <span class="n">left</span> <span class="n">to</span> <span class="n">right</span><span class="p">.</span> <span class="n">If</span> <span class="n">ORDER</span><span class="o">=</span><span class="s">&#39;RIGHT&#39;</span>
-            <span class="n">or</span> <span class="n">ORDER</span><span class="o">=</span><span class="s">&#39;REVERSE&#39;</span> <span class="n">the</span> <span class="n">parsing</span> <span class="n">goes</span> <span class="n">from</span> <span class="n">right</span> <span class="n">to</span> <span class="n">left</span><span class="p">.</span>
+            <span class="n">the</span> <span class="n">INPUT_LINE</span> <span class="n">from</span> <span class="n">left</span> <span class="n">to</span> <span class="n">right</span><span class="p">.</span> <span class="n">If</span> <span class="n">ORDER</span><span class="o">=</span><span class="s">'RIGHT'</span>
+            <span class="n">or</span> <span class="n">ORDER</span><span class="o">=</span><span class="s">'REVERSE'</span> <span class="n">the</span> <span class="n">parsing</span> <span class="n">goes</span> <span class="n">from</span> <span class="n">right</span> <span class="n">to</span> <span class="n">left</span><span class="p">.</span>
 
 <span class="n">NULLS</span> <span class="n">IGNORE</span><span class="p">|</span><span class="kr">RETURN</span><span class="p">|</span><span class="n">IGNOREEND</span>  <span class="n">Treatment</span> <span class="n">of</span> <span class="n">null</span> <span class="n">fields</span><span class="p">.</span>
             <span class="n">By</span> <span class="n">default</span> <span class="n">adjacent</span> <span class="n">delimiters</span> <span class="n">in</span> <span class="n">the</span> <span class="n">input</span> <span class="n">string</span>
             <span class="n">do</span> <span class="n">not</span> <span class="n">create</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">string</span> <span class="n">in</span> <span class="n">the</span> <span class="n">output</span> <span class="n">array</span><span class="p">.</span> <span class="n">if</span>
-            <span class="n">NULLS</span><span class="o">=</span><span class="s">&#39;return&#39;</span> <span class="n">adjacent</span> <span class="n">delimiters</span> <span class="n">create</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">element</span>
-            <span class="n">in</span> <span class="n">the</span> <span class="n">output</span> <span class="kr">ARRAY</span><span class="p">.</span> <span class="n">If</span> <span class="n">NULLS</span><span class="o">=</span><span class="s">&#39;ignoreend&#39;</span> <span class="n">then</span> <span class="n">only</span>
+            <span class="n">NULLS</span><span class="o">=</span><span class="s">'return'</span> <span class="n">adjacent</span> <span class="n">delimiters</span> <span class="n">create</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">element</span>
+            <span class="n">in</span> <span class="n">the</span> <span class="n">output</span> <span class="kr">ARRAY</span><span class="p">.</span> <span class="n">If</span> <span class="n">NULLS</span><span class="o">=</span><span class="s">'ignoreend'</span> <span class="n">then</span> <span class="n">only</span>
             <span class="n">trailing</span> <span class="n">delimiters</span> <span class="n">at</span> <span class="n">the</span> <span class="n">right</span> <span class="n">of</span> <span class="n">the</span> <span class="n">string</span> <span class="n">are</span> <span class="n">ignored</span><span class="p">.</span>
 </code></pre></div>
 
@@ -215,32 +215,32 @@
 <div class="codehilite"><pre><span></span><code>   program demo_split
    use M_strings, only: split
    character(len=*),parameter     :: &amp;
-   &amp; line=&#39;  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    &#39;
+   &amp; line='  aBcdef   ghijklmnop qrstuvwxyz  1:|:2     333|333 a B cc    '
    character(len=:),allocatable :: array(:) ! output array of tokens
-      write(*,*)&#39;INPUT LINE:[&#39;//LINE//&#39;]&#39;
-      write(*,&#39;(80(&quot;=&quot;))&#39;)
-      write(*,*)&#39;typical call:&#39;
+      write(*,*)'INPUT LINE:['//LINE//']'
+      write(*,'(80("="))')
+      write(*,*)'typical call:'
       CALL split(line,array)
-      write(*,&#39;(i0,&quot; ==&gt; &quot;,a)&#39;)(i,trim(array(i)),i=1,size(array))
-      write(*,*)&#39;SIZE:&#39;,SIZE(array)
-      write(*,&#39;(80(&quot;-&quot;))&#39;)
-      write(*,*)&#39;custom list of delimiters (colon and vertical line):&#39;
-      CALL split(line,array,delimiters=&#39;:|&#39;,order=&#39;sequential&#39;,nulls=&#39;ignore&#39;)
-      write(*,&#39;(i0,&quot; ==&gt; &quot;,a)&#39;)(i,trim(array(i)),i=1,size(array))
-      write(*,*)&#39;SIZE:&#39;,SIZE(array)
-      write(*,&#39;(80(&quot;-&quot;))&#39;)
+      write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
+      write(*,*)'SIZE:',SIZE(array)
+      write(*,'(80("-"))')
+      write(*,*)'custom list of delimiters (colon and vertical line):'
+      CALL split(line,array,delimiters=':|',order='sequential',nulls='ignore')
+      write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
+      write(*,*)'SIZE:',SIZE(array)
+      write(*,'(80("-"))')
       write(*,*)&amp;
-      &amp;&#39;custom list of delimiters, reverse array order and count null fields:&#39;
-      CALL split(line,array,delimiters=&#39;:|&#39;,order=&#39;reverse&#39;,nulls=&#39;return&#39;)
-      write(*,&#39;(i0,&quot; ==&gt; &quot;,a)&#39;)(i,trim(array(i)),i=1,size(array))
-      write(*,*)&#39;SIZE:&#39;,SIZE(array)
-      write(*,&#39;(80(&quot;-&quot;))&#39;)
-      write(*,*)&#39;INPUT LINE:[&#39;//LINE//&#39;]&#39;
+      &amp;'custom list of delimiters, reverse array order and count null fields:'
+      CALL split(line,array,delimiters=':|',order='reverse',nulls='return')
+      write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
+      write(*,*)'SIZE:',SIZE(array)
+      write(*,'(80("-"))')
+      write(*,*)'INPUT LINE:['//LINE//']'
       write(*,*)&amp;
-      &amp;&#39;default delimiters and reverse array order and return null fields:&#39;
-      CALL split(line,array,delimiters=&#39;&#39;,order=&#39;reverse&#39;,nulls=&#39;return&#39;)
-      write(*,&#39;(i0,&quot; ==&gt; &quot;,a)&#39;)(i,trim(array(i)),i=1,size(array))
-      write(*,*)&#39;SIZE:&#39;,SIZE(array)
+      &amp;'default delimiters and reverse array order and return null fields:'
+      CALL split(line,array,delimiters='',order='reverse',nulls='return')
+      write(*,'(i0," ==&gt; ",a)')(i,trim(array(i)),i=1,size(array))
+      write(*,*)'SIZE:',SIZE(array)
   end program demo_split
 </code></pre></div>
 
@@ -349,7 +349,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-delimiters~2"></span>
+              <span class="anchor" id="variable-delimiters"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -412,14 +412,14 @@
     <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">split</span><span class="p">(</span><span class="n">input_line</span><span class="p">,</span><span class="k">array</span><span class="p">,</span><span class="n">delimiters</span><span class="p">,</span><span class="n">order</span><span class="p">,</span><span class="n">nulls</span><span class="p">)</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 
-<span class="c">!character(len=*),parameter::ident_7=&quot;&amp;</span>
-<span class="c">!&amp;@(#)M_strings::split(3f): parse string on delimiter characters and store tokens into an allocatable array&quot;</span>
+<span class="c">!character(len=*),parameter::ident_7="&amp;</span>
+<span class="c">!&amp;@(#)M_strings::split(3f): parse string on delimiter characters and store tokens into an allocatable array"</span>
 
 <span class="c">!  John S. Urban</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">intrinsic </span><span class="nb">index</span><span class="p">,</span><span class="w"> </span><span class="nb">min</span><span class="p">,</span><span class="w"> </span><span class="nb">present</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="c">!  given a line of structure &quot; par1 par2 par3 ... parn &quot; store each par(n) into a separate variable in array.</span>
+<span class="c">!  given a line of structure " par1 par2 par3 ... parn " store each par(n) into a separate variable in array.</span>
 <span class="c">!    o by default adjacent delimiters in the input string do not create an empty string in the output array</span>
 <span class="c">!    o no quoting of delimiters is supported</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">input_line</span><span class="w">  </span><span class="c">! input string to tokenize</span>
@@ -447,18 +447,18 @@
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="c">! decide on value for optional DELIMITERS parameter</span>
 <span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">delimiters</span><span class="p">))</span><span class="w"> </span><span class="k">then</span><span class="w">                                     </span><span class="c">! optional delimiter list was present</span>
-<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">delimiters</span><span class="o">/=</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                                       </span><span class="c">! if DELIMITERS was specified and not null use it</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">delimiters</span><span class="o">/=</span><span class="s1">''</span><span class="p">)</span><span class="k">then</span><span class="w">                                       </span><span class="c">! if DELIMITERS was specified and not null use it</span>
 <span class="w">         </span><span class="n">dlim</span><span class="o">=</span><span class="n">delimiters</span>
 <span class="w">      </span><span class="k">else</span><span class="w">                                                           </span><span class="c">! DELIMITERS was specified on call as empty string</span>
-<span class="w">         </span><span class="n">dlim</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c">! use default delimiter when not specified</span>
+<span class="w">         </span><span class="n">dlim</span><span class="o">=</span><span class="s1">' '</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c">! use default delimiter when not specified</span>
 <span class="w">      </span><span class="k">endif</span>
 <span class="k">   else</span><span class="w">                                                              </span><span class="c">! no delimiter value was specified</span>
-<span class="w">      </span><span class="n">dlim</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">    </span><span class="c">! use default delimiter when not specified</span>
+<span class="w">      </span><span class="n">dlim</span><span class="o">=</span><span class="s1">' '</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span><span class="o">//</span><span class="nb">achar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w">    </span><span class="c">! use default delimiter when not specified</span>
 <span class="w">   </span><span class="k">endif</span>
 <span class="k">   </span><span class="n">idlim</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">dlim</span><span class="p">)</span><span class="w">                                                   </span><span class="c">! dlim a lot of blanks on some machines if dlim is a big string</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">order</span><span class="p">))</span><span class="k">then</span><span class="p">;</span><span class="w"> </span><span class="n">ordr</span><span class="o">=</span><span class="n">lower</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">order</span><span class="p">));</span><span class="w"> </span><span class="k">else</span><span class="p">;</span><span class="w"> </span><span class="n">ordr</span><span class="o">=</span><span class="s1">&#39;sequential&#39;</span><span class="p">;</span><span class="w"> </span><span class="k">endif</span><span class="w"> </span><span class="c">! decide on value for optional ORDER parameter</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nulls</span><span class="p">))</span><span class="k">then</span><span class="p">;</span><span class="w"> </span><span class="n">nlls</span><span class="o">=</span><span class="n">lower</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">nulls</span><span class="p">));</span><span class="w"> </span><span class="k">else</span><span class="p">;</span><span class="w"> </span><span class="n">nlls</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="k">endif</span><span class="w"> </span><span class="c">! optional parameter</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">order</span><span class="p">))</span><span class="k">then</span><span class="p">;</span><span class="w"> </span><span class="n">ordr</span><span class="o">=</span><span class="n">lower</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">order</span><span class="p">));</span><span class="w"> </span><span class="k">else</span><span class="p">;</span><span class="w"> </span><span class="n">ordr</span><span class="o">=</span><span class="s1">'sequential'</span><span class="p">;</span><span class="w"> </span><span class="k">endif</span><span class="w"> </span><span class="c">! decide on value for optional ORDER parameter</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nulls</span><span class="p">))</span><span class="k">then</span><span class="p">;</span><span class="w"> </span><span class="n">nlls</span><span class="o">=</span><span class="n">lower</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">nulls</span><span class="p">));</span><span class="w"> </span><span class="k">else</span><span class="p">;</span><span class="w"> </span><span class="n">nlls</span><span class="o">=</span><span class="s1">'ignore'</span><span class="w">    </span><span class="p">;</span><span class="w"> </span><span class="k">endif</span><span class="w"> </span><span class="c">! optional parameter</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">input_line</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w">                        </span><span class="c">! max number of strings INPUT_LINE could split into if all delimiter</span>
 <span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="n">ibegin</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w">                        </span><span class="c">! allocate enough space to hold starting location of tokens if string all tokens</span>
@@ -503,7 +503,7 @@
 <span class="w">   </span><span class="k">end select</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">nlls</span><span class="p">)))</span>
-<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;ignoreend&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'ignoreend'</span><span class="p">)</span>
 <span class="w">      </span><span class="n">ireturn</span><span class="o">=</span><span class="n">inotnull</span>
 <span class="w">   </span><span class="k">case </span><span class="n">default</span>
 <span class="w">      </span><span class="n">ireturn</span><span class="o">=</span><span class="n">icount</span>
@@ -512,16 +512,16 @@
 <span class="w">   </span><span class="c">!allocate(array(ireturn))                                       ! allocate the array to turn</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">ordr</span><span class="p">)))</span><span class="w">                              </span><span class="c">! decide which order to store tokens</span>
-<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;reverse&#39;</span><span class="p">,</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">ii</span><span class="o">=</span><span class="n">ireturn</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">iiii</span><span class="o">=-</span><span class="mi">1</span><span class="w">                </span><span class="c">! last to first</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span><span class="s1">'right'</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">ii</span><span class="o">=</span><span class="n">ireturn</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">iiii</span><span class="o">=-</span><span class="mi">1</span><span class="w">                </span><span class="c">! last to first</span>
 <span class="w">   </span><span class="k">case </span><span class="n">default</span><span class="w">             </span><span class="p">;</span><span class="w"> </span><span class="n">ii</span><span class="o">=</span><span class="mi">1</span><span class="w">       </span><span class="p">;</span><span class="w"> </span><span class="n">iiii</span><span class="o">=</span><span class="mi">1</span><span class="w">                 </span><span class="c">! first to last</span>
 <span class="w">   </span><span class="k">end select</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="w">   </span><span class="k">do </span><span class="n">i20</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">icount</span><span class="w">                                                </span><span class="c">! fill the array with the tokens that were found</span>
 <span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">iterm</span><span class="p">(</span><span class="n">i20</span><span class="p">)</span><span class="o">&lt;</span><span class="n">ibegin</span><span class="p">(</span><span class="n">i20</span><span class="p">))</span><span class="k">then</span>
 <span class="k">         select case</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nb">adjustl</span><span class="p">(</span><span class="n">nlls</span><span class="p">)))</span>
-<span class="w">         </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;ignoreend&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span><span class="s1">''</span><span class="p">,</span><span class="s1">'ignoreend'</span><span class="p">)</span>
 <span class="w">         </span><span class="k">case </span><span class="n">default</span>
-<span class="w">            </span><span class="k">array</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
+<span class="w">            </span><span class="k">array</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span><span class="o">=</span><span class="s1">' '</span>
 <span class="w">            </span><span class="n">ii</span><span class="o">=</span><span class="n">ii</span><span class="o">+</span><span class="n">iiii</span>
 <span class="w">         </span><span class="k">end select</span>
 <span class="k">      else</span>
@@ -547,14 +547,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

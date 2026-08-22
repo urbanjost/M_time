@@ -134,12 +134,12 @@
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../proc/test_guessdate.html#variable-comment~2">comment</a>
-            <a class="list-group-item" href="../proc/test_guessdate.html#variable-dat~29">dat</a>
+            <a class="list-group-item" href="../proc/test_guessdate.html#variable-dat~26">dat</a>
             <a class="list-group-item" href="../proc/test_guessdate.html#variable-date1~2">date1</a>
             <a class="list-group-item" href="../proc/test_guessdate.html#variable-date2~2">date2</a>
-            <a class="list-group-item" href="../proc/test_guessdate.html#variable-i~18">i</a>
+            <a class="list-group-item" href="../proc/test_guessdate.html#variable-i~13">i</a>
             <a class="list-group-item" href="../proc/test_guessdate.html#variable-iso_week_date~2">iso_week_date</a>
-            <a class="list-group-item" href="../proc/test_guessdate.html#variable-line~3">line</a>
+            <a class="list-group-item" href="../proc/test_guessdate.html#variable-line~2">line</a>
         </div>
       </div>
     </div>
@@ -218,7 +218,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~29"></span>
+              <span class="anchor" id="variable-dat~26"></span>
               integer,
             </td>
               <td>public</td>
@@ -269,7 +269,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~18"></span>
+              <span class="anchor" id="variable-i~13"></span>
               integer,
             </td>
               <td>public</td>
@@ -303,7 +303,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-line~3"></span>
+              <span class="anchor" id="variable-line~2"></span>
               character(len=372),
             </td>
               <td>public,</td>
@@ -346,35 +346,35 @@
 <span class="c">! the data file with dates to read and expected answers and comments</span>
 <span class="n">line</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">372</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
 
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sat 1 Jan 2005&quot;,  &quot;2005-01-01&quot;, &quot;2004-W53-6&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sun 2 Jan 2005&quot;,  &quot;2005-01-02&quot;, &quot;2004-W53-7&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sat 31 Dec 2005&quot;, &quot;2005-12-31&quot;, &quot;2005-W52-6&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Mon 1 Jan 2007&quot;,  &quot;2007-01-01&quot;, &quot;2007-W01-1&quot;, &quot;Both years 2007 start with the same day.&quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sun 30 Dec 2007&quot;, &quot;2007-12-30&quot;, &quot;2007-W52-7&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Mon 31 Dec 2007&quot;, &quot;2007-12-31&quot;, &quot;2008-W01-1&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Tue 1 Jan 2008&quot;,  &quot;2008-01-01&quot;, &quot;2008-W01-2&quot;, &amp;</span>
-<span class="s1">&amp; &quot;Gregorian year 2008 is a leap year. ISO year 2008 is 2 days shorter: 1 day longer at the start,  3 days shorter at the end.&quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sun 28 Dec 2008&quot;, &quot;2008-12-28&quot;, &quot;2008-W52-7&quot;, &quot; ISO year 2009 begins three days before the end of Gregorian 2008.&quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Mon 29 Dec 2008&quot;, &quot;2008-12-29&quot;, &quot;2009-W01-1&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Tue 30 Dec 2008&quot;, &quot;2008-12-30&quot;, &quot;2009-W01-2&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Wed 31 Dec 2008&quot;, &quot;2008-12-31&quot;, &quot;2009-W01-3&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Thu 1 Jan 2009&quot;,  &quot;2009-01-01&quot;, &quot;2009-W01-4&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Thu 31 Dec 2009&quot;, &quot;2009-12-31&quot;, &quot;2009-W53-4&quot;, &quot;ISO year 2009 has 53 weeks and ends three days into Gregorian year 2010.&quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Fri 1 Jan 2010&quot;,  &quot;2010-01-01&quot;, &quot;2009-W53-5&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sat 2 Jan 2010&quot;,  &quot;2010-01-02&quot;, &quot;2009-W53-6&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39; &quot;Sun 3 Jan 2010&quot;,  &quot;2010-01-03&quot;, &quot;2009-W53-7&quot;, &quot; &quot; &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sat 1 Jan 2005",  "2005-01-01", "2004-W53-6", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sun 2 Jan 2005",  "2005-01-02", "2004-W53-7", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sat 31 Dec 2005", "2005-12-31", "2005-W52-6", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Mon 1 Jan 2007",  "2007-01-01", "2007-W01-1", "Both years 2007 start with the same day." '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sun 30 Dec 2007", "2007-12-30", "2007-W52-7", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Mon 31 Dec 2007", "2007-12-31", "2008-W01-1", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Tue 1 Jan 2008",  "2008-01-01", "2008-W01-2", &amp;</span>
+<span class="s1">&amp; "Gregorian year 2008 is a leap year. ISO year 2008 is 2 days shorter: 1 day longer at the start,  3 days shorter at the end." '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sun 28 Dec 2008", "2008-12-28", "2008-W52-7", " ISO year 2009 begins three days before the end of Gregorian 2008." '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Mon 29 Dec 2008", "2008-12-29", "2009-W01-1", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Tue 30 Dec 2008", "2008-12-30", "2009-W01-2", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Wed 31 Dec 2008", "2008-12-31", "2009-W01-3", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Thu 1 Jan 2009",  "2009-01-01", "2009-W01-4", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Thu 31 Dec 2009", "2009-12-31", "2009-W53-4", "ISO year 2009 has 53 weeks and ends three days into Gregorian year 2010." '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Fri 1 Jan 2010",  "2010-01-01", "2009-W53-5", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sat 2 Jan 2010",  "2010-01-02", "2009-W53-6", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="p">&amp;</span><span class="w"> </span><span class="s1">' "Sun 3 Jan 2010",  "2010-01-03", "2009-W53-7", " " '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
 
-<span class="p">&amp;</span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="p">]</span>
+<span class="p">&amp;</span><span class="s1">' '</span><span class="w"> </span><span class="p">]</span>
 <span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
 <span class="w"> </span><span class="k">read</span><span class="p">(</span><span class="n">line</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="n">date1</span><span class="p">,</span><span class="n">date2</span><span class="p">,</span><span class="n">iso_week_date</span><span class="p">,</span><span class="n">comment</span>
 <span class="w"> </span><span class="k">call </span><span class="n">guessdate</span><span class="p">(</span><span class="n">date1</span><span class="p">,</span><span class="n">dat</span><span class="p">)</span><span class="w">                                         </span><span class="c">! convert date string to DAT</span>
-<span class="w"> </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;guessdate&#39;</span><span class="p">,&amp;</span>
-<span class="w"> </span><span class="p">&amp;</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">&quot;%I&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">iso_week_date</span><span class="p">,</span><span class="s1">&#39;input&#39;</span><span class="p">,</span><span class="n">date1</span><span class="p">,</span><span class="s1">&#39;produced&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">&quot;%I&quot;</span><span class="p">),</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">iso_week_date</span><span class="p">)</span>
-<span class="w"> </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;guessdate&#39;</span><span class="p">,&amp;</span>
-<span class="w"> </span><span class="p">&amp;</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">&quot;year-month-day&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="s1">&#39;input&#39;</span><span class="p">,</span><span class="n">date1</span><span class="p">,</span><span class="s1">&#39;produced&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">&quot;year-month-day&quot;</span><span class="p">),</span><span class="s1">&#39;expected&#39;</span><span class="p">,</span><span class="n">date2</span><span class="p">)</span>
+<span class="w"> </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'guessdate'</span><span class="p">,&amp;</span>
+<span class="w"> </span><span class="p">&amp;</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">"%I"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">iso_week_date</span><span class="p">,</span><span class="s1">'input'</span><span class="p">,</span><span class="n">date1</span><span class="p">,</span><span class="s1">'produced'</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">"%I"</span><span class="p">),</span><span class="s1">'expected'</span><span class="p">,</span><span class="n">iso_week_date</span><span class="p">)</span>
+<span class="w"> </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'guessdate'</span><span class="p">,&amp;</span>
+<span class="w"> </span><span class="p">&amp;</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">"year-month-day"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">date2</span><span class="p">,</span><span class="s1">'input'</span><span class="p">,</span><span class="n">date1</span><span class="p">,</span><span class="s1">'produced'</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s2">"year-month-day"</span><span class="p">),</span><span class="s1">'expected'</span><span class="p">,</span><span class="n">date2</span><span class="p">)</span>
 <span class="k">enddo</span>
 
-<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;guessdate&#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">'guessdate'</span><span class="p">)</span>
 
 <span class="k">end subroutine </span><span class="n">test_guessdate</span>
 </pre></div>
@@ -393,14 +393,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

@@ -131,9 +131,9 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_m2d.html#variable-dat~51">dat</a>
-            <a class="list-group-item" href="../program/demo_m2d.html#variable-dp~10">dp</a>
-            <a class="list-group-item" href="../program/demo_m2d.html#variable-today~3">today</a>
+            <a class="list-group-item" href="../program/demo_m2d.html#variable-dat~8">dat</a>
+            <a class="list-group-item" href="../program/demo_m2d.html#variable-dp~3">dp</a>
+            <a class="list-group-item" href="../program/demo_m2d.html#variable-today">today</a>
         </div>
       </div>
     </div>
@@ -199,7 +199,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~51"></span>
+              <span class="anchor" id="variable-dat~8"></span>
               integer
             </td>
             <td>
@@ -215,7 +215,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~10"></span>
+              <span class="anchor" id="variable-dp~3"></span>
               integer,
             </td>
             <td>
@@ -231,7 +231,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-today~3"></span>
+              <span class="anchor" id="variable-today"></span>
               real(kind=realtime)
             </td>
             <td>
@@ -269,10 +269,10 @@ parameter
 <span class="w">      </span><span class="kt">integer</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="w">         </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span><span class="w"> </span><span class="c">! get the date using intrinsic</span>
 <span class="w">         </span><span class="n">today</span><span class="o">=</span><span class="n">d2m</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w">                  </span><span class="c">! convert today to Julian Date</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Today=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">m2d</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Today='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">m2d</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>
 <span class="w">         </span><span class="c">! math is easy with Julian Days and Julian Dates</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Yesterday=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">m2d</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="mf">1.0_dp</span><span class="p">))</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Tomorrow=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">m2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="mf">1.0_dp</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Yesterday='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">m2d</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="mf">1.0_dp</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Tomorrow='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">m2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="mf">1.0_dp</span><span class="p">))</span>
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_m2d</span>
 </pre></div>
 
@@ -289,14 +289,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

@@ -90,7 +90,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 3.1% of total for programs.">76 statements</a>
+                 title=" 3.0% of total for programs.">76 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -136,7 +136,7 @@
             <a class="list-group-item" href="../program/month_exe.html#variable-calenyear">calenyear</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-cscr">cscr</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-dat_values">dat_values</a>
-            <a class="list-group-item" href="../program/month_exe.html#variable-ident~4">ident</a>
+            <a class="list-group-item" href="../program/month_exe.html#variable-ident">ident</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-month">month</a>
             <a class="list-group-item" href="../program/month_exe.html#variable-r">r</a>
         </div>
@@ -160,8 +160,8 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/month_exe.html#proc-help_usage~2">help_usage</a>
-            <a class="list-group-item" href="../program/month_exe.html#proc-help_version~2">help_version</a>
+            <a class="list-group-item" href="../program/month_exe.html#proc-help_usage">help_usage</a>
+            <a class="list-group-item" href="../program/month_exe.html#proc-help_version">help_version</a>
         </div>
       </div>
     </div>
@@ -297,7 +297,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ident~4"></span>
+              <span class="anchor" id="variable-ident"></span>
               character(len=*),
             </td>
             <td>
@@ -358,7 +358,7 @@ parameter
     <section>
     <h2>Subroutines</h2>
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-help_usage~2"></span> <h3> subroutine <a href='../proc/help_usage~2.html'>help_usage</a>(l_help)  
+    <div class="card-header codesum"><span class="anchor" id="proc-help_usage"></span> <h3> subroutine <a href='../proc/help_usage.html'>help_usage</a>(l_help)  
 </h3></div>
     <div class="card-body">
           
@@ -377,7 +377,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-l_help~2"></span>
+              <span class="anchor" id="variable-l_help"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -398,11 +398,11 @@ parameter
   </div>
 
       <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-help_version~2"></span> <h3> subroutine <a href='../proc/help_version~2.html'>help_version</a>(l_version)  
+    <div class="card-header codesum"><span class="anchor" id="proc-help_version"></span> <h3> subroutine <a href='../proc/help_version.html'>help_version</a>(l_version)  
 </h3></div>
     <div class="card-body">
           
-  <a href="../proc/help_version~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <a href="../proc/help_version.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -417,7 +417,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-l_version~2"></span>
+              <span class="anchor" id="variable-l_version"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -446,34 +446,34 @@ parameter
 <span class="k">use </span><span class="n">M_kracken95</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">kracken</span><span class="p">,</span><span class="n">iget</span><span class="p">,</span><span class="n">lget</span><span class="p">,</span><span class="n">sget</span><span class="w">                       </span><span class="c">! command line parsing</span>
 <span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">box_month</span><span class="p">,</span><span class="w"> </span><span class="n">mo2v</span><span class="p">,</span><span class="w"> </span><span class="n">locale</span><span class="w">                        </span><span class="c">! date and time</span>
 <span class="k">implicit none</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)month(1f):print calendar&quot;</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">calen</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;                    &#39;</span><span class="w">           </span><span class="c">! character array to hold month</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">calenyear</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;                      &#39;</span><span class="w">   </span><span class="c">! character array to hold year</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">"@(#)month(1f):print calendar"</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">calen</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">=</span><span class="s1">'                    '</span><span class="w">           </span><span class="c">! character array to hold month</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">calenyear</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="s1">'                      '</span><span class="w">   </span><span class="c">! character array to hold year</span>
 <span class="kt">integer</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">month</span><span class="w">                                     </span><span class="c">! values of command line options</span>
 <span class="kt">integer</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w">                             </span><span class="c">! date array</span>
 <span class="kt">integer</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="w">                                       </span><span class="c">! row and column for month in one-year calendar</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">cscr</span>
 <span class="w">   </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat_values</span><span class="p">)</span><span class="w">                             </span><span class="c">! get current time and date</span>
-<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39; -year -month 0 -help .f. -version .f.&#39;</span><span class="p">)</span><span class="w">    </span><span class="c">! crack command line arguments</span>
-<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;month_help&#39;</span><span class="p">))</span><span class="w">                               </span><span class="c">! print help information and stop if requested</span>
-<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">&#39;month_version&#39;</span><span class="p">))</span><span class="w">                          </span><span class="c">! print version information and stop if requested</span>
-<span class="w">   </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;LANGUAGE&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">kracken</span><span class="p">(</span><span class="s1">'month'</span><span class="p">,</span><span class="s1">' -year -month 0 -help .f. -version .f.'</span><span class="p">)</span><span class="w">    </span><span class="c">! crack command line arguments</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_usage</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">'month_help'</span><span class="p">))</span><span class="w">                               </span><span class="c">! print help information and stop if requested</span>
+<span class="w">   </span><span class="k">call </span><span class="n">help_version</span><span class="p">(</span><span class="n">lget</span><span class="p">(</span><span class="s1">'month_version'</span><span class="p">))</span><span class="w">                          </span><span class="c">! print version information and stop if requested</span>
+<span class="w">   </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">'LANGUAGE'</span><span class="p">)</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="c">! use user-specified year date instead of current year. Try reading year from two places (-oo and -year) on command line</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span><span class="w">                                 </span><span class="c">! check -year option for a year value</span>
-<span class="w">      </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">)</span><span class="w">                               </span><span class="c">! if value was specified use it</span>
-<span class="w">   </span><span class="k">elseif</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="k">then</span>
-<span class="k">         </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;month_oo&#39;</span><span class="p">)</span><span class="w">                              </span><span class="c">! check -oo option for a year value if did not find -year VALUE</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">'month_year'</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="k">then</span><span class="w">                                 </span><span class="c">! check -year option for a year value</span>
+<span class="w">      </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">'month_year'</span><span class="p">)</span><span class="w">                               </span><span class="c">! if value was specified use it</span>
+<span class="w">   </span><span class="k">elseif</span><span class="p">(</span><span class="n">sget</span><span class="p">(</span><span class="s1">'month_oo'</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="k">then</span>
+<span class="k">         </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">'month_oo'</span><span class="p">)</span><span class="w">                              </span><span class="c">! check -oo option for a year value if did not find -year VALUE</span>
 <span class="w">   </span><span class="k">endif</span>
-<span class="w">   </span><span class="c">!write(*,*)&#39;YEAR=&#39;,dat_values(1)</span>
+<span class="w">   </span><span class="c">!write(*,*)'YEAR=',dat_values(1)</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="w">   </span><span class="n">cscr</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">&#39;month_month&#39;</span><span class="p">)</span><span class="w">                                          </span><span class="c">! get month as string so can see if name or number or blank</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">cscr</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
+<span class="w">   </span><span class="n">cscr</span><span class="o">=</span><span class="n">sget</span><span class="p">(</span><span class="s1">'month_month'</span><span class="p">)</span><span class="w">                                          </span><span class="c">! get month as string so can see if name or number or blank</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="n">cscr</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="k">then</span>
 <span class="k">      select case</span><span class="p">(</span><span class="n">cscr</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">))</span>
-<span class="w">      </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="s1">&#39;z&#39;</span><span class="p">)</span><span class="w">                                          </span><span class="c">! assume month name instead of month number</span>
+<span class="w">      </span><span class="k">case</span><span class="p">(</span><span class="s1">'A'</span><span class="p">:</span><span class="s1">'Z'</span><span class="p">,</span><span class="s1">'a'</span><span class="p">:</span><span class="s1">'z'</span><span class="p">)</span><span class="w">                                          </span><span class="c">! assume month name instead of month number</span>
 <span class="w">        </span><span class="n">month</span><span class="o">=</span><span class="n">mo2v</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">cscr</span><span class="p">))</span>
 <span class="w">      </span><span class="k">case </span><span class="n">default</span><span class="w">                                                   </span><span class="c">! month is number</span>
-<span class="w">         </span><span class="n">month</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">&#39;month_month&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="n">month</span><span class="o">=</span><span class="n">iget</span><span class="p">(</span><span class="s1">'month_month'</span><span class="p">)</span>
 <span class="w">      </span><span class="k">end select</span>
 <span class="k">   else</span><span class="w">                                                              </span><span class="c">! keyword given but no value, default to current month</span>
 <span class="w">      </span><span class="n">month</span><span class="o">=</span><span class="n">dat_values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -487,11 +487,11 @@ parameter
 <span class="w">            </span><span class="n">calenyear</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">r</span><span class="o">-</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="o">*</span><span class="n">r</span><span class="p">)(</span><span class="mi">23</span><span class="o">*</span><span class="n">c</span><span class="o">-</span><span class="mi">22</span><span class="p">:</span><span class="mi">23</span><span class="o">*</span><span class="n">c</span><span class="p">)</span><span class="o">=</span><span class="n">calen</span><span class="w">                 </span><span class="c">! copy month into large year array</span>
 <span class="w">         </span><span class="k">enddo</span>
 <span class="k">      enddo</span>
-<span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">calenyear</span>
+<span class="k">      write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="n">calenyear</span>
 <span class="w">   </span><span class="k">else</span><span class="w">                                                              </span><span class="c">! do a month</span>
 <span class="w">      </span><span class="n">dat_values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="n">month</span>
 <span class="w">      </span><span class="k">call </span><span class="n">box_month</span><span class="p">(</span><span class="n">dat_values</span><span class="p">,</span><span class="n">calen</span><span class="p">)</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">calen</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="n">calen</span>
 <span class="w">   </span><span class="k">endif</span>
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">contains</span>
@@ -500,7 +500,7 @@ parameter
 <span class="c">!-----------------------------------------------------------------------------------------------------------------------------------</span>
 <span class="k">subroutine </span><span class="n">help_usage</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_usage(3f): prints help information&quot;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">"@(#)help_usage(3f): prints help information"</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_help</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
@@ -508,44 +508,44 @@ parameter
 <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_help</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;NAME                                                                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month(1f) - [TIME] display a calendar                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   (LICENSE:PD)                                                                 &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;SYNOPSIS                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month [[ -year] NNNN] [ -month NN|month_name]                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;DESCRIPTION                                                                     &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   month(1) displays a simple calendar. If no arguments are specified,          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   the current year is displayed.                                               &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;OPTIONS                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -month NN   Display single month output. The month is numeric (1-12)         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;               or a month name or blank. If blank the current month is assumed. &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -year NNNN  Select the year to display. A year starts on Jan 1st.            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -help       Display help text and exit.                                      &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   -version    Display version information and exit.                            &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;EXAMPLES                                                                        &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      month -month 12                                                           &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;    December 2015                                                       &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;Mo Tu We Th Fr Sa Su                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;    1  2  3  4  5  6                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt; 7  8  9 10 11 12 13                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;14 15 16 17 18 19 20                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;21 22 23 24 25 26 27                                                    &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;       &gt;28 29 30 31                                                             &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;                                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;      month -month April # month names may be given instead of numbers          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;AUTHOR                                                                          &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   John S. Urban                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;LICENSE                                                                         &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;   Public Domain                                                                &#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;&#39;</span><span class="p">]</span>
-<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="s1">'NAME                                                                            '</span><span class="p">,&amp;</span>
+<span class="s1">'   month(1f) - [TIME] display a calendar                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'   (LICENSE:PD)                                                                 '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'SYNOPSIS                                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'   month [[ -year] NNNN] [ -month NN|month_name]                                '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'DESCRIPTION                                                                     '</span><span class="p">,&amp;</span>
+<span class="s1">'   month(1) displays a simple calendar. If no arguments are specified,          '</span><span class="p">,&amp;</span>
+<span class="s1">'   the current year is displayed.                                               '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'OPTIONS                                                                         '</span><span class="p">,&amp;</span>
+<span class="s1">'   -month NN   Display single month output. The month is numeric (1-12)         '</span><span class="p">,&amp;</span>
+<span class="s1">'               or a month name or blank. If blank the current month is assumed. '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'   -year NNNN  Select the year to display. A year starts on Jan 1st.            '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'   -help       Display help text and exit.                                      '</span><span class="p">,&amp;</span>
+<span class="s1">'   -version    Display version information and exit.                            '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'EXAMPLES                                                                        '</span><span class="p">,&amp;</span>
+<span class="s1">'      month -month 12                                                           '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt;    December 2015                                                       '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt;Mo Tu We Th Fr Sa Su                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt;    1  2  3  4  5  6                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt; 7  8  9 10 11 12 13                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt;14 15 16 17 18 19 20                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt;21 22 23 24 25 26 27                                                    '</span><span class="p">,&amp;</span>
+<span class="s1">'       &gt;28 29 30 31                                                             '</span><span class="p">,&amp;</span>
+<span class="s1">'                                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'      month -month April # month names may be given instead of numbers          '</span><span class="p">,&amp;</span>
+<span class="s1">'AUTHOR                                                                          '</span><span class="p">,&amp;</span>
+<span class="s1">'   John S. Urban                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">'LICENSE                                                                         '</span><span class="p">,&amp;</span>
+<span class="s1">'   Public Domain                                                                '</span><span class="p">,&amp;</span>
+<span class="s1">''</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --help was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_usage</span>
@@ -590,7 +590,7 @@ parameter
 <span class="c">!!    Public Domain</span>
 <span class="k">subroutine </span><span class="n">help_version</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span>
 <span class="k">implicit none</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">&quot;@(#)help_version(3f): prints version information&quot;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">ident</span><span class="o">=</span><span class="s2">"@(#)help_version(3f): prints version information"</span>
 <span class="kt">logical</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">             </span><span class="kd">::</span><span class="w"> </span><span class="n">l_version</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">help_text</span><span class="p">(:)</span>
 <span class="kt">integer</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
@@ -598,18 +598,18 @@ parameter
 <span class="n">stopit</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
 <span class="k">if</span><span class="p">(</span><span class="n">l_version</span><span class="p">)</span><span class="k">then</span>
 <span class="n">help_text</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="kt">CHARACTER</span><span class="p">(</span><span class="nb">LEN</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)PROGRAM:        month(1f)&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)DESCRIPTION:    displays simple calendar&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)VERSION:        1.0, 2015-12-20&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)AUTHOR:         John S. Urban&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;@(#)COMPILED:       2025-03-28 13:27:15 UTC-240&gt;&#39;</span><span class="p">,&amp;</span>
-<span class="s1">&#39;&#39;</span><span class="p">]</span>
-<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
+<span class="s1">'@(#)PRODUCT:        GPF (General Purpose Fortran) utilities and examples&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)PROGRAM:        month(1f)&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)DESCRIPTION:    displays simple calendar&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)VERSION:        1.0, 2015-12-20&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)AUTHOR:         John S. Urban&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)REPORTING BUGS: http://www.urbanjost.altervista.org/&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)HOME PAGE:      http://www.urbanjost.altervista.org/index.html&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)LICENSE:        Public Domain. This is free software: you are free to change and redistribute it.&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)                There is NO WARRANTY, to the extent permitted by law.&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">'@(#)COMPILED:       2026-08-19 21:18:02 UTC-240&gt;'</span><span class="p">,&amp;</span>
+<span class="s1">''</span><span class="p">]</span>
+<span class="w">   </span><span class="k">WRITE</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)(</span><span class="nb">trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="mi">5</span><span class="p">:</span><span class="nb">len_trim</span><span class="p">(</span><span class="n">help_text</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">help_text</span><span class="p">))</span>
 <span class="w">   </span><span class="k">stop</span><span class="w"> </span><span class="c">! if --version was specified, stop</span>
 <span class="k">endif</span>
 <span class="k">end subroutine </span><span class="n">help_version</span>
@@ -632,14 +632,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

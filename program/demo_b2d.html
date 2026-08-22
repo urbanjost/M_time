@@ -131,12 +131,12 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_b2d.html#variable-aday">aday</a>
-            <a class="list-group-item" href="../program/demo_b2d.html#variable-dat~12">dat</a>
-            <a class="list-group-item" href="../program/demo_b2d.html#variable-dp~3">dp</a>
+            <a class="list-group-item" href="../program/demo_b2d.html#variable-aday~2">aday</a>
+            <a class="list-group-item" href="../program/demo_b2d.html#variable-dat~64">dat</a>
+            <a class="list-group-item" href="../program/demo_b2d.html#variable-dp~13">dp</a>
             <a class="list-group-item" href="../program/demo_b2d.html#variable-g~4">g</a>
             <a class="list-group-item" href="../program/demo_b2d.html#variable-newday">newday</a>
-            <a class="list-group-item" href="../program/demo_b2d.html#variable-today">today</a>
+            <a class="list-group-item" href="../program/demo_b2d.html#variable-today~4">today</a>
             <a class="list-group-item" href="../program/demo_b2d.html#variable-tomorrow~3">tomorrow</a>
             <a class="list-group-item" href="../program/demo_b2d.html#variable-yesterday~3">yesterday</a>
         </div>
@@ -215,7 +215,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-aday"></span>
+              <span class="anchor" id="variable-aday~2"></span>
               type(BAStime)
             </td>
             <td>
@@ -231,7 +231,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~12"></span>
+              <span class="anchor" id="variable-dat~64"></span>
               integer
             </td>
             <td>
@@ -247,7 +247,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~3"></span>
+              <span class="anchor" id="variable-dp~13"></span>
               integer,
             </td>
             <td>
@@ -295,7 +295,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-today"></span>
+              <span class="anchor" id="variable-today~4"></span>
               type(BAStime)
             </td>
             <td>
@@ -424,52 +424,52 @@ parameter
 <span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">aday</span>
 <span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">newday</span><span class="p">,</span><span class="w"> </span><span class="n">yesterday</span><span class="p">,</span><span class="w"> </span><span class="n">tomorrow</span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">g</span><span class="o">=</span><span class="s1">&#39;(*(g0,1x))&#39;</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">g</span><span class="o">=</span><span class="s1">'(*(g0,1x))'</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;b2d:&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'b2d:'</span>
 <span class="w">         </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span><span class="w"> </span><span class="c">! get the date using intrinsic</span>
 <span class="w">         </span><span class="n">today</span><span class="o">=</span><span class="n">d2b</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span><span class="w">                 </span><span class="c">! convert DAT to BAS</span>
 <span class="w">         </span><span class="n">aday</span><span class="o">=</span><span class="n">BAStime</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0_dp</span><span class="p">)</span><span class="w">         </span><span class="c">! a value of one day</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Today=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Today='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;BAStime +- BAStime&#39;</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Yesterday=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0_dp</span><span class="p">)))</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Tomorrow= &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0_dp</span><span class="p">)))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'BAStime +- BAStime'</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Yesterday='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0_dp</span><span class="p">)))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Tomorrow= '</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.0_dp</span><span class="p">)))</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Yesterday=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">8640</span><span class="mf">0.0_dp</span><span class="p">)))</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Tomorrow= &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="mi">8640</span><span class="mf">0.0_dp</span><span class="p">)))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Yesterday='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">8640</span><span class="mf">0.0_dp</span><span class="p">)))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Tomorrow= '</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">BAStime</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="mi">8640</span><span class="mf">0.0_dp</span><span class="p">)))</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Yesterday=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="n">aday</span><span class="p">))</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Tomorrow= &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">aday</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Yesterday='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="n">aday</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Tomorrow= '</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="n">aday</span><span class="p">))</span>
 
 <span class="w">         </span><span class="n">yesterday</span><span class="o">=</span><span class="n">today</span><span class="o">-</span><span class="n">aday</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Yesterday=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">yesterday</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Yesterday='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">yesterday</span><span class="p">))</span>
 <span class="w">         </span><span class="n">tomorrow</span><span class="o">=</span><span class="n">today</span><span class="o">+</span><span class="n">aday</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Tomorrow=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">tomorrow</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Tomorrow='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">tomorrow</span><span class="p">))</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;BAStime +- value_in_seconds&#39;</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Yesterday=&#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="mi">86400</span><span class="p">))</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;Tomorrow= &#39;</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="mi">86400</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'BAStime +- value_in_seconds'</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Yesterday='</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">-</span><span class="mi">86400</span><span class="p">))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'Tomorrow= '</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="mi">86400</span><span class="p">))</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;BAStime comparisons&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'BAStime comparisons'</span>
 <span class="w">         </span><span class="n">newday</span><span class="o">=</span><span class="n">today</span><span class="o">+</span><span class="p">(</span><span class="n">aday</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;today=&#39;</span><span class="p">,</span><span class="n">today</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;newday=&#39;</span><span class="p">,</span><span class="n">newday</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'today='</span><span class="p">,</span><span class="n">today</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'newday='</span><span class="p">,</span><span class="n">newday</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
 <span class="w">         </span><span class="k">call </span><span class="n">pr</span><span class="p">(</span><span class="n">today</span><span class="p">,</span><span class="n">newday</span><span class="p">)</span>
 <span class="w">         </span><span class="k">call </span><span class="n">pr</span><span class="p">(</span><span class="n">newday</span><span class="p">,</span><span class="n">today</span><span class="p">)</span>
 <span class="w">         </span><span class="k">call </span><span class="n">pr</span><span class="p">(</span><span class="n">today</span><span class="p">,</span><span class="n">today</span><span class="p">)</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">&#39;BAStime compound expressions&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="s1">'BAStime compound expressions'</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">today</span><span class="o">+</span><span class="mi">86400</span><span class="o">/</span><span class="mi">2</span><span class="p">).</span><span class="n">eq</span><span class="p">.</span><span class="n">newday</span><span class="p">,</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">b2d</span><span class="p">(</span><span class="n">newday</span><span class="p">))</span>
 <span class="w">      </span><span class="k">contains</span>
 <span class="k">         subroutine </span><span class="n">pr</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
 <span class="w">         </span><span class="k">type</span><span class="p">(</span><span class="n">BAStime</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;eq&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">                    </span><span class="s1">&#39;gt&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">                    </span><span class="s1">&#39;lt&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">                    </span><span class="s1">&#39;ge&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">                    </span><span class="s1">&#39;le&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">                    </span><span class="s1">&#39;ne&#39;</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="n">right</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="s1">'eq'</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                    </span><span class="s1">'gt'</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">gt</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                    </span><span class="s1">'lt'</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">lt</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                    </span><span class="s1">'ge'</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">ge</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                    </span><span class="s1">'le'</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">le</span><span class="p">.</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                    </span><span class="s1">'ne'</span><span class="p">,</span><span class="n">left</span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="n">right</span>
 <span class="w">         </span><span class="k">end subroutine </span><span class="n">pr</span>
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_b2d</span>
 </pre></div>
@@ -487,14 +487,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

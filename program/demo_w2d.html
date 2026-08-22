@@ -212,7 +212,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_year"></span>
+              <span class="anchor" id="variable-iso_year~3"></span>
               integer
             </td>
 <td></td>
@@ -227,7 +227,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_week"></span>
+              <span class="anchor" id="variable-iso_week~3"></span>
               integer
             </td>
 <td></td>
@@ -242,7 +242,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_weekday"></span>
+              <span class="anchor" id="variable-iso_weekday~3"></span>
               integer
             </td>
 <td></td>
@@ -270,32 +270,32 @@
     <div class="hl codehilite"><pre><span></span><span class="w">      </span><span class="k">program </span><span class="n">demo_w2d</span>
 <span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">w2d</span><span class="p">,</span><span class="w"> </span><span class="n">fmtdate</span>
 <span class="w">      </span><span class="k">implicit none</span>
-<span class="k">        write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
-<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given Monday 29 December 2008 is written &quot;2009-W01-1&quot;&#39;</span>
+<span class="k">        write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">'Given Monday 29 December 2008 is written "2009-W01-1"'</span>
 <span class="w">        </span><span class="k">call </span><span class="n">printit</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
-<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given Sunday 3 January 2010 is written &quot;2009-W53-7&quot;&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">'Given Sunday 3 January 2010 is written "2009-W53-7"'</span>
 <span class="w">        </span><span class="k">call </span><span class="n">printit</span><span class="p">(</span><span class="mi">2009</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
-<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given the Gregorian date Sun 31 December 2006 &amp;</span>
-<span class="s1">        &amp;is written 2006-W52-7&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">'Given the Gregorian date Sun 31 December 2006 &amp;</span>
+<span class="s1">        &amp;is written 2006-W52-7'</span>
 <span class="w">        </span><span class="k">call </span><span class="n">printit</span><span class="p">(</span><span class="mi">2006</span><span class="p">,</span><span class="mi">52</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
-<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given 27 September 2008 is 2008-W39-6&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">'Given 27 September 2008 is 2008-W39-6'</span>
 <span class="w">        </span><span class="k">call </span><span class="n">printit</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="w">        </span><span class="n">string</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">block</span>
 <span class="k">           </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="p">&amp;</span>
-<span class="w">           </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;2008-W39-6&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2008W396&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2008-W39&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2008W39&#39;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">           </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">'2008-W39-6'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2008W396'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2008-W39'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2008W39'</span><span class="w"> </span><span class="p">]</span>
 <span class="w">           </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="w">           </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
 <span class="w">           </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="k">array</span><span class="p">)</span>
-<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)&amp;</span>
-<span class="w">              </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">&#39;Given string &#39;</span><span class="o">//</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w"> </span><span class="s1">'Given string '</span><span class="o">//</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 <span class="w">              </span><span class="k">call </span><span class="n">w2d</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="n">dat</span><span class="p">)</span>
-<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;RESULT:          &#39;</span>
-<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,*(i0:,&quot;,&quot;))&#39;</span><span class="p">)</span><span class="s1">&#39;   DAT array        &#39;</span><span class="p">,</span><span class="n">dat</span>
-<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,/,67(&quot;=&quot;))&#39;</span><span class="p">)</span><span class="s1">&#39;    &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;long&#39;</span><span class="p">)</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,i0)'</span><span class="p">)</span><span class="s1">'RESULT:          '</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,*(i0:,","))'</span><span class="p">)</span><span class="s1">'   DAT array        '</span><span class="p">,</span><span class="n">dat</span>
+<span class="w">              </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,/,67("="))'</span><span class="p">)</span><span class="s1">'    '</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">'long'</span><span class="p">)</span>
 <span class="w">           </span><span class="k">enddo</span>
 <span class="k">        endblock </span><span class="n">string</span>
 <span class="w">      </span><span class="k">contains</span>
@@ -305,13 +305,13 @@
 <span class="w">      </span><span class="c">! input date array</span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="w">       </span><span class="k">call </span><span class="n">w2d</span><span class="p">(</span><span class="n">iso_year</span><span class="p">,</span><span class="n">iso_week</span><span class="p">,</span><span class="n">iso_weekday</span><span class="p">,</span><span class="n">dat</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;GIVEN:           &#39;</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;ISO-8601 year    &#39;</span><span class="p">,</span><span class="n">iso_year</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;ISO-8601 week    &#39;</span><span class="p">,</span><span class="n">iso_week</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;ISO-8601 weekday &#39;</span><span class="p">,</span><span class="n">iso_weekday</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,i0)&#39;</span><span class="p">)</span><span class="s1">&#39;RESULT:          &#39;</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,*(i0:,&quot;,&quot;))&#39;</span><span class="p">)</span><span class="s1">&#39;   DAT array        &#39;</span><span class="p">,</span><span class="n">dat</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a,/,67(&quot;=&quot;))&#39;</span><span class="p">)</span><span class="s1">&#39;    &#39;</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">&#39;long&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,i0)'</span><span class="p">)</span><span class="s1">'GIVEN:           '</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,i0)'</span><span class="p">)</span><span class="s1">'ISO-8601 year    '</span><span class="p">,</span><span class="n">iso_year</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,i0)'</span><span class="p">)</span><span class="s1">'ISO-8601 week    '</span><span class="p">,</span><span class="n">iso_week</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,i0)'</span><span class="p">)</span><span class="s1">'ISO-8601 weekday '</span><span class="p">,</span><span class="n">iso_weekday</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,i0)'</span><span class="p">)</span><span class="s1">'RESULT:          '</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,*(i0:,","))'</span><span class="p">)</span><span class="s1">'   DAT array        '</span><span class="p">,</span><span class="n">dat</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a,/,67("="))'</span><span class="p">)</span><span class="s1">'    '</span><span class="o">//</span><span class="n">fmtdate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="s1">'long'</span><span class="p">)</span>
 <span class="w">      </span><span class="k">end subroutine </span><span class="n">printit</span>
 <span class="w">  </span><span class="k">end program </span><span class="n">demo_w2d</span>
 </pre></div>
@@ -329,14 +329,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

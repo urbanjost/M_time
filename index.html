@@ -236,15 +236,15 @@ the built-in help text for the formatting options is as simple as</p>
 <div class="codehilite"><pre><span></span><code><span class="w">      </span><span class="k">program </span><span class="n">demo_now</span>
 <span class="w">      </span><span class="k">use </span><span class="n">M_time</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">now</span>
 <span class="w">      </span><span class="k">implicit none</span>
-<span class="k">       write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;The current date is %w, %l %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span><span class="w"> </span><span class="c">! % macros</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;year-month-day&quot;</span><span class="p">)</span><span class="w"> </span><span class="c">! or, if macros not found then keywords</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;Y-M-D h:m:s&quot;</span><span class="p">)</span><span class="w">    </span><span class="c">! and if that is not found, abbreviations</span>
-<span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;french&#39;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;slovak&#39;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">)</span>
-<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">&quot;%W, %L %D, %Y %h:%m:%s &quot;</span><span class="p">)</span>
+<span class="k">       write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">"The current date is %w, %l %d, %Y %H:%m:%s %N"</span><span class="p">)</span><span class="w"> </span><span class="c">! % macros</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">"year-month-day"</span><span class="p">)</span><span class="w"> </span><span class="c">! or, if macros not found then keywords</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">"Y-M-D h:m:s"</span><span class="p">)</span><span class="w">    </span><span class="c">! and if that is not found, abbreviations</span>
+<span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">'french'</span><span class="p">)</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">"%W, %L %D, %Y %h:%m:%s "</span><span class="p">)</span>
+<span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">'slovak'</span><span class="p">)</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">"%W, %L %D, %Y %h:%m:%s "</span><span class="p">)</span>
+<span class="w">       </span><span class="k">call </span><span class="n">locale</span><span class="p">(</span><span class="s1">'spanish'</span><span class="p">)</span>
+<span class="w">       </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">now</span><span class="p">(</span><span class="s2">"%W, %L %D, %Y %h:%m:%s "</span><span class="p">)</span>
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_now</span>
 </code></pre></div>
 
@@ -314,8 +314,8 @@ and documentation.</p>
        %B | exclamation(bang) character            !
        %n | new line (system dependent)
 
-       %q | single quote (apostrophe)              &#39;
-       %Q | double quote                           &quot;
+       %q | single quote (apostrophe)              '
+       %Q | double quote                           "
     Duration:
        %a | Time since now as d-hh:mm:ss           0-00:00:00
        %A | Time since now as seconds              0.0000000000000000
@@ -348,7 +348,7 @@ and documentation.</p>
                        Wed Feb 19 16:41:53 UTC-05:00 2025
     short        ==&gt; %w, %l %d, %Y %H:%m:%s %N UTC%z
                        Wed, Feb 19th, 2025 4:41:53 PM UTC-05:00
-    long,&quot; &quot;     ==&gt; %W, %L %d, %Y %H:%m:%s %N UTC%z
+    long," "     ==&gt; %W, %L %d, %Y %H:%m:%s %N UTC%z
                        Wednesday, February 19th, 2025 4:41:53 PM UTC-05:00
     suffix       ==&gt; %Y%D%M%h%m%s ==&gt; 20251902164153
     formal       ==&gt; The %d of %L %Y ==&gt; The 19th of February 2025
@@ -428,6 +428,12 @@ and documentation.</p>
 </ul>
 <hr>
 <h2 id="_2"><img alt="GNU" src="docs/images/gnu.gif"></h2>
+<h1 id="download-and-build">Download and Build</h1>
+<p>** NOTE: ** Of the following three build methods (<strong>make(1), fpm(1),
+cmake(1)</strong>) only fpm(1) runs the full test suite and builds the apps,
+as they require additional dependencies. But any of the methods will
+build the library and create the *.mod files.</p>
+<hr>
 <h2 id="download-and-build-using-gmake">Download and Build using gmake</h2>
 <p>To build the modules download the github repository, enter the src/
 directory and run make(1):</p>
@@ -454,32 +460,39 @@ the document pages (in the example/ sub-directory).</p>
 <div class="codehilite"><pre><span></span><code><span class="w">     </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/urbanjost/M_time.git
 <span class="w">     </span><span class="nb">cd</span><span class="w"> </span>M_time
 <span class="w">     </span><span class="c1"># on MSWindows:</span>
-<span class="w">     </span>fpm<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-flag<span class="w"> </span><span class="s2">&quot;-D _WIN32&quot;</span>
+<span class="w">     </span>fpm<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-flag<span class="w"> </span><span class="s2">"-D _WIN32"</span>
 <span class="w">     </span><span class="c1"># on other platforms</span>
 <span class="w">     </span>fpm<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
 
 <p>or just list it as a dependency in your fpm.toml project file.</p>
 <div class="codehilite"><pre><span></span><code><span class="w">     </span><span class="k">[dependencies]</span>
-<span class="w">     </span><span class="n">M_time</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/urbanjost/M_time.git&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">     </span><span class="n">M_time</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"https://github.com/urbanjost/M_time.git"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <hr>
-<h2 id="_4"><img alt="cmake" src="docs/images/cmake_logo-1.png"></h2>
+<h2 id="_4"><img alt="cmake" src="docs/images/cmake.png"></h2>
 <h2 id="download-and-build-using-cmake">Download and Build using cmake</h2>
 <p>To download the github repository and build and install with cmake
 (you may wish to change the install path in src/CMakeLists.txt first) :</p>
 <div class="codehilite"><pre><span></span><code><span class="w">      </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/urbanjost/M_time.git
 <span class="w">      </span><span class="nb">cd</span><span class="w"> </span>M_time
 
-<span class="w">      </span><span class="c1"># Create a Build Directory:</span>
+<span class="w">      </span><span class="c1"># Create and enter a Build Directory to create all artifacts in:</span>
 <span class="w">      </span>mkdir<span class="w"> </span>-p<span class="w"> </span>build
-
 <span class="w">      </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="w">      </span><span class="c1"># Set source and build directories:</span>
 <span class="w">      </span>cmake<span class="w"> </span>-S<span class="w"> </span>../src<span class="w"> </span>-B<span class="w"> </span>.
 
-<span class="w">      </span><span class="c1"># Configure the Build, specifying your preferred compiler (ifort, flang, etc.):</span>
+<span class="w">      </span><span class="c1"># Configure the Build </span>
+<span class="w">      </span><span class="c1"># specify preferred compiler (ifx, flang-new, gfortran, ... ):</span>
 <span class="w">      </span>cmake<span class="w"> </span>.<span class="w"> </span>-DCMAKE_Fortran_COMPILER<span class="o">=</span>gfortran
+&lt;!--
+<span class="w"> </span>NOT<span class="w"> </span>WORKING:
+<span class="w">      </span><span class="c1"># customize install directory for binary at build time</span>
+<span class="w">      </span><span class="c1"># cmake ... -DCMAKE_INSTALL_PREFIX /usr/local     # GNU/Linux example</span>
+<span class="w">      </span><span class="c1"># cmake ... -DCMAKE_INSTALL_PREFIX C:\custom\path # Windows example</span>
+--&gt;
 
 <span class="w">      </span><span class="c1"># Build the Project:</span>
 <span class="w">      </span>cmake<span class="w"> </span>--build<span class="w"> </span>.
@@ -491,13 +504,6 @@ the document pages (in the example/ sub-directory).</p>
 <span class="w">      </span><span class="c1">#    build/test/* (test executables).</span>
 <span class="w">      </span><span class="c1">#    build/example/* (example executables).</span>
 
-<span class="w">      </span><span class="c1"># OPTIONAL SECTION:</span>
-
-<span class="w">      </span><span class="c1"># Verify build</span>
-<span class="w">      </span>ls<span class="w"> </span>build/lib/libM_time.a
-<span class="w">      </span>ls<span class="w"> </span>build/include/*.mod
-<span class="w">      </span>ls<span class="w"> </span>build/test/*
-<span class="w">      </span>ls<span class="w"> </span>build/example/*
 
 <span class="w">      </span><span class="c1">#Optionally Run Tests and Examples:</span>
 <span class="w">      </span><span class="k">for</span><span class="w"> </span>name<span class="w"> </span><span class="k">in</span><span class="w"> </span>./test/*<span class="w"> </span>./example/*
@@ -506,17 +512,18 @@ the document pages (in the example/ sub-directory).</p>
 <span class="w">      </span><span class="k">done</span>
 
 <span class="w">      </span><span class="c1">#Install (Optional):</span>
-<span class="w">      </span><span class="c1"># This installs the library and module files to the system</span>
-<span class="w">      </span><span class="c1"># (e.g., /usr/local/lib/ and /usr/local/include/).</span>
+<span class="w">      </span><span class="c1"># installs the library and module files to the default location</span>
+<span class="w">      </span><span class="c1"># (e.g., on Linux $HOME/.local/lib/ and $HOME/.local/include/).</span>
+<span class="w">      </span><span class="c1"># (e.g., on Windows %APPDATA%/local/lib/ and %APPDATA%/local/include/).</span>
 <span class="w">      </span>cmake<span class="w"> </span>--install<span class="w"> </span>.
 
-<span class="w">      </span><span class="c1"># if you have insufficient permissions sudo(1) may be required</span>
-<span class="w">      </span><span class="c1"># to perform the install</span>
-<span class="w">      </span><span class="c1">#sudo cmake --install .</span>
+<span class="w">      </span><span class="c1">#OPTIONAL ALTERNATIVE</span>
+<span class="w">      </span><span class="c1"># override custom directory at install time</span>
+<span class="w">      </span><span class="c1">#cmake --install . --prefix /usr/local/        </span>
 
-<span class="w">      </span><span class="c1"># Verify installation</span>
-<span class="w">      </span>ls<span class="w"> </span>/usr/local/lib/libM_time.a
-<span class="w">      </span>ls<span class="w"> </span>/usr/local/include/*.mod
+<span class="w">      </span><span class="c1"># if you have insufficient permissions sudo(1) may be required</span>
+<span class="w">      </span><span class="c1"># to perform the install on GNU/Linux</span>
+<span class="w">      </span><span class="c1">#sudo cmake --install --prefix /usr/local/</span>
 
 <span class="w">      </span><span class="c1"># Cleaning Up: To clean artifacts, remove the build/ directory:</span>
 <span class="w">      </span>rm<span class="w"> </span>-rf<span class="w"> </span>build
@@ -558,8 +565,8 @@ demonstrate how easily you can generate a variety of output formats:</p>
 <p>In particular, the example program &ldquo;now&rdquo; easily lets you try out various
 options. With no options it displays allowed formats. For example:</p>
 <div class="codehilite"><pre><span></span><code>      ./now year month day
-      ./now &#39;julian epoch ordinal&#39;
-      ./now &#39;The year is %Y and the month is %M (%L) %h:%m:%s&#39;
+      ./now 'julian epoch ordinal'
+      ./now 'The year is %Y and the month is %M (%L) %h:%m:%s'
       ./now formal
 
        20200105
@@ -679,7 +686,9 @@ procedures.</p>
 </ul>
 <!--
    TODO:
+
 http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libraries.html
+
 -->
 <hr>
         </div>
@@ -756,14 +765,14 @@ http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libr
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

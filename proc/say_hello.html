@@ -91,7 +91,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 2.7% of total for procedures.">45 statements</a>
+                 title=" 2.6% of total for procedures.">45 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -133,12 +133,12 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/say_hello.html#variable-all~3">all</a>
+            <a class="list-group-item" href="../proc/say_hello.html#variable-all~2">all</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-argument_length">argument_length</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-ch">ch</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-chs">chs</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-dos">dos</a>
-            <a class="list-group-item" href="../proc/say_hello.html#variable-i~7">i</a>
+            <a class="list-group-item" href="../proc/say_hello.html#variable-i~3">i</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-istat">istat</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-options">options</a>
             <a class="list-group-item" href="../proc/say_hello.html#variable-posix">posix</a>
@@ -217,7 +217,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-all~3"></span>
+              <span class="anchor" id="variable-all~2"></span>
               character(len=*),
             </td>
               <td>public,</td>
@@ -302,7 +302,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i~7"></span>
+              <span class="anchor" id="variable-i~3"></span>
               integer,
             </td>
               <td>public</td>
@@ -421,8 +421,8 @@ parameter
     <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">say_hello</span><span class="p">()</span>
 <span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">compiler_version</span>
 <span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">compiler_options</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">all</span><span class="o">=</span><span class="s1">&#39;(*(g0,1x))&#39;</span>
-<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">chs</span><span class="o">=</span><span class="s1">&#39;(*(g0))&#39;</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">all</span><span class="o">=</span><span class="s1">'(*(g0,1x))'</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">chs</span><span class="o">=</span><span class="s1">'(*(g0))'</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">ch</span><span class="p">,</span><span class="w"> </span><span class="n">split</span>
 <span class="kt">integer</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">argument_length</span><span class="p">,</span><span class="w"> </span><span class="n">istat</span><span class="p">,</span><span class="w"> </span><span class="n">posix</span><span class="p">,</span><span class="w"> </span><span class="n">dos</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">progname</span><span class="p">,</span><span class="w"> </span><span class="k">options</span>
@@ -431,31 +431,31 @@ parameter
 <span class="w">   </span><span class="k">allocate</span><span class="p">(</span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">argument_length</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">progname</span><span class="p">)</span>
 <span class="w">   </span><span class="k">call </span><span class="nb">get_command_argument</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">progname</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 <span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">istat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">      print all</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;program name.:&quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="n">progname</span><span class="p">)</span>
+<span class="k">      print all</span><span class="p">,</span><span class="w"> </span><span class="s2">"program name.:"</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="n">progname</span><span class="p">)</span>
 <span class="w">   </span><span class="k">else</span>
-<span class="k">      print all</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Could not get the program name &quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="n">progname</span><span class="p">)</span>
+<span class="k">      print all</span><span class="p">,</span><span class="w"> </span><span class="s2">"Could not get the program name "</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="w"> </span><span class="p">(</span><span class="n">progname</span><span class="p">)</span>
 <span class="w">   </span><span class="k">endif</span>
-<span class="k">   print all</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;compiled by..:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_version</span><span class="p">()</span>
-<span class="w">   </span><span class="k">options</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="o">//</span><span class="n">compiler_options</span><span class="p">()</span>
-<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="k">options</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="k">then</span>
-<span class="k">      print all</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;using options:&#39;</span>
+<span class="k">   print all</span><span class="p">,</span><span class="w"> </span><span class="s1">'compiled by..:'</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_version</span><span class="p">()</span>
+<span class="w">   </span><span class="k">options</span><span class="o">=</span><span class="s1">' '</span><span class="o">//</span><span class="n">compiler_options</span><span class="p">()</span>
+<span class="w">   </span><span class="k">if</span><span class="p">(</span><span class="k">options</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">''</span><span class="p">)</span><span class="k">then</span>
+<span class="k">      print all</span><span class="p">,</span><span class="w"> </span><span class="s1">'using options:'</span>
 <span class="w">      </span><span class="c">! guess which one</span>
 <span class="w">      </span><span class="n">posix</span><span class="o">=</span><span class="mi">0</span>
 <span class="w">      </span><span class="n">dos</span><span class="o">=</span><span class="mi">0</span>
 <span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="k">options</span><span class="p">)</span>
 <span class="w">         </span><span class="n">ch</span><span class="o">=</span><span class="k">options</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="p">)</span>
 <span class="w">         </span><span class="k">select case</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
-<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39; -&#39;</span><span class="p">);</span><span class="w">    </span><span class="n">posix</span><span class="o">=</span><span class="n">posix</span><span class="o">+</span><span class="mi">1</span>
-<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39; /&#39;</span><span class="p">);</span><span class="w">    </span><span class="n">dos</span><span class="o">=</span><span class="n">dos</span><span class="o">+</span><span class="mi">1</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">' -'</span><span class="p">);</span><span class="w">    </span><span class="n">posix</span><span class="o">=</span><span class="n">posix</span><span class="o">+</span><span class="mi">1</span>
+<span class="w">         </span><span class="k">case</span><span class="p">(</span><span class="s1">' /'</span><span class="p">);</span><span class="w">    </span><span class="n">dos</span><span class="o">=</span><span class="n">dos</span><span class="o">+</span><span class="mi">1</span>
 <span class="w">         </span><span class="k">end select</span>
 <span class="k">      enddo</span>
-<span class="k">      </span><span class="n">split</span><span class="o">=</span><span class="nb">merge</span><span class="p">(</span><span class="s1">&#39; -&#39;</span><span class="p">,</span><span class="s1">&#39; /&#39;</span><span class="p">,</span><span class="n">posix</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="k">      </span><span class="n">split</span><span class="o">=</span><span class="nb">merge</span><span class="p">(</span><span class="s1">' -'</span><span class="p">,</span><span class="s1">' /'</span><span class="p">,</span><span class="n">posix</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="k">options</span><span class="p">)</span>
 <span class="w">         </span><span class="n">ch</span><span class="o">=</span><span class="k">options</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="p">)</span>
 <span class="w">         </span><span class="k">if</span><span class="p">(</span><span class="n">ch</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">split</span><span class="p">)</span><span class="k">then</span>
-<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">chs</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">ch</span>
+<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">chs</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">'no'</span><span class="p">)</span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">ch</span>
 <span class="w">         </span><span class="k">else</span>
-<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">chs</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">)</span><span class="n">ch</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">            write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="n">chs</span><span class="p">,</span><span class="n">advance</span><span class="o">=</span><span class="s1">'no'</span><span class="p">)</span><span class="n">ch</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span>
 <span class="w">         </span><span class="k">endif</span>
 <span class="k">      enddo</span>
 <span class="k">      print all</span>
@@ -478,14 +478,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

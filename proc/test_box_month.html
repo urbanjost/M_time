@@ -133,8 +133,8 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../proc/test_box_month.html#variable-calendar">calendar</a>
-            <a class="list-group-item" href="../proc/test_box_month.html#variable-dat~32">dat</a>
+            <a class="list-group-item" href="../proc/test_box_month.html#variable-calendar~2">calendar</a>
+            <a class="list-group-item" href="../proc/test_box_month.html#variable-dat~29">dat</a>
             <a class="list-group-item" href="../proc/test_box_month.html#variable-mnth">mnth</a>
         </div>
       </div>
@@ -197,7 +197,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-calendar"></span>
+              <span class="anchor" id="variable-calendar~2"></span>
               character(len=21),
             </td>
               <td>public</td>
@@ -214,7 +214,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~32"></span>
+              <span class="anchor" id="variable-dat~29"></span>
               integer,
             </td>
               <td>public</td>
@@ -268,21 +268,21 @@
 <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mnth</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">2016</span><span class="p">,</span><span class="mi">07</span><span class="p">,</span><span class="mi">01</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">mnth</span><span class="o">=</span><span class="p">[</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;      July 2016      &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;Mo Tu We Th Fr Sa Su &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;             1  2  3 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39; 4  5  6  7  8  9 10 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;11 12 13 14 15 16 17 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;18 19 20 21 22 23 24 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;25 26 27 28 29 30 31 &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="s1">&#39;                     &#39;</span><span class="p">]</span>
+<span class="s1">'      July 2016      '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">'Mo Tu We Th Fr Sa Su '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">'             1  2  3 '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">' 4  5  6  7  8  9 10 '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">'11 12 13 14 15 16 17 '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">'18 19 20 21 22 23 24 '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">'25 26 27 28 29 30 31 '</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="s1">'                     '</span><span class="p">]</span>
 <span class="k">call </span><span class="n">box_month</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="n">calendar</span><span class="p">)</span>
 <span class="k">if</span><span class="p">(</span><span class="n">unit_test_level</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="k">then</span>
-<span class="k">   write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">calendar</span>
-<span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="n">mnth</span>
+<span class="k">   write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="n">calendar</span>
+<span class="w">   </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="n">mnth</span>
 <span class="k">endif</span>
-<span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;box_month&#39;</span><span class="p">,</span><span class="k">all</span><span class="p">(</span><span class="n">calendar</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">mnth</span><span class="p">),</span><span class="s1">&#39;July 2016&#39;</span><span class="p">)</span>
-<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;box_month&#39;</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'box_month'</span><span class="p">,</span><span class="k">all</span><span class="p">(</span><span class="n">calendar</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">mnth</span><span class="p">),</span><span class="s1">'July 2016'</span><span class="p">)</span>
+<span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">'box_month'</span><span class="p">)</span>
 <span class="k">end subroutine </span><span class="n">test_box_month</span>
 </pre></div>
 
@@ -300,14 +300,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

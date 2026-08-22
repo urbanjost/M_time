@@ -183,12 +183,12 @@
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">test_sec2days</span><span class="p">()</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;sec2days&#39;</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">129860</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w">              </span><span class="s1">&#39;1-12:04:20&#39;</span><span class="p">,</span><span class="s1">&#39;129860 is 1-12:04:20&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;sec2days&#39;</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">8000</span><span class="mf">0.0d0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w">           </span><span class="s1">&#39;0-22:13:20&#39;</span><span class="p">,</span><span class="s1">&#39;80000.0d0 is 0-22:13:20&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;sec2days&#39;</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">80000</span><span class="p">,</span><span class="n">crop</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span><span class="w"> </span><span class="o">==</span><span class="w">     </span><span class="s1">&#39;22:13:20&#39;</span><span class="p">,</span><span class="s1">&#39;80000 is 22:13:20&#39;</span><span class="p">)</span>
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">&#39;sec2days&#39;</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="s1">&#39;1day 2hr 3 min 4s&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;1-02:03:04&#39;</span><span class="p">,</span><span class="s1">&#39;1day 2hr 3 min 4s is 1-02:03:04&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'sec2days'</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">129860</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w">              </span><span class="s1">'1-12:04:20'</span><span class="p">,</span><span class="s1">'129860 is 1-12:04:20'</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'sec2days'</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">8000</span><span class="mf">0.0d0</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w">           </span><span class="s1">'0-22:13:20'</span><span class="p">,</span><span class="s1">'80000.0d0 is 0-22:13:20'</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'sec2days'</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="mi">80000</span><span class="p">,</span><span class="n">crop</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span><span class="w"> </span><span class="o">==</span><span class="w">     </span><span class="s1">'22:13:20'</span><span class="p">,</span><span class="s1">'80000 is 22:13:20'</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test</span><span class="p">(</span><span class="s1">'sec2days'</span><span class="p">,</span><span class="n">sec2days</span><span class="p">(</span><span class="s1">'1day 2hr 3 min 4s'</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'1-02:03:04'</span><span class="p">,</span><span class="s1">'1day 2hr 3 min 4s is 1-02:03:04'</span><span class="p">)</span>
 
-<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">&#39;sec2days&#39;</span><span class="p">)</span>
+<span class="w">   </span><span class="k">call </span><span class="n">unit_test_end</span><span class="p">(</span><span class="s1">'sec2days'</span><span class="p">)</span>
 
 <span class="k">end subroutine </span><span class="n">test_sec2days</span>
 </pre></div>
@@ -207,14 +207,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

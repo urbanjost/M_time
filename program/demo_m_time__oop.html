@@ -131,11 +131,11 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-answer">answer</a>
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dat~46">dat</a>
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dp~8">dp</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-answer~2">answer</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dat~60">dat</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-dp~11">dp</a>
             <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-event">event</a>
-            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-iso_fmt~2">iso_fmt</a>
+            <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-iso_fmt~3">iso_fmt</a>
             <a class="list-group-item" href="../program/demo_m_time__oop.html#variable-otherdate">otherdate</a>
         </div>
       </div>
@@ -202,7 +202,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-answer"></span>
+              <span class="anchor" id="variable-answer~2"></span>
               type(<a href='../type/date_time.html'>date_time</a>)
             </td>
             <td>
@@ -218,7 +218,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~46"></span>
+              <span class="anchor" id="variable-dat~60"></span>
               integer
             </td>
             <td>
@@ -234,7 +234,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dp~8"></span>
+              <span class="anchor" id="variable-dp~11"></span>
               integer,
             </td>
             <td>
@@ -266,7 +266,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-iso_fmt~2"></span>
+              <span class="anchor" id="variable-iso_fmt~3"></span>
               character(len=*),
             </td>
             <td>
@@ -336,52 +336,52 @@ parameter
 <span class="w">      </span><span class="k">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">otherdate</span>
 <span class="w">      </span><span class="k">TYPE</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">answer</span>
 
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fmt</span><span class="o">=</span><span class="s1">&#39;%Y-%M-%DT%h:%m:%s.%x%z&#39;</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fmt</span><span class="o">=</span><span class="s1">'%Y-%M-%DT%h:%m:%s.%x%z'</span>
 <span class="w">         </span><span class="c">! DIFFERENT INITIALIZATION STYLES</span>
 <span class="w">         </span><span class="c">! (Still debating on how best to do this)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s1">&#39;Various initialization styles&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="s1">'Various initialization styles'</span>
 
 <span class="w">         </span><span class="c">! DEFINE type(date_time) WITH CONSTRUCTOR</span>
 <span class="w">         </span><span class="n">otherdate</span><span class="o">=</span><span class="n">date_time</span><span class="p">()</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR %format()               &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR %format()               '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR %format(&quot;&quot;)             &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR %format(user-specified) &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR %format("")             '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR %format(user-specified) '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="n">iso_fmt</span><span class="p">)</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR %format(&quot;USA&quot;)          &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;USA&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR %format("USA")          '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"USA"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">otherdate</span><span class="o">=</span><span class="n">date_time</span><span class="p">(</span><span class="mi">1492</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR setting values          &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR setting values          '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
 
 <span class="w">         </span><span class="n">otherdate</span><span class="o">=</span><span class="n">date_time</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR with partial values     &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR with partial values     '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
 
 <span class="w">         </span><span class="n">otherdate</span><span class="o">=</span><span class="n">date_time</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span><span class="n">month</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">day</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span><span class="n">tz</span><span class="o">=-</span><span class="mi">240</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">hour</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span><span class="n">minute</span><span class="o">=</span><span class="mi">09</span><span class="p">,</span><span class="nb">second</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span><span class="n">millisecond</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;DEFAULT CONSTRUCTOR with values by name     &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'DEFAULT CONSTRUCTOR with values by name     '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
 
 <span class="w">         </span><span class="n">otherdate</span><span class="o">=</span><span class="n">date_time</span><span class="p">([</span><span class="mi">1776</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;CONSTRUCTOR with a dat array                &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'CONSTRUCTOR with a dat array                '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
 
 <span class="w">         </span><span class="n">otherdate</span><span class="o">=</span><span class="n">date_time</span><span class="p">([</span><span class="mi">1776</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;CONSTRUCTOR with a partial dat array        &#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="s1">'CONSTRUCTOR with a partial dat array        '</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">otherdate</span><span class="p">%</span><span class="k">format</span><span class="p">()</span>
 
 <span class="w">         </span><span class="c">! the init() method supports several methods</span>
 <span class="w">         </span><span class="c">! initialize to current time using INIT</span>
 <span class="w">         </span><span class="k">call </span><span class="n">otherdate</span><span class="p">%</span><span class="n">init</span><span class="p">()</span>
 <span class="w">         </span><span class="c">! initialize to current time using INIT</span>
-<span class="w">         </span><span class="k">call </span><span class="n">otherdate</span><span class="p">%</span><span class="n">init</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="s2">&quot;now&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">otherdate</span><span class="p">%</span><span class="n">init</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="s2">"now"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="c">! initialize to beginning of Unix Epoch Time</span>
-<span class="w">         </span><span class="k">call </span><span class="n">otherdate</span><span class="p">%</span><span class="n">init</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="s2">&quot;epoch&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">call </span><span class="n">otherdate</span><span class="p">%</span><span class="n">init</span><span class="p">(</span><span class="k">type</span><span class="o">=</span><span class="s2">"epoch"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">! Note</span>
 <span class="w">         </span><span class="c">! currently, DATE_TIME DATE array is set to Unix Epoch</span>
 <span class="w">         </span><span class="c">! start USING LOCAL TIMEZONE</span>
@@ -401,187 +401,187 @@ parameter
 <span class="w">         </span><span class="c">! initialize to current time using INIT</span>
 <span class="w">         </span><span class="k">call </span><span class="n">event</span><span class="p">%</span><span class="n">init</span><span class="p">()</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Print members of type(DATE_TIME)&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Print members of type(DATE_TIME)'</span>
 <span class="w">         </span><span class="c">! show derived type</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">404</span><span class="p">)</span><span class="s1">&#39;EVENT=&#39;</span><span class="p">,</span><span class="n">event</span>
-<span class="w">         </span><span class="mi">404</span><span class="w"> </span><span class="k">format</span><span class="p">(</span><span class="mi">1</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">i0</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">i0</span><span class="p">:))</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">404</span><span class="p">)</span><span class="s1">'EVENT='</span><span class="p">,</span><span class="n">event</span>
+<span class="w">         </span><span class="mi">404</span><span class="w"> </span><span class="k">format</span><span class="p">(</span><span class="mi">1</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">i0</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span><span class="n">i0</span><span class="p">:))</span>
 
 <span class="w">         </span><span class="c">! MEMBERS ( basic time values are all integers)</span>
 <span class="w">         </span><span class="c">! print members of type</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%year        Year................... &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">year</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%month       Month.................. &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">month</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%day         Day.................... &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">day</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%tz          Timezone............... &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">tz</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%hour        Hour................... &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">hour</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%minute      Minute................. &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">minute</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%second      Second................. &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="nb">second</span>
-<span class="nb">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%millisecond Millisecond............ &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">millisecond</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%year        Year................... '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">year</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%month       Month.................. '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">month</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%day         Day.................... '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">day</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%tz          Timezone............... '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">tz</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%hour        Hour................... '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">hour</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%minute      Minute................. '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">minute</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%second      Second................. '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="nb">second</span>
+<span class="nb">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%millisecond Millisecond............ '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">millisecond</span>
 
 <span class="w">         </span><span class="c">! PRINT METHODS OF TYPE</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Print methods of type(DATE_TIME)&#39;</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%ordinal     Ordinal day of year.... &#39;</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">ordinal</span><span class="p">()</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">&#39;%weekday     Weekday................ &#39;</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">weekday</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Print methods of type(DATE_TIME)'</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%ordinal     Ordinal day of year.... '</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">ordinal</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span><span class="s1">'%weekday     Weekday................ '</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">weekday</span><span class="p">()</span>
 <span class="w">         </span><span class="mi">101</span><span class="w"> </span><span class="k">format</span><span class="p">(</span><span class="mi">1</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">i0</span><span class="p">)</span>
 <span class="w">         </span><span class="c">! DOUBLE PRECISION VALUES EASILY MANIPULATED MATHEMATICALLY</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">202</span><span class="p">)</span><span class="s1">&#39;%epoch      Unix epoch time........ &#39;</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">epoch</span><span class="p">()</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">202</span><span class="p">)</span><span class="s1">&#39;%julian     Julian date............ &#39;</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">julian</span><span class="p">()</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">202</span><span class="p">)</span><span class="s1">&#39;%mjd        Modiied Julian date.... &#39;</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">mjd</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">202</span><span class="p">)</span><span class="s1">'%epoch      Unix epoch time........ '</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">epoch</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">202</span><span class="p">)</span><span class="s1">'%julian     Julian date............ '</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">julian</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">202</span><span class="p">)</span><span class="s1">'%mjd        Modiied Julian date.... '</span><span class="p">,</span><span class="w">  </span><span class="n">event</span><span class="p">%</span><span class="n">mjd</span><span class="p">()</span>
 <span class="w">         </span><span class="mi">202</span><span class="w"> </span><span class="k">format</span><span class="p">(</span><span class="mi">1</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">g0</span><span class="p">)</span>
 
 <span class="w">         </span><span class="c">! FORMATTED STRINGS (many strings possible.</span>
 <span class="w">         </span><span class="c">! Takes the same format string as fmtdate(3f))</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="s1">&#39; Formatted Strings (%format(&quot;STRING&quot;) &amp;</span>
-<span class="s1">         &amp; -- see fmtdate(3f) for format descriptions&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(a)'</span><span class="p">)</span><span class="s1">' Formatted Strings (%format("STRING") &amp;</span>
+<span class="s1">         &amp; -- see fmtdate(3f) for format descriptions'</span>
 <span class="w">         </span><span class="c">! abbreviated month name             %l  Dec</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Short month............ &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;%l&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">'Short month............ '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"%l"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! full month name                    %L  December</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Month.................. &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;%L&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">'Month.................. '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"%L"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! first three characters of weekday  %w  Sat</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Short week............. &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;%w&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">'Short week............. '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"%w"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! weekday name                       %W  Saturday</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Week .................. &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;%W&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">'Week .................. '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"%W"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! with no percent (%) characters</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Calendar Time ......... &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;Y-M-D h:m:s.x z&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">'Calendar Time ......... '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"Y-M-D h:m:s.x z"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! keywords with no percent (%) characters</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">&#39;Calendar Time ......... &#39;</span><span class="p">,&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">&#39;&quot;year-month-day &amp;</span>
-<span class="s1">         &amp; hour:minute:second.millisecond timezone&quot;&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">303</span><span class="p">)</span><span class="s1">'Calendar Time ......... '</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">'"year-month-day &amp;</span>
+<span class="s1">         &amp; hour:minute:second.millisecond timezone"'</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">&#39;Longer format.......... &amp;</span>
-<span class="s1">         &amp;&quot;%W, %L %d, %Y %H:%m:%s %N&quot;&#39;</span><span class="p">)</span><span class="w"> </span><span class="c">! a nice friendly format</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">'Longer format.......... &amp;</span>
+<span class="s1">         &amp;"%W, %L %d, %Y %H:%m:%s %N"'</span><span class="p">)</span><span class="w"> </span><span class="c">! a nice friendly format</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="mi">303</span><span class="w"> </span><span class="k">format</span><span class="p">(</span><span class="mi">1</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="mi">303</span><span class="w"> </span><span class="k">format</span><span class="p">(</span><span class="mi">1</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="s1">'"'</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="s1">'"'</span><span class="p">)</span>
 
 <span class="w">         </span><span class="c">! convert date_time to integer array</span>
 <span class="w">         </span><span class="c">! (maybe to use with module M_TIME base procedures)</span>
 <span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">datout</span><span class="p">()</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">404</span><span class="p">)</span><span class="s1">&#39;DAT=&#39;</span><span class="p">,</span><span class="n">dat</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">404</span><span class="p">)</span><span class="s1">'DAT='</span><span class="p">,</span><span class="n">dat</span>
 
 <span class="w">         </span><span class="c">! OVERLOADED OPERATORS (add and subtract)</span>
 <span class="w">         </span><span class="c">! a date_time object can have seconds added</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0_dp</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! a nice friendly format</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">&#39;TOMORROW=&quot;%W, %L %d, %Y %H:%m:%s %N&quot;&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">'TOMORROW="%W, %L %d, %Y %H:%m:%s %N"'</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! a date_time object can have seconds subtracted</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="mi">8640</span><span class="mf">0.0_dp</span>
 <span class="w">         </span><span class="c">! a nice friendly format</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">&#39;YESTERDAY=&quot;%W, %L %d, %Y %H:%m:%s %N&quot;&#39;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s1">'YESTERDAY="%W, %L %d, %Y %H:%m:%s %N"'</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="c">! if both operands are DATE_TIME objects a subtraction</span>
 <span class="w">         </span><span class="c">! finds the time in seconds between the two dates</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;DIFFERENCE (subtracting one date_time from another)=&#39;</span><span class="p">,&amp;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'DIFFERENCE (subtracting one date_time from another)='</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">answer</span><span class="o">-</span><span class="n">event</span>
 
 <span class="w">         </span><span class="c">! OVERLOADED OPERATORS (logical comparisons)</span>
 <span class="w">         </span><span class="c">! NOTE COMPARISONS ARE PERFORMED BY</span>
 <span class="w">         </span><span class="c">! CONVERTING TIMES TO INTEGER SECONDS</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;&gt; &#39;</span><span class="p">,</span><span class="n">event</span><span class="o">==</span><span class="n">event</span><span class="w">   </span><span class="p">,</span><span class="n">event</span><span class="o">&lt;</span><span class="n">event</span><span class="w">   </span><span class="p">,</span><span class="n">event</span><span class="o">&gt;</span><span class="n">event</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'&gt; '</span><span class="p">,</span><span class="n">event</span><span class="o">==</span><span class="n">event</span><span class="w">   </span><span class="p">,</span><span class="n">event</span><span class="o">&lt;</span><span class="n">event</span><span class="w">   </span><span class="p">,</span><span class="n">event</span><span class="o">&gt;</span><span class="n">event</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="p">,</span><span class="n">event</span><span class="o">&lt;=</span><span class="n">event</span><span class="w">   </span><span class="p">,</span><span class="n">event</span><span class="o">&gt;=</span><span class="n">event</span><span class="w">   </span><span class="p">,</span><span class="n">event</span><span class="o">/=</span><span class="n">event</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;&gt; &#39;</span><span class="p">,</span><span class="n">event</span><span class="o">==</span><span class="n">answer</span><span class="w">  </span><span class="p">,</span><span class="n">event</span><span class="o">&lt;</span><span class="n">answer</span><span class="w">  </span><span class="p">,</span><span class="n">event</span><span class="o">&gt;</span><span class="n">answer</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'&gt; '</span><span class="p">,</span><span class="n">event</span><span class="o">==</span><span class="n">answer</span><span class="w">  </span><span class="p">,</span><span class="n">event</span><span class="o">&lt;</span><span class="n">answer</span><span class="w">  </span><span class="p">,</span><span class="n">event</span><span class="o">&gt;</span><span class="n">answer</span><span class="w">  </span><span class="p">&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="p">,</span><span class="n">event</span><span class="o">&lt;=</span><span class="n">answer</span><span class="w">  </span><span class="p">,</span><span class="n">event</span><span class="o">&gt;=</span><span class="n">answer</span><span class="w">  </span><span class="p">,</span><span class="n">event</span><span class="o">/=</span><span class="n">answer</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;&gt; &#39;</span><span class="p">,</span><span class="n">answer</span><span class="o">==</span><span class="n">event</span><span class="w">  </span><span class="p">,</span><span class="n">answer</span><span class="o">&lt;</span><span class="n">event</span><span class="w">  </span><span class="p">,</span><span class="n">answer</span><span class="o">&gt;</span><span class="n">event</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'&gt; '</span><span class="p">,</span><span class="n">answer</span><span class="o">==</span><span class="n">event</span><span class="w">  </span><span class="p">,</span><span class="n">answer</span><span class="o">&lt;</span><span class="n">event</span><span class="w">  </span><span class="p">,</span><span class="n">answer</span><span class="o">&gt;</span><span class="n">event</span><span class="w">  </span><span class="p">&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="p">,</span><span class="n">answer</span><span class="o">&lt;=</span><span class="n">event</span><span class="w">  </span><span class="p">,</span><span class="n">answer</span><span class="o">&gt;=</span><span class="n">event</span><span class="w">  </span><span class="p">,</span><span class="n">answer</span><span class="o">/=</span><span class="n">event</span>
 
 <span class="w">         </span><span class="c">! %DELTA easily lets you change dates by common increments</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">404</span><span class="p">)</span><span class="s1">&#39;%DELTA tests starting with date &#39;</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="mi">404</span><span class="p">)</span><span class="s1">'%DELTA tests starting with date '</span><span class="p">,</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">()</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">&quot;                             &amp;</span>
-<span class="s2">         &amp;%W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">%</span><span class="k">format</span><span class="p">(</span><span class="s2">"                             &amp;</span>
+<span class="s2">         &amp;%W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Remember years and months are not constant units&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Remember years and months are not constant units'</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(YEAR=+1)            %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(YEAR=+1)            %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">year</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(YEAR=-1)            %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(YEAR=-1)            %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">month</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(MONTH=+24)          %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(MONTH=+24)          %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">month</span><span class="o">=-</span><span class="mi">24</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(MONTH=-24)          %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(MONTH=-24)          %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">week</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(WEEK=+1)            %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(WEEK=+1)            %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">week</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(WEEK=-1)            %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(WEEK=-1)            %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(DAY=+1)             %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(DAY=+1)             %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">day</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(DAY=-1)             %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(DAY=-1)             %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">hour</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(HOUR=+4)            %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(HOUR=+4)            %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">hour</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(HOUR=-4)            %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(HOUR=-4)            %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">minute</span><span class="o">=</span><span class="mi">180</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(MINUTE=+180)        %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(MINUTE=+180)        %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">minute</span><span class="o">=-</span><span class="mi">180</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(MINUTE=-180)        %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(MINUTE=-180)        %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="nb">second</span><span class="o">=</span><span class="mi">1800</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(SECOND=+1800)       %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(SECOND=+1800)       %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="nb">second</span><span class="o">=-</span><span class="mi">1800</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(SECOND=-1800)       %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(SECOND=-1800)       %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">millisecond</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(MILLISECOND=+10000) %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(MILLISECOND=+10000) %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 <span class="w">         </span><span class="c">!</span>
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">millisecond</span><span class="o">=-</span><span class="mi">10000</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(MILLISECOND=-10000) %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(MILLISECOND=-10000) %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">month</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">day</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">hour</span><span class="o">=</span><span class="mi">200</span><span class="p">,&amp;</span>
 <span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="n">week</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">minute</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="nb">second</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">millisecond</span><span class="o">=-</span><span class="mi">10000</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
 <span class="w">         </span><span class="c">!</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="s2">&quot;FOR %%DELTA(year=3,month=2,day=100,hour=200,&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="s2">"FOR %%DELTA(year=3,month=2,day=100,hour=200,&amp;</span>
 <span class="s2">         &amp;week=-1,minute=300,second=1000,millisecond=100000)&amp;</span>
-<span class="s2">         &amp; %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="s2">         &amp; %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
-<span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="s2">&quot;1-20:30:40.50&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="n">answer</span><span class="o">=</span><span class="n">event</span><span class="p">%</span><span class="n">delta</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="s2">"1-20:30:40.50"</span><span class="p">)</span>
 <span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">answer</span><span class="p">%</span><span class="k">format</span><span class="p">(&amp;</span>
-<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">&quot;FOR %%DELTA(DURATION=&#39;1-20:30:40.50&#39;)&amp;</span>
-<span class="s2">         &amp; %W, %L %d, %Y %H:%m:%s %N&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="w"> </span><span class="s2">"FOR %%DELTA(DURATION='1-20:30:40.50')&amp;</span>
+<span class="s2">         &amp; %W, %L %d, %Y %H:%m:%s %N"</span><span class="p">)</span>
 
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_M_time__oop</span>
 </pre></div>
@@ -599,14 +599,14 @@ parameter
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>

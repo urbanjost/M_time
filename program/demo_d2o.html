@@ -131,7 +131,7 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/demo_d2o.html#variable-dat~4">dat</a>
+            <a class="list-group-item" href="../program/demo_d2o.html#variable-dat~51">dat</a>
         </div>
       </div>
     </div>
@@ -197,7 +197,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-dat~4"></span>
+              <span class="anchor" id="variable-dat~51"></span>
               integer
             </td>
             <td>
@@ -232,24 +232,24 @@
 <span class="w">      </span><span class="k">implicit none</span>
 <span class="k">      </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dat</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="w">         </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">&#39;(&quot; Today is:&quot;,*(i0:,&quot;:&quot;))&#39;</span><span class="p">)</span><span class="n">dat</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Day of year is:&#39;</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="s1">'(" Today is:",*(i0:,":"))'</span><span class="p">)</span><span class="n">dat</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="s1">'Day of year is:'</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
 <span class="w">         </span><span class="c">! year,month,day,timezone,hour,minute,seconds,milliseconds</span>
 <span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39; Days in year is:&#39;</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">' Days in year is:'</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">2021</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39; Days in year is:&#39;</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">' Days in year is:'</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">2022</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39; Days in year is:&#39;</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">' Days in year is:'</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">2023</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39; Days in year is:&#39;</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">' Days in year is:'</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
 <span class="w">         </span><span class="n">dat</span><span class="o">=</span><span class="p">[</span><span class="mi">2024</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="o">-</span><span class="mi">240</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39; Days in year is:&#39;</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="n">dat</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s1">' Days in year is:'</span><span class="p">,</span><span class="n">d2o</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 
 <span class="w">      </span><span class="k">end program </span><span class="n">demo_d2o</span>
 </pre></div>
@@ -267,14 +267,14 @@
           <div class="col">
             <p>
               M_time
- was developed by John S. Urban<br>              &copy; 2025 
+ was developed by John S. Urban<br>              &copy; 2026 
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-07-20 00:37 +0000             </p>
+ on 2026-08-22 14:22 +0000             </p>
           </div>
         </div>
         <br>
