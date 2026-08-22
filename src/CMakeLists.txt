@@ -11,9 +11,9 @@ set(BUILD_DIR ${CMAKE_SOURCE_DIR}/../build)
 #set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR})
 
 # Set Fortran compiler flags for modern standards
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -std=f2018")
 
-set(INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR}/include)
+set(INCLUDE_DIRECTORIES ${CMAKE_BINARY_DIR}/include ../include )
 
 # Place module files (.mod) in build/lib
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/include)
@@ -30,20 +30,10 @@ set_target_properties(M_time PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${BUILD_DIR}/lib"
 )
 
-set_source_files_properties(
-  "*.F90" "*.f90"
-  PROPERTIES Fortran_PREPROCESS ON
-)
-
 # Find all Fortran files in test/ and example/ directories (relative to project root)
-#file(GLOB TEST_SOURCES "${CMAKE_SOURCE_DIR}/../test/*.f90")
-file(GLOB TEST_SOURCES 
-"${CMAKE_SOURCE_DIR}/../test/language.f90"
-"${CMAKE_SOURCE_DIR}/../test/test_a_A.f90"
-"${CMAKE_SOURCE_DIR}/../test/to.f90"
-)
+file(GLOB TEST_SOURCES "${CMAKE_SOURCE_DIR}/../test/*.[fF]90")
+file(GLOB EXAMPLE_SOURCES "${CMAKE_SOURCE_DIR}/../example/*.[fF]90")
 
-file(GLOB EXAMPLE_SOURCES "${CMAKE_SOURCE_DIR}/../example/*.f90")
 # Build test programs
 foreach(test_source ${TEST_SOURCES})
     get_filename_component(test_name ${test_source} NAME_WE)
@@ -76,8 +66,8 @@ endforeach()
 # 
 # This variable defaults as follows:
 # 
-#     Added in version 3.29: If the CMAKE_INSTALL_PREFIX environment
-#     variable is set, its value is used as default for this variable.
+#     If the CMAKE_INSTALL_PREFIX environment variable is set,
+#     its value is used as default for this variable.
 # 
 #     c:/Program Files/${PROJECT_NAME} on Windows.
 # 

@@ -157,7 +157,7 @@ EXAMPLES
 SEE ALSO
   gprof(1), gcov(1)
 
-				March 28, 2025		howlong.1.man(1m_time)
+				August 19, 2026 	howlong.1.man(1m_time)
 paws.1.man(1m_time)					   paws.1.man(1m_time)
 
 NAME
@@ -240,7 +240,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-				March 28, 2025		   paws.1.man(1m_time)
+				August 19, 2026 	   paws.1.man(1m_time)
 sec2days.1.man(1m_time) 			       sec2days.1.man(1m_time)
 
 NAME
@@ -301,7 +301,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-				March 28, 2025	       sec2days.1.man(1m_time)
+				August 19, 2026        sec2days.1.man(1m_time)
 today.1.man(1m_time)					  today.1.man(1m_time)
 
 NAME
@@ -355,7 +355,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-				March 28, 2025		  today.1.man(1m_time)
+				August 19, 2026 	  today.1.man(1m_time)
 month.1.man(1m_time)					  month.1.man(1m_time)
 
 NAME
@@ -401,7 +401,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-				March 28, 2025		  month.1.man(1m_time)
+				August 19, 2026 	  month.1.man(1m_time)
 days2sec.1.man(1m_time) 			       days2sec.1.man(1m_time)
 
 NAME
@@ -483,7 +483,7 @@ AUTHOR
 LICENSE
   Public Domain
 
-				March 28, 2025	       days2sec.1.man(1m_time)
+				August 19, 2026        days2sec.1.man(1m_time)
 bas_to_date(3m_time)					  bas_to_date(3m_time)
 
 NAME
@@ -608,7 +608,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		  bas_to_date(3m_time)
+				August 19, 2026 	  bas_to_date(3m_time)
 d2b(3m_time)							  d2b(3m_time)
 
 NAME
@@ -702,7 +702,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  d2b(3m_time)
+				August 19, 2026 		  d2b(3m_time)
 d2j(3m_time)							  d2j(3m_time)
 
 NAME
@@ -756,7 +756,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  d2j(3m_time)
+				August 19, 2026 		  d2j(3m_time)
 d2w(3m_time)							  d2w(3m_time)
 
 NAME
@@ -886,7 +886,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  d2w(3m_time)
+				August 19, 2026 		  d2w(3m_time)
 date_to_bas(3m_time)					  date_to_bas(3m_time)
 
 NAME
@@ -997,7 +997,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		  date_to_bas(3m_time)
+				August 19, 2026 	  date_to_bas(3m_time)
 date_to_julian(3m_time) 			       date_to_julian(3m_time)
 
 NAME
@@ -1067,7 +1067,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025	       date_to_julian(3m_time)
+				August 19, 2026        date_to_julian(3m_time)
 date_to_modified_julian(3m_time)	      date_to_modified_julian(3m_time)
 
 NAME
@@ -1149,7 +1149,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025date_to_modified_julian(3m_time)
+				August 19, 202date_to_modified_julian(3m_time)
 j2d(3m_time)							  j2d(3m_time)
 
 NAME
@@ -1206,7 +1206,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  j2d(3m_time)
+				August 19, 2026 		  j2d(3m_time)
 julian_to_date(3m_time) 			       julian_to_date(3m_time)
 
 NAME
@@ -1278,7 +1278,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025	       julian_to_date(3m_time)
+				August 19, 2026        julian_to_date(3m_time)
 locale(3m_time) 					       locale(3m_time)
 
 NAME
@@ -1396,7 +1396,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		       locale(3m_time)
+				August 19, 2026 	       locale(3m_time)
 m2d(3m_time)							  m2d(3m_time)
 
 NAME
@@ -1454,7 +1454,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  m2d(3m_time)
+				August 19, 2026 		  m2d(3m_time)
 untitled()							    untitled()
 
 	      [GPF Home Page]
@@ -1467,12 +1467,12 @@ untitled()							    untitled()
   The M_time(3f) Fortran module and associated utility programs provide date
   and time-related procedures. Both a procedural and OOP (Object Oriented
   Programming) interface are provided. The primary conversion procedures are
-  provided as both a simple function and a subroutine returning error flags
-  and finer-grained control. Each routine is accompanied by a man-page which
-  includes a sample program for that procedure. This is also provided in HTML
-  format both in individual pages and a book format. The man-page example
-  programs, unit tests and additional examples are all provided in the
-  distribution package.
+  provided as both a simple function, and as a subroutine which returns an
+  error flag and finer-grained control. Each routine is accompanied by a man-
+  page which includes a sample program for that procedure. This is also
+  provided in HTML format both in individual pages and a book format. The man-
+  page example programs, unit tests and additional examples are all provided
+  in the distribution package.
 
   The M_time(3f) module
 
@@ -2008,7 +2008,7 @@ untitled()							    untitled()
 	    Fortran library is worth a look. It is well tested for
 	    manipulating high-precision dates.
 
-				March 28, 2025			    untitled()
+				August 19, 2026 		    untitled()
 M_time__oop(3m_time)					  M_time__oop(3m_time)
 
 NAME
@@ -2414,7 +2414,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		  M_time__oop(3m_time)
+				August 19, 2026 	  M_time__oop(3m_time)
 mo2d(3m_time)							 mo2d(3m_time)
 
 NAME
@@ -2466,7 +2466,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			 mo2d(3m_time)
+				August 19, 2026 		 mo2d(3m_time)
 mo2v(3m_time)							 mo2v(3m_time)
 
 NAME
@@ -2516,7 +2516,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			 mo2v(3m_time)
+				August 19, 2026 		 mo2v(3m_time)
 modified_julian_to_date(3m_time)	      modified_julian_to_date(3m_time)
 
 NAME
@@ -2599,7 +2599,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025modified_julian_to_date(3m_time)
+				August 19, 202modified_julian_to_date(3m_time)
 moon_fullness(3m_time)					moon_fullness(3m_time)
 
 NAME
@@ -2663,7 +2663,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		moon_fullness(3m_time)
+				August 19, 2026 	moon_fullness(3m_time)
 now(3m_time)							  now(3m_time)
 
 NAME
@@ -2732,7 +2732,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  now(3m_time)
+				August 19, 2026 		  now(3m_time)
 o2d(3m_time)							  o2d(3m_time)
 
 NAME
@@ -2795,7 +2795,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  o2d(3m_time)
+				August 19, 2026 		  o2d(3m_time)
 ordinal_seconds(3m_time)			      ordinal_seconds(3m_time)
 
 NAME
@@ -2844,7 +2844,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025	      ordinal_seconds(3m_time)
+				August 19, 2026       ordinal_seconds(3m_time)
 ordinal_to_date(3m_time)			      ordinal_to_date(3m_time)
 
 NAME
@@ -2906,7 +2906,7 @@ EXAMPLE
       > For Year 2024 and Ordinal day 1
       > Month is 1 and Day of Month is 1 and Year is 2024
 
-				March 28, 2025	      ordinal_to_date(3m_time)
+				August 19, 2026       ordinal_to_date(3m_time)
 phase_of_moon(3m_time)					phase_of_moon(3m_time)
 
 NAME
@@ -2987,7 +2987,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		phase_of_moon(3m_time)
+				August 19, 2026 	phase_of_moon(3m_time)
 sec2days(3m_time)					     sec2days(3m_time)
 
 NAME
@@ -3064,7 +3064,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		     sec2days(3m_time)
+				August 19, 2026 	     sec2days(3m_time)
 system_sleep(3m_time)					 system_sleep(3m_time)
 
 NAME
@@ -3130,7 +3130,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		 system_sleep(3m_time)
+				August 19, 2026 	 system_sleep(3m_time)
 u2d(3m_time)							  u2d(3m_time)
 
 NAME
@@ -3194,7 +3194,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  u2d(3m_time)
+				August 19, 2026 		  u2d(3m_time)
 unix_to_date(3m_time)					 unix_to_date(3m_time)
 
 NAME
@@ -3265,7 +3265,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		 unix_to_date(3m_time)
+				August 19, 2026 	 unix_to_date(3m_time)
 v2mo(3m_time)							 v2mo(3m_time)
 
 NAME
@@ -3326,7 +3326,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			 v2mo(3m_time)
+				August 19, 2026 		 v2mo(3m_time)
 w2d(3m_time)							  w2d(3m_time)
 
 NAME
@@ -3539,7 +3539,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  w2d(3m_time)
+				August 19, 2026 		  w2d(3m_time)
 date_to_unix(3m_time)					 date_to_unix(3m_time)
 
 NAME
@@ -3599,7 +3599,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		 date_to_unix(3m_time)
+				August 19, 2026 	 date_to_unix(3m_time)
 days2sec(3m_time)					     days2sec(3m_time)
 
 NAME
@@ -3699,7 +3699,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		     days2sec(3m_time)
+				August 19, 2026 	     days2sec(3m_time)
 dow(3m_time)							  dow(3m_time)
 
 NAME
@@ -3775,7 +3775,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  dow(3m_time)
+				August 19, 2026 		  dow(3m_time)
 easter(3m_time) 					       easter(3m_time)
 
 NAME
@@ -3842,7 +3842,7 @@ EXAMPLE
 
       Easter day: the 16th day of April in the year of our Lord 2017
 
-				March 28, 2025		       easter(3m_time)
+				August 19, 2026 	       easter(3m_time)
 fmtdate(3m_time)					      fmtdate(3m_time)
 
 NAME
@@ -3897,7 +3897,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		      fmtdate(3m_time)
+				August 19, 2026 	      fmtdate(3m_time)
 fmtdate_usage(3m_time)					fmtdate_usage(3m_time)
 
 NAME
@@ -4088,7 +4088,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		fmtdate_usage(3m_time)
+				August 19, 2026 	fmtdate_usage(3m_time)
 guessdate(3m_time)					    guessdate(3m_time)
 
 NAME
@@ -4173,7 +4173,7 @@ EXAMPLE
 
 LICENSE
    MIT
-				March 28, 2025		    guessdate(3m_time)
+				August 19, 2026 	    guessdate(3m_time)
 d2m(3m_time)							  d2m(3m_time)
 
 NAME
@@ -4226,7 +4226,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  d2m(3m_time)
+				August 19, 2026 		  d2m(3m_time)
 d2o(3m_time)							  d2o(3m_time)
 
 NAME
@@ -4299,7 +4299,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  d2o(3m_time)
+				August 19, 2026 		  d2o(3m_time)
 d2u(3m_time)							  d2u(3m_time)
 
 NAME
@@ -4354,7 +4354,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  d2u(3m_time)
+				August 19, 2026 		  d2u(3m_time)
 box_month(3m_time)					    box_month(3m_time)
 
 NAME
@@ -4412,7 +4412,7 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025		    box_month(3m_time)
+				August 19, 2026 	    box_month(3m_time)
 b2d(3m_time)							  b2d(3m_time)
 
 NAME
@@ -4533,4 +4533,4 @@ AUTHOR
 
 LICENSE
    MIT
-				March 28, 2025			  b2d(3m_time)
+				August 19, 2026 		  b2d(3m_time)

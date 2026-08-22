@@ -1,0 +1,66 @@
+name: windows with gfortran
+
+on: [push, pull_request]
+
+jobs:
+  Build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        gcc_v: [10] # Version of GFortran we want to use.
+        include:
+
+        - os: windows-latest
+          os-arch: windows-x86_64
+          release-flags: --flag '--static -g -fbacktrace -O3'
+          exe: .exe
+
+    env:
+      FC: gfortran
+      GCC_V: ${{ matrix.gcc_v }}
+      TZ: UTC+04:00
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: fpm-setup
+      uses: ./ # Uses action in the root directory
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        fpm-version: ${{ matrix.fpm-version }}
+
+    - name: Checkout the fpm repo
+      if: matrix.fpm-version == 'latest'
+      uses: actions/checkout@v4
+      with:
+        repository: fortran-lang/fpm
+
+    - name: Display environment
+      run: |
+        echo PATH %PATH%
+        echo
+        pwd
+        uname -a
+        echo "end" > foo.f90
+        gfortran -cpp -E -dM foo.f90
+        fpm --version
+        fpm build --verbose
+        gfortran --version
+      shell: cmd
+
+    - name: tests MSWindows (debug)
+      run: |
+              fpm test --profile debug -flag "-static -D _WIN32" --verbose 2>&1
+      shell: cmd
+
+    - name: tests MSWindows (release)
+      run: |
+              fpm test --profile release -flag "-static -D _WIN32" --verbose 2>&1
+      shell: cmd
+
+    - name: cleanup MSWindows
+      run: dir
+      shell: cmd

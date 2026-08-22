@@ -42,7 +42,6 @@ jobs:
 
     - name: Display environment
       run: |
-        #make -k -p -fNOTTHERE
         echo "end" > foo.f90
         ulimit -c unlimited -d unlimited -f unlimited -m unlimited -s unlimited -t unlimited -v unlimited -x unlimited
         gfortran -cpp -E -dM foo.f90
@@ -57,10 +56,7 @@ jobs:
     - name: ubuntu with gfortran (release)
       run: |
            ulimit -c unlimited -d unlimited -f unlimited -m unlimited -s unlimited -t unlimited -v unlimited -x unlimited
-           fpm test --profile release 
-
-#    - name: Run demo programs (fpm run)
-#      run: fpm run --profile release
+           fpm test --profile release
 
     - name: cleanup Linux
       run: ls -ltras

@@ -312,6 +312,14 @@ and documentation.
 ---
 ![GNU](docs/images/gnu.gif)
 ---
+# Download and Build 
+
+** NOTE: ** Of the following three build methods (__make(1), fpm(1),
+cmake(1)__) only fpm(1) runs the full test suite and builds the apps,
+as they require additional dependencies. But any of the methods will
+build the library and create the *.mod files.
+
+---
 ## Download and Build using gmake
 
 To build the modules download the github repository, enter the src/
@@ -353,7 +361,7 @@ or just list it as a dependency in your fpm.toml project file.
      M_time        = { git = "https://github.com/urbanjost/M_time.git" }
 ```
 ---
-![cmake](docs/images/cmake_logo-1.png)
+![cmake](docs/images/cmake.png)
 ---
 ## Download and Build using cmake
 
@@ -363,14 +371,21 @@ To download the github repository and build and install with cmake
       git clone https://github.com/urbanjost/M_time.git
       cd M_time
 
-      # Create a Build Directory:
+      # Create and enter a Build Directory to create all artifacts in:
       mkdir -p build
-
       cd build
+      # Set source and build directories:
       cmake -S ../src -B .
 
-      # Configure the Build, specifying your preferred compiler (ifort, flang, etc.):
+      # Configure the Build 
+      # specify preferred compiler (ifx, flang-new, gfortran, ... ):
       cmake . -DCMAKE_Fortran_COMPILER=gfortran
+<!--
+ NOT WORKING:
+      # customize install directory for binary at build time
+      # cmake ... -DCMAKE_INSTALL_PREFIX /usr/local     # GNU/Linux example
+      # cmake ... -DCMAKE_INSTALL_PREFIX C:\custom\path # Windows example
+-->
 
       # Build the Project:
       cmake --build .
@@ -382,13 +397,6 @@ To download the github repository and build and install with cmake
       #    build/test/* (test executables).
       #    build/example/* (example executables).
 
-      # OPTIONAL SECTION:
-
-      # Verify build
-      ls build/lib/libM_time.a
-      ls build/include/*.mod
-      ls build/test/*
-      ls build/example/*
 
       #Optionally Run Tests and Examples:
       for name in ./test/* ./example/*
@@ -397,17 +405,18 @@ To download the github repository and build and install with cmake
       done
 
       #Install (Optional):
-      # This installs the library and module files to the system
-      # (e.g., /usr/local/lib/ and /usr/local/include/).
+      # installs the library and module files to the default location
+      # (e.g., on Linux $HOME/.local/lib/ and $HOME/.local/include/).
+      # (e.g., on Windows %APPDATA%/local/lib/ and %APPDATA%/local/include/).
       cmake --install .
 
-      # if you have insufficient permissions sudo(1) may be required
-      # to perform the install
-      #sudo cmake --install .
+      #OPTIONAL ALTERNATIVE
+      # override custom directory at install time
+      #cmake --install . --prefix /usr/local/        
 
-      # Verify installation
-      ls /usr/local/lib/libM_time.a
-      ls /usr/local/include/*.mod
+      # if you have insufficient permissions sudo(1) may be required
+      # to perform the install on GNU/Linux
+      #sudo cmake --install --prefix /usr/local/
 
       # Cleaning Up: To clean artifacts, remove the build/ directory:
       rm -rf build
@@ -587,5 +596,7 @@ procedures.
    + [Gregorian Calendar(Wikipedia)](https://en.wikipedia.org/wiki/Gregorian_calendar)
 <!--
    TODO:
+
 http://plplot.sourceforge.net/docbook-manual/plplot-html-5.15.0/enhancement-libraries.html
+
 -->

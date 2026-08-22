@@ -15,11 +15,9 @@
 #   define __COMPILER__ __GFORTRAN_COMP
 #elif __flang__
 #   undef FLOAT128
-#   warning  NOTE: REAL128 not supported
 #   define __COMPILER__ __LLVM_FLANG_COMP
 #elif __NVCOMPILER
 #   undef FLOAT128
-#   warning  NOTE: REAL128 not supported
 #   define __COMPILER__ __NVIDIA_COMP
 #elif __LFORTRAN__
 #   define __COMPILER__ __LFORTRAN_COMP
@@ -128,16 +126,18 @@ character(len=:),save,allocatable,public :: M_time_month_names(:)
 character(len=:),save,allocatable,public :: M_time_weekday_names_abbr(:)
 character(len=:),save,allocatable,public :: M_time_month_names_abbr(:)
 !-----------------------------------------------------------------------------------------------------------------------------------
-character(len=*),parameter   :: G_month_names(12)=[                               &
+character(len=*),parameter   :: G_month_names(12)=[ &
    &'January  ', 'February ', 'March    ', 'April    ', 'May      ', 'June     ', &
    &'July     ', 'August   ', 'September', 'October  ', 'November ', 'December ']
 
-character(len=3),parameter   :: G_month_names_abbr(12)=G_month_names(:)(1:3)
+character(len=3),parameter   :: G_month_names_abbr(12)=[ &
+   &'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 character(len=*),parameter   :: G_weekday_names(7)=[character(len=9) :: &
    & 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ]
 
-character(len=3),parameter   :: G_weekday_names_abbr(7)=G_weekday_names(:)(1:3)
+character(len=3),parameter   :: G_weekday_names_abbr(7)=[character(len=3) :: &
+   & 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ]
 !-----------------------------------------------------------------------------------------------------------------------------------
 interface w2d
    module procedure w2d_numeric
@@ -401,37 +401,37 @@ integer                        :: jalpha,ja,jb,jc,jd,je,ijul
    endif
    tz=get_timezone()
 
-   ijul=int(julian)                             ! Integral Julian Date
-   second=sngl((julian-real(ijul,kind=real64))*secday)      ! Seconds from beginning of Jul. Day
+   ijul=int(julian)                              ! Integral Julian Date
+   second=real((julian-real(ijul,kind=dp))*secday)      ! Seconds from beginning of Jul. Day
    second=second+(tz*60)
 
-   if(second>=(secday/2.0_dp)) then           ! In next calendar day
+   if(second>=(secday/2.0_dp)) then             ! In next calendar day
       ijul=ijul+1
       second=second-(secday/2.0_dp)             ! Adjust from noon to midnight
    else                                         ! In same calendar day
       second=second+(secday/2.0_dp)             ! Adjust from noon to midnight
    endif
 
-   if(second>=secday) then                    ! Final check to prevent time 24:00:00
+   if(second>=secday) then                      ! Final check to prevent time 24:00:00
       ijul=ijul+1
       second=second-secday
    endif
 
    minute=int(second/60.0_dp)                   ! Integral minutes from beginning of day
-   second=second-real(minute*60,kind=real64)                ! Seconds from beginning of minute
+   second=second-real(minute*60,kind=dp)                ! Seconds from beginning of minute
    hour=minute/60                               ! Integral hours from beginning of day
    minute=minute-hour*60                        ! Integral minutes from beginning of hour
 
    !---------------------------------------------
-   jalpha=int((real(ijul-1867216,kind=real64)-0.25_dp)/36524.25_dp) ! Correction for Gregorian Calendar
-   ja=ijul+1+jalpha-int(0.25_dp*real(jalpha,kind=real64))
+   jalpha=int((real(ijul-1867216,kind=dp)-0.25_dp)/36524.25_dp) ! Correction for Gregorian Calendar
+   ja=ijul+1+jalpha-int(0.25_dp*real(jalpha,kind=dp))
    !---------------------------------------------
 
    jb=ja+1524
-   jc=int(6680.0_dp+(real(jb-2439870,kind=real64)-122.1_dp)/365.25_dp)
-   jd=365*jc+int(0.25_dp*real(jc,kind=real64))
-   je=int(real(jb-jd,kind=real64)/30.6001_dp)
-   day=jb-jd-int(30.6001_dp*real(je,kind=real64))
+   jc=int(6680.0_dp+(real(jb-2439870,kind=dp)-122.1_dp)/365.25_dp)
+   jd=365*jc+int(0.25_dp*real(jc,kind=dp))
+   je=int(real(jb-jd,kind=dp)/30.6001_dp)
+   day=jb-jd-int(30.6001_dp*real(je,kind=dp))
    month=je-1
 
    if(month>12)then
@@ -7340,12 +7340,12 @@ end subroutine Easter
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 subroutine system_sleep(seconds)
-use,intrinsic       :: iso_c_binding, only: c_int
+use,intrinsic                 :: iso_c_binding, only: c_int
 
-! ident_48="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
+! ident_30="@(#) M_time system_sleep(3f) call sleep(3c) or usleep(3c)"
 
-class(*),intent(in) :: seconds
-integer(kind=c_int) :: cint
+class(*),intent(in)           :: seconds
+integer(kind=c_int)           :: cint
    select type(seconds)
    type is (integer);             cint=seconds                    ; call call_sleep(cint)
    type is (real);                cint=nint(seconds*1000000.0_dp) ; call call_usleep(cint)
@@ -7356,12 +7356,15 @@ end SUBROUTINE system_sleep
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 #if __COMPILER__ == __INTEL_COMP
+!-----------------------------------------------------------------------------------------------------------------------------------
 subroutine call_sleep(seconds)
 USE IFPORT
 integer,intent(in) :: seconds
    CALL SLEEP(seconds)
 end subroutine call_sleep
+!-----------------------------------------------------------------------------------------------------------------------------------
 #else
+!-----------------------------------------------------------------------------------------------------------------------------------
 subroutine call_sleep(wait_seconds)
 use,intrinsic                   :: iso_c_binding, only: c_int
 
@@ -7380,17 +7383,21 @@ end interface
       how_long=c_sleep(wait_seconds)
    endif
 end subroutine call_sleep
+!-----------------------------------------------------------------------------------------------------------------------------------
 #endif
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 #if __COMPILER__ == __INTEL_COMP
+!-----------------------------------------------------------------------------------------------------------------------------------
 subroutine call_usleep(milliseconds)
 USE IFPORT
 integer,intent(in) :: milliseconds
    CALL SLEEPQQ(milliseconds)
 end subroutine call_usleep
+!-----------------------------------------------------------------------------------------------------------------------------------
 #else
+!-----------------------------------------------------------------------------------------------------------------------------------
 subroutine call_usleep(milliseconds)
 
 ! ident_50="@(#) M_time call_usleep(3fp) call usleep(3c)"
@@ -7409,13 +7416,14 @@ end interface
       status=c_usleep(milliseconds)
    endif
 end subroutine call_usleep
+!-----------------------------------------------------------------------------------------------------------------------------------
 #endif
 !==================================================================================================================================!
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !==================================================================================================================================!
 function getnow() result(dat)
 
-! ident_51="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
+! ident_48="@(#) M_time getnow(3f) get DAT for current time or value of SOURCE_DATE_EPOCH"
 
 integer :: dat(8)
    call date_and_time(values=dat)
@@ -7438,6 +7446,9 @@ end function getnow
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
 end module M_time
+!===================================================================================================================================
+!()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
+!===================================================================================================================================
 !===================================================================================================================================
 !()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()!
 !===================================================================================================================================
